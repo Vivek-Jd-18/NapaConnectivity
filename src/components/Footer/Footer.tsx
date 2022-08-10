@@ -36,12 +36,16 @@ const Footer: NextPage = () => {
       <div className={styles.container}>
         <Container>
           <div className={styles.footerContainer}>
-            <span>© 2018 - 2022 Napa Society</span>
+            <p className={styles.footerBottomText}>
+              © 2018 - 2022 Napa Society
+            </p>
             <div>
               <ul className={styles.footerListItem}>
-                <li>FAQ</li>
-                <li>Privacy Policy</li>
-                <li>Terms and Conditions</li>
+                <li className={styles.footerBottomText}>FAQ</li>
+                <li className={styles.footerBottomText}>Privacy Policy</li>
+                <li className={styles.footerBottomText}>
+                  Terms and Conditions
+                </li>
               </ul>
             </div>
           </div>
