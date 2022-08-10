@@ -1,0 +1,44 @@
+@import '../../../styles/abstracts/variable.module';
+@import '../../../styles/abstracts/mixins.module';
+
+.container {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 1rem 0 1rem 0;
+  width: 100%;
+  margin-top: 20px;
+
+  .footerContainer {
+    @include flex-between;
+    @include align-center;
+    padding: 1rem 0;
+
+    .footerImageContainer {
+      .footerImage {
+        width: 4.75rem;
+        height: 4.75rem;
+      }
+    }
+
+    .footerListItem {
+      display: flex;
+      list-style-type: none;
+      margin-bottom: 0;
+
+      li {
+        padding: 0 1rem;
+        font-size: 16px;
+        font-weight: 500;
+        color: #000000;
+      }
+
+      .footerIcon {
+        @include flex-row-center;
+        margin: 0 0.5rem;
+        background-color: $footer-icon;
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+      }
+    }
+  }
+}
