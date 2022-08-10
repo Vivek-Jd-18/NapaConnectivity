@@ -13,9 +13,7 @@ const BannerSection: NextPage = () => {
         </h1>
         <div className={styles.bannerDescription}>
           <p className={styles.bannerText}>
-            Abilities or he perfectly pretended so strangers be exquisite. Oh to
-            another chamber pleased imagine do in. Went me rank at last loud
-            shot an draw.
+          Welcome to the NAPA Society experience! We are the face of crypto social media in the web3 revolution! Join our society and turn your social media into social art, mint your social art in our social media app into NFT's and earn NAPA tokens, and buy and sell NFTs in the largest marketplace in the world!
           </p>
           <Button customStyle={styles.bannerBtn} text="Join Society" />
         </div>

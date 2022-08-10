@@ -18,7 +18,7 @@ const Header: NextPage = () => {
     <>
       <div className={styles.container}>
         <Container className={styles.innerContainer}>
-          <img src="assets/logo.svg" className={styles.logo} />
+          <img src="https://napa-website.s3.ap-southeast-1.amazonaws.com/transparent-white" className={styles.logo} />
           <Tabs
             activeKey={tabIndex}
             onChange={onChange}
