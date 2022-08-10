@@ -3,7 +3,7 @@
 
 .container {
   border-top: 1px solid rgba(0, 0, 0, 0.1);
-  padding: 1rem 0 1rem 0;
+  padding: 1rem 0 0rem 0;
   width: 100%;
   margin-top: 20px;
 
@@ -39,6 +39,17 @@
         height: 2rem;
         border-radius: 50%;
       }
+      .footerBottomText {
+        color: rgba(0, 0, 0, 0.6);
+        font-size: 0.875rem;
+        font-weight: 500;
+      }
+    }
+    .footerBottomText {
+      margin-bottom: 0;
+      color: rgba(0, 0, 0, 0.6);
+      font-size: 0.875rem;
+      font-weight: 500;
     }
   }
 }
