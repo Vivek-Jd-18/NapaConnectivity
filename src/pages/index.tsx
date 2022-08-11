@@ -1,8 +1,9 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import SocialArtSection from '@/components/SocialArtSectionWithoutLimit/SocialArtSectionWithoutLimit';
+import SocialArtSectionWithoutLimit from '@/components/SocialArtSectionWithoutLimit/SocialArtSectionWithoutLimit';
 import styles from '../../styles/pages/Home.module.scss';
 import NapaSociety from '@/components/NapaSocietySection/NapaSocietySection';
+import SocialArtSection from '@/components/SocialArtSection/SocialArtSection';
 
 const Home: NextPage = () => {
   return (
@@ -14,12 +15,14 @@ const Home: NextPage = () => {
       </Head>
       <section className={styles.container}>
         <div className={styles.child}>
-          <SocialArtSection />
+          <SocialArtSectionWithoutLimit />
         </div>
         <div className={styles.child}>
           <NapaSociety />
         </div>
-        <div className={styles.child}>Slide 3</div>
+        <div className={styles.child}>
+          <SocialArtSection />
+        </div>
         <div className={styles.child}>Slide 4</div>
         <div className={styles.child}>Slide 5</div>
       </section>

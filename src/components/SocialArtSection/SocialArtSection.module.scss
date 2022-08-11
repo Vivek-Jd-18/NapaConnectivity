@@ -1,0 +1,150 @@
+@import '../../../styles/abstracts/mixins.module';
+@import '../../../styles/abstracts/variable.module';
+
+@font-face {
+  font-family: Neuropolitical;
+  src: url('/assets/fonts/Neuropolitical/Neuropolitical-Regular.ttf');
+}
+
+@font-face {
+  font-family: Avenir;
+  src: url('/assets/fonts/Avenir/Avenir-Regular.ttf');
+}
+
+.backgroundImage {
+  background-image: url('/assets/images/socialmedia-background.svg');
+  background-size: cover;
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .societyContainer {
+    height: 100%;
+    @include flex-row-between;
+  }
+  .heading1 {
+    font-size: 5.625rem;
+    font-family: Neuropolitical;
+    font-weight: 400;
+    font-style: normal;
+    color: transparent;
+    -webkit-text-stroke: 2px white;
+    line-height: 1.1em;
+    // margin-bottom: 0;
+  }
+  .societyLeftDescription {
+    color: white;
+    text-align: left;
+    padding-right: 20rem;
+    padding-left: 0.5rem;
+    font-family: Avenir;
+    font-weight: 400;
+    font-size: 1.125rem;
+  }
+  .heading3 {
+    font-size: 10.5rem;
+    font-family: Neuropolitical;
+    font-weight: 400;
+    margin-bottom: 0.1rem;
+    font-style: normal;
+    color: transparent;
+    -webkit-text-stroke: 2px white;
+    line-height: 1.1em;
+    text-align: center;
+    @include flex-row-center;
+  }
+  .sliderText {
+    @include flex-row-center;
+    @include align-center;
+  }
+  .sliderText1 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    font-family: Avenir;
+    padding-left: 1rem;
+    padding-right: 0.5rem;
+    color: white;
+    line-height: 2.1rem;
+    margin-bottom: 0;
+  }
+  .sliderText2 {
+    font-size: 0.875rem;
+    font-weight: 500;
+    font-family: Avenir;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    color: white;
+    margin-bottom: 0;
+  }
+  .sliderContainer {
+    padding-bottom: 3rem;
+    @include flex-row-between;
+  }
+  .carouselImage {
+    position: absolute;
+    top: 0rem;
+    left: 2rem;
+    height: 100%;
+    img {
+      height: 100%;
+    }
+    .slideBtn {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      span {
+        margin-right: 0.5rem;
+      }
+    }
+  }
+  .innerSocietyContainer {
+    width: 55%;
+    @include flex-column-start;
+    position: relative;
+  }
+  .heading2 {
+    font-size: 5.625rem;
+    font-family: Neuropolitical;
+    font-weight: 400;
+    font-style: normal;
+    color: white;
+    line-height: 1rem;
+    // margin-bottom: 0;
+  }
+
+  .communityHeading {
+    font-size: 2.75rem;
+    color: white;
+    font-family: Neuropolitical;
+    line-height: 1.1rem;
+    font-weight: 400;
+    padding-bottom: 1.2rem;
+  }
+
+  .innerSocietyContainerRightSide {
+    width: 45%;
+    text-align: left;
+    .description {
+      color: white;
+      padding-top: 1rem;
+      width: 30rem;
+      font-family: 'Avenir';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 1.5rem;
+    }
+  }
+  .viewFeedBtn {
+    font-size: 1.5rem;
+    font-family: Neuropolitical;
+    font-weight: 400;
+    font-style: normal;
+    color: $btn-color;
+    background-color: transparent;
+    border: 1px solid transparent;
+    margin-right: 1.5rem;
+  }
+}
