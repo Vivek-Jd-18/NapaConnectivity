@@ -80,7 +80,7 @@ const SocialArtSection: NextPage = () => {
           <h2 className={styles.heading1}>Social</h2>
           <h2 className={styles.heading2}>Art</h2>
           <p className={styles.description}>
-            The NAPA Social Media App is the world's only social media platform
+            The NAPA Social Media App is the worlds only social media platform
             that allows you to mint and monetize your posts in real time to
             receive NAPA Tokens. Pick your audience and share your social art
             with millions of members in the NAPA Society community!
