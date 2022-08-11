@@ -1,0 +1,17 @@
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - npm install
+        - npm install-peerdeps --dev eslint-config-airbnb-base
+    build:
+      commands:
+        - npm run build
+  artifacts:
+    baseDirectory: .next
+    files:
+      - '**/src*'
+  cache:
+    paths:
+      - node_modules/**/*
