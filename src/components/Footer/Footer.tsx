@@ -17,7 +17,10 @@ const Footer: NextPage<Props> = ({ show }) => {
                 <li>NAPA Society</li>
                 <li>Social Art</li>
                 <li>NFT Marketplace</li>
-                <li>Help Center</li>
+                <li>NAPA Earn</li>
+                <li>Leaders</li>
+                <li>NAPA Lauchpad</li>
+                {/* <li>Help Center</li> */}
               </ul>
               <img src="/assets/images/mouse.svg" />
             </div>

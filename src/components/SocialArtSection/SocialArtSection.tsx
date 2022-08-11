@@ -3,6 +3,7 @@ import type { NextPage } from 'next';
 import Header from '../Header/Header';
 import Steper from '../Steper/Steper';
 import styles from './SocialArtSection.module.scss';
+//import image1 from .... (asset location in S3 bucket) ASSETS SHOULD BE IMPORTED AND DEFINED, DO NOT HARDCODE ASSETS PLEASE
 
 const SocialArtSection: NextPage = () => {
   return (
@@ -85,7 +86,8 @@ const SocialArtSection: NextPage = () => {
             with millions of members in the NAPA Society community!
           </p>
           <div className={styles.viewFeedContainer}>
-            <button className={styles.viewFeedBtn}>View feed</button>
+            <button className={styles.viewFeedBtn}>Download NAPA App</button> 
+            {/* Add pop up message with the option to download our app from the App Store or Google Play Store */}
             <img src="/assets/images/arrow_right.svg" />
           </div>
         </div>
