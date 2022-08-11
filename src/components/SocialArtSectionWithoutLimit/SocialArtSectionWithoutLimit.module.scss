@@ -1,0 +1,69 @@
+@import '../../../styles/abstracts/mixins.module';
+@import '../../../styles/abstracts/variable.module';
+
+@font-face {
+  font-family: Neuropolitical;
+  src: url('/assets/fonts/Neuropolitical/Neuropolitical-Regular.ttf');
+}
+
+@font-face {
+  font-family: Avenir;
+  src: url('/assets/fonts/Avenir/Avenir-Regular.ttf');
+}
+
+.backgroundImage {
+  background-image: url('/assets/images/socialart-background.svg');
+  background-size: cover;
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  .socialContainer {
+    height: 100%;
+    @include flex-row-between;
+  }
+  .heading1 {
+    font-size: 7rem;
+    font-family: Neuropolitical;
+    font-weight: 400;
+    font-style: normal;
+    color: transparent;
+    -webkit-text-stroke: 2px white;
+    line-height: 1.1em;
+  }
+  .innerSocialContainer {
+    width: 75%;
+    @include flex-column-start;
+  }
+  .heading2 {
+    font-size: 5.625rem;
+    font-family: Neuropolitical;
+    font-weight: 400;
+    font-style: normal;
+    color: white;
+    line-height: 1rem;
+  }
+  .innerSocialContainerRightSide {
+    width: 25%;
+    @include flex-column-start;
+    text-align: left;
+    .description {
+      font-family: Avenir;
+      font-weight: 400;
+      font-size: 1.125rem;
+      color: white;
+      line-height: 140%;
+    }
+  }
+  .joinSocietyBtn {
+    font-size: 1.5rem;
+    font-family: Neuropolitical;
+    font-weight: 400;
+    font-style: normal;
+    color: $btn-color;
+    background-color: transparent;
+    border: 1px solid transparent;
+    margin-right: 1.5rem;
+  }
+}

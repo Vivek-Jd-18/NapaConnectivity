@@ -1,9 +1,13 @@
 @import '../../../styles/abstracts/variable.module';
 @import '../../../styles/abstracts/mixins.module';
 
+@font-face {
+  font-family: 'Avenir';
+  src: url('/assets/fonts/Avenir/Avenir-Regular.ttf');
+}
+
 .container {
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  padding: 1rem 0 0rem 0;
+  padding: 1rem 0 1rem 0;
   width: 100%;
   margin-top: 20px;
 
@@ -11,6 +15,12 @@
     @include flex-between;
     @include align-center;
     padding: 1rem 0;
+
+    .leftSideFooterContainer {
+      @include flex-between;
+      @include align-center;
+      width: 52%;
+    }
 
     .footerImageContainer {
       .footerImage {
@@ -21,23 +31,34 @@
 
     .footerListItem {
       display: flex;
+      justify-content: flex-start;
+      padding: 0;
       list-style-type: none;
       margin-bottom: 0;
 
+      li:first-child {
+        padding: 0 1rem 0 0;
+      }
+
       li {
         padding: 0 1rem;
-        font-size: 16px;
-        font-weight: 500;
-        color: #000000;
+        font-size: 14px;
+        font-weight: 400;
+        font-family: 'Avenir';
+        color: white;
+        line-height: 1.225rem;
+        font-style: normal;
       }
 
       .footerIcon {
         @include flex-row-center;
-        margin: 0 0.5rem;
-        background-color: $footer-icon;
+        margin: 0 1rem;
         width: 2rem;
         height: 2rem;
         border-radius: 50%;
+        &:last-child {
+          margin-right: 0;
+        }
       }
       .footerBottomText {
         color: rgba(0, 0, 0, 0.6);

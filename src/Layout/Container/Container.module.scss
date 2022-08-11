@@ -2,20 +2,20 @@
 .container {
   margin-left: auto;
   margin-right: auto;
-  padding: 0 15px;
+  padding: 0 9.7rem;
   width: 100%;
   box-sizing: border-box;
 
-  @media (min-width: 576px) {
-    max-width: 540px;
-  }
-  @media (min-width: 768px) {
-    max-width: 720px;
-  }
-  @media (min-width: 992px) {
-    max-width: 960px;
-  }
-  @media (min-width: 1200px) {
-    max-width: 1185px;
-  }
+  // @media (min-width: 576px) {
+  //   max-width: 540px;
+  // }
+  // @media (min-width: 768px) {
+  //   max-width: 720px;
+  // }
+  // @media (min-width: 992px) {
+  //   max-width: 960px;
+  // }
+  // @media (min-width: 1200px) {
+  //   max-width: 1185px;
+  // }
 }

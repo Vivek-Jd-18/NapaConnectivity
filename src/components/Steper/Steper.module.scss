@@ -1,0 +1,34 @@
+.container {
+  height: 22rem;
+  position: absolute;
+  margin-top: auto;
+  margin-bottom: auto;
+  top: 0;
+  bottom: 0;
+  .topText {
+    position: absolute;
+    left: 3.5rem;
+    top: -3rem;
+    color: white;
+  }
+  .bottomText {
+    position: absolute;
+    bottom: -5rem;
+    left: 3.5rem;
+    color: white;
+  }
+  .steper {
+    width: 2px;
+    height: 24rem;
+    background-color: rgba(255, 255, 255, 0.3);
+    position: absolute;
+    left: 4rem;
+    .stepActive {
+      position: absolute;
+      width: 1px;
+      height: 6rem;
+      background-color: white;
+      z-index: 1;
+    }
+  }
+}

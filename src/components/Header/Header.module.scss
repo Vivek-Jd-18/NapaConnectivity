@@ -1,16 +1,14 @@
 @import '../../../styles/abstracts/variable.module';
 @import '../../../styles/abstracts/mixins.module';
 
-.container {
-  background-color: $header-bg;
-  padding: 1rem 0 1rem 0;
-  width: 100%;
-  .innerContainer {
-    @include flex-between;
-    @include align-center;
-  }
+.innerContainer {
+  @include flex-between;
+  @include align-center;
+  padding-top: 3rem;
+
   .logo {
-    padding-right: 5rem;
+    width: 6.563rem;
+    height: 3rem;
   }
   .rightSide {
     padding-left: 8rem;

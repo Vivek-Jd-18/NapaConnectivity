@@ -1,30 +1,48 @@
 @mixin grid-center {
-    display: grid;
-    place-items: center;
-  }
-  
-  @mixin flex-row-center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  @mixin flex-column-center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-  }
-  
-  @mixin flex-between {
-    display: flex;
-    justify-content: space-between;
-  }
-  @mixin align-center {
-    display: flex;
-    align-items: center;
-  }
-  @mixin justify-center {
-    display: flex;
-    justify-content: center;
-  }
+  display: grid;
+  place-items: center;
+}
+
+@mixin flex-row-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-row-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-column-start {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+@mixin flex-column-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+@mixin flex-column-between {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+}
+@mixin align-center {
+  display: flex;
+  align-items: center;
+}
+@mixin justify-center {
+  display: flex;
+  justify-content: center;
+}
