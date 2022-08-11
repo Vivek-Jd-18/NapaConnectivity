@@ -4,7 +4,7 @@ frontend:
     preBuild:
       commands:
         - npm install
-        - npm install-peerdeps --dev eslint-config-airbnb-base
+        - npm install peerdeps --dev eslint-config-airbnb-base
     build:
       commands:
         - npm run build
