@@ -8,7 +8,7 @@ const NapaSociety: NextPage = () => {
   return (
     <div className={styles.backgroundImage}>
       <Header />
-      <Steper />
+      <Steper steps={2} />
       <Container className={styles.societyContainer}>
         <div className={styles.innerSocietyContainer}>
           <h1 className={styles.heading1}>NAPA</h1>

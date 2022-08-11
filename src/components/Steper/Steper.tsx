@@ -1,22 +1,11 @@
 import type { NextPage } from 'next';
-import { useEffect, useState } from 'react';
 import styles from './Steper.module.scss';
 
-const Steper: NextPage = () => {
-  const [steps, setSteps] = useState(1);
+type SteperProps = {
+  steps: number;
+};
 
-  const [showTopBtn, setShowTopBtn] = useState(false);
-  useEffect(() => {
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 400) {
-        setShowTopBtn(true);
-      } else {
-        setShowTopBtn(false);
-      }
-    });
-  }, []);
-  console.log('steps', showTopBtn);
-
+const Steper: NextPage<SteperProps> = ({ steps }) => {
   return (
     <div className={styles.container}>
       <div className={styles.topText}>

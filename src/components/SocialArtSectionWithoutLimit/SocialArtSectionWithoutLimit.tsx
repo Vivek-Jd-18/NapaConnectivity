@@ -9,7 +9,7 @@ const SocialArtSectionWithoutLimit: NextPage = () => {
   return (
     <div className={styles.backgroundImage}>
       <Header />
-      <Steper />
+      <Steper steps={1} />
       <Container className={styles.socialContainer}>
         <div className={styles.innerSocialContainer}>
           <h1 className={styles.heading1}>Social Art</h1>
