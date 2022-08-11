@@ -45,12 +45,40 @@
     font-size: 10.5rem;
     font-family: Neuropolitical;
     font-weight: 400;
+    margin-bottom: 0.1rem;
     font-style: normal;
     color: transparent;
     -webkit-text-stroke: 2px white;
     line-height: 1.1em;
     text-align: center;
     @include flex-row-center;
+  }
+  .sliderText {
+    @include flex-row-center;
+    @include align-center;
+  }
+  .sliderText1 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    font-family: Avenir;
+    padding-left: 1rem;
+    padding-right: 0.5rem;
+    color: white;
+    line-height: 2.1rem;
+    margin-bottom: 0;
+  }
+  .sliderText2 {
+    font-size: 0.875rem;
+    font-weight: 500;
+    font-family: Avenir;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    color: white;
+    margin-bottom: 0;
+  }
+  .sliderContainer {
+    padding-bottom: 3rem;
+    @include flex-row-between;
   }
   .innerSocietyContainer {
     width: 75%;
@@ -71,6 +99,7 @@
     font-family: Neuropolitical;
     line-height: 1.1rem;
     font-weight: 400;
+    padding-bottom: 1.2rem;
   }
 
   .innerSocietyContainerRightSide {
