@@ -5,7 +5,7 @@
   place-items: center;
 }
 
-@mixin row-flex-center {
+@mixin flex-row-center {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -34,6 +34,17 @@
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-align-center {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 @mixin flex-row-center {

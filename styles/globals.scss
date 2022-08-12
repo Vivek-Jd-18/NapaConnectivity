@@ -25,3 +25,10 @@ a {
     background: black;
   }
 }
+
+.slick-slide {
+  transform: scale(0.9);
+}
+.slick-current {
+  transform: scale(1.1);
+}

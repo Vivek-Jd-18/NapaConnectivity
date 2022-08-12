@@ -1,3 +1,8 @@
+import {
+  LeftWhiteArrowIcon,
+  RightArrowBlueIcon,
+  RightWhiteArrowIcon,
+} from '@/index';
 import Container from '@/Layout/Container/Container';
 import type { NextPage } from 'next';
 import { useState } from 'react';
@@ -24,16 +29,16 @@ const NapaSociety: NextPage = () => {
   return (
     <div className={styles.backgroundImage}>
       <Header />
-      <Steper steps={2} />
+      <Steper steps={2} top={5} />
       <Container className={styles.societyContainer}>
         <div className={styles.innerSocietyContainer}>
-            <h1 className={styles.headingNapa}>NAPA</h1>
-            <h1 className={styles.headingSociety}>Society</h1>
+          <h1 className={styles.headingNapa}>NAPA</h1>
+          <h1 className={styles.headingSociety}>Society</h1>
           <p className={styles.societyLeftDescription}>
-            Join our society and turn your
-            social media into social art, mint your social art in our social
-            media app into NFTs and earn NAPA tokens and buy and sell NFTs in
-            the largest marketplace in the world!
+            Join our society and turn your social media into social art, mint
+            your social art in our social media app into NFTs and earn NAPA
+            tokens and buy and sell NFTs in the largest marketplace in the
+            world!
           </p>
         </div>
         <div className={styles.innerSocietyContainerRightSide}>
@@ -42,7 +47,7 @@ const NapaSociety: NextPage = () => {
             <div>
               <div className={styles.sliderContainer}>
                 <div onClick={handleDecrement}>
-                  <img src="/assets/images/left-arrow-white.svg"  style={{cursor:'pointer'}}/>
+                  <img src={LeftWhiteArrowIcon} style={{ cursor: 'pointer' }} />
                 </div>
                 <div className={styles.sliderText}>
                   <p className={styles.sliderCounterText}>0{slider}</p>
@@ -50,13 +55,16 @@ const NapaSociety: NextPage = () => {
                   <p className={styles.sliderSlashtext}>04</p>
                 </div>
                 <div onClick={handleIncrement}>
-                  <img src="/assets/images/right-arrow-white.svg"  style={{cursor:'pointer'}}/>
+                  <img
+                    src={RightWhiteArrowIcon}
+                    style={{ cursor: 'pointer' }}
+                  />
                 </div>
               </div>
               <h3 className={styles.communityHeading}>NAPA</h3>
             </div>
           </div>
-            
+
           {/* // Insert the following headings and sections 01 Community, 02 Trending, 03 Leaderboard, 04 The Lounge
           We will need mini images for sections 2, 3 and 4 
           
@@ -65,15 +73,13 @@ const NapaSociety: NextPage = () => {
 
           <div>
             <h6 className={styles.description}>
-            <strong>Visit the NAPA Community!
-              See What is Trending!</strong>
+              <strong>Visit the NAPA Community! See What is Trending!</strong>
             </h6>
             <div className={styles.joinSociety}>
               <button className={styles.joinSocietyBtn}>Community</button>
-              <img src="/assets/images/arrow_right.svg" />
+              <img src={RightArrowBlueIcon} />
             </div>
           </div>
-          
         </div>
       </Container>
     </div>

@@ -1,3 +1,4 @@
+import { Avatar, Carousel, RightArrowBlueIcon } from '@/index';
 import Container from '@/Layout/Container/Container';
 import type { NextPage } from 'next';
 import Header from '../Header/Header';
@@ -9,18 +10,14 @@ const SocialArtSection: NextPage = () => {
   return (
     <div className={styles.backgroundImage}>
       <Header />
-      <Steper steps={3} />
+      <Steper steps={3} top={12} />
       <Container className={styles.societyContainer}>
         <div className={styles.carouselImage}>
-          <img
-            src="/assets/images/carousel.png"
-            alt=""
-            className={styles.image}
-          />
+          <img src={Carousel} alt="" className={styles.image} />
           <div className={styles.slideBtn}>
             <div className={styles.carouselBottom}>
               <img
-                src="/assets/images/avatar.png"
+                src={Avatar}
                 alt=""
                 className={styles.avatar}
               />
@@ -108,7 +105,7 @@ const SocialArtSection: NextPage = () => {
           <div className={styles.viewFeedContainer}>
             <button className={styles.viewFeedBtn}>Explore All Projects</button>
             {/* Add pop up message with the option to download our app from the App Store or Google Play Store */}
-            <img src="/assets/images/arrow_right.svg" />
+            <img src={RightArrowBlueIcon} />
           </div>
         </div>
       </Container>

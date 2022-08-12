@@ -1,6 +1,7 @@
 import styles from './Footer.module.scss';
 import type { NextPage } from 'next';
 import Container from '@/Layout/Container/Container';
+import { MouseIcon, FacebookIcon, InstagramIcon, TwitterIcon } from '@/index';
 
 type Props = {
   show?: boolean;
@@ -21,17 +22,17 @@ const Footer: NextPage<Props> = ({ show }) => {
                 <li>Leaders</li>
                 <li>Lauchpad</li>
               </ul>
-              <img src="/assets/images/mouse.svg" />
+              <img src={MouseIcon} />
             </div>
             <ul className={styles.footerListItem}>
               <li className={styles.footerIconItem}>
-                <img src="/assets/images/facebook.svg" />
+                <img src={FacebookIcon} />
               </li>
               <li className={styles.footerIconItem}>
-                <img src="/assets/images/instagram.svg" />
+                <img src={InstagramIcon} />
               </li>
               <li className={styles.footerIconItem}>
-                <img src="/assets/images/twitter.svg" />
+                <img src={TwitterIcon} />
               </li>
             </ul>
           </div>

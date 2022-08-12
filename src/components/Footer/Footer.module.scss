@@ -87,7 +87,7 @@
   }
   @media only screen and (max-width: 576px) {
     .footerContainer {
-      @include row-flex-center;
+      @include flex-row-center;
       width: 100%;
       .leftSideFooterContainer {
         display: none;

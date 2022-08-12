@@ -1,3 +1,4 @@
+import { RightArrowBlueIcon } from '@/index';
 import Container from '@/Layout/Container/Container';
 import type { NextPage } from 'next';
 import Footer from '../Footer/Footer';
@@ -10,7 +11,7 @@ const SocialArtSectionWithoutLimit: NextPage = () => {
   return (
     <div className={styles.backgroundImage}>
       <Header />
-      <Steper steps={1} />
+      <Steper steps={1} top={0} />
       <Container className={styles.socialContainer}>
         <div className={styles.innerSocialContainer}>
           <h1 className={styles.socialArt}>Social Art</h1>
@@ -18,12 +19,14 @@ const SocialArtSectionWithoutLimit: NextPage = () => {
         </div>
         <div className={styles.innerSocialContainerRightSide}>
           <h6 className={styles.description}>
-            <strong>Welcome to NAPA Society!<br></br>
-            We Are The Face of Social Media In The Web3 Revolution!</strong>
+            <strong>
+              Welcome to NAPA Society!<br></br>
+              We Are The Face of Social Media In The Web3 Revolution!
+            </strong>
           </h6>
           <div className={styles.joinSociety}>
             <button className={styles.joinSocietyBtn}>Join NAPA</button>
-            <img src="/assets/images/arrow_right.svg" />
+            <img src={RightArrowBlueIcon} />
           </div>
         </div>
       </Container>
