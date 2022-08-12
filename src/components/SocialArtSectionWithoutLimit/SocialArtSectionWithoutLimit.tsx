@@ -16,19 +16,16 @@ const SocialArtSectionWithoutLimit: NextPage = () => {
           <h1 className={styles.heading1}>Social Art</h1>
           <h1 className={styles.heading2}>without Limits</h1>
         </div>
-        {/* <div className={styles.innerSocialContainerRightSide}>
+        <div className={styles.innerSocialContainerRightSide}>
           <h6 className={styles.description}>
-            Welcome to the NAPA Society experience! We are the face of crypto
-            social media in the web3 revolution! Join our society and turn your
-            social media into social art, mint your social art in our social
-            media app into NFT's and earn NAPA tokens, and buy and sell NFTs in
-            the largest marketplace in the world!
-          </h6> */}
-          {/* <div className={styles.joinSociety}>
-            <button className={styles.joinSocietyBtn}>Join Society</button>
+            <strong>Welcome to NAPA Society!<br></br>
+            We Are The Face of Social Media In The Web3 Revolution!</strong>
+          </h6>
+          <div className={styles.joinSociety}>
+            <button className={styles.joinSocietyBtn}>Join NAPA</button>
             <img src="/assets/images/arrow_right.svg" />
-          </div> */}
-        {/* </div> */}
+          </div> 
+        </div>
       </Container>
       <Footer />
     </div>
