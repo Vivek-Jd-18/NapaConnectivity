@@ -31,8 +31,7 @@ const NapaSociety: NextPage = () => {
           <h1 className={styles.heading1}>NAPA</h1>
           <h1 className={styles.heading2}>Society</h1>
           <p className={styles.societyLeftDescription}>
-            Welcome to the NAPA Society experience! We are the face of crypto
-            social media in the web3 revolution! Join our society and turn your
+            Join our society and turn your
             social media into social art, mint your social art in our social
             media app into NFTs and earn NAPA tokens and buy and sell NFTs in
             the largest marketplace in the world!
@@ -61,8 +60,7 @@ const NapaSociety: NextPage = () => {
           02 Trending */}
           
           <h6 className={styles.description}>
-          NAPA Society is a community driven by those that chose to take back
-            control of their Social Art. Visit the NAPA Community and see what is happening!
+          <strong>Visit the NAPA Community!<br></br> See What is Trending!</strong>
           </h6>
           <div className={styles.joinSociety}>
             <button className={styles.joinSocietyBtn}>Community</button>
