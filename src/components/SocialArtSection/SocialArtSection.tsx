@@ -80,13 +80,13 @@ const SocialArtSection: NextPage = () => {
           <h2 className={styles.heading1}>Social</h2>
           <h2 className={styles.heading2}>Art</h2>
           <p className={styles.description}>
-            The NAPA Social Media App is the worlds only social media platform
+            <strong>The NAPA Social Media App is the worlds only social media platform
             that allows you to mint and monetize your posts in real time to
-            receive <strong>NAPA Tokens</strong>. 
+            receive NAPA Tokens</strong>. 
             <br></br>
             <br></br>
-            <strong>Choose</strong> your audience and share your social art
-            with millions of members in the NAPA Society community!
+            <strong>Choose your audience and share your social art
+            with millions of members in the NAPA Society community!</strong>
           </p>
           <div className={styles.viewFeedContainer}>
             <button className={styles.viewFeedBtn}>Post Without Limits</button> 
