@@ -23,15 +23,12 @@
     height: 100%;
     @include flex-row-between;
   }
-  .heading1 {
-    font-size: 7rem;
-    font-family: Neuropolitical;
-    font-weight: 400;
-    font-style: normal;
+  .socialArt {
+    @include font-7xl-neuropolitical-normal;
     color: transparent;
     -webkit-text-stroke: 2px white;
-    line-height: 1.1em;
     animation: glow 1s ease-in-out infinite alternate;
+    margin-bottom: 0;
   }
   @-webkit-keyframes glow {
     from {
@@ -44,37 +41,69 @@
     width: 75%;
     @include flex-column-start;
   }
-  .heading2 {
-    font-size: 5.625rem;
-    font-family: Neuropolitical;
-    font-weight: 400;
-    font-style: normal;
-    color: white;
-    line-height: 1rem;
+  .withoutLimits {
+    @include font-6xl-neuropolitical-normal;
+    color: $white;
+    margin-bottom: 0;
   }
   .innerSocialContainerRightSide {
     width: 25%;
     @include flex-column-start;
     text-align: left;
     .description {
-      font-family: Avenir;
-      font-weight: 400;
-      font-size: 1.125rem;
-      color: white;
-      line-height: 140%;
+      @include font-md-avenir-medium;
+      color: $white;
     }
   }
   .joinSocietyBtn {
-    font-size: 1.5rem;
-    font-family: Neuropolitical;
-    font-weight: 400;
-    font-style: normal;
-    color: $btn-color;
+    @include font-lg-neuropolitical-normal;
+    color: $light-blue;
     background-color: transparent;
     border: 1px solid transparent;
     margin-right: 1.5rem;
   }
 
-  
- 
+  @media only screen and (max-width: 1024px) {
+    .socialContainer {
+      @include flex-center-column;
+
+      .innerSocialContainer {
+        width: 100%;
+
+        .socialArt {
+          margin-bottom: 0;
+          text-align: left;
+          width: 100%;
+          @include font-6xl-neuropolitical-normal;
+        }
+        .withoutLimits {
+          margin-bottom: 0;
+          text-align: left;
+          width: 100%;
+          @include font-5xl-neuropolitical-normal;
+        }
+      }
+      .innerSocialContainerRightSide {
+        width: 100%;
+        padding-top: 1.438rem;
+      }
+    }
+  }
+  @media only screen and (max-width: 576px) {
+    .socialContainer {
+      .innerSocialContainer {
+        .socialArt {
+          @include font-3xl-neuropolitical-normal;
+        }
+        .withoutLimits {
+          @include font-2xl-neuropolitical-normal;
+        }
+      }
+      .innerSocialContainerRightSide {
+        .description {
+          @include font-base-avenir-regular;
+        }
+      }
+    }
+  }
 }

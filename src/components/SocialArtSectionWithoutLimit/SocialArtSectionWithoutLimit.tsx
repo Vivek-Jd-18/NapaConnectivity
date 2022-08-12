@@ -13,8 +13,8 @@ const SocialArtSectionWithoutLimit: NextPage = () => {
       <Steper steps={1} />
       <Container className={styles.socialContainer}>
         <div className={styles.innerSocialContainer}>
-          <h1 className={styles.heading1}>Social Art</h1>
-          <h1 className={styles.heading2}>without Limits</h1>
+          <h1 className={styles.socialArt}>Social Art</h1>
+          <h1 className={styles.withoutLimits}>without Limits</h1>
         </div>
         <div className={styles.innerSocialContainerRightSide}>
           <h6 className={styles.description}>
@@ -24,7 +24,7 @@ const SocialArtSectionWithoutLimit: NextPage = () => {
           <div className={styles.joinSociety}>
             <button className={styles.joinSocietyBtn}>Join NAPA</button>
             <img src="/assets/images/arrow_right.svg" />
-          </div> 
+          </div>
         </div>
       </Container>
       <Footer />

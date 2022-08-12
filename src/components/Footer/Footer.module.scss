@@ -30,8 +30,7 @@
     }
 
     .footerListItem {
-      display: flex;
-      justify-content: flex-start;
+      @include flex-start;
       padding: 0;
       list-style-type: none;
       margin-bottom: 0;
@@ -42,15 +41,11 @@
 
       li {
         padding: 0 1rem;
-        font-size: 14px;
-        font-weight: 400;
-        font-family: 'Avenir';
-        color: white;
-        line-height: 1.225rem;
-        font-style: normal;
+        @include font-sm-avenir-regular;
+        color: $white;
       }
 
-      .footerIcon {
+      .footerIconItem {
         @include flex-row-center;
         margin: 0 1rem;
         width: 2rem;
@@ -61,9 +56,7 @@
         }
       }
       .footerBottomText {
-        color: rgba(0, 0, 0, 0.6);
-        font-size: 0.875rem;
-        font-weight: 500;
+        color: $black;
       }
     }
     .footerBottomText {
@@ -71,6 +64,34 @@
       color: rgba(0, 0, 0, 0.6);
       font-size: 0.875rem;
       font-weight: 500;
+    }
+  }
+  @media only screen and (max-width: 1024px) {
+    .leftSideFooterContainer {
+      width: 100% !important;
+      img {
+        display: none;
+      }
+    }
+  }
+  @media only screen and (max-width: 768px) {
+    .footerListItem {
+      li:first-child {
+        padding: 0 0.5rem 0 0 !important;
+      }
+
+      li {
+        padding: 0 0.5rem !important;
+      }
+    }
+  }
+  @media only screen and (max-width: 576px) {
+    .footerContainer {
+      @include row-flex-center;
+      width: 100%;
+      .leftSideFooterContainer {
+        display: none;
+      }
     }
   }
 }

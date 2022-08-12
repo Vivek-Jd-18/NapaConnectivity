@@ -20,18 +20,17 @@ const Footer: NextPage<Props> = ({ show }) => {
                 <li>Earn</li>
                 <li>Leaders</li>
                 <li>Lauchpad</li>
-                {/* <li>Help Center</li> */}
               </ul>
               <img src="/assets/images/mouse.svg" />
             </div>
             <ul className={styles.footerListItem}>
-              <li className={styles.footerIcon}>
+              <li className={styles.footerIconItem}>
                 <img src="/assets/images/facebook.svg" />
               </li>
-              <li className={styles.footerIcon}>
+              <li className={styles.footerIconItem}>
                 <img src="/assets/images/instagram.svg" />
               </li>
-              <li className={styles.footerIcon}>
+              <li className={styles.footerIconItem}>
                 <img src="/assets/images/twitter.svg" />
               </li>
             </ul>

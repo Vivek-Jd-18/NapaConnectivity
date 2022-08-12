@@ -23,32 +23,25 @@
     height: 100%;
     @include flex-row-between;
   }
-  .heading1 {
-    font-size: 10.5rem;
-    font-family: Neuropolitical;
-    font-weight: 400;
-    font-style: normal;
+  .headingNapa {
+    @include font-9xl-neuropolitical-normal;
     color: transparent;
-    -webkit-text-stroke: 2px white;
+    -webkit-text-stroke: 2px $white;
     line-height: 1.1em;
   }
   .societyLeftDescription {
-    color: white;
     text-align: left;
     padding-right: 20rem;
     padding-left: 0.5rem;
-    font-family: Avenir;
-    font-weight: 400;
-    font-size: 1.125rem;
+    padding-top: 0.7rem;
+    color: $white;
+    @include font-base-avenir-regular;
   }
-  .heading3 {
-    font-size: 10.5rem;
-    font-family: Neuropolitical;
-    font-weight: 400;
+  .headingSlider {
+    @include font-9xl-neuropolitical-normal;
     margin-bottom: 0.1rem;
-    font-style: normal;
     color: transparent;
-    -webkit-text-stroke: 2px white;
+    -webkit-text-stroke: 2px $white;
     line-height: 1.1em;
     text-align: center;
     @include flex-row-center;
@@ -57,23 +50,19 @@
     @include flex-row-center;
     @include align-center;
   }
-  .sliderText1 {
-    font-size: 1.5rem;
-    font-weight: 500;
-    font-family: Avenir;
+  .sliderCounterText {
+    @include font-lg-avenir-medium;
     padding-left: 1rem;
     padding-right: 0.5rem;
-    color: white;
+    color: $white;
     line-height: 2.1rem;
     margin-bottom: 0;
   }
-  .sliderText2 {
-    font-size: 0.875rem;
-    font-weight: 500;
-    font-family: Avenir;
+  .sliderSlashtext {
+    @include font-sm-avenir-medium;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
-    color: white;
+    color: $white;
     margin-bottom: 0;
   }
   .sliderContainer {
@@ -84,21 +73,15 @@
     width: 75%;
     @include flex-column-start;
   }
-  .heading2 {
-    font-size: 10.5rem;
-    font-family: Neuropolitical;
-    font-weight: 400;
-    font-style: normal;
-    color: white;
+  .headingSociety {
+    @include font-9xl-neuropolitical-normal;
     line-height: 1rem;
+    color: $white;
   }
 
   .communityHeading {
-    font-size: 2.75rem;
-    color: white;
-    font-family: Neuropolitical;
-    line-height: 1.1rem;
-    font-weight: 400;
+    @include font-3xl-neuropolitical-normal;
+    color: $white;
     padding-bottom: 1.2rem;
   }
 
@@ -106,21 +89,93 @@
     width: 25%;
     text-align: left;
     .description {
-      font-family: Avenir;
-      font-weight: 400;
-      font-size: 1.125rem;
-      color: white;
-      line-height: 140%;
+      @include font-md-avenir-regular;
+      color: $white;
+    }
+    .joinSociety {
+      cursor: pointer;
     }
   }
   .joinSocietyBtn {
-    font-size: 1.5rem;
-    font-family: Neuropolitical;
-    font-weight: 400;
-    font-style: normal;
-    color: $btn-color;
+    @include font-lg-neuropolitical-normal;
+    color: $light-blue;
     background-color: transparent;
     border: 1px solid transparent;
     margin-right: 1.5rem;
+    cursor: pointer;
+  }
+  @media only screen and (max-width: 1024px) {
+    .societyContainer {
+      @include flex-column-center;
+
+      .innerSocietyContainer {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+
+        .headingNapa {
+          margin-bottom: 0;
+          @include font-8xl-neuropolitical-normal;
+          text-align: left;
+          width: 100%;
+        }
+        .headingSociety {
+          margin-bottom: 0;
+          @include font-8xl-neuropolitical-normal;
+          text-align: left;
+          width: 100%;
+        }
+        .societyLeftDescription {
+          padding-right: 6rem;
+          padding-top: 1rem;
+        }
+      }
+
+      .innerSocietyContainerRightSide {
+        width: 100%;
+        @include flex-col;
+
+        .slider {
+          @include flex-between;
+
+          .sliderContainer {
+            @include flex-row;
+            padding-bottom: 0;
+            padding-top: 1.5rem;
+          }
+          .communityHeading {
+            padding-top: 1.5rem;
+          }
+        }
+      }
+    }
+  }
+  @media only screen and (max-width: 768px) {
+    .societyLeftDescription {
+      padding-top: 1rem;
+      padding-right: 0rem !important;
+    }
+  }
+  @media only screen and (max-width: 576px) {
+    .societyContainer {
+      .innerSocietyContainer {
+        .headingNapa {
+          @include font-5xl-neuropolitical-normal;
+        }
+        .headingSociety {
+          @include font-5xl-neuropolitical-normal;
+        }
+      }
+      .innerSocietyContainerRightSide {
+        .slider {
+          .headingSlider {
+            @include font-6xl-neuropolitical-normal;
+          }
+          .communityHeading {
+            padding-top: 0.5rem;
+          }
+        }
+      }
+    }
   }
 }
