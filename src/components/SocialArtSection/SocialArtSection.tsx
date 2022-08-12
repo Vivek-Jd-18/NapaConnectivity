@@ -82,11 +82,14 @@ const SocialArtSection: NextPage = () => {
           <p className={styles.description}>
             The NAPA Social Media App is the worlds only social media platform
             that allows you to mint and monetize your posts in real time to
-            receive NAPA Tokens. Pick your audience and share your social art
+            receive <strong>NAPA Tokens</strong>. 
+            <br></br>
+            <br></br>
+            <strong>Choose</strong> your audience and share your social art
             with millions of members in the NAPA Society community!
           </p>
           <div className={styles.viewFeedContainer}>
-            <button className={styles.viewFeedBtn}>Download NAPA App</button> 
+            <button className={styles.viewFeedBtn}>Post Without Limits</button> 
             {/* Add pop up message with the option to download our app from the App Store or Google Play Store */}
             <img src="/assets/images/arrow_right.svg" />
           </div>
