@@ -20,7 +20,7 @@ const SocialArtSectionWithoutLimit: NextPage = () => {
           <div className={styles.innerSocialContainerRightSide}>
             <h6 className={styles.description}>
               <strong>
-                Blockchain Inspired Web3 Social Media Has Arrived...
+                Blockchain Inspired Web3 Social Media Has Arrived
               </strong>
             </h6>
             <div className={styles.joinSociety}>
