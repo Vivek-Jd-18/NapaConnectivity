@@ -1,4 +1,4 @@
-import { MouseIcon, RightArrowBlueIcon } from '@/index';
+import { MouseIcon, RightArrowBlueIcon } from '@/components/assets';
 import Container from '@/Layout/Container/Container';
 import type { NextPage } from 'next';
 import Header from '../Header/Header';

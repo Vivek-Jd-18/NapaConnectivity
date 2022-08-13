@@ -1,5 +1,6 @@
 import {
   LeftWhiteArrowIcon,
+  MouseIcon,
   RightArrowBlueIcon,
   RightWhiteArrowIcon,
 } from '@/components/assets/index';

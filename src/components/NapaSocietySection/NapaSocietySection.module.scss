@@ -35,9 +35,12 @@
   }
   @-webkit-keyframes glow {
     from {
-      text-shadow: 0 0 20px #fff, 0 0 30px, 0 0 40px, 0 0 50px, 0 0 60px, 0 0 70px, 0 0 10px;
-    } to {
-      text-shadow: 0 0 1px #fff, 0 0 20px #ffffff, 0 0 30px, 0 0 40px, 0 0 50px, 0 0 60px, 0 0 100px;
+      text-shadow: 0 0 20px #fff, 0 0 30px, 0 0 40px, 0 0 50px, 0 0 60px,
+        0 0 70px, 0 0 10px;
+    }
+    to {
+      text-shadow: 0 0 1px #fff, 0 0 20px #ffffff, 0 0 30px, 0 0 40px, 0 0 50px,
+        0 0 60px, 0 0 100px;
     }
   }
   .societyLeftDescription {
@@ -122,10 +125,9 @@
     .societyContainer {
       @include flex-column-center;
 
-      .innerSocietyContainer {
+      .societyContainerBody {
         width: 100%;
-        display: flex;
-        flex-direction: column;
+        @include flex-column-center;
 
         .headingNapa {
           margin-bottom: 0;
@@ -143,6 +145,9 @@
           padding-right: 6rem;
           padding-top: 1rem;
         }
+      }
+      .innerSocietyContainer {
+        width: 100%;
       }
 
       .innerSocietyContainerRightSide {
@@ -172,7 +177,7 @@
   }
   @media only screen and (max-width: 576px) {
     .societyContainer {
-      .innerSocietyContainer {
+      .societyContainerBody {
         .headingNapa {
           @include font-5xl-neuropolitical-normal;
         }

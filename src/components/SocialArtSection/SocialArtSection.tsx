@@ -1,4 +1,9 @@
-import { Avatar, Carousel, MouseIcon, RightArrowBlueIcon } from '@/index';
+import {
+  Avatar,
+  Carousel,
+  MouseIcon,
+  RightArrowBlueIcon,
+} from '@/components/assets';
 import Container from '@/Layout/Container/Container';
 import type { NextPage } from 'next';
 import Header from '../Header/Header';
@@ -58,7 +63,6 @@ const SocialArtSection: NextPage = () => {
                 >
                   <circle cx="16" cy="16" r="3" fill="white" />
                 </svg>
-          </div>
               </span>
               <span>
                 <svg
