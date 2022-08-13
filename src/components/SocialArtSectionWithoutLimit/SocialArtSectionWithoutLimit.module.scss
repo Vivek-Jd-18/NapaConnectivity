@@ -21,6 +21,9 @@
   flex-direction: column;
   .socialContainer {
     height: 100%;
+  }
+  .socialContainerBody {
+    height: 90%;
     @include flex-row-between;
   }
   .socialArt {
@@ -32,10 +35,13 @@
   }
   @-webkit-keyframes glow {
     from {
-      text-shadow: 0 0 20px #fff, 0 0 30px , 0 0 40px, 0 0 50px, 0 0 60px, 0 0 70px, 0 0 10px;
-    }    to {
-      text-shadow: 0 0 1px #fff, 0 0 20px #ffffff, 0 0 30px, 0 0 40px, 0 0 50px, 0 0 60px, 0 0 100px;
-  }
+      text-shadow: 0 0 20px #fff, 0 0 30px, 0 0 40px, 0 0 50px, 0 0 60px,
+        0 0 70px, 0 0 10px;
+    }
+    to {
+      text-shadow: 0 0 1px #fff, 0 0 20px #ffffff, 0 0 30px, 0 0 40px, 0 0 50px,
+        0 0 60px, 0 0 100px;
+    }
   }
   .innerSocialContainer {
     width: 75%;
@@ -61,6 +67,10 @@
     background-color: transparent;
     border: 1px solid transparent;
     margin-right: 1.5rem;
+  }
+
+  .mousePointer {
+    cursor: pointer;
   }
 
   @media only screen and (max-width: 1024px) {

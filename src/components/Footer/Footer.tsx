@@ -15,14 +15,15 @@ const Footer: NextPage<Props> = ({ show }) => {
           <div className={styles.footerContainer}>
             <div className={styles.leftSideFooterContainer}>
               <ul className={styles.footerListItem}>
-                <li>Society</li>
+                <li>NAPA Society</li>
                 <li>Social Art</li>
                 <li>NFT Marketplace</li>
-                <li>Earn</li>
-                <li>Leaders</li>
+                <li>NAPA Earn</li>
+                <li>Leaderboards</li>
                 <li>Lauchpad</li>
+                <li>Help Center</li>
               </ul>
-              <img src={MouseIcon} />
+              {/* <img src={MouseIcon} /> */}
             </div>
             <ul className={styles.footerListItem}>
               <li className={styles.footerIconItem}>
