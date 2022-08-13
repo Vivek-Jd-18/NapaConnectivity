@@ -21,6 +21,9 @@
   flex-direction: column;
   .societyContainer {
     height: 100%;
+  }
+  .societyContainerBody {
+    height: 90%;
     @include flex-row-between;
   }
   .headingNapa {
@@ -110,6 +113,9 @@
     background-color: transparent;
     border: 1px solid transparent;
     margin-right: 1.5rem;
+    cursor: pointer;
+  }
+  .mousePointer {
     cursor: pointer;
   }
   @media only screen and (max-width: 1024px) {

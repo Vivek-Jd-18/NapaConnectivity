@@ -19,12 +19,13 @@ const Footer: NextPage = () => {
             <ul
               className={`${styles.footerListItem} ${styles.activeFooterListItem}`}
             >
-              <li>Society</li>
-              <li>Social Art</li>
-              <li>NFT Marketplace</li>
-              <li>Earn</li>
-              <li>Leaders</li>
-              <li>Lauchpad</li>
+               <li>NAPA Society</li>
+                <li>Social Art</li>
+                <li>NFT Marketplace</li>
+                <li>NAPA Earn</li>
+                <li>Leaderboards</li>
+                <li>Lauchpad</li>
+                <li>Help Center</li>
             </ul>
             <ul className={styles.footerListItem}>
               <li className={styles.footerIconItem}>
