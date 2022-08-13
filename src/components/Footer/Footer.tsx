@@ -19,7 +19,7 @@ const Footer: NextPage<Props> = ({ show }) => {
                 <li>Social Art</li>
                 <li>NFT Marketplace</li>
                 <li>NAPA Earn</li>
-                <li>Leaders</li>
+                <li>Leaderboards</li>
                 <li>Lauchpad</li>
                 <li>Help Center</li>
               </ul>
