@@ -43,6 +43,21 @@
         padding: 0 1rem;
         @include font-sm-avenir-regular;
         color: $white;
+        cursor: pointer;
+        &::after {
+          display: block;
+          content: '';
+          border-bottom: solid 2px #fff;
+          margin-bottom: -5px; /* here */
+          transform: scaleX(0);
+          transition: transform 250ms ease-in-out;
+        }
+        &:hover::after {
+          transform: scaleX(1);
+        }
+        &::after {
+          transform-origin: 0% 50%;
+        }
       }
 
       .footerIconItem {
