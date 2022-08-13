@@ -4,6 +4,7 @@ import SocialArtSectionWithoutLimit from '@/components/SocialArtSectionWithoutLi
 import styles from '../../styles/pages/Home.module.scss';
 import NapaSociety from '@/components/NapaSocietySection/NapaSocietySection';
 import SocialArtSection from '@/components/SocialArtSection/SocialArtSection';
+import NftMarketplaceSection from '@/components/NftMarketplaceSection/NftMarketplaceSection';
 
 const Home: NextPage = () => {
   return (
@@ -23,8 +24,9 @@ const Home: NextPage = () => {
         <div className={styles.child}>
           <SocialArtSection />
         </div>
-        <div className={styles.child}>Slide 4</div>
-        <div className={styles.child}>Slide 5</div>
+        <div className={styles.child}>
+          <NftMarketplaceSection />
+        </div>
       </section>
     </>
   );

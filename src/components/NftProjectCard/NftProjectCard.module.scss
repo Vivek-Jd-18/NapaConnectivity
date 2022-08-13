@@ -1,0 +1,54 @@
+@import '../../../styles/abstracts/mixins.module';
+@import '../../../styles/abstracts/variable.module';
+
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  background-image: url(/assets/images/nftprojectcard.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 2rem;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  .avatarContainer {
+    display: flex;
+    align-items: center;
+    .username {
+      @include font-sm-avenir-regular;
+      padding-left: 0.7rem;
+      color: $white;
+    }
+  }
+  .cardInfoContainer {
+    display: flex;
+    flex-direction: column;
+    padding-top: 8rem;
+    .title {
+      @include font-xl-neuropolitical-normal;
+      color: $white;
+      text-align: left;
+      padding-bottom: 1.5rem;
+    }
+    .description {
+      display: flex;
+      justify-content: space-between;
+      .bitContainer {
+        @include flex-column-start;
+        color: $white;
+        div {
+          display: flex;
+        }
+        img {
+          width: 1.5rem;
+          height: 1.5rem;
+          margin-right: 0.75rem;
+        }
+        .bit {
+          padding-bottom: 0.5rem;
+          @include font-xs-avenir-regular;
+        }
+      }
+    }
+  }
+}

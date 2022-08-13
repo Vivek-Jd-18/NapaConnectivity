@@ -1,3 +1,4 @@
+import { Avatar, Carousel, RightArrowBlueIcon } from '@/index';
 import Container from '@/Layout/Container/Container';
 import type { NextPage } from 'next';
 import Header from '../Header/Header';
@@ -9,11 +10,19 @@ const SocialArtSection: NextPage = () => {
   return (
     <div className={styles.backgroundImage}>
       <Header />
-      <Steper steps={3} />
+      <Steper steps={3} top={12} />
       <Container className={styles.societyContainer}>
         <div className={styles.carouselImage}>
-          <img src="/assets/images/carousel.svg" alt="" />
+          <img src={Carousel} alt="" className={styles.image} />
           <div className={styles.slideBtn}>
+            <div className={styles.carouselBottom}>
+              <img
+                src={Avatar}
+                alt=""
+                className={styles.avatar}
+              />
+              <span className={styles.carouselBottomText}>Clinton Bowman</span>
+            </div>
             <span>
               <svg
                 width="32"
@@ -74,24 +83,29 @@ const SocialArtSection: NextPage = () => {
               </svg>
             </span>
           </div>
+          <div className={styles.innerSocietyContainer}></div>
         </div>
-        <div className={styles.innerSocietyContainer}></div>
         <div className={styles.innerSocietyContainerRightSide}>
-          <h2 className={styles.heading1}>Social</h2>
-          <h2 className={styles.heading2}>Art</h2>
+          <div className={styles.socialHeading}>
+            <h2 className={styles.socialText}>Social</h2>
+            <h2 className={styles.artText}>Art</h2>
+          </div>
           <p className={styles.description}>
-            <strong>The NAPA Social Media App is the worlds only social media platform
-            that allows you to mint and monetize your posts in real time to
-            receive NAPA Tokens</strong>. 
-            <br></br>
-            <br></br>
-            <strong>Choose your audience and share your social art
-            with millions of members in the NAPA Society community!</strong>
+            <strong>
+              The NAPA Social Media App is the worlds only social media platform
+              that allows you to mint and monetize your posts in real time to
+              receive NAPA Tokens
+            </strong>
+            .<br />
+            <strong>
+              Choose your audience and share your social art with millions of
+              members in the NAPA Society community!
+            </strong>
           </p>
           <div className={styles.viewFeedContainer}>
-            <button className={styles.viewFeedBtn}>Post Without Limits</button> 
+            <button className={styles.viewFeedBtn}>Explore All Projects</button>
             {/* Add pop up message with the option to download our app from the App Store or Google Play Store */}
-            <img src="/assets/images/arrow_right.svg" />
+            <img src={RightArrowBlueIcon} />
           </div>
         </div>
       </Container>
