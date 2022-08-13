@@ -20,12 +20,11 @@ const SocialArtSectionWithoutLimit: NextPage = () => {
           <div className={styles.innerSocialContainerRightSide}>
             <h6 className={styles.description}>
               <strong>
-                Welcome to NAPA Society!<br></br>
-                We Are The Face of Social Media In The Web3 Revolution!
+                Blockchain Inspired Web3 Social Media Has Arrived...
               </strong>
             </h6>
             <div className={styles.joinSociety}>
-              <button className={styles.joinSocietyBtn}>Join NAPA</button>
+              <button className={styles.joinSocietyBtn}>NAPA Society</button>
               <img src={RightArrowBlueIcon} />
             </div>
           </div>
