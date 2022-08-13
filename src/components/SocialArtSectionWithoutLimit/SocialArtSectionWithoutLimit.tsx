@@ -1,7 +1,6 @@
-import { RightArrowBlueIcon } from '@/index';
+import { RightArrowBlueIcon } from '@/components/assets/index';
 import Container from '@/Layout/Container/Container';
 import type { NextPage } from 'next';
-import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import Steper from '../Steper/Steper';
 import styles from './SocialArtSectionWithoutLimit.module.scss';
@@ -30,7 +29,6 @@ const SocialArtSectionWithoutLimit: NextPage = () => {
           </div>
         </div>
       </Container>
-      <Footer />
     </div>
   );
 };

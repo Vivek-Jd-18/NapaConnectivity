@@ -1,63 +1,80 @@
 import styles from './Footer.module.scss';
 import type { NextPage } from 'next';
 import Container from '@/Layout/Container/Container';
-import { MouseIcon, FacebookIcon, InstagramIcon, TwitterIcon } from '@/index';
+import {
+  TwitterIcon,
+  DiscordIcon,
+  GithubIcon,
+  MediumIcon,
+  LogoIcon,
+} from '@/components/assets/index';
 
-type Props = {
-  show?: boolean;
-};
-
-const Footer: NextPage<Props> = ({ show }) => {
+const Footer: NextPage = () => {
   return (
     <>
       <div className={styles.container}>
         <Container>
           <div className={styles.footerContainer}>
-            <div className={styles.leftSideFooterContainer}>
-              <ul className={styles.footerListItem}>
-                <li>Society</li>
-                <li>Social Art</li>
-                <li>NFT Marketplace</li>
-                <li>Earn</li>
-                <li>Leaders</li>
-                <li>Lauchpad</li>
-              </ul>
-              <img src={MouseIcon} />
-            </div>
+            <img src={LogoIcon} />
+            <ul
+              className={`${styles.footerListItem} ${styles.activeFooterListItem}`}
+            >
+              <li>Society</li>
+              <li>Social Art</li>
+              <li>NFT Marketplace</li>
+              <li>Earn</li>
+              <li>Leaders</li>
+              <li>Lauchpad</li>
+            </ul>
             <ul className={styles.footerListItem}>
               <li className={styles.footerIconItem}>
-                <img src={FacebookIcon} />
-              </li>
-              <li className={styles.footerIconItem}>
-                <img src={InstagramIcon} />
-              </li>
-              <li className={styles.footerIconItem}>
                 <img src={TwitterIcon} />
+              </li>
+              <li className={styles.footerIconItem}>
+                <img src={DiscordIcon} />
+              </li>
+              <li className={styles.footerIconItem}>
+                <img src={GithubIcon} />
+              </li>
+              <li className={styles.footerIconItem}>
+                <img src={MediumIcon} />
               </li>
             </ul>
           </div>
         </Container>
       </div>
-      {show && (
-        <div className={styles.container}>
-          <Container>
-            <div className={styles.footerContainer}>
-              <p className={styles.footerBottomText}>
-                © 2018 - 2022 Napa Society
-              </p>
-              <div>
-                <ul className={styles.footerListItem}>
-                  <li className={styles.footerBottomText}>FAQ</li>
-                  <li className={styles.footerBottomText}>Privacy Policy</li>
-                  <li className={styles.footerBottomText}>
-                    Terms and Conditions
-                  </li>
-                </ul>
-              </div>
+      <div className={styles.footerListMobile}>
+        <Container>
+          <ul
+            className={`${styles.footerListItem} ${styles.activeFooterListItem}`}
+          >
+            <li>Society</li>
+            <li>Social Art</li>
+            <li>NFT Marketplace</li>
+            <li>Earn</li>
+            <li>Leaders</li>
+            <li>Lauchpad</li>
+          </ul>
+        </Container>
+      </div>
+      <div className={styles.footerBottomContainer}>
+        <Container>
+          <div className={styles.footerContainer}>
+            <p className={styles.footerBottomText}>
+              © 2018 - 2022 Napa Society
+            </p>
+            <div>
+              <ul className={styles.footerListItem}>
+                <li className={styles.footerBottomText}>FAQ</li>
+                <li className={styles.footerBottomText}>Privacy Policy</li>
+                <li className={styles.footerBottomText}>
+                  Terms and Conditions
+                </li>
+              </ul>
             </div>
-          </Container>
-        </div>
-      )}
+          </div>
+        </Container>
+      </div>
     </>
   );
 };

@@ -24,12 +24,7 @@
     display: flex;
     flex-direction: column;
     padding-top: 8rem;
-    .title {
-      @include font-xl-neuropolitical-normal;
-      color: $white;
-      text-align: left;
-      padding-bottom: 1.5rem;
-    }
+
     .description {
       display: flex;
       justify-content: space-between;
@@ -48,6 +43,64 @@
           padding-bottom: 0.5rem;
           @include font-xs-avenir-regular;
         }
+      }
+    }
+  }
+  @media (min-width: 768px) {
+    .avatarContainer {
+      .avatar {
+        width: 2.5rem;
+        height: 2.5rem;
+      }
+    }
+    .cardInfoContainer {
+      .title {
+        @include font-md-neuropolitical-normal;
+        color: $white;
+        text-align: left;
+        padding-bottom: 1.5rem;
+      }
+    }
+  }
+  @media (min-width: 1024px) {
+    .avatarContainer {
+      .avatar {
+        width: 2.5rem;
+        height: 2.5rem;
+      }
+    }
+    .cardInfoContainer {
+      .title {
+        @include font-md-neuropolitical-normal;
+        color: $white;
+        text-align: left;
+        padding-bottom: 1.5rem;
+      }
+    }
+  }
+  @media (min-width: 1280px) {
+    .avatarContainer {
+      .avatar {
+        width: 3rem;
+        height: 3rem;
+      }
+    }
+    .cardInfoContainer {
+      .title {
+        @include font-lg-neuropolitical-normal;
+        color: $white;
+        text-align: left;
+        padding-bottom: 1.5rem;
+      }
+    }
+  }
+  @media (min-width: 1536px) {
+    .cardInfoContainer {
+      .title {
+        @include font-xl-neuropolitical-normal;
+        color: $white;
+        text-align: left;
+        padding-bottom: 1.5rem;
       }
     }
   }
