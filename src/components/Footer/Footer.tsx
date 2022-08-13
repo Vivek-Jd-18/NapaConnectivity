@@ -22,7 +22,7 @@ const Footer: NextPage<Props> = ({ show }) => {
                 <li>Leaders</li>
                 <li>Lauchpad</li>
               </ul>
-              <img src={MouseIcon} />
+              {/* <img src={MouseIcon} /> */}
             </div>
             <ul className={styles.footerListItem}>
               <li className={styles.footerIconItem}>
