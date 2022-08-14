@@ -7,7 +7,8 @@ import Steper from '../Steper/Steper';
 import Tab from '../Tab/Tab';
 import styles from './NftMarketplaceSection.module.scss';
 import SliderComponent from '../Slider/Slider';
-import { RightArrowBlueIcon } from '@/index';
+import { RightArrowBlueIcon } from '@/components/assets/index';
+import Footer from '../Footer/Footer';
 //import image1 from .... (asset location in S3 bucket) ASSETS SHOULD BE IMPORTED AND DEFINED, DO NOT HARDCODE ASSETS PLEASE
 
 const marketPlaceTab = [
@@ -15,7 +16,7 @@ const marketPlaceTab = [
     title: 'Professional NFT Projects',
   },
   {
-    title: 'Social Media Minted',
+    title: 'Social Art Minted',
   },
 ];
 
@@ -41,21 +42,21 @@ const NftMarketplaceSection: NextPage = () => {
             </ul>
           </div>
           <div className={styles.viewFeedContainer}>
-            <button className={styles.viewFeedBtn}>Post Without Limits</button>
-            {/* Add pop up message with the option to download our app from the App Store or Google Play Store */}
+            <button className={styles.viewFeedBtn}>Explore Projects</button>
             <img src={RightArrowBlueIcon} alt="" />
           </div>
         </div>
         <SliderComponent>
           {Array.from({ length: 6 }, () => {
             return (
-              <div className={styles.projectCardContainer}>
+              <div key={1} className={styles.projectCardContainer}>
                 <NftProjectCard />
               </div>
             );
           })}
         </SliderComponent>
       </Container>
+      <Footer />
     </div>
   );
 };

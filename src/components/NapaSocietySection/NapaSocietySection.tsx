@@ -1,9 +1,9 @@
 import {
   LeftWhiteArrowIcon,
+  MouseIcon,
   RightArrowBlueIcon,
   RightWhiteArrowIcon,
-  MouseIcon,
-} from '@/index';
+} from '@/components/assets/index';
 import Container from '@/Layout/Container/Container';
 import type { NextPage } from 'next';
 import { useState } from 'react';

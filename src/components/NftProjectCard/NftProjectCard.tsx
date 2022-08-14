@@ -1,4 +1,4 @@
-import { Avatar, NapaIcon } from '@/index';
+import { Avatar, NapaIcon } from '@/components/assets/index';
 import type { NextPage } from 'next';
 import styles from './NftProjectCard.module.scss';
 
@@ -9,7 +9,7 @@ const NftProjectCard: NextPage = () => {
       style={{ backgroundImage: "url('/assets/images/nftprojectcard.png')" }}
     >
       <div className={styles.avatarContainer}>
-        <img src={Avatar} alt="" />
+        <img src={Avatar} alt="" className={styles.avatar} />
         <span className={styles.username}>@TomBradley</span>
       </div>
       <div className={styles.cardInfoContainer}>
