@@ -1,4 +1,4 @@
-import { MouseIcon, RightArrowBlueIcon } from '@/index';
+import { MouseIcon, RightArrowBlueIcon } from '@/components/assets';
 import Container from '@/Layout/Container/Container';
 import type { NextPage } from 'next';
 import Header from '../Header/Header';
@@ -20,7 +20,7 @@ const SocialArtSectionWithoutLimit: NextPage = () => {
           <div className={styles.innerSocialContainerRightSide}>
             <h6 className={styles.description}>
               <strong>
-                Blockchain Inspired Web3 Social Media Has Arrived...
+                Blockchain Inspired Web3 Social Media Has Arrived
               </strong>
             </h6>
             <div className={styles.joinSociety}>

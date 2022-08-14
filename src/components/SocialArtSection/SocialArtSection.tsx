@@ -1,4 +1,9 @@
-import { Avatar, Carousel, MouseIcon, RightArrowBlueIcon } from '@/index';
+import {
+  Avatar,
+  Carousel,
+  MouseIcon,
+  RightArrowBlueIcon,
+} from '@/components/assets';
 import Container from '@/Layout/Container/Container';
 import type { NextPage } from 'next';
 import Header from '../Header/Header';
@@ -96,9 +101,10 @@ const SocialArtSection: NextPage = () => {
                 time to receive NAPA Tokens
               </strong>
               .<br />
+              <br  />
               <strong>
                 Choose your audience and share your social art with millions of
-                members in the NAPA Society community!
+                members of the NAPA Society community!
               </strong>
             </p>
             <div className={styles.viewFeedContainer}>

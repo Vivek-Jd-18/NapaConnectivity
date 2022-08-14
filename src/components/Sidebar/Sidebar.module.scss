@@ -1,0 +1,67 @@
+@import '../../../styles/abstracts/variable.module';
+@import '../../../styles/abstracts/mixins.module';
+
+.overlay {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgba(16, 35, 36, 0.4);
+  background-color: rgba(16, 35, 36, 0.4);
+  backdrop-filter: blur(50px);
+  overflow-x: hidden;
+
+  transition: 0.5s;
+  .overlayContent {
+    position: relative;
+    top: 20%;
+    width: 100%;
+    text-align: left;
+    margin-top: 30px;
+    padding-left: 20rem;
+    a:hover,
+    a:focus {
+      color: $white;
+      &::before {
+        content: '';
+        position: absolute;
+        width: 8%;
+        height: 4px;
+        background: $white;
+        top: 4rem;
+        z-index: -1;
+      }
+    }
+  }
+  a {
+    padding: 8px;
+    text-decoration: none;
+    @include font-6xl-neuropolitical-normal;
+    color: transparent;
+    -webkit-text-stroke: 2px $white;
+    display: block;
+    transition: 0.3s;
+  }
+
+  .closebtn {
+    position: absolute;
+    top: 3rem;
+    left: 9rem;
+    cursor: pointer;
+  }
+}
+
+@media screen and (max-height: 450px) {
+  .overlay {
+    a {
+      font-size: 20px;
+    }
+    .closebtn {
+      font-size: 40px;
+      top: 15px;
+      right: 35px;
+    }
+  }
+}

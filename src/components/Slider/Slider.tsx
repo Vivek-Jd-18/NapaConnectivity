@@ -13,6 +13,26 @@ const SliderComponent: NextPage<SliderProps> = ({ children }) => {
     slidesToShow: 3,
     infinite: true,
     cssEase: 'linear',
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+    ],
   };
   return <Slider {...settings}>{children}</Slider>;
 };
