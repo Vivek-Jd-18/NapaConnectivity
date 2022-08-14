@@ -109,7 +109,7 @@ const SocialArtSection: NextPage = () => {
             </p>
             <div className={styles.viewFeedContainer}>
               <button className={styles.viewFeedBtn}>
-                Explore All Projects
+                Gallery
               </button>
               {/* Add pop up message with the option to download our app from the App Store or Google Play Store */}
               <img src={RightArrowBlueIcon} />

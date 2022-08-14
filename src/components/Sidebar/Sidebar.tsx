@@ -1,4 +1,4 @@
-import Container from '@/Layout/Container/Container';
+// import Container from '@/Layout/Container/Container';
 import type { NextPage } from 'next';
 import { ExitIcon } from '../assets';
 import styles from './Sidebar.module.scss';
@@ -15,9 +15,9 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick }) => {
       </div>
       <div className={styles.overlayContent}>
         <a href="#">NAPA Society</a>
-        <a href="#">Social Art</a>
+        <a href="#">Social Art</a> 
         <a href="#">NFT Marketplace</a>
-        <a href="#">Leaderboards</a>
+        <a href="#">Leaderboard</a>
         <a href="#">Launchpad</a>
       </div>
     </div>

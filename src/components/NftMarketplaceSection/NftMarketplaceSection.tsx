@@ -16,7 +16,7 @@ const marketPlaceTab = [
     title: 'Professional NFT Projects',
   },
   {
-    title: 'Social Media Minted',
+    title: 'Social Art Minted',
   },
 ];
 
@@ -42,7 +42,7 @@ const NftMarketplaceSection: NextPage = () => {
             </ul>
           </div>
           <div className={styles.viewFeedContainer}>
-            <button className={styles.viewFeedBtn}>Explore All Projects</button>
+            <button className={styles.viewFeedBtn}>Explore Projects</button>
             <img src={RightArrowBlueIcon} alt="" />
           </div>
         </div>
