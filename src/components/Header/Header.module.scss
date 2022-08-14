@@ -6,12 +6,28 @@
   @include align-center;
   padding-top: 3rem;
 
-  .logo {
-    width: 10.563rem;
-    height: 6rem;
-  }
   .rightSide {
     padding-left: 8rem;
     justify-content: space-evenly;
+  }
+}
+@media (min-width: 768px) {
+  .innerContainer {
+    padding-top: 1.5rem;
+  }
+}
+@media (min-width: 1024px) {
+  .innerContainer {
+    padding-top: 1.5rem;
+  }
+}
+@media (min-width: 1280px) {
+  .innerContainer {
+    padding-top: 3rem;
+  }
+}
+@media (min-width: 1536px) {
+  .innerContainer {
+    padding-top: 3rem;
   }
 }

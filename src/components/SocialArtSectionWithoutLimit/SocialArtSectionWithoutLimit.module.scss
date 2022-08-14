@@ -76,7 +76,10 @@
   @media only screen and (max-width: 1024px) {
     .socialContainer {
       @include flex-center-column;
-
+      .socialContainerBody {
+        @include flex-center-column;
+        width: 100%;
+      }
       .innerSocialContainer {
         width: 100%;
 
