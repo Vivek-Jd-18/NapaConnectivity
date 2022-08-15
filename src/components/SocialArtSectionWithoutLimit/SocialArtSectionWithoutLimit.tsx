@@ -1,16 +1,20 @@
 import { MouseIcon, RightArrowBlueIcon } from '@/components/assets';
 import Container from '@/Layout/Container/Container';
 import type { NextPage } from 'next';
-import Header from '../Header/Header';
 import Steper from '../Steper/Steper';
 import styles from './SocialArtSectionWithoutLimit.module.scss';
 // you are using the footer for the bottom nav options when you should be importing a NavBarSection.tsx  //
 
-const SocialArtSectionWithoutLimit: NextPage = () => {
+type SocialArtSectionWithoutLimitProps = {
+  isMenu: boolean;
+};
+
+const SocialArtSectionWithoutLimit: NextPage<
+  SocialArtSectionWithoutLimitProps
+> = ({ isMenu }) => {
   return (
     <div className={styles.backgroundImage}>
-      <Header />
-      <Steper steps={1} top={0} />
+      {!isMenu && <Steper steps={1} top={0} />}
       <Container className={styles.socialContainer}>
         <div className={styles.socialContainerBody}>
           <div className={styles.innerSocialContainer}>
@@ -19,9 +23,7 @@ const SocialArtSectionWithoutLimit: NextPage = () => {
           </div>
           <div className={styles.innerSocialContainerRightSide}>
             <h6 className={styles.description}>
-              <strong>
-                Blockchain Inspired Web3 Social Media Has Arrived
-              </strong>
+              <strong>Blockchain Inspired Web3 Social Media Has Arrived</strong>
             </h6>
             <div className={styles.joinSociety}>
               <button className={styles.joinSocietyBtn}>NAPA Society</button>

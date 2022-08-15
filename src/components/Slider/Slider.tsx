@@ -32,6 +32,12 @@ const SliderComponent: NextPage<SliderProps> = ({ children }) => {
           slidesToShow: 2,
         },
       },
+      {
+        breakpoint: 576,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
     ],
   };
   return <Slider {...settings}>{children}</Slider>;

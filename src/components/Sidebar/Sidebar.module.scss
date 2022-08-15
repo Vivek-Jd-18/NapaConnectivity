@@ -3,9 +3,9 @@
 
 .overlay {
   height: 100%;
-  width: 100%;
   position: fixed;
   z-index: 1;
+  width: 0;
   top: 0;
   left: 0;
   background-color: rgba(16, 35, 36, 0.4);
@@ -19,20 +19,31 @@
     top: 20%;
     width: 100%;
     text-align: left;
-    margin-top: 30px;
-    padding-left: 20rem;
-    a:hover,
-    a:focus {
-      color: $white;
+    padding-left: 8rem;
+    a {
       &::before {
+        width: 0;
         content: '';
         position: absolute;
-        width: 8%;
-        height: 4px;
         background: $white;
-        top: 4rem;
+        margin-top: 3rem;
         z-index: -1;
+        height: 4px;
       }
+    }
+    a:hover,
+    a:focus {
+      padding-left: 10rem;
+      color: $white;
+      &::before {
+        width: 5%;
+        left: 8rem;
+      }
+    }
+    .buttonsContainer {
+      padding-top: 4rem;
+      width: 100%;
+      display: flex;
     }
   }
   a {

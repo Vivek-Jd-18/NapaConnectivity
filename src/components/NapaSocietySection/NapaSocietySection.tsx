@@ -7,11 +7,14 @@ import {
 import Container from '@/Layout/Container/Container';
 import type { NextPage } from 'next';
 import { useState } from 'react';
-import Header from '../Header/Header';
 import Steper from '../Steper/Steper';
 import styles from './NapaSocietySection.module.scss';
 
-const NapaSociety: NextPage = () => {
+type NapaSocietyProps = {
+  isMenu: boolean;
+};
+
+const NapaSociety: NextPage<NapaSocietyProps> = ({ isMenu }) => {
   const [slider, setSlider] = useState(1);
 
   const handleIncrement = () => {
@@ -29,8 +32,7 @@ const NapaSociety: NextPage = () => {
 
   return (
     <div className={styles.backgroundImage}>
-      <Header />
-      <Steper steps={2} top={5} />
+      {!isMenu && <Steper steps={2} top={5} />}
       <Container className={styles.societyContainer}>
         <div className={styles.societyContainerBody}>
           <div className={styles.innerSocietyContainer}>
@@ -66,25 +68,69 @@ const NapaSociety: NextPage = () => {
                     />
                   </div>
                 </div>
-                <h3 className={styles.communityHeading}>NAPA</h3>
+                {slider === 1 ? (
+                  <h3 className={styles.community}>Lounge</h3>
+                ) : slider === 2 ? (
+                  <h3 className={styles.community}>Trending</h3>
+                ) : slider === 3 ? (
+                  <h3 className={styles.community}>Leaders</h3>
+                ) : (
+                  <h3 className={styles.community}>Events</h3>
+                )}
               </div>
             </div>
 
             {/* // Insert the following headings and sections 01 Community, 02 Trending, 03 Leaderboard, 04 The Lounge
-          We will need mini images for sections 2, 3 and 4 
-          
-          01 Community
-          02 Trending */}
-
-            <div>
-              <h6 className={styles.description}>
-                <strong>Visit the NAPA Community! See What is Trending!</strong>
-              </h6>
-              <div className={styles.joinSociety}>
-                <button className={styles.joinSocietyBtn}>Community</button>
-                <img src={RightArrowBlueIcon} />
+          We will need mini images for sections 2, 3 and 4 */}
+            {slider === 1 ? (
+              <div>
+                <h6 className={styles.description}>
+                  <strong>
+                  Checkout the NAPA Lounge!
+                  </strong>
+                </h6>
+                <div className={styles.joinSociety}>
+                  <button className={styles.joinSocietyBtn}>Visit Lounge</button>
+                  <img src={RightArrowBlueIcon} />
+                </div>
               </div>
-            </div>
+            ) : slider === 2 ? (
+              <div>
+                <h6 className={styles.description}>
+                  <strong>
+                  {/* // Insert Mini Trending Window // */}
+                  </strong>
+                </h6>
+                <div className={styles.joinSociety}>
+                  <button className={styles.joinSocietyBtn}>Get Updates</button>
+                  <img src={RightArrowBlueIcon} />
+                </div>
+              </div>
+            ) : slider === 3 ? (
+              <div>
+                <h6 className={styles.description}>
+                  <strong>
+                    {/* // Insert Mini Leaders List// */}
+                  </strong>
+                </h6>
+                <div className={styles.joinSociety}>
+                  <button className={styles.joinSocietyBtn}>Whats Hot</button>
+                  <img src={RightArrowBlueIcon} />
+                </div>
+              </div>
+            ) : (
+              <div>
+                <h6 className={styles.description}>
+                  <strong>
+                    {/* // Display Next Event Image // */}
+                  </strong>
+                </h6>
+                <div className={styles.joinSociety}>
+                  <button className={styles.joinSocietyBtn}>Upcoming Events</button>
+                  <img src={RightArrowBlueIcon} />
+                </div>
+              </div>
+            )}
           </div>
         </div>
         <div className={styles.mousePointer}>

@@ -5,8 +5,16 @@ import styles from '../../styles/pages/Home.module.scss';
 import NapaSociety from '@/components/NapaSocietySection/NapaSocietySection';
 import SocialArtSection from '@/components/SocialArtSection/SocialArtSection';
 import NftMarketplaceSection from '@/components/NftMarketplaceSection/NftMarketplaceSection';
+import Header from '@/components/Header/Header';
+import { useState } from 'react';
 
 const Home: NextPage = () => {
+  const [isMenu, setIsMenu] = useState(false);
+
+  const openMenu = () => {
+    setIsMenu(true);
+  };
+  
   return (
     <>
       <Head>
@@ -15,17 +23,18 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <section className={styles.container}>
+        <Header openMenu={openMenu} setIsMenu={setIsMenu} isMenu={isMenu} />
         <div className={styles.child}>
-          <SocialArtSectionWithoutLimit />
+          <SocialArtSectionWithoutLimit isMenu={isMenu} />
         </div>
         <div className={styles.child}>
-          <NapaSociety />
+          <NapaSociety isMenu={isMenu} />
         </div>
         <div className={styles.child}>
-          <SocialArtSection />
+          <SocialArtSection isMenu={isMenu} />
         </div>
         <div className={styles.child}>
-          <NftMarketplaceSection />
+          <NftMarketplaceSection isMenu={isMenu} />
         </div>
       </section>
     </>

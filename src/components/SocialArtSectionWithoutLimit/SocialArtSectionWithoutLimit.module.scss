@@ -72,8 +72,8 @@
   .mousePointer {
     cursor: pointer;
   }
-
   @media only screen and (max-width: 1024px) {
+    background-image: url('/assets/images/socialart-background-tablet.png');
     .socialContainer {
       @include flex-center-column;
       .socialContainerBody {
@@ -103,6 +103,7 @@
     }
   }
   @media only screen and (max-width: 576px) {
+    background-image: url('/assets/images/socialart-background-mobile.png');
     .socialContainer {
       .innerSocialContainer {
         .socialArt {

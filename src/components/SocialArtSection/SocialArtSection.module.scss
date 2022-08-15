@@ -115,12 +115,6 @@
     margin-bottom: 0;
   }
 
-  .communityHeading {
-    color: $white;
-    @include font-3xl-neuropolitical-normal;
-    padding-bottom: 1.2rem;
-  }
-
   .innerSocietyContainerRightSide {
     width: 45%;
     position: absolute;
@@ -181,6 +175,8 @@
     }
   }
   @media only screen and (max-width: 1024px) {
+    background-image: url('/assets/images/socialmedia-background-tablet.png');
+
     .carouselImage {
       width: 100%;
       .image {
@@ -197,6 +193,7 @@
     }
   }
   @media only screen and (max-width: 576px) {
+    background-image: url('/assets/images/socialmedia-background-mobile.png');
     .carouselImage {
       width: 100%;
       .image {

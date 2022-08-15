@@ -7,7 +7,7 @@
   background-image: url(/assets/images/nftprojectcard.png);
   background-repeat: no-repeat;
   background-position: center;
-  padding: 2rem;
+  padding: 1rem;
   align-items: flex-start;
   justify-content: space-between;
   width: 100%;
@@ -15,24 +15,47 @@
     display: flex;
     align-items: center;
     .username {
-      @include font-sm-avenir-regular;
+      @include font-xs-avenir-regular;
       padding-left: 0.7rem;
       color: $white;
+    }
+    .avatar {
+      width: 2rem;
     }
   }
   .cardInfoContainer {
     display: flex;
     flex-direction: column;
     padding-top: 8rem;
+    padding-bottom: 1rem;
+
+    .title {
+      @include font-md-neuropolitical-normal;
+      color: $white;
+      text-align: left;
+      padding-bottom: 1.5rem;
+    }
 
     .description {
       display: flex;
       justify-content: space-between;
+      align-items: center;
       .bitContainer {
         @include flex-column-start;
         color: $white;
+        .bitContainerLeftSide {
+          .bitContainerLeftSideText {
+            @include font-xs-avenir-regular;
+          }
+        }
+        .bitContainerRightSide {
+          .bitContainerRightSideText {
+            @include font-xs-avenir-regular;
+          }
+        }
         div {
           display: flex;
+          align-items: center;
         }
         img {
           width: 1.5rem;
@@ -47,18 +70,25 @@
     }
   }
   @media (min-width: 768px) {
-    .avatarContainer {
-      .avatar {
-        width: 2.5rem;
-        height: 2.5rem;
+    .cardContainer {
+      padding: 2rem;
+      .avatarContainer {
+        .username {
+          @include font-sm-avenir-regular;
+        }
+        .avatar {
+          width: 2.5rem;
+          height: 2.5rem;
+        }
       }
-    }
-    .cardInfoContainer {
-      .title {
-        @include font-md-neuropolitical-normal;
-        color: $white;
-        text-align: left;
-        padding-bottom: 1.5rem;
+      .cardInfoContainer {
+        padding-bottom: 0;
+        .title {
+          @include font-md-neuropolitical-normal;
+          color: $white;
+          text-align: left;
+          padding-bottom: 1.5rem;
+        }
       }
     }
   }
@@ -75,6 +105,20 @@
         color: $white;
         text-align: left;
         padding-bottom: 1.5rem;
+      }
+      .description {
+        .bitContainer {
+          .bitContainerRightSide {
+            .bitContainerRightSideText {
+              @include font-sm-avenir-regular;
+            }
+          }
+          .bitContainerLeftSide {
+            .bitContainerLeftSideText {
+              @include font-sm-avenir-regular;
+            }
+          }
+        }
       }
     }
   }

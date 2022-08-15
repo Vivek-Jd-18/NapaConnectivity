@@ -1,33 +1,45 @@
-import {
-  BurgerMenuIcon,
-  LogoIcon,
-  SearchIcon,
-} from '@/components/assets/index';
+import { BurgerMenuIcon } from '@/components/assets/index';
 import Container from '@/Layout/Container/Container';
 import type { NextPage } from 'next';
-import { useState } from 'react';
+import { useEffect } from 'react';
+import Vivus from 'vivus';
 import Sidebar from '../Sidebar/Sidebar';
+import { NapaLogo, NapaLogoWhite } from '../Svg';
 import styles from './Header.module.scss';
 
 // Please import define the logo and hamburger menu//
 // Decouple the search icon with the container //
-const Header: NextPage = () => {
-  const [isMenu, setIsMenu] = useState(false);
 
-  const openMenu = () => {
-    setIsMenu(true);
-  };
+type HeaderProps = {
+  openMenu: () => void;
+  setIsMenu: (menu: boolean) => void;
+  isMenu: boolean;
+};
 
+const Header: NextPage<HeaderProps> = ({ openMenu, isMenu, setIsMenu }) => {
+  useEffect(() => {
+    new Vivus('napa-logo', {
+      type: 'delayed',
+      duration: 200,
+      animTimingFunction: Vivus.EASE_OUT,
+    });
+  }, []);
   return (
     <>
       <Container className={styles.innerContainer}>
         <div onClick={openMenu}>
-          <img src={BurgerMenuIcon} />
+          <img src={BurgerMenuIcon} className={styles.burgerMenuIcon} />
         </div>
-        <img src={LogoIcon} className={styles.logo} />
-        <img src={SearchIcon} />
+        <div>
+          <div className={styles.svgWrapper}>
+            <NapaLogo className={styles.napaLogo} />
+          </div>
+          <div className={styles.svgWrapper}>
+            <NapaLogoWhite className={styles.napaLogoWhite} />
+          </div>
+        </div>
       </Container>
-      {isMenu && <Sidebar onClick={() => setIsMenu(false)} />}
+      {isMenu && <Sidebar isMenu={isMenu} onClick={() => setIsMenu(false)} />}
     </>
   );
 };

@@ -6,26 +6,26 @@ import {
   DiscordIcon,
   GithubIcon,
   MediumIcon,
-  LogoIcon,
+  FooterLogoIcon,
 } from '@/components/assets/index';
 
 const Footer: NextPage = () => {
   return (
-    <>
+    <div>
       <div className={styles.container}>
         <Container>
           <div className={styles.footerContainer}>
-            <img src={LogoIcon} />
+            <img src={FooterLogoIcon} />
             <ul
               className={`${styles.footerListItem} ${styles.activeFooterListItem}`}
             >
-               <li>NAPA Society</li>
-                <li>Social Art</li>
-                <li>NFT Marketplace</li>
-                <li>NAPA Earn</li>
-                <li>Leaderboards</li>
-                <li>Lauchpad</li>
-                <li>Help Center</li>
+              <li>NAPA Society</li>
+              <li>Social Art</li>
+              <li>NFT Marketplace</li>
+              <li>NAPA Earn</li>
+              <li>Leaderboards</li>
+              <li>Lauchpad</li>
+              <li>Help Center</li>
             </ul>
             <ul className={styles.footerListItem}>
               <li className={styles.footerIconItem}>
@@ -76,7 +76,7 @@ const Footer: NextPage = () => {
           </div>
         </Container>
       </div>
-    </>
+    </div>
   );
 };
 
