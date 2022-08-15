@@ -6,16 +6,18 @@ import {
 } from '@/components/assets';
 import Container from '@/Layout/Container/Container';
 import type { NextPage } from 'next';
-import Header from '../Header/Header';
 import Steper from '../Steper/Steper';
 import styles from './SocialArtSection.module.scss';
 //import image1 from .... (asset location in S3 bucket) ASSETS SHOULD BE IMPORTED AND DEFINED, DO NOT HARDCODE ASSETS PLEASE
 
-const SocialArtSection: NextPage = () => {
+type SocialArtSectionProps = {
+  isMenu: boolean;
+};
+
+const SocialArtSection: NextPage<SocialArtSectionProps> = ({ isMenu }) => {
   return (
     <div className={styles.backgroundImage}>
-      <Header />
-      <Steper steps={3} top={12} />
+      {!isMenu && <Steper steps={3} top={12} />}
       <Container className={styles.socialArtContainer}>
         <div className={styles.socialArtContainerBody}>
           <div className={styles.carouselImage}>
@@ -101,16 +103,14 @@ const SocialArtSection: NextPage = () => {
                 time to receive NAPA Tokens
               </strong>
               .<br />
-              <br  />
+              <br />
               <strong>
                 Choose your audience and share your social art with millions of
                 members of the NAPA Society community!
               </strong>
             </p>
             <div className={styles.viewFeedContainer}>
-              <button className={styles.viewFeedBtn}>
-                Gallery
-              </button>
+              <button className={styles.viewFeedBtn}>Gallery</button>
               {/* Add pop up message with the option to download our app from the App Store or Google Play Store */}
               <img src={RightArrowBlueIcon} />
             </div>

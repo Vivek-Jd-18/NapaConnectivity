@@ -2,9 +2,10 @@
 @import '../../../styles/abstracts/variable.module';
 
 .tabBtn {
-  margin-right: 3rem;
+  margin-right: 1.5rem;
   background-color: transparent;
-  @include font-base-avenir-regular;
+  @include font-sm-avenir-regular;
+  text-align: left;
   color: $white;
   cursor: pointer;
   border: none;
@@ -15,8 +16,20 @@
   &::after {
     content: '';
     border-bottom: 1px solid $white;
-    width: 4rem;
+    width: 2rem;
     display: block;
     padding-top: 0.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .tabBtn {
+    @include font-base-avenir-regular;
+    margin-right: 3rem;
+  }
+  .active {
+    &::after {
+      width: 4rem;
+    }
   }
 }

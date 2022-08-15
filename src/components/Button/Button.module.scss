@@ -1,20 +1,36 @@
+@import '../../../styles/abstracts/variable.module';
+@import '../../../styles/abstracts/mixins.module';
+
 .btnOutlined {
-  color: black;
-  font-size: 1rem;
-  height: 3rem;
-  width: 11.25rem;
-  line-height: 1.2rem;
+  color: $light-blue;
+  margin-right: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  cursor: pointer;
+  width: 45%;
+  @include justify-center;
+  @include align-center;
   background-color: transparent;
-  margin-right: 1.4rem;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  @include font-lg-neuropolitical-normal;
+  border: 1px solid $light-blue;
+  .icon {
+    padding-right: 1.5rem;
+  }
 }
 
 .btn {
-  background-color: black;
-  color: white;
-  height: 3rem;
-  font-size: 1rem;
-  width: 11.25rem;
-  line-height: 1.2rem;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: $light-blue;
+  color: $black;
+  @include font-lg-neuropolitical-normal;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  cursor: pointer;
+  border: 1px solid $light-blue;
+  width: 45%;
+  margin-right: 2rem;
+  @include justify-center;
+  @include align-center;
+  .icon {
+    padding-right: 1.5rem;
+  }
 }

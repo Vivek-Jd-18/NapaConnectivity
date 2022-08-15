@@ -4,7 +4,36 @@
 .innerContainer {
   @include flex-between;
   @include align-center;
-  padding-top: 3rem;
+  padding-top: 1rem;
+  position: fixed;
+  z-index: 1;
+
+  .burgerMenuIcon {
+    cursor: pointer;
+  }
+
+  .svgWrapper {
+    display: block;
+    position: fixed;
+    margin-left: -3.5rem;
+    margin-top: -0.5rem;
+    left: 50%;
+  }
+
+  .napaLogoWhite {
+    fill: #fff;
+    opacity: 0;
+    animation: fadeIn 2s ease;
+    animation-delay: 2s;
+    animation-fill-mode: forwards;
+  }
+  .napaLogo {
+    stroke: rgba(255, 255, 255, 0.5);
+    stroke-width: 1.25px;
+    animation: fadeOut 1s ease;
+    animation-delay: 2.75s;
+    animation-fill-mode: forwards;
+  }
 
   .rightSide {
     padding-left: 8rem;
@@ -14,6 +43,9 @@
 @media (min-width: 768px) {
   .innerContainer {
     padding-top: 1.5rem;
+    .svgWrapper {
+      margin-left: -5rem;
+    }
   }
 }
 @media (min-width: 1024px) {
@@ -31,35 +63,22 @@
     padding-top: 3rem;
   }
 }
-// this is new code for fading in the logo on page load see example here https://codepen.io/codycurley/pen/bdqevE 
-   @include keyframes(fadeIn) {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  
-  @include keyframes(fadeOut) {
-    from {
-      opacity: 1;
-    }
-    to {
-      opacity: 0;
-    }
-  }  
-  .logo-white {
-    fill: #fff;
+@keyframes fadeIn {
+  from {
     opacity: 0;
-    @include animation(fadeIn 2s ease);
-    @include animation-delay(2s);
-    @include animation-fill-mode(forwards);
   }
-  .logo {
-    stroke: rgba(255,255,255,0.5);
-    stroke-width: 1.25px;
-    @include animation(fadeOut 1s ease);
-    @include animation-delay(2.75s);
-    @include animation-fill-mode(forwards);
+  to {
+    opacity: 1;
   }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    display: block;
+  }
+  to {
+    opacity: 0;
+    display: none;
+  }
+}

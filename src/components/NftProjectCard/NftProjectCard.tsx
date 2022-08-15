@@ -17,15 +17,15 @@ const NftProjectCard: NextPage = () => {
         <div className={styles.description}>
           <div className={styles.bitContainer}>
             <span className={styles.bit}>Current Bit</span>
-            <div>
+            <div className={styles.bitContainerLeftSide}>
               <img src={NapaIcon} />
-              <span>0.24 NAPA</span>
+              <span className={styles.bitContainerLeftSideText}>0.24 NAPA</span>
             </div>
           </div>
           <div className={styles.bitContainer}>
             <span className={styles.bit}>Ending In</span>
-            <div>
-              <span>4h 32min</span>
+            <div className={styles.bitContainerRightSide}>
+              <span className={styles.bitContainerRightSideText}>4h 32min</span>
             </div>
           </div>
         </div>
