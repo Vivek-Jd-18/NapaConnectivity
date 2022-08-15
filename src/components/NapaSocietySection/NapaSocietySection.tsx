@@ -69,13 +69,13 @@ const NapaSociety: NextPage<NapaSocietyProps> = ({ isMenu }) => {
                   </div>
                 </div>
                 {slider === 1 ? (
-                  <h3 className={styles.community}>NAPA</h3>
+                  <h3 className={styles.community}>Lounge</h3>
                 ) : slider === 2 ? (
-                  <h3 className={styles.community}>Social Art</h3>
+                  <h3 className={styles.community}>Trending</h3>
                 ) : slider === 3 ? (
-                  <h3 className={styles.community}>Social Art without limit</h3>
+                  <h3 className={styles.community}>Leaders</h3>
                 ) : (
-                  <h3 className={styles.community}>Nft Marketplace</h3>
+                  <h3 className={styles.community}>Events</h3>
                 )}
               </div>
             </div>
@@ -86,11 +86,11 @@ const NapaSociety: NextPage<NapaSocietyProps> = ({ isMenu }) => {
               <div>
                 <h6 className={styles.description}>
                   <strong>
-                    Visit the NAPA Community! See What is Trending!
+                  Checkout the NAPA Lounge!
                   </strong>
                 </h6>
                 <div className={styles.joinSociety}>
-                  <button className={styles.joinSocietyBtn}>Community</button>
+                  <button className={styles.joinSocietyBtn}>Visit Lounge</button>
                   <img src={RightArrowBlueIcon} />
                 </div>
               </div>
@@ -98,22 +98,23 @@ const NapaSociety: NextPage<NapaSocietyProps> = ({ isMenu }) => {
               <div>
                 <h6 className={styles.description}>
                   <strong>
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry
+                  {/* // Insert Mini Trending Window // */}
                   </strong>
                 </h6>
                 <div className={styles.joinSociety}>
-                  <button className={styles.joinSocietyBtn}>Community</button>
+                  <button className={styles.joinSocietyBtn}>Get Updates</button>
                   <img src={RightArrowBlueIcon} />
                 </div>
               </div>
             ) : slider === 3 ? (
               <div>
                 <h6 className={styles.description}>
-                  <strong>NAPA Community! See What is Trending!</strong>
+                  <strong>
+                    {/* // Insert Mini Leaders List// */}
+                  </strong>
                 </h6>
                 <div className={styles.joinSociety}>
-                  <button className={styles.joinSocietyBtn}>Community</button>
+                  <button className={styles.joinSocietyBtn}>Whats Hot</button>
                   <img src={RightArrowBlueIcon} />
                 </div>
               </div>
@@ -121,12 +122,11 @@ const NapaSociety: NextPage<NapaSocietyProps> = ({ isMenu }) => {
               <div>
                 <h6 className={styles.description}>
                   <strong>
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry
+                    {/* // Display Next Event Image // */}
                   </strong>
                 </h6>
                 <div className={styles.joinSociety}>
-                  <button className={styles.joinSocietyBtn}>Community</button>
+                  <button className={styles.joinSocietyBtn}>Upcoming Events</button>
                   <img src={RightArrowBlueIcon} />
                 </div>
               </div>

@@ -7,11 +7,11 @@ type NapaLogoProps = {
 export const NapaLogo: NextPage<NapaLogoProps> = ({ className }) => {
   return (
     <svg
-      width="105"
+      width="168"
       id="napa-logo"
       viewBox="0 0 105 24"
       className={className}
-      height="24"
+      height="32"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >

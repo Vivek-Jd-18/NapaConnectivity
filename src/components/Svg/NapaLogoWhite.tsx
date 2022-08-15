@@ -7,10 +7,10 @@ type NapaLogoWhiteProps = {
 export const NapaLogoWhite: NextPage<NapaLogoWhiteProps> = ({ className }) => {
   return (
     <svg
-      width="105"
+      width="168"
       id="napa-logo-white"
       className={className}
-      height="24"
+      height="32"
       viewBox="0 0 105 24"
       xmlns="http://www.w3.org/2000/svg"
     >
