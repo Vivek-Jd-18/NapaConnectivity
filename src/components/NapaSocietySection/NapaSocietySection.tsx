@@ -71,10 +71,7 @@ const NapaSociety: NextPage = () => {
             </div>
 
             {/* // Insert the following headings and sections 01 Community, 02 Trending, 03 Leaderboard, 04 The Lounge
-          We will need mini images for sections 2, 3 and 4 
-          
-          01 Community
-          02 Trending */}
+          We will need mini images for sections 2, 3 and 4 */}
 
             <div>
               <h6 className={styles.description}>
