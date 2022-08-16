@@ -1,6 +1,8 @@
-import { MouseIcon, RightArrowBlueIcon } from '@/components/assets';
+import { MouseIcon } from '@/components/assets';
 import Container from '@/Layout/Container/Container';
+import { scrollToNextSection } from '@/utils/home';
 import type { NextPage } from 'next';
+import HighlightButton from '../HighlightButton/HighlightButton';
 import Steper from '../Steper/Steper';
 import styles from './SocialArtSectionWithoutLimit.module.scss';
 // you are using the footer for the bottom nav options when you should be importing a NavBarSection.tsx  //
@@ -25,10 +27,7 @@ const SocialArtSectionWithoutLimit: NextPage<
             <h6 className={styles.description}>
               <strong>Blockchain Inspired Web3 Social Media Has Arrived</strong>
             </h6>
-            <div className={styles.joinSociety}>
-              <button className={styles.joinSocietyBtn}>NAPA Society</button>
-              <img src={RightArrowBlueIcon} />
-            </div>
+            <HighlightButton title="NAPA Society" />
           </div>
         </div>
         <div
@@ -36,6 +35,7 @@ const SocialArtSectionWithoutLimit: NextPage<
           data-aos="fade-up"
           data-aos-easing="linear"
           data-aos-duration="500"
+          onClick={() => scrollToNextSection('napa-society')}
         >
           <img src={MouseIcon} />
         </div>

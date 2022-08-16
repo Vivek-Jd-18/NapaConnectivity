@@ -6,6 +6,8 @@ import {
 } from '@/components/assets';
 import Container from '@/Layout/Container/Container';
 import type { NextPage } from 'next';
+import { useState } from 'react';
+import HighlightButton from '../HighlightButton/HighlightButton';
 import Steper from '../Steper/Steper';
 import styles from './SocialArtSection.module.scss';
 //import image1 from .... (asset location in S3 bucket) ASSETS SHOULD BE IMPORTED AND DEFINED, DO NOT HARDCODE ASSETS PLEASE
@@ -15,21 +17,37 @@ type SocialArtSectionProps = {
 };
 
 const SocialArtSection: NextPage<SocialArtSectionProps> = ({ isMenu }) => {
+  const [slide, setSlide] = useState(1);
+
+  const handleNextSlide = (slide: number) => {
+    setSlide(slide);
+  };
+
   return (
-    <div className={styles.backgroundImage}>
+    <div id="social-art" className={styles.backgroundImage}>
       {!isMenu && <Steper steps={3} top={12} />}
       <Container className={styles.socialArtContainer}>
         <div className={styles.socialArtContainerBody}>
           <div className={styles.carouselImage}>
             <img src={Carousel} alt="" className={styles.image} />
             <div className={styles.slideBtn}>
-              <div className={styles.carouselBottom}>
+              <div className={`${styles.carouselBottom} carouselBottom`}>
                 <img src={Avatar} alt="" className={styles.avatar} />
-                <span className={styles.carouselBottomText}>
-                  Clinton Bowman
-                </span>
+                {slide == 1 ? (
+                  <span className={styles.carouselBottomText}>
+                    Clinton Bowman
+                  </span>
+                ) : slide == 2 ? (
+                  <span className={styles.carouselBottomText}>Slide 2</span>
+                ) : slide == 3 ? (
+                  <span className={styles.carouselBottomText}>Slide 3</span>
+                ) : slide == 4 ? (
+                  <span className={styles.carouselBottomText}>Slide 4</span>
+                ) : (
+                  <span className={styles.carouselBottomText}>Slide 5</span>
+                )}
               </div>
-              <span>
+              <span onClick={() => handleNextSlide(1)}>
                 <svg
                   width="32"
                   height="32"
@@ -37,14 +55,16 @@ const SocialArtSection: NextPage<SocialArtSectionProps> = ({ isMenu }) => {
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <path
-                    d="M16 31.5C24.5604 31.5 31.5 24.5604 31.5 16C31.5 7.43959 24.5604 0.5 16 0.5C7.43959 0.5 0.5 7.43959 0.5 16C0.5 24.5604 7.43959 31.5 16 31.5Z"
-                    stroke="white"
-                  />
+                  {slide == 1 && (
+                    <path
+                      d="M16 31.5C24.5604 31.5 31.5 24.5604 31.5 16C31.5 7.43959 24.5604 0.5 16 0.5C7.43959 0.5 0.5 7.43959 0.5 16C0.5 24.5604 7.43959 31.5 16 31.5Z"
+                      stroke="white"
+                    />
+                  )}
                   <circle cx="16" cy="16" r="3" fill="white" />
                 </svg>
               </span>
-              <span>
+              <span onClick={() => handleNextSlide(2)}>
                 <svg
                   width="32"
                   height="32"
@@ -52,10 +72,16 @@ const SocialArtSection: NextPage<SocialArtSectionProps> = ({ isMenu }) => {
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
+                  {slide == 2 && (
+                    <path
+                      d="M16 31.5C24.5604 31.5 31.5 24.5604 31.5 16C31.5 7.43959 24.5604 0.5 16 0.5C7.43959 0.5 0.5 7.43959 0.5 16C0.5 24.5604 7.43959 31.5 16 31.5Z"
+                      stroke="white"
+                    />
+                  )}
                   <circle cx="16" cy="16" r="3" fill="white" />
                 </svg>
               </span>
-              <span>
+              <span onClick={() => handleNextSlide(3)}>
                 <svg
                   width="32"
                   height="32"
@@ -63,10 +89,16 @@ const SocialArtSection: NextPage<SocialArtSectionProps> = ({ isMenu }) => {
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
+                  {slide == 3 && (
+                    <path
+                      d="M16 31.5C24.5604 31.5 31.5 24.5604 31.5 16C31.5 7.43959 24.5604 0.5 16 0.5C7.43959 0.5 0.5 7.43959 0.5 16C0.5 24.5604 7.43959 31.5 16 31.5Z"
+                      stroke="white"
+                    />
+                  )}
                   <circle cx="16" cy="16" r="3" fill="white" />
                 </svg>
               </span>
-              <span>
+              <span onClick={() => handleNextSlide(4)}>
                 <svg
                   width="32"
                   height="32"
@@ -74,10 +106,16 @@ const SocialArtSection: NextPage<SocialArtSectionProps> = ({ isMenu }) => {
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
+                  {slide == 4 && (
+                    <path
+                      d="M16 31.5C24.5604 31.5 31.5 24.5604 31.5 16C31.5 7.43959 24.5604 0.5 16 0.5C7.43959 0.5 0.5 7.43959 0.5 16C0.5 24.5604 7.43959 31.5 16 31.5Z"
+                      stroke="white"
+                    />
+                  )}
                   <circle cx="16" cy="16" r="3" fill="white" />
                 </svg>
               </span>
-              <span>
+              <span onClick={() => handleNextSlide(5)}>
                 <svg
                   width="32"
                   height="32"
@@ -85,6 +123,12 @@ const SocialArtSection: NextPage<SocialArtSectionProps> = ({ isMenu }) => {
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
+                  {slide == 5 && (
+                    <path
+                      d="M16 31.5C24.5604 31.5 31.5 24.5604 31.5 16C31.5 7.43959 24.5604 0.5 16 0.5C7.43959 0.5 0.5 7.43959 0.5 16C0.5 24.5604 7.43959 31.5 16 31.5Z"
+                      stroke="white"
+                    />
+                  )}
                   <circle cx="16" cy="16" r="3" fill="white" />
                 </svg>
               </span>
@@ -109,15 +153,14 @@ const SocialArtSection: NextPage<SocialArtSectionProps> = ({ isMenu }) => {
                 members of the NAPA Society community!
               </strong>
             </p>
-            <div className={styles.viewFeedContainer}>
-              <button className={styles.viewFeedBtn}>Gallery</button>
-              {/* Add pop up message with the option to download our app from the App Store or Google Play Store */}
-              <img src={RightArrowBlueIcon} />
-            </div>
+            <HighlightButton title="Gallery" />
           </div>
         </div>
         <div className={styles.mousePointer}>
-          <img src={MouseIcon} />
+          <img
+            // onClick={() => scrollToNextSection('nft-marketplace')}
+            src={MouseIcon}
+          />
         </div>
       </Container>
     </div>

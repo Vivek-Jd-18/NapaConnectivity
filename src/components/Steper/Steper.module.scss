@@ -1,3 +1,6 @@
+@import '../../../styles/abstracts/mixins.module';
+@import '../../../styles/abstracts/variable.module';
+
 .container {
   height: 22rem;
   position: absolute;
@@ -9,13 +12,14 @@
     position: absolute;
     left: 3.5rem;
     top: -3rem;
-    color: white;
+    color: $white;
+    @include font-base-avenir-medium;
   }
   .bottomText {
     position: absolute;
     bottom: -5rem;
     left: 3.5rem;
-    color: white;
+    color: $white;
   }
   .steper {
     width: 2px;
@@ -27,11 +31,11 @@
       position: absolute;
       width: 1px;
       height: 6rem;
-      background-color: white;
+      background-color: $white;
       z-index: 1;
     }
   }
-  @media only screen and (max-width: 1024px) {
+  @media screen and (max-width: 1024px) {
     .steper {
       display: none;
     }
@@ -40,6 +44,79 @@
     }
     .bottomText {
       display: none;
+    }
+  }
+  @media screen and (min-width: 1280px) {
+    .steper {
+      display: block;
+    }
+    .topText {
+      display: block;
+    }
+    .bottomText {
+      display: block;
+    }
+  }
+  @media screen and (min-width: 2560px) {
+    height: 28rem;
+    .topText {
+      top: -5rem;
+      left: 5rem;
+      @include font-base-avenir-medium;
+      font-size: 1.5rem;
+      color: $white;
+    }
+    .bottomText {
+      left: 5rem;
+      position: absolute;
+      @include font-base-avenir-medium;
+      font-size: 1.5rem;
+      bottom: -10rem;
+      color: $white;
+    }
+    .steper {
+      width: 4px;
+      height: 34rem;
+      left: 6rem;
+
+      .stepActive {
+        position: absolute;
+        width: 2px;
+        height: 10rem;
+        background-color: white;
+        z-index: 1;
+      }
+    }
+  }
+  @media screen and (min-width: 3340px) {
+    height: 38rem;
+    .topText {
+      top: -5rem;
+      left: 7rem;
+      @include font-base-avenir-medium;
+      font-size: 2rem;
+      color: $white;
+    }
+    .bottomText {
+      left: 7rem;
+      position: absolute;
+      @include font-base-avenir-medium;
+      font-size: 2rem;
+      bottom: -7rem;
+      color: $white;
+    }
+    .steper {
+      width: 4px;
+      height: 40rem;
+      left: 8rem;
+
+      .stepActive {
+        position: absolute;
+        width: 2px;
+        height: 10rem;
+        background-color: white;
+        z-index: 1;
+      }
     }
   }
 }

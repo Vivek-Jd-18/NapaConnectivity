@@ -40,7 +40,40 @@
     justify-content: space-evenly;
   }
 }
-@media (min-width: 768px) {
+@media screen and (min-width: 280px) {
+  .innerContainer {
+    padding-top: 1.5rem;
+    .burgerMenuIcon {
+      width: 1.5rem;
+    }
+  }
+}
+
+@media screen and (min-width: 320px) {
+  .innerContainer {
+    padding-top: 1.5rem;
+    .burgerMenuIcon {
+      width: 1.5rem;
+    }
+  }
+}
+@media screen and (min-width: 375px) {
+  .innerContainer {
+    padding-top: 1.5rem;
+    .burgerMenuIcon {
+      width: 2rem;
+    }
+  }
+}
+@media screen and (min-width: 600px) {
+  .innerContainer {
+    padding-top: 1.5rem;
+    .burgerMenuIcon {
+      width: 2rem;
+    }
+  }
+}
+@media screen and (min-width: 768px) {
   .innerContainer {
     padding-top: 1.5rem;
     .svgWrapper {
@@ -48,19 +81,39 @@
     }
   }
 }
-@media (min-width: 1024px) {
+@media screen and (min-width: 1024px) {
   .innerContainer {
     padding-top: 1.5rem;
   }
 }
-@media (min-width: 1280px) {
+@media screen and (min-width: 1280px) {
   .innerContainer {
     padding-top: 3rem;
+    .burgerMenuIcon {
+      width: auto;
+    }
   }
 }
-@media (min-width: 1536px) {
+@media screen and (min-width: 1536px) {
   .innerContainer {
     padding-top: 3rem;
+    .burgerMenuIcon {
+      width: 4rem;
+    }
+  }
+}
+@media screen and (min-width: 2560px) {
+  .innerContainer {
+    .burgerMenuIcon {
+      width: 5rem;
+    }
+  }
+}
+@media screen and (min-width: 3340px) {
+  .innerContainer {
+    .burgerMenuIcon {
+      width: 7rem;
+    }
   }
 }
 @keyframes fadeIn {

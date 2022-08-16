@@ -14,65 +14,473 @@
   overflow-x: hidden;
 
   transition: 0.5s;
-  .overlayContent {
-    position: relative;
-    top: 20%;
-    width: 100%;
-    text-align: left;
-    padding-left: 8rem;
-    a {
-      &::before {
-        width: 0;
-        content: '';
-        position: absolute;
-        background: $white;
-        margin-top: 3rem;
-        z-index: -1;
-        height: 4px;
-      }
-    }
-    a:hover,
-    a:focus {
-      padding-left: 10rem;
-      color: $white;
-      &::before {
-        width: 5%;
-        left: 8rem;
-      }
-    }
-    .buttonsContainer {
-      padding-top: 4rem;
+  .overlayContentContainer {
+    @include flex-column-between;
+    height: 100%;
+    .overlayContent {
+      position: relative;
       width: 100%;
-      display: flex;
+      text-align: left;
+      padding-left: 3rem;
+      padding-right: 3rem;
+      a {
+        &::before {
+          width: 0;
+          content: '';
+          position: absolute;
+          background: $white;
+          margin-top: 3rem;
+          z-index: -1;
+          height: 0.25rem;
+        }
+      }
+      a:hover,
+      a:focus {
+        padding-left: 10rem;
+        color: $white;
+        &::before {
+          width: 5%;
+          left: 8rem;
+        }
+      }
     }
-  }
-  a {
-    padding: 8px;
-    text-decoration: none;
-    @include font-6xl-neuropolitical-normal;
-    color: transparent;
-    -webkit-text-stroke: 2px $white;
-    display: block;
-    transition: 0.3s;
-  }
+    a {
+      padding: 0.5rem;
+      text-decoration: none;
+      @include font-6xl-neuropolitical-normal;
+      color: transparent;
+      -webkit-text-stroke: 2px $white;
+      display: block;
+      transition: 0.3s;
+    }
 
-  .closebtn {
-    position: absolute;
-    top: 3rem;
-    left: 9rem;
-    cursor: pointer;
+    .closebtn {
+      position: absolute;
+      top: 3rem;
+      left: 9rem;
+      cursor: pointer;
+    }
   }
 }
 
 @media screen and (max-height: 450px) {
   .overlay {
     a {
-      font-size: 20px;
+      font-size: 1.25rem;
     }
     .closebtn {
-      font-size: 40px;
-      top: 15px;
-      right: 35px;
+      font-size: 2.5rem;
+      top: 0.938rem;
+      right: 2.188rem;
+    }
+  }
+}
+@media screen and (min-width: 280px) {
+  .overlay {
+    .overlayContentContainer {
+      .overlayContent {
+        padding-left: 1rem;
+        padding-right: 1rem;
+        top: 15%;
+        a {
+          @include font-md-neuropolitical-normal;
+          -webkit-text-stroke: 1px $white;
+          &::before {
+            margin-top: 0.8rem;
+            height: 0.1rem;
+          }
+        }
+        a:hover,
+        a:focus {
+          @include font-lg-neuropolitical-normal;
+          padding-left: 2.5rem;
+          &::before {
+            width: 6%;
+            left: 1.5rem;
+          }
+        }
+      }
+      .buttonsContainer {
+        padding-left: 1rem;
+        padding-right: 1rem;
+        margin-bottom: 2.5rem;
+        .btnConnectWallet {
+          width: 100%;
+        }
+      }
+    }
+
+    .closebtn {
+      position: absolute;
+      top: 3rem;
+      left: 1.5rem;
+      img {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+    }
+  }
+}
+@media screen and (min-width: 320px) {
+  .overlay {
+    .overlayContentContainer {
+      .overlayContent {
+        padding-left: 1rem;
+        padding-right: 1rem;
+        top: 15%;
+        a {
+          @include font-md-neuropolitical-normal;
+          &::before {
+            margin-top: 0.8rem;
+            height: 0.1rem;
+          }
+        }
+        a:hover,
+        a:focus {
+          @include font-lg-neuropolitical-normal;
+          padding-left: 2.5rem;
+          &::before {
+            width: 6%;
+            left: 1.5rem;
+          }
+        }
+      }
+      .buttonsContainer {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        margin-bottom: 2.5rem;
+        .btnConnectWallet {
+          width: 100%;
+        }
+      }
+    }
+
+    .closebtn {
+      top: 3rem;
+      left: 1.5rem;
+      img {
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 375px) {
+  .overlay {
+    .overlayContentContainer {
+      .overlayContent {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        top: 15%;
+        a {
+          @include font-lg-neuropolitical-normal;
+          &::before {
+            margin-top: 1.2rem;
+            height: 0.1rem;
+          }
+        }
+        a:hover,
+        a:focus {
+          @include font-xl-neuropolitical-normal;
+          padding-left: 3rem;
+          &::before {
+            width: 6%;
+            left: 1.5rem;
+          }
+        }
+      }
+      .buttonsContainer {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        margin-bottom: 2.5rem;
+        .btnConnectWallet {
+          width: 100%;
+        }
+      }
+    }
+
+    .closebtn {
+      position: absolute;
+      top: 3rem;
+      left: 1.5rem;
+      img {
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .overlay {
+    .overlayContentContainer {
+      .overlayContent {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        top: 15%;
+        a {
+          @include font-2xl-neuropolitical-normal;
+          &::before {
+            margin-top: 1.2rem;
+            height: 0.1rem;
+          }
+        }
+        a:hover,
+        a:focus {
+          padding-left: 5rem;
+          &::before {
+            width: 6%;
+            left: 1.5rem;
+          }
+        }
+      }
+    }
+    .closebtn {
+      position: absolute;
+      top: 3rem;
+      left: 1.5rem;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .overlay {
+    .overlayContentContainer {
+      .overlayContent {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        top: 15%;
+        a {
+          @include font-2xl-neuropolitical-normal;
+          -webkit-text-stroke: 1px $white;
+          &::before {
+            margin-top: 1.2rem;
+            height: 0.1rem;
+          }
+        }
+        a:hover,
+        a:focus {
+          padding-left: 5rem;
+          &::before {
+            width: 6%;
+            left: 1.5rem;
+          }
+        }
+      }
+      .buttonsContainer {
+        @include flex-row-center;
+        margin-bottom: 4rem;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+    }
+    .closebtn {
+      position: absolute;
+      top: 3rem;
+      left: 1.5rem;
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .overlay {
+    .overlayContentContainer {
+      .overlayContent {
+        padding-left: 4rem;
+        padding-right: 4rem;
+
+        a {
+          @include font-3xl-neuropolitical-normal;
+          &::before {
+            margin-top: 2rem;
+          }
+        }
+        a:hover,
+        a:focus {
+          padding-left: 6rem;
+          @include font-4xl-neuropolitical-normal;
+          &::before {
+            width: 6%;
+            left: 5rem;
+          }
+        }
+      }
+      .buttonsContainer {
+        padding-left: 4rem;
+        padding-right: 4rem;
+      }
+    }
+    .closebtn {
+      left: 5rem;
+    }
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .overlay {
+    .overlayContentContainer {
+      .overlayContent {
+        a {
+          @include font-5xl-neuropolitical-normal;
+        }
+        a:hover,
+        a:focus {
+          padding-left: 9rem;
+          @include font-6xl-neuropolitical-normal;
+          &::before {
+            margin-top: 3rem;
+            width: 6%;
+            left: 5rem;
+          }
+        }
+        padding-left: 5rem;
+        padding-right: 5rem;
+        top: 14%;
+      }
+      .buttonsContainer {
+        padding-left: 5rem;
+        padding-right: 5rem;
+        margin-bottom: 2rem;
+      }
+    }
+
+    .closebtn {
+      position: absolute;
+      img {
+        width: 3rem;
+        height: 3rem;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .overlay {
+    .overlayContentContainer {
+      .overlayContent {
+        padding-left: 5rem;
+        padding-right: 5rem;
+        top: 15%;
+        a {
+          @include font-5xl-neuropolitical-normal;
+          &::before {
+            margin-top: 3.5rem;
+            height: 0.25rem;
+          }
+        }
+        a:hover,
+        a:focus {
+          @include font-6xl-neuropolitical-normal;
+          &::before {
+            left: 4rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1900px) {
+  .overlay {
+    .overlayContent {
+      a {
+        @include font-5xl-neuropolitical-normal;
+      }
+      a:hover,
+      a:focus {
+        padding-left: 10rem;
+        top: 20%;
+        @include font-6xl-neuropolitical-normal;
+        &::before {
+          width: 6%;
+          left: 3rem;
+        }
+      }
+      padding-left: 5rem;
+      padding-right: 5rem;
+    }
+  }
+}
+
+@media screen and (min-width: 2560px) {
+  .overlay {
+    .overlayContentContainer {
+      .overlayContent {
+        padding-left: 8rem;
+        padding-right: 8rem;
+        a {
+          @include font-7xl-neuropolitical-normal;
+        }
+        a {
+          &::before {
+            height: 0.5rem;
+          }
+        }
+        a:hover,
+        a:focus {
+          @include font-8xl-neuropolitical-normal;
+          &::before {
+            margin-top: 5rem;
+            left: 8rem;
+          }
+          padding-left: 15rem;
+        }
+      }
+      .buttonsContainer {
+        padding-left: 8rem;
+        padding-right: 8rem;
+        margin-bottom: 5rem;
+      }
+    }
+    .closebtn {
+      left: 10rem;
+      img {
+        width: 5rem;
+        height: 5rem;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 3340px) {
+  .overlay {
+    .overlayContentContainer {
+      .overlayContent {
+        padding-left: 13rem;
+        padding-right: 13rem;
+        a {
+          @include font-8xl-neuropolitical-normal;
+        }
+        a:hover,
+        a:focus {
+          @include font-9xl-neuropolitical-normal;
+          padding-left: 18rem;
+          &::before {
+            left: 12rem;
+            width: 6%;
+          }
+        }
+
+        a {
+          &::before {
+            margin-top: 7rem;
+            height: 0.5rem;
+          }
+        }
+      }
+      .buttonsContainer {
+        padding-left: 13rem;
+        padding-right: 13rem;
+        margin-bottom: 5rem;
+      }
+    }
+    .closebtn {
+      left: 12rem;
+      img {
+        width: 8rem;
+        height: 8rem;
+      }
     }
   }
 }

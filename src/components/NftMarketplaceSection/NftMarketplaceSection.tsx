@@ -6,8 +6,8 @@ import Steper from '../Steper/Steper';
 import Tab from '../Tab/Tab';
 import styles from './NftMarketplaceSection.module.scss';
 import SliderComponent from '../Slider/Slider';
-import { RightArrowBlueIcon } from '@/components/assets/index';
 import Footer from '../Footer/Footer';
+import HighlightButton from '../HighlightButton/HighlightButton';
 //import image1 from .... (asset location in S3 bucket) ASSETS SHOULD BE IMPORTED AND DEFINED, DO NOT HARDCODE ASSETS PLEASE
 
 type NftMarketplaceSectionProps = {
@@ -45,10 +45,7 @@ const NftMarketplaceSection: NextPage<NftMarketplaceSectionProps> = ({
               ))}
             </ul>
           </div>
-          <div className={styles.viewFeedContainer}>
-            <button className={styles.viewFeedBtn}>Explore Projects</button>
-            <img src={RightArrowBlueIcon} alt="" className={styles.arrowIcon} />
-          </div>
+          <HighlightButton title="Explore Projects" />
         </div>
         <SliderComponent>
           {Array.from({ length: 6 }, () => {

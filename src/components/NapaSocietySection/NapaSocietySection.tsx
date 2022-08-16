@@ -7,6 +7,7 @@ import {
 import Container from '@/Layout/Container/Container';
 import type { NextPage } from 'next';
 import { useState } from 'react';
+import HighlightButton from '../HighlightButton/HighlightButton';
 import Steper from '../Steper/Steper';
 import styles from './NapaSocietySection.module.scss';
 
@@ -85,50 +86,30 @@ const NapaSociety: NextPage<NapaSocietyProps> = ({ isMenu }) => {
             {slider === 1 ? (
               <div>
                 <h6 className={styles.description}>
-                  <strong>
-                  Checkout the NAPA Lounge!
-                  </strong>
+                  <strong>Checkout the NAPA Lounge!</strong>
                 </h6>
-                <div className={styles.joinSociety}>
-                  <button className={styles.joinSocietyBtn}>Visit Lounge</button>
-                  <img src={RightArrowBlueIcon} />
-                </div>
+                <HighlightButton title="Visit Lounge" />
               </div>
             ) : slider === 2 ? (
               <div>
                 <h6 className={styles.description}>
-                  <strong>
-                  {/* // Insert Mini Trending Window // */}
-                  </strong>
+                  <strong>{/* // Insert Mini Trending Window // */}</strong>
                 </h6>
-                <div className={styles.joinSociety}>
-                  <button className={styles.joinSocietyBtn}>Get Updates</button>
-                  <img src={RightArrowBlueIcon} />
-                </div>
+                <HighlightButton title="Get Updates" />
               </div>
             ) : slider === 3 ? (
               <div>
                 <h6 className={styles.description}>
-                  <strong>
-                    {/* // Insert Mini Leaders List// */}
-                  </strong>
+                  <strong>{/* // Insert Mini Leaders List// */}</strong>
                 </h6>
-                <div className={styles.joinSociety}>
-                  <button className={styles.joinSocietyBtn}>Whats Hot</button>
-                  <img src={RightArrowBlueIcon} />
-                </div>
+                <HighlightButton title="Whats Hot" />
               </div>
             ) : (
               <div>
                 <h6 className={styles.description}>
-                  <strong>
-                    {/* // Display Next Event Image // */}
-                  </strong>
+                  <strong>{/* // Display Next Event Image // */}</strong>
                 </h6>
-                <div className={styles.joinSociety}>
-                  <button className={styles.joinSocietyBtn}>Upcoming Events</button>
-                  <img src={RightArrowBlueIcon} />
-                </div>
+                <HighlightButton title="Upcoming Events" />
               </div>
             )}
           </div>

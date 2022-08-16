@@ -16,18 +16,20 @@ const Footer: NextPage = () => {
         <Container>
           <div className={styles.footerContainer}>
             <img src={FooterLogoIcon} />
-            <ul
-              className={`${styles.footerListItem} ${styles.activeFooterListItem}`}
-            >
-              <li>NAPA Society</li>
-              <li>Social Art</li>
-              <li>NFT Marketplace</li>
-              <li>NAPA Earn</li>
-              <li>Leaderboards</li>
-              <li>Lauchpad</li>
-              <li>Help Center</li>
-            </ul>
-            <ul className={styles.footerListItem}>
+            <div className={styles.footerItemContainer}>
+              <ul
+                className={`${styles.footerListItem} ${styles.activeFooterListItem}`}
+              >
+                <li>NAPA Society</li>
+                <li>Social Art</li>
+                <li>NFT Marketplace</li>
+                <li>NAPA Earn</li>
+                <li>Leaderboards</li>
+                <li>Lauchpad</li>
+                <li>Help Center</li>
+              </ul>
+            </div>
+            <ul className={styles.footerIconsContainer}>
               <li className={styles.footerIconItem}>
                 <img src={TwitterIcon} />
               </li>
@@ -40,6 +42,19 @@ const Footer: NextPage = () => {
               <li className={styles.footerIconItem}>
                 <img src={MediumIcon} />
               </li>
+            </ul>
+          </div>
+          <div className={styles.footerItemsBlockContainer}>
+            <ul
+              className={`${styles.footerListItem} ${styles.activeFooterListItem}`}
+            >
+              <li>NAPA Society</li>
+              <li>Social Art</li>
+              <li>NFT Marketplace</li>
+              <li>NAPA Earn</li>
+              <li>Leaderboards</li>
+              <li>Lauchpad</li>
+              <li>Help Center</li>
             </ul>
           </div>
         </Container>
