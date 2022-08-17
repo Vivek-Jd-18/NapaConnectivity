@@ -48,8 +48,9 @@
   }
 
   .tabsContainer {
-    @include flex-column-start;
+    @include flex-column-center;
     padding-top: 1rem;
+    margin-bottom: 1em;
     width: 100%;
     .tabsInnerContainer {
       @include flex-row-center;
@@ -59,6 +60,8 @@
         border-bottom: 0;
         padding-left: 0;
         list-style-type: none;
+        margin-bottom: 0;
+        margin-top: 0.5rem;
       }
     }
     .viewFeedContainer {

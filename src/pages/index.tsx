@@ -14,7 +14,7 @@ const Home: NextPage = () => {
   const openMenu = () => {
     setIsMenu(true);
   };
-  
+
   return (
     <>
       <Head>
@@ -24,16 +24,16 @@ const Home: NextPage = () => {
       </Head>
       <section className={styles.container}>
         <Header openMenu={openMenu} setIsMenu={setIsMenu} isMenu={isMenu} />
-        <div className={styles.child}>
+        <div id="social-art-section-without-limit" className={styles.child}>
           <SocialArtSectionWithoutLimit isMenu={isMenu} />
         </div>
-        <div className={styles.child}>
+        <div id="napa-society" className={styles.child}>
           <NapaSociety isMenu={isMenu} />
         </div>
-        <div className={styles.child}>
+        <div id="social-section-art" className={styles.child}>
           <SocialArtSection isMenu={isMenu} />
         </div>
-        <div className={styles.child}>
+        <div id="nft-marketplace" className={styles.child}>
           <NftMarketplaceSection isMenu={isMenu} />
         </div>
       </section>

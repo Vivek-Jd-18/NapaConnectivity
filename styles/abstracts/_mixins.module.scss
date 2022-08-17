@@ -47,6 +47,12 @@
   align-items: center;
 }
 
+@mixin flex-align-start {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
 @mixin flex-row-center {
   display: flex;
   flex-direction: row;
@@ -238,4 +244,3 @@
   font-style: normal;
   font-family: $text-avenir;
 }
-

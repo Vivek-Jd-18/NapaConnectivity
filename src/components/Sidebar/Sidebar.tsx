@@ -19,12 +19,14 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu, connected }) => {
       <div className={styles.closebtn} onClick={onClick}>
         <img src={ExitIcon} alt="Close" />
       </div>
-      <div className={styles.overlayContent}>
-        <Link href="/napasociety">NAPA Society</Link>
-        <Link href="/socialart">Social Art</Link>
-        <Link href="/nftmarketplace">NFT Marketplace</Link>
-        <Link href="/leaderboard">Leaderboard</Link>
-        <Link href="/launchpad">Launchpad</Link>
+      <div className={styles.overlayContentContainer}>
+        <div className={styles.overlayContent}>
+          <Link href="/napasociety">NAPA Society</Link>
+          <Link href="/socialart">Social Art</Link>
+          <Link href="/nftmarketplace">NFT Marketplace</Link>
+          <Link href="/leaderboard">Leaderboard</Link>
+          <Link href="/launchpad">Launchpad</Link>
+        </div>
         <div className={styles.buttonsContainer}>
           {connected ? (
             <>
@@ -33,7 +35,11 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu, connected }) => {
             </>
           ) : (
             <>
-              <Button text="Connect Wallet" icon={WalletIcon} />
+              <Button
+                text="Connect Wallet"
+                icon={WalletIcon}
+                customStyle={styles.btnConnectWallet}
+              />
             </>
           )}
         </div>
