@@ -81,13 +81,7 @@ const Footer: NextPage = () => {
             <p className={styles.footerBottomText}>
               ©2022 NAPA Society Limited
             </p>
-            <div
-              onClick={() =>
-                scrollToNextSection('social-art-section-without-limit')
-              }
-            >
-              <img src={MouseIcon} className={styles.mouseIcon} />
-            </div>
+
             <div>
               <ul className={styles.footerListItem}>
                 <li className={styles.footerBottomText}>FAQ</li>
@@ -97,6 +91,14 @@ const Footer: NextPage = () => {
                 </li>
               </ul>
             </div>
+          </div>
+          <div
+            className={styles.mouseIcon}
+            onClick={() =>
+              scrollToNextSection('social-art-section-without-limit')
+            }
+          >
+            <img src={MouseIcon} />
           </div>
         </Container>
       </div>

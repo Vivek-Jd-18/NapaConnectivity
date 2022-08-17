@@ -151,11 +151,12 @@
     margin-right: 1.5rem;
   }
   .mousePointer {
-    position: absolute;
-    left: 50%;
-    right: 50%;
-    bottom: 5%;
-    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    img {
+      z-index: 2;
+      cursor: pointer;
+    }
   }
   @media only screen and (max-width: 1024px) {
     .societyContainer {

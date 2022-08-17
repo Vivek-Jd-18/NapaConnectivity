@@ -6,10 +6,18 @@ import NapaSociety from '@/components/NapaSocietySection/NapaSocietySection';
 import SocialArtSection from '@/components/SocialArtSection/SocialArtSection';
 import NftMarketplaceSection from '@/components/NftMarketplaceSection/NftMarketplaceSection';
 import Header from '@/components/Header/Header';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import Loader from '@/components/Loader/Loader';
 
 const Home: NextPage = () => {
   const [isMenu, setIsMenu] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+  }, []);
 
   const openMenu = () => {
     setIsMenu(true);
@@ -22,21 +30,25 @@ const Home: NextPage = () => {
         <meta name="description" content="NAPA Developmeent Environment" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <section className={styles.container}>
-        <Header openMenu={openMenu} setIsMenu={setIsMenu} isMenu={isMenu} />
-        <div id="social-art-section-without-limit" className={styles.child}>
-          <SocialArtSectionWithoutLimit isMenu={isMenu} />
-        </div>
-        <div id="napa-society" className={styles.child}>
-          <NapaSociety isMenu={isMenu} />
-        </div>
-        <div id="social-section-art" className={styles.child}>
-          <SocialArtSection isMenu={isMenu} />
-        </div>
-        <div id="nft-marketplace" className={styles.child}>
-          <NftMarketplaceSection isMenu={isMenu} />
-        </div>
-      </section>
+      {loading ? (
+        <Loader />
+      ) : (
+        <section className={styles.container} id="container">
+          <Header openMenu={openMenu} setIsMenu={setIsMenu} isMenu={isMenu} />
+          <div className={styles.child}>
+            <SocialArtSectionWithoutLimit isMenu={isMenu} />
+          </div>
+          <div className={styles.child}>
+            <NapaSociety isMenu={isMenu} />
+          </div>
+          <div className={styles.child}>
+            <SocialArtSection isMenu={isMenu} />
+          </div>
+          <div className={styles.child}>
+            <NftMarketplaceSection isMenu={isMenu} />
+          </div>
+        </section>
+      )}
     </>
   );
 };

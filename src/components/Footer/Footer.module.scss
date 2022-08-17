@@ -393,16 +393,13 @@
       display: none;
     }
   }
-  .footerBottomContainer {
-    .footerContainer {
-      .mouseIcon {
-        cursor: pointer;
-        padding-bottom: 1rem;
-        position: absolute;
-        left: 50%;
-        right: 50%;
-        transform: translate(50%, -50%);
-      }
+  .mouseIcon {
+    cursor: pointer;
+    position: absolute;
+    left: 48%;
+    bottom: 1rem;
+    img {
+      cursor: pointer;
     }
   }
 }
