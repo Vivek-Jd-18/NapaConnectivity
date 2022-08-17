@@ -35,7 +35,7 @@ const SocialArtSectionWithoutLimit: NextPage<
           data-aos="fade-up"
           data-aos-easing="linear"
           data-aos-duration="500"
-          onClick={() => scrollToNextSection('napa-society')}
+          // onClick={() => scrollToNextSection('napa-society')}
         >
           <img src={MouseIcon} />
         </div>
