@@ -2,7 +2,7 @@ import {
   Avatar,
   Carousel,
   MouseIcon,
-  RightArrowBlueIcon,
+  // RightArrowBlueIcon,
 } from '@/components/assets';
 import Container from '@/Layout/Container/Container';
 import type { NextPage } from 'next';
