@@ -1,7 +1,7 @@
 import {
   LeftWhiteArrowIcon,
   MouseIcon,
-  RightArrowBlueIcon,
+  // RightArrowBlueIcon,
   RightWhiteArrowIcon,
 } from '@/components/assets/index';
 import Container from '@/Layout/Container/Container';
@@ -40,10 +40,10 @@ const NapaSociety: NextPage<NapaSocietyProps> = ({ isMenu }) => {
             <h1 className={styles.headingNapa}>NAPA</h1>
             <h1 className={styles.headingSociety}>Society</h1>
             <p className={styles.societyLeftDescription}>
-              Join our society and turn your social media into social art, mint
+              <strong>Join our society and turn your social media into social art, mint
               your social art in our social media app into NFTs and earn NAPA
               tokens and buy and sell NFTs in the largest marketplace in the
-              world!
+              world!</strong>
             </p>
           </div>
           <div className={styles.innerSocietyContainerRightSide}>
@@ -86,7 +86,7 @@ const NapaSociety: NextPage<NapaSocietyProps> = ({ isMenu }) => {
             {slider === 1 ? (
               <div>
                 <h6 className={styles.description}>
-                  <strong>Checkout the NAPA Lounge!</strong>
+                  {/* <strong>Checkout the NAPA Lounge!</strong> */}
                 </h6>
                 <HighlightButton title="Visit Lounge" />
               </div>
@@ -102,14 +102,14 @@ const NapaSociety: NextPage<NapaSocietyProps> = ({ isMenu }) => {
                 <h6 className={styles.description}>
                   <strong>{/* // Insert Mini Leaders List// */}</strong>
                 </h6>
-                <HighlightButton title="Whats Hot" />
+                <HighlightButton title="Whos Hot" />
               </div>
             ) : (
               <div>
                 <h6 className={styles.description}>
                   <strong>{/* // Display Next Event Image // */}</strong>
                 </h6>
-                <HighlightButton title="Upcoming Events" />
+                <HighlightButton title="New Events" />
               </div>
             )}
           </div>

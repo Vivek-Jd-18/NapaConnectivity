@@ -2,7 +2,7 @@ import {
   Avatar,
   Carousel,
   MouseIcon,
-  RightArrowBlueIcon,
+  // RightArrowBlueIcon,
 } from '@/components/assets';
 import Container from '@/Layout/Container/Container';
 import type { NextPage } from 'next';
@@ -153,7 +153,7 @@ const SocialArtSection: NextPage<SocialArtSectionProps> = ({ isMenu }) => {
                 members of the NAPA Society community!
               </strong>
             </p>
-            <HighlightButton title="Gallery" />
+            <HighlightButton title="Social Art Gallery" />
           </div>
         </div>
         <div className={styles.mousePointer}>
