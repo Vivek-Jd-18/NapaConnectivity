@@ -25,9 +25,9 @@ const Footer: NextPage = () => {
                 <li>NAPA Society</li>
                 <li>Social Art</li>
                 <li>NFT Marketplace</li>
-                <li>NAPA Earn</li>
-                <li>Leaderboards</li>
-                <li>Lauchpad</li>
+                {/* <li>NAPA Earn</li> */}
+                {/* <li>Leaderboards</li> */}
+                {/* <li>Lauchpad</li> */}
                 <li>Help Center</li>
               </ul>
             </div>
@@ -53,9 +53,9 @@ const Footer: NextPage = () => {
               <li>NAPA Society</li>
               <li>Social Art</li>
               <li>NFT Marketplace</li>
-              <li>NAPA Earn</li>
+              {/* <li>NAPA Earn</li>
               <li>Leaderboards</li>
-              <li>Lauchpad</li>
+              <li>Lauchpad</li> */}
               <li>Help Center</li>
             </ul>
           </div>
