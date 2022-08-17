@@ -1,7 +1,7 @@
 import {
   LeftWhiteArrowIcon,
   MouseIcon,
-  RightArrowBlueIcon,
+  // RightArrowBlueIcon,
   RightWhiteArrowIcon,
 } from '@/components/assets/index';
 import Container from '@/Layout/Container/Container';
