@@ -13,9 +13,8 @@
   backdrop-filter: blur(50px);
   overflow-x: hidden;
 
-  transition: 0.5s;
+  transition: 0.3s;
   .overlayContentContainer {
-    @include flex-column-between;
     height: 100%;
     .overlayContent {
       position: relative;
@@ -32,6 +31,7 @@
           margin-top: 3rem;
           z-index: -1;
           height: 0.25rem;
+          transition: 0s;
         }
       }
       a:hover,
@@ -39,6 +39,7 @@
         padding-left: 10rem;
         color: $white;
         &::before {
+          transition: 0.5s;
           width: 5%;
           left: 8rem;
         }
@@ -104,9 +105,7 @@
         padding-left: 1rem;
         padding-right: 1rem;
         margin-bottom: 2.5rem;
-        .btnConnectWallet {
-          width: 100%;
-        }
+        padding-top: 15rem;
       }
     }
 
@@ -149,9 +148,6 @@
         padding-left: 1.5rem;
         padding-right: 1.5rem;
         margin-bottom: 2.5rem;
-        .btnConnectWallet {
-          width: 100%;
-        }
       }
     }
 
@@ -194,9 +190,6 @@
         padding-left: 1.5rem;
         padding-right: 1.5rem;
         margin-bottom: 2.5rem;
-        .btnConnectWallet {
-          width: 100%;
-        }
       }
     }
 
@@ -312,6 +305,7 @@
       }
     }
     .closebtn {
+      cursor: pointer;
       left: 5rem;
     }
   }
