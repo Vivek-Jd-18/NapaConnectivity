@@ -77,7 +77,7 @@ const Footer: NextPage = () => {
         <Container>
           <div className={styles.footerContainer}>
             <p className={styles.footerBottomText}>
-              © 2018 - 2022 Napa Society
+              ©2022 NAPA Society Limited
             </p>
             <div>
               <ul className={styles.footerListItem}>
