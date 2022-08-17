@@ -5,6 +5,7 @@ import {
   // RightArrowBlueIcon,
 } from '@/components/assets';
 import Container from '@/Layout/Container/Container';
+import { scrollToNextSection } from '@/utils/home';
 import type { NextPage } from 'next';
 import { useState } from 'react';
 import HighlightButton from '../HighlightButton/HighlightButton';
@@ -156,11 +157,11 @@ const SocialArtSection: NextPage<SocialArtSectionProps> = ({ isMenu }) => {
             <HighlightButton title="Social Art Gallery" />
           </div>
         </div>
-        <div className={styles.mousePointer}>
-          <img
-            // onClick={() => scrollToNextSection('nft-marketplace')}
-            src={MouseIcon}
-          />
+        <div
+          className={styles.mousePointer}
+          onClick={() => scrollToNextSection('nft-marketplace')}
+        >
+          <img src={MouseIcon} />
         </div>
       </Container>
     </div>
