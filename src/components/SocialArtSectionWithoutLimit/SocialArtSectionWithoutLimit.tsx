@@ -1,6 +1,6 @@
 import { MouseIcon } from '@/components/assets';
 import Container from '@/Layout/Container/Container';
-import { scrollToNextSection } from '@/utils/home';
+// import { scrollToNextSection } from '@/utils/home';
 import type { NextPage } from 'next';
 import HighlightButton from '../HighlightButton/HighlightButton';
 import Steper from '../Steper/Steper';
@@ -35,7 +35,7 @@ const SocialArtSectionWithoutLimit: NextPage<
           data-aos="fade-up"
           data-aos-easing="linear"
           data-aos-duration="500"
-          onClick={() => scrollToNextSection('napa-society')}
+          // onClick={() => scrollToNextSection('napa-society')}
         >
           <img src={MouseIcon} />
         </div>
