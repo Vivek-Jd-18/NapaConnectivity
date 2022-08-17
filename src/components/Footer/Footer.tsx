@@ -7,7 +7,9 @@ import {
   GithubIcon,
   MediumIcon,
   FooterLogoIcon,
+  MouseIcon,
 } from '@/components/assets/index';
+import { scrollToNextSection } from '@/utils/home';
 
 const Footer: NextPage = () => {
   return (
@@ -23,9 +25,9 @@ const Footer: NextPage = () => {
                 <li>NAPA Society</li>
                 <li>Social Art</li>
                 <li>NFT Marketplace</li>
-                <li>NAPA Earn</li>
-                <li>Leaderboards</li>
-                <li>Lauchpad</li>
+                {/* <li>NAPA Earn</li> */}
+                {/* <li>Leaderboards</li> */}
+                {/* <li>Lauchpad</li> */}
                 <li>Help Center</li>
               </ul>
             </div>
@@ -51,9 +53,9 @@ const Footer: NextPage = () => {
               <li>NAPA Society</li>
               <li>Social Art</li>
               <li>NFT Marketplace</li>
-              <li>NAPA Earn</li>
+              {/* <li>NAPA Earn</li>
               <li>Leaderboards</li>
-              <li>Lauchpad</li>
+              <li>Lauchpad</li> */}
               <li>Help Center</li>
             </ul>
           </div>
@@ -79,6 +81,13 @@ const Footer: NextPage = () => {
             <p className={styles.footerBottomText}>
               ©2022 NAPA Society Limited
             </p>
+            <div
+              onClick={() =>
+                scrollToNextSection('social-art-section-without-limit')
+              }
+            >
+              <img src={MouseIcon} className={styles.mouseIcon} />
+            </div>
             <div>
               <ul className={styles.footerListItem}>
                 <li className={styles.footerBottomText}>FAQ</li>

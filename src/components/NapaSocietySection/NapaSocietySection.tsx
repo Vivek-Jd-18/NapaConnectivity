@@ -5,6 +5,7 @@ import {
   RightWhiteArrowIcon,
 } from '@/components/assets/index';
 import Container from '@/Layout/Container/Container';
+import { scrollToNextSection } from '@/utils/home';
 import type { NextPage } from 'next';
 import { useState } from 'react';
 import HighlightButton from '../HighlightButton/HighlightButton';
@@ -40,10 +41,12 @@ const NapaSociety: NextPage<NapaSocietyProps> = ({ isMenu }) => {
             <h1 className={styles.headingNapa}>NAPA</h1>
             <h1 className={styles.headingSociety}>Society</h1>
             <p className={styles.societyLeftDescription}>
-              <strong>Join our society and turn your social media into social art, mint
-              your social art in our social media app into NFTs and earn NAPA
-              tokens and buy and sell NFTs in the largest marketplace in the
-              world!</strong>
+              <strong>
+                Join our society and turn your social media into social art,
+                mint your social art in our social media app into NFTs and earn
+                NAPA tokens and buy and sell NFTs in the largest marketplace in
+                the world!
+              </strong>
             </p>
           </div>
           <div className={styles.innerSocietyContainerRightSide}>
@@ -114,7 +117,10 @@ const NapaSociety: NextPage<NapaSocietyProps> = ({ isMenu }) => {
             )}
           </div>
         </div>
-        <div className={styles.mousePointer}>
+        <div
+          className={styles.mousePointer}
+          onClick={() => scrollToNextSection('social-section-art')}
+        >
           <img src={MouseIcon} />
         </div>
       </Container>

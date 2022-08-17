@@ -23,6 +23,7 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu, connected }) => {
         <div className={styles.overlayContent}>
           <Link href="/napasociety">NAPA Society</Link>
           <Link href="/socialart">Social Art</Link>
+          {/* <link href="/napaearn">NAPA Earn</link> */}
           <Link href="/nftmarketplace">NFT Marketplace</Link>
           <Link href="/leaderboard">Leaderboard</Link>
           <Link href="/launchpad">Launchpad</Link>
