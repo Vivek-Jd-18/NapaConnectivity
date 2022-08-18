@@ -15,7 +15,10 @@ const SocialArtSectionWithoutLimit: NextPage<
   SocialArtSectionWithoutLimitProps
 > = ({ isMenu }) => {
   return (
-    <div className={styles.backgroundImage}>
+    <div
+      className={styles.backgroundImage}
+      id="social-art-section-without-limit"
+    >
       {!isMenu && <Steper steps={1} top={0} />}
       <Container className={styles.socialContainer}>
         <div className={styles.socialContainerBody}>
@@ -35,9 +38,11 @@ const SocialArtSectionWithoutLimit: NextPage<
           data-aos="fade-up"
           data-aos-easing="linear"
           data-aos-duration="500"
-          onClick={() => scrollToNextSection('napa-society')}
         >
-          <img src={MouseIcon} />
+          <img
+            src={MouseIcon}
+            onClick={() => scrollToNextSection('napa-society')}
+          />
         </div>
       </Container>
     </div>

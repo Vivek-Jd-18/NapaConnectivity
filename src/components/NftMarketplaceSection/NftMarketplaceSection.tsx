@@ -29,7 +29,7 @@ const NftMarketplaceSection: NextPage<NftMarketplaceSectionProps> = ({
   const [tab, setTab] = useState('Professional NFT Projects');
 
   return (
-    <div className={styles.backgroundImage}>
+    <div id="nft-marketplace" className={styles.backgroundImage}>
       {!isMenu && <Steper steps={4} bottom={0} />}
       <Container className={styles.nftContainer}>
         <h2 className={styles.nft}>NFT Marketplace</h2>

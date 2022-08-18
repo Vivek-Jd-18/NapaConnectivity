@@ -25,8 +25,9 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu, connected }) => {
           <Link href="/socialart">Social Art</Link>
           {/* <link href="/napaearn">NAPA Earn</link> */}
           <Link href="/nftmarketplace">NFT Marketplace</Link>
-          <Link href="/leaderboard">Leaderboard</Link>
+          <Link href="/napaearn">NAPA Earn</Link>
           <Link href="/launchpad">Launchpad</Link>
+          <Link href="/leaderboard">Leaderboard</Link>
         </div>
         <div className={styles.buttonsContainer}>
           {connected ? (

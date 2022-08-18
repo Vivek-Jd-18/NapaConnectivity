@@ -1,9 +1,4 @@
-import {
-  Avatar,
-  Carousel,
-  MouseIcon,
-  // RightArrowBlueIcon,
-} from '@/components/assets';
+import { Avatar, Carousel, MouseIcon } from '@/components/assets';
 import Container from '@/Layout/Container/Container';
 import { scrollToNextSection } from '@/utils/home';
 import type { NextPage } from 'next';
@@ -25,7 +20,7 @@ const SocialArtSection: NextPage<SocialArtSectionProps> = ({ isMenu }) => {
   };
 
   return (
-    <div id="social-art" className={styles.backgroundImage}>
+    <div id="social-section-art" className={styles.backgroundImage}>
       {!isMenu && <Steper steps={3} top={12} />}
       <Container className={styles.socialArtContainer}>
         <div className={styles.socialArtContainerBody}>
@@ -157,11 +152,11 @@ const SocialArtSection: NextPage<SocialArtSectionProps> = ({ isMenu }) => {
             <HighlightButton title="Social Art Gallery" />
           </div>
         </div>
-        <div
-          className={styles.mousePointer}
-          onClick={() => scrollToNextSection('nft-marketplace')}
-        >
-          <img src={MouseIcon} />
+        <div className={styles.mousePointer}>
+          <img
+            src={MouseIcon}
+            onClick={() => scrollToNextSection('nft-marketplace')}
+          />
         </div>
       </Container>
     </div>
