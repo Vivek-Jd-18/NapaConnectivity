@@ -33,12 +33,7 @@ const SocialArtSectionWithoutLimit: NextPage<
             <HighlightButton title="NAPA Society" />
           </div>
         </div>
-        <div
-          className={styles.mousePointer}
-          data-aos="fade-up"
-          data-aos-easing="linear"
-          data-aos-duration="500"
-        >
+        <div className={styles.mousePointer}>
           <img
             src={MouseIcon}
             onClick={() => scrollToNextSection('napa-society')}

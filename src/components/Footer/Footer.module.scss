@@ -164,6 +164,19 @@
       .footerIconsContainer {
         display: none;
       }
+      .footerMobileIconsContainer {
+        cursor: pointer;
+        @include flex-row;
+        list-style: none;
+
+        .footerMobileIconItem {
+          padding: 0px 0.5rem;
+          margin-top: 0.2rem;
+          img {
+            width: 1.2rem;
+          }
+        }
+      }
       img {
         width: 5rem;
       }
@@ -171,17 +184,23 @@
     .footerItemsBlockContainer {
       display: block;
       .footerListItem {
-        @include flex-row;
+        display: flex;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        // @include flex-row;
         padding: 0;
         list-style-type: none;
         padding-top: 1rem;
         margin-bottom: 0;
         li:first-child {
-          padding: 0 1rem 0 0;
+          padding: 0 0.5rem 0 0rem;
+        }
+        li:nth-child(3) {
+          padding: 0 0.5rem 0 0rem;
         }
         li {
-          padding: 0 1rem;
-          @include font-sm-avenir-regular;
+          padding: 0 0.5rem 0.5rem 0.5rem;
+          @include font-xs-avenir-regular;
           color: $white;
           cursor: pointer;
           &::after {
@@ -204,13 +223,32 @@
   }
   .footerBottomContainer {
     .footerContainer {
+      margin-top: 0;
       display: flex;
       flex-direction: column-reverse;
       align-items: flex-start;
+      .footerListItem {
+        display: flex;
+        flex-wrap: wrap;
+        @include font-xs-avenir-regular;
+        li:first-child {
+          padding: 0 0.5rem 0 0rem;
+        }
+        li:nth-child(3) {
+          padding: 0 0.5rem 0 0rem;
+        }
+        li {
+          @include font-xs-avenir-regular;
+          padding: 0 0.5rem 0 0.5rem;
+        }
+      }
+      .footerBottomText {
+        @include font-xs-avenir-regular;
+        padding-top: 0.5rem;
+      }
     }
-    .footerListItem {
-      display: flex;
-      flex-wrap: wrap;
+    .mouseIcon {
+      display: none;
     }
   }
   .footerListMobile {
@@ -222,10 +260,10 @@
   .container {
     .footerContainer {
       .footerIconsContainer {
-        display: block;
-        @include flex-row;
+        display: none;
         list-style-type: none;
         padding-top: 1rem;
+        margin-bottom: 0;
 
         .footerIconItem {
           padding: 0px 1rem 0.75rem;
@@ -253,6 +291,7 @@
       flex-wrap: wrap;
     }
   }
+
   .footerListMobile {
     @include flex-between;
     @include align-center;
@@ -265,10 +304,13 @@
       li:first-child {
         padding: 0.5rem 0.5rem 0 0;
       }
+      li:last-child {
+        padding-left: 0;
+      }
       li {
         width: auto;
         padding: 0.5rem 0.5rem;
-        @include font-sm-avenir-regular;
+        @include font-xs-avenir-regular;
         color: $white;
         cursor: pointer;
         &::after {
@@ -290,12 +332,34 @@
   }
 }
 @media (min-width: 768px) {
+  .container {
+    padding: 0;
+    .footerContainer {
+      .footerIconsContainer {
+        @include flex-row;
+      }
+      .footerMobileIconsContainer {
+        display: none;
+      }
+      padding: 0;
+    }
+  }
   .footerBottomContainer {
+    margin-top: 1.5rem;
     .footerContainer {
       @include flex-align-start;
+      .footerBottomText {
+        @include font-sm-avenir-regular;
+      }
+      .footerListItem {
+        li {
+          @include font-sm-avenir-regular;
+        }
+      }
     }
   }
 }
+
 @media (min-width: 1024px) {
   .container {
     .footerContainer {
@@ -389,17 +453,21 @@
         }
       }
     }
+
     .footerItemsBlockContainer {
       display: none;
     }
   }
-  .mouseIcon {
-    cursor: pointer;
-    position: absolute;
-    left: 48%;
-    bottom: 1rem;
-    img {
+  .footerBottomContainer {
+    .mouseIcon {
+      display: block;
       cursor: pointer;
+      position: absolute;
+      left: 48%;
+      bottom: 1rem;
+      img {
+        cursor: pointer;
+      }
     }
   }
 }

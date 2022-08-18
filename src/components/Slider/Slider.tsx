@@ -13,8 +13,8 @@ const SliderComponent: NextPage<SliderProps> = ({ children }) => {
     centerPadding: '40px',
     slidesToShow: 3,
     infinite: true,
-    autoplay: true,
-    autoplaySpeed: 1500,
+    // autoplay: true,
+    // autoplaySpeed: 1500,
     cssEase: 'linear',
     responsive: [
       {
@@ -30,9 +30,9 @@ const SliderComponent: NextPage<SliderProps> = ({ children }) => {
         },
       },
       {
-        breakpoint: 600,
+        breakpoint: 650,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 1,
         },
       },
       {
