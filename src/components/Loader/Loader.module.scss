@@ -2,16 +2,15 @@
 @import '../../../styles/abstracts/mixins.module';
 
 .loaderContainer {
-  @include flex-row-center;
   height: 100vh;
   background-color: $black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   .svgWrapper {
     display: block;
     position: fixed;
-    margin-left: -3.5rem;
-    margin-top: -0.5rem;
-    left: 50%;
   }
   .napaLogoWhite {
     fill: $light-blue;
@@ -26,14 +25,6 @@
     animation: fadeOut 1s ease;
     animation-delay: 2.75s;
     animation-fill-mode: forwards;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .loaderContainer {
-    .svgWrapper {
-      margin-left: -5rem;
-    }
   }
 }
 
