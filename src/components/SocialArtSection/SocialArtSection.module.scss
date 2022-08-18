@@ -256,6 +256,32 @@
       .image {
         width: 100%;
       }
+      .slideBtn {
+        padding-bottom: 1rem;
+        span {
+          margin-right: 0;
+        }
+        .carouselBottom {
+          padding-bottom: 1rem;
+          .avatar {
+            width: 4rem;
+            height: 4rem;
+            object-fit: contain;
+            padding-bottom: 0.5rem;
+          }
+          .carouselBottomText {
+            @include font-base-avenir-medium;
+          }
+          @keyframes example {
+            0% {
+              margin-left: 6rem;
+            }
+            100% {
+              margin-left: 0px;
+            }
+          }
+        }
+      }
     }
     .innerSocietyContainerRightSide {
       width: 100%;
@@ -274,17 +300,17 @@
 
       .socialHeading {
         @include flex-col;
-        padding-left: 0.5rem;
+        padding-left: 0;
 
         .socialText {
-          @include font-4xl-neuropolitical-normal;
+          @include font-3xl-neuropolitical-normal;
           margin-bottom: 0;
           width: 100%;
           @include flex-column-start;
         }
 
         .artText {
-          @include font-4xl-neuropolitical-normal;
+          @include font-3xl-neuropolitical-normal;
           width: 100%;
           margin-bottom: 0;
           padding-left: 0;
@@ -298,7 +324,7 @@
     background-image: url('/assets/images/socialmedia-background-mobile.png');
     .carouselImage {
       bottom: 0%;
-      left: 4%;
+      left: 5%;
       width: 90%;
       .image {
         width: 100%;
@@ -315,16 +341,36 @@
     background-image: url('/assets/images/socialmedia-background-mobile.png');
     .carouselImage {
       bottom: 0%;
-      left: 0%;
-      width: 100%;
+      left: 5%;
+      width: 90%;
       .image {
         width: 100%;
       }
     }
     .innerSocietyContainerRightSide {
-      padding-top: 6rem;
+      padding-top: 3rem;
       width: 100%;
       position: relative;
+
+      .socialHeading {
+        @include flex-col;
+        padding-left: 0rem;
+
+        .socialText {
+          @include font-3xl-neuropolitical-normal;
+          margin-bottom: 0;
+          width: 100%;
+          @include flex-column-start;
+        }
+
+        .artText {
+          @include font-3xl-neuropolitical-normal;
+          width: 100%;
+          margin-bottom: 0;
+          padding-left: 0;
+          @include flex-column-start;
+        }
+      }
     }
   }
 
