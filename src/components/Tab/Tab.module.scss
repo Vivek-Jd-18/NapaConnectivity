@@ -21,6 +21,11 @@
     padding-top: 0.5rem;
   }
 }
+@media (min-width: 280px) {
+  .tabBtn {
+    @include font-xs-avenir-regular;
+  }
+}
 
 @media (min-width: 768px) {
   .tabBtn {

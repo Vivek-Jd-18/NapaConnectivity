@@ -21,3 +21,7 @@ export const WalletIcon = '/assets/images/wallet-icon.svg';
 export const ProfileIcon = '/assets/images/user-icon.svg';
 export const FooterLogoIcon =
   'https://napa-website.s3.ap-southeast-1.amazonaws.com/napa-logo.svg';
+export const GithubMobileIcon = '/assets/images/github-mobile-icon.svg';
+export const DiscordMobileIcon = '/assets/images/discord-mobile-icon.svg';
+export const MediumMobileIcon = '/assets/images/medium-mobile-icon.svg';
+export const TwitterMobileIcon = '/assets/images/twitter-mobile-icon.svg';

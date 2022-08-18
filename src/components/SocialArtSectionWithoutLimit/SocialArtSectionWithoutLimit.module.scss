@@ -76,6 +76,7 @@
       cursor: pointer;
     }
   }
+
   @media only screen and (max-width: 1024px) {
     background-image: url('/assets/images/socialart-background-tablet.png');
     .socialContainer {
@@ -105,21 +106,60 @@
         padding-top: 1.438rem;
       }
     }
+    .mousePointer {
+      display: none;
+    }
+  }
+  @media only screen and (max-width: 768px) {
+    background-image: url('/assets/images/socialart-background-mobile.png');
+    .socialContainer {
+      .innerSocialContainer {
+        .socialArt {
+          @include font-5xl-neuropolitical-normal;
+        }
+        .withoutLimits {
+          @include font-3xl-neuropolitical-normal;
+        }
+      }
+      .innerSocialContainerRightSide {
+        .description {
+          @include font-md-avenir-regular;
+        }
+      }
+    }
   }
   @media only screen and (max-width: 576px) {
     background-image: url('/assets/images/socialart-background-mobile.png');
     .socialContainer {
       .innerSocialContainer {
         .socialArt {
-          @include font-3xl-neuropolitical-normal;
+          @include font-4xl-neuropolitical-normal;
         }
         .withoutLimits {
-          @include font-2xl-neuropolitical-normal;
+          @include font-3xl-neuropolitical-normal;
         }
       }
       .innerSocialContainerRightSide {
         .description {
           @include font-base-avenir-regular;
+        }
+      }
+    }
+  }
+  @media only screen and (max-width: 440px) {
+    background-image: url('/assets/images/socialart-background-mobile.png');
+    .socialContainer {
+      .innerSocialContainer {
+        .socialArt {
+          @include font-2xl-neuropolitical-normal;
+        }
+        .withoutLimits {
+          @include font-lg-neuropolitical-normal;
+        }
+      }
+      .innerSocialContainerRightSide {
+        .description {
+          @include font-sm-avenir-regular;
         }
       }
     }

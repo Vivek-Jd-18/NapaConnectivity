@@ -2,7 +2,6 @@
 @import '../../../styles/abstracts/variable.module';
 
 .backgroundImage {
-  padding-top: 6rem;
   background-image: url('/assets/images/marketplace-background-mobile.png');
   background-size: cover;
   position: relative;
@@ -48,9 +47,8 @@
   }
 
   .tabsContainer {
-    @include flex-column-center;
-    padding-top: 1rem;
-    margin-bottom: 1em;
+    @include flex-column-start;
+    margin-bottom: 0.5rem;
     width: 100%;
     .tabsInnerContainer {
       @include flex-row-center;
@@ -78,12 +76,57 @@
       }
     }
   }
+
+  @media (min-width: 280px) {
+    .nftContainer {
+      padding-top: 4rem;
+      .projectCardContainer {
+        padding-top: 1rem;
+      }
+    }
+
+    .nft {
+      padding-top: 0.2rem;
+      @include font-base-neuropolitical-normal;
+    }
+  }
+
+  @media (min-width: 320px) {
+    .nftContainer {
+      padding-top: 4.5rem;
+    }
+    .nft {
+      @include font-lg-neuropolitical-normal;
+    }
+  }
+
+  @media (min-width: 400px) {
+    .nftContainer {
+      padding-top: 6rem;
+    }
+    .nft {
+      @include font-lg-neuropolitical-normal;
+    }
+  }
+
+  @media (min-width: 520px) {
+    .nftContainer {
+      padding-top: 4rem;
+    }
+    .nft {
+      @include font-xl-neuropolitical-normal;
+    }
+  }
+
   @media (min-width: 768px) {
     background-image: url('/assets/images/marketplace-background-tablet.png');
     .nft {
       text-align: left;
       padding-top: 2rem;
       @include font-3xl-neuropolitical-normal;
+    }
+    .nftContainer {
+      padding-top: 4rem;
     }
     .description {
       padding-top: 1rem;
@@ -108,8 +151,9 @@
     }
   }
   @media (min-width: 1024px) {
+    padding-top: 2rem;
     .nft {
-      @include font-5xl-neuropolitical-normal;
+      @include font-4xl-neuropolitical-normal;
       padding-top: 3rem;
     }
     .description {
@@ -131,8 +175,9 @@
   @media (min-width: 1280px) {
     background-image: url('/assets/images/marketplace-background.png');
     .nft {
-      padding-top: 2rem;
-      @include font-6xl-neuropolitical-normal;
+      padding-top: 1rem;
+      @include font-3xl-neuropolitical-normal;
+      font-size: 3.2rem;
     }
     .description {
       @include font-base-avenir-regular;
@@ -142,6 +187,7 @@
       padding-top: 1rem;
     }
     .nftContainer {
+      padding-top: 4rem;
       .projectCardContainer {
         padding-top: 1.5rem;
       }

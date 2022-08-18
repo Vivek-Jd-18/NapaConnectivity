@@ -69,25 +69,165 @@
       }
     }
   }
-  @media (min-width: 768px) {
-    .cardContainer {
-      padding: 2rem;
-      .avatarContainer {
-        .username {
-          @include font-sm-avenir-regular;
-        }
-        .avatar {
-          width: 2.5rem;
-          height: 2.5rem;
+  @media (min-width: 280px) {
+    padding: 0.5rem;
+    .avatarContainer {
+      .avatar {
+        display: none;
+      }
+      .username {
+        padding-left: 0;
+        @include font-xs-avenir-regular;
+      }
+    }
+    .cardInfoContainer {
+      padding-top: 1rem;
+      .title {
+        @include font-sm-neuropolitical-normal;
+        padding-bottom: 0.5rem;
+      }
+      .description {
+        @include flex-column-start;
+        .bitContainer {
+          .bit {
+            @include font-xxs-avenir-regular;
+          }
         }
       }
-      .cardInfoContainer {
-        padding-bottom: 0;
-        .title {
-          @include font-md-neuropolitical-normal;
-          color: $white;
-          text-align: left;
-          padding-bottom: 1.5rem;
+    }
+  }
+  @media (min-width: 320px) {
+    padding: 0.5rem;
+    .cardInfoContainer {
+      padding-top: 1rem;
+
+      .title {
+        @include font-md-neuropolitical-normal;
+        color: $white;
+        text-align: left;
+        padding-bottom: 1.5rem;
+      }
+      .description {
+        // @include flex-row-between;
+        // @include flex-row;
+        .bitContainer {
+          .bit {
+            @include font-xs-avenir-regular;
+          }
+          &:last-child {
+            padding-top: 1rem;
+          }
+        }
+      }
+    }
+    .avatarContainer {
+      .username {
+        @include font-sm-avenir-regular;
+      }
+      .avatar {
+        display: none;
+      }
+    }
+  }
+  @media (min-width: 376px) {
+    padding: 2rem;
+    .cardInfoContainer {
+      padding-top: 3rem;
+
+      .title {
+        @include font-md-neuropolitical-normal;
+        color: $white;
+        text-align: left;
+        padding-bottom: 1.5rem;
+      }
+      .description {
+        @include flex-row-between;
+        @include flex-row;
+        .bitContainer {
+          .bit {
+            @include font-xs-avenir-regular;
+          }
+          &:last-child {
+            padding-top: 0rem;
+          }
+        }
+      }
+    }
+    .avatarContainer {
+      .username {
+        @include font-sm-avenir-regular;
+        padding-left: 0.5rem;
+      }
+      .avatar {
+        display: block;
+        width: 2.5rem;
+        height: 2.5rem;
+      }
+    }
+  }
+  @media (min-width: 576px) {
+    padding: 2rem;
+    .cardInfoContainer {
+      padding-top: 5rem;
+
+      .title {
+        @include font-md-neuropolitical-normal;
+        color: $white;
+        text-align: left;
+        padding-bottom: 1.5rem;
+      }
+      .description {
+        @include flex-row-between;
+        @include flex-row;
+        .bitContainer {
+          .bit {
+            @include font-xs-avenir-regular;
+          }
+        }
+      }
+    }
+    .avatarContainer {
+      .username {
+        @include font-sm-avenir-regular;
+        padding-left: 0.5rem;
+      }
+      .avatar {
+        display: block;
+        width: 2.5rem;
+        height: 2.5rem;
+      }
+    }
+  }
+  @media (min-width: 768px) {
+    padding: 2rem;
+    .avatarContainer {
+      .username {
+        @include font-sm-avenir-regular;
+        padding-left: 0.5rem;
+      }
+      .avatar {
+        display: block;
+        width: 2.5rem;
+        height: 2.5rem;
+      }
+    }
+    .cardInfoContainer {
+      padding-bottom: 0;
+      padding-top: 5rem;
+
+      .title {
+        @include font-md-neuropolitical-normal;
+        color: $white;
+        text-align: left;
+        padding-bottom: 1.5rem;
+      }
+      .description {
+        @include flex-row-between;
+        @include flex-row;
+        .bitContainer {
+          .bit {
+            @include font-xs-avenir-regular;
+          }
         }
       }
     }
@@ -100,6 +240,7 @@
       }
     }
     .cardInfoContainer {
+      padding-top: 6rem;
       .title {
         @include font-md-neuropolitical-normal;
         color: $white;
@@ -130,12 +271,18 @@
       }
     }
     .cardInfoContainer {
+      padding-top: 3rem;
       .title {
         @include font-lg-neuropolitical-normal;
         color: $white;
         text-align: left;
         padding-bottom: 1.5rem;
       }
+    }
+  }
+  @media (min-width: 1400px) {
+    .cardInfoContainer {
+      padding-top: 8rem;
     }
   }
   @media (min-width: 1536px) {

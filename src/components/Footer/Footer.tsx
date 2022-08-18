@@ -8,6 +8,10 @@ import {
   MediumIcon,
   FooterLogoIcon,
   MouseIcon,
+  TwitterMobileIcon,
+  DiscordMobileIcon,
+  GithubMobileIcon,
+  MediumMobileIcon,
 } from '@/components/assets/index';
 import { scrollToNextSection } from '@/utils/home';
 
@@ -31,6 +35,20 @@ const Footer: NextPage = () => {
                 <li>Help Center</li>
               </ul>
             </div>
+            <ul className={styles.footerMobileIconsContainer}>
+              <li className={styles.footerMobileIconItem}>
+                <img src={TwitterMobileIcon} />
+              </li>
+              <li className={styles.footerMobileIconItem}>
+                <img src={DiscordMobileIcon} />
+              </li>
+              <li className={styles.footerMobileIconItem}>
+                <img src={GithubMobileIcon} />
+              </li>
+              <li className={styles.footerMobileIconItem}>
+                <img src={MediumMobileIcon} />
+              </li>
+            </ul>
             <ul className={styles.footerIconsContainer}>
               <li className={styles.footerIconItem}>
                 <img src={TwitterIcon} />
@@ -69,9 +87,10 @@ const Footer: NextPage = () => {
             <li>Society</li>
             <li>Social Art</li>
             <li>NFT Marketplace</li>
-            <li>Earn</li>
+            <li>Help Center</li>
+            {/* <li>Earn</li>
             <li>Leaders</li>
-            <li>Lauchpad</li>
+            <li>Lauchpad</li> */}
           </ul>
         </Container>
       </div>

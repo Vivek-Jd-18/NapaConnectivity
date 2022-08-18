@@ -52,7 +52,7 @@ const NapaSociety: NextPage<NapaSocietyProps> = ({ isMenu }) => {
           <div className={styles.innerSocietyContainerRightSide}>
             <div className={styles.slider}>
               <h1 className={styles.headingSlider}>0{slider}</h1>
-              <div>
+              <div className={styles.sliderRightSide}>
                 <div className={styles.sliderContainer}>
                   <div onClick={handleDecrement}>
                     <img

@@ -9,6 +9,7 @@
   top: 0;
   bottom: 0;
   .topText {
+    display: none;
     position: absolute;
     left: 3.5rem;
     top: -3rem;
@@ -16,12 +17,14 @@
     @include font-base-avenir-medium;
   }
   .bottomText {
+    display: none;
     position: absolute;
     bottom: -5rem;
     left: 3.5rem;
     color: $white;
   }
   .steper {
+    display: none;
     width: 2px;
     height: 24rem;
     background-color: rgba(255, 255, 255, 0.3);
@@ -33,17 +36,6 @@
       height: 6rem;
       background-color: $white;
       z-index: 1;
-    }
-  }
-  @media screen and (max-width: 1024px) {
-    .steper {
-      display: none;
-    }
-    .topText {
-      display: none;
-    }
-    .bottomText {
-      display: none;
     }
   }
   @media screen and (min-width: 1280px) {
