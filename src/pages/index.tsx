@@ -8,6 +8,7 @@ import NftMarketplaceSection from '@/components/NftMarketplaceSection/NftMarketp
 import Header from '@/components/Header/Header';
 import { useEffect, useState } from 'react';
 import Loader from '@/components/Loader/Loader';
+import 'bootstrap/dist/css/bootstrap.min.css'; // Import bootstrap CSS
 
 const Home: NextPage = () => {
   const [isMenu, setIsMenu] = useState(false);

@@ -2,15 +2,21 @@ import type { NextPage } from 'next';
 
 type NapaLogoWhiteProps = {
   className?: string;
+  width?: string;
+  height?: string;
 };
 
-export const NapaLogoWhite: NextPage<NapaLogoWhiteProps> = ({ className }) => {
+export const NapaLogoWhite: NextPage<NapaLogoWhiteProps> = ({
+  className,
+  width,
+  height,
+}) => {
   return (
     <svg
-      width="168"
+      width={width ? width : '168'}
       id="napa-logo-white"
       className={className}
-      height="32"
+      height={height ? height : '32'}
       viewBox="0 0 105 24"
       xmlns="http://www.w3.org/2000/svg"
     >
