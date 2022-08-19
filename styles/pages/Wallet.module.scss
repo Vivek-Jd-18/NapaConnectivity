@@ -57,22 +57,6 @@
           padding-right: 1rem;
         }
       }
-
-      .btnOverlay {
-        background-color: rgba(16, 35, 36, 0.7);
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: calc(26%);
-        border-radius: 0.5rem;
-        z-index: 3;
-        cursor: pointer;
-      }
-      :nth-child(4) {
-        border-bottom: none;
-        cursor: pointer;
-      }
     }
   }
 

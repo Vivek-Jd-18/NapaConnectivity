@@ -1,10 +1,9 @@
 import { BurgerMenuIcon, WalletIconWhite } from '@/components/assets/index';
 import Container from '@/Layout/Container/Container';
 import type { NextPage } from 'next';
-import Router from 'next/router';
+import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import Vivus from 'vivus';
-import Button from '../Button/Button';
 import Sidebar from '../Sidebar/Sidebar';
 import { NapaLogo, NapaLogoWhite } from '../Svg';
 import styles from './Header.module.scss';
@@ -19,6 +18,7 @@ type HeaderProps = {
 };
 
 const Header: NextPage<HeaderProps> = ({ openMenu, isMenu, setIsMenu }) => {
+  const { push } = useRouter();
   useEffect(() => {
     new Vivus('napa-logo', {
       type: 'delayed',
@@ -40,12 +40,7 @@ const Header: NextPage<HeaderProps> = ({ openMenu, isMenu, setIsMenu }) => {
             <NapaLogoWhite className={styles.napaLogoWhite} />
           </div>
         </div>
-        <div
-          onClick={() => {
-            Router.push('/wallet');
-          }}
-          role="button"
-        >
+        <div onClick={() => push('/wallet')} role="button">
           <img src={WalletIconWhite} />
         </div>
       </Container>
