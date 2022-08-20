@@ -97,7 +97,7 @@ const WalletComponent: NextPage = () => {
           <div className="col-xl-6 col-md-12">
             <div className="flex-column">
               <h1 className={styles.walletText}>
-                Select <br />a Wallet
+                Select Wallet
               </h1>
               <span className={styles.descriptionText}>
                 By connecting your wallet, you agree to our{' '}
