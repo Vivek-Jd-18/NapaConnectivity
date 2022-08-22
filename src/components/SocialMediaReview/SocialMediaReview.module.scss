@@ -1,0 +1,55 @@
+@import '../../../styles/abstracts/mixins.module';
+@import '../../../styles/abstracts/variable.module';
+
+.reviewContainer {
+  padding-bottom: 2rem;
+  @include flex-column-start;
+  color: $white;
+  .review {
+    @include font-md-neuropolitical-normal;
+    text-align: left;
+  }
+  .userContainer {
+    @include flex-align-center;
+    .avatar {
+      margin-right: 1rem;
+    }
+    .userInfo {
+      @include flex-column;
+      align-items: flex-start;
+    }
+
+    .userName {
+      @include font-sm-avenir-medium;
+    }
+    .date {
+      @include font-xs-avenir-regular;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .review {
+      @include font-md-neuropolitical-normal;
+    }
+  }
+  @media (min-width: 2560px) {
+    .review {
+      @include font-lg-neuropolitical-normal;
+    }
+    .userContainer {
+      @include flex-align-center;
+      .avatar {
+        img {
+          width: 3rem;
+          height: 3rem;
+        }
+      }
+      .userName {
+        @include font-md-avenir-medium;
+      }
+      .date {
+        @include font-md-avenir-medium;
+      }
+    }
+  }
+}

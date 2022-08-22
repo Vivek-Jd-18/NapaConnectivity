@@ -1,0 +1,42 @@
+@import '../../../styles/abstracts/mixins.module';
+@import '../../../styles/abstracts/variable.module';
+
+.chatItemContainer {
+  @include flex-column;
+  @include flex-start;
+  color: $white;
+  padding: 0.5555rem;
+  .userContainer {
+    @include flex-row-center;
+    .userInfo {
+      @include flex-column-start;
+      margin-left: 1rem;
+      text-align: left;
+      .userName {
+        @include font-sm-avenir-medium;
+      }
+      .description {
+        @include font-xs-avenir-regular;
+      }
+    }
+  }
+
+  @media (min-width: 2560px) {
+    .userContainer {
+      .avatar {
+        img {
+          width: 3rem;
+          height: 3rem;
+        }
+      }
+      .userInfo {
+        .userName {
+          @include font-lg-avenir-medium;
+        }
+        .description {
+          @include font-md-avenir-regular;
+        }
+      }
+    }
+  }
+}

@@ -47,7 +47,7 @@ const NftMarketplaceSection: NextPage<NftMarketplaceSectionProps> = ({
           </div>
           <HighlightButton title="Explore Projects" />
         </div>
-        <SliderComponent>
+        <SliderComponent centerMode={true}>
           {Array.from({ length: 6 }, () => {
             return (
               <div key={1} className={styles.projectCardContainer}>

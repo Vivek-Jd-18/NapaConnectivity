@@ -4,14 +4,15 @@ import Slider from 'react-slick';
 
 type SliderProps = {
   children: any;
+  centerMode: boolean ;
+  slidesToShow?: number
 };
 
-const SliderComponent: NextPage<SliderProps> = ({ children }) => {
+const SliderComponent: NextPage<SliderProps> = ({ children, centerMode, slidesToShow }) => {
   const settings = {
     arrows: false,
-    centerMode: true,
-    centerPadding: '40px',
-    slidesToShow: 3,
+    centerMode: centerMode,
+    slidesToShow: slidesToShow ? slidesToShow : 3,
     infinite: true,
     // autoplay: true,
     // autoplaySpeed: 1500,
