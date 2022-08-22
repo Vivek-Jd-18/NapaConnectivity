@@ -3,6 +3,7 @@ import { ExitIcon, ProfileIcon, WalletIcon } from '../assets';
 import styles from './Sidebar.module.scss';
 import Button from '../../components/Button/Button';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 type SidebarProps = {
   onClick: () => void;
@@ -11,6 +12,8 @@ type SidebarProps = {
 };
 
 const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu, connected }) => {
+  const { push } = useRouter();
+
   return (
     <div
       className={styles.overlay}
@@ -41,6 +44,7 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu, connected }) => {
                 text="Connect Wallet"
                 icon={WalletIcon}
                 customStyle={styles.btnConnectWallet}
+                onClick={() => push('/wallet')}
               />
             </>
           )}

@@ -41,7 +41,7 @@ const Header: NextPage<HeaderProps> = ({ openMenu, isMenu, setIsMenu }) => {
           </div>
         </div>
         <div onClick={() => push('/wallet')} role="button">
-          <img src={WalletIconWhite} />
+          <img src={WalletIconWhite} className={styles.walletIcon} />
         </div>
       </Container>
       {isMenu && <Sidebar isMenu={isMenu} onClick={() => setIsMenu(false)} />}
