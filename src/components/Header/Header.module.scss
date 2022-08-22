@@ -39,11 +39,18 @@
     padding-left: 8rem;
     justify-content: space-evenly;
   }
+  .walletIcon {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
 }
 @media screen and (min-width: 280px) {
   .innerContainer {
     padding-top: 1.5rem;
     .burgerMenuIcon {
+      width: 1.5rem;
+    }
+    .walletIcon {
       width: 1.5rem;
     }
   }
@@ -71,6 +78,9 @@
     .burgerMenuIcon {
       width: 2rem;
     }
+    .walletIcon {
+      width: 2rem;
+    }
   }
 }
 @media screen and (min-width: 768px) {
@@ -91,6 +101,9 @@
     padding-top: 3rem;
     .burgerMenuIcon {
       width: auto;
+    }
+    .walletIcon {
+      width: 2.25rem;
     }
   }
 }
