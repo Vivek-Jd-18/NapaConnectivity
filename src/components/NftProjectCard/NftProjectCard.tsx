@@ -1,4 +1,4 @@
-import { Avatar, NapaIcon } from '@/components/assets/index';
+import { Avatar, NapaIcon } from '../../components/assets';
 import type { NextPage } from 'next';
 import styles from './NftProjectCard.module.scss';
 

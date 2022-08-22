@@ -3,9 +3,9 @@ import {
   MouseIcon,
   // RightArrowBlueIcon,
   RightWhiteArrowIcon,
-} from '@/components/assets/index';
-import Container from '@/Layout/Container/Container';
-import { scrollToNextSection } from '@/utils/home';
+} from '../assets';
+import Container from '../../Layout/Container/Container';
+import { scrollToNextSection } from '../../utils/home';
 import type { NextPage } from 'next';
 import { useState } from 'react';
 import HighlightButton from '../HighlightButton/HighlightButton';

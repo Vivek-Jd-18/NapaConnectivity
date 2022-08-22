@@ -1,4 +1,4 @@
-import WalletComponent from '@/components/Wallet/Wallet';
+import WalletComponent from '../components/Wallet/Wallet';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 
