@@ -1,5 +1,5 @@
-import { BurgerMenuIcon, WalletIconWhite } from '@/components/assets/index';
-import Container from '@/Layout/Container/Container';
+import { BurgerMenuIcon, WalletIconWhite } from '../../components/assets';
+import Container from '../../Layout/Container/Container';
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';

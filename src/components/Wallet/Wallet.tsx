@@ -1,7 +1,7 @@
-import { NapaLogo, NapaLogoWhite } from '@/components/Svg';
+import { NapaLogo, NapaLogoWhite } from '../../components/Svg';
 import { useCallback, useEffect } from 'react';
 import Vivus from 'vivus';
-import Container from '@/Layout/Container/Container';
+import Container from '../../Layout/Container/Container';
 import type { NextPage } from 'next';
 import styles from '../../../styles/pages/Wallet.module.scss';
 import {
@@ -9,8 +9,8 @@ import {
   CoinbaseIcon,
   AuthereumIcon,
   VenlyIcon,
-} from '@/components/assets';
-import { getWeb3 } from '@/utils/wallet';
+} from '../../components/assets';
+import { getWeb3 } from '../../utils/wallet';
 import Web3 from 'web3';
 import { toast } from 'react-toastify';
 
@@ -96,9 +96,7 @@ const WalletComponent: NextPage = () => {
           </div>
           <div className="col-xl-6 col-md-12">
             <div className="flex-column">
-              <h1 className={styles.walletText}>
-                Select Wallet
-              </h1>
+              <h1 className={styles.walletText}>Select Wallet</h1>
               <span className={styles.descriptionText}>
                 By connecting your wallet, you agree to our{' '}
                 <span className={styles.termsPrivacyText}>

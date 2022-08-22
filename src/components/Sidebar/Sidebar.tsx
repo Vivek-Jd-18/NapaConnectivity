@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import { ExitIcon, ProfileIcon, WalletIcon } from '../assets';
 import styles from './Sidebar.module.scss';
-import Button from '@/components/Button/Button';
+import Button from '../../components/Button/Button';
 import Link from 'next/link';
 
 type SidebarProps = {

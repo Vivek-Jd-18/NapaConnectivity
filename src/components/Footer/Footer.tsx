@@ -1,6 +1,6 @@
 import styles from './Footer.module.scss';
 import type { NextPage } from 'next';
-import Container from '@/Layout/Container/Container';
+import Container from '../../Layout/Container/Container';
 import {
   TwitterIcon,
   DiscordIcon,
@@ -12,8 +12,8 @@ import {
   DiscordMobileIcon,
   GithubMobileIcon,
   MediumMobileIcon,
-} from '@/components/assets/index';
-import { scrollToNextSection } from '@/utils/home';
+} from '../../components/assets';
+import { scrollToNextSection } from '../../utils/home';
 
 const Footer: NextPage = () => {
   return (

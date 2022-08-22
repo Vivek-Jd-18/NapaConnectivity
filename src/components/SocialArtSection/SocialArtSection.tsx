@@ -1,6 +1,6 @@
-import { Avatar, Carousel, MouseIcon } from '@/components/assets';
-import Container from '@/Layout/Container/Container';
-import { scrollToNextSection } from '@/utils/home';
+import { Avatar, Carousel, MouseIcon } from '../../components/assets';
+import Container from '../../Layout/Container/Container';
+import { scrollToNextSection } from '../../utils/home';
 import type { NextPage } from 'next';
 import { useState } from 'react';
 import HighlightButton from '../HighlightButton/HighlightButton';
