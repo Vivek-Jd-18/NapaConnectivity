@@ -4,6 +4,7 @@ import Header from '../components/Header/Header';
 import styles from '../../styles/pages/Home.module.scss';
 import type { NextPage } from 'next';
 import TrendingSection from '../components/TrendingSection/Trending';
+import LeaderboardSection from '@/components/LeaderboardSection/LeaderboardSection';
 
 const Trending: NextPage = () => {
   const [isMenu, setIsMenu] = useState(false);
@@ -22,15 +23,9 @@ const Trending: NextPage = () => {
         <div className={styles.child}>
           <TrendingSection />
         </div>
-        {/* <div className={styles.child}>
-          <NapaSociety isMenu={isMenu} />
-        </div>
         <div className={styles.child}>
-          <SocialArtSection isMenu={isMenu} />
+          <LeaderboardSection />
         </div>
-        <div className={styles.child}>
-          <NftMarketplaceSection isMenu={isMenu} />
-        </div> */}
       </section>
     </>
   );
