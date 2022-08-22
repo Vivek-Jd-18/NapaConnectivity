@@ -30,3 +30,4 @@ export const MetaMaskIcon = '/assets/images/metamask.svg';
 export const CoinbaseIcon = '/assets/images/coinbase.svg';
 export const AuthereumIcon = '/assets/images/authereum.svg';
 export const VenlyIcon = '/assets/images/venly.svg';
+export const HowardAvatar = '/assets/images/horward.svg';
