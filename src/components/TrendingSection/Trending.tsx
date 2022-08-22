@@ -69,7 +69,7 @@ const TrendingSection: NextPage = () => {
       <Container className={styles.trendingContainer}>
         <div className={`row col-12 ${styles.trendingBodyContainer}`}>
           <div className={`col-xl-8 col-md-12`}>
-            <h1 className={styles.trending}>What's Trending</h1>
+            <h1 className={styles.trending}>Whats Trending</h1>
             <div className={styles.tabsContainer}>
               <div className={styles.tabsInnerContainer}>
                 <ul className={styles.tab}>
