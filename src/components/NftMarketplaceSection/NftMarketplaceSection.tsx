@@ -1,4 +1,4 @@
-import Container from '@/Layout/Container/Container';
+import Container from '../../Layout/Container/Container';
 import type { NextPage } from 'next';
 import { useState } from 'react';
 import NftProjectCard from '../NftProjectCard/NftProjectCard';
