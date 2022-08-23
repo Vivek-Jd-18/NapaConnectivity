@@ -357,6 +357,22 @@
         padding-left: 5rem;
         padding-right: 5rem;
         top: 15%;
+        .active {
+          padding-left: 9rem;
+          color: $white;
+          @include font-6xl-neuropolitical-normal;
+          &::before {
+            width: 6%;
+            content: '';
+            position: absolute;
+            background: $white;
+            margin-top: 3rem;
+            z-index: -1;
+            height: 0.25rem;
+            transition: 0s;
+            left: 4rem;
+          }
+        }
         a {
           @include font-5xl-neuropolitical-normal;
           &::before {

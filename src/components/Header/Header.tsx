@@ -15,9 +15,15 @@ type HeaderProps = {
   openMenu: () => void;
   setIsMenu: (menu: boolean) => void;
   isMenu: boolean;
+  account?: string;
 };
 
-const Header: NextPage<HeaderProps> = ({ openMenu, isMenu, setIsMenu }) => {
+const Header: NextPage<HeaderProps> = ({
+  openMenu,
+  isMenu,
+  setIsMenu,
+  account,
+}) => {
   const { push } = useRouter();
   useEffect(() => {
     new Vivus('napa-logo', {
@@ -40,11 +46,26 @@ const Header: NextPage<HeaderProps> = ({ openMenu, isMenu, setIsMenu }) => {
             <NapaLogoWhite className={styles.napaLogoWhite} />
           </div>
         </div>
-        <div onClick={() => push('/wallet')} role="button">
+        <div
+          onClick={() => {
+            if (account) {
+              push('/home');
+              return;
+            }
+            push('/wallet');
+          }}
+          role="button"
+        >
           <img src={WalletIconWhite} className={styles.walletIcon} />
         </div>
       </Container>
-      {isMenu && <Sidebar isMenu={isMenu} onClick={() => setIsMenu(false)} />}
+      {isMenu && (
+        <Sidebar
+          isMenu={isMenu}
+          onClick={() => setIsMenu(false)}
+          account={account}
+        />
+      )}
     </>
   );
 };

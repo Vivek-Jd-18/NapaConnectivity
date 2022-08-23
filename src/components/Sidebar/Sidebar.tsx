@@ -8,11 +8,11 @@ import { useRouter } from 'next/router';
 type SidebarProps = {
   onClick: () => void;
   isMenu: boolean;
-  connected?: boolean;
+  account?: string;
 };
 
-const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu, connected }) => {
-  const { push } = useRouter();
+const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu, account }) => {
+  const { push, pathname } = useRouter();
 
   return (
     <div
@@ -24,19 +24,43 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu, connected }) => {
       </div>
       <div className={styles.overlayContentContainer}>
         <div className={styles.overlayContent}>
-          <Link href="/napasociety">NAPA Society</Link>
-          <Link href="/socialart">Social Art</Link>
+          <Link href="/home">
+            <a className={`${pathname === '/home' && styles.active}`}>
+              NAPA Society
+            </a>
+          </Link>
+          <Link href="/socialart">
+            <a className={`${pathname === '/socialart' && styles.active}`}>
+              Social Art
+            </a>
+          </Link>
           {/* <link href="/napaearn">NAPA Earn</link> */}
-          <Link href="/nftmarketplace">NFT Marketplace</Link>
-          <Link href="/napaearn">NAPA Earn</Link>
-          <Link href="/launchpad">Launchpad</Link>
-          <Link href="/leaderboard">Leaderboard</Link>
+          <Link href="/nftmarketplace">
+            <a className={`${pathname === '/nftmarketplace' && styles.active}`}>
+              NFT Marketplace
+            </a>
+          </Link>
+          <Link href="/napaearn">
+            <a className={`${pathname === '/napaearn' && styles.active}`}>
+              NAPA Earn
+            </a>
+          </Link>
+          <Link href="/launchpad">
+            <a className={`${pathname === '/launchpad' && styles.active}`}>
+              Launchpad
+            </a>
+          </Link>
+          <Link href="/leaderboard">
+            <a className={`${pathname === '/leaderboard' && styles.active}`}>
+              Leaderboard
+            </a>
+          </Link>
         </div>
         <div className={styles.buttonsContainer}>
-          {connected ? (
+          {account ? (
             <>
               <Button text="My Profile" outlined icon={ProfileIcon} />
-              <Button text="Connect Wallet" icon={WalletIcon} />
+              <Button text="Wallet" icon={WalletIcon} />
             </>
           ) : (
             <>
