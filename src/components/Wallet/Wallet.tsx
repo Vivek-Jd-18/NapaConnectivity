@@ -100,7 +100,7 @@ const WalletComponent: NextPage = () => {
                 height={'80'}
               />
             </div>
-            <div className={styles.svgWrapper} onClick={() => push('/home')}>
+            <div className={styles.svgWrapper} onClick={() => push('/')}>
               <NapaLogoWhite
                 className={styles.napaLogoWhite}
                 width={'360'}

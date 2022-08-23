@@ -26,7 +26,7 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu, account }) => {
         <div className={styles.overlayContent}>
           <Link href="/home">
             <a className={`${pathname === '/home' && styles.active}`}>
-              NAPA Home
+              NAPA Society
             </a>
           </Link>
           <Link href="/socialart">
