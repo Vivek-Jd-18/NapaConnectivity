@@ -39,10 +39,10 @@ const Header: NextPage<HeaderProps> = ({
           <img src={BurgerMenuIcon} className={styles.burgerMenuIcon} />
         </div>
         <div>
-          <div className={styles.svgWrapper}>
+          <div className={styles.svgWrapper} onClick={() => push('/')}>
             <NapaLogo className={styles.napaLogo} />
           </div>
-          <div className={styles.svgWrapper}>
+          <div className={styles.svgWrapper} onClick={() => push('/')}>
             <NapaLogoWhite className={styles.napaLogoWhite} />
           </div>
         </div>

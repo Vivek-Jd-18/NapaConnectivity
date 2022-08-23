@@ -14,14 +14,22 @@ import {
   MediumMobileIcon,
 } from '../../components/assets';
 import { scrollToNextSection } from '../../utils/home';
+import { useRouter } from 'next/router';
 
-const Footer: NextPage = () => {
+type FooterProps = {
+  footerIconShow: boolean;
+};
+
+const Footer: NextPage<FooterProps> = ({ footerIconShow }) => {
+  const { push } = useRouter();
   return (
     <div>
       <div className={styles.container}>
         <Container>
           <div className={styles.footerContainer}>
-            <img src={FooterLogoIcon} />
+            <div onClick={() => push('/')} className={styles.logo}>
+              <img src={FooterLogoIcon} />
+            </div>
             <div className={styles.footerItemContainer}>
               <ul
                 className={`${styles.footerListItem} ${styles.activeFooterListItem}`}
@@ -111,14 +119,16 @@ const Footer: NextPage = () => {
               </ul>
             </div>
           </div>
-          <div
-            className={styles.mouseIcon}
-            onClick={() =>
-              scrollToNextSection('social-art-section-without-limit')
-            }
-          >
-            <img src={MouseIcon} />
-          </div>
+          {footerIconShow && (
+            <div
+              className={styles.mouseIcon}
+              onClick={() =>
+                scrollToNextSection('social-art-section-without-limit')
+              }
+            >
+              <img src={MouseIcon} />
+            </div>
+          )}
         </Container>
       </div>
     </div>
