@@ -14,7 +14,7 @@ const Trending: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Whats Trending</title>
+        <title>NAPA Society</title>
         <meta name="description" content="NAPA Developmeent Environment" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
