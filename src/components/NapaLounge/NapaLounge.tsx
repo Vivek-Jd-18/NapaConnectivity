@@ -4,7 +4,16 @@ import styles from './NapaLounge.module.scss';
 import Footer from '../Footer/Footer';
 import { useCallback, useRef, useState } from 'react';
 import { NapaLoungeTab } from '@/typing/typing';
-import { LeftWhiteArrowIcon, RightWhiteArrowIcon } from '../assets';
+import {
+  ActiveMintedPostsBackground,
+  CoBatchingPoolsBackground,
+  EarnedNapaTokensBackground,
+  EventsBackground,
+  LeftWhiteArrowIcon,
+  NapaLoungeDesktopBackground,
+  NftProjectsBackground,
+  RightWhiteArrowIcon,
+} from '../assets';
 import HighlightButton from '../HighlightButton/HighlightButton';
 import SliderComponent from '../Slider/Slider';
 import {
@@ -25,21 +34,21 @@ const NapaLounge: NextPage = () => {
 
   const changeBackgroundHandler = useCallback(() => {
     if (tabs === NapaLoungeTab.TIPS_AND_TUTORIALS) {
-      return "url('/assets/images/napa-lounge-desktop-background.png')";
+      return `url(${NapaLoungeDesktopBackground})`;
     }
     if (tabs === NapaLoungeTab.CO_BATCHING_POOLS) {
-      return "url('/assets/images/co-batching-pools-background.png')";
+      return `url(${CoBatchingPoolsBackground})`;
     }
     if (tabs === NapaLoungeTab.UPCOMING_NFT_PROJECTS) {
-      return "url('/assets/images/upcoming-nft-projects.png')";
+      return `url(${NftProjectsBackground})`;
     }
     if (tabs === NapaLoungeTab.EVENTS) {
-      return "url('/assets/images/events-background.png')";
+      return `url(${EventsBackground})`;
     }
     if (tabs === NapaLoungeTab.ACTIVE_MINTED_POSTS) {
-      return "url('/assets/images/active-minted-posts-background.png')";
+      return `url(${ActiveMintedPostsBackground})`;
     }
-    return "url('/assets/images/earned-napa-tokens-background.png')";
+    return `url(${EarnedNapaTokensBackground})`;
   }, [tabs]);
 
   const titleHandler = useCallback(() => {
