@@ -1,0 +1,80 @@
+@import '../../../styles/abstracts/mixins.module';
+@import '../../../styles/abstracts/variable.module';
+
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: $white;
+  height: 24rem;
+  padding: 2rem;
+  width: 24rem;
+  text-align: start;
+  background-repeat: no-repeat;
+  background-position: initial;
+  .time {
+    @include font-lg-neuropolitical-normal;
+  }
+  .cardInfo {
+    display: flex;
+    flex-direction: column;
+    .title {
+      @include font-lg-neuropolitical-normal;
+    }
+    .date {
+      @include font-sm-avenir-regular;
+      margin-top: 0.5rem;
+      margin-bottom: 0;
+    }
+  }
+  @media (min-width: 1280px) {
+    width: 18rem;
+    height: 22rem;
+    .time {
+      @include font-md-neuropolitical-normal;
+    }
+    .cardInfo {
+      .title {
+        @include font-md-neuropolitical-normal;
+      }
+      .date {
+        @include font-sm-avenir-regular;
+      }
+    }
+  }
+
+  @media (min-width: 1536px) {
+    height: 24rem;
+    padding: 2rem;
+    width: 24rem;
+    .time {
+      @include font-lg-neuropolitical-normal;
+    }
+    .cardInfo {
+      .title {
+        @include font-lg-neuropolitical-normal;
+      }
+      .date {
+        @include font-sm-avenir-regular;
+      }
+    }
+  }
+
+  @media (min-width: 2560px) {
+    width: 32rem;
+    height: 34rem;
+    padding: 3rem;
+    .time {
+      @include font-xl-neuropolitical-normal;
+    }
+    .cardInfo {
+      .title {
+        @include font-xl-neuropolitical-normal;
+      }
+      .date {
+        @include font-md-avenir-regular;
+        font-size: $text-lg;
+      }
+    }
+  }
+}

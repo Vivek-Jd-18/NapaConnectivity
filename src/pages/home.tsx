@@ -4,7 +4,8 @@ import Header from '../components/Header/Header';
 import styles from '../../styles/pages/Home.module.scss';
 import type { NextPage } from 'next';
 import TrendingSection from '../components/TrendingSection/Trending';
-import LeaderboardSection from '@/components/LeaderboardSection/LeaderboardSection';
+import LeaderboardSection from '../components/LeaderboardSection/LeaderboardSection';
+import NapaLounge from '../components/NapaLounge/NapaLounge';
 
 const Trending: NextPage = () => {
   const [isMenu, setIsMenu] = useState(false);
@@ -25,6 +26,9 @@ const Trending: NextPage = () => {
         </div>
         <div className={styles.child}>
           <LeaderboardSection />
+        </div>
+        <div className={styles.child}>
+          <NapaLounge />
         </div>
       </section>
     </>

@@ -1,0 +1,171 @@
+@import '../../../styles/abstracts/mixins.module';
+@import '../../../styles/abstracts/variable.module';
+
+.backgroundImage {
+  background-size: cover;
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  transition: 1s ease;
+  display: flex;
+  flex-direction: column;
+  .napaLoungeContainer {
+    height: 100%;
+    padding-right: 0;
+    h1 {
+      text-align: left;
+    }
+    .napa {
+      @include font-6xl-neuropolitical-normal;
+      text-align: left;
+      -webkit-text-stroke: 2px $white;
+      color: transparent;
+    }
+    .lounge {
+      @include font-6xl-neuropolitical-normal;
+      color: $white;
+    }
+    .leftSideContainer {
+      --bs-gutter-x: 0rem;
+      padding-top: 2rem;
+      .boxes {
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        cursor: pointer;
+        text-align: left;
+        padding: 2rem;
+        padding-top: 8rem;
+        .description {
+          color: $white;
+          @include font-lg-neuropolitical-normal;
+        }
+      }
+      .active {
+        background-color: $light-blue;
+        border: 1px solid transparent;
+        .description {
+          color: $black;
+        }
+      }
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .napaLoungeContainer {
+      padding-top: 6.5rem;
+      h1 {
+        margin-bottom: 0em;
+      }
+      .napa {
+        @include font-4xl-neuropolitical-normal;
+      }
+      .lounge {
+        @include font-4xl-neuropolitical-normal;
+      }
+      .leftSideContainer {
+        padding-top: 1rem;
+        .boxes {
+          padding: 1.5rem;
+          padding-top: 5rem;
+          .description {
+            @include font-md-neuropolitical-normal;
+          }
+        }
+      }
+      .rightSideContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .buttonContainer {
+          display: flex;
+          justify-content: flex-end;
+          padding-right: 6rem;
+        }
+        .arrowContainer {
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-end;
+          padding-right: 6.5rem;
+          .rightIcon {
+            margin-left: 8rem;
+          }
+        }
+      }
+    }
+  }
+  @media (min-width: 1536px) {
+    .napaLoungeContainer {
+      padding-top: 7.5rem;
+      .napa {
+        @include font-6xl-neuropolitical-normal;
+      }
+      .lounge {
+        @include font-6xl-neuropolitical-normal;
+      }
+      .leftSideContainer {
+        padding-top: 2rem;
+        .boxes {
+          padding-top: 8rem;
+          .description {
+            @include font-lg-neuropolitical-normal;
+          }
+        }
+      }
+      .rightSideContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-end;
+        .sliderContainer {
+          width: 100%;
+          padding-left: 4rem;
+        }
+        .projectCardContainer {
+          padding-left: 1rem;
+          padding-right: 1rem;
+          padding-top: 2.5rem;
+        }
+        .carouselContainer {
+          background-color: red;
+          height: 50%;
+          width: 50%;
+        }
+        .buttonContainer {
+          padding-right: 8.5rem;
+        }
+        .arrowContainer {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          padding-right: 8.5rem;
+          .rightIcon {
+            cursor: pointer;
+            margin-left: 5rem;
+          }
+          .leftIcon {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+  @media (min-width: 2560px) {
+    .napaLoungeContainer {
+      padding-top: 10rem;
+      .napa {
+        @include font-8xl-neuropolitical-normal;
+      }
+      .lounge {
+        @include font-8xl-neuropolitical-normal;
+      }
+      .leftSideContainer {
+        padding-top: 3rem;
+        .boxes {
+          padding-top: 13rem;
+          .description {
+            @include font-2xl-neuropolitical-normal;
+          }
+        }
+      }
+    }
+  }
+}

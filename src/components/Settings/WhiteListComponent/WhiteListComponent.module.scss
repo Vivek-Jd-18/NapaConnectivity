@@ -1,0 +1,55 @@
+@import '../../../../styles/abstracts/mixins.module';
+@import '../../../../styles/abstracts/variable.module';
+
+.listContainer {
+  .headerList {
+    display: flex;
+    padding-left: 1rem;
+    @include font-sm-avenir-regular;
+    color: $gray;
+    border-bottom: 1px solid $white;
+    padding-bottom: 1rem;
+    .headerListItem {
+      flex-basis: 25%;
+      text-align: left;
+    }
+  }
+  .content {
+    margin-bottom: 2rem;
+    overflow: auto;
+    .listItemContainer {
+      display: flex;
+      padding-left: 1rem;
+      border-bottom: 1px solid $white;
+      padding-bottom: 1rem;
+      padding-top: 1rem;
+      .listItem {
+        display: flex;
+        flex-basis: 25%;
+        text-align: left;
+        @include font-md-avenir-medium;
+        color: $white;
+        img {
+          margin-right: 1rem;
+        }
+        .subtitle {
+          margin-left: 1rem;
+          color: $gray;
+        }
+      }
+      .moreBtnContainer {
+        justify-content: flex-end;
+      }
+    }
+  }
+  @media (min-width: 1280px) {
+    .content {
+      height: calc(100vh - 650px);
+    }
+  }
+  @media (min-width: 1440px) {
+    .content {
+      height: calc(100vh - 820px);
+    }
+  }
+}
