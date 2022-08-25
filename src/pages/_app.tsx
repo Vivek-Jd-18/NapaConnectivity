@@ -21,9 +21,10 @@ function MyApp({ Component, pageProps }: AppProps) {
       <ToastContainer
         key="toast"
         {...{
-          position: 'top-center',
+          position: 'top-right',
           newestOnTop: false,
           draggable: false,
+          hideProgressBar: true
         }}
       />
     </>

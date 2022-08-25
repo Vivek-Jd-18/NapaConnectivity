@@ -49,3 +49,4 @@ export const ActiveMintedPostsBackground =
   '/assets/images/active-minted-posts-background.png';
 export const EarnedNapaTokensBackground =
   '/assets/images/earned-napa-tokens-background.png';
+export const SwapIcon = '/assets/images/swap-icon.svg';

@@ -8,11 +8,13 @@ import {
   MetaMaskIcon,
   CoinbaseIcon,
   AuthereumIcon,
+  SwapIcon,
 } from '../../components/assets';
 import { getAlreadyConnectedWeb3, getWeb3 } from '../../utils/wallet';
 import Web3 from 'web3';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
+import { CustomToastWithLink } from '../CustomToast/CustomToast';
 
 const walletButtonList = [
   {
@@ -54,7 +56,13 @@ const WalletComponent: NextPage = () => {
       const walletBalanceInEth =
         // @ts-ignore
         Math.round(Web3.utils.fromWei(walletBalanceInWei) * 1000) / 1000;
-      toast.success('Connected Successfully');
+      toast.success(
+        CustomToastWithLink({
+          icon: SwapIcon,
+          title: 'Wallet Connected',
+          time: 'Now',
+        })
+      );
       push('/home');
       setAccount(walletAddress[0]);
       console.log('address', walletAddress);
@@ -65,10 +73,22 @@ const WalletComponent: NextPage = () => {
         error.message ===
         "Cannot read properties of undefined (reading 'request')"
       ) {
-        toast.error('Please install the Metamask extension');
+        toast.error(
+          CustomToastWithLink({
+            icon: SwapIcon,
+            title: 'Please install the Metamask extension',
+            time: 'Now',
+          })
+        );
         return;
       }
-      toast.error(error.message);
+      toast.error(
+        CustomToastWithLink({
+          icon: SwapIcon,
+          title: error.message,
+          time: 'Now',
+        })
+      );
     }
   }, [getWeb3]);
 
@@ -77,7 +97,13 @@ const WalletComponent: NextPage = () => {
       const accounts: any = await getAlreadyConnectedWeb3();
       setAccount(accounts[0]);
     } catch (error: any) {
-      toast.error(error);
+      toast.error(
+        CustomToastWithLink({
+          icon: SwapIcon,
+          title: error.message,
+          time: 'Now',
+        })
+      );
     }
   }, []);
 
@@ -125,10 +151,18 @@ const WalletComponent: NextPage = () => {
                       key={index}
                       onClick={() => {
                         if (index === 0 && account) {
-                          toast.error('Wallet is Already Connected');
+                          toast.error(
+                            CustomToastWithLink({
+                              icon: SwapIcon,
+                              title: 'Wallet is Already Connected',
+                              time: 'Now',
+                            })
+                          );
                           return;
                         }
-                        connectWallet();
+                        if (index === 0) {
+                          connectWallet();
+                        }
                       }}
                       className={styles.walletBtn}
                       style={{ borderColor: borderColor }}

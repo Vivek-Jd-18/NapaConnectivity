@@ -8,6 +8,8 @@ import LeaderboardSection from '../components/LeaderboardSection/LeaderboardSect
 import NapaLounge from '../components/NapaLounge/NapaLounge';
 import { getAlreadyConnectedWeb3 } from '@/utils/wallet';
 import { toast } from 'react-toastify';
+import { CustomToastWithLink } from '@/components/CustomToast/CustomToast';
+import { SwapIcon } from '@/components/assets';
 
 const Trending: NextPage = () => {
   const [isMenu, setIsMenu] = useState(false);
@@ -22,7 +24,13 @@ const Trending: NextPage = () => {
       const accounts: any = await getAlreadyConnectedWeb3();
       setAccount(accounts[0]);
     } catch (error: any) {
-      toast.error(error);
+      toast.error(
+        CustomToastWithLink({
+          icon: SwapIcon,
+          title: error.message,
+          time: 'Now',
+        })
+      );
     }
   }, []);
 

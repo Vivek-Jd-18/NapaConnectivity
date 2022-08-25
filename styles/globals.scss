@@ -35,3 +35,28 @@ a {
 ::-webkit-scrollbar {
   display: none;
 }
+
+.Toastify__toast-body {
+  .Toastify__toast-icon {
+    display: none;
+  }
+}
+.Toastify__toast-theme--light {
+  background: none !important;
+}
+
+.Toastify__toast {
+  margin-bottom: 0.5rem !important;
+  box-shadow: none;
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(60px) !important;
+}
+
+.Toastify__toast-container {
+  padding: 0 !important;
+  width: 25rem !important;
+}
+
+.Toastify__close-button--light {
+  color: #fff !important;
+}

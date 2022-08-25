@@ -11,6 +11,8 @@ import Loader from '../components/Loader/Loader';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import bootstrap CSS
 import { getAlreadyConnectedWeb3 } from '@/utils/wallet';
 import { toast } from 'react-toastify';
+import { CustomToastWithLink } from '@/components/CustomToast/CustomToast';
+import { SwapIcon } from '@/components/assets';
 
 const Home: NextPage = () => {
   const [isMenu, setIsMenu] = useState(false);
@@ -32,7 +34,13 @@ const Home: NextPage = () => {
       const accounts: any = await getAlreadyConnectedWeb3();
       setAccount(accounts[0]);
     } catch (error: any) {
-      toast.error(error);
+      toast.error(
+        CustomToastWithLink({
+          icon: SwapIcon,
+          title: error.message,
+          time: 'Now',
+        })
+      );
     }
   }, []);
 
@@ -51,7 +59,12 @@ const Home: NextPage = () => {
         <Loader />
       ) : (
         <section className={styles.container} id="container">
-          <Header openMenu={openMenu} setIsMenu={setIsMenu} isMenu={isMenu} account={account} />
+          <Header
+            openMenu={openMenu}
+            setIsMenu={setIsMenu}
+            isMenu={isMenu}
+            account={account}
+          />
           <div className={styles.child}>
             <SocialArtSectionWithoutLimit isMenu={isMenu} />
           </div>
