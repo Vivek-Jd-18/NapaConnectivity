@@ -70,7 +70,6 @@
     .rightSideContainer {
       display: flex;
       flex-direction: column;
-      padding-left: 5rem;
       padding-top: 1.5rem;
       .firstChild {
         .accountBtn {
@@ -159,6 +158,9 @@
         .whitelistContent {
           padding-top: 2rem;
         }
+      }
+      .rightSideContainer {
+        padding-left: 5rem;
       }
     }
   }

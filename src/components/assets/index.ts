@@ -39,3 +39,13 @@ export const TwitterBlueIcon = '/assets/images/twitter-icon-blue.svg';
 export const FacebookBlueIcon = '/assets/images/facebook-icon.svg';
 export const PlusIcon = '/assets/images/plus-icon.svg';
 export const MoreIcon = '/assets/images/more-icon.svg';
+export const NapaLoungeDesktopBackground =
+  '/assets/images/napa-lounge-desktop-background.png';
+export const CoBatchingPoolsBackground =
+  '/assets/images/co-batching-pools-background.png';
+export const NftProjectsBackground = '/assets/images/upcoming-nft-projects.png';
+export const EventsBackground = '/assets/images/events-background.png';
+export const ActiveMintedPostsBackground =
+  '/assets/images/active-minted-posts-background.png';
+export const EarnedNapaTokensBackground =
+  '/assets/images/earned-napa-tokens-background.png';
