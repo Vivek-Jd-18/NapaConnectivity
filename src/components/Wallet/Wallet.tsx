@@ -33,10 +33,9 @@ const walletButtonList = [
 ];
 
 const WalletComponent: NextPage = () => {
-
   const { push } = useRouter();
   const [account, setAccount] = useState('');
-  
+
   useEffect(() => {
     new Vivus('napa-logo', {
       type: 'delayed',
