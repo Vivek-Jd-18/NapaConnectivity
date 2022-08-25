@@ -124,15 +124,18 @@ const WalletComponent: NextPage = () => {
                   return (
                     <button
                       key={index}
-                      disabled={Boolean(index === 0 && account)}
                       onClick={() => {
-                        if (index === 0) connectWallet();
+                        if (index === 0 && account) {
+                          toast.error('Wallet is Already Connected');
+                          return;
+                        }
+                        connectWallet();
                       }}
                       className={styles.walletBtn}
                       style={{ borderColor: borderColor }}
                     >
                       <img src={icon} />
-                      {index === 0 && account ? `Connected` : text}
+                      {text}
                     </button>
                   );
                 })}
