@@ -13,6 +13,9 @@
   .footerContainer {
     @include flex-between;
     @include align-center;
+    .logo {
+      cursor: pointer;
+    }
     padding: 0.5rem 0;
     img {
       width: 7rem;

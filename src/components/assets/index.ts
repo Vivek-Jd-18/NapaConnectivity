@@ -31,3 +31,11 @@ export const CoinbaseIcon = '/assets/images/coinbase.svg';
 export const AuthereumIcon = '/assets/images/authereum.svg';
 export const VenlyIcon = '/assets/images/venly.svg';
 export const HowardAvatar = '/assets/images/horward.svg';
+export const TimeIcon = '/assets/images/time-icon.svg';
+export const ActiveMintedPostIcon =
+  '/assets/images/active-minted-posts-card.png';
+export const AccountNapaLogoIcon = '/assets/images/napa-account-icon.svg';
+export const TwitterBlueIcon = '/assets/images/twitter-icon-blue.svg';
+export const FacebookBlueIcon = '/assets/images/facebook-icon.svg';
+export const PlusIcon = '/assets/images/plus-icon.svg';
+export const MoreIcon = '/assets/images/more-icon.svg';

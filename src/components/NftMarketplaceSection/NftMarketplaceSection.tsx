@@ -57,7 +57,7 @@ const NftMarketplaceSection: NextPage<NftMarketplaceSectionProps> = ({
           })}
         </SliderComponent>
       </Container>
-      <Footer />
+      <Footer footerIconShow />
     </div>
   );
 };

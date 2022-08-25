@@ -59,7 +59,12 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu, account }) => {
         <div className={styles.buttonsContainer}>
           {account ? (
             <>
-              <Button text="My Profile" outlined icon={ProfileIcon} />
+              <Button
+                text="My Profile"
+                outlined
+                icon={ProfileIcon}
+                onClick={() => push('/settings')}
+              />
               <Button text="Wallet" icon={WalletIcon} />
             </>
           ) : (

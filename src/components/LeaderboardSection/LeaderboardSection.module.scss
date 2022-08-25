@@ -135,35 +135,77 @@
 
   @media (min-width: 1280px) {
     background-image: url('/assets/images/leaderbaord-background.png');
-    .leaderboard {
-      padding-top: 1rem;
-      @include font-3xl-neuropolitical-normal;
-      font-size: 3.2rem;
-    }
-    .tabsContainer {
-      padding-top: 1rem;
-    }
     .leaderboardContainer {
-      padding-top: 4rem;
-      .projectCardContainer {
-        padding-top: 1.5rem;
+      .leaderboard {
+        padding-top: 1rem;
+        @include font-6xl-neuropolitical-normal;
+      }
+      .tabsContainer {
+        padding-top: 1rem;
+      }
+      .leaderboardContainer {
+        padding-top: 4rem;
+        .projectCardContainer {
+          padding-top: 1.5rem;
+        }
       }
     }
   }
-  
-  @media (min-width: 1536px) {
-    .leaderboard {
-      padding-top: 4rem;
-      @include font-6xl-neuropolitical-normal;
-    }
-    .tabsContainer {
-      padding-top: 2rem;
-    }
+
+  @media (min-width: 1440px) {
     .leaderboardContainer {
-      .projectCardContainer {
-        padding-left: 1rem;
-        padding-right: 1rem;
-        padding-top: 2.5rem;
+      .leaderboard {
+        padding-top: 3rem;
+        @include font-7xl-neuropolitical-normal;
+      }
+      .tabsContainer {
+        padding-top: 2rem;
+      }
+      .leaderboardContainer {
+        .projectCardContainer {
+          padding-left: 1rem;
+          padding-right: 1rem;
+          padding-top: 2.5rem;
+        }
+      }
+    }
+  }
+
+  @media (min-width: 1536px) {
+    .leaderboardContainer {
+      .leaderboard {
+        padding-top: 4rem;
+        @include font-6xl-neuropolitical-normal;
+      }
+      .tabsContainer {
+        padding-top: 2rem;
+      }
+      .leaderboardContainer {
+        .projectCardContainer {
+          padding-left: 1rem;
+          padding-right: 1rem;
+          padding-top: 2.5rem;
+        }
+      }
+    }
+  }
+
+  @media (min-width: 2560px) {
+    .leaderboardContainer {
+      .leaderboard {
+        padding-top: 6rem;
+      }
+      .tabsContainer {
+        padding-top: 2rem;
+        .tabsInnerContainer {
+        }
+      }
+      .leaderboardContainer {
+        .projectCardContainer {
+          padding-left: 1rem;
+          padding-right: 1rem;
+          padding-top: 2.5rem;
+        }
       }
     }
   }

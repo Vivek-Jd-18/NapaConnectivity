@@ -1,0 +1,159 @@
+@import '../../../styles/abstracts/mixins.module';
+@import '../../../styles/abstracts/variable.module';
+
+.cardContainer {
+  display: flex;
+  height: 24rem;
+  .leftSide {
+    background-image: url('/assets/images/co-batching.png');
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 2.5rem;
+    width: 18rem;
+    .innerContainer {
+      display: flex;
+      align-items: center;
+      img {
+        margin-right: 0.5rem;
+      }
+      p {
+        margin: 0;
+        @include font-md-avenir-medium;
+        color: $white;
+      }
+    }
+  }
+  .rightSide {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    width: 18rem;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0px 20px 70px rgba(16, 35, 36, 0.2);
+    backdrop-filter: blur(60px);
+    color: white;
+    .title {
+      @include font-lg-neuropolitical-normal;
+      text-align: left;
+    }
+    .timeContainer {
+      display: flex;
+      align-items: center;
+      margin: 1.5rem 0;
+      img {
+        margin-right: 0.5rem;
+      }
+    }
+    .amountContainer {
+      .amountTitle {
+        @include font-xs-avenir-regular;
+        text-align: start;
+      }
+      .amountInnerContainer {
+        display: flex;
+        align-items: center;
+        img {
+          margin-right: 0.5rem;
+        }
+        .amount {
+          @include font-sm-avenir-medium;
+        }
+      }
+    }
+    .users {
+      display: flex;
+      margin: 1.5rem 0;
+      img {
+        width: 2rem;
+      }
+    }
+    .progressContainer {
+      display: flex;
+      flex-direction: column;
+      .innerProgressParentContainer {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        .innerProgressContainer {
+          display: flex;
+          align-items: center;
+          img {
+            margin-right: 0.5rem;
+          }
+        }
+      }
+      .progressBarContainer {
+        margin-top: 0.5rem;
+        .progressBarParent {
+          background-color: gray;
+          height: 0.3rem;
+          .progressBarChild {
+            background-color: $light-blue;
+            height: 0.3rem;
+            width: 65%;
+          }
+        }
+      }
+    }
+  }
+  @media (min-width: 1280px) {
+    height: 20rem;
+    .leftSide {
+      width: 14rem;
+    }
+    .rightSide {
+      padding: 2rem;
+      width: 14rem;
+      .title {
+        @include font-md-neuropolitical-normal;
+      }
+      .timeContainer {
+        margin: 0.5rem 0;
+      }
+    }
+  }
+  @media (min-width: 1536px) {
+    height: 24rem;
+    .leftSide {
+      width: 18rem;
+    }
+    .rightSide {
+      padding: 1.5rem;
+      width: 18rem;
+      .title {
+        @include font-lg-neuropolitical-normal;
+      }
+      .timeContainer {
+        margin: 1.5rem 0;
+      }
+    }
+  }
+  @media (min-width: 2560px) {
+    height: 28rem;
+    .leftSide {
+      width: 24rem;
+    }
+    .rightSide {
+      .title {
+        @include font-xl-neuropolitical-normal;
+      }
+      .timeContainer {
+        span {
+          @include font-md-neuropolitical-normal;
+        }
+      }
+      .amountContainer {
+        .amountTitle {
+          @include font-md-avenir-medium;
+        }
+        .amountInnerContainer {
+          .amount {
+            @include font-md-avenir-medium;
+          }
+        }
+      }
+      width: 24rem;
+    }
+  }
+}
