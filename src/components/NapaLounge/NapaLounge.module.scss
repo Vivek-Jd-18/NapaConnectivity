@@ -51,7 +51,7 @@
 
   @media (min-width: 1280px) {
     .napaLoungeContainer {
-      padding-top: 6.5rem;
+      padding-top: 7rem;
       h1 {
         margin-bottom: 0em;
       }
@@ -92,9 +92,65 @@
       }
     }
   }
-  @media (min-width: 1536px) {
+  @media (min-width: 1440px) {
     .napaLoungeContainer {
       padding-top: 7.5rem;
+      .napa {
+        @include font-5xl-neuropolitical-normal;
+      }
+      .lounge {
+        @include font-5xl-neuropolitical-normal;
+      }
+      .leftSideContainer {
+        padding-top: 2rem;
+        .boxes {
+          padding-top: 7.8rem;
+          .description {
+            @include font-lg-neuropolitical-normal;
+          }
+        }
+      }
+      .rightSideContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-end;
+        .sliderContainer {
+          width: 100%;
+        }
+        .projectCardContainer {
+          padding-left: 1rem;
+          padding-right: 1rem;
+          padding-top: 2.5rem;
+        }
+        .carouselContainer {
+          background-color: red;
+          height: 50%;
+          width: 50%;
+        }
+        .buttonContainer {
+          padding-right: 1rem;
+          padding-bottom: 2rem;
+        }
+        .arrowContainer {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          padding-right: 1rem;
+          .rightIcon {
+            cursor: pointer;
+            margin-left: 5rem;
+          }
+          .leftIcon {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+  @media (min-width: 1536px) {
+    .napaLoungeContainer {
+      padding-top: 9.5rem;
       .napa {
         @include font-6xl-neuropolitical-normal;
       }
@@ -125,7 +181,6 @@
           padding-top: 2.5rem;
         }
         .carouselContainer {
-          background-color: red;
           height: 50%;
           width: 50%;
         }
@@ -150,7 +205,7 @@
   }
   @media (min-width: 2560px) {
     .napaLoungeContainer {
-      padding-top: 10rem;
+      padding-top: 13rem;
       .napa {
         @include font-8xl-neuropolitical-normal;
       }
@@ -163,6 +218,18 @@
           padding-top: 13rem;
           .description {
             @include font-2xl-neuropolitical-normal;
+          }
+        }
+      }
+      .rightSideContainer {
+        .buttonContainer {
+          padding-right: 12rem;
+        }
+        .arrowContainer {
+          padding-right: 12rem;
+          .rightIcon {
+            cursor: pointer;
+            margin-left: 8rem;
           }
         }
       }
