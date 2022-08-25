@@ -15,6 +15,7 @@ import {
 } from '../../components/assets';
 import { scrollToNextSection } from '../../utils/home';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 type FooterProps = {
   footerIconShow: boolean;
@@ -34,13 +35,21 @@ const Footer: NextPage<FooterProps> = ({ footerIconShow }) => {
               <ul
                 className={`${styles.footerListItem} ${styles.activeFooterListItem}`}
               >
-                <li>NAPA Society</li>
-                <li>Social Art</li>
-                <li>NFT Marketplace</li>
+                <Link href={'/home'}>
+                  <li>NAPA Society</li>
+                </Link>
+                <Link href={'/socialart'}>
+                  <li>Social Art</li>
+                </Link>
+                <Link href={'/marketplace'}>
+                  <li>NFT Marketplace</li>
+                </Link>
                 {/* <li>NAPA Earn</li> */}
                 {/* <li>Leaderboards</li> */}
                 {/* <li>Lauchpad</li> */}
-                <li>Help Center</li>
+                <Link href={'/support'}>
+                  <li>Help Center</li>
+                </Link>
               </ul>
             </div>
             <ul className={styles.footerMobileIconsContainer}>
@@ -76,13 +85,21 @@ const Footer: NextPage<FooterProps> = ({ footerIconShow }) => {
             <ul
               className={`${styles.footerListItem} ${styles.activeFooterListItem}`}
             >
-              <li>NAPA Society</li>
-              <li>Social Art</li>
-              <li>NFT Marketplace</li>
-              {/* <li>NAPA Earn</li>
-              <li>Leaderboards</li>
-              <li>Lauchpad</li> */}
-              <li>Help Center</li>
+              <Link href={'/home'}>
+                <li>NAPA Society</li>
+              </Link>
+              <Link href={'/socialart'}>
+                <li>Social Art</li>
+              </Link>
+              <Link href={'/marketplace'}>
+                <li>NFT Marketplace</li>
+              </Link>
+              {/* <li>NAPA Earn</li> */}
+              {/* <li>Leaderboards</li> */}
+              {/* <li>Lauchpad</li> */}
+              <Link href={'/support'}>
+                <li>Help Center</li>
+              </Link>
             </ul>
           </div>
         </Container>
@@ -92,13 +109,21 @@ const Footer: NextPage<FooterProps> = ({ footerIconShow }) => {
           <ul
             className={`${styles.footerListItem} ${styles.activeFooterListItem}`}
           >
-            <li>Society</li>
-            <li>Social Art</li>
-            <li>NFT Marketplace</li>
-            <li>Help Center</li>
-            {/* <li>Earn</li>
-            <li>Leaders</li>
-            <li>Lauchpad</li> */}
+            <Link href={'/home'}>
+              <li>NAPA Society</li>
+            </Link>
+            <Link href={'/socialart'}>
+              <li>Social Art</li>
+            </Link>
+            <Link href={'/marketplace'}>
+              <li>NFT Marketplace</li>
+            </Link>
+            {/* <li>NAPA Earn</li> */}
+            {/* <li>Leaderboards</li> */}
+            {/* <li>Lauchpad</li> */}
+            <Link href={'/support'}>
+              <li>Help Center</li>
+            </Link>
           </ul>
         </Container>
       </div>
