@@ -7,7 +7,7 @@ const Wallet: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Wallet</title>
+        <title>Connect Wallet</title>
         <meta name="description" content="NAPA Developmeent Environment" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
