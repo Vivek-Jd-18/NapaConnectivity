@@ -15,7 +15,6 @@ export const useWeb3 = () => {
     try {
       const web3: any = await getAlreadyConnectedWeb3();
       const accounts = await web3.eth.getAccounts();
-      console.log('web3', web3.eth);
       if (accounts.length) {
         const walletBalanceInWei = await web3.eth.getBalance(accounts[0]);
         const walletBalanceInEth =

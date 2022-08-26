@@ -55,26 +55,28 @@ const Header: NextPage<HeaderProps> = ({
             <NapaLogoWhite className={styles.napaLogoWhite} />
           </div>
         </div>
-        <div
-          className={styles.wallet}
-          onClick={() => {
-            if (account) {
-              setPopupShow(true);
-              return;
-            }
-            push('/wallet');
-          }}
-          role="button"
-        >
-          <img
-            src={popupShow ? WalletBlueIcon : WalletIconWhite}
-            className={styles.walletIcon}
-          />
+        <div className={styles.wallet}>
+          <div
+            onClick={() => {
+              if (account) {
+                setPopupShow(true);
+                return;
+              }
+              push('/wallet');
+            }}
+            role="button"
+          >
+            <img
+              src={popupShow ? WalletBlueIcon : WalletIconWhite}
+              className={styles.walletIcon}
+            />
+          </div>
           {popupShow && (
             <WalletPopup
               account={account}
               setPopupShow={setPopupShow}
               ethereum={walletEth}
+              crypto={false}
             />
           )}
         </div>

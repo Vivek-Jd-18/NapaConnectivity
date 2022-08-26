@@ -12,10 +12,18 @@
   min-width: 25rem;
   right: 0;
   .header {
+    cursor: pointer;
     @include flex-row-between;
     padding-left: 1rem;
     padding-right: 1rem;
     align-items: center;
+    .actionButtons {
+      display: flex;
+      flex-direction: column;
+      img {
+        cursor: pointer;
+      }
+    }
     h2 {
       @include font-lg-neuropolitical-normal;
       color: $white;
@@ -34,6 +42,10 @@
   .body {
     padding-top: 2rem;
     padding-bottom: 2rem;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     h2 {
       @include font-xl-neuropolitical-normal;
       padding-top: 0.8rem;

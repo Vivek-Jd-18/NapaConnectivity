@@ -5,6 +5,7 @@ import {
   EthereumBlackIcon,
   EtheriumIcon,
   MoreIcon,
+  SmallExitIcon,
 } from '../assets';
 import styles from './WalletPopup.module.scss';
 
@@ -12,11 +13,13 @@ type WalletPopupProps = {
   setPopupShow: (show: boolean) => void;
   account?: string;
   ethereum?: number;
+  crypto?: boolean;
 };
 
 const WalletPopup: NextPage<WalletPopupProps> = ({
   setPopupShow,
   account,
+  crypto,
   ethereum,
 }) => {
   const ref = useRef(null);
@@ -41,7 +44,14 @@ const WalletPopup: NextPage<WalletPopupProps> = ({
           <h2>Venly ETH</h2>
           <img src={ArrowDownIcon} alt="" />
         </div>
-        <div>
+        <div className={styles.actionButtons}>
+          <div
+            onClick={() => {
+              setPopupShow(false);
+            }}
+          >
+            <img src={SmallExitIcon} alt="" />
+          </div>
           <img src={MoreIcon} alt="" />
         </div>
       </div>
@@ -51,7 +61,7 @@ const WalletPopup: NextPage<WalletPopupProps> = ({
       <div className={styles.body}>
         <img src={EtheriumIcon} alt="" />
         <h2>{ethereum}</h2>
-        <span>$98,22 USD</span>
+        {crypto && <span>$98,22 USD</span>}
       </div>
       <div className={styles.footer}>
         <div className={styles.footerLeftSide}>

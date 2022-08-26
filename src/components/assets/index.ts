@@ -54,3 +54,4 @@ export const ArrowDownIcon = '/assets/images/arrow-down-icon.svg';
 export const EtheriumIcon = '/assets/images/Etherium.svg';
 export const EthereumBlackIcon = '/assets/images/ethereum _icon.svg';
 export const WalletBlueIcon = '/assets/images/wallet-blue-icon.svg';
+export const SmallExitIcon = '/assets/images/small-exit-icon.svg';
