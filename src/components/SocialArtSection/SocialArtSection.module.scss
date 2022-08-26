@@ -1,0 +1,412 @@
+@import '../../../styles/abstracts/mixins.module';
+@import '../../../styles/abstracts/variable.module';
+
+@font-face {
+  font-family: Neuropolitical;
+  src: url('/assets/fonts/Neuropolitical/Neuropolitical-Regular.ttf');
+}
+
+@font-face {
+  font-family: Avenir;
+  src: url('/assets/fonts/Avenir/Avenir-Regular.ttf');
+}
+
+.backgroundImage {
+  background-image: url('/assets/images/socialmedia-background.png');
+  background-size: cover;
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .socialArtContainer {
+    height: 100%;
+  }
+  .socialArtContainerBody {
+    height: 90%;
+    @include flex-row-between;
+  }
+  .socialText {
+    @include font-7xl-neuropolitical-normal;
+    color: transparent;
+    -webkit-text-stroke: 2px $white;
+    animation: glow 1s ease-in-out infinite alternate;
+    margin-bottom: 0;
+  }
+  @-webkit-keyframes glow {
+    from {
+      text-shadow: 0 0 20px #fff, 0 0 30px, 0 0 40px, 0 0 50px, 0 0 60px,
+        0 0 70px, 0 0 10px;
+    }
+    to {
+      text-shadow: 0 0 1px #fff, 0 0 20px #ffffff, 0 0 30px, 0 0 40px, 0 0 50px,
+        0 0 60px, 0 0 100px;
+    }
+  }
+  .societyLeftDescription {
+    color: $white;
+    text-align: left;
+    padding-right: 20rem;
+    padding-left: 0.5rem;
+    @include font-md-avenir-medium;
+  }
+  .sliderText {
+    @include flex-row-center;
+    @include align-center;
+  }
+  .sliderText1 {
+    @include font-lg-avenir-medium;
+    padding-right: 0.5rem;
+    color: $white;
+    margin-bottom: 0;
+  }
+  .sliderText2 {
+    @include font-sm-avenir-medium;
+    padding-right: 0.5rem;
+    color: $white;
+    margin-bottom: 0;
+  }
+  .sliderContainer {
+    padding-bottom: 3rem;
+    @include flex-row-between;
+  }
+  .carouselImage {
+    width: 50%;
+    left: 12px;
+    position: absolute;
+    bottom: 0.5rem;
+    .image {
+      width: 90%;
+      object-fit: cover;
+    }
+    :after {
+      background: linear-gradient(180deg, rgba(0, 32, 47, 0) 0%, rgb(0 19 47 / 15%) 100%);
+      position: absolute;
+      content: "";
+      width: 66%;
+      height: 500px;
+      z-index: -1;
+      transform: translate(-50%, 0);
+      left: 50%;
+      bottom: 0;
+  }
+    .slideBtn {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      padding-bottom: 2.5rem;
+      z-index: 1;
+      span {
+        margin-right: 0.5rem;
+      }
+    }
+
+    .carouselBottom {
+      @include flex-column-center;
+      margin-left: 6rem;
+      animation-name: example;
+      animation-duration: 4s;
+      animation-fill-mode: forwards;
+      width: 100%;
+      padding-bottom: 2rem;
+      .avatar {
+        width: 4.5rem;
+        height: 4.5rem;
+        object-fit: contain;
+        padding-bottom: 0.5rem;
+      }
+      .carouselBottomText {
+        font-size: 1.5rem;
+        line-height: 2.1rem;
+        color: $white;
+        font-family: $text-avenir;
+        font-weight: 500;
+      }
+      @keyframes example {
+        0% {
+          margin-left: 6rem;
+        }
+        100% {
+          margin-left: 0px;
+        }
+      }
+    }
+  }
+  .artText {
+    @include font-6xl-neuropolitical-normal;
+    color: $white;
+    margin-bottom: 0;
+  }
+
+  .innerSocietyContainerRightSide {
+    width: 45%;
+    position: absolute;
+    right: 0;
+    text-align: left;
+    .description {
+      color: $white;
+      padding-top: 1rem;
+      width: 30rem;
+      @include font-base-avenir-medium;
+    }
+    .socialHeading {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  .viewFeedBtn {
+    @include font-lg-neuropolitical-normal;
+    color: $light-blue;
+    background-color: transparent;
+    border: 1px solid transparent;
+    margin-right: 1.5rem;
+  }
+  .mousePointer {
+    display: flex;
+    justify-content: center;
+    img {
+      cursor: pointer;
+      z-index: 2;
+    }
+  }
+  @media only screen and (max-width: 1400px) {
+  .carouselImage {
+    .image {
+      width: 100%;
+    }
+  }
+}
+  @media only screen and (max-width: 1024px) {
+    .societyContainer {
+      @include flex-center-column;
+      width: 100%;
+    }
+    .mousePointer {
+      display: none;
+    }
+    .socialArtContainerBody {
+      @include flex-center-column;
+      height: 50%;
+    }
+    .innerSocietyContainerRightSide {
+      width: 100%;
+      position: relative;
+
+      .description {
+        @include font-sm-avenir-regular;
+        width: 100%;
+      }
+
+      .socialHeading {
+        @include flex-row-center;
+        .socialText {
+          margin-bottom: 0;
+          @include font-5xl-neuropolitical-normal;
+        }
+
+        .artText {
+          padding-left: 2.5rem;
+          margin-bottom: 0;
+          @include font-5xl-neuropolitical-normal;
+        }
+      }
+    }
+  }
+  @media only screen and (max-width: 1024px) {
+    background-image: url('/assets/images/socialmedia-background-tablet.png');
+
+    .carouselImage {
+      width: 100%;
+      bottom: 0%;
+      .image {
+        width: 46%;
+      }
+    }
+  }
+  @media only screen and (max-width: 768px) {
+    .carouselImage {
+      width: 100%;
+      .image {
+        width: 60%;
+      }
+    }
+    .innerSocietyContainerRightSide {
+      width: 100%;
+      position: relative;
+
+      .description {
+        width: 100%;
+        @include font-xs-avenir-regular;
+      }
+
+      .viewFeedContainer {
+        .viewFeedBtn {
+          @include font-base-neuropolitical-normal;
+        }
+      }
+
+      .socialHeading {
+        @include flex-col;
+        padding-left: 0.5rem;
+
+        .socialText {
+          @include font-4xl-neuropolitical-normal;
+          margin-bottom: 0;
+          width: 100%;
+          @include flex-column-start;
+        }
+
+        .artText {
+          @include font-4xl-neuropolitical-normal;
+          width: 100%;
+          margin-bottom: 0;
+          padding-left: 0;
+          @include flex-column-start;
+        }
+      }
+    }
+  }
+  @media only screen and (max-width: 576px) {
+    background-image: url('/assets/images/socialmedia-background-mobile.png');
+    .carouselImage {
+      left: 10%;
+      width: 80%;
+      .image {
+        width: 100%;
+      }
+      .slideBtn {
+        padding-bottom: 1rem;
+        span {
+          margin-right: 0;
+        }
+        .carouselBottom {
+          padding-bottom: 1rem;
+          .avatar {
+            width: 4rem;
+            height: 4rem;
+            object-fit: contain;
+            padding-bottom: 0.5rem;
+          }
+          .carouselBottomText {
+            @include font-base-avenir-medium;
+          }
+          @keyframes example {
+            0% {
+              margin-left: 6rem;
+            }
+            100% {
+              margin-left: 0px;
+            }
+          }
+        }
+      }
+    }
+    .innerSocietyContainerRightSide {
+      width: 100%;
+      position: relative;
+
+      .description {
+        width: 100%;
+        @include font-xs-avenir-regular;
+      }
+
+      .viewFeedContainer {
+        .viewFeedBtn {
+          @include font-base-neuropolitical-normal;
+        }
+      }
+
+      .socialHeading {
+        @include flex-col;
+        padding-left: 0;
+
+        .socialText {
+          @include font-3xl-neuropolitical-normal;
+          margin-bottom: 0;
+          width: 100%;
+          @include flex-column-start;
+        }
+
+        .artText {
+          @include font-3xl-neuropolitical-normal;
+          width: 100%;
+          margin-bottom: 0;
+          padding-left: 0;
+          @include flex-column-start;
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: 480px) {
+    background-image: url('/assets/images/socialmedia-background-mobile.png');
+    .carouselImage {
+      bottom: 0%;
+      left: 5%;
+      width: 90%;
+      .image {
+        width: 100%;
+      }
+    }
+    .innerSocietyContainerRightSide {
+      padding-top: 4rem;
+      width: 100%;
+      position: relative;
+    }
+  }
+
+  @media only screen and (max-width: 380px) {
+    background-image: url('/assets/images/socialmedia-background-mobile.png');
+    .carouselImage {
+      bottom: 0%;
+      left: 5%;
+      width: 90%;
+      .image {
+        width: 100%;
+      }
+    }
+    .innerSocietyContainerRightSide {
+      padding-top: 3rem;
+      width: 100%;
+      position: relative;
+
+      .socialHeading {
+        @include flex-col;
+        padding-left: 0rem;
+
+        .socialText {
+          @include font-3xl-neuropolitical-normal;
+          margin-bottom: 0;
+          width: 100%;
+          @include flex-column-start;
+        }
+
+        .artText {
+          @include font-3xl-neuropolitical-normal;
+          width: 100%;
+          margin-bottom: 0;
+          padding-left: 0;
+          @include flex-column-start;
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: 320px) {
+    background-image: url('/assets/images/socialmedia-background-mobile.png');
+    .carouselImage {
+      bottom: 0%;
+      left: 0%;
+      width: 100%;
+      .image {
+        width: 100%;
+      }
+    }
+    .innerSocietyContainerRightSide {
+      padding-top: 8rem;
+      width: 100%;
+      position: relative;
+    }
+  }
+}

@@ -1,0 +1,175 @@
+@import '../../../styles/abstracts/mixins.module';
+@import '../../../styles/abstracts/variable.module';
+
+@font-face {
+  font-family: Neuropolitical;
+  src: url('/assets/fonts/Neuropolitical/Neuropolitical-Regular.ttf');
+}
+
+@font-face {
+  font-family: Avenir;
+  src: url('/assets/fonts/Avenir/Avenir-Regular.ttf');
+}
+
+.backgroundImage {
+  background-image: url('/assets/images/socialart-background.png');
+  background-size: cover;
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  .socialContainer {
+    height: 100%;
+  }
+  .socialContainerBody {
+    height: 90%;
+    @include flex-row-between;
+  }
+  .socialArt {
+    @include font-7xl-neuropolitical-normal;
+    color: transparent;
+    -webkit-text-stroke: 2px white;
+    animation: glow 1s ease-in-out infinite alternate;
+    margin-bottom: 0;
+  }
+  @-webkit-keyframes glow {
+    from {
+      text-shadow: 0 0 20px #fff, 0 0 30px, 0 0 40px, 0 0 50px, 0 0 60px,
+        0 0 70px, 0 0 10px;
+    }
+    to {
+      text-shadow: 0 0 1px #fff, 0 0 20px #ffffff, 0 0 30px, 0 0 40px, 0 0 50px,
+        0 0 60px, 0 0 100px;
+    }
+  }
+  .innerSocialContainer {
+    width: 75%;
+    @include flex-column-start;
+  }
+  .withoutLimits {
+    @include font-6xl-neuropolitical-normal;
+    color: $white;
+    margin-bottom: 0;
+  }
+  .innerSocialContainerRightSide {
+    width: 325px;
+    @include flex-column-start;
+    text-align: left;
+    .description {
+      @include font-md-avenir-medium;
+      color: $white;
+      font-weight: 100;
+      margin-bottom: 1.5rem;
+    }
+  }
+  .HighlightButton_joinSociety__Wa4y_ {
+      margin-top: 1rem;
+  }
+  .joinSocietyBtn {
+    @include font-lg-neuropolitical-normal;
+    color: $light-blue;
+    background-color: transparent;
+    border: 1px solid transparent;
+    margin-right: 1.5rem;
+  }
+
+  .mousePointer {
+    display: flex;
+    justify-content: center;
+    img {
+      cursor: pointer;
+    }
+  }
+
+  @media only screen and (max-width: 1024px) {
+    background-image: url('/assets/images/socialart-background-tablet.png');
+    .socialContainer {
+      @include flex-center-column;
+      .socialContainerBody {
+        @include flex-center-column;
+        width: 100%;
+      }
+      .innerSocialContainer {
+        width: 100%;
+
+        .socialArt {
+          margin-bottom: 0;
+          text-align: left;
+          width: 100%;
+          @include font-6xl-neuropolitical-normal;
+        }
+        .withoutLimits {
+          margin-bottom: 0;
+          text-align: left;
+          width: 100%;
+          @include font-5xl-neuropolitical-normal;
+        }
+      }
+      .innerSocialContainerRightSide {
+        width: 100%;
+        padding-top: 1.438rem;
+      }
+    }
+    .mousePointer {
+      display: none;
+    }
+  }
+  @media only screen and (max-width: 768px) {
+    background-image: url('/assets/images/socialart-background-mobile.png');
+    .socialContainer {
+      .innerSocialContainer {
+        .socialArt {
+          @include font-5xl-neuropolitical-normal;
+        }
+        .withoutLimits {
+          @include font-3xl-neuropolitical-normal;
+        }
+      }
+      .innerSocialContainerRightSide {
+        .description {
+          @include font-md-avenir-regular;
+          font-weight: 100;
+        }
+      }
+    }
+  }
+  @media only screen and (max-width: 576px) {
+    background-image: url('/assets/images/socialart-background-mobile.png');
+    .socialContainer {
+      .innerSocialContainer {
+        .socialArt {
+          @include font-4xl-neuropolitical-normal;
+        }
+        .withoutLimits {
+          @include font-3xl-neuropolitical-normal;
+        }
+      }
+      .innerSocialContainerRightSide {
+        .description {
+          @include font-base-avenir-regular;
+          font-weight: 100;
+        }
+      }
+    }
+  }
+  @media only screen and (max-width: 440px) {
+    background-image: url('/assets/images/socialart-background-mobile.png');
+    .socialContainer {
+      .innerSocialContainer {
+        .socialArt {
+          @include font-2xl-neuropolitical-normal;
+        }
+        .withoutLimits {
+          @include font-lg-neuropolitical-normal;
+        }
+      }
+      .innerSocialContainerRightSide {
+        .description {
+          @include font-sm-avenir-regular;
+          font-weight: 100;
+        }
+      }
+    }
+  }
+}
