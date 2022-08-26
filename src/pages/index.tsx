@@ -6,18 +6,15 @@ import NapaSociety from '../components/NapaSocietySection/NapaSocietySection';
 import SocialArtSection from '../components/SocialArtSection/SocialArtSection';
 import NftMarketplaceSection from '../components/NftMarketplaceSection/NftMarketplaceSection';
 import Header from '../components/Header/Header';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Loader from '../components/Loader/Loader';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import bootstrap CSS
-import { getAlreadyConnectedWeb3 } from '@/utils/wallet';
-import { toast } from 'react-toastify';
-import { CustomToastWithLink } from '@/components/CustomToast/CustomToast';
-import { SwapIcon } from '@/components/assets';
+import { useWeb3 } from '@/hooks/useWeb3';
 
 const Home: NextPage = () => {
   const [isMenu, setIsMenu] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [account, setAccount] = useState('');
+  const { account } = useWeb3();
 
   useEffect(() => {
     setTimeout(() => {
@@ -28,25 +25,6 @@ const Home: NextPage = () => {
   const openMenu = () => {
     setIsMenu(true);
   };
-
-  const getAccounts = useCallback(async () => {
-    try {
-      const accounts: any = await getAlreadyConnectedWeb3();
-      setAccount(accounts[0]);
-    } catch (error: any) {
-      toast.error(
-        CustomToastWithLink({
-          icon: SwapIcon,
-          title: error.message,
-          time: 'Now',
-        })
-      );
-    }
-  }, []);
-
-  useEffect(() => {
-    getAccounts();
-  }, []);
 
   return (
     <>

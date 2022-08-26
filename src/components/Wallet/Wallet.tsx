@@ -1,42 +1,25 @@
 import { NapaLogo, NapaLogoWhite } from '../../components/Svg';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import Vivus from 'vivus';
 import Container from '../../Layout/Container/Container';
 import type { NextPage } from 'next';
 import styles from '../../../styles/pages/Wallet.module.scss';
-import {
-  MetaMaskIcon,
-  CoinbaseIcon,
-  AuthereumIcon,
-  SwapIcon,
-} from '../../components/assets';
-import { getAlreadyConnectedWeb3, getWeb3 } from '../../utils/wallet';
-import Web3 from 'web3';
+import { SwapIcon } from '../../components/assets';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 import { CustomToastWithLink } from '../CustomToast/CustomToast';
+import { walletButtonList } from '@/constants/wallet.constants';
 
-const walletButtonList = [
-  {
-    text: 'Metamask',
-    icon: MetaMaskIcon,
-    borderColor: '#F5841F',
-  },
-  {
-    text: 'Coinbase',
-    icon: CoinbaseIcon,
-    borderColor: '#2B5EE2',
-  },
-  {
-    text: 'Authereum',
-    icon: AuthereumIcon,
-    borderColor: '#FF4C2F',
-  },
-];
+type WalletComponentProps = {
+  connectWallet: () => void;
+  account: string;
+};
 
-const WalletComponent: NextPage = () => {
+const WalletComponent: NextPage<WalletComponentProps> = ({
+  connectWallet,
+  account,
+}) => {
   const { push } = useRouter();
-  const [account, setAccount] = useState('');
 
   useEffect(() => {
     new Vivus('napa-logo', {
@@ -45,70 +28,6 @@ const WalletComponent: NextPage = () => {
 
       animTimingFunction: Vivus.EASE_OUT,
     });
-  }, []);
-
-  const connectWallet = useCallback(async () => {
-    try {
-      const web3: any = await getWeb3();
-      const walletAddress = await web3.eth.requestAccounts();
-      const accounts = await web3.eth.getAccounts();
-      const walletBalanceInWei = await web3.eth.getBalance(walletAddress[0]);
-      const walletBalanceInEth =
-        // @ts-ignore
-        Math.round(Web3.utils.fromWei(walletBalanceInWei) * 1000) / 1000;
-      toast.success(
-        CustomToastWithLink({
-          icon: SwapIcon,
-          title: 'Wallet Connected',
-          time: 'Now',
-        })
-      );
-      push('/home');
-      setAccount(walletAddress[0]);
-      console.log('address', walletAddress);
-      console.log('balance', walletBalanceInEth);
-      console.log('accounts', accounts);
-    } catch (error: any) {
-      if (
-        error.message ===
-        "Cannot read properties of undefined (reading 'request')"
-      ) {
-        toast.error(
-          CustomToastWithLink({
-            icon: SwapIcon,
-            title: 'Please install the Metamask extension',
-            time: 'Now',
-          })
-        );
-        return;
-      }
-      toast.error(
-        CustomToastWithLink({
-          icon: SwapIcon,
-          title: error.message,
-          time: 'Now',
-        })
-      );
-    }
-  }, [getWeb3]);
-
-  const getAccounts = useCallback(async () => {
-    try {
-      const accounts: any = await getAlreadyConnectedWeb3();
-      setAccount(accounts[0]);
-    } catch (error: any) {
-      toast.error(
-        CustomToastWithLink({
-          icon: SwapIcon,
-          title: error.message,
-          time: 'Now',
-        })
-      );
-    }
-  }, []);
-
-  useEffect(() => {
-    getAccounts();
   }, []);
 
   return (
