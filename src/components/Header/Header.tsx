@@ -1,12 +1,18 @@
-import { BurgerMenuIcon, WalletIconWhite } from '../../components/assets';
+import {
+  BurgerMenuIcon,
+  WalletBlueIcon,
+  WalletIconWhite,
+} from '../../components/assets';
 import Container from '../../Layout/Container/Container';
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Vivus from 'vivus';
 import Sidebar from '../Sidebar/Sidebar';
 import { NapaLogo, NapaLogoWhite } from '../Svg';
 import styles from './Header.module.scss';
+import WalletPopup from '../WalletPopup/WalletPopup';
+import { useWeb3 } from '@/hooks/useWeb3';
 
 // Please import define the logo and hamburger menu//
 // Decouple the search icon with the container //
@@ -25,6 +31,8 @@ const Header: NextPage<HeaderProps> = ({
   account,
 }) => {
   const { push } = useRouter();
+  const [popupShow, setPopupShow] = useState(false);
+  const { walletEth } = useWeb3();
   useEffect(() => {
     new Vivus('napa-logo', {
       type: 'delayed',
@@ -32,6 +40,7 @@ const Header: NextPage<HeaderProps> = ({
       animTimingFunction: Vivus.EASE_OUT,
     });
   }, []);
+
   return (
     <>
       <Container className={styles.innerContainer}>
@@ -46,17 +55,30 @@ const Header: NextPage<HeaderProps> = ({
             <NapaLogoWhite className={styles.napaLogoWhite} />
           </div>
         </div>
-        <div
-          onClick={() => {
-            if (account) {
-              push('/home');
-              return;
-            }
-            push('/wallet');
-          }}
-          role="button"
-        >
-          <img src={WalletIconWhite} className={styles.walletIcon} />
+        <div className={styles.wallet}>
+          <div
+            onClick={() => {
+              if (account) {
+                setPopupShow(true);
+                return;
+              }
+              push('/wallet');
+            }}
+            role="button"
+          >
+            <img
+              src={popupShow ? WalletBlueIcon : WalletIconWhite}
+              className={styles.walletIcon}
+            />
+          </div>
+          {popupShow && (
+            <WalletPopup
+              account={account}
+              setPopupShow={setPopupShow}
+              ethereum={walletEth}
+              crypto={false}
+            />
+          )}
         </div>
       </Container>
       {isMenu && (

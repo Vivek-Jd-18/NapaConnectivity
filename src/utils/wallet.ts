@@ -28,9 +28,7 @@ export const getAlreadyConnectedWeb3 = async () => {
       } else if (window.web3) {
         web3 = new Web3(window.web3.currentProvider);
       }
-      web3.eth.getAccounts().then(async (address: string) => {
-        resolve(address);
-      });
+      resolve(web3);
     } catch (error) {
       reject(error);
     }

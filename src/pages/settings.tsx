@@ -1,32 +1,18 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { useCallback, useEffect, useState } from 'react';
+import { useState } from 'react';
 import Header from '../components/Header/Header';
 import SettingsComponent from '../components/Settings/Settings';
 import styles from '../../styles/pages/Settings.module.scss';
-import { getAlreadyConnectedWeb3 } from '@/utils/wallet';
-import { toast } from 'react-toastify';
+import { useWeb3 } from '@/hooks/useWeb3';
 
 const Settings: NextPage = () => {
   const [isMenu, setIsMenu] = useState(false);
-  const [account, setAccount] = useState('');
+  const { account } = useWeb3();
 
   const openMenu = () => {
     setIsMenu(true);
   };
-
-  const getAccounts = useCallback(async () => {
-    try {
-      const accounts: any = await getAlreadyConnectedWeb3();
-      setAccount(accounts[0]);
-    } catch (error: any) {
-      toast.error(error);
-    }
-  }, []);
-
-  useEffect(() => {
-    getAccounts();
-  }, []);
 
   return (
     <>

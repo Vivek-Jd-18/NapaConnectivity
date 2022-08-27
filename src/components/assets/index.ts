@@ -49,3 +49,9 @@ export const ActiveMintedPostsBackground =
   '/assets/images/active-minted-posts-background.png';
 export const EarnedNapaTokensBackground =
   '/assets/images/earned-napa-tokens-background.png';
+export const SwapIcon = '/assets/images/swap-icon.svg';
+export const ArrowDownIcon = '/assets/images/arrow-down-icon.svg';
+export const EtheriumIcon = '/assets/images/Etherium.svg';
+export const EthereumBlackIcon = '/assets/images/ethereum _icon.svg';
+export const WalletBlueIcon = '/assets/images/wallet-blue-icon.svg';
+export const SmallExitIcon = '/assets/images/small-exit-icon.svg';

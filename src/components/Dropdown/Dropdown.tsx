@@ -4,7 +4,7 @@ import styles from './Dropdown.module.scss';
 
 type DropDownComponentProps = {
   options: Options[];
-  title: string;
+  title?: string;
 };
 
 const DropDownComponent: NextPage<DropDownComponentProps> = ({
@@ -31,9 +31,11 @@ const DropDownComponent: NextPage<DropDownComponentProps> = ({
           );
         })}
       </select>
-      <label className={styles.selectLabel} htmlFor="floatingSelect">
-        {title}
-      </label>
+      {title && (
+        <label className={styles.selectLabel} htmlFor="floatingSelect">
+          {title}
+        </label>
+      )}
     </div>
   );
 };
