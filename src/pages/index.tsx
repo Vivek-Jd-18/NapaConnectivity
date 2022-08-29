@@ -11,7 +11,7 @@ import Loader from '../components/Loader/Loader';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import bootstrap CSS
 import { useWeb3 } from '@/hooks/useWeb3';
 
-const Home: NextPage = () => {
+const Index: NextPage = () => {
   const [isMenu, setIsMenu] = useState(false);
   const [loading, setLoading] = useState(true);
   const { account } = useWeb3();
@@ -61,4 +61,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default Index;

@@ -8,7 +8,7 @@ import LeaderboardSection from '../components/LeaderboardSection/LeaderboardSect
 import NapaLounge from '../components/NapaLounge/NapaLounge';
 import { useWeb3 } from '@/hooks/useWeb3';
 
-const Trending: NextPage = () => {
+const Home: NextPage = () => {
   const [isMenu, setIsMenu] = useState(false);
   const { account } = useWeb3();
 
@@ -44,4 +44,4 @@ const Trending: NextPage = () => {
   );
 };
 
-export default Trending;
+export default Home;

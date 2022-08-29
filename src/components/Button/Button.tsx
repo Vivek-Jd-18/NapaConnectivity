@@ -24,13 +24,15 @@ const Button: NextPage<ButtonProps> = ({
       }`}
       onClick={onClick}
     >
-      <Image
-        src={icon}
-        width={50}
-        height={30}
-        className={styles.icon}
-        alt={`${text}`}
-      />
+      {icon && (
+        <Image
+          src={icon}
+          width={50}
+          height={30}
+          className={styles.icon}
+          alt={`${text}`}
+        />
+      )}
       <span>{text}</span>
     </button>
   );
