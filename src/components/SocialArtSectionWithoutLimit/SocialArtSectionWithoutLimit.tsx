@@ -5,6 +5,7 @@ import type { NextPage } from 'next';
 import HighlightButton from '../HighlightButton/HighlightButton';
 import Steper from '../Steper/Steper';
 import styles from './SocialArtSectionWithoutLimit.module.scss';
+import Image from 'next/image';
 // you are using the footer for the bottom nav options when you should be importing a NavBarSection.tsx  //
 
 type SocialArtSectionWithoutLimitProps = {
@@ -34,9 +35,12 @@ const SocialArtSectionWithoutLimit: NextPage<
           </div>
         </div>
         <div className={styles.mousePointer}>
-          <img
+          <Image
             src={MouseIcon}
             onClick={() => scrollToNextSection('napa-society')}
+            width={50}
+            height={50}
+            alt="mouse"
           />
         </div>
       </Container>

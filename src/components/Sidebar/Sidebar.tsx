@@ -4,6 +4,7 @@ import styles from './Sidebar.module.scss';
 import Button from '../../components/Button/Button';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 
 type SidebarProps = {
   onClick: () => void;
@@ -20,7 +21,7 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu, account }) => {
       style={isMenu ? { width: '100%' } : { width: 0 }}
     >
       <div className={styles.closebtn} onClick={onClick}>
-        <img src={ExitIcon} alt="Close" />
+        <Image width={40} height={40} src={ExitIcon} alt="Close" />
       </div>
       <div className={styles.overlayContentContainer}>
         <div className={styles.overlayContent}>

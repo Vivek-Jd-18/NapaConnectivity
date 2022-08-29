@@ -1,4 +1,5 @@
 import type { NextPage } from 'next';
+import Image from 'next/image';
 import { ActiveMintedPostIcon, NapaIcon } from '../assets';
 import styles from './ActiveMintedPostsCard.module.scss';
 
@@ -28,12 +29,17 @@ const ActiveMintedPostsCard: NextPage<ActiveMintedPostsCardProps> = () => {
     <div className={styles.cardContainer}>
       <div className={styles.innerCardContainer}>
         <div className={styles.leftSide}>
-          <img src={ActiveMintedPostIcon} />
+          <Image
+            src={ActiveMintedPostIcon}
+            width={176}
+            height={176}
+            alt="ActiveMintedPostIcon"
+          />
         </div>
         <div className={styles.rightSide}>
           <h1 className={styles.title}>Illusions of Darkness</h1>
           <div className={styles.innerRightSideContainer}>
-            <img src={NapaIcon} alt="" />
+            <Image src={NapaIcon} alt="NapaIcon" width={30} height={30} />
             <span className={styles.subtitle}>12.35 NAPA Earned</span>
           </div>
         </div>

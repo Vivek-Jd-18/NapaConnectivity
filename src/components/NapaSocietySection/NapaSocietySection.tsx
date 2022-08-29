@@ -11,6 +11,7 @@ import { useState } from 'react';
 import HighlightButton from '../HighlightButton/HighlightButton';
 import Steper from '../Steper/Steper';
 import styles from './NapaSocietySection.module.scss';
+import Image from 'next/image';
 
 type NapaSocietyProps = {
   isMenu: boolean;
@@ -55,9 +56,12 @@ const NapaSociety: NextPage<NapaSocietyProps> = ({ isMenu }) => {
               <div className={styles.sliderRightSide}>
                 <div className={styles.sliderContainer}>
                   <div onClick={handleDecrement}>
-                    <img
+                    <Image
                       src={LeftWhiteArrowIcon}
                       style={{ cursor: 'pointer' }}
+                      width={14}
+                      height={26}
+                      alt="arrow left"
                     />
                   </div>
                   <div className={styles.sliderText}>
@@ -66,9 +70,12 @@ const NapaSociety: NextPage<NapaSocietyProps> = ({ isMenu }) => {
                     <p className={styles.sliderSlashtext}>04</p>
                   </div>
                   <div onClick={handleIncrement}>
-                    <img
+                    <Image
                       src={RightWhiteArrowIcon}
                       style={{ cursor: 'pointer' }}
+                      width={14}
+                      height={26}
+                      alt="arrow right"
                     />
                   </div>
                 </div>
@@ -118,9 +125,12 @@ const NapaSociety: NextPage<NapaSocietyProps> = ({ isMenu }) => {
           </div>
         </div>
         <div className={styles.mousePointer}>
-          <img
+          <Image
             src={MouseIcon}
             onClick={() => scrollToNextSection('social-section-art')}
+            width={50}
+            height={50}
+            alt="mouse"
           />
         </div>
       </Container>

@@ -75,11 +75,11 @@ export const useWeb3 = () => {
         })
       );
     }
-  }, [getWeb3]);
+  }, [push, setAccount, setWalletEth]);
 
   useEffect(() => {
     getAccounts();
-  }, []);
+  }, [getAccounts]);
 
   return { account, connectWallet, walletEth };
 };

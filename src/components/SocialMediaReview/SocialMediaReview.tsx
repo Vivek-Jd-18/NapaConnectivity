@@ -1,4 +1,5 @@
 import type { NextPage } from 'next';
+import Image from 'next/image';
 import styles from './SocialMediaReview.module.scss';
 
 type SocialMediaReviewProps = {
@@ -21,7 +22,7 @@ const SocialMediaReview: NextPage<SocialMediaReviewProps> = ({
       </div>
       <div className={styles.userContainer}>
         <div className={styles.avatar}>
-          <img src={icon} />
+          <Image src={icon} width={40} height={40} alt="avatar" />
         </div>
         <div className={styles.userInfo}>
           <span className={styles.userName}>{username}</span>

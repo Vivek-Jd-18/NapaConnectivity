@@ -46,6 +46,7 @@
         .bitContainerLeftSide {
           .bitContainerLeftSideText {
             @include font-xs-avenir-regular;
+            padding-left: 0.75rem;
           }
         }
         .bitContainerRightSide {

@@ -85,8 +85,14 @@
           flex-direction: row;
           justify-content: flex-end;
           padding-right: 6.5rem;
-          .rightIcon {
-            margin-left: 8rem;
+          span {
+            padding-right: 8rem !important;
+            span {
+              padding-right: 0 !important;
+            }
+            &:last-child {
+              padding-right: 0 !important;
+            }
           }
         }
       }
