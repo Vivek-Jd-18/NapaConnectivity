@@ -1,4 +1,5 @@
 import type { NextPage } from 'next';
+import Image from 'next/image';
 import { NapaIcon } from '../assets';
 import styles from './EarnedNapaTokensCard.module.scss';
 
@@ -39,7 +40,7 @@ const EarnedNapaTokensCard: NextPage<ActiveMintedPostsCardProps> = () => {
     <div className={styles.cardContainer}>
       <h3 className={styles.subtitle}>Amount Locked</h3>
       <div className={styles.amountContainer}>
-        <img src={NapaIcon} alt="" />
+        <Image src={NapaIcon} alt="napa" width={60} height={60} />
         <span className={styles.amount}>12.35 </span>
         <span className={styles.napa}>NAPA</span>
       </div>

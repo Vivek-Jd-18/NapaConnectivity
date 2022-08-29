@@ -1,4 +1,5 @@
 import type { NextPage } from 'next';
+import Image from 'next/image';
 import styles from './SocialMediaButton.module.scss';
 
 type SocialMediaButtonProps = {
@@ -17,7 +18,7 @@ const SocialMediaButton: NextPage<SocialMediaButtonProps> = ({
   return (
     <div className={className}>
       <div className={styles.btnLeftSide}>
-        <img src={icon} />
+        <Image src={icon} alt={'icon'} width={30} height={30} />
         <span>{title}</span>
       </div>
       <div className={styles.connect} style={{ color: `${textColor}` }}>

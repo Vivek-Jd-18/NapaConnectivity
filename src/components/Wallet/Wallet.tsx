@@ -9,6 +9,7 @@ import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 import { CustomToastWithLink } from '../CustomToast/CustomToast';
 import { walletButtonList } from '@/constants/wallet.constants';
+import Image from 'next/image';
 
 type WalletComponentProps = {
   connectWallet: () => void;
@@ -86,7 +87,13 @@ const WalletComponent: NextPage<WalletComponentProps> = ({
                       className={styles.walletBtn}
                       style={{ borderColor: borderColor }}
                     >
-                      <img src={icon} />
+                      <Image
+                        src={icon}
+                        width={50}
+                        height={50}
+                        className={styles.btnIcon}
+                        alt={`${text}`}
+                      />
                       {text}
                     </button>
                   );

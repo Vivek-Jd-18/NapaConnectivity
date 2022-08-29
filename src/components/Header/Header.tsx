@@ -13,6 +13,7 @@ import { NapaLogo, NapaLogoWhite } from '../Svg';
 import styles from './Header.module.scss';
 import WalletPopup from '../WalletPopup/WalletPopup';
 import { useWeb3 } from '@/hooks/useWeb3';
+import Image from 'next/image';
 
 // Please import define the logo and hamburger menu//
 // Decouple the search icon with the container //
@@ -45,7 +46,13 @@ const Header: NextPage<HeaderProps> = ({
     <>
       <Container className={styles.innerContainer}>
         <div onClick={openMenu}>
-          <img src={BurgerMenuIcon} className={styles.burgerMenuIcon} />
+          <Image
+            src={BurgerMenuIcon}
+            alt="BurgerMenuIcon"
+            className={styles.burgerMenuIcon}
+            width={64}
+            height={32}
+          />
         </div>
         <div>
           <div className={styles.svgWrapper} onClick={() => push('/')}>
@@ -66,9 +73,12 @@ const Header: NextPage<HeaderProps> = ({
             }}
             role="button"
           >
-            <img
+            <Image
               src={popupShow ? WalletBlueIcon : WalletIconWhite}
               className={styles.walletIcon}
+              width={36}
+              height={36}
+              alt="wallet"
             />
           </div>
           {popupShow && (

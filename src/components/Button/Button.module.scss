@@ -14,7 +14,8 @@
   background-color: transparent;
   border: 1px solid $light-blue;
   .icon {
-    padding-right: 1.5rem;
+    padding-right: 1.5rem !important;
+    margin-top: 0.2rem !important;
   }
 }
 
@@ -30,7 +31,8 @@
   @include justify-center;
   @include align-center;
   .icon {
-    padding-right: 1.5rem;
+    padding-right: 1.5rem !important;
+    margin-top: 0.3rem !important;
   }
 }
 

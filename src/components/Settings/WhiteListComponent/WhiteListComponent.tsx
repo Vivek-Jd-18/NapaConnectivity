@@ -1,4 +1,5 @@
 import type { NextPage } from 'next';
+import Image from 'next/image';
 import { MoreIcon, NapaIcon } from '../../assets';
 import styles from './WhiteListComponent.module.scss';
 
@@ -17,7 +18,7 @@ const WhiteListComponent: NextPage<WhiteListComponentProps> = () => {
           return (
             <div key={index} className={styles.listItemContainer}>
               <span className={styles.listItem}>
-                <img src={NapaIcon} alt="" />
+                <Image src={NapaIcon} alt="NapaIcon" width={24} height={24} />
                 <span>NAPA</span>
                 <span className={styles.subtitle}>Napa</span>
               </span>
@@ -26,7 +27,7 @@ const WhiteListComponent: NextPage<WhiteListComponentProps> = () => {
                 Jhdhdj9jHiI3rTyFR5yJklDcV53qWlMn87
               </span>
               <div className={`${styles.listItem} ${styles.moreBtnContainer}`}>
-                <img src={MoreIcon} alt="" />
+                <Image src={MoreIcon} alt="MoreIcon" width={25} height={25} />
               </div>
             </div>
           );

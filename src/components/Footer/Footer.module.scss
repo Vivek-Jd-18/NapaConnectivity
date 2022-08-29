@@ -173,8 +173,8 @@
         list-style: none;
 
         .footerMobileIconItem {
-          padding: 0px 0.5rem;
-          margin-top: 0.2rem;
+          padding: 0px 0.5rem !important;
+          margin-top: 0.2rem !important;
           img {
             width: 1.2rem;
           }
@@ -385,7 +385,7 @@
         list-style: none;
 
         .footerIconItem {
-          padding: 0px 0.75rem;
+          padding: 0px 0.75rem !important;
         }
       }
     }

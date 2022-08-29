@@ -64,6 +64,8 @@
     align-items: center;
     padding: 1rem;
     .footerLeftSide {
+      display: flex;
+      align-items: center;
       .ethereum {
         color: $white;
         @include font-md-avenir-medium;
