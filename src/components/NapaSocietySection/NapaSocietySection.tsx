@@ -1,9 +1,4 @@
-import {
-  LeftWhiteArrowIcon,
-  MouseIcon,
-  // RightArrowBlueIcon,
-  RightWhiteArrowIcon,
-} from '../assets';
+import { LeftWhiteArrowIcon, MouseIcon, RightWhiteArrowIcon } from '../assets';
 import Container from '../../Layout/Container/Container';
 import { scrollToNextSection } from '../../utils/home';
 import type { NextPage } from 'next';
@@ -13,11 +8,7 @@ import Steper from '../Steper/Steper';
 import styles from './NapaSocietySection.module.scss';
 import Image from 'next/image';
 
-type NapaSocietyProps = {
-  isMenu: boolean;
-};
-
-const NapaSociety: NextPage<NapaSocietyProps> = ({ isMenu }) => {
+const NapaSociety: NextPage = () => {
   const [slider, setSlider] = useState(1);
 
   const handleIncrement = () => {
@@ -35,7 +26,7 @@ const NapaSociety: NextPage<NapaSocietyProps> = ({ isMenu }) => {
 
   return (
     <div id="napa-society" className={styles.backgroundImage}>
-      {!isMenu && <Steper steps={2} top={5} />}
+      <Steper steps={2} top={5} />
       <Container className={styles.societyContainer}>
         <div className={styles.societyContainerBody}>
           <div className={styles.innerSocietyContainer}>

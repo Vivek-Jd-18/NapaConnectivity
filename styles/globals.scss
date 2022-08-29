@@ -28,6 +28,11 @@ a {
     background: black;
   }
 }
+
+.main-container {
+  position: relative;
+  height: 100vh;
+}
 .not-found-container {
   background-color: $black;
   height: 100vh;

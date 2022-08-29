@@ -10,10 +10,6 @@ import Footer from '../Footer/Footer';
 import HighlightButton from '../HighlightButton/HighlightButton';
 //import image1 from .... (asset location in S3 bucket) ASSETS SHOULD BE IMPORTED AND DEFINED, DO NOT HARDCODE ASSETS PLEASE
 
-type NftMarketplaceSectionProps = {
-  isMenu: boolean;
-};
-
 const marketPlaceTab = [
   {
     title: 'Professional NFT Projects',
@@ -23,14 +19,12 @@ const marketPlaceTab = [
   },
 ];
 
-const NftMarketplaceSection: NextPage<NftMarketplaceSectionProps> = ({
-  isMenu,
-}) => {
+const NftMarketplaceSection: NextPage = ({}) => {
   const [tab, setTab] = useState('Professional NFT Projects');
 
   return (
     <div id="nft-marketplace" className={styles.backgroundImage}>
-      {!isMenu && <Steper steps={4} bottom={0} />}
+      <Steper steps={4} bottom={0} />
       <Container className={styles.nftContainer}>
         <h2 className={styles.nft}>NFT Marketplace</h2>
         <p className={styles.description}>
