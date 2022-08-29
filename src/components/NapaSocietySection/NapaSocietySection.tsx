@@ -25,6 +25,8 @@ const NapaSociety: NextPage<NapaSocietyProps> = ({ isMenu }) => {
     }
     setSlider(slider + 1);
   };
+
+  
   const handleDecrement = () => {
     if (slider < 2) {
       return;

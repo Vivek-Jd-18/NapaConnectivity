@@ -79,7 +79,34 @@
     padding-right: 0.5rem;
     color: $white;
     margin-bottom: 0;
+    -webkit-text-stroke: 1px #fff;
+    font-size: 2.8rem;
+    font-family: Neuropolitical;
+    position: relative;
+    bottom: -27px;
+    color: transparent;
   }
+  .sliderArrows{
+    display: flex;
+    width: 60px;
+    justify-content: space-between;
+    margin-top: 54px;
+  }
+  .sliderArrows div img{
+    opacity: 0.7;
+  }
+  .sliderArrows div:hover img{
+    opacity: 1;
+  }
+ 
+  .slideImages {
+    margin-bottom: 2rem;
+    img {
+      width: 470px;
+      height: 344px;
+      object-fit: cover;
+  }
+}
   .sliderContainer {
     padding-bottom: 3rem;
     @include flex-row-between;

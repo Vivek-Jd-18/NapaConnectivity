@@ -13,7 +13,6 @@ type SidebarProps = {
 
 const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu, account }) => {
   const { push, pathname } = useRouter();
-
   return (
     <div
       className={styles.overlay}

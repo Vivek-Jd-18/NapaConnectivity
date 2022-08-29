@@ -64,6 +64,11 @@
   }
 }
 
+
+.Sidebar_buttonsContainer___jXMk button {
+  max-width: 570px;
+}
+
 @media screen and (max-height: 450px) {
   .overlay {
     a {
@@ -105,7 +110,9 @@
         padding-left: 1rem;
         padding-right: 1rem;
         margin-bottom: 2.5rem;
-        padding-top: 15rem;
+
+        padding-top: 11rem;
+
       }
     }
 
@@ -336,7 +343,9 @@
         padding-left: 5rem;
         padding-right: 5rem;
         margin-bottom: 2rem;
+
         padding-top: 11rem;
+
       }
     }
 
@@ -357,6 +366,7 @@
         padding-left: 5rem;
         padding-right: 5rem;
         top: 15%;
+
         .active {
           padding-left: 9rem;
           color: $white;
@@ -373,8 +383,11 @@
             left: 4rem;
           }
         }
+       
+
         a {
-          @include font-5xl-neuropolitical-normal;
+          @include font-4xl-neuropolitical-normal;
+
           &::before {
             margin-top: 3.5rem;
             height: 0.25rem;
@@ -388,9 +401,11 @@
           }
         }
       }
+
       .buttonsContainer {
         padding-top: 13rem;
       }
+
     }
   }
 }
@@ -445,7 +460,9 @@
         padding-left: 8rem;
         padding-right: 8rem;
         margin-bottom: 5rem;
-        padding-top: 18rem;
+
+        padding-top: 11rem;
+
       }
     }
     .closebtn {
@@ -488,7 +505,10 @@
         padding-left: 13rem;
         padding-right: 13rem;
         margin-bottom: 5rem;
-        padding-top: 16rem;
+
+      
+        padding-top: 11rem;
+
       }
     }
     .closebtn {

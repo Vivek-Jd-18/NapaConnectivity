@@ -30,7 +30,6 @@ const Footer: NextPage<FooterProps> = ({ footerIconShow }) => {
           <div className={styles.footerContainer}>
             <div onClick={() => push('/')} className={styles.logo}>
               <img src={FooterLogoIcon} />
-            </div>
             <div className={styles.footerItemContainer}>
               <ul
                 className={`${styles.footerListItem} ${styles.activeFooterListItem}`}
@@ -101,6 +100,7 @@ const Footer: NextPage<FooterProps> = ({ footerIconShow }) => {
                 <li>Help Center</li>
               </Link>
             </ul>
+          </div>
           </div>
         </Container>
       </div>

@@ -202,12 +202,16 @@
   }
   @media (min-width: 1536px) {
     .nft {
+
       padding-top: 4rem;
       @include font-6xl-neuropolitical-normal;
     }
+   
     .description {
-      padding-top: 2rem;
+      padding-top: 1rem;
       @include font-md-avenir-regular;
+      max-width: 530px;
+
     }
     .tabsContainer {
       padding-top: 2rem;

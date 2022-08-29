@@ -77,14 +77,28 @@
     position: absolute;
     bottom: 0.5rem;
     .image {
-      width: 95%;
+      width: 90%;
       object-fit: cover;
     }
+    :after {
+      background: linear-gradient(180deg, rgba(0, 32, 47, 0) 0%, rgb(0 19 47 / 15%) 100%);
+      position: absolute;
+      content: "";
+      width: 66%;
+      height: 500px;
+      z-index: -1;
+      transform: translate(-50%, 0);
+      left: 50%;
+      bottom: 0;
+  }
+
     .slideBtn {
       position: absolute;
       bottom: 0;
       width: 100%;
       padding-bottom: 2.5rem;
+      z-index: 1;
+
       span {
         margin-right: 0.5rem;
       }
@@ -158,6 +172,15 @@
       z-index: 2;
     }
   }
+
+  @media only screen and (max-width: 1400px) {
+  .carouselImage {
+    .image {
+      width: 100%;
+    }
+  }
+}
+
   @media only screen and (max-width: 1024px) {
     .societyContainer {
       @include flex-center-column;
