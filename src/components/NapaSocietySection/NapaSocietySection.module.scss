@@ -27,7 +27,7 @@
     @include flex-row-between;
   }
   .headingNapa {
-    @include font-9xl-neuropolitical-normal;
+    @include font-8xl-neuropolitical-normal;
     color: transparent;
     -webkit-text-stroke: 2px $white;
     animation: glow 1s ease-in-out infinite alternate;
@@ -51,6 +51,7 @@
     padding-top: 0.7rem;
     color: $white;
     @include font-base-avenir-regular;
+    max-width: 49rem;
   }
   .headingSlider {
     @include font-9xl-neuropolitical-normal;
@@ -66,7 +67,7 @@
     @include align-center;
   }
   .sliderCounterText {
-    @include font-lg-avenir-medium;
+    @include font-8xl-neuropolitical-normal;
     padding-left: 1rem;
     padding-right: 0.5rem;
     color: $white;
@@ -74,7 +75,7 @@
     margin-bottom: 0;
   }
   .sliderSlashtext {
-    @include font-sm-avenir-medium;
+
     padding-left: 0.5rem;
     padding-right: 0.5rem;
     color: $white;
@@ -105,6 +106,7 @@
       width: 470px;
       height: 344px;
       object-fit: cover;
+      object-position: -610px center;
   }
 }
   .sliderContainer {
@@ -112,11 +114,11 @@
     @include flex-row-between;
   }
   .innerSocietyContainer {
-    width: 75%;
+    width: 70%;
     @include flex-column-start;
   }
   .headingSociety {
-    @include font-9xl-neuropolitical-normal;
+    @include font-8xl-neuropolitical-normal;
     line-height: 1rem;
     color: $white;
     margin-bottom: 0.5em;
@@ -129,7 +131,7 @@
   }
 
   .innerSocietyContainerRightSide {
-    width: 25%;
+    width: 45%;
     text-align: left;
     .description {
       @include font-md-avenir-regular;
@@ -154,6 +156,84 @@
       cursor: pointer;
     }
   }
+  .trend_row{
+    ul{
+      display: inline-block;
+      list-style: none;
+      li{
+        width:100%;
+        float: left;
+        margin-bottom: 15px;
+        img{
+          width: 60px;
+          height: 60px;
+          float: left;
+          margin-right: 20px;
+        }
+        p{
+          font-size: 12px;
+          color:#fff;
+          margin-bottom: 5px;
+        }
+        h4{
+          @include font-lg-neuropolitical-normal;
+          font-size: 18px;
+          color:#fff;
+          line-height: 1em;
+        }
+      }
+    }
+  }
+  .leaders_row{
+    ul{
+      display: inline-block;
+      list-style: none;
+      li{
+        width:100%;
+        float: left;
+        margin-bottom: 15px;
+        img{
+          width: 60px;
+          height: 60px;
+          float: left;
+          margin-right: 20px;
+        }
+        p{
+          @include font-sm-neuropolitical-normal;
+          font-size: 24px;
+          -webkit-text-stroke: 1px #fff;
+          margin-bottom: 0px;
+          color:transparent;
+          strong{
+            margin-left: 40px;
+            font-weight: normal;
+              i {
+                  color: #16E6EF;
+                  -webkit-text-stroke: 0;
+                  font-style: normal;
+                  font-size: 24px;
+              }
+              u {
+                font-size: 12px;
+                -webkit-text-stroke: 0;
+                color: #fff;
+                text-decoration: none;
+                font-weight: 100;
+                font-family: Avenir;
+            }
+          }
+
+        }
+        h4{
+          @include font-lg-neuropolitical-normal;
+          font-size: 18px;
+          color:#fff;
+          line-height: 1em;
+        }
+      }
+    }
+  }
+  
   @media only screen and (max-width: 1024px) {
     background-image: url('/assets/images/napsociety-background-tablet.png');
     .societyContainer {
@@ -165,13 +245,13 @@
 
         .headingNapa {
           margin-bottom: 0;
-          @include font-8xl-neuropolitical-normal;
+          @include font-5xl-neuropolitical-normal;
           text-align: left;
           width: 100%;
         }
         .headingSociety {
           margin-bottom: 0;
-          @include font-8xl-neuropolitical-normal;
+          @include font-5xl-neuropolitical-normal;
           text-align: left;
           width: 100%;
         }
@@ -215,14 +295,14 @@
       .societyContainerBody {
         .headingNapa {
           margin-bottom: 0;
-          @include font-7xl-neuropolitical-normal;
+          @include font-4xl-neuropolitical-normal;
           text-align: left;
           width: 100%;
         }
         .innerSocietyContainerRightSide {
           .slider {
             .headingSlider {
-              @include font-7xl-neuropolitical-normal;
+              @include font-5xl-neuropolitical-normal;
             }
             .sliderRightSide {
               padding-top: 0.5rem;
@@ -250,7 +330,7 @@
         }
         .headingSociety {
           margin-bottom: 0;
-          @include font-7xl-neuropolitical-normal;
+          @include font-4xl-neuropolitical-normal;
           text-align: left;
           width: 100%;
         }
@@ -260,16 +340,21 @@
         }
       }
     }
+    .trend_row,.leaders_row{ 
+      li{
+        width: 50%;
+      }
+    }
   }
   @media only screen and (max-width: 576px) {
     background-image: url(('/assets/images/napasociety-background-mobile.png'));
     .societyContainer {
       .societyContainerBody {
         .headingNapa {
-          @include font-5xl-neuropolitical-normal;
+          @include font-3xl-neuropolitical-normal;
         }
         .headingSociety {
-          @include font-5xl-neuropolitical-normal;
+          @include font-3xl-neuropolitical-normal;
         }
         .innerSocietyContainerRightSide {
           .slider {

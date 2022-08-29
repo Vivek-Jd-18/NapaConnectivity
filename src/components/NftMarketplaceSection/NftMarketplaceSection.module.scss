@@ -79,7 +79,7 @@
 
   @media (min-width: 280px) {
     .nftContainer {
-      padding-top: 4rem;
+      padding-top: 1rem;
       .projectCardContainer {
         padding-top: 1rem;
       }
@@ -93,7 +93,7 @@
 
   @media (min-width: 320px) {
     .nftContainer {
-      padding-top: 4.5rem;
+      padding-top: 1rem;
     }
     .nft {
       @include font-lg-neuropolitical-normal;
@@ -102,7 +102,7 @@
 
   @media (min-width: 400px) {
     .nftContainer {
-      padding-top: 6rem;
+      padding-top: 1rem;
     }
     .nft {
       @include font-lg-neuropolitical-normal;
@@ -111,7 +111,7 @@
 
   @media (min-width: 520px) {
     .nftContainer {
-      padding-top: 4rem;
+      padding-top: 1rem;
     }
     .nft {
       @include font-xl-neuropolitical-normal;
@@ -126,7 +126,7 @@
       @include font-3xl-neuropolitical-normal;
     }
     .nftContainer {
-      padding-top: 4rem;
+      padding-top: 1rem;
     }
     .description {
       padding-top: 1rem;
@@ -187,7 +187,7 @@
       padding-top: 1rem;
     }
     .nftContainer {
-      padding-top: 4rem;
+      padding-top: 1rem;
       .projectCardContainer {
         padding-top: 1.5rem;
       }

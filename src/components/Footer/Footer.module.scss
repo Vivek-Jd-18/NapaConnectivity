@@ -15,6 +15,10 @@
     @include align-center;
     .logo {
       cursor: pointer;
+      width: 100%;
+      display: flex;
+      max-width: 100%;
+      justify-content: space-between;
     }
 
     padding: 0.5rem 0;
@@ -57,6 +61,7 @@
         }
       }
     }
+    
     .footerListIconItem {
       @include flex-start;
       padding: 0;
@@ -92,6 +97,7 @@
     }
   }
 }
+
 .footerListMobile {
   .footerListItem {
     display: flex;
@@ -123,6 +129,18 @@
     }
   }
 }
+
+
+.Footer_logo__EaWBg > div {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+   img {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}
+
 .footerBottomContainer {
   flex-direction: column-reverse;
   justify-content: flex-start;
@@ -445,6 +463,7 @@
     .footerContainer {
       .footerIconsContainer {
         padding-top: 0;
+        align-items: center
       }
       .footerItemContainer {
         display: block;
@@ -481,6 +500,7 @@
     .footerContainer {
       img {
         width: 10rem;
+        margin-bottom: 15px;
       }
       .activeFooterListItem {
         @include flex-row;

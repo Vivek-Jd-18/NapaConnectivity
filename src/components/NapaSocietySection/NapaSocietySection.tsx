@@ -43,35 +43,38 @@ const NapaSociety: NextPage<NapaSocietyProps> = ({ isMenu }) => {
             <h1 className={styles.headingNapa}>NAPA</h1>
             <h1 className={styles.headingSociety}>Society</h1>
             <p className={styles.societyLeftDescription}>
-              <strong>
+              
                 Join our society and turn your social media into social art,
                 mint your social art in our social media app into NFTs and earn
                 NAPA tokens and buy and sell NFTs in the largest marketplace in
                 the world!
-              </strong>
+             
             </p>
           </div>
           <div className={styles.innerSocietyContainerRightSide}>
             <div className={styles.slider}>
-              <h1 className={styles.headingSlider}>0{slider}</h1>
+              {/* <h1 className={styles.headingSlider}>0{slider}</h1> */}
               <div className={styles.sliderRightSide}>
                 <div className={styles.sliderContainer}>
+                  
+                  <div className={styles.sliderText}>
+                    <p className={styles.sliderCounterText}>0{slider}</p>
+                    <p className={styles.sliderSlashtext}>/</p>
+                    <p className={styles.sliderSlashtext}>04</p>
+                  </div>
+                  <div className={styles.sliderArrows}>
                   <div onClick={handleDecrement}>
                     <img
                       src={LeftWhiteArrowIcon}
                       style={{ cursor: 'pointer' }}
                     />
                   </div>
-                  <div className={styles.sliderText}>
-                    <p className={styles.sliderCounterText}>0{slider}</p>
-                    <p className={styles.sliderSlashtext}>/</p>
-                    <p className={styles.sliderSlashtext}>04</p>
-                  </div>
                   <div onClick={handleIncrement}>
                     <img
                       src={RightWhiteArrowIcon}
                       style={{ cursor: 'pointer' }}
                     />
+                  </div>
                   </div>
                 </div>
                 {slider === 1 ? (
@@ -93,28 +96,126 @@ const NapaSociety: NextPage<NapaSocietyProps> = ({ isMenu }) => {
                 <h6 className={styles.description}>
                   {/* <strong>Checkout the NAPA Lounge!</strong> */}
                 </h6>
-                <HighlightButton title="Visit Lounge" />
+                <div className={styles.slideImages}><img src='assets/images/image-lounge.jpg'></img></div>
+                <HighlightButton title="Visit" />
               </div>
             ) : slider === 2 ? (
               <div>
                 <h6 className={styles.description}>
                   <strong>{/* // Insert Mini Trending Window // */}</strong>
                 </h6>
-                <HighlightButton title="Get Updates" />
+                <div className={styles.trend_row}>
+                  <ul>
+                    <li>
+                      <img src='assets/images/trending1.jpg'></img>
+                      <div>
+                        <p>4 Aug 2022</p>
+                        <h4>Made last it seen went no just when of by.</h4>
+                      </div>
+                    </li>
+                    <li>
+                      <img src='assets/images/trending2.jpg'></img>
+                      <div>
+                        <p>1 Aug 2022</p>
+                        <h4>Weather however luckily enquire so certain do.</h4>
+                      </div>
+                    </li>
+                    <li>
+                      <img src='assets/images/trending3.jpg'></img>
+                      <div>
+                        <p>28 Jul 2022</p>
+                        <h4>Dearest affixed enquire on explain opinion he.</h4>
+                      </div>
+                    </li>
+                    <li>
+                      <img src='assets/images/trending4.jpg'></img>
+                      <div>
+                        <p>14 Jul 2022</p>
+                        <h4>Normally, an artist would add his social media links.</h4>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <HighlightButton title="View More" />
               </div>
             ) : slider === 3 ? (
               <div>
                 <h6 className={styles.description}>
                   <strong>{/* // Insert Mini Leaders List// */}</strong>
                 </h6>
-                <HighlightButton title="Whos Hot" />
+                <div className={styles.leaders_row}>
+                  <ul>
+                    <li>
+                      <img src='assets/images/leaders1.jpg'></img>
+                      <div>
+                        <p>01 <strong><i>8716</i>  <u>likes</u></strong></p>
+                        <h4>Dwight Holland</h4>
+                      </div>
+                    </li>
+                    <li>
+                      <img src='assets/images/leaders2.jpg'></img>
+                      <div>
+                        <p>02 <strong><i>5369</i>  <u>likes</u></strong> </p>
+                        <h4>Catherine Patton</h4>
+                      </div>
+                    </li>
+                    <li>
+                      <img src='assets/images/leaders3.jpg'></img>
+                      <div>
+                        <p>03 <strong><i>4672</i>  <u>likes</u></strong></p>
+                        <h4>Marta Thornton</h4>
+                      </div>
+                    </li>
+                    <li>
+                      <img src='assets/images/leaders4.jpg'></img>
+                      <div>
+                        <p>04 <strong><i>4398</i>  <u>likes</u></strong></p>
+                        <h4>Madeline Keller</h4>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <HighlightButton title="All Leaderboards" />
               </div>
             ) : (
               <div>
                 <h6 className={styles.description}>
                   <strong>{/* // Display Next Event Image // */}</strong>
                 </h6>
-                <HighlightButton title="New Events" />
+                <div className={styles.trend_row}>
+                  <ul>
+                    <li>
+                      <img src='assets/images/events4.jpg'></img>
+                      <div>
+                        <p>Aug 29, 17:00</p>
+                        <h4>Annual Meeting of the NTF Community</h4>
+                      </div>
+                    </li>
+                    <li>
+                      <img src='assets/images/events3.jpg'></img>
+                      <div>
+                        <p>Aug 22, 12:30</p>
+                        <h4>A Lecture on NFT from Around the World</h4>
+                      </div>
+                    </li>
+                    <li>
+                      <img src='assets/images/events2.jpg'></img>
+                      <div>
+                        <p>Aug 3, 14:00</p>
+                        <h4>Now indulgence dissimilar for his thoroughly has</h4>
+                      </div>
+                    </li>
+                   
+                    <li>
+                      <img src='assets/images/events1.jpg'></img>
+                      <div>
+                        <p>Aug 13, 21:30</p>
+                        <h4>Change wholly say why eldest period</h4>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <HighlightButton title="More Events" />
               </div>
             )}
           </div>
