@@ -99,7 +99,10 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu, account }) => {
                 text="My Profile"
                 outlined
                 icon={ProfileIcon}
-                onClick={() => push('/settings')}
+                onClick={() => {
+                  push('/settings');
+                  onClick();
+                }}
               />
               <Button text="Wallet" icon={WalletIcon} />
             </>
@@ -109,7 +112,10 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu, account }) => {
                 text="Connect Wallet"
                 icon={WalletIcon}
                 customStyle={styles.btnConnectWallet}
-                onClick={() => push('/wallet')}
+                onClick={() => {
+                  push('/wallet');
+                  onClick();
+                }}
               />
             </>
           )}
