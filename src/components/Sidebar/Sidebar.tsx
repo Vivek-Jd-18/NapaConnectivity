@@ -2,7 +2,6 @@ import type { NextPage } from 'next';
 import { ExitIcon, ProfileIcon, WalletIcon } from '../assets';
 import styles from './Sidebar.module.scss';
 import Button from '../../components/Button/Button';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 
@@ -25,37 +24,73 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu, account }) => {
       </div>
       <div className={styles.overlayContentContainer}>
         <div className={styles.overlayContent}>
-          <Link href="/home">
+          <div
+            className={styles.link}
+            onClick={() => {
+              push('/home');
+              onClick();
+            }}
+          >
             <a className={`${pathname === '/home' && styles.active}`}>
               NAPA Society
             </a>
-          </Link>
-          <Link href="/socialart">
+          </div>
+          <div
+            className={styles.link}
+            onClick={() => {
+              push('/socialart');
+              onClick();
+            }}
+          >
             <a className={`${pathname === '/socialart' && styles.active}`}>
               Social Art
             </a>
-          </Link>
+          </div>
           {/* <link href="/napaearn">NAPA Earn</link> */}
-          <Link href="/nftmarketplace">
+          <div
+            className={styles.link}
+            onClick={() => {
+              push('/nftmarketplace');
+              onClick();
+            }}
+          >
             <a className={`${pathname === '/nftmarketplace' && styles.active}`}>
               NFT Marketplace
             </a>
-          </Link>
-          <Link href="/napaearn">
+          </div>
+          <div
+            className={styles.link}
+            onClick={() => {
+              push('/napaearn');
+              onClick();
+            }}
+          >
             <a className={`${pathname === '/napaearn' && styles.active}`}>
               NAPA Earn
             </a>
-          </Link>
-          <Link href="/launchpad">
+          </div>
+          <div
+            className={styles.link}
+            onClick={() => {
+              push('/launchpad');
+              onClick();
+            }}
+          >
             <a className={`${pathname === '/launchpad' && styles.active}`}>
               Launchpad
             </a>
-          </Link>
-          <Link href="/leaderboard">
+          </div>
+          <div
+            className={styles.link}
+            onClick={() => {
+              push('/leaderboard');
+              onClick();
+            }}
+          >
             <a className={`${pathname === '/leaderboard' && styles.active}`}>
               Leaderboard
             </a>
-          </Link>
+          </div>
         </div>
         <div className={styles.buttonsContainer}>
           {account ? (

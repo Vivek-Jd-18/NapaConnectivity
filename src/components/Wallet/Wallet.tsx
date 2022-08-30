@@ -4,12 +4,13 @@ import Vivus from 'vivus';
 import Container from '../../Layout/Container/Container';
 import type { NextPage } from 'next';
 import styles from '../../../styles/pages/Wallet.module.scss';
-import { SwapIcon } from '../../components/assets';
+import { WalletConnectedIcon } from '../../components/assets';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 import { CustomToastWithLink } from '../CustomToast/CustomToast';
 import { walletButtonList } from '@/constants/wallet.constants';
 import Image from 'next/image';
+import { ToastDescription, ToastTitle } from '@/typing/toast';
 
 type WalletComponentProps = {
   connectWallet: () => void;
@@ -73,8 +74,10 @@ const WalletComponent: NextPage<WalletComponentProps> = ({
                         if (index === 0 && account) {
                           toast.error(
                             CustomToastWithLink({
-                              icon: SwapIcon,
-                              title: 'Wallet is Already Connected',
+                              icon: WalletConnectedIcon,
+                              title: ToastTitle.WALLET_IS_ALREADY_CONNECTED,
+                              description:
+                                ToastDescription.WALLET_IS_ALREADY_CONNECTED,
                               time: 'Now',
                             })
                           );

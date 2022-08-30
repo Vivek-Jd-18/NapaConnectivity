@@ -5,27 +5,9 @@ import styles from '../../styles/pages/Home.module.scss';
 import NapaSociety from '../components/NapaSocietySection/NapaSocietySection';
 import SocialArtSection from '../components/SocialArtSection/SocialArtSection';
 import NftMarketplaceSection from '../components/NftMarketplaceSection/NftMarketplaceSection';
-import Header from '../components/Header/Header';
-import { useEffect, useState } from 'react';
-import Loader from '../components/Loader/Loader';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import bootstrap CSS
-import { useWeb3 } from '@/hooks/useWeb3';
 
-const Home: NextPage = () => {
-  const [isMenu, setIsMenu] = useState(false);
-  const [loading, setLoading] = useState(true);
-  const { account } = useWeb3();
-
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 3000);
-  }, []);
-
-  const openMenu = () => {
-    setIsMenu(true);
-  };
-
+const Index: NextPage = () => {
   return (
     <>
       <Head>
@@ -33,32 +15,22 @@ const Home: NextPage = () => {
         <meta name="description" content="NAPA Staging Environment" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {loading ? (
-        <Loader />
-      ) : (
-        <section className={styles.container} id="container">
-          <Header
-            openMenu={openMenu}
-            setIsMenu={setIsMenu}
-            isMenu={isMenu}
-            account={account}
-          />
-          <div className={styles.child}>
-            <SocialArtSectionWithoutLimit isMenu={isMenu} />
-          </div>
-          <div className={styles.child}>
-            <NapaSociety isMenu={isMenu} />
-          </div>
-          <div className={styles.child}>
-            <SocialArtSection isMenu={isMenu} />
-          </div>
-          <div className={styles.child}>
-            <NftMarketplaceSection isMenu={isMenu} />
-          </div>
-        </section>
-      )}
+      <section className={styles.container} id="container">
+        <div className={styles.child}>
+          <SocialArtSectionWithoutLimit />
+        </div>
+        <div className={styles.child}>
+          <NapaSociety />
+        </div>
+        <div className={styles.child}>
+          <SocialArtSection />
+        </div>
+        <div className={styles.child}>
+          <NftMarketplaceSection />
+        </div>
+      </section>
     </>
   );
 };
 
-export default Home;
+export default Index;

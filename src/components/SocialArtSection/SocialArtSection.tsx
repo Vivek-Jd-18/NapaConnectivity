@@ -10,11 +10,7 @@ import styles from './SocialArtSection.module.scss';
 import Image from 'next/image';
 //import image1 from .... (asset location in S3 bucket) ASSETS SHOULD BE IMPORTED AND DEFINED, DO NOT HARDCODE ASSETS PLEASE
 
-type SocialArtSectionProps = {
-  isMenu: boolean;
-};
-
-const SocialArtSection: NextPage<SocialArtSectionProps> = ({ isMenu }) => {
+const SocialArtSection: NextPage = () => {
   const [slide, setSlide] = useState(1);
 
   const handleNextSlide = (slide: number) => {
@@ -23,7 +19,7 @@ const SocialArtSection: NextPage<SocialArtSectionProps> = ({ isMenu }) => {
 
   return (
     <div id="social-section-art" className={styles.backgroundImage}>
-      {!isMenu && <Steper steps={3} top={12} />}
+      <Steper steps={3} top={12} />
       <Container className={styles.socialArtContainer}>
         <div className={styles.socialArtContainerBody}>
           <div className={styles.carouselImage}>

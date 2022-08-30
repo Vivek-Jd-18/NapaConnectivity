@@ -12,6 +12,13 @@
     position: relative;
   }
 
+  .search {
+    padding-right: 3rem;
+    img {
+      cursor: pointer;
+    }
+  }
+
   .burgerMenuIcon {
     cursor: pointer;
   }
