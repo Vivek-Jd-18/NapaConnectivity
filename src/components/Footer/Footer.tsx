@@ -31,7 +31,7 @@ const Footer: NextPage<FooterProps> = ({ footerIconShow }) => {
       <div className={styles.container}>
         <Container>
           <div className={styles.footerContainer}>
-            <div className={styles.footerInnerRow}>>
+  
             <div onClick={() => push('/')} className={styles.logo}>
               <img src={FooterLogoIcon} alt="FooterLogoIcon" />
             </div>
@@ -56,7 +56,7 @@ const Footer: NextPage<FooterProps> = ({ footerIconShow }) => {
                 </Link>
               </ul>
             </div>
-            </div>
+           
             <ul className={styles.footerMobileIconsContainer}>
               <li className={styles.footerMobileIconItem}>
                 <Image
