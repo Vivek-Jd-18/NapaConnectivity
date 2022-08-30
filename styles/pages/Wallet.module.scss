@@ -54,10 +54,12 @@
         border: 2px solid #f5841f;
         background: transparent;
         height: 4.5rem;
+        @include flex-align-center;
+        justify-content: center;
         color: $white;
         @include font-md-neuropolitical-normal;
-        img {
-          padding-right: 1rem;
+        .btnIcon {
+          padding-right: 1.5rem !important;
         }
       }
     }

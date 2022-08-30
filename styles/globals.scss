@@ -1,4 +1,7 @@
 @import './theme/default';
+@import './abstracts/mixins.module';
+@import './abstracts/variable.module';
+
 html,
 body {
   padding: 0;
@@ -57,6 +60,45 @@ div#nft-marketplace .slick-current {
   body {
     color: white;
     background: black;
+  }
+}
+
+.main-container {
+  position: relative;
+  height: 100vh;
+}
+.not-found-container {
+  background-color: $black;
+  height: 100vh;
+  @include flex-column-center;
+  @include align-center;
+  .not-found-title {
+    @include font-9xl-neuropolitical-normal;
+    -webkit-text-stroke: 2.5px $light-blue;
+    animation: glow 1s ease-in-out infinite alternate;
+    color: transparent;
+  }
+  .not-fount-description {
+    color: $white;
+    @include font-lg-avenir-medium;
+  }
+  .not-found-btn {
+    margin-top: 2rem;
+    padding: 1rem 9rem;
+    background-color: transparent;
+    color: $light-blue;
+    @include font-sm-neuropolitical-normal;
+    border: 1px solid $light-blue;
+  }
+  @-webkit-keyframes glow {
+    from {
+      text-shadow: 0 0 20px $light-blue, 0 0 30px, 0 0 40px, 0 0 50px, 0 0 60px,
+        0 0 70px, 0 0 10px;
+    }
+    to {
+      text-shadow: 0 0 1px $light-blue, 0 0 20px $light-blue, 0 0 30px, 0 0 40px,
+        0 0 50px, 0 0 60px, 0 0 100px;
+    }
   }
 }
 

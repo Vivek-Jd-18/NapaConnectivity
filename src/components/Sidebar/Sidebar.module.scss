@@ -12,11 +12,14 @@
   background-color: rgba(16, 35, 36, 0.4);
   backdrop-filter: blur(50px);
   overflow-x: hidden;
-
+  z-index: 2;
   transition: 0.3s;
   .overlayContentContainer {
     height: 100%;
     .overlayContent {
+      .link {
+        cursor: pointer;
+      }
       position: relative;
       width: 100%;
       text-align: left;

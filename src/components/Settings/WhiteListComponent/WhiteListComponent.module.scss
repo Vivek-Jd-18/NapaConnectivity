@@ -32,6 +32,9 @@
         img {
           margin-right: 1rem;
         }
+        span {
+          padding-left: 1rem;
+        }
         .subtitle {
           margin-left: 1rem;
           color: $gray;
@@ -39,6 +42,7 @@
       }
       .moreBtnContainer {
         justify-content: flex-end;
+        padding-right: 1rem;
       }
     }
   }

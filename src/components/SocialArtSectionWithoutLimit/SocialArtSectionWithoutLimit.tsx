@@ -5,21 +5,16 @@ import type { NextPage } from 'next';
 import HighlightButton from '../HighlightButton/HighlightButton';
 import Steper from '../Steper/Steper';
 import styles from './SocialArtSectionWithoutLimit.module.scss';
+import Image from 'next/image';
 // you are using the footer for the bottom nav options when you should be importing a NavBarSection.tsx  //
 
-type SocialArtSectionWithoutLimitProps = {
-  isMenu: boolean;
-};
-
-const SocialArtSectionWithoutLimit: NextPage<
-  SocialArtSectionWithoutLimitProps
-> = ({ isMenu }) => {
+const SocialArtSectionWithoutLimit: NextPage = () => {
   return (
     <div
       className={styles.backgroundImage}
       id="social-art-section-without-limit"
     >
-      {!isMenu && <Steper steps={1} top={0} />}
+      <Steper steps={1} top={0} />
       <Container className={styles.socialContainer}>
         <div className={styles.socialContainerBody}>
           <div className={styles.innerSocialContainer}>
@@ -39,9 +34,12 @@ const SocialArtSectionWithoutLimit: NextPage<
           </div>
         </div>
         <div className={styles.mousePointer}>
-          <img
+          <Image
             src={MouseIcon}
             onClick={() => scrollToNextSection('napa-society')}
+            width={50}
+            height={50}
+            alt="mouse"
           />
         </div>
       </Container>

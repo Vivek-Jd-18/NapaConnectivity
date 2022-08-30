@@ -1,5 +1,6 @@
-import { SwapIcon } from '@/components/assets';
+import { ErrorIcon, WalletConnectedIcon } from '@/components/assets';
 import { CustomToastWithLink } from '@/components/CustomToast/CustomToast';
+import { ToastDescription, ToastTitle } from '@/typing/toast';
 import { getAlreadyConnectedWeb3, getWeb3 } from '@/utils/wallet';
 import { useRouter } from 'next/router';
 import { useCallback, useEffect, useState } from 'react';
@@ -26,8 +27,9 @@ export const useWeb3 = () => {
     } catch (error: any) {
       toast.error(
         CustomToastWithLink({
-          icon: SwapIcon,
-          title: error.message,
+          icon: ErrorIcon,
+          title: ToastTitle.ERROR,
+          description: ToastDescription.ERROR,
           time: 'Now',
         })
       );
@@ -45,8 +47,9 @@ export const useWeb3 = () => {
         Math.round(Web3.utils.fromWei(walletBalanceInWei) * 1000) / 1000;
       toast.success(
         CustomToastWithLink({
-          icon: SwapIcon,
-          title: 'Wallet Connected',
+          icon: WalletConnectedIcon,
+          title: ToastTitle.WALLET_CONNECTED,
+          description: ToastDescription.WALLET_CONNECTED,
           time: 'Now',
         })
       );
@@ -54,32 +57,20 @@ export const useWeb3 = () => {
       setAccount(walletAddress[0]);
       setWalletEth(walletBalanceInEth);
     } catch (error: any) {
-      if (
-        error.message ===
-        "Cannot read properties of undefined (reading 'request')"
-      ) {
-        toast.error(
-          CustomToastWithLink({
-            icon: SwapIcon,
-            title: 'Please install the Metamask extension',
-            time: 'Now',
-          })
-        );
-        return;
-      }
       toast.error(
         CustomToastWithLink({
-          icon: SwapIcon,
-          title: error.message,
+          icon: ErrorIcon,
+          title: ToastTitle.ERROR,
+          description: ToastDescription.ERROR,
           time: 'Now',
         })
       );
     }
-  }, [getWeb3]);
+  }, [push, setAccount, setWalletEth]);
 
   useEffect(() => {
     getAccounts();
-  }, []);
+  }, [getAccounts]);
 
   return { account, connectWallet, walletEth };
 };

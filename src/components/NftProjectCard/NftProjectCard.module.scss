@@ -46,6 +46,7 @@
         .bitContainerLeftSide {
           .bitContainerLeftSideText {
             @include font-xs-avenir-regular;
+            padding-left: 0.75rem;
           }
         }
         .bitContainerRightSide {
@@ -199,7 +200,7 @@
     }
   }
   @media (min-width: 768px) {
-    padding: 2rem;
+    padding: 1rem;
     .avatarContainer {
       .username {
         @include font-sm-avenir-regular;

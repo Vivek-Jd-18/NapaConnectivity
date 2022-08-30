@@ -3,6 +3,8 @@
 
 .joinSociety {
   transition: 0.5s ease-in-out;
+  display: flex;
+  align-items: center;
   .joinSocietyBtn {
     font-size: 1.5rem;
     transition: 0.5s ease-in-out;

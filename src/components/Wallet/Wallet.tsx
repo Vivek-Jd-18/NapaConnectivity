@@ -1,19 +1,18 @@
 import { NapaLogo, NapaLogoWhite } from '../../components/Svg';
 
-import { useEffect } from 'react';
-
 import { useCallback, useEffect } from 'react';
 
 import Vivus from 'vivus';
 import Container from '../../Layout/Container/Container';
 import type { NextPage } from 'next';
 import styles from '../../../styles/pages/Wallet.module.scss';
-
-import { SwapIcon } from '../../components/assets';
+import { WalletConnectedIcon } from '../../components/assets';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 import { CustomToastWithLink } from '../CustomToast/CustomToast';
 import { walletButtonList } from '@/constants/wallet.constants';
+import Image from 'next/image';
+import { ToastDescription, ToastTitle } from '@/typing/toast';
 
 type WalletComponentProps = {
   connectWallet: () => void;
@@ -159,8 +158,10 @@ const WalletComponent: NextPage = () => {
                         if (index === 0 && account) {
                           toast.error(
                             CustomToastWithLink({
-                              icon: SwapIcon,
-                              title: 'Wallet is Already Connected',
+                              icon: WalletConnectedIcon,
+                              title: ToastTitle.WALLET_IS_ALREADY_CONNECTED,
+                              description:
+                                ToastDescription.WALLET_IS_ALREADY_CONNECTED,
                               time: 'Now',
                             })
                           );
@@ -176,7 +177,13 @@ const WalletComponent: NextPage = () => {
                       className={styles.walletBtn}
                       style={{ borderColor: borderColor }}
                     >
-                      <img src={icon} />
+                      <Image
+                        src={icon}
+                        width={50}
+                        height={50}
+                        className={styles.btnIcon}
+                        alt={`${text}`}
+                      />
                       {text}
                     </button>
                   );

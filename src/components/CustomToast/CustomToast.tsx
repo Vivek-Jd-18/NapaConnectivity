@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import styles from './CustomToast.module.scss';
 
 type CustomToastWithLinkProps = {
@@ -16,7 +17,7 @@ export const CustomToastWithLink = ({
   <div className={`${styles.toast} d-flex w-100`}>
     {icon ? (
       <div className={styles.toastIcon}>
-        <img src={icon} alt="" />
+        <Image src={icon} alt={`${title}`} width={25} height={25} />
       </div>
     ) : (
       <div></div>

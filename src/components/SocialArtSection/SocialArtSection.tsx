@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { Avatar, Carousel, MouseIcon } from '../../components/assets';
 import Container from '../../Layout/Container/Container';
 import { scrollToNextSection } from '../../utils/home';
@@ -6,13 +7,10 @@ import { useState } from 'react';
 import HighlightButton from '../HighlightButton/HighlightButton';
 import Steper from '../Steper/Steper';
 import styles from './SocialArtSection.module.scss';
+import Image from 'next/image';
 //import image1 from .... (asset location in S3 bucket) ASSETS SHOULD BE IMPORTED AND DEFINED, DO NOT HARDCODE ASSETS PLEASE
 
-type SocialArtSectionProps = {
-  isMenu: boolean;
-};
-
-const SocialArtSection: NextPage<SocialArtSectionProps> = ({ isMenu }) => {
+const SocialArtSection: NextPage = () => {
   const [slide, setSlide] = useState(1);
 
   const handleNextSlide = (slide: number) => {
@@ -21,14 +19,20 @@ const SocialArtSection: NextPage<SocialArtSectionProps> = ({ isMenu }) => {
 
   return (
     <div id="social-section-art" className={styles.backgroundImage}>
-      {!isMenu && <Steper steps={3} top={12} />}
+      <Steper steps={3} top={12} />
       <Container className={styles.socialArtContainer}>
         <div className={styles.socialArtContainerBody}>
           <div className={styles.carouselImage}>
             <img src={Carousel} alt="" className={styles.image} />
             <div className={styles.slideBtn}>
               <div className={`${styles.carouselBottom} carouselBottom`}>
-                <img src={Avatar} alt="" className={styles.avatar} />
+                <Image
+                  src={Avatar}
+                  alt=""
+                  className={styles.avatar}
+                  width={70}
+                  height={70}
+                />
                 {slide == 1 ? (
                   <span className={styles.carouselBottomText}>
                     Clinton Bowman
@@ -161,9 +165,12 @@ const SocialArtSection: NextPage<SocialArtSectionProps> = ({ isMenu }) => {
           </div>
         </div>
         <div className={styles.mousePointer}>
-          <img
+          <Image
             src={MouseIcon}
             onClick={() => scrollToNextSection('nft-marketplace')}
+            width={50}
+            height={50}
+            alt="mouse"
           />
         </div>
       </Container>

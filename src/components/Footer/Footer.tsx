@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import styles from './Footer.module.scss';
 import type { NextPage } from 'next';
 import Container from '../../Layout/Container/Container';
@@ -12,10 +13,12 @@ import {
   DiscordMobileIcon,
   GithubMobileIcon,
   MediumMobileIcon,
+  DoneIcon,
 } from '../../components/assets';
 import { scrollToNextSection } from '../../utils/home';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import Image from 'next/image';
 
 type FooterProps = {
   footerIconShow: boolean;
@@ -28,10 +31,11 @@ const Footer: NextPage<FooterProps> = ({ footerIconShow }) => {
       <div className={styles.container}>
         <Container>
           <div className={styles.footerContainer}>
+            <div className={styles.footerInnerRow}>>
             <div onClick={() => push('/')} className={styles.logo}>
-             <div className={styles.footerlogos}>  
-             <img src={FooterLogoIcon} />
-            <div>
+              <img src={FooterLogoIcon} alt="FooterLogoIcon" />
+            </div>
+            <div className={styles.footerItemContainer}>
               <ul
                 className={`${styles.footerListItem} ${styles.activeFooterListItem}`}
               >
@@ -51,33 +55,54 @@ const Footer: NextPage<FooterProps> = ({ footerIconShow }) => {
                   <li>Help Center</li>
                 </Link>
               </ul>
-            </div></div>
+            </div>
+            </div>
             <ul className={styles.footerMobileIconsContainer}>
               <li className={styles.footerMobileIconItem}>
-                <img src={TwitterMobileIcon} />
+                <Image
+                  src={TwitterMobileIcon}
+                  alt="twitter"
+                  width={18}
+                  height={18}
+                />
               </li>
               <li className={styles.footerMobileIconItem}>
-                <img src={DiscordMobileIcon} />
+                <Image
+                  src={DiscordMobileIcon}
+                  alt="discord"
+                  width={18}
+                  height={18}
+                />
               </li>
               <li className={styles.footerMobileIconItem}>
-                <img src={GithubMobileIcon} />
+                <Image
+                  src={GithubMobileIcon}
+                  alt="github"
+                  width={18}
+                  height={18}
+                />
               </li>
               <li className={styles.footerMobileIconItem}>
-                <img src={MediumMobileIcon} />
+                <Image
+                  src={MediumMobileIcon}
+                  alt="medium"
+                  width={18}
+                  height={18}
+                />
               </li>
             </ul>
             <ul className={styles.footerIconsContainer}>
               <li className={styles.footerIconItem}>
-                <img src={TwitterIcon} />
+                <Image src={TwitterIcon} alt="twitter" width={32} height={30} />
               </li>
               <li className={styles.footerIconItem}>
-                <img src={DiscordIcon} />
+                <Image src={DiscordIcon} alt="discord" width={32} height={30} />
               </li>
               <li className={styles.footerIconItem}>
-                <img src={GithubIcon} />
+                <Image src={GithubIcon} alt="github" width={32} height={30} />
               </li>
               <li className={styles.footerIconItem}>
-                <img src={MediumIcon} />
+                <Image src={MediumIcon} alt="medium" width={32} height={30} />
               </li>
             </ul>
           </div>
@@ -101,7 +126,6 @@ const Footer: NextPage<FooterProps> = ({ footerIconShow }) => {
                 <li>Help Center</li>
               </Link>
             </ul>
-          </div>
           </div>
         </Container>
       </div>
@@ -152,7 +176,13 @@ const Footer: NextPage<FooterProps> = ({ footerIconShow }) => {
                 scrollToNextSection('social-art-section-without-limit')
               }
             >
-              <img src={MouseIcon} />
+              <Image
+                src={MouseIcon}
+                onClick={() => scrollToNextSection('social-section-art')}
+                width={50}
+                height={50}
+                alt="mouse"
+              />
             </div>
           )}
         </Container>

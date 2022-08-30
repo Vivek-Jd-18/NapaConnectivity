@@ -55,3 +55,12 @@ export const EtheriumIcon = '/assets/images/Etherium.svg';
 export const EthereumBlackIcon = '/assets/images/ethereum _icon.svg';
 export const WalletBlueIcon = '/assets/images/wallet-blue-icon.svg';
 export const SmallExitIcon = '/assets/images/small-exit-icon.svg';
+export const WalletConnectedIcon = '/assets/images/wallet-connected-icon.svg';
+export const ErrorIcon = '/assets/images/error-icon.svg';
+export const DisconnectWalletIcon = '/assets/images/wallet-disconnect-icon.svg';
+export const WalletNeedsToConnected =
+  '/assets/images/wallet-needs-to-connected-icon.svg';
+export const DoneIcon = '/assets/images/done.svg';
+export const FavoriteIcon = '/assets/images/star-off-icon.svg';
+export const InviteIcon = '/assets/images/invite-icon.svg';
+export const InvitationPoolIcon = '/assets/images/invitaiton-pool.svg';

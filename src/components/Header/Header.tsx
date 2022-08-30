@@ -1,5 +1,6 @@
 import {
   BurgerMenuIcon,
+  SearchIcon,
   WalletBlueIcon,
   WalletIconWhite,
 } from '../../components/assets';
@@ -13,6 +14,7 @@ import { NapaLogo, NapaLogoWhite } from '../Svg';
 import styles from './Header.module.scss';
 import WalletPopup from '../WalletPopup/WalletPopup';
 import { useWeb3 } from '@/hooks/useWeb3';
+import Image from 'next/image';
 
 // Please import define the logo and hamburger menu//
 // Decouple the search icon with the container //
@@ -22,6 +24,7 @@ type HeaderProps = {
   setIsMenu: (menu: boolean) => void;
   isMenu: boolean;
   account?: string;
+  setShowSearch: (search: boolean) => void;
 };
 
 const Header: NextPage<HeaderProps> = ({
@@ -29,6 +32,7 @@ const Header: NextPage<HeaderProps> = ({
   isMenu,
   setIsMenu,
   account,
+  setShowSearch,
 }) => {
   const { push } = useRouter();
   const [popupShow, setPopupShow] = useState(false);
@@ -44,7 +48,13 @@ const Header: NextPage<HeaderProps> = ({
     <>
       <Container className={styles.innerContainer}>
         <div onClick={openMenu}>
-          <img src={BurgerMenuIcon} className={styles.burgerMenuIcon} />
+          <Image
+            src={BurgerMenuIcon}
+            alt="BurgerMenuIcon"
+            className={styles.burgerMenuIcon}
+            width={64}
+            height={32}
+          />
         </div>
         <div>
           <div className={styles.svgWrapper} onClick={() => push('/')}>
@@ -54,30 +64,38 @@ const Header: NextPage<HeaderProps> = ({
             <NapaLogoWhite className={styles.napaLogoWhite} />
           </div>
         </div>
-        <div className={styles.wallet}>
-          <div
-            onClick={() => {
-              if (account) {
-                setPopupShow(true);
-                return;
-              }
-              push('/wallet');
-            }}
-            role="button"
-          >
-            <img
-              src={popupShow ? WalletBlueIcon : WalletIconWhite}
-              className={styles.walletIcon}
-            />
+        <div className="d-flex align-items-center">
+          <div className={styles.search} onClick={() => setShowSearch(true)}>
+            <Image width={36} height={36} src={SearchIcon} alt="search" />
           </div>
-          {popupShow && (
-            <WalletPopup
-              account={account}
-              setPopupShow={setPopupShow}
-              ethereum={walletEth}
-              crypto={false}
-            />
-          )}
+          <div className={styles.wallet}>
+            <div
+              onClick={() => {
+                if (account) {
+                  setPopupShow(true);
+                  return;
+                }
+                push('/wallet');
+              }}
+              role="button"
+            >
+              <Image
+                src={popupShow ? WalletBlueIcon : WalletIconWhite}
+                className={styles.walletIcon}
+                width={36}
+                height={36}
+                alt="wallet"
+              />
+            </div>
+            {popupShow && (
+              <WalletPopup
+                account={account}
+                setPopupShow={setPopupShow}
+                ethereum={walletEth}
+                crypto={false}
+              />
+            )}
+          </div>
         </div>
       </Container>
       {isMenu && (

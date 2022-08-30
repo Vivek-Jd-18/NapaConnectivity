@@ -1,4 +1,5 @@
 import type { NextPage } from 'next';
+import Image from 'next/image';
 import styles from './Button.module.scss';
 
 type ButtonProps = {
@@ -15,7 +16,6 @@ const Button: NextPage<ButtonProps> = ({
   outlined,
   customStyle,
   icon,
-
   onClick,
 
 }) => {
@@ -28,8 +28,16 @@ const Button: NextPage<ButtonProps> = ({
       onClick={onClick}
 
     >
-      <img src={icon} className={styles.icon} />
-      {text}
+      {icon && (
+        <Image
+          src={icon}
+          width={50}
+          height={30}
+          className={styles.icon}
+          alt={`${text}`}
+        />
+      )}
+      <span>{text}</span>
     </button>
   );
 };

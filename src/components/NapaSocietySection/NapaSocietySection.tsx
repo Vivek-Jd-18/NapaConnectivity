@@ -1,9 +1,4 @@
-import {
-  LeftWhiteArrowIcon,
-  MouseIcon,
-  // RightArrowBlueIcon,
-  RightWhiteArrowIcon,
-} from '../assets';
+import { LeftWhiteArrowIcon, MouseIcon, RightWhiteArrowIcon } from '../assets';
 import Container from '../../Layout/Container/Container';
 import { scrollToNextSection } from '../../utils/home';
 import type { NextPage } from 'next';
@@ -11,12 +6,9 @@ import { useState } from 'react';
 import HighlightButton from '../HighlightButton/HighlightButton';
 import Steper from '../Steper/Steper';
 import styles from './NapaSocietySection.module.scss';
+import Image from 'next/image';
 
-type NapaSocietyProps = {
-  isMenu: boolean;
-};
-
-const NapaSociety: NextPage<NapaSocietyProps> = ({ isMenu }) => {
+const NapaSociety: NextPage = () => {
   const [slider, setSlider] = useState(1);
 
   const handleIncrement = () => {
@@ -36,7 +28,7 @@ const NapaSociety: NextPage<NapaSocietyProps> = ({ isMenu }) => {
 
   return (
     <div id="napa-society" className={styles.backgroundImage}>
-      {!isMenu && <Steper steps={2} top={5} />}
+      <Steper steps={2} top={5} />
       <Container className={styles.societyContainer}>
         <div className={styles.societyContainerBody}>
           <div className={styles.innerSocietyContainer}>
@@ -64,15 +56,21 @@ const NapaSociety: NextPage<NapaSocietyProps> = ({ isMenu }) => {
                   </div>
                   <div className={styles.sliderArrows}>
                   <div onClick={handleDecrement}>
-                    <img
+                    <Image
                       src={LeftWhiteArrowIcon}
                       style={{ cursor: 'pointer' }}
+                      width={14}
+                      height={26}
+                      alt="arrow left"
                     />
                   </div>
                   <div onClick={handleIncrement}>
-                    <img
+                    <Image
                       src={RightWhiteArrowIcon}
                       style={{ cursor: 'pointer' }}
+                      width={14}
+                      height={26}
+                      alt="arrow right"
                     />
                   </div>
                   </div>
@@ -221,9 +219,12 @@ const NapaSociety: NextPage<NapaSocietyProps> = ({ isMenu }) => {
           </div>
         </div>
         <div className={styles.mousePointer}>
-          <img
+          <Image
             src={MouseIcon}
             onClick={() => scrollToNextSection('social-section-art')}
+            width={50}
+            height={50}
+            alt="mouse"
           />
         </div>
       </Container>

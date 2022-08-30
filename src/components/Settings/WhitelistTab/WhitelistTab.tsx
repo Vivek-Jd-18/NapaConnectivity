@@ -1,5 +1,6 @@
 import { PlusIcon } from '@/components/assets';
 import type { NextPage } from 'next';
+import Image from 'next/image';
 import { useState } from 'react';
 import styles from '../Settings.module.scss';
 import WhiteListComponent from '../WhiteListComponent/WhiteListComponent';
@@ -21,7 +22,7 @@ const WhitelistTab: NextPage = () => {
           <span className={styles.enableWhitelist}>Enable Whitelist</span>
         </div>
         <div className={`${styles.whitelistRightSide}`}>
-          <img src={PlusIcon} />
+          <Image src={PlusIcon} width={20} height={20} alt="plus" />
           <span>Add New</span>
         </div>
       </div>

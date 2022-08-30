@@ -18,11 +18,11 @@
     display: flex;
     align-items: baseline;
     img {
-      width: 3rem;
-      margin-right: 1rem;
+      width: 3rem !important;
     }
     .amount {
       @include font-4xl-neuropolitical-normal;
+      padding-left: 1rem;
     }
     .napa {
       @include font-md-neuropolitical-normal;

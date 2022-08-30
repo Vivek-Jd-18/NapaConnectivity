@@ -27,6 +27,7 @@ import UpcomingNftProjectsCard from '../UpcomingNftProjectsCard/UpcomingNftProje
 import EventsCard from '../EventsCard/EventsCard';
 import ActiveMintedPostsCard from '../ActiveMintedPosts/ActiveMintedPostsCard';
 import EarnedNapaTokensCard from '../EarnedNapaTokensCard/EarnedNapaTokensCard';
+import Image from 'next/image';
 
 const NapaLounge: NextPage = () => {
   const [tabs, setTabs] = useState(NapaLoungeTab.TIPS_AND_TUTORIALS);
@@ -162,15 +163,21 @@ const NapaLounge: NextPage = () => {
           </div>
           <div className={`col-xl-6 col-md-12 ${styles.rightSideContainer}`}>
             <div className={styles.arrowContainer}>
-              <img
+              <Image
                 src={LeftWhiteArrowIcon}
                 className={styles.leftIcon}
                 onClick={previousHandler}
+                width={20}
+                height={20}
+                alt={'left arrow'}
               />
-              <img
+              <Image
                 src={RightWhiteArrowIcon}
                 className={styles.rightIcon}
                 onClick={nextHandler}
+                width={20}
+                height={20}
+                alt="right arrow"
               />
             </div>
             <div className={styles.sliderContainer}>
