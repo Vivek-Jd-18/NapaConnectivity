@@ -25,9 +25,7 @@ a {
 .Home_child__4Kb2b {
   min-height: 100vh;
 }
-#nft-marketplace .Footer_mouseIcon__C6eyE {
-  display: none;
-}
+
 #nft-marketplace .NftProjectCard_cardContainer__IJxEQ:before {
   background: linear-gradient(200deg, rgba(12, 27, 34, 0) 0%, rgba(12, 27, 34, 0.8) 100%);
   position: absolute;
@@ -44,15 +42,23 @@ a {
        
 }  
 
-#nft-marketplace .slick-current .NftProjectCard_cardContainer__IJxEQ:before {
-  display: none;
+#nft-marketplace .slick-current .NftProjectCard_cardContainer__IJxEQ > div {
+  position: relative;
 }
 div#nft-marketplace .slick-current {
   transform: scale(1.03);
   position: relative;
   bottom: 28px;
 }
-
+.Home_child__4Kb2b{
+  overflow: hidden;
+}
+#nft-marketplace .slick-list {
+  overflow: unset;
+}
+.Steper_container__5dFh4{
+  z-index: 1;
+}
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
@@ -140,4 +146,10 @@ div#nft-marketplace .slick-current {
 
 .mx-width h1{
   max-width: 386px;
+}
+
+@media (max-width:1400px){
+  div#nft-marketplace .slick-current {
+    bottom: 19px;
+}
 }
