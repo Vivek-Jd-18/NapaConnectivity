@@ -3,15 +3,11 @@ import type { NextPage } from 'next';
 import styles from './NftProjectCard.module.scss';
 import Image from 'next/image';
 
-type Props = {
-  backgroundImage?: string;
-};
-
-const NftProjectCard: NextPage<Props> = ({backgroundImage}) => {
+const NftProjectCard: NextPage = () => {
   return (
     <div
       className={styles.cardContainer}
-      style={{ backgroundImage: `url(${backgroundImage})` }}
+      style={{ backgroundImage: "url('/assets/images/nftprojectcard.png')" }}
     >
       <div className={styles.avatarContainer}>
         <Image

@@ -1,43 +1,28 @@
 import { NapaLogo, NapaLogoWhite } from '../../components/Svg';
-import { useCallback, useEffect } from 'react';
+import { useEffect } from 'react';
 import Vivus from 'vivus';
 import Container from '../../Layout/Container/Container';
 import type { NextPage } from 'next';
 import styles from '../../../styles/pages/Wallet.module.scss';
-import {
-  MetaMaskIcon,
-  CoinbaseIcon,
-  AuthereumIcon,
-  VenlyIcon,
-} from '../../components/assets';
-import { getWeb3 } from '../../utils/wallet';
-import Web3 from 'web3';
+import { WalletConnectedIcon } from '../../components/assets';
 import { toast } from 'react-toastify';
+import { useRouter } from 'next/router';
+import { CustomToastWithLink } from '../CustomToast/CustomToast';
+import { walletButtonList } from '@/constants/wallet.constants';
+import Image from 'next/image';
+import { ToastDescription, ToastTitle } from '@/typing/toast';
 
-const walletButtonList = [
-  {
-    text: 'Metamask',
-    icon: MetaMaskIcon,
-    borderColor: '#F5841F',
-  },
-  {
-    text: 'Coinbase',
-    icon: CoinbaseIcon,
-    borderColor: '#2B5EE2',
-  },
-  {
-    text: 'Authereum',
-    icon: AuthereumIcon,
-    borderColor: '#FF4C2F',
-  },
-  {
-    text: 'Venly',
-    icon: VenlyIcon,
-    borderColor: '#7735E8',
-  },
-];
+type WalletComponentProps = {
+  connectWallet: () => void;
+  account: string;
+};
 
-const WalletComponent: NextPage = () => {
+const WalletComponent: NextPage<WalletComponentProps> = ({
+  connectWallet,
+  account,
+}) => {
+  const { push } = useRouter();
+
   useEffect(() => {
     new Vivus('napa-logo', {
       type: 'delayed',
@@ -47,46 +32,21 @@ const WalletComponent: NextPage = () => {
     });
   }, []);
 
-  const connectWallet = useCallback(async () => {
-    try {
-      const web3: any = await getWeb3();
-      const walletAddress = await web3.eth.requestAccounts();
-      const accounts = await web3.eth.getAccounts();
-      const walletBalanceInWei = await web3.eth.getBalance(walletAddress[0]);
-      const walletBalanceInEth =
-        // @ts-ignore
-        Math.round(Web3.utils.fromWei(walletBalanceInWei) * 1000) / 1000;
-      toast.success('Connected Successfully');
-      console.log('address', walletAddress);
-      console.log('balance', walletBalanceInEth);
-      console.log('accounts', accounts);
-    } catch (error: any) {
-      if (
-        error.message ===
-        "Cannot read properties of undefined (reading 'request')"
-      ) {
-        toast.error('Please install the Metamask extension');
-        return;
-      }
-      toast.error(error.message);
-    }
-  }, [getWeb3]);
-
   return (
     <div className={styles.backgroundImage}>
       <Container>
         <div
           className={`row justify-content-between align-items-center col-12 ${styles.innerMainContainer}`}
         >
-          <div className="col-xl-6 col-md-12">
-            <div className={styles.svgWrapper}>
+          <div className={`col-xl-6 col-md-12 d-flex justify-content-center`}>
+            <div className={styles.svgWrapper} onClick={() => push('/home')}>
               <NapaLogo
                 className={styles.napaLogo}
                 width={'360'}
                 height={'80'}
               />
             </div>
-            <div className={styles.svgWrapper}>
+            <div className={styles.svgWrapper} onClick={() => push('/')}>
               <NapaLogoWhite
                 className={styles.napaLogoWhite}
                 width={'360'}
@@ -111,12 +71,32 @@ const WalletComponent: NextPage = () => {
                     <button
                       key={index}
                       onClick={() => {
-                        if (index === 0) connectWallet();
+                        if (index === 0 && account) {
+                          toast.error(
+                            CustomToastWithLink({
+                              icon: WalletConnectedIcon,
+                              title: ToastTitle.WALLET_IS_ALREADY_CONNECTED,
+                              description:
+                                ToastDescription.WALLET_IS_ALREADY_CONNECTED,
+                              time: 'Now',
+                            })
+                          );
+                          return;
+                        }
+                        if (index === 0) {
+                          connectWallet();
+                        }
                       }}
                       className={styles.walletBtn}
                       style={{ borderColor: borderColor }}
                     >
-                      <img src={icon} />
+                      <Image
+                        src={icon}
+                        width={50}
+                        height={50}
+                        className={styles.btnIcon}
+                        alt={`${text}`}
+                      />
                       {text}
                     </button>
                   );

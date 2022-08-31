@@ -23,7 +23,7 @@
     height: 100%;
   }
   .societyContainerBody {
-    height: 100%;
+    height: 92%;
     @include flex-row-between;
   }
   .headingNapa {
@@ -32,17 +32,7 @@
     -webkit-text-stroke: 2px $white;
     animation: glow 1s ease-in-out infinite alternate;
     line-height: 1.1em;
-    margin-bottom: 0.3em;
-  }
-  @keyframes glow {
-    from {
-      text-shadow: 0 0 20px #fff, 0 0 30px, 0 0 40px, 0 0 50px, 0 0 60px,
-        0 0 70px, 0 0 10px;
-    }
-    to {
-      text-shadow: 0 0 1px #fff, 0 0 20px #ffffff, 0 0 30px, 0 0 40px, 0 0 50px,
-        0 0 60px, 0 0 100px;
-    }
+    margin-bottom: 0.5em;
   }
   @-webkit-keyframes glow {
     from {
@@ -127,7 +117,6 @@
   .innerSocietyContainer {
     width: 70%;
     @include flex-column-start;
-    margin-top: -25px;
   }
   .headingSociety {
     @include font-8xl-neuropolitical-normal;
@@ -272,10 +261,6 @@
         @include font-8xl-neuropolitical-normal;
         margin-bottom: 0;
     }
-    .innerSocietyContainer {
-
-      margin-top: 37px;
-    }
   }
   @media only screen and (max-width: 1340px) {
     .headingNapa {
@@ -316,7 +301,6 @@
         .headingSociety {
           margin-bottom: 0;
           @include font-5xl-neuropolitical-normal;
-          line-height: 80%;
           text-align: left;
           width: 100%;
         }
@@ -324,7 +308,6 @@
           padding-right: 6rem;
           padding-top: 1rem;
           padding-left: 0.3rem;
-          max-width: 580px;
         }
       }
       .innerSocietyContainer {

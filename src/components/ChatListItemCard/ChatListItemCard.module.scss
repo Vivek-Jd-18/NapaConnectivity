@@ -8,13 +8,8 @@
   padding: 0.5555rem;
   .userContainer {
     @include flex-row-center;
-    .avatar{
-      width: 32px;
-      height: 32px;
-    }
     .userInfo {
       @include flex-column-start;
-      width: calc(100% - 40px);
       margin-left: 1rem;
       text-align: left;
       .userName {

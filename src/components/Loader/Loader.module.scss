@@ -20,11 +20,10 @@
     animation-fill-mode: forwards;
   }
   .napaLogo {
-    // stroke: $light-blue;
-    // stroke-width: 1.25px;
-    fill: $light-blue;
-    animation: fadeOut 3s ease;
-    animation-delay: 1.75s;
+    stroke: $light-blue;
+    stroke-width: 1.25px;
+    animation: fadeOut 1s ease;
+    animation-delay: 2.75s;
     animation-fill-mode: forwards;
   }
 }

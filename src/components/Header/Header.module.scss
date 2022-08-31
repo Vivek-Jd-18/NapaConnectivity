@@ -64,10 +64,6 @@
       width: 1.5rem;
     }
   }
-  .innerContainer  div  span {
-    width: 48px !important;
-  }
-
 }
 
 @media screen and (min-width: 320px) {
@@ -118,9 +114,11 @@
   }
 }
 @media (max-width: 1024px) {
-  
- 
-  .innerContainer  .search {
+  .innerContainer div span {
+    width: 48px !important;
+  }
+
+  .innerContainer .search {
     padding-right: 0rem;
     width: 28px;
   }

@@ -23,10 +23,8 @@
     height: 100%;
   }
   .socialContainerBody {
-    height: 100%;
+    height: 92%;
     @include flex-row-between;
-    max-width: 1260px;
-    margin: 0 auto;
   }
   .socialArt {
     @include font-7xl-neuropolitical-normal;
@@ -47,7 +45,6 @@
   }
   .innerSocialContainer {
     width: 75%;
-    padding-top: 2.3rem;
     @include flex-column-start;
   }
   .withoutLimits {
@@ -56,8 +53,7 @@
     margin-bottom: 0;
   }
   .innerSocialContainerRightSide {
-    width: 324px;
-    margin-top: -30px;
+    width: 355px;
     @include flex-column-start;
     text-align: left;
     .description {
@@ -86,18 +82,8 @@
   .mousePointer {
     display: flex;
     justify-content: center;
-    display: none;
     img {
       cursor: pointer;
-    }
-  }
-
-  @media only screen and (max-width: 1536px) {
-    .innerSocialContainer {
-      padding-top: 0rem;
-    }
-    .innerSocialContainerRightSide {
-      margin-top: -70px;
     }
   }
   @media only screen and (max-width: 1340px) {

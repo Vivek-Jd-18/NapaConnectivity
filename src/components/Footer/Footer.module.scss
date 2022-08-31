@@ -208,7 +208,7 @@
         // @include flex-row;
         padding: 0;
         list-style-type: none;
-        padding-top: 0.5rem;
+        padding-top: 1rem;
         margin-bottom: 0;
         li:first-child {
           padding: 0 0.5rem 0 0rem;
@@ -262,7 +262,7 @@
       }
       .footerBottomText {
         @include font-xs-avenir-regular;
-        padding-top: 0rem;
+        padding-top: 0.5rem;
       }
     }
     .mouseIcon {
@@ -300,7 +300,7 @@
     .footerContainer {
       display: flex;
       flex-direction: initial;
-      align-items: inherit;
+      align-items: center;
     }
     .footerListItem {
       display: flex;
@@ -464,15 +464,6 @@
     margin-top: 0.2rem;
   }
 }
-@media (max-width: 767px) {
-  .container {
-    padding: 0rem 0 0rem 0;
-    margin-top: 0px;
-    .footerContainer {
-      padding-bottom: -0;
-    }
-  }
-}
 @media (min-width: 1200px) {
   .footerItemsBlockContainer {
     display: none;
@@ -503,7 +494,7 @@
   }
   .footerBottomContainer {
     .mouseIcon {
-      display: none;
+      display: block;
       cursor: pointer;
       position: absolute;
       left: 48%;

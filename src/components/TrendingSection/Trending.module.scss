@@ -32,18 +32,16 @@
         }
       }
       .socialMediaReviewContainer {
-        padding-top: 3rem;
-        height: calc(100vh - 410px);
+        padding-top: 4rem;
+        height: calc(100vh - 550px);
         overflow-y: auto;
-        mask-image: linear-gradient(transparent, black 0, black 0, transparent 100%);
-        -webkit-mask-image: linear-gradient(transparent, black 0, black 0, transparent 100%);
       }
     }
     .trending {
       @include font-6xl-neuropolitical-normal;
       text-align: left;
       color: $white;
-      padding-top: 9.6rem;
+      padding-top: 4rem;
     }
   }
 
@@ -68,111 +66,15 @@
       .rightSideContainer {
         padding-left: 3.4rem;
         align-self: flex-end;
-        position: relative;
-        top: 62px;
-        mask-image: linear-gradient(transparent, black 100%, black 80%, black 100%);
-        -webkit-mask-image: linear-gradient(transparent, black 100%, black 80%, black 100%);
       }
     }
   }
-  @media (max-width: 1700px) {
-    .trendingContainer {
-      
-      .rightSideContainer {
-        top: -48px;
-      }
-    }
-  }
-  @media (max-width: 1536px) {
-    .trendingContainer {
-      
-      .rightSideContainer {
-        top: 9px;
-      }
-    }
-  }
- 
-    @media (max-width: 1420px) {
-      .trendingContainer {
-        
-        .rightSideContainer {
-          top: -13px;
-          padding-left: 1rem;
-          width: 25%;
-        }
-      }
-      .trending {
-        @include font-5xl-neuropolitical-normal;
-      }
-    }
-    @media (max-width: 1280px) {
-      .trendingContainer {
-        
-        .rightSideContainer {
-          top: -13px;
-          padding-left: 1rem;
-          width: 25%;
-        }
-        .trending {
-          @include font-4xl-neuropolitical-normal;
-        }
-      }
-      
-      
-    }
-    
-    @media (max-width: 1200px) {
-      .trendingContainer {
-        
-        .rightSideContainer {
-          top: -13px;
-          padding-left: 0rem;
-          width: 100%;
-          height: 40px;
-          overflow: hidden;
-          position: relative;
-          padding-top: 40px;
-         transition: all 0.3s ease;
-        }
-        .trending {
-          @include font-4xl-neuropolitical-normal;
-          max-width: 100px;
-        }
-        .rightSideContainer:before{
-          position: absolute;
-          width: 100%;
-          height: 44px;
-          top: 0;
-          z-index: 2;
-          color: #fff;
-          font-size: 19px;
-          left: 0;
-          font-style: normal;
-          font-family: Neuropolitical;
-          padding: 6px 0;
-          content: "Chat ↑";
-          text-align: center;
-          background: rgb(255 255 255 / 10%);
-        }
-        .rightSideContainer:hover {
-          top: -42%;
-          width: 100%;
-          overflow: visible;
-          height: 100%;
-          background: #000;
-          padding: 30px;
-          position: relative;
-        }
-      }
-      
-      
-    }
   @media (min-width: 1536px) {
     .trendingContainer {
       .trendingBodyContainer {
         height: 90%;
         .trending {
-          @include font-5xl-neuropolitical-normal;
+          @include font-6xl-neuropolitical-normal;
         }
       }
     }
