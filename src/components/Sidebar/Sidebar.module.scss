@@ -168,6 +168,7 @@
         width: 2rem;
         height: 2rem;
       }
+      cursor: pointer;
     }
   }
 }
@@ -316,10 +317,12 @@
     }
     .closebtn {
       cursor: pointer;
-      left: 5rem;
+      left: 9.7rem;
+      top: 1.7rem;
     }
   }
 }
+
 
 @media screen and (min-width: 1280px) {
   .overlay {
@@ -343,7 +346,7 @@
         top: 14%;
       }
       .buttonsContainer {
-        padding-left: 5rem;
+        padding-left: 10rem;
         padding-right: 5rem;
         margin-bottom: 2rem;
 
@@ -366,7 +369,7 @@
   .overlay {
     .overlayContentContainer {
       .overlayContent {
-        padding-left: 5rem;
+        padding-left: 9.4rem;
         padding-right: 5rem;
         top: 15%;
 
@@ -400,19 +403,118 @@
         a:focus {
           @include font-6xl-neuropolitical-normal;
           &::before {
-            left: 4rem;
+            left: 10rem;
+            width: 80px;
           }
         }
       }
 
       .buttonsContainer {
         padding-top: 13rem;
+        max-width: 72%;
       }
 
     }
   }
 }
+@media screen and (max-width: 1536px) {
+  .overlay {
+    .overlayContentContainer {
+      .overlayContent {
+        padding-left: 6.7rem;
+        padding-right: 5rem;
+        top: 15%;
 
+        a:hover,
+        a:focus {
+         
+          &::before {
+            left: 7.4rem;
+            width: 80px;
+          }
+        }
+       
+      }
+      .buttonsContainer {
+        padding-left: 7.4rem;
+        padding-right: 4rem;
+        max-width: 92%;
+        padding-top: 10rem;
+      }
+    }
+    .closebtn {
+      left: 6.9rem;
+      top: 1.5rem;
+    }
+  }
+}
+@media screen and (max-width: 1024px) {
+  .overlay {
+    .overlayContentContainer {
+      .overlayContent {
+        padding-left: 3rem;
+
+        a:hover,
+        a:focus {
+          @include font-4xl-neuropolitical-normal;
+          &::before {
+            left: 3.7rem;
+            width: 50px;
+          }
+        }
+       
+      }
+      .buttonsContainer {
+        padding-left: 3.7rem;
+        max-width: 100%;
+        padding-top: 9rem;
+      }
+    }
+    .closebtn {
+      left: 3rem;
+      top: 1rem;
+    }
+  }
+}
+@media screen and (max-width: 767px) {
+  .overlay {
+    .overlayContentContainer {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      .overlayContent {
+        padding-left: 1.3rem;
+        padding-right: 0rem;
+        a {
+          @include font-2xl-neuropolitical-normal;
+        }
+        a:hover,
+        a:focus {
+          @include font-3xl-neuropolitical-normal;
+          &::before {
+            left: 1.7rem;
+            width: 32px;
+          }
+        }
+       
+      }
+      .buttonsContainer {
+        padding-left: 2.3rem;
+        padding-right: 2.3rem;
+        max-width: 100%;
+        padding-top: 9rem;
+        button{
+          display: block;
+          padding-top: 7px;
+          width: 100%;
+        }
+      }
+    }
+    .closebtn {
+      left: 1.4rem;
+    }
+  }
+}
 @media screen and (min-width: 1900px) {
   .overlay {
     .overlayContent {

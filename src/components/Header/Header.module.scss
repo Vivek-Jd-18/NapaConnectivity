@@ -64,6 +64,9 @@
       width: 1.5rem;
     }
   }
+  .innerContainer  div  span {
+    width: 48px !important;
+  }
 
 }
 
@@ -121,9 +124,7 @@
   }
 }
 @media (max-width: 1024px) {
-  .innerContainer  div  span {
-    width: 48px !important;
-  }
+  
  
   .innerContainer  .search {
     padding-right: 0rem;

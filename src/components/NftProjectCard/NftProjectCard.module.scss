@@ -83,7 +83,7 @@
       }
     }
     .cardInfoContainer {
-      padding-top: 1rem;
+      padding-top: 3rem;
       .title {
         @include font-sm-neuropolitical-normal;
         padding-bottom: 0.5rem;
@@ -132,7 +132,7 @@
     }
   }
   @media (min-width: 376px) {
-    padding: 2rem;
+    padding: 1rem;
     .cardInfoContainer {
       padding-top: 3rem;
 
@@ -168,9 +168,9 @@
     }
   }
   @media (min-width: 576px) {
-    padding: 2rem;
+    padding: 1rem;
     .cardInfoContainer {
-      padding-top: 5rem;
+      padding-top: 1rem;
 
       .title {
         @include font-md-neuropolitical-normal;
