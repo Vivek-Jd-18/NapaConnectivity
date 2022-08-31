@@ -18,6 +18,16 @@
     color: transparent;
     margin-bottom: 0;
   }
+  @keyframes glow {
+    from {
+      text-shadow: 0 0 20px #fff, 0 0 30px, 0 0 40px, 0 0 50px, 0 0 60px,
+        0 0 70px, 0 0 10px;
+    }
+    to {
+      text-shadow: 0 0 1px #fff, 0 0 20px #ffffff, 0 0 30px, 0 0 40px, 0 0 50px,
+        0 0 60px, 0 0 100px;
+    }
+  }
   @-webkit-keyframes glow {
     from {
       text-shadow: 0 0 20px #fff, 0 0 30px, 0 0 40px, 0 0 50px, 0 0 60px,
@@ -232,6 +242,7 @@
         }
       }
     }
+
   }
   @media (min-width: 1536px) {
     .nft {

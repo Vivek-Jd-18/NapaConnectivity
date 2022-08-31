@@ -378,7 +378,7 @@
           color: $white;
           @include font-6xl-neuropolitical-normal;
           &::before {
-            width: 6%;
+            width: 80px;
             content: '';
             position: absolute;
             background: $white;
@@ -386,7 +386,7 @@
             z-index: -1;
             height: 0.25rem;
             transition: 0s;
-            left: 4rem;
+            left: 10rem;
           }
         }
        
@@ -490,6 +490,15 @@
         }
         a:hover,
         a:focus {
+          @include font-3xl-neuropolitical-normal;
+          &::before {
+            left: 1.7rem;
+            width: 32px;
+          }
+        }
+        .active {
+          padding-left: 1.3rem;
+          color: $white;
           @include font-3xl-neuropolitical-normal;
           &::before {
             left: 1.7rem;
