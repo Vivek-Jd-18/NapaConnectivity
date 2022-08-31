@@ -64,7 +64,7 @@ const WalletPopup: NextPage<WalletPopupProps> = ({
       </div>
       <div className={styles.body}>
         <Image src={NapaTokenIcon} alt={'Etherium'} width={90} height={90} />
-        <h2>{ethereum}</h2>
+        <h2>{napa}</h2>
         {crypto && <span>$98,22 USD</span>}
       </div>
       <div className={styles.footer}>
