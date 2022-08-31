@@ -7,17 +7,27 @@ import { useCallback, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import Web3 from 'web3';
 
-const minABI = [
-  // balanceOf
+const balanceOfABI = [
   {
     constant: true,
-    inputs: [{ name: '_owner', type: 'address' }],
+    inputs: [
+      {
+        name: '_owner',
+        type: 'address',
+      },
+    ],
     name: 'balanceOf',
-    outputs: [{ name: 'balance', type: 'uint256' }],
+    outputs: [
+      {
+        name: 'balance',
+        type: 'uint256',
+      },
+    ],
+    payable: false,
+    stateMutability: 'view',
     type: 'function',
   },
 ];
-
 export const useWeb3 = () => {
   const [account, setAccount] = useState('');
   const [walletEth, setWalletEth] = useState(0);
@@ -53,21 +63,29 @@ export const useWeb3 = () => {
   // @ts-ignore
   const getBalanceBnb = async (accounts, web3) => {
     const contract = new web3.eth.Contract(
-      minABI,
-      '0x8eb2df7137fb778a6387e84f17b80cc82cf9e884'
+      balanceOfABI,
+      '0xB8c77482e45F1F44dE1745F52C74426C631bDD52',
+      {
+        from: '0xaac7eae31e2b8a1dfec8b2521ecba038671daa64',
+        gasPrice: '30000000000',
+      }
     );
     const tokenBalance = await contract.methods.balanceOf(accounts[0]).call();
-    setWalletBnb(tokenBalance);
+    setWalletBnb(tokenBalance.toFixed(8));
   };
 
   // @ts-ignore
   const getBalanceNapa = async (accounts, web3) => {
     const contract = new web3.eth.Contract(
-      minABI,
-      '0xB8c77482e45F1F44dE1745F52C74426C631bDD52'
+      balanceOfABI,
+      '0x8EB2Df7137FB778a6387E84f17b80CC82cF9e884',
+      {
+        from: '0xc161b25159685f14dcc1a90381cc04eddb3828f4',
+        gasPrice: '10.671339467',
+      }
     );
     const tokenBalance = await contract.methods.balanceOf(accounts[0]).call();
-    setWalletNapa(tokenBalance);
+    setWalletNapa(tokenBalance.toFixed(8));
   };
 
   const connectWallet = useCallback(async () => {
