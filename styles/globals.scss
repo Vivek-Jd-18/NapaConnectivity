@@ -50,6 +50,24 @@ div#nft-marketplace .slick-current {
   position: relative;
   bottom: 28px;
 }
+div#nft-marketplace .slick-list:before,
+div#nft-marketplace .slick-list:after {
+  background: linear-gradient(-90deg, rgba(12, 27, 34, 0) 0%, rgb(0 0 0 / 42%) 100%);
+  position: absolute;
+  content: "";
+  width: 410px;
+  height: 82%;
+  z-index: 1;
+  transform: translate(0, 0);
+  left: -160px;
+  bottom: 22px;
+}
+div#nft-marketplace .slick-list:after{
+  left: unset;
+    right: -160px;
+    bottom: 22px;
+    background: linear-gradient(90deg, rgba(12, 27, 34, 0) 0%, rgba(0, 0, 0, 0.42) 100%);
+}
 .Home_child__4Kb2b{
   overflow: hidden;
 }
@@ -95,6 +113,16 @@ div#nft-marketplace .slick-current {
     color: $light-blue;
     @include font-sm-neuropolitical-normal;
     border: 1px solid $light-blue;
+  }
+  @keyframes glow {
+    from {
+      text-shadow: 0 0 20px $light-blue, 0 0 30px, 0 0 40px, 0 0 50px, 0 0 60px,
+        0 0 70px, 0 0 10px;
+    }
+    to {
+      text-shadow: 0 0 1px $light-blue, 0 0 20px $light-blue, 0 0 30px, 0 0 40px,
+        0 0 50px, 0 0 60px, 0 0 100px;
+    }
   }
   @-webkit-keyframes glow {
     from {
@@ -148,8 +176,20 @@ div#nft-marketplace .slick-current {
   max-width: 386px;
 }
 
-@media (max-width:1400px){
+@media (max-width:1440px){
   div#nft-marketplace .slick-current {
     bottom: 19px;
+}
+div#nft-marketplace .slick-list:before, div#nft-marketplace .slick-list:after{
+  height: 84%;
+}
+}
+
+@media (max-width:1200px){
+  div#nft-marketplace .slick-current {
+    bottom: 19px;
+}
+div#nft-marketplace .slick-list:before, div#nft-marketplace .slick-list:after{
+  display: none;
 }
 }
