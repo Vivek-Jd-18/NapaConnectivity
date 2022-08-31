@@ -13,7 +13,6 @@ import {
   DiscordMobileIcon,
   GithubMobileIcon,
   MediumMobileIcon,
-  DoneIcon,
 } from '../../components/assets';
 import { scrollToNextSection } from '../../utils/home';
 import { useRouter } from 'next/router';
@@ -31,7 +30,6 @@ const Footer: NextPage<FooterProps> = ({ footerIconShow }) => {
       <div className={styles.container}>
         <Container>
           <div className={styles.footerContainer}>
-  
             <div onClick={() => push('/')} className={styles.logo}>
               <img src={FooterLogoIcon} alt="FooterLogoIcon" />
             </div>
@@ -56,7 +54,7 @@ const Footer: NextPage<FooterProps> = ({ footerIconShow }) => {
                 </Link>
               </ul>
             </div>
-           
+
             <ul className={styles.footerMobileIconsContainer}>
               <li className={styles.footerMobileIconItem}>
                 <Image

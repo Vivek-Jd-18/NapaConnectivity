@@ -12,7 +12,7 @@
   }
 
   .search {
-    padding-right: 3rem;
+    margin-right: 3rem;
     img {
       cursor: pointer;
     }
@@ -80,8 +80,6 @@
 }
 @media screen and (min-width: 375px) {
   .innerContainer {
-
-
     padding-top: 1rem;
 
     .burgerMenuIcon {
@@ -91,7 +89,6 @@
 }
 @media screen and (min-width: 600px) {
   .innerContainer {
-
     padding-top: 1.5rem;
     .burgerMenuIcon {
       width: 2rem;
@@ -104,13 +101,12 @@
     .burgerMenuIcon {
       width: 2rem;
     }
-
   }
 }
 @media screen and (min-width: 768px) {
-  .innerContainer {  
+  .innerContainer {
     padding-top: 1rem;
-     
+
     .svgWrapper {
       margin-left: -5rem;
     }
@@ -118,9 +114,7 @@
 }
 @media screen and (min-width: 1024px) {
   .innerContainer {
-
     padding-top: 1rem;
-
   }
 }
 @media (max-width: 1024px) {
@@ -132,21 +126,20 @@
   }
   svg#napa-logo-white {
     width: 105px;
-}
-.innerContainer__ctqEr .svgWrapper { 
-  margin-left: -47px;
-  margin-top: -15px;
-}
-.innerContainer {
-  .wallet {
-    position: relative; 
-    display: none;
   }
-}
+  .innerContainer__ctqEr .svgWrapper {
+    margin-left: -47px;
+    margin-top: -15px;
+  }
+  .innerContainer {
+    .wallet {
+      position: relative;
+      display: none;
+    }
+  }
 }
 @media screen and (min-width: 1280px) {
   .innerContainer {
-
     padding-top: 2rem;
     .burgerMenuIcon {
       width: auto;
@@ -159,12 +152,10 @@
     .burgerMenuIcon {
       width: auto;
     }
-
   }
 }
 @media screen and (min-width: 1536px) {
   .innerContainer {
-
     padding-top: 1.5rem;
 
     .burgerMenuIcon {
