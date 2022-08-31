@@ -77,14 +77,14 @@
     position: absolute;
     bottom: 0.5rem;
     .image {
-      width: 90%;
+      width: 62%;
       object-fit: cover;
     }
     :after {
       background: linear-gradient(180deg, rgba(0, 32, 47, 0) 0%, rgb(0 19 47 / 15%) 100%);
       position: absolute;
       content: "";
-      width: 66%;
+      width: 62.1%;
       height: 500px;
       z-index: -1;
       transform: translate(-50%, 0);
@@ -144,7 +144,8 @@
   .innerSocietyContainerRightSide {
     width: 45%;
     position: absolute;
-    right: 0;
+    right: 17px;
+    margin-top: 70px;
     text-align: left;
     .description {
       color: $white;
@@ -155,6 +156,7 @@
     .socialHeading {
       display: flex;
       flex-direction: column;
+     
     }
   }
   .viewFeedBtn {
@@ -167,21 +169,55 @@
   .mousePointer {
     display: flex;
     justify-content: center;
+    display: none;
     img {
       cursor: pointer;
       z-index: 2;
     }
   }
 
-  @media only screen and (max-width: 1400px) {
+  @media only screen and (max-width: 1536px) {
+  .innerSocietyContainerRightSide {
+    right: 14px;
+    margin-top: 73px;
+  }
   .carouselImage {
     .image {
-      width: 100%;
+      width: 70%;
+    }
+    :after{
+      width: 70%;height: 100%;
     }
   }
-}
+} 
 
+@media only screen and (max-width: 1200px) {
+  .innerSocietyContainerRightSide {
+    right: 0px;
+  }
+  .carouselImage {
+    .image {
+      width: 85%;
+    }
+    :after{
+      width: 85%;
+    }
+  }
+  
+}
   @media only screen and (max-width: 1024px) {
+    background-image: url('/assets/images/socialmedia-background-tablet.png');
+
+    .carouselImage {
+      width: 100%;
+      bottom: 0%;
+      .image {
+        width: 350px;
+      }
+      :after{
+        width: 350px;
+      }
+    }
     .societyContainer {
       @include flex-center-column;
       width: 100%;
@@ -217,35 +253,27 @@
       }
     }
     
+    
   }
-  @media only screen and (max-width: 1024px) {
-    background-image: url('/assets/images/socialmedia-background-tablet.png');
-
-    .carouselImage {
-      width: 100%;
-      bottom: 0%;
-      .image {
-        width: 46%;
-      }
-      :after{
-        width: 74%;
-      }
-    }
-  }
+ 
   @media only screen and (max-width: 768px) {
     .carouselImage {
       width: 100%;
       .image {
-        width: 60%;
+        width: 350px;
+      }
+      :after{
+        width: 350px;
+        
       }
     }
     .innerSocietyContainerRightSide {
       width: 100%;
       position: relative;
-
+      margin-top: 54px;
       .description {
         width: 100%;
-        @include font-xs-avenir-regular;
+        
       }
 
       .viewFeedContainer {
@@ -256,7 +284,7 @@
 
       .socialHeading {
         @include flex-col;
-        padding-left: 0.5rem;
+        padding-left: 0rem;
 
         .socialText {
           @include font-4xl-neuropolitical-normal;
@@ -280,9 +308,7 @@
     .carouselImage {
       left: 10%;
       width: 80%;
-      .image {
-        width: 100%;
-      }
+     
       .slideBtn {
         padding-bottom: 1rem;
         span {
@@ -316,7 +342,7 @@
 
       .description {
         width: 100%;
-        @include font-xs-avenir-regular;
+        
       }
 
       .viewFeedContainer {
@@ -354,7 +380,10 @@
       left: 5%;
       width: 90%;
       .image {
-        width: 100%;
+        width: 310px;
+      }
+      :after{
+        width: 310px;
       }
     }
     .innerSocietyContainerRightSide {
@@ -370,9 +399,7 @@
       bottom: 0%;
       left: 5%;
       width: 90%;
-      .image {
-        width: 100%;
-      }
+      
     }
     .innerSocietyContainerRightSide {
       padding-top: 3rem;
