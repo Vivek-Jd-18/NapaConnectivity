@@ -39,7 +39,7 @@ const NftMarketplaceSection: NextPage = ({}) => {
               ))}
             </ul>
           </div>
-          <HighlightButton title="Explore Projects" />
+          <HighlightButton title="Explore All Projects" />
         </div>
         <SliderComponent centerMode={true}>
           {Array.from({ length: 6 }, () => {

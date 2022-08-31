@@ -140,7 +140,11 @@ const SocialArtSection: NextPage = () => {
               <h2 className={styles.socialText}>Social</h2>
               <h2 className={styles.artText}>Art</h2>
             </div>
-            <p className={styles.description}>
+
+           
+
+            {/* <p className={styles.description}>
+>>>>>>> 05f8c9f7b340ac05ca05b8fbcdd435a1c0816cbf
               <strong>
                 The NAPA Social Media App is the worlds only social media
                 platform that allows you to mint and monetize your posts in real
@@ -152,6 +156,10 @@ const SocialArtSection: NextPage = () => {
                 Choose your audience and share your social art with millions of
                 members of the NAPA Society community!
               </strong>
+
+            </p> */}
+            <p className={styles.description}>
+               The NAPA Social Media App is the world's only social media platform that allows you to mint and monetize your posts in real time to receive NAPA Tokens. Pick your audience and share your social art with millions of members in the NAPA Society community!         
             </p>
             <HighlightButton title="Social Art Gallery" />
           </div>

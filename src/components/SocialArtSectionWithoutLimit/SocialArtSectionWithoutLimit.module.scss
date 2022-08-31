@@ -23,7 +23,7 @@
     height: 100%;
   }
   .socialContainerBody {
-    height: 90%;
+    height: 92%;
     @include flex-row-between;
   }
   .socialArt {
@@ -53,14 +53,24 @@
     margin-bottom: 0;
   }
   .innerSocialContainerRightSide {
-    width: 25%;
+    width: 355px;
     @include flex-column-start;
     text-align: left;
     .description {
       @include font-md-avenir-medium;
       color: $white;
+      font-weight: 100;
+      margin-bottom: 1.5rem;
     }
+    }
+  
+
+    
+  
+  .HighlightButton_joinSociety__Wa4y_ {
+      margin-top: 1rem;
   }
+
   .joinSocietyBtn {
     @include font-lg-neuropolitical-normal;
     color: $light-blue;
@@ -76,9 +86,33 @@
       cursor: pointer;
     }
   }
-
+  @media only screen and (max-width: 1340px) {
+    .socialArt {
+      @include font-7xl-neuropolitical-normal;
+    }
+    .withoutLimits {
+      @include font-5xl-neuropolitical-normal;
+    }
+  }
+  @media only screen and (max-width: 1260px) {
+    .socialArt {
+      @include font-7xl-neuropolitical-normal;
+    }
+    .withoutLimits {
+      @include font-5xl-neuropolitical-normal;
+    }
+  }
+  @media only screen and (max-width: 1199px) {
+    .socialArt {
+      @include font-6xl-neuropolitical-normal;
+    }
+    .withoutLimits {
+      @include font-4xl-neuropolitical-normal;
+    }
+    
+  }
   @media only screen and (max-width: 1024px) {
-    background-image: url('/assets/images/socialart-background-tablet.png');
+    background-image: url('/assets/images/socialart-background-tablet.png'); r 
     .socialContainer {
       @include flex-center-column;
       .socialContainerBody {
@@ -106,16 +140,30 @@
         padding-top: 1.438rem;
       }
     }
-    .mousePointer {
-      display: none;
+    // .mousePointer {
+    //   display: none;
+    // }
+    .socialContainerBody {
+      align-items: flex-start;
+      justify-content: center;
+      flex-direction: column;
+    }
+    .innerSocialContainerRightSide {
+      width: 100%;
+      margin-top: 20px;
+    }
+    .innerSocialContainer {
+      width: 100%;
     }
   }
-  @media only screen and (max-width: 768px) {
+  
+  @media only screen and (max-width: 768px) { 
     background-image: url('/assets/images/socialart-background-mobile.png');
     .socialContainer {
       .innerSocialContainer {
         .socialArt {
           @include font-5xl-neuropolitical-normal;
+          margin-bottom: 0.5rem;
         }
         .withoutLimits {
           @include font-3xl-neuropolitical-normal;
@@ -124,6 +172,9 @@
       .innerSocialContainerRightSide {
         .description {
           @include font-md-avenir-regular;
+
+          font-weight: 100;
+
         }
       }
     }
@@ -142,6 +193,9 @@
       .innerSocialContainerRightSide {
         .description {
           @include font-base-avenir-regular;
+
+          font-weight: 100;
+
         }
       }
     }
@@ -160,6 +214,9 @@
       .innerSocialContainerRightSide {
         .description {
           @include font-sm-avenir-regular;
+
+          font-weight: 100;
+
         }
       }
     }

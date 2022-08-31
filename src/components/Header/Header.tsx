@@ -44,7 +44,6 @@ const Header: NextPage<HeaderProps> = ({
       animTimingFunction: Vivus.EASE_OUT,
     });
   }, []);
-
   return (
     <>
       <Container className={styles.innerContainer}>

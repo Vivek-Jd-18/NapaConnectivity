@@ -8,21 +8,25 @@ type ButtonProps = {
   customStyle?: string;
   icon?: string;
   onClick?: () => void;
+
 };
 
 const Button: NextPage<ButtonProps> = ({
   text,
   outlined,
   customStyle,
-  icon = '',
+  icon,
   onClick,
+
 }) => {
   return (
     <button
       className={`${outlined ? styles.btnOutlined : styles.btn} ${
         customStyle && customStyle
       }`}
+
       onClick={onClick}
+
     >
       {icon && (
         <Image

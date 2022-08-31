@@ -7,7 +7,6 @@
   padding-top: 1rem;
   position: fixed;
   z-index: 1;
-
   .wallet {
     position: relative;
   }
@@ -18,7 +17,6 @@
       cursor: pointer;
     }
   }
-
   .burgerMenuIcon {
     cursor: pointer;
   }
@@ -66,6 +64,7 @@
       width: 1.5rem;
     }
   }
+
 }
 
 @media screen and (min-width: 320px) {
@@ -78,7 +77,10 @@
 }
 @media screen and (min-width: 375px) {
   .innerContainer {
-    padding-top: 1.5rem;
+
+
+    padding-top: 1rem;
+
     .burgerMenuIcon {
       width: 2rem;
     }
@@ -86,6 +88,7 @@
 }
 @media screen and (min-width: 600px) {
   .innerContainer {
+
     padding-top: 1.5rem;
     .burgerMenuIcon {
       width: 2rem;
@@ -93,11 +96,18 @@
     .walletIcon {
       width: 2rem;
     }
+
+    padding-top: 1rem;
+    .burgerMenuIcon {
+      width: 2rem;
+    }
+
   }
 }
 @media screen and (min-width: 768px) {
-  .innerContainer {
-    padding-top: 1.5rem;
+  .innerContainer {  
+    padding-top: 1rem;
+     
     .svgWrapper {
       margin-left: -5rem;
     }
@@ -105,23 +115,57 @@
 }
 @media screen and (min-width: 1024px) {
   .innerContainer {
-    padding-top: 1.5rem;
+
+    padding-top: 1rem;
+
   }
+}
+@media (max-width: 1024px) {
+  .innerContainer  div  span {
+    width: 48px !important;
+  }
+ 
+  .innerContainer  .search {
+    padding-right: 0rem;
+    width: 28px;
+  }
+  svg#napa-logo-white {
+    width: 105px;
+}
+.innerContainer__ctqEr .svgWrapper { 
+  margin-left: -47px;
+  margin-top: -15px;
+}
+.innerContainer {
+  .wallet {
+    position: relative; 
+    display: none;
+  }
+}
 }
 @media screen and (min-width: 1280px) {
   .innerContainer {
-    padding-top: 3rem;
+
+    padding-top: 2rem;
     .burgerMenuIcon {
       width: auto;
     }
     .walletIcon {
       width: 2.25rem;
     }
+
+    padding-top: 1rem;
+    .burgerMenuIcon {
+      width: auto;
+    }
+
   }
 }
 @media screen and (min-width: 1536px) {
   .innerContainer {
-    padding-top: 3rem;
+
+    padding-top: 1.5rem;
+
     .burgerMenuIcon {
       width: 4rem;
     }
