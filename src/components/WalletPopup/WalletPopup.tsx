@@ -2,10 +2,11 @@ import type { NextPage } from 'next';
 import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 import {
+  BnbIcon,
   EthereumBlackIcon,
-  EtheriumIcon,
   MoreIcon,
   SmallExitIcon,
+  NapaTokenIcon,
 } from '../assets';
 import styles from './WalletPopup.module.scss';
 
@@ -13,6 +14,8 @@ type WalletPopupProps = {
   setPopupShow: (show: boolean) => void;
   account?: string;
   ethereum?: number;
+  bnb?: number;
+  napa?: number;
   crypto?: boolean;
 };
 
@@ -21,6 +24,8 @@ const WalletPopup: NextPage<WalletPopupProps> = ({
   account,
   crypto,
   ethereum,
+  bnb,
+  napa,
 }) => {
   const ref = useRef(null);
 
@@ -58,9 +63,19 @@ const WalletPopup: NextPage<WalletPopupProps> = ({
         <span>{account}</span>
       </div>
       <div className={styles.body}>
-        <Image src={EtheriumIcon} alt={'Etherium'} width={90} height={90} />
+        <Image src={NapaTokenIcon} alt={'Etherium'} width={90} height={90} />
         <h2>{ethereum}</h2>
         {crypto && <span>$98,22 USD</span>}
+      </div>
+      <div className={styles.footer}>
+        <div className={styles.footerLeftSide}>
+          <Image src={NapaTokenIcon} width={30} height={30} alt="NAPA" />
+          <span className={styles.ethereum}>NAPA</span>
+          <span className={styles.eth}>NAPA</span>
+        </div>
+        <div className={styles.footerRightSide}>
+          <h2>{napa}</h2>
+        </div>
       </div>
       <div className={styles.footer}>
         <div className={styles.footerLeftSide}>
@@ -75,6 +90,16 @@ const WalletPopup: NextPage<WalletPopupProps> = ({
         </div>
         <div className={styles.footerRightSide}>
           <h2>{ethereum}</h2>
+        </div>
+      </div>
+      <div className={`${styles.footer} ${styles.bnbContainer}`}>
+        <div className={styles.footerLeftSide}>
+          <Image src={BnbIcon} width={30} height={30} alt="Binance" />
+          <span className={styles.ethereum}>Binance</span>
+          <span className={styles.eth}>BNB</span>
+        </div>
+        <div className={styles.footerRightSide}>
+          <h2>{bnb}</h2>
         </div>
       </div>
     </div>

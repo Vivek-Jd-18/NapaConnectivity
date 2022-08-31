@@ -34,7 +34,7 @@ const Header: NextPage<HeaderProps> = ({
 }) => {
   const { push } = useRouter();
   const [popupShow, setPopupShow] = useState(false);
-  const { walletEth, account } = useWeb3();
+  const { walletEth, account, walletBnb, walletNapa } = useWeb3();
   useEffect(() => {
     new Vivus('napa-logo', {
       type: 'delayed',
@@ -90,6 +90,8 @@ const Header: NextPage<HeaderProps> = ({
                 account={account}
                 setPopupShow={setPopupShow}
                 ethereum={walletEth}
+                napa={walletNapa}
+                bnb={walletBnb}
                 crypto={false}
               />
             )}
