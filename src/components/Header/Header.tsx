@@ -23,7 +23,6 @@ type HeaderProps = {
   openMenu: () => void;
   setIsMenu: (menu: boolean) => void;
   isMenu: boolean;
-  account?: string;
   setShowSearch: (search: boolean) => void;
 };
 
@@ -31,12 +30,11 @@ const Header: NextPage<HeaderProps> = ({
   openMenu,
   isMenu,
   setIsMenu,
-  account,
   setShowSearch,
 }) => {
   const { push } = useRouter();
   const [popupShow, setPopupShow] = useState(false);
-  const { walletEth } = useWeb3();
+  const { walletEth, account } = useWeb3();
   useEffect(() => {
     new Vivus('napa-logo', {
       type: 'delayed',
