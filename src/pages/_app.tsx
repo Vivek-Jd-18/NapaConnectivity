@@ -11,14 +11,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import Header from '@/components/Header/Header';
-import { useWeb3 } from '@/hooks/useWeb3';
 import Search from '@/components/Search/Search';
 import Loader from '@/components/Loader/Loader';
 import { useRouter } from 'next/router';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [isMenu, setIsMenu] = useState(false);
-  const { account } = useWeb3();
   const [showSearch, setShowSearch] = useState(false);
   const [loading, setLoading] = useState(true);
   const { pathname } = useRouter();
@@ -48,13 +46,12 @@ function MyApp({ Component, pageProps }: AppProps) {
         <Loader />
       ) : (
         <div className="main-container">
-          {pathname !== '/404' && (
+          {pathname !== '/404' && pathname !== '/wallet' && (
             <>
               <Header
                 openMenu={openMenu}
                 setIsMenu={setIsMenu}
                 isMenu={isMenu}
-                account={account}
                 setShowSearch={setShowSearch}
               />
               {showSearch && <Search setShowSearch={setShowSearch} />}
