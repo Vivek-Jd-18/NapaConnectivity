@@ -24,7 +24,7 @@
     height: 100%;
   }
   .socialArtContainerBody {
-    height: 90%;
+    height: 92%;
     @include flex-row-between;
   }
   .socialText {
@@ -216,6 +216,7 @@
         }
       }
     }
+    
   }
   @media only screen and (max-width: 1024px) {
     background-image: url('/assets/images/socialmedia-background-tablet.png');
@@ -225,6 +226,9 @@
       bottom: 0%;
       .image {
         width: 46%;
+      }
+      :after{
+        width: 74%;
       }
     }
   }

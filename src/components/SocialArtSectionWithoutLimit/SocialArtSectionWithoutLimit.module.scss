@@ -23,7 +23,7 @@
     height: 100%;
   }
   .socialContainerBody {
-    height: 90%;
+    height: 92%;
     @include flex-row-between;
   }
   .socialArt {
@@ -86,7 +86,31 @@
       cursor: pointer;
     }
   }
-
+  @media only screen and (max-width: 1340px) {
+    .socialArt {
+      @include font-7xl-neuropolitical-normal;
+    }
+    .withoutLimits {
+      @include font-5xl-neuropolitical-normal;
+    }
+  }
+  @media only screen and (max-width: 1260px) {
+    .socialArt {
+      @include font-7xl-neuropolitical-normal;
+    }
+    .withoutLimits {
+      @include font-5xl-neuropolitical-normal;
+    }
+  }
+  @media only screen and (max-width: 1199px) {
+    .socialArt {
+      @include font-6xl-neuropolitical-normal;
+    }
+    .withoutLimits {
+      @include font-4xl-neuropolitical-normal;
+    }
+    
+  }
   @media only screen and (max-width: 1024px) {
     background-image: url('/assets/images/socialart-background-tablet.png'); r 
     .socialContainer {
@@ -116,8 +140,20 @@
         padding-top: 1.438rem;
       }
     }
-    .mousePointer {
-      display: none;
+    // .mousePointer {
+    //   display: none;
+    // }
+    .socialContainerBody {
+      align-items: flex-start;
+      justify-content: center;
+      flex-direction: column;
+    }
+    .innerSocialContainerRightSide {
+      width: 100%;
+      margin-top: 20px;
+    }
+    .innerSocialContainer {
+      width: 100%;
     }
   }
   
@@ -127,6 +163,7 @@
       .innerSocialContainer {
         .socialArt {
           @include font-5xl-neuropolitical-normal;
+          margin-bottom: 0.5rem;
         }
         .withoutLimits {
           @include font-3xl-neuropolitical-normal;

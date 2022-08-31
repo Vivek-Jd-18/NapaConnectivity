@@ -15,10 +15,6 @@
     @include align-center;
     .logo {
       cursor: pointer;
-      width: 100%;
-      display: flex;
-      max-width: 100%;
-      justify-content: space-between;
     }
 
     padding: 0.5rem 0;
@@ -204,7 +200,7 @@
       }
     }
     .footerItemsBlockContainer {
-      display: block;
+    
       .footerListItem {
         display: flex;
         align-items: flex-start;
@@ -298,15 +294,13 @@
         display: none;
       }
     }
-    .footerItemsBlockContainer {
-      display: none;
-    }
+    
   }
   .footerBottomContainer {
     .footerContainer {
       display: flex;
-      flex-direction: column-reverse;
-      align-items: flex-start;
+      flex-direction: initial;
+      align-items: center;
     }
     .footerListItem {
       display: flex;
@@ -317,6 +311,7 @@
   .footerListMobile {
     @include flex-between;
     @include align-center;
+    display: none;
     .footerListItem {
       @include flex-start;
       flex-wrap: wrap;
@@ -367,7 +362,7 @@
     }
   }
   .footerBottomContainer {
-    margin-top: 1.5rem;
+    
     .footerContainer {
       @include flex-align-start;
       .footerBottomText {
@@ -391,13 +386,7 @@
       .activeFooterListItem {
         @include flex-row;
       }
-      .footerItemContainer {
-        display: none;
-
-        .footerListItem {
-          display: none;
-        }
-      }
+     
       .footerIconsContainer {
         cursor: pointer;
         @include flex-row;
@@ -409,7 +398,7 @@
       }
     }
     .footerItemsBlockContainer {
-      display: block;
+     
       .footerListItem {
         @include flex-row;
         padding: 0;
@@ -457,7 +446,29 @@
     padding-top: 0;
   }
 }
-
+@media (max-width: 1199px) {
+  .footerItemContainer {
+    display: none;
+  
+    .footerListItem {
+      display: none;
+    }
+  }
+  .footerItemsBlockContainer {
+     display: block;
+  }
+  .footerIconItem {
+    width: 42px;
+  }
+  .footerBottomContainer {
+    margin-top: 0.2rem;
+  }
+}
+@media (min-width: 1200px) {
+  .footerItemsBlockContainer {
+    display: none;
+ }
+}
 @media (min-width: 1280px) {
   .container {
     .footerContainer {

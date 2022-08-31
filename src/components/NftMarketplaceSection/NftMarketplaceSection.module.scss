@@ -1,6 +1,7 @@
 @import '../../../styles/abstracts/mixins.module';
 @import '../../../styles/abstracts/variable.module';
 
+
 .backgroundImage {
   background-image: url('/assets/images/marketplace-background-mobile.png');
   background-size: cover;
@@ -153,16 +154,18 @@
   @media (min-width: 1024px) {
     padding-top: 2rem;
     .nft {
-      @include font-4xl-neuropolitical-normal;
+      @include font-6xl-neuropolitical-normal;
       padding-top: 3rem;
     }
     .description {
       @include font-md-avenir-regular;
       padding-top: 1rem;
+      max-width: 530px;
     }
     .tabsContainer {
       @include flex-row-between;
       @include flex-align-center;
+      margin-bottom: 2rem;
       .viewFeedContainer {
         .viewFeedBtn {
           @include font-md-neuropolitical-normal;
@@ -171,17 +174,36 @@
       }
     }
   }
-
+  @media (max-width: 1024px) {
+    div#nft-marketplace {
+      padding-top: 70px;
+  }
+  .description {
+    font-size: 18px;
+    max-width: 530px;
+    margin-bottom: 20px;
+  }
+  .tabsContainer {
+    .tabsInnerContainer {
+      .tab {
+        margin-bottom: 20px;
+      }
+    }
+  }
+  .Footer_footerIconItem__5eJ33 {
+    width: 62px;
+}
+}
   @media (min-width: 1280px) {
     background-image: url('/assets/images/marketplace-background.png');
     .nft {
-      padding-top: 1rem;
-      @include font-3xl-neuropolitical-normal;
-      font-size: 3.2rem;
+      padding-top: 4rem;
+      @include font-6xl-neuropolitical-normal;
     }
     .description {
       @include font-base-avenir-regular;
       padding-top: 1rem;
+      max-width: 530px;
     }
     .tabsContainer {
       padding-top: 1rem;
