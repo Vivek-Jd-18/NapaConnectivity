@@ -140,9 +140,9 @@
     background-image: url('/assets/images/marketplace-background-tablet.png');
     .nft {
       text-align: left;
-      padding-top: 2.5rem;
+      padding-top: 5rem;
       max-width: 100px;
-      @include font-5xl-neuropolitical-normal;
+      @include font-3xl-neuropolitical-normal;
     }
     .nftContainer {
       padding-top: 1rem;
@@ -180,7 +180,7 @@
   @media (min-width: 1024px) {
     padding-top: 2rem;
     .nft {
-      @include font-6xl-neuropolitical-normal;
+      @include font-3xl-neuropolitical-normal;
       padding-top: 2.5rem;
     }
     .description {
@@ -200,6 +200,7 @@
       }
     }
   }
+ 
   @media (max-width: 1024px) {
     div#nft-marketplace {
       padding-top: 70px;
@@ -235,7 +236,7 @@
     .nft {
       padding-top: 4rem;
       max-width: 100%;
-      @include font-6xl-neuropolitical-normal;
+      @include font-5xl-neuropolitical-normal;
     }
     .description {
       @include font-base-avenir-regular;
