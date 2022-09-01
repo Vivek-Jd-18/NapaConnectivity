@@ -18,6 +18,16 @@
     color: transparent;
     margin-bottom: 0;
   }
+  @keyframes glow {
+    from {
+      text-shadow: 0 0 20px #fff, 0 0 30px, 0 0 40px, 0 0 50px, 0 0 60px,
+        0 0 70px, 0 0 10px;
+    }
+    to {
+      text-shadow: 0 0 1px #fff, 0 0 20px #ffffff, 0 0 30px, 0 0 40px, 0 0 50px,
+        0 0 60px, 0 0 100px;
+    }
+  }
   @-webkit-keyframes glow {
     from {
       text-shadow: 0 0 20px #fff, 0 0 30px, 0 0 40px, 0 0 50px, 0 0 60px,
@@ -83,11 +93,13 @@
       padding-top: 1rem;
       .projectCardContainer {
         padding-top: 1rem;
+        padding-left: 0.2rem;
+        padding-right: 0.2rem;
       }
     }
 
     .nft {
-      padding-top: 0.2rem;
+      padding-top: 4.2rem;
       @include font-base-neuropolitical-normal;
     }
   }
@@ -98,6 +110,8 @@
     }
     .nft {
       @include font-lg-neuropolitical-normal;
+      font-size: 2rem;
+      max-width: 100px;
     }
   }
 
@@ -106,7 +120,8 @@
       padding-top: 1rem;
     }
     .nft {
-      @include font-lg-neuropolitical-normal;
+      @include font-2xl-neuropolitical-normal;
+      max-width: 100px;
     }
   }
 
@@ -115,7 +130,9 @@
       padding-top: 1rem;
     }
     .nft {
-      @include font-xl-neuropolitical-normal;
+      @include font-3xl-neuropolitical-normal;
+     
+      padding-top: 6.5rem;
     }
   }
 
@@ -123,11 +140,16 @@
     background-image: url('/assets/images/marketplace-background-tablet.png');
     .nft {
       text-align: left;
-      padding-top: 2rem;
-      @include font-3xl-neuropolitical-normal;
+      padding-top: 2.5rem;
+      max-width: 100px;
+      @include font-5xl-neuropolitical-normal;
     }
     .nftContainer {
       padding-top: 1rem;
+      .projectCardContainer {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
     }
     .description {
       padding-top: 1rem;
@@ -150,12 +172,16 @@
         }
       }
     }
+    
+    ul.NftMarketplaceSection_tab__wy7PM button {
+      font-size: 18px;
+  }
   }
   @media (min-width: 1024px) {
     padding-top: 2rem;
     .nft {
       @include font-6xl-neuropolitical-normal;
-      padding-top: 3rem;
+      padding-top: 2.5rem;
     }
     .description {
       @include font-md-avenir-regular;
@@ -179,7 +205,7 @@
       padding-top: 70px;
   }
   .description {
-    font-size: 18px;
+    @include font-base-avenir-regular;
     max-width: 530px;
     margin-bottom: 20px;
   }
@@ -193,11 +219,22 @@
   .Footer_footerIconItem__5eJ33 {
     width: 62px;
 }
+#nft-marketplace .slick-list {
+  margin-top: 30px;
 }
+
+}
+@media (max-width: 767px) {
+  .tabsContainer {
+    margin-bottom:1.5rem;
+  }
+}
+
   @media (min-width: 1280px) {
     background-image: url('/assets/images/marketplace-background.png');
     .nft {
       padding-top: 4rem;
+      max-width: 100%;
       @include font-6xl-neuropolitical-normal;
     }
     .description {
@@ -221,11 +258,12 @@
         }
       }
     }
+
   }
   @media (min-width: 1536px) {
     .nft {
-
-      padding-top: 4rem;
+      padding-top: 6.5rem;
+      max-width: 100%;
       @include font-6xl-neuropolitical-normal;
     }
    
@@ -236,7 +274,7 @@
 
     }
     .tabsContainer {
-      padding-top: 2rem;
+      padding-top: 2rem;margin-bottom: 0;
     }
     .nftContainer {
       .projectCardContainer {
