@@ -41,15 +41,20 @@ const NftMarketplaceSection: NextPage = ({}) => {
           </div>
           <HighlightButton title="Explore All Projects" />
         </div>
-        <SliderComponent centerMode={true}>
-          {Array.from({ length: 6 }, () => {
-            return (
-              <div key={1} className={styles.projectCardContainer}>
-                <NftProjectCard />
-              </div>
-            );
-          })}
-        </SliderComponent>
+        <div id='sliderComponent'>
+          <SliderComponent centerMode={true}>
+            {Array.from({ length: 6 }, (key,index) => {
+              if(index == 0 || index==3){ var backgroundImage = '/assets/images/nftprojectcard.png'; }
+              else if(index == 1 || index == 4){ var backgroundImage = '/assets/images/nft1.png'; }
+              else{ var backgroundImage = '/assets/images/nft2.jpg';}
+              return (
+                <div key={1} className={styles.projectCardContainer}>
+                  <NftProjectCard backgroundImage={backgroundImage}/>
+                </div>
+              );
+            })}
+          </SliderComponent>
+        </div>
       </Container>
       <Footer footerIconShow />
     </div>

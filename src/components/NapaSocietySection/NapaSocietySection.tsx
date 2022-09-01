@@ -7,12 +7,21 @@ import HighlightButton from '../HighlightButton/HighlightButton';
 import Steper from '../Steper/Steper';
 import styles from './NapaSocietySection.module.scss';
 import Image from 'next/image';
+import { useEffect } from 'react';
 
 const NapaSociety: NextPage = () => {
   const [slider, setSlider] = useState(1);
 
+  useEffect(()=>{
+    const interval = setInterval(() => setSlider(prevCount => (prevCount>3)?1:prevCount + 1), 5000)
+    return () => {
+      clearInterval(interval);
+    };
+  }, [])
+
   const handleIncrement = () => {
     if (slider > 3) {
+      setSlider(1);
       return;
     }
     setSlider(slider + 1);
@@ -21,6 +30,7 @@ const NapaSociety: NextPage = () => {
   
   const handleDecrement = () => {
     if (slider < 2) {
+      setSlider(4);
       return;
     }
     setSlider(slider - 1);
