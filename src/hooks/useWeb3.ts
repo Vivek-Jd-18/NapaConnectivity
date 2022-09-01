@@ -1,6 +1,7 @@
 import { ErrorIcon, WalletConnectedIcon } from '@/components/assets';
 import { CustomToastWithLink } from '@/components/CustomToast/CustomToast';
 import { ToastDescription, ToastTitle } from '@/typing/toast';
+import { numberWithCommas } from '@/utils/NumberWithCommas';
 import { getAlreadyConnectedWeb3, getWeb3 } from '@/utils/wallet';
 import { useRouter } from 'next/router';
 import { useCallback, useEffect, useState } from 'react';
@@ -69,7 +70,9 @@ export const useWeb3 = () => {
       '0xB8c77482e45F1F44dE1745F52C74426C631bDD52'
     );
     const tokenBalance = await contract.methods.balanceOf(accounts[0]).call();
-    setWalletBnb(tokenBalance.slice(0, 8));
+    const bnbBalance = numberWithCommas(tokenBalance.slice(0, 8));
+    // @ts-ignore
+    setWalletBnb(bnbBalance);
   };
 
   const getBalanceNapa = async () => {
@@ -80,7 +83,9 @@ export const useWeb3 = () => {
       '0x8EB2Df7137FB778a6387E84f17b80CC82cF9e884'
     );
     const tokenBalance = await contract.methods.balanceOf(accounts[0]).call();
-    setWalletNapa(tokenBalance.slice(0, 8));
+    const napaBalance = numberWithCommas(tokenBalance.slice(0, 8));
+    // @ts-ignore
+    setWalletNapa(napaBalance);
   };
 
   const connectWallet = useCallback(async () => {
