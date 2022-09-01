@@ -13,6 +13,7 @@
     "aos": "^2.3.4",
     "bootstrap": "^5.2.0",
     "eslint-config": "^0.3.0",
+    "libnpmversion": "^3.0.6",
     "lint": "^0.7.0",
     "next": "^12.2.5",
     "npm": "^8.18.0",
