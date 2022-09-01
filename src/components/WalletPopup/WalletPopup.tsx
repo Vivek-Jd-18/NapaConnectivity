@@ -45,7 +45,7 @@ const WalletPopup: NextPage<WalletPopupProps> = ({
     <div className={styles.container} ref={ref}>
       <div className={styles.header}>
         <div className="d-flex">
-          <h2>Venly ETH</h2>
+          <h2>User Profile Name</h2>
         </div>
         <div className={styles.actionButtons}>
           <div
