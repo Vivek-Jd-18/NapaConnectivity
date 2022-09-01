@@ -23,28 +23,44 @@ const SocialArtSection: NextPage = () => {
       <Container className={styles.socialArtContainer}>
         <div className={styles.socialArtContainerBody}>
           <div className={styles.carouselImage}>
-            <img src={Carousel} alt="" className={styles.image} />
+            {slide == 1 ? (
+              <img src={Carousel} alt="" className={styles.image} />
+            ) : slide == 2 ? (
+              <img src={Carousel} alt="" className={styles.image} />
+            ) : slide == 3 ? (
+              <img src={Carousel} alt="" className={styles.image} />
+            ) : slide == 4 ? (
+              <img src={Carousel} alt="" className={styles.image} />
+            ) : (
+              <img src={Carousel} alt="" className={styles.image} />
+            )}
             <div className={styles.slideBtn}>
               <div className={`${styles.carouselBottom} carouselBottom`}>
-                <Image
-                  src={Avatar}
-                  alt=""
-                  className={styles.avatar}
-                  width={70}
-                  height={70}
-                />
                 {slide == 1 ? (
+                  <><Image src={Avatar} alt="" className={styles.avatar}  width={70} height={70}/>
                   <span className={styles.carouselBottomText}>
                     Clinton Bowman
-                  </span>
+                  </span></>
                 ) : slide == 2 ? (
-                  <span className={styles.carouselBottomText}>Slide 2</span>
+                  <><Image src={Avatar} alt="" className={styles.avatar}  width={70} height={70}/>
+                  <span className={styles.carouselBottomText}>
+                  Slide 2
+                  </span></>
                 ) : slide == 3 ? (
-                  <span className={styles.carouselBottomText}>Slide 3</span>
+                  <><Image src={Avatar} alt="" className={styles.avatar}  width={70} height={70}/>
+                  <span className={styles.carouselBottomText}>
+                  Slide 3
+                  </span></>
                 ) : slide == 4 ? (
-                  <span className={styles.carouselBottomText}>Slide 4</span>
+                  <><Image src={Avatar} alt="" className={styles.avatar}  width={70} height={70}/>
+                  <span className={styles.carouselBottomText}>
+                  Slide 4
+                  </span></>
                 ) : (
-                  <span className={styles.carouselBottomText}>Slide 5</span>
+                  <><Image src={Avatar} alt="" className={styles.avatar}  width={70} height={70}/>
+                  <span className={styles.carouselBottomText}>
+                  Slide 5
+                  </span></>
                 )}
               </div>
               <span onClick={() => handleNextSlide(1)}>
