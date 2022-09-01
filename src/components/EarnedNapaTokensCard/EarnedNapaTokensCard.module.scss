@@ -1,0 +1,58 @@
+@import '../../../styles/abstracts/mixins.module';
+@import '../../../styles/abstracts/variable.module';
+
+.cardContainer {
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0px 20px 70px rgba(16, 35, 36, 0.2);
+  backdrop-filter: blur(60px);
+  color: $white;
+  display: flex;
+  flex-direction: column;
+  padding: 3rem;
+  width: 33rem;
+  .subtitle {
+    @include font-sm-avenir-regular;
+    text-align: left;
+  }
+  .amountContainer {
+    display: flex;
+    align-items: baseline;
+    img {
+      width: 3rem !important;
+    }
+    .amount {
+      @include font-4xl-neuropolitical-normal;
+      padding-left: 1rem;
+    }
+    .napa {
+      @include font-md-neuropolitical-normal;
+      margin-left: 1rem;
+    }
+  }
+  .lockDurationContainer {
+    display: flex;
+    width: 100%;
+    margin: 2rem 0;
+    .lockDurationInnerContainer {
+      display: flex;
+      flex-direction: column;
+      flex-basis: 33.33%;
+      text-align: left;
+      .title {
+        @include font-sm-avenir-regular;
+      }
+      .date {
+        @include font-md-avenir-medium;
+      }
+    }
+  }
+  @media (max-width: 1400px) {
+    width: 32rem;
+    .lockDurationContainer {
+      margin: 0.5rem 0;
+    }
+  }
+  @media (min-width: 2560px) {
+    width: 50rem;
+  }
+}

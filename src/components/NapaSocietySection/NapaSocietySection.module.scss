@@ -23,16 +23,26 @@
     height: 100%;
   }
   .societyContainerBody {
-    height: 90%;
+    height: 100%;
     @include flex-row-between;
   }
   .headingNapa {
-    @include font-9xl-neuropolitical-normal;
+    @include font-8xl-neuropolitical-normal;
     color: transparent;
     -webkit-text-stroke: 2px $white;
     animation: glow 1s ease-in-out infinite alternate;
     line-height: 1.1em;
-    margin-bottom: 0.5em;
+    margin-bottom: 0.3em;
+  }
+  @keyframes glow {
+    from {
+      text-shadow: 0 0 20px #fff, 0 0 30px, 0 0 40px, 0 0 50px, 0 0 60px,
+        0 0 70px, 0 0 10px;
+    }
+    to {
+      text-shadow: 0 0 1px #fff, 0 0 20px #ffffff, 0 0 30px, 0 0 40px, 0 0 50px,
+        0 0 60px, 0 0 100px;
+    }
   }
   @-webkit-keyframes glow {
     from {
@@ -51,6 +61,8 @@
     padding-top: 0.7rem;
     color: $white;
     @include font-base-avenir-regular;
+    max-width: 49rem;
+    font-size: 18px;
   }
   .headingSlider {
     @include font-9xl-neuropolitical-normal;
@@ -66,30 +78,59 @@
     @include align-center;
   }
   .sliderCounterText {
-    @include font-lg-avenir-medium;
-    padding-left: 1rem;
+    @include font-8xl-neuropolitical-normal;
+    padding-left: 0rem;
     padding-right: 0.5rem;
     color: $white;
     line-height: 2.1rem;
     margin-bottom: 0;
   }
   .sliderSlashtext {
-    @include font-sm-avenir-medium;
+
     padding-left: 0.5rem;
     padding-right: 0.5rem;
     color: $white;
     margin-bottom: 0;
+    -webkit-text-stroke: 1px #fff;
+    font-size: 2.8rem;
+    font-family: Neuropolitical;
+    position: relative;
+    bottom: -27px;
+    color: transparent;
   }
+  .sliderArrows{
+    display: flex;
+    width: 60px;
+    justify-content: space-between;
+    margin-top: 54px;
+  }
+  .sliderArrows div img{
+    opacity: 0.7;
+  }
+  .sliderArrows div:hover img{
+    opacity: 1;
+  }
+ 
+  .slideImages {
+    margin-bottom: 2rem;
+    img {
+      width: 470px;
+      height: 344px;
+      object-fit: cover;
+      object-position: -610px center;
+  }
+}
   .sliderContainer {
     padding-bottom: 3rem;
     @include flex-row-between;
   }
   .innerSocietyContainer {
-    width: 75%;
+    width: 70%;
     @include flex-column-start;
+    margin-top: -25px;
   }
   .headingSociety {
-    @include font-9xl-neuropolitical-normal;
+    @include font-8xl-neuropolitical-normal;
     line-height: 1rem;
     color: $white;
     margin-bottom: 0.5em;
@@ -102,7 +143,7 @@
   }
 
   .innerSocietyContainerRightSide {
-    width: 25%;
+    width: 45%;
     text-align: left;
     .description {
       @include font-md-avenir-regular;
@@ -127,6 +168,136 @@
       cursor: pointer;
     }
   }
+  .trend_row{
+    ul{
+      display: inline-block;
+      list-style: none;
+      padding: 0;
+      li{
+        width:100%;
+        float: left;
+        margin-bottom: 15px;
+        display: flex;
+        div{
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        }
+        img{
+          width: 80px;
+          height: 80px;
+          float: left;
+          margin-right: 20px;
+        }
+        p{
+          font-size: 12px;
+          color:#fff;
+          margin-bottom: 5px;
+        }
+        h4{
+          @include font-lg-neuropolitical-normal;
+          font-size: 18px;
+          color:#fff;
+          line-height: 1em;
+        }
+      }
+    }
+  }
+  .leaders_row{
+    ul{
+      display: inline-block;
+      list-style: none;
+      padding: 0;
+      li{
+        width:100%;
+        float: left;
+        margin-bottom: 15px;
+        display: flex;
+        justify-content: space-between;
+        img{
+          width: 80px;
+          height: 80px;
+          float: left;
+          margin-right: 20px;
+        }
+        div{
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          width: 100%;
+        }
+        p{
+          @include font-sm-neuropolitical-normal;
+          font-size: 24px;
+          -webkit-text-stroke: 1px #fff;
+          margin-bottom: 0px;
+          color:transparent;
+          display: flex;
+          justify-content: space-between;
+          strong{
+            margin-left: 40px;
+            font-weight: normal;
+              i {
+                  color: #16E6EF;
+                  -webkit-text-stroke: 0;
+                  font-style: normal;
+                  font-size: 24px;
+              }
+              u {
+                font-size: 12px;
+                -webkit-text-stroke: 0;
+                color: #fff;
+                text-decoration: none;
+                font-weight: 100;
+                font-family: Avenir;
+            }
+          }
+
+        }
+        h4{
+          @include font-lg-neuropolitical-normal;
+          font-size: 18px;
+          color:#fff;
+          line-height: 1em;
+        }
+      }
+    }
+  }
+  @media only screen and (max-width: 1536px) {
+    .headingNapa {
+      @include font-8xl-neuropolitical-normal;
+      margin-bottom: 0;
+    }
+    .headingSociety {
+        @include font-8xl-neuropolitical-normal;
+        margin-bottom: 0;
+    }
+    .innerSocietyContainer {
+
+      margin-top: 37px;
+    }
+  }
+  @media only screen and (max-width: 1340px) {
+    .headingNapa {
+      @include font-7xl-neuropolitical-normal;
+      margin-bottom: 0;
+    }
+    .headingSociety {
+        @include font-7xl-neuropolitical-normal;
+        margin-bottom: 0;
+    }
+    .sliderCounterText {
+      @include font-6xl-neuropolitical-normal;
+    }
+    .sliderSlashtext {
+      font-size: 2.2rem;
+      bottom: -17px;
+    }
+    .sliderContainer {
+      padding-bottom: 1rem;
+    }
+  }
+  
   @media only screen and (max-width: 1024px) {
     background-image: url('/assets/images/napsociety-background-tablet.png');
     .societyContainer {
@@ -138,13 +309,14 @@
 
         .headingNapa {
           margin-bottom: 0;
-          @include font-8xl-neuropolitical-normal;
+          @include font-5xl-neuropolitical-normal;
           text-align: left;
           width: 100%;
         }
         .headingSociety {
           margin-bottom: 0;
-          @include font-8xl-neuropolitical-normal;
+          @include font-5xl-neuropolitical-normal;
+          line-height: 80%;
           text-align: left;
           width: 100%;
         }
@@ -152,6 +324,7 @@
           padding-right: 6rem;
           padding-top: 1rem;
           padding-left: 0.3rem;
+          max-width: 580px;
         }
       }
       .innerSocietyContainer {
@@ -165,12 +338,12 @@
         .slider {
           @include flex-between;
           .sliderRightSide {
-            padding-top: 2rem;
+            padding-top: 0rem;
 
             .sliderContainer {
               @include flex-row;
               padding-bottom: 0;
-              padding-top: 1.5rem;
+              padding-top: 0rem;
             }
             .community {
               padding-top: 1.5rem;
@@ -182,33 +355,45 @@
     .mousePointer {
       display: none;
     }
+    .slideImages {
+        margin-bottom: 2rem;
+        img {
+          width: 100%;
+          height: 185px;
+          object-position:  center;
+      }
+    }
+    .leaders_row,.trend_row{
+      li{
+        width: 50% !important;
+        padding-right: 30px;
+       
+      }
+    }
+    .leaders_row ul li p strong{
+      font-size: 20px !important;
+    }
+    
   }
   @media only screen and (max-width: 768px) {
     .societyContainer {
       .societyContainerBody {
         .headingNapa {
           margin-bottom: 0;
-          @include font-7xl-neuropolitical-normal;
+          @include font-4xl-neuropolitical-normal;
           text-align: left;
           width: 100%;
         }
         .innerSocietyContainerRightSide {
           .slider {
             .headingSlider {
-              @include font-7xl-neuropolitical-normal;
+              @include font-5xl-neuropolitical-normal;
             }
             .sliderRightSide {
               padding-top: 0.5rem;
 
               .sliderContainer {
-                .sliderText {
-                  .sliderCounterText {
-                    @include font-lg-avenir-medium;
-                  }
-                  .sliderSlashtext {
-                    @include font-sm-avenir-regular;
-                  }
-                }
+                
                 img {
                   width: 0.6rem;
                 }
@@ -223,7 +408,7 @@
         }
         .headingSociety {
           margin-bottom: 0;
-          @include font-7xl-neuropolitical-normal;
+          @include font-4xl-neuropolitical-normal;
           text-align: left;
           width: 100%;
         }
@@ -233,16 +418,33 @@
         }
       }
     }
+    .trend_row,.leaders_row{ 
+      li{
+        width: 50%;
+      }
+    }
   }
+  @media only screen and (max-width: 740px) {
+  .leaders_row,.trend_row{
+    ul{
+      padding: 0;
+    li{
+      width: 100% !important;
+      padding-right: 0px;
+     
+    }
+  }
+  }
+}
   @media only screen and (max-width: 576px) {
     background-image: url(('/assets/images/napasociety-background-mobile.png'));
     .societyContainer {
       .societyContainerBody {
         .headingNapa {
-          @include font-5xl-neuropolitical-normal;
+          @include font-3xl-neuropolitical-normal;
         }
         .headingSociety {
-          @include font-5xl-neuropolitical-normal;
+          @include font-3xl-neuropolitical-normal;
         }
         .innerSocietyContainerRightSide {
           .slider {
@@ -253,14 +455,7 @@
               padding-top: 0rem;
 
               .sliderContainer {
-                .sliderText {
-                  .sliderCounterText {
-                    @include font-lg-avenir-medium;
-                  }
-                  .sliderSlashtext {
-                    @include font-xs-avenir-regular;
-                  }
-                }
+               
                 img {
                   width: 0.6rem;
                 }
@@ -301,6 +496,12 @@
           }
         }
       }
+    }
+    .sliderCounterText {
+      @include font-6xl-neuropolitical-normal;
+    }
+    .sliderSlashtext {
+      font-size: 2.2rem;
     }
   }
   @media only screen and (max-width: 340px) {

@@ -1,0 +1,78 @@
+@import '../../../styles/abstracts/mixins.module';
+@import '../../../styles/abstracts/variable.module';
+
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0px 20px 70px rgba(16, 35, 36, 0.2);
+  backdrop-filter: blur(60px);
+  color: $white;
+  padding: 3rem;
+  width: 36rem;
+  .innerCardContainer {
+    display: flex;
+    .leftSide {
+      img {
+        width: 10rem;
+        margin-right: 1.5rem;
+      }
+    }
+    .rightSide {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-left: 2rem;
+      .title {
+        @include font-xl-neuropolitical-normal;
+        margin-bottom: 1rem;
+        text-align: left;
+      }
+      .innerRightSideContainer {
+        display: flex;
+        align-items: center;
+        img {
+          margin-right: 1rem;
+        }
+        .subtitle {
+          @include font-md-avenir-medium;
+          padding-left: 1rem;
+        }
+      }
+    }
+  }
+  .dateContainer {
+    display: flex;
+    text-align: left;
+    width: 100%;
+    margin-top: 1.5rem;
+    .dateInnerContainer {
+      display: flex;
+      flex-direction: column;
+      flex-basis: 25%;
+      .dateTitle {
+        @include font-xs-avenir-regular;
+      }
+      .date {
+        @include font-sm-avenir-regular;
+      }
+    }
+  }
+  @media (max-width: 1400px) {
+    width: 32rem;
+  }
+  @media (min-width: 2560px) {
+    width: 50rem;
+    padding: 4rem;
+    .dateContainer {
+      .dateInnerContainer {
+        .dateTitle {
+          @include font-base-avenir-regular;
+        }
+        .date {
+          @include font-md-avenir-regular;
+        }
+      }
+    }
+  }
+}

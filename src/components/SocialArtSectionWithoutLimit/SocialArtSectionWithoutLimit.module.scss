@@ -23,8 +23,10 @@
     height: 100%;
   }
   .socialContainerBody {
-    height: 90%;
+    height: 100%;
     @include flex-row-between;
+    max-width: 1260px;
+    margin: 0 auto;
   }
   .socialArt {
     @include font-7xl-neuropolitical-normal;
@@ -32,6 +34,17 @@
     -webkit-text-stroke: 2px white;
     animation: glow 1s ease-in-out infinite alternate;
     margin-bottom: 0;
+    margin-top: -80px;
+  }
+  @keyframes glow {
+    from {
+      text-shadow: 0 0 20px #fff, 0 0 30px, 0 0 40px, 0 0 50px, 0 0 60px,
+        0 0 70px, 0 0 10px;
+    }
+    to {
+      text-shadow: 0 0 1px #fff, 0 0 20px #ffffff, 0 0 30px, 0 0 40px, 0 0 50px,
+        0 0 60px, 0 0 100px;
+    }
   }
   @-webkit-keyframes glow {
     from {
@@ -45,6 +58,7 @@
   }
   .innerSocialContainer {
     width: 75%;
+    padding-top: 2.3rem;
     @include flex-column-start;
   }
   .withoutLimits {
@@ -53,14 +67,25 @@
     margin-bottom: 0;
   }
   .innerSocialContainerRightSide {
-    width: 25%;
+    width: 324px;
+    margin-top: -104px;
     @include flex-column-start;
     text-align: left;
     .description {
       @include font-md-avenir-medium;
       color: $white;
+      font-weight: 100;
+      margin-bottom: 1.5rem;
     }
+    }
+  
+
+    
+  
+  .HighlightButton_joinSociety__Wa4y_ {
+      margin-top: 1rem;
   }
+
   .joinSocietyBtn {
     @include font-lg-neuropolitical-normal;
     color: $light-blue;
@@ -72,13 +97,51 @@
   .mousePointer {
     display: flex;
     justify-content: center;
+    display: none;
     img {
       cursor: pointer;
     }
   }
 
+  @media only screen and (max-width: 1536px) {
+    .innerSocialContainer {
+      padding-top: 0rem;
+    }
+    .innerSocialContainerRightSide {
+      margin-top: -160px;
+      width: 317px;
+    }
+    .socialArt {
+      margin-top: -92px;
+    }
+  }
+  @media only screen and (max-width: 1340px) {
+    .socialArt {
+      @include font-7xl-neuropolitical-normal;
+    }
+    .withoutLimits {
+      @include font-5xl-neuropolitical-normal;
+    }
+  }
+  @media only screen and (max-width: 1260px) {
+    .socialArt {
+      @include font-7xl-neuropolitical-normal;
+    }
+    .withoutLimits {
+      @include font-5xl-neuropolitical-normal;
+    }
+  }
+  @media only screen and (max-width: 1199px) {
+    .socialArt {
+      @include font-6xl-neuropolitical-normal;
+    }
+    .withoutLimits {
+      @include font-4xl-neuropolitical-normal;
+    }
+    
+  }
   @media only screen and (max-width: 1024px) {
-    background-image: url('/assets/images/socialart-background-tablet.png');
+    background-image: url('/assets/images/socialart-background-tablet.png'); r 
     .socialContainer {
       @include flex-center-column;
       .socialContainerBody {
@@ -106,16 +169,30 @@
         padding-top: 1.438rem;
       }
     }
-    .mousePointer {
-      display: none;
+    // .mousePointer {
+    //   display: none;
+    // }
+    .socialContainerBody {
+      align-items: flex-start;
+      justify-content: center;
+      flex-direction: column;
+    }
+    .innerSocialContainerRightSide {
+      width: 100%;
+      margin-top: 20px;
+    }
+    .innerSocialContainer {
+      width: 100%;
     }
   }
-  @media only screen and (max-width: 768px) {
+  
+  @media only screen and (max-width: 768px) { 
     background-image: url('/assets/images/socialart-background-mobile.png');
     .socialContainer {
       .innerSocialContainer {
         .socialArt {
           @include font-5xl-neuropolitical-normal;
+          margin-bottom: 0.5rem;
         }
         .withoutLimits {
           @include font-3xl-neuropolitical-normal;
@@ -124,6 +201,9 @@
       .innerSocialContainerRightSide {
         .description {
           @include font-md-avenir-regular;
+
+          font-weight: 100;
+
         }
       }
     }
@@ -142,6 +222,9 @@
       .innerSocialContainerRightSide {
         .description {
           @include font-base-avenir-regular;
+
+          font-weight: 100;
+
         }
       }
     }
@@ -160,6 +243,9 @@
       .innerSocialContainerRightSide {
         .description {
           @include font-sm-avenir-regular;
+
+          font-weight: 100;
+
         }
       }
     }

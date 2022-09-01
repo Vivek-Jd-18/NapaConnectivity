@@ -128,14 +128,18 @@
 @mixin font-4xl-neuropolitical-normal {
   font-size: $text-4xl;
   font-weight: 400;
-  line-height: 110%;
+
+  line-height: 99%;
+
   font-style: normal;
   font-family: $text-neuropolitical;
 }
 @mixin font-3xl-neuropolitical-normal {
   font-size: $text-3xl;
   font-weight: 400;
-  line-height: 110%;
+
+  line-height: 99%;
+
   font-style: normal;
   font-family: $text-neuropolitical;
 }
@@ -212,7 +216,9 @@
 @mixin font-base-avenir-regular {
   font-size: $text-base;
   font-weight: 400;
-  line-height: 140%;
+
+  line-height: 150%;
+
   font-style: normal;
   font-family: $text-avenir;
 }

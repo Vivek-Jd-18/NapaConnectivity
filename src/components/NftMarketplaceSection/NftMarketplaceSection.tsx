@@ -10,10 +10,6 @@ import Footer from '../Footer/Footer';
 import HighlightButton from '../HighlightButton/HighlightButton';
 //import image1 from .... (asset location in S3 bucket) ASSETS SHOULD BE IMPORTED AND DEFINED, DO NOT HARDCODE ASSETS PLEASE
 
-type NftMarketplaceSectionProps = {
-  isMenu: boolean;
-};
-
 const marketPlaceTab = [
   {
     title: 'Professional NFT Projects',
@@ -23,14 +19,12 @@ const marketPlaceTab = [
   },
 ];
 
-const NftMarketplaceSection: NextPage<NftMarketplaceSectionProps> = ({
-  isMenu,
-}) => {
+const NftMarketplaceSection: NextPage = ({}) => {
   const [tab, setTab] = useState('Professional NFT Projects');
 
   return (
     <div id="nft-marketplace" className={styles.backgroundImage}>
-      {!isMenu && <Steper steps={4} bottom={0} />}
+      <Steper steps={4} bottom={0} />
       <Container className={styles.nftContainer}>
         <h2 className={styles.nft}>NFT Marketplace</h2>
         <p className={styles.description}>
@@ -45,19 +39,24 @@ const NftMarketplaceSection: NextPage<NftMarketplaceSectionProps> = ({
               ))}
             </ul>
           </div>
-          <HighlightButton title="Explore Projects" />
+          <HighlightButton title="Explore All Projects" />
         </div>
-        <SliderComponent>
-          {Array.from({ length: 6 }, () => {
-            return (
-              <div key={1} className={styles.projectCardContainer}>
-                <NftProjectCard />
-              </div>
-            );
-          })}
-        </SliderComponent>
+        <div id='sliderComponent'>
+          <SliderComponent centerMode={true}>
+            {Array.from({ length: 6 }, (key,index) => {
+              if(index == 0 || index==3){ var backgroundImage = '/assets/images/nftprojectcard.png'; }
+              else if(index == 1 || index == 4){ var backgroundImage = '/assets/images/nft1.png'; }
+              else{ var backgroundImage = '/assets/images/nft2.jpg';}
+              return (
+                <div key={1} className={styles.projectCardContainer}>
+                  <NftProjectCard backgroundImage={backgroundImage}/>
+                </div>
+              );
+            })}
+          </SliderComponent>
+        </div>
       </Container>
-      <Footer />
+      <Footer footerIconShow />
     </div>
   );
 };

@@ -30,3 +30,39 @@ export const MetaMaskIcon = '/assets/images/metamask.svg';
 export const CoinbaseIcon = '/assets/images/coinbase.svg';
 export const AuthereumIcon = '/assets/images/authereum.svg';
 export const VenlyIcon = '/assets/images/venly.svg';
+export const HowardAvatar = '/assets/images/horward.svg';
+export const TimeIcon = '/assets/images/time-icon.svg';
+export const ActiveMintedPostIcon =
+  '/assets/images/active-minted-posts-card.png';
+export const AccountNapaLogoIcon = '/assets/images/napa-account-icon.svg';
+export const TwitterBlueIcon = '/assets/images/twitter-icon-blue.svg';
+export const FacebookBlueIcon = '/assets/images/facebook-icon.svg';
+export const PlusIcon = '/assets/images/plus-icon.svg';
+export const MoreIcon = '/assets/images/more-icon.svg';
+export const NapaLoungeDesktopBackground =
+  '/assets/images/napa-lounge-desktop-background.png';
+export const CoBatchingPoolsBackground =
+  '/assets/images/co-batching-pools-background.png';
+export const NftProjectsBackground = '/assets/images/upcoming-nft-projects.png';
+export const EventsBackground = '/assets/images/events-background.png';
+export const ActiveMintedPostsBackground =
+  '/assets/images/active-minted-posts-background.png';
+export const EarnedNapaTokensBackground =
+  '/assets/images/earned-napa-tokens-background.png';
+export const SwapIcon = '/assets/images/swap-icon.svg';
+export const ArrowDownIcon = '/assets/images/arrow-down-icon.svg';
+export const EtheriumIcon = '/assets/images/Etherium.svg';
+export const EthereumBlackIcon = '/assets/images/ethereum _icon.svg';
+export const WalletBlueIcon = '/assets/images/wallet-blue-icon.svg';
+export const SmallExitIcon = '/assets/images/small-exit-icon.svg';
+export const WalletConnectedIcon = '/assets/images/wallet-connected-icon.svg';
+export const ErrorIcon = '/assets/images/error-icon.svg';
+export const DisconnectWalletIcon = '/assets/images/wallet-disconnect-icon.svg';
+export const WalletNeedsToConnected =
+  '/assets/images/wallet-needs-to-connected-icon.svg';
+export const DoneIcon = '/assets/images/done.svg';
+export const FavoriteIcon = '/assets/images/star-off-icon.svg';
+export const InviteIcon = '/assets/images/invite-icon.svg';
+export const InvitationPoolIcon = '/assets/images/invitaiton-pool.svg';
+export const BnbIcon = '/assets/images/bnb.png';
+export const NapaTokenIcon = '/assets/images/napa-token.png';

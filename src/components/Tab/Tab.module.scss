@@ -38,3 +38,10 @@
     }
   }
 }
+
+@media (min-width: 2560px) {
+  .tabBtn {
+    @include font-base-avenir-medium;
+    font-size: $text-xl;
+  }
+}

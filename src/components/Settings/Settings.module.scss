@@ -1,0 +1,240 @@
+@import '../../../styles/abstracts/mixins.module';
+@import '../../../styles/abstracts/variable.module';
+
+.container {
+  min-height: 100vh;
+  @include flex-column-between;
+  hr {
+    border: 0.5px solid $gray;
+    margin-bottom: 5rem;
+  }
+  .settingsContainer {
+    height: 100%;
+    .settings {
+      padding-top: 9rem;
+      color: $white;
+      @include font-6xl-neuropolitical-normal;
+    }
+    .tabsContainer {
+      @include flex-column-start;
+      margin-bottom: 0.5rem;
+      width: 100%;
+      .tabsInnerContainer {
+        @include flex-row-center;
+        .tab {
+          display: flex;
+          flex-wrap: nowrap;
+          border-bottom: 0;
+          padding-left: 0;
+          list-style-type: none;
+          margin-bottom: 0;
+          margin-top: 0.5rem;
+        }
+      }
+    }
+    .leftSideContainer {
+      .formContainer {
+        width: 100%;
+        padding-top: 2rem;
+        .textArea {
+          @include flex-column-start;
+          padding-bottom: 2rem;
+          span {
+            color: $gray;
+            @include font-sm-avenir-regular;
+            padding: 1rem 0.75rem;
+          }
+          textarea {
+            background-color: transparent;
+            height: 8.188rem !important;
+            padding: 0.5rem;
+            width: 100%;
+            border: 2px solid $white;
+            color: $white;
+            resize: none;
+            &:focus-visible {
+              outline: none;
+            }
+          }
+        }
+        .saveChanges {
+          color: $light-blue;
+          background-color: transparent;
+          border: none;
+          margin-top: 3rem;
+          margin-bottom: 4rem;
+          @include font-lg-neuropolitical-normal;
+        }
+      }
+    }
+    .rightSideContainer {
+      display: flex;
+      flex-direction: column;
+      padding-top: 1.5rem;
+      .firstChild {
+        .accountBtn {
+          margin-top: 2rem;
+          cursor: pointer;
+          border: 2px solid $light-blue;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          flex-direction: row;
+          padding: 1rem;
+        }
+        .napa {
+          color: $white;
+          @include font-lg-neuropolitical-normal;
+        }
+      }
+      .secondChild {
+        padding-top: 4rem;
+        .social {
+          color: $white;
+          @include font-lg-neuropolitical-normal;
+        }
+        .twitterBtn {
+          margin-top: 2rem;
+          cursor: pointer;
+          border: 2px solid $teritary-blue;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          flex-direction: row;
+          padding: 1rem;
+        }
+        .facebookBtn {
+          margin-top: 2rem;
+          cursor: pointer;
+          border: 2px solid $blue;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          flex-direction: row;
+          padding: 1rem;
+        }
+      }
+    }
+    .whitelistContainer {
+      padding-top: 4rem;
+      --bs-gutter-x: 0;
+      .whitelistHeader {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+        .whitelistLeftSide {
+          display: flex;
+          align-items: center;
+          .enableWhitelist {
+            @include font-md-avenir-medium;
+            color: $white;
+            padding-left: 1.5rem;
+          }
+        }
+        .whitelistRightSide {
+          display: flex;
+          align-items: center;
+          span {
+            @include font-md-neuropolitical-normal;
+            color: $light-blue;
+            padding-left: 0.8rem;
+          }
+        }
+      }
+      .whitelistContent {
+        padding-top: 4rem;
+      }
+    }
+  }
+  @media (min-width: 1280px) {
+    .settingsContainer {
+      .settings {
+        padding-top: 7rem;
+        @include font-4xl-neuropolitical-normal;
+      }
+      .whitelistContainer {
+        padding-top: 2rem;
+        .whitelistContent {
+          padding-top: 2rem;
+        }
+      }
+      .rightSideContainer {
+        padding-left: 5rem;
+      }
+    }
+  }
+  @media (min-width: 1440px) {
+    .settingsContainer {
+      .settings {
+        padding-top: 9rem;
+        @include font-6xl-neuropolitical-normal;
+      }
+      .whitelistContainer {
+        padding-top: 4rem;
+        .whitelistContent {
+          padding-top: 4rem;
+        }
+      }
+    }
+  }
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: '';
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: $white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: $secondary-blue;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px $secondary-blue;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
