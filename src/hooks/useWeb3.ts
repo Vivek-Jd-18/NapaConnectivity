@@ -62,7 +62,6 @@ export const useWeb3 = () => {
   }, []);
 
   const getBalanceBnb = async () => {
-    console.log('getBalanceBnb');
     const web3: any = await getAlreadyConnectedWeb3();
     const accounts = await web3.eth.getAccounts();
     const contract = new web3.eth.Contract(
@@ -74,7 +73,6 @@ export const useWeb3 = () => {
   };
 
   const getBalanceNapa = async () => {
-    console.log('getBalanceNapa');
     const web3: any = await getAlreadyConnectedWeb3();
     const accounts = await web3.eth.getAccounts();
     const contract = new web3.eth.Contract(
