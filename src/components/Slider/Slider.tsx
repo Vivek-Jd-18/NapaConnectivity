@@ -59,10 +59,10 @@ const SliderComponent: NextPage<any, SliderProps> = React.forwardRef(
     };
 
     useEffect(() => {
-      window.addEventListener('wheel', scroll, true);
+      document.getElementById('sliderComponent')?.addEventListener('wheel', scroll, true);
 
       return () => {
-        window.removeEventListener('wheel', scroll, true);
+        document.getElementById('sliderComponent')?.removeEventListener('wheel', scroll, true);
       };
     }, []);
 

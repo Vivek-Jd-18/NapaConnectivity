@@ -26,8 +26,9 @@ a {
   min-height: 100vh;
 }
 
+#nft-marketplace .NftProjectCard_cardContainer__IJxEQ:before,
 #nft-marketplace .NftProjectCard_cardContainer__IJxEQ:before {
-  background: linear-gradient(200deg, rgba(12, 27, 34, 0) 0%, rgba(12, 27, 34, 0.8) 100%);
+  background: linear-gradient(200deg, rgba(12, 27, 34, 0.4) 0%, rgba(12, 27, 34, 0.95) 100%);
   position: absolute;
   content: "";
   width: 100%;
@@ -37,11 +38,23 @@ a {
   left: 50%;
   bottom: 0;
 }
+#nft-marketplace .slick-slide.slick-active .NftProjectCard_cardContainer__IJxEQ:before{
+  background:  linear-gradient(200deg, rgba(12, 27, 34, 0) 0%, rgba(12, 27, 34, 0.8) 100%);
+}
   #nft-marketplace .NftProjectCard_cardContainer__IJxEQ{
-  position: relative;
-       
+  position: relative;    
 }  
-
+#nft-marketplace .slick-slide.slick-active.slick-current .NftProjectCard_cardContainer__IJxEQ:before{
+   display: none;  
+}
+#nft-marketplace .NftProjectCard_cardContainer__IJxEQ img,
+#nft-marketplace .NftProjectCard_cardContainer__IJxEQ .NftProjectCard_username__nOW9D{
+  opacity: 0.5;
+}
+#nft-marketplace .slick-slide.slick-active.slick-current  .NftProjectCard_cardContainer__IJxEQ img,
+#nft-marketplace .slick-slide.slick-active.slick-current  .NftProjectCard_cardContainer__IJxEQ .NftProjectCard_username__nOW9D{
+  opacity: 1;
+}
 #nft-marketplace .slick-current .NftProjectCard_cardContainer__IJxEQ > div {
   position: relative;
 }
@@ -95,6 +108,16 @@ div#nft-marketplace .slick-current {
     color: $light-blue;
     @include font-sm-neuropolitical-normal;
     border: 1px solid $light-blue;
+  }
+  @keyframes glow {
+    from {
+      text-shadow: 0 0 20px $light-blue, 0 0 30px, 0 0 40px, 0 0 50px, 0 0 60px,
+        0 0 70px, 0 0 10px;
+    }
+    to {
+      text-shadow: 0 0 1px $light-blue, 0 0 20px $light-blue, 0 0 30px, 0 0 40px,
+        0 0 50px, 0 0 60px, 0 0 100px;
+    }
   }
   @-webkit-keyframes glow {
     from {
@@ -152,4 +175,9 @@ div#nft-marketplace .slick-current {
   div#nft-marketplace .slick-current {
     bottom: 19px;
 }
+}
+@media (max-width:767px){
+  ul.NftMarketplaceSection_tab__wy7PM button {
+    font-size: 16px;
+  }
 }

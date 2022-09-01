@@ -23,8 +23,10 @@
     height: 100%;
   }
   .socialContainerBody {
-    height: 92%;
+    height: 100%;
     @include flex-row-between;
+    max-width: 1260px;
+    margin: 0 auto;
   }
   .socialArt {
     @include font-7xl-neuropolitical-normal;
@@ -32,6 +34,17 @@
     -webkit-text-stroke: 2px white;
     animation: glow 1s ease-in-out infinite alternate;
     margin-bottom: 0;
+    margin-top: -80px;
+  }
+  @keyframes glow {
+    from {
+      text-shadow: 0 0 20px #fff, 0 0 30px, 0 0 40px, 0 0 50px, 0 0 60px,
+        0 0 70px, 0 0 10px;
+    }
+    to {
+      text-shadow: 0 0 1px #fff, 0 0 20px #ffffff, 0 0 30px, 0 0 40px, 0 0 50px,
+        0 0 60px, 0 0 100px;
+    }
   }
   @-webkit-keyframes glow {
     from {
@@ -45,6 +58,7 @@
   }
   .innerSocialContainer {
     width: 75%;
+    padding-top: 2.3rem;
     @include flex-column-start;
   }
   .withoutLimits {
@@ -53,7 +67,8 @@
     margin-bottom: 0;
   }
   .innerSocialContainerRightSide {
-    width: 355px;
+    width: 324px;
+    margin-top: -104px;
     @include flex-column-start;
     text-align: left;
     .description {
@@ -82,8 +97,22 @@
   .mousePointer {
     display: flex;
     justify-content: center;
+    display: none;
     img {
       cursor: pointer;
+    }
+  }
+
+  @media only screen and (max-width: 1536px) {
+    .innerSocialContainer {
+      padding-top: 0rem;
+    }
+    .innerSocialContainerRightSide {
+      margin-top: -160px;
+      width: 317px;
+    }
+    .socialArt {
+      margin-top: -92px;
     }
   }
   @media only screen and (max-width: 1340px) {

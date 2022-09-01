@@ -64,3 +64,5 @@ export const DoneIcon = '/assets/images/done.svg';
 export const FavoriteIcon = '/assets/images/star-off-icon.svg';
 export const InviteIcon = '/assets/images/invite-icon.svg';
 export const InvitationPoolIcon = '/assets/images/invitaiton-pool.svg';
+export const BnbIcon = '/assets/images/bnb.png';
+export const NapaTokenIcon = '/assets/images/napa-token.png';
