@@ -62,6 +62,7 @@ export const useWeb3 = () => {
   }, []);
 
   const getBalanceBnb = async () => {
+    console.log('getBalanceBnb');
     const web3: any = await getAlreadyConnectedWeb3();
     const accounts = await web3.eth.getAccounts();
     const contract = new web3.eth.Contract(
@@ -69,14 +70,11 @@ export const useWeb3 = () => {
       '0xB8c77482e45F1F44dE1745F52C74426C631bDD52'
     );
     const tokenBalance = await contract.methods.balanceOf(accounts[0]).call();
-    if (tokenBalance > 0) {
-      setWalletBnb(tokenBalance.toFixed(8));
-      return;
-    }
-    setWalletBnb(tokenBalance);
+    setWalletBnb(tokenBalance.slice(0, 8));
   };
 
   const getBalanceNapa = async () => {
+    console.log('getBalanceNapa');
     const web3: any = await getAlreadyConnectedWeb3();
     const accounts = await web3.eth.getAccounts();
     const contract = new web3.eth.Contract(
@@ -84,11 +82,7 @@ export const useWeb3 = () => {
       '0x8EB2Df7137FB778a6387E84f17b80CC82cF9e884'
     );
     const tokenBalance = await contract.methods.balanceOf(accounts[0]).call();
-    if (tokenBalance > 0) {
-      setWalletNapa(tokenBalance.toFixed(8));
-      return;
-    }
-    setWalletBnb(tokenBalance);
+    setWalletNapa(tokenBalance.slice(0, 8));
   };
 
   const connectWallet = useCallback(async () => {
