@@ -4,7 +4,6 @@ import { useEffect, useRef } from 'react';
 import {
   BnbIcon,
   EthereumBlackIcon,
-  MoreIcon,
   SmallExitIcon,
   NapaTokenIcon,
 } from '../assets';
@@ -56,7 +55,6 @@ const WalletPopup: NextPage<WalletPopupProps> = ({
           >
             <Image src={SmallExitIcon} width={15} height={15} alt={'cross'} />
           </div>
-          <Image src={MoreIcon} alt={'menu'} width={25} height={25} />
         </div>
       </div>
       <div className={styles.left}>
