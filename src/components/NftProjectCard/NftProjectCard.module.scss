@@ -102,6 +102,7 @@
     padding: 0.5rem;
     .cardInfoContainer {
       padding-top: 1rem;
+      padding-bottom: 0;
 
       .title {
         @include font-md-neuropolitical-normal;
@@ -134,7 +135,7 @@
   @media (min-width: 376px) {
     padding: 1rem;
     .cardInfoContainer {
-      padding-top: 5rem;
+      
 
       .title {
         @include font-md-neuropolitical-normal;
@@ -174,7 +175,8 @@
   @media (min-width: 576px) {
     padding: 1rem;
     .cardInfoContainer {
-      padding-top:5rem;
+      padding-top: 2rem;
+      padding-bottom: 0;
 
       .title {
         @include font-md-neuropolitical-normal;
@@ -224,7 +226,7 @@
     }
     .cardInfoContainer {
       padding-bottom: 0;
-      padding-top: 5rem;
+      padding-top: 3rem;
 
       .title {
         @include font-md-neuropolitical-normal;
@@ -293,12 +295,13 @@
   }
   @media (min-width: 1400px) {
     .cardInfoContainer {
-      padding-top: 8rem;
+      padding-top: 3rem;
       max-width: 230px;
     }
   }
   @media (min-width: 1536px) {
     .cardInfoContainer {
+      padding-top: 8rem;
       .title {
         @include font-xl-neuropolitical-normal;
         color: $white;

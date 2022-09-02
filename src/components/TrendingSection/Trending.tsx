@@ -1,11 +1,17 @@
 import Container from '../../Layout/Container/Container';
 import type { NextPage } from 'next';
 import styles from './Trending.module.scss';
-import { HowardAvatar } from '../assets';
+import { ErrorIcon, HowardAvatar, WalletNeedsToConnected } from '../assets';
 import Tab from '../Tab/Tab';
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import SocialMediaReview from '../SocialMediaReview/SocialMediaReview';
 import ChatWindow from '../ChatWindow/ChatWindow';
+import { API_URL } from '@/constants/url';
+import axios from 'axios';
+import { useWeb3 } from '@/hooks/useWeb3';
+import { toast } from 'react-toastify';
+import { CustomToastWithLink } from '../CustomToast/CustomToast';
+import { ToastDescription, ToastTitle } from '@/typing/toast';
 
 const trendingTabList = [
   {
@@ -61,8 +67,89 @@ const reviewCardData = [
   },
 ];
 
-const TrendingSection: NextPage = () => {
+type TrendingSectionProps = {
+  socket: any;
+};
+
+const TrendingSection: NextPage<TrendingSectionProps> = ({ socket }) => {
   const [tab, setTab] = useState('In Social Media');
+  const [message, setMessage] = useState('');
+  const [messages, setMessages] = useState([]);
+  const { account } = useWeb3();
+
+  useEffect(() => {
+    // @ts-ignore
+    socket.addEventListener('message', ({ data }) => {
+      const response = JSON.parse(data);
+      const newMessage = {
+        channel: response.message.channel,
+        message: response.message.message,
+        messageType: null,
+        timetoken: response.message.timetoken,
+        uuid: response.message.publisher,
+      };
+      //@ts-ignore
+      setMessages([...messages, newMessage]);
+    });
+    return () => {
+      socket.removeEventListener('message', () => {});
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [messages]);
+
+  useEffect(() => {
+    if (account) {
+      fetchMessages();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [account]);
+
+  const fetchMessages = useCallback(async () => {
+    try {
+      const res = await axios.get(`${API_URL}/chat/messages`);
+      setMessages(res.data.messages);
+    } catch (error) {
+      toast.error(
+        CustomToastWithLink({
+          icon: ErrorIcon,
+          title: ToastTitle.ERROR,
+          description: ToastDescription.ERROR,
+          time: 'Now',
+        })
+      );
+    }
+  }, [setMessages]);
+
+  const messageHandler = useCallback(async () => {
+    try {
+      if (account) {
+        await axios.post(`${API_URL}/chat/send`, {
+          message: message,
+          from: 'test',
+        });
+        setMessage('');
+        return;
+      }
+      toast.error(
+        CustomToastWithLink({
+          icon: WalletNeedsToConnected,
+          title: ToastTitle.WALLET_NEEDS_TO_CONNECTED,
+          description: ToastDescription.WALLET_NEEDS_TO_CONNECTED,
+          time: 'Now',
+        })
+      );
+    } catch (error) {
+      setMessage('');
+      toast.error(
+        CustomToastWithLink({
+          icon: ErrorIcon,
+          title: ToastTitle.ERROR,
+          description: ToastDescription.ERROR,
+          time: 'Now',
+        })
+      );
+    }
+  }, [message, account]);
 
   return (
     <div className={styles.backgroundImage}>
@@ -96,7 +183,12 @@ const TrendingSection: NextPage = () => {
             </div>
           </div>
           <div className={`col-xl-4 col-md-12 ${styles.rightSideContainer}`}>
-            <ChatWindow />
+            <ChatWindow
+              setMessage={setMessage}
+              message={message}
+              messageHandler={messageHandler}
+              messages={messages}
+            />
           </div>
         </div>
       </Container>

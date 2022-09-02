@@ -4,8 +4,13 @@ import type { NextPage } from 'next';
 import TrendingSection from '../components/TrendingSection/Trending';
 import LeaderboardSection from '../components/LeaderboardSection/LeaderboardSection';
 import NapaLounge from '../components/NapaLounge/NapaLounge';
+import { WEBSOCKET_URL } from '@/constants/url';
 
 const Home: NextPage = () => {
+  const socket = new WebSocket(WEBSOCKET_URL);
+  socket.addEventListener('open', () => {
+    console.log('connected from client');
+  });
   return (
     <>
       <Head>
@@ -15,7 +20,7 @@ const Home: NextPage = () => {
       </Head>
       <section className={styles.container} id="container">
         <div className={styles.child}>
-          <TrendingSection />
+          <TrendingSection socket={socket} />
         </div>
         <div className={styles.child}>
           <LeaderboardSection />
