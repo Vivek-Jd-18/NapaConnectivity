@@ -81,7 +81,7 @@ const WalletPopup: NextPage<WalletPopupProps> = ({
             src={EthereumBlackIcon}
             width={25}
             height={40}
-            alt="Etherium"
+            alt="Ethereum"
           />
           <span className={styles.ethereum}>Ethereum</span>
           {/* <span className={styles.eth}>ETH</span> */}
