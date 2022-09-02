@@ -46,7 +46,9 @@ const Footer: NextPage<FooterProps> = ({ footerIconShow }) => {
                 <Link href={'/marketplace'}>
                   <li>NFT Marketplace</li>
                 </Link>
-                {/* <li>NAPA Earn</li> */}
+                <Link href={'/napaearn'}>
+                <li>NAPA Earn</li>
+                </Link>
                 {/* <li>Leaderboards</li> */}
                 {/* <li>Lauchpad</li> */}
                 <Link href={'/support'}>

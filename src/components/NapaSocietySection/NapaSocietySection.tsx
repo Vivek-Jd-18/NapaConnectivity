@@ -46,9 +46,9 @@ const NapaSociety: NextPage = () => {
             <h1 className={styles.headingSociety}>Society</h1>
             <p className={styles.societyLeftDescription}>
               
-                Join our society and turn your social media into social art,
-                mint your social art in our social media app into NFTs and earn
-                NAPA tokens and buy and sell NFTs in the largest marketplace in
+                Join NAPA Society and turn your social media into <strong>Social Art! </strong><br></br>
+                <br></br>Mint your posts in our social media app into NFTs to earn
+                NAPA tokens to buy and sell NFTs in the largest marketplace in
                 the world!
              
             </p>
@@ -104,7 +104,7 @@ const NapaSociety: NextPage = () => {
                 <h6 className={styles.description}>
                   {/* <strong>Checkout the NAPA Lounge!</strong> */}
                 </h6>
-                <div className={styles.slideImages}><img src='assets/images/image-lounge.jpg'></img></div>
+                {/* <div className={styles.slideImages}><img src='assets/images/image-lounge.jpg'></img></div> */}
                 <HighlightButton title="Visit NAPA Lounge" />
               </div>
             ) : slider === 2 ? (
