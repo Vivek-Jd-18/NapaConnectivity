@@ -61,15 +61,15 @@ const WalletPopup: NextPage<WalletPopupProps> = ({
         <span>{account}</span>
       </div>
       <div className={styles.body}>
-        <Image src={NapaTokenIcon} alt={'Etherium'} width={90} height={90} />
+        <Image src={NapaTokenIcon} alt={'NAPA Token'} width={90} height={90} />
         <h2>{napa}</h2>
         {crypto && <span>$98,22 USD</span>}
       </div>
       <div className={styles.footer}>
         <div className={styles.footerLeftSide}>
-          <Image src={NapaTokenIcon} width={30} height={30} alt="NAPA" />
+          <Image src={NapaTokenIcon} width={25} height={40} alt="NAPA" />
           <span className={styles.ethereum}>NAPA</span>
-          <span className={styles.eth}>NAPA</span>
+          {/* <span className={styles.eth}>NAPA</span> */}
         </div>
         <div className={styles.footerRightSide}>
           <h2>{napa}</h2>
@@ -79,12 +79,12 @@ const WalletPopup: NextPage<WalletPopupProps> = ({
         <div className={styles.footerLeftSide}>
           <Image
             src={EthereumBlackIcon}
-            width={30}
-            height={30}
+            width={25}
+            height={40}
             alt="Etherium"
           />
           <span className={styles.ethereum}>Ethereum</span>
-          <span className={styles.eth}>ETH</span>
+          {/* <span className={styles.eth}>ETH</span> */}
         </div>
         <div className={styles.footerRightSide}>
           <h2>{ethereum}</h2>
@@ -92,9 +92,9 @@ const WalletPopup: NextPage<WalletPopupProps> = ({
       </div>
       <div className={`${styles.footer}`}>
         <div className={styles.footerLeftSide}>
-          <Image src={BnbIcon} width={30} height={30} alt="Binance" />
+          <Image src={BnbIcon} width={25} height={40} alt="Binance" />
           <span className={styles.ethereum}>Binance</span>
-          <span className={styles.eth}>BNB</span>
+          {/* <span className={styles.eth}>BNB</span> */}
         </div>
         <div className={styles.footerRightSide}>
           <h2>{bnb}</h2>
