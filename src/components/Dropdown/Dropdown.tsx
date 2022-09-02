@@ -5,11 +5,15 @@ import styles from './Dropdown.module.scss';
 type DropDownComponentProps = {
   options: Options[];
   title?: string;
+  onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  value: string;
 };
 
 const DropDownComponent: NextPage<DropDownComponentProps> = ({
   options,
   title,
+  onChange,
+  value,
 }) => {
   return (
     <div className={`form-floating ${styles.dropdownContainer}`}>
@@ -17,12 +21,14 @@ const DropDownComponent: NextPage<DropDownComponentProps> = ({
         className={`form-select ${styles.selectContainer}`}
         id="floatingSelect"
         aria-label="Floating label select example"
+        value={value}
+        onChange={onChange}
       >
         {options.map(({ value, name }, index) => {
           return (
             <option
               className={styles.option}
-              selected={index == 0}
+              selected={value === value}
               value={value}
               key={index}
             >
