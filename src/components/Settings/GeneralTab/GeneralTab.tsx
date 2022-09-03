@@ -74,7 +74,6 @@ const GeneralTab: NextPage<GeneralTabProps> = ({ account }) => {
       };
       // @ts-ignore
       const res = await createUserProfile(user);
-      // console.log('res', res);
       toast.success(
         CustomToastWithLink({
           icon: DoneIcon,
