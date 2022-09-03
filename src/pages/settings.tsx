@@ -2,19 +2,22 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import SettingsComponent from '../components/Settings/Settings';
 import styles from '../../styles/pages/Settings.module.scss';
-import { useWeb3 } from '@/hooks/useWeb3';
 import { useProfile } from '@/hooks/useProfile';
 import { useEffect } from 'react';
 
 const Settings: NextPage = () => {
-  const { account } = useWeb3();
-  const { getUserProfileDetails } = useProfile();
+  const { getUserProfileDetails, napaProfileId, getProfileIdFromLocalStorage } =
+    useProfile();
 
   useEffect(() => {
-    if (account) {
-      getUserProfileDetails(account);
+    getProfileIdFromLocalStorage();
+  }, []);
+
+  useEffect(() => {
+    if (napaProfileId) {
+      getUserProfileDetails(napaProfileId);
     }
-  }, [account]);
+  }, [napaProfileId]);
 
   return (
     <>
