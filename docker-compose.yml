@@ -1,0 +1,10 @@
+version: "2.2"
+
+services: 
+  napa-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: napasociety-development
+    ports:
+      - '5001:5001'
