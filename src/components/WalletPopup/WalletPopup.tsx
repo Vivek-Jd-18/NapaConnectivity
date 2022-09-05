@@ -32,8 +32,6 @@ const WalletPopup: NextPage<WalletPopupProps> = ({
   const ref = useRef(null);
   const { napaProfileName } = useProfile();
 
-  console.log('napaProfileName', napaProfileName);
-
   useEffect(() => {
     const handleClickOutside = (event: any) => {
       //@ts-ignore

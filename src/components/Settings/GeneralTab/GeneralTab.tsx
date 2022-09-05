@@ -165,7 +165,6 @@ const GeneralTab: NextPage = () => {
             options={languages}
             dropDownValue={language}
             onChange={(e) => {
-              console.log('e.target.value', e.target.value);
               setLanguage(e.target.value);
             }}
           />
