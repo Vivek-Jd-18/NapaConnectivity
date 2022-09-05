@@ -35,7 +35,7 @@ const timezones = [
 
 const currencies = [
   {
-    name: 'NAPA, NAPA',
+    name: 'NAPA Society, NAPA',
     value: 'NAPA',
   },
   {
