@@ -16,8 +16,8 @@ const SliderComponent: NextPage<any, SliderProps> = React.forwardRef(
       centerMode: centerMode,
       slidesToShow: slidesToShow ? slidesToShow : 3,
       infinite: true,
-      // autoplay: true,
-      // autoplaySpeed: 1500,
+      autoplay: true,
+      autoplaySpeed: 1500,
       cssEase: 'linear',
       responsive: [
         {
@@ -59,10 +59,14 @@ const SliderComponent: NextPage<any, SliderProps> = React.forwardRef(
     };
 
     useEffect(() => {
-      document.getElementById('sliderComponent')?.addEventListener('wheel', scroll, true);
+      document
+        .getElementById('sliderComponent')
+        ?.addEventListener('wheel', scroll, true);
 
       return () => {
-        document.getElementById('sliderComponent')?.removeEventListener('wheel', scroll, true);
+        document
+          .getElementById('sliderComponent')
+          ?.removeEventListener('wheel', scroll, true);
       };
     }, []);
 

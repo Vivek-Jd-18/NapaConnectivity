@@ -4,12 +4,13 @@ import { API_URL } from '@/constants/url';
 import { ToastDescription, ToastTitle } from '@/typing/toast';
 import { ProfileDetails } from '@/typing/typing';
 import axios from 'axios';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 
 export const useProfile = () => {
   const [profileDetails, setProfileDetails] = useState<ProfileDetails>();
   const [napaProfileId, setNapaProfileId] = useState('');
+  const [napaProfileName, setNapaProfileName] = useState('');
 
   const getProfileIdFromLocalStorage = useCallback(async () => {
     const data = await localStorage.getItem('profileId');
@@ -17,6 +18,10 @@ export const useProfile = () => {
       setNapaProfileId(JSON.parse(data));
     }
   }, [setNapaProfileId]);
+
+  useEffect(() => {
+    getProfileIdFromLocalStorage();
+  }, []);
 
   const getUserProfileDetails = useCallback(
     async (profileId: string) => {
@@ -56,11 +61,15 @@ export const useProfile = () => {
 
   const updateUserProfile = useCallback(
     async (user: any, profileId: string) => {
-      await axios.patch(`${API_URL}/user/account/update/${profileId}`, {
-        user,
-      });
+      const res = await axios.patch(
+        `${API_URL}/user/account/update/${profileId}`,
+        {
+          user,
+        }
+      );
+      setNapaProfileName(res?.data?.profile_name);
     },
-    []
+    [setNapaProfileName]
   );
 
   return {
@@ -70,5 +79,6 @@ export const useProfile = () => {
     updateUserProfile,
     napaProfileId,
     getProfileIdFromLocalStorage,
+    napaProfileName,
   };
 };
