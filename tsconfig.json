@@ -20,7 +20,7 @@
     "noFallthroughCasesInSwitch": true,
 
     "target": "es2021",
-    "outDir": "out",
+    "outDir": "build",
     "declaration": true,
     "sourceMap": true,
 
@@ -45,6 +45,6 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "node_modules/redux/index"
+    "node_modules/redux/index",
   ]
 }
