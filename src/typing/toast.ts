@@ -9,6 +9,7 @@ export enum ToastTitle {
   WALLET_DISCONNECTED = 'Wallet Disconnected',
   WALLET_NEEDS_TO_CONNECTED = 'Wallet Needs to Connected',
   WALLET_IS_ALREADY_CONNECTED = 'Wallet is Already Connected',
+  PROFILE_NEEDS_TO_BE_CREATED = 'Profile needs to be created',
 }
 
 export enum ToastDescription {
@@ -22,4 +23,5 @@ export enum ToastDescription {
   WALLET_DISCONNECTED = 'Your wallet has been disconnected.',
   WALLET_NEEDS_TO_CONNECTED = 'Please connect your wallet.',
   WALLET_IS_ALREADY_CONNECTED = 'Your wallet has been already connected.',
+  PROFILE_NEEDS_TO_BE_CREATED = 'Please create your profile.',
 }

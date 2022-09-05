@@ -12,6 +12,7 @@ import { useWeb3 } from '@/hooks/useWeb3';
 import { toast } from 'react-toastify';
 import { CustomToastWithLink } from '../CustomToast/CustomToast';
 import { ToastDescription, ToastTitle } from '@/typing/toast';
+import { useProfile } from '@/hooks/useProfile';
 
 const trendingTabList = [
   {
@@ -76,6 +77,22 @@ const TrendingSection: NextPage<TrendingSectionProps> = ({ socket }) => {
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
   const { account } = useWeb3();
+  const {
+    profileDetails,
+    getUserProfileDetails,
+    napaProfileId,
+    getProfileIdFromLocalStorage,
+  } = useProfile();
+
+  useEffect(() => {
+    getProfileIdFromLocalStorage();
+  }, []);
+
+  useEffect(() => {
+    if (napaProfileId) {
+      getUserProfileDetails(napaProfileId);
+    }
+  }, [napaProfileId]);
 
   useEffect(() => {
     // @ts-ignore
@@ -122,19 +139,32 @@ const TrendingSection: NextPage<TrendingSectionProps> = ({ socket }) => {
 
   const messageHandler = useCallback(async () => {
     try {
-      if (account) {
+      if (account && profileDetails) {
         await axios.post(`${API_URL}/chat/send`, {
           message: message,
-          from: 'test',
+          from: profileDetails?.profile_name,
         });
         setMessage('');
         return;
       }
+      if (!account) {
+        setMessage('');
+        toast.error(
+          CustomToastWithLink({
+            icon: WalletNeedsToConnected,
+            title: ToastTitle.WALLET_NEEDS_TO_CONNECTED,
+            description: ToastDescription.WALLET_NEEDS_TO_CONNECTED,
+            time: 'Now',
+          })
+        );
+        return;
+      }
+      setMessage('');
       toast.error(
         CustomToastWithLink({
-          icon: WalletNeedsToConnected,
-          title: ToastTitle.WALLET_NEEDS_TO_CONNECTED,
-          description: ToastDescription.WALLET_NEEDS_TO_CONNECTED,
+          icon: ErrorIcon,
+          title: ToastTitle.PROFILE_NEEDS_TO_BE_CREATED,
+          description: ToastDescription.PROFILE_NEEDS_TO_BE_CREATED,
           time: 'Now',
         })
       );
@@ -149,7 +179,7 @@ const TrendingSection: NextPage<TrendingSectionProps> = ({ socket }) => {
         })
       );
     }
-  }, [message, account]);
+  }, [message, account, profileDetails]);
 
   return (
     <div className={styles.backgroundImage}>

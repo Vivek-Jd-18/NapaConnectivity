@@ -5,12 +5,16 @@ import TrendingSection from '../components/TrendingSection/Trending';
 import LeaderboardSection from '../components/LeaderboardSection/LeaderboardSection';
 import NapaLounge from '../components/NapaLounge/NapaLounge';
 import { WEBSOCKET_URL } from '@/constants/url';
+import { useEffect } from 'react';
 
 const Home: NextPage = () => {
   const socket = new WebSocket(WEBSOCKET_URL);
-  socket.addEventListener('open', () => {
-    console.log('connected from client');
-  });
+  useEffect(() => {
+    socket.addEventListener('open', () => {
+      console.log('connected from client');
+    });
+  }, []);
+
   return (
     <>
       <Head>

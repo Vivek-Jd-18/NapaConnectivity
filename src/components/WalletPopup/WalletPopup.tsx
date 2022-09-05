@@ -1,3 +1,4 @@
+import { useProfile } from '@/hooks/useProfile';
 import type { NextPage } from 'next';
 import Image from 'next/image';
 import { useEffect, useRef } from 'react';
@@ -16,6 +17,7 @@ type WalletPopupProps = {
   bnb?: number;
   napa?: number;
   crypto?: boolean;
+  profileName: string;
 };
 
 const WalletPopup: NextPage<WalletPopupProps> = ({
@@ -25,8 +27,10 @@ const WalletPopup: NextPage<WalletPopupProps> = ({
   ethereum,
   bnb,
   napa,
+  profileName,
 }) => {
   const ref = useRef(null);
+  const { napaProfileName } = useProfile();
 
   useEffect(() => {
     const handleClickOutside = (event: any) => {
@@ -45,7 +49,7 @@ const WalletPopup: NextPage<WalletPopupProps> = ({
     <div className={styles.container} ref={ref}>
       <div className={styles.header}>
         <div className="d-flex">
-          <h2>User Profile Name</h2>
+          <h2>{napaProfileName || profileName}</h2>
         </div>
         <div className={styles.actionButtons}>
           <div

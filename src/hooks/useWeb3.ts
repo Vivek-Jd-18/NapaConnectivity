@@ -105,9 +105,9 @@ export const useWeb3 = () => {
           time: 'Now',
         })
       );
-      push('/home');
       setAccount(walletAddress[0]);
       setWalletEth(walletBalanceInEth);
+      push('/settings');
       getBalanceBnb();
       getBalanceNapa();
     } catch (error: any) {
