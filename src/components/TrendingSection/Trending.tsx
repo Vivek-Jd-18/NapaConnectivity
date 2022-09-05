@@ -77,13 +77,22 @@ const TrendingSection: NextPage<TrendingSectionProps> = ({ socket }) => {
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
   const { account } = useWeb3();
-  const { profileDetails, getUserProfileDetails } = useProfile();
+  const {
+    profileDetails,
+    getUserProfileDetails,
+    napaProfileId,
+    getProfileIdFromLocalStorage,
+  } = useProfile();
 
   useEffect(() => {
-    if (account) {
-      getUserProfileDetails(account);
+    getProfileIdFromLocalStorage();
+  }, []);
+
+  useEffect(() => {
+    if (napaProfileId) {
+      getUserProfileDetails(napaProfileId);
     }
-  }, [account]);
+  }, [napaProfileId]);
 
   useEffect(() => {
     // @ts-ignore
@@ -133,7 +142,7 @@ const TrendingSection: NextPage<TrendingSectionProps> = ({ socket }) => {
       if (account && profileDetails) {
         await axios.post(`${API_URL}/chat/send`, {
           message: message,
-          from: profileDetails.profile_name,
+          from: profileDetails?.profile_name,
         });
         setMessage('');
         return;

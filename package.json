@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/uuid": "^8.3.4",
     "@types/vivus": "^0.4.4",
     "aos": "^2.3.4",
     "axios": "^0.27.2",
@@ -29,6 +30,7 @@
     "slick-carousel": "^1.8.1",
     "swc": "^1.0.11",
     "swc-loader": "^0.2.3",
+    "uuid": "^8.3.2",
     "vivus": "^0.4.6",
     "web3": "^1.7.5"
   },

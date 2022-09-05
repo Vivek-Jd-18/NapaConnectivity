@@ -13,6 +13,7 @@ export type Options = {
 };
 
 export type ProfileDetails = {
+  napa_profile_id: string;
   profile_name: string;
   primary_currency: string;
   metamask_wallet_account_number: string;
@@ -20,4 +21,6 @@ export type ProfileDetails = {
   Timezone: string;
   NAPA_social_media_account_email: string;
   Bio: string;
+  created_at: string;
+  updated_at: string;
 };

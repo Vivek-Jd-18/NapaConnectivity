@@ -9,6 +9,14 @@ import { toast } from 'react-toastify';
 
 export const useProfile = () => {
   const [profileDetails, setProfileDetails] = useState<ProfileDetails>();
+  const [napaProfileId, setNapaProfileId] = useState('');
+
+  const getProfileIdFromLocalStorage = useCallback(async () => {
+    const data = await localStorage.getItem('profileId');
+    if (data !== null) {
+      setNapaProfileId(JSON.parse(data));
+    }
+  }, [setNapaProfileId]);
 
   const getUserProfileDetails = useCallback(
     async (profileId: string) => {
@@ -16,7 +24,8 @@ export const useProfile = () => {
         const response = await axios.get(
           `${API_URL}/user/account/details/${profileId}`
         );
-        setProfileDetails(response.data.user);
+        setNapaProfileId(response?.data?.user?.napa_profile_id);
+        setProfileDetails(response?.data?.user);
       } catch (error) {
         toast.error(
           CustomToastWithLink({
@@ -27,25 +36,39 @@ export const useProfile = () => {
         );
       }
     },
-    [setProfileDetails]
+    [setNapaProfileId, setProfileDetails]
   );
 
-  const createUserProfile = useCallback(async (user: any) => {
-    await axios.post(`${API_URL}/user/account/new`, {
-      user,
-    });
-  }, []);
+  const createUserProfile = useCallback(
+    async (user: any) => {
+      const res = await axios.post(`${API_URL}/user/account/new`, {
+        user,
+      });
+      localStorage.setItem(
+        'profileId',
+        JSON.stringify(res?.data?.napa_profile_id)
+      );
+      setNapaProfileId(res?.data?.napa_profile_id);
+      setProfileDetails(res.data);
+    },
+    [setNapaProfileId, setProfileDetails]
+  );
 
-  const updateUserProfile = useCallback(async (user: any) => {
-    await axios.post(`${API_URL}/user/account/update`, {
-      user,
-    });
-  }, []);
+  const updateUserProfile = useCallback(
+    async (user: any, profileId: string) => {
+      await axios.patch(`${API_URL}/user/account/update/${profileId}`, {
+        user,
+      });
+    },
+    []
+  );
 
   return {
     getUserProfileDetails,
     profileDetails,
     createUserProfile,
     updateUserProfile,
+    napaProfileId,
+    getProfileIdFromLocalStorage,
   };
 };

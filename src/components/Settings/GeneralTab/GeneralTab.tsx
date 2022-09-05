@@ -17,6 +17,7 @@ import type { NextPage } from 'next';
 import { useCallback, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import styles from '../Settings.module.scss';
+import { v4 as uuidv4 } from 'uuid';
 
 type GeneralTabProps = {
   account: string;
@@ -25,23 +26,28 @@ type GeneralTabProps = {
 const GeneralTab: NextPage<GeneralTabProps> = ({ account }) => {
   const [name, setName] = useState('');
   const [bio, setBio] = useState('');
-  const [currency, setCurrency] = useState('');
+  const [currency, setCurrency] = useState('NAPA');
   const [language, setLanguage] = useState('English');
-  const [selectedTimezone, setSelectedTimezone] = useState<any>(
-    Intl.DateTimeFormat().resolvedOptions().timeZone
-  );
+  const [selectedTimezone, setSelectedTimezone] = useState<any>('');
+  const [profileId, setProfileId] = useState('');
   const {
     createUserProfile,
     profileDetails,
     getUserProfileDetails,
     updateUserProfile,
+    napaProfileId,
+    getProfileIdFromLocalStorage,
   } = useProfile();
 
   useEffect(() => {
-    if (account) {
-      getUserProfileDetails(account);
+    getProfileIdFromLocalStorage();
+  }, []);
+
+  useEffect(() => {
+    if (profileId || napaProfileId) {
+      getUserProfileDetails(profileId || napaProfileId);
     }
-  }, [account]);
+  }, [profileId, napaProfileId]);
 
   useEffect(() => {
     if (profileDetails) {
@@ -50,6 +56,7 @@ const GeneralTab: NextPage<GeneralTabProps> = ({ account }) => {
       setSelectedTimezone(profileDetails.Timezone);
       setCurrency(profileDetails.primary_currency);
       setLanguage(profileDetails.language);
+      setProfileId(profileDetails.napa_profile_id);
     }
   }, [profileDetails]);
 
@@ -58,14 +65,15 @@ const GeneralTab: NextPage<GeneralTabProps> = ({ account }) => {
       const user = {
         accountNumber: account,
         profileName: name,
+        napaProfileId: uuidv4(),
         bio,
         primaryCurrency: currency,
         language,
-        timezone: 'GMT +7',
+        timezone: selectedTimezone.value,
         napaSocialMediaAccount: '',
       };
       // @ts-ignore
-      await createUserProfile(user);
+      const res = await createUserProfile(user);
       toast.success(
         CustomToastWithLink({
           icon: DoneIcon,
@@ -93,10 +101,10 @@ const GeneralTab: NextPage<GeneralTabProps> = ({ account }) => {
         bio,
         primaryCurrency: currency,
         language,
-        timezone: 'GMT +7',
+        timezone: selectedTimezone.value,
         napaSocialMediaAccount: '',
       };
-      await updateUserProfile(user);
+      await updateUserProfile(user, napaProfileId);
       toast.success(
         CustomToastWithLink({
           icon: DoneIcon,
@@ -113,7 +121,15 @@ const GeneralTab: NextPage<GeneralTabProps> = ({ account }) => {
         })
       );
     }
-  }, [name, bio, currency, language, selectedTimezone, profileDetails]);
+  }, [
+    name,
+    bio,
+    currency,
+    language,
+    selectedTimezone,
+    profileDetails,
+    napaProfileId,
+  ]);
 
   return (
     <div className={`row col-12 ${styles.leftSideContainer}`}>
