@@ -15,6 +15,7 @@ import styles from './Header.module.scss';
 import WalletPopup from '../WalletPopup/WalletPopup';
 import { useWeb3 } from '@/hooks/useWeb3';
 import Image from 'next/image';
+import { useProfile } from '@/hooks/useProfile';
 
 // Please import define the logo and hamburger menu//
 // Decouple the search icon with the container //
@@ -35,6 +36,24 @@ const Header: NextPage<HeaderProps> = ({
   const { push } = useRouter();
   const [popupShow, setPopupShow] = useState(false);
   const { walletEth, account, walletBnb, walletNapa } = useWeb3();
+
+  const {
+    getUserProfileDetails,
+    profileDetails,
+    napaProfileId,
+    getProfileIdFromLocalStorage,
+  } = useProfile();
+
+  useEffect(() => {
+    getProfileIdFromLocalStorage();
+  }, []);
+
+  useEffect(() => {
+    if (napaProfileId) {
+      getUserProfileDetails(napaProfileId);
+    }
+  }, [napaProfileId]);
+
   useEffect(() => {
     new Vivus('napa-logo', {
       type: 'delayed',
@@ -93,6 +112,7 @@ const Header: NextPage<HeaderProps> = ({
                 napa={walletNapa}
                 bnb={walletBnb}
                 crypto={false}
+                profileName={profileDetails?.profile_name as string}
               />
             )}
           </div>

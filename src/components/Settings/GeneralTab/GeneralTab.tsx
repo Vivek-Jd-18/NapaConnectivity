@@ -4,6 +4,7 @@ import {
   ErrorIcon,
   FacebookBlueIcon,
   TwitterBlueIcon,
+  WalletNeedsToConnected,
 } from '@/components/assets';
 import { CustomToastWithLink } from '@/components/CustomToast/CustomToast';
 import DropDownComponent from '@/components/Dropdown/Dropdown';
@@ -18,18 +19,18 @@ import { useCallback, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import styles from '../Settings.module.scss';
 import { v4 as uuidv4 } from 'uuid';
+import { useRouter } from 'next/router';
+import { useWeb3 } from '@/hooks/useWeb3';
 
-type GeneralTabProps = {
-  account: string;
-};
-
-const GeneralTab: NextPage<GeneralTabProps> = ({ account }) => {
+const GeneralTab: NextPage = () => {
   const [name, setName] = useState('');
   const [bio, setBio] = useState('');
   const [currency, setCurrency] = useState('NAPA');
   const [language, setLanguage] = useState('English');
   const [selectedTimezone, setSelectedTimezone] = useState<any>('');
   const [profileId, setProfileId] = useState('');
+  const { account } = useWeb3();
+  const { push } = useRouter();
   const {
     createUserProfile,
     profileDetails,
@@ -52,10 +53,10 @@ const GeneralTab: NextPage<GeneralTabProps> = ({ account }) => {
   useEffect(() => {
     if (profileDetails) {
       setName(profileDetails.profile_name);
-      setBio(profileDetails.Bio);
-      setSelectedTimezone(profileDetails.Timezone);
+      setBio(profileDetails.Bio || '');
+      setSelectedTimezone(profileDetails.Timezone || '');
       setCurrency(profileDetails.primary_currency);
-      setLanguage(profileDetails.language);
+      setLanguage(profileDetails.language || 'English');
       setProfileId(profileDetails.napa_profile_id);
     }
   }, [profileDetails]);
@@ -68,25 +69,28 @@ const GeneralTab: NextPage<GeneralTabProps> = ({ account }) => {
         napaProfileId: uuidv4(),
         bio,
         primaryCurrency: currency,
-        language,
+        language: language || 'English',
         timezone: selectedTimezone.value,
         napaSocialMediaAccount: '',
       };
       // @ts-ignore
-      const res = await createUserProfile(user);
+      await createUserProfile(user);
       toast.success(
         CustomToastWithLink({
           icon: DoneIcon,
           title: ToastTitle.CHANGES_SAVED,
           description: ToastDescription.CHANGES_SAVED,
+          time: 'Now',
         })
       );
+      push('/home');
     } catch (error) {
       toast.error(
         CustomToastWithLink({
           icon: ErrorIcon,
           title: ToastTitle.ERROR,
           description: ToastDescription.ERROR,
+          time: 'Now',
         })
       );
     }
@@ -95,21 +99,22 @@ const GeneralTab: NextPage<GeneralTabProps> = ({ account }) => {
   const updateUserProfileHandler = useCallback(async () => {
     try {
       const user = {
-        ...profileDetails,
         accountNumber: account,
         profileName: name,
         bio,
         primaryCurrency: currency,
-        language,
-        timezone: selectedTimezone.value,
+        language: language || 'English',
+        timezone: selectedTimezone.value || selectedTimezone,
         napaSocialMediaAccount: '',
       };
       await updateUserProfile(user, napaProfileId);
+      getUserProfileDetails(napaProfileId);
       toast.success(
         CustomToastWithLink({
           icon: DoneIcon,
           title: ToastTitle.CHANGES_SAVED,
           description: ToastDescription.CHANGES_SAVED,
+          time: 'Now',
         })
       );
     } catch (error) {
@@ -118,6 +123,7 @@ const GeneralTab: NextPage<GeneralTabProps> = ({ account }) => {
           icon: ErrorIcon,
           title: ToastTitle.ERROR,
           description: ToastDescription.ERROR,
+          time: 'Now',
         })
       );
     }
@@ -129,6 +135,7 @@ const GeneralTab: NextPage<GeneralTabProps> = ({ account }) => {
     selectedTimezone,
     profileDetails,
     napaProfileId,
+    account,
   ]);
 
   return (
@@ -150,18 +157,32 @@ const GeneralTab: NextPage<GeneralTabProps> = ({ account }) => {
           <DropDownComponent
             title="Currency"
             options={currencies}
-            value={currency}
+            dropDownValue={currency}
             onChange={(e) => setCurrency(e.target.value)}
           />
           <DropDownComponent
             title="Language"
             options={languages}
-            value={language}
-            onChange={(e) => setLanguage(e.target.value)}
+            dropDownValue={language}
+            onChange={(e) => {
+              console.log('e.target.value', e.target.value);
+              setLanguage(e.target.value);
+            }}
           />
           <button
             className={styles.saveChanges}
             onClick={() => {
+              if (!account) {
+                toast.error(
+                  CustomToastWithLink({
+                    icon: WalletNeedsToConnected,
+                    title: ToastTitle.WALLET_NEEDS_TO_CONNECTED,
+                    description: ToastDescription.WALLET_NEEDS_TO_CONNECTED,
+                    time: 'Now',
+                  })
+                );
+                return;
+              }
               if (profileDetails) {
                 updateUserProfileHandler();
                 return;
