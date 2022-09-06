@@ -26,7 +26,7 @@ type FooterProps = {
 const Footer: NextPage<FooterProps> = ({ footerIconShow }) => {
   const { push } = useRouter();
   return (
-    <div>
+    <footer>
       <div className={styles.container}>
         <Container>
           <div className={styles.footerContainer}>
@@ -47,7 +47,7 @@ const Footer: NextPage<FooterProps> = ({ footerIconShow }) => {
                   <li>NFT Marketplace</li>
                 </Link>
                 <Link href={'/napaearn'}>
-                <li>NAPA Earn</li>
+                  <li>NAPA Earn</li>
                 </Link>
                 {/* <li>Leaderboards</li> */}
                 {/* <li>Lauchpad</li> */}
@@ -187,7 +187,7 @@ const Footer: NextPage<FooterProps> = ({ footerIconShow }) => {
           )}
         </Container>
       </div>
-    </div>
+    </footer>
   );
 };
 

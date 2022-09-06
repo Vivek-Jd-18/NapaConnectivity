@@ -92,6 +92,7 @@ const NapaLounge: NextPage = () => {
     <div
       className={styles.backgroundImage}
       style={{ backgroundImage: changeBackgroundHandler() }}
+      id="napa-lounge"
     >
       <Container className={styles.napaLoungeContainer}>
         <h1>
@@ -290,7 +291,9 @@ const NapaLounge: NextPage = () => {
           </div>
         </div>
       </Container>
-      <Footer footerIconShow={false} />
+      <div className={styles.footerContainer}>
+        <Footer footerIconShow={false} />
+      </div>
     </div>
   );
 };

@@ -9,7 +9,8 @@
 .container {
   padding: 0.5rem 0 0.5rem 0;
   width: 100%;
-  margin-top: 20px;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
   .footerContainer {
     @include flex-between;
     @include align-center;
@@ -57,7 +58,7 @@
         }
       }
     }
-    
+
     .footerListIconItem {
       @include flex-start;
       padding: 0;
@@ -126,12 +127,11 @@
   }
 }
 
-
 .Footer_logo__EaWBg > div {
   display: flex;
   flex-direction: column;
   text-align: left;
-   img {
+  img {
     margin-top: 20px;
     margin-bottom: 20px;
   }
@@ -199,10 +199,8 @@
       img {
         width: 8rem;
       }
-      
     }
     .footerItemsBlockContainer {
-    
       .footerListItem {
         display: flex;
         align-items: flex-start;
@@ -223,10 +221,10 @@
           @include font-xs-avenir-regular;
           color: $white;
           cursor: pointer;
-    
-            width: 50%;
-            text-align: left;
-            margin-bottom: 6px;
+
+          width: 50%;
+          text-align: left;
+          margin-bottom: 6px;
           &::after {
             display: block;
             content: '';
@@ -273,8 +271,12 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      p{order:2;}
-      div{order:1;}
+      p {
+        order: 2;
+      }
+      div {
+        order: 1;
+      }
     }
     .mouseIcon {
       display: none;
@@ -283,7 +285,6 @@
   .footerListMobile {
     display: none;
   }
-  
 }
 
 @media (min-width: 320px) {
@@ -306,12 +307,10 @@
         display: none;
       }
     }
-    
   }
   .footerBottomContainer {
     .footerContainer {
       display: flex;
-     
     }
     .footerListItem {
       display: flex;
@@ -361,12 +360,8 @@
 }
 @media (max-width: 767px) {
   .footerItemsBlockContainer {
-    
     .footerListItem {
-     
-     
       li {
-        
         &::after {
           border-bottom: 0;
           transform: unset;
@@ -382,7 +377,6 @@
   }
 }
 @media (min-width: 768px) {
-  
   .container {
     padding: 0;
     .footerContainer {
@@ -393,22 +387,18 @@
         display: none;
       }
       padding: 0;
-     
-      
     }
     .footerItemsBlockContainer {
-    
       .footerListItem {
-        li{
-      width: auto;
-      text-align: left;
-      margin-bottom: 0px;
+        li {
+          width: auto;
+          text-align: left;
+          margin-bottom: 0px;
+        }
       }
-    }
     }
   }
   .footerBottomContainer {
-    
     .footerContainer {
       @include flex-align-start;
       .footerBottomText {
@@ -422,23 +412,26 @@
       display: flex;
       flex-direction: initial;
       align-items: center;
-      p{order:1;}
-      div{order:2;}
+      p {
+        order: 1;
+      }
+      div {
+        order: 2;
+      }
     }
   }
- 
 }
 
 @media (min-width: 1024px) {
   .container {
     .footerContainer {
       img {
-        width: 10rem;
+        width: 8rem;
       }
       .activeFooterListItem {
         @include flex-row;
       }
-     
+
       .footerIconsContainer {
         cursor: pointer;
         @include flex-row;
@@ -450,7 +443,6 @@
       }
     }
     .footerItemsBlockContainer {
-     
       .footerListItem {
         @include flex-row;
         padding: 0;
@@ -501,17 +493,14 @@
 @media (max-width: 1199px) {
   .footerItemContainer {
     display: none;
-  
+
     .footerListItem {
       display: none;
     }
   }
   .footerItemsBlockContainer {
-     display: block;
+    display: block;
   }
-  // .footerIconItem {
-  //   width: 50px;
-  // }
   .footerBottomContainer {
     margin-top: 0.2rem;
   }
@@ -519,25 +508,23 @@
 @media (min-width: 1200px) {
   .footerItemsBlockContainer {
     display: none;
- }
- .footerBottomContainer {
-  padding-bottom: 10px;
-  .footerContainer {
-   
-    .footerListItem {
-      padding-top: 0.5rem;
-      padding-bottom: 0.8rem;
+  }
+  .footerBottomContainer {
+    padding-bottom: 10px;
+    .footerContainer {
+      .footerListItem {
+        padding-top: 0.5rem;
+        padding-bottom: 0.8rem;
+      }
     }
   }
-}
-
 }
 @media (min-width: 1280px) {
   .container {
     .footerContainer {
       .footerIconsContainer {
         padding-top: 0;
-        align-items: center
+        align-items: center;
       }
       .footerItemContainer {
         display: block;
