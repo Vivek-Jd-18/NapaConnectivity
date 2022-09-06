@@ -1,5 +1,5 @@
-import { settingsTab } from '@/constants/settings.constants';
-import Container from '@/Layout/Container/Container';
+import { settingsTab } from '../../constants/settings.constants';
+import Container from '../../Layout/Container/Container';
 import type { NextPage } from 'next';
 import { useState } from 'react';
 import Footer from '../Footer/Footer';

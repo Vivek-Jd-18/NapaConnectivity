@@ -1,10 +1,10 @@
 import WalletComponent from '../components/Wallet/Wallet';
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { useWeb3 } from '@/hooks/useWeb3';
+import useWebThree from '../hooks/useWebThree';
 
 const Wallet: NextPage = () => {
-  const { account, connectWallet } = useWeb3();
+  const { account, connectWallet } = useWebThree();
 
   return (
     <>

@@ -3,7 +3,7 @@ import type { NextPage } from 'next';
 import styles from './NapaLounge.module.scss';
 import Footer from '../Footer/Footer';
 import { useCallback, useRef, useState } from 'react';
-import { NapaLoungeTab } from '@/typing/typing';
+import { NapaLoungeTab } from '../../typing/typing';
 import {
   ActiveMintedPostsBackground,
   CoBatchingPoolsBackground,

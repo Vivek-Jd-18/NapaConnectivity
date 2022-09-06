@@ -1,3 +1,11 @@
+import type { NextPage } from 'next';
+import { useCallback, useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
+import { useRouter } from 'next/router';
+import styles from '../Settings.module.scss';
+import useWebThree from '../../..//hooks/useWebThree';
+import useProfile from '../../../hooks/useProfile';
+
 import {
   AccountNapaLogoIcon,
   DoneIcon,
@@ -5,22 +13,14 @@ import {
   FacebookBlueIcon,
   TwitterBlueIcon,
   WalletNeedsToConnected,
-} from '@/components/assets';
-import { CustomToastWithLink } from '@/components/CustomToast/CustomToast';
-import DropDownComponent from '@/components/Dropdown/Dropdown';
-import Input from '@/components/Input/Input';
-import SocialMediaButton from '@/components/SocialMediaButton/SocialMediaButton';
-import Timezone from '@/components/TimezoneSelect/TimezoneSelect';
-import { currencies, languages } from '@/constants/settings.constants';
-import { useProfile } from '@/hooks/useProfile';
-import { ToastDescription, ToastTitle } from '@/typing/toast';
-import type { NextPage } from 'next';
-import { useCallback, useEffect, useState } from 'react';
-import { toast } from 'react-toastify';
-import styles from '../Settings.module.scss';
-import { v4 as uuidv4 } from 'uuid';
-import { useRouter } from 'next/router';
-import { useWeb3 } from '@/hooks/useWeb3';
+} from '../../../components/assets';
+import { CustomToastWithLink } from '../../CustomToast/CustomToast';
+import DropDownComponent from '../../Dropdown/Dropdown';
+import Input from '../../Input/Input';
+import SocialMediaButton from '../../SocialMediaButton/SocialMediaButton';
+import Timezone from '../../TimezoneSelect/TimezoneSelect';
+import { currencies, languages } from '../../../constants/settings.constants';
+import { ToastDescription, ToastTitle } from '../../../typing/toast';
 
 const GeneralTab: NextPage = () => {
   const [name, setName] = useState('');
@@ -29,26 +29,14 @@ const GeneralTab: NextPage = () => {
   const [language, setLanguage] = useState('English');
   const [selectedTimezone, setSelectedTimezone] = useState<any>('');
   const [profileId, setProfileId] = useState('');
-  const { account } = useWeb3();
+  const { account } = useWebThree();
   const { push } = useRouter();
   const {
     createUserProfile,
     profileDetails,
-    getUserProfileDetails,
     updateUserProfile,
     napaProfileId,
-    getProfileIdFromLocalStorage,
   } = useProfile();
-
-  useEffect(() => {
-    getProfileIdFromLocalStorage();
-  }, []);
-
-  useEffect(() => {
-    if (profileId || napaProfileId) {
-      getUserProfileDetails(profileId || napaProfileId);
-    }
-  }, [profileId, napaProfileId]);
 
   useEffect(() => {
     if (profileDetails) {
@@ -66,7 +54,6 @@ const GeneralTab: NextPage = () => {
       const user = {
         accountNumber: account,
         profileName: name,
-        napaProfileId: uuidv4(),
         bio,
         primaryCurrency: currency,
         language: language || 'English',
@@ -94,7 +81,7 @@ const GeneralTab: NextPage = () => {
         })
       );
     }
-  }, [name, bio, currency, language, selectedTimezone, account]);
+  }, [name, bio, currency, language, selectedTimezone, account, profileId]);
 
   const updateUserProfileHandler = useCallback(async () => {
     try {
@@ -108,7 +95,6 @@ const GeneralTab: NextPage = () => {
         napaSocialMediaAccount: '',
       };
       await updateUserProfile(user, napaProfileId);
-      getUserProfileDetails(napaProfileId);
       toast.success(
         CustomToastWithLink({
           icon: DoneIcon,

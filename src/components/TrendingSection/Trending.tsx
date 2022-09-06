@@ -6,13 +6,13 @@ import Tab from '../Tab/Tab';
 import { useCallback, useEffect, useState } from 'react';
 import SocialMediaReview from '../SocialMediaReview/SocialMediaReview';
 import ChatWindow from '../ChatWindow/ChatWindow';
-import { API_URL } from '@/constants/url';
+import { API_URL } from '../../constants/url';
 import axios from 'axios';
-import { useWeb3 } from '@/hooks/useWeb3';
 import { toast } from 'react-toastify';
 import { CustomToastWithLink } from '../CustomToast/CustomToast';
-import { ToastDescription, ToastTitle } from '@/typing/toast';
-import { useProfile } from '@/hooks/useProfile';
+import { ToastDescription, ToastTitle } from '../../typing/toast';
+import useProfile from '../../hooks/useProfile';
+import useWebThree from '../../hooks/useWebThree';
 
 const trendingTabList = [
   {
@@ -76,23 +76,8 @@ const TrendingSection: NextPage<TrendingSectionProps> = ({ socket }) => {
   const [tab, setTab] = useState('In Social Media');
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
-  const { account } = useWeb3();
-  const {
-    profileDetails,
-    getUserProfileDetails,
-    napaProfileId,
-    getProfileIdFromLocalStorage,
-  } = useProfile();
-
-  useEffect(() => {
-    getProfileIdFromLocalStorage();
-  }, []);
-
-  useEffect(() => {
-    if (napaProfileId) {
-      getUserProfileDetails(napaProfileId);
-    }
-  }, [napaProfileId]);
+  const { account } = useWebThree();
+  const { profileDetails } = useProfile();
 
   useEffect(() => {
     // @ts-ignore

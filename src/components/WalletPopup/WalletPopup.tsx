@@ -1,4 +1,4 @@
-import { useProfile } from '@/hooks/useProfile';
+import useProfile from '../../hooks/useProfile';
 import type { NextPage } from 'next';
 import Image from 'next/image';
 import { useEffect, useRef } from 'react';
@@ -14,8 +14,8 @@ type WalletPopupProps = {
   setPopupShow: (show: boolean) => void;
   account?: string;
   ethereum?: number;
-  bnb?: number;
-  napa?: number;
+  bnb?: string;
+  napa?: string;
   crypto?: boolean;
   profileName: string;
 };

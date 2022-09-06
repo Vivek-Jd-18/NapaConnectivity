@@ -4,7 +4,7 @@ import type { NextPage } from 'next';
 import TrendingSection from '../components/TrendingSection/Trending';
 import LeaderboardSection from '../components/LeaderboardSection/LeaderboardSection';
 import NapaLounge from '../components/NapaLounge/NapaLounge';
-import { WEBSOCKET_URL } from '@/constants/url';
+import { WEBSOCKET_URL } from '../constants/url';
 import { useEffect } from 'react';
 
 const Home: NextPage = () => {
