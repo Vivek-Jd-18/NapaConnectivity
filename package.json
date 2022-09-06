@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/lodash": "^4.14.184",
     "@types/uuid": "^8.3.4",
     "@types/vivus": "^0.4.4",
     "aos": "^2.3.4",
@@ -17,6 +18,7 @@
     "eslint-config": "^0.3.0",
     "libnpmversion": "^3.0.6",
     "lint": "^0.7.0",
+    "lodash": "^4.17.21",
     "next": "^12.2.5",
     "npm": "^8.18.0",
     "peerdeps": "^1.1.1",

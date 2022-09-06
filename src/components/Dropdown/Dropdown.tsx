@@ -1,4 +1,4 @@
-import { Options } from '@/typing/typing';
+import { Options } from '../../typing/typing';
 import type { NextPage } from 'next';
 import styles from './Dropdown.module.scss';
 
