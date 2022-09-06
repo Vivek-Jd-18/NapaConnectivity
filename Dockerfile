@@ -10,13 +10,14 @@ RUN npm install -g ts-node
 RUN yarn install
 
 COPY next.config.js ./next.config.js
+COPY tsconfig.json tsconfig.json
 
 COPY /src/pages ./src/pages
 COPY public ./public
 COPY styles ./styles
 
-RUN npm run build
+RUN yarn build
 
 EXPOSE 5001
 
-CMD ["npm", "run, start"]
+CMD ["yarn", "start"]
