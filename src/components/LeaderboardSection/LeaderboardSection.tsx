@@ -8,8 +8,7 @@ import HighlightButton from '../HighlightButton/HighlightButton';
 import LeaderboardCard from '../LeaderboardCard/LeaderboardCard';
 //import image1 from .... (asset location in S3 bucket) ASSETS SHOULD BE IMPORTED AND DEFINED, DO NOT HARDCODE ASSETS PLEASE
 
-type LeaderboardSection = {
-};
+type LeaderboardSection = {};
 
 const LeaderboardTab = [
   {
@@ -19,57 +18,57 @@ const LeaderboardTab = [
     title: 'Most Token Rewards',
   },
   {
-    title: 'Most Discussed'
+    title: 'Most Discussed',
   },
   {
     title: 'Hot Sprints',
-  }
+  },
 ];
 
 const LeaderboardCards = [
   {
     likeCount: 8716,
-    count: "01",
+    count: '01',
     title: 'Dwight Holland',
- backgroundImage: "url(/assets/images/dwight-holland.png)"
+    backgroundImage: 'url(/assets/images/dwight-holland.png)',
   },
   {
     likeCount: 5369,
-    count: "02",
+    count: '02',
     title: 'Catherine Patton',
-    backgroundImage: "url(/assets/images/dwight-holland.png)"
+    backgroundImage: 'url(/assets/images/dwight-holland.png)',
   },
   {
     likeCount: 4672,
-    count: "03",
+    count: '03',
     title: 'Marta Thornton',
-    backgroundImage: "url(/assets/images/dwight-holland.png)"
+    backgroundImage: 'url(/assets/images/dwight-holland.png)',
   },
   {
     likeCount: 3861,
-    count: "04",
+    count: '04',
     title: 'Madeline Keller',
-    backgroundImage: "url(/assets/images/dwight-holland.png)"
+    backgroundImage: 'url(/assets/images/dwight-holland.png)',
   },
   {
     likeCount: 3861,
-    count: "04",
+    count: '04',
     title: 'Madeline Keller',
-    backgroundImage: "url(/assets/images/dwight-holland.png)"
+    backgroundImage: 'url(/assets/images/dwight-holland.png)',
   },
   {
     likeCount: 3861,
-    count: "04",
+    count: '04',
     title: 'Madeline Keller',
-    backgroundImage: "url(/assets/images/dwight-holland.png)"
-  }
-]
+    backgroundImage: 'url(/assets/images/dwight-holland.png)',
+  },
+];
 
 const LeaderboardSection: NextPage<LeaderboardSection> = () => {
   const [tab, setTab] = useState('Most Viewed Post');
 
   return (
-    <div className={styles.backgroundImage}>
+    <div className={styles.backgroundImage} id="leaderboard">
       <Container className={styles.leaderboardContainer}>
         <div>
           <h2 className={styles.leaderboard}>Leaderboards</h2>
@@ -84,19 +83,23 @@ const LeaderboardSection: NextPage<LeaderboardSection> = () => {
             <HighlightButton title="All Leaderboards" />
           </div>
         </div>
-        
-          <SliderComponent centerMode={false} slidesToShow={4}>
-            {
-              LeaderboardCards.map(( {likeCount, count, title, backgroundImage })=>{
-                return (
-                  <div key={1} className={styles.projectCardContainer}>
-                    <LeaderboardCard likeCount={likeCount} count={count} title={title} backgroundImage={backgroundImage} />
-                  </div>
-                );
-              })
+
+        <SliderComponent centerMode={false} slidesToShow={4}>
+          {LeaderboardCards.map(
+            ({ likeCount, count, title, backgroundImage }) => {
+              return (
+                <div key={1} className={styles.projectCardContainer}>
+                  <LeaderboardCard
+                    likeCount={likeCount}
+                    count={count}
+                    title={title}
+                    backgroundImage={backgroundImage}
+                  />
+                </div>
+              );
             }
-          </SliderComponent>
-        
+          )}
+        </SliderComponent>
       </Container>
     </div>
   );

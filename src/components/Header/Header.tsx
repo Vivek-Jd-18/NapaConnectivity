@@ -37,6 +37,27 @@ const Header: NextPage<HeaderProps> = ({
   const [popupShow, setPopupShow] = useState(false);
   const { walletEth, account, walletBnb, walletNapa } = useWebThree();
 
+  const handleScroll = () => {
+    const header = document.querySelector<HTMLElement>('.innerContainer');
+    if (header) {
+      if (window.scrollY > 74) {
+        header.style.backgroundColor = 'rgb(0,0,0,0.4)';
+        header.style.paddingBottom = '1rem';
+        header.style.transition = '0.8s ease';
+      } else {
+        header.style.backgroundColor = `rgb(0,0,0,${
+          (window.scrollY / 150) * 0.4
+        })`;
+        header.style.paddingBottom = '0';
+        header.style.transition = '0.8s ease';
+      }
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+  }, []);
+
   const { profileDetails } = useProfile();
 
   useEffect(() => {
@@ -47,8 +68,8 @@ const Header: NextPage<HeaderProps> = ({
     });
   }, []);
   return (
-    <>
-      <Container className={styles.innerContainer}>
+    <header>
+      <Container className={`${styles.innerContainer} innerContainer`}>
         <div onClick={openMenu}>
           <Image
             src={BurgerMenuIcon}
@@ -110,7 +131,7 @@ const Header: NextPage<HeaderProps> = ({
           account={account}
         />
       )}
-    </>
+    </header>
   );
 };
 
