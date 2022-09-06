@@ -10,10 +10,12 @@ import 'aos/dist/aos.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
-import Header from '@/components/Header/Header';
-import Search from '@/components/Search/Search';
-import Loader from '@/components/Loader/Loader';
+import Header from '../components/Header/Header';
+import Search from '../components/Search/Search';
+import Loader from '../components/Loader/Loader';
 import { useRouter } from 'next/router';
+import { WebThreeContextProvider } from '../contexts/WebThreeContext';
+import { UserContextProvider } from '../contexts/UserContext';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [isMenu, setIsMenu] = useState(false);
@@ -42,33 +44,38 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name="description" content="NAPA Developmeent Environment" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {loading ? (
-        <Loader />
-      ) : (
-        <div className="main-container">
-          {pathname !== '/404' && pathname !== '/wallet' && (
-            <>
-              <Header
-                openMenu={openMenu}
-                setIsMenu={setIsMenu}
-                isMenu={isMenu}
-                setShowSearch={setShowSearch}
+      <WebThreeContextProvider>
+        <UserContextProvider>
+          {loading ? (
+            <Loader />
+          ) : (
+            <div className="main-container">
+              {pathname !== '/404' && pathname !== '/wallet' && (
+                <>
+                  <Header
+                    openMenu={openMenu}
+                    setIsMenu={setIsMenu}
+                    isMenu={isMenu}
+                    setShowSearch={setShowSearch}
+                  />
+                  {showSearch && <Search setShowSearch={setShowSearch} />}
+                </>
+              )}
+              <Component {...pageProps} />
+
+              <ToastContainer
+                key="toast"
+                {...{
+                  position: 'top-right',
+                  newestOnTop: false,
+                  draggable: false,
+                  hideProgressBar: true,
+                }}
               />
-              {showSearch && <Search setShowSearch={setShowSearch} />}
-            </>
+            </div>
           )}
-          <Component {...pageProps} />
-          <ToastContainer
-            key="toast"
-            {...{
-              position: 'top-right',
-              newestOnTop: false,
-              draggable: false,
-              hideProgressBar: true,
-            }}
-          />
-        </div>
-      )}
+        </UserContextProvider>
+      </WebThreeContextProvider>
     </>
   );
 }

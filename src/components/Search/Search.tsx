@@ -1,4 +1,4 @@
-import Container from '@/Layout/Container/Container';
+import Container from '../../Layout/Container/Container';
 import type { NextPage } from 'next';
 import Image from 'next/image';
 import { ExitIcon } from '../assets';

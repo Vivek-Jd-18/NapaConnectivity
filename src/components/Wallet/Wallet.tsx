@@ -8,9 +8,9 @@ import { WalletConnectedIcon } from '../../components/assets';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 import { CustomToastWithLink } from '../CustomToast/CustomToast';
-import { walletButtonList } from '@/constants/wallet.constants';
+import { walletButtonList } from '../../constants/wallet.constants';
 import Image from 'next/image';
-import { ToastDescription, ToastTitle } from '@/typing/toast';
+import { ToastDescription, ToastTitle } from '../../typing/toast';
 
 type WalletComponentProps = {
   connectWallet: () => void;

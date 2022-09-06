@@ -1,4 +1,4 @@
-import { PlusIcon } from '@/components/assets';
+import { PlusIcon } from '../../../components/assets';
 import type { NextPage } from 'next';
 import Image from 'next/image';
 import { useState } from 'react';
