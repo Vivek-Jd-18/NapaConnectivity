@@ -7,7 +7,7 @@ import { ToastDescription, ToastTitle } from '../typing/toast';
 import { ProfileDetails } from '../typing/typing';
 import { API_URL } from '../constants/url';
 import axios from 'axios';
-import useWebThree from '@/hooks/useWebThree';
+import useWebThree from '../hooks/useWebThree';
 
 type UserContextType = {
   getUserProfileDetails: (id: string) => void;
