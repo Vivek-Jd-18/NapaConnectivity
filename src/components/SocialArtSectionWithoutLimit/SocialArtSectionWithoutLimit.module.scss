@@ -190,6 +190,9 @@
  
       .description{
         font-size: 1.5rem;
+        @media (max-width: 600px) {
+          font-size: 1.2rem;
+        }
       }
     }
   }
