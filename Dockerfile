@@ -4,11 +4,6 @@ RUN mkdir -p /napa
 WORKDIR /napa
 COPY package*.json ./
 
-RUN npm config set unsafe-perm true
-RUN npm install -g typescript
-RUN npm install -g ts-node
-RUN yarn install
-
 COPY next.config.js ./next.config.js
 COPY tsconfig.json tsconfig.json
 
@@ -16,8 +11,13 @@ COPY /src/pages ./src/pages
 COPY public ./public
 COPY styles ./styles
 
-RUN yarn build
+# RUN npm config set unsafe-perm true
+# RUN npm install typescript
+# RUN npm install ts-node
+RUN npm install --legacy-peer-deps
+
+RUN npm run build
 
 EXPOSE 5001
 
-CMD ["yarn", "start"]
+CMD ["npm", "run", "start"]

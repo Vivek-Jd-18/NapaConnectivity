@@ -7,8 +7,8 @@ const Settings: NextPage = () => {
   return (
     <>
       <Head>
-        <title>NAPA Society Development Server</title>
-        <meta name="description" content="NAPA Developmeent Environment" />
+        <title>NAPA Society Staging Server</title>
+        <meta name="description" content="NAPA Staging Environment" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.settingsContainer}>

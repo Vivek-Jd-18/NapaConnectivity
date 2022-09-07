@@ -68,7 +68,7 @@ const Home: NextPage = () => {
     <>
       <Head>
         <title>NAPA Society</title>
-        <meta name="description" content="NAPA Developmeent Environment" />
+        <meta name="description" content="NAPA Staging Environment" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <section className={styles.container} id="container">

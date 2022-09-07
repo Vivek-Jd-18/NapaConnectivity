@@ -6,8 +6,8 @@
     "resolveJsonModule": true,
     "removeComments": true,
     "preserveConstEnums": true,
-    "strict": true,
-    "alwaysStrict": true,
+    "strict": false,
+    "alwaysStrict": false,
     "strictNullChecks": true,
     "noUncheckedIndexedAccess": true,
 
@@ -46,5 +46,6 @@
     "**/*.ts",
     "**/*.tsx",
     "node_modules/redux/index",
+    "src/**/*",
   ]
 }
