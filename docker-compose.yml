@@ -1,0 +1,13 @@
+version: "2.2"
+
+services: 
+ napa-app:
+    build: .
+    image: napasociety-development
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./src/pages:/napa/pages
+      - ./public:/napa/public
+      - ./styles:/napa/styles
+

@@ -3,7 +3,7 @@ import type { NextPage } from 'next';
 import styles from './NapaLounge.module.scss';
 import Footer from '../Footer/Footer';
 import { useCallback, useRef, useState } from 'react';
-import { NapaLoungeTab } from '@/typing/typing';
+import { NapaLoungeTab } from '../../typing/typing';
 import {
   ActiveMintedPostsBackground,
   CoBatchingPoolsBackground,
@@ -92,6 +92,7 @@ const NapaLounge: NextPage = () => {
     <div
       className={styles.backgroundImage}
       style={{ backgroundImage: changeBackgroundHandler() }}
+      id="napa-lounge"
     >
       <Container className={styles.napaLoungeContainer}>
         <h1>
@@ -290,7 +291,9 @@ const NapaLounge: NextPage = () => {
           </div>
         </div>
       </Container>
-      <Footer footerIconShow={false} />
+      <div className={styles.footerContainer}>
+        <Footer footerIconShow={false} />
+      </div>
     </div>
   );
 };

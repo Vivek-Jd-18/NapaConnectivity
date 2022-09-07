@@ -11,3 +11,16 @@ export type Options = {
   name: string;
   value: string;
 };
+
+export type ProfileDetails = {
+  napa_profile_id: string;
+  profile_name: string;
+  primary_currency: string;
+  metamask_wallet_account_number: string;
+  language: string;
+  Timezone: string;
+  NAPA_social_media_account_email: string;
+  Bio: string;
+  created_at: string;
+  updated_at: string;
+};

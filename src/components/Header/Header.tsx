@@ -13,8 +13,9 @@ import Sidebar from '../Sidebar/Sidebar';
 import { NapaLogo, NapaLogoWhite } from '../Svg';
 import styles from './Header.module.scss';
 import WalletPopup from '../WalletPopup/WalletPopup';
-import { useWeb3 } from '@/hooks/useWeb3';
+import useWebThree from '../../hooks/useWebThree';
 import Image from 'next/image';
+import useProfile from '../../hooks/useProfile';
 
 // Please import define the logo and hamburger menu//
 // Decouple the search icon with the container //
@@ -34,7 +35,31 @@ const Header: NextPage<HeaderProps> = ({
 }) => {
   const { push } = useRouter();
   const [popupShow, setPopupShow] = useState(false);
-  const { walletEth, account, walletBnb, walletNapa } = useWeb3();
+  const { walletEth, account, walletBnb, walletNapa } = useWebThree();
+
+  const handleScroll = () => {
+    const header = document.querySelector<HTMLElement>('.innerContainer');
+    if (header) {
+      if (window.scrollY > 74) {
+        header.style.backgroundColor = 'rgb(0,0,0,0.4)';
+        header.style.paddingBottom = '1rem';
+        header.style.transition = '0.8s ease';
+      } else {
+        header.style.backgroundColor = `rgb(0,0,0,${
+          (window.scrollY / 150) * 0.4
+        })`;
+        header.style.paddingBottom = '0';
+        header.style.transition = '0.8s ease';
+      }
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+  }, []);
+
+  const { profileDetails } = useProfile();
+
   useEffect(() => {
     new Vivus('napa-logo', {
       type: 'delayed',
@@ -43,8 +68,8 @@ const Header: NextPage<HeaderProps> = ({
     });
   }, []);
   return (
-    <>
-      <Container className={styles.innerContainer}>
+    <header>
+      <Container className={`${styles.innerContainer} innerContainer`}>
         <div onClick={openMenu}>
           <Image
             src={BurgerMenuIcon}
@@ -93,6 +118,7 @@ const Header: NextPage<HeaderProps> = ({
                 napa={walletNapa}
                 bnb={walletBnb}
                 crypto={false}
+                profileName={profileDetails?.profile_name as string}
               />
             )}
           </div>
@@ -105,7 +131,7 @@ const Header: NextPage<HeaderProps> = ({
           account={account}
         />
       )}
-    </>
+    </header>
   );
 };
 

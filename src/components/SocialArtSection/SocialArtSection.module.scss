@@ -212,10 +212,10 @@
       width: 100%;
       bottom: 0%;
       .image {
-        width: 350px;
+        width: 330px;
       }
       :after{
-        width: 350px;
+        width: 330px;
       }
     }
     .societyContainer {
@@ -257,16 +257,7 @@
   }
  
   @media only screen and (max-width: 768px) {
-    .carouselImage {
-      width: 100%;
-      .image {
-        width: 350px;
-      }
-      :after{
-        width: 350px;
-        
-      }
-    }
+ 
     .innerSocietyContainerRightSide {
       width: 100%;
       position: relative;
@@ -380,10 +371,10 @@
       left: 5%;
       width: 90%;
       .image {
-        width: 310px;
+        width: 300px;
       }
       :after{
-        width: 310px;
+        width: 300px;
       }
     }
     .innerSocietyContainerRightSide {

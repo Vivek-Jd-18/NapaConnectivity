@@ -73,9 +73,10 @@
     text-align: left;
     .description {
       @include font-md-avenir-medium;
+      font-size: 1.3rem;
       color: $white;
       font-weight: 100;
-      margin-bottom: 1.5rem;
+      margin-bottom: 0.2rem;
     }
     }
   
@@ -167,6 +168,7 @@
       .innerSocialContainerRightSide {
         width: 100%;
         padding-top: 1.438rem;
+        
       }
     }
     // .mousePointer {
@@ -183,6 +185,12 @@
     }
     .innerSocialContainer {
       width: 100%;
+    }
+    .innerSocialContainerRightSide {
+ 
+      .description{
+        font-size: 1.5rem;
+      }
     }
   }
   
@@ -234,15 +242,15 @@
     .socialContainer {
       .innerSocialContainer {
         .socialArt {
-          @include font-2xl-neuropolitical-normal;
+          @include font-3xl-neuropolitical-normal;
         }
         .withoutLimits {
-          @include font-lg-neuropolitical-normal;
+          @include font-2xl-neuropolitical-normal;
         }
       }
       .innerSocialContainerRightSide {
         .description {
-          @include font-sm-avenir-regular;
+          font-size: 1.2rem;
 
           font-weight: 100;
 

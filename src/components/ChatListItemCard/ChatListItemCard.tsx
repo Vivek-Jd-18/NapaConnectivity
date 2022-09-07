@@ -1,15 +1,15 @@
 import type { NextPage } from 'next';
 import Image from 'next/image';
+import { HowardAvatar } from '../assets';
 import styles from './ChatListItemCard.module.scss';
 
 type ChatListItemCardProps = {
   username: string;
-  avatar: string;
+  avatar?: string;
   description: string;
 };
 
 const ChatListItemCard: NextPage<ChatListItemCardProps> = ({
-  avatar,
   description,
   username,
 }) => {
@@ -17,7 +17,7 @@ const ChatListItemCard: NextPage<ChatListItemCardProps> = ({
     <div className={styles.chatItemContainer}>
       <div className={styles.userContainer}>
         <div className={styles.avatar}>
-          <Image src={avatar} width={32} height={32} alt="avatar" />
+          <Image src={HowardAvatar} width={32} height={32} alt="avatar" />
         </div>
         <div className={styles.userInfo}>
           <span className={styles.userName}>{username}</span>

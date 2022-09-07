@@ -78,7 +78,7 @@
     @include align-center;
   }
   .sliderCounterText {
-    @include font-8xl-neuropolitical-normal;
+    @include font-7xl-neuropolitical-normal;
     padding-left: 0rem;
     padding-right: 0.5rem;
     color: $white;
@@ -276,6 +276,18 @@
 
       margin-top: 37px;
     }
+    .sliderCounterText {
+      @include font-6xl-neuropolitical-normal;
+    }
+    .community {
+      @include font-2xl-neuropolitical-normal;
+    }
+    .sliderContainer {
+      padding-bottom: 0.5rem;
+    }
+    .sliderSlashtext {
+      bottom: -13px;
+    }
   }
   @media only screen and (max-width: 1340px) {
     .headingNapa {
@@ -283,18 +295,35 @@
       margin-bottom: 0;
     }
     .headingSociety {
-        @include font-7xl-neuropolitical-normal;
+        @include font-6xl-neuropolitical-normal;
         margin-bottom: 0;
     }
     .sliderCounterText {
-      @include font-6xl-neuropolitical-normal;
+      @include font-5xl-neuropolitical-normal;
     }
     .sliderSlashtext {
-      font-size: 2.2rem;
+      font-size: 2rem;
       bottom: -17px;
     }
     .sliderContainer {
       padding-bottom: 1rem;
+    }
+    .societyLeftDescription {
+      
+      padding-right: 7rem;
+    }
+    .leaders_row,.trend_row{
+       ul li img{
+        width: 60px;
+        height: 60px;
+       }
+    }
+    .slideImages {
+      margin-bottom: 2rem;
+      img {
+        width: 470px;
+        height: 344px;
+      }
     }
   }
   
@@ -337,13 +366,16 @@
 
         .slider {
           @include flex-between;
+          width: 100%;
           .sliderRightSide {
             padding-top: 0rem;
-
+            width: 100%;
             .sliderContainer {
               @include flex-row;
               padding-bottom: 0;
               padding-top: 0rem;
+              width: 100%;
+              justify-content: space-between;
             }
             .community {
               padding-top: 1.5rem;
@@ -423,7 +455,62 @@
         width: 50%;
       }
     }
+   
+}
+@media only screen and (max-width: 767px) {
+  .sliderCounterText {
+    @include font-3xl-neuropolitical-normal;
   }
+  .sliderSlashtext {
+    font-size: 1.5rem;    bottom: -5px;
+  }
+  .sliderArrows{
+    margin-top: 24px;
+  }
+  .societyContainer {
+
+    .societyContainerBody {
+
+      .headingNapa {
+        @include font-3xl-neuropolitical-normal;
+      }
+      .headingSociety {
+        @include font-3xl-neuropolitical-normal;
+      }
+    }
+  }
+  .leaders_row,.trend_row{
+    ul li{
+      img{
+        width:50px;
+        height: 50px;
+      }
+    }
+  }
+  .societyContainer {
+    .societyContainerBody {
+      .innerSocietyContainerRightSide {
+        .slider {
+          .headingSlider {
+            @include font-4xl-neuropolitical-normal;
+          }
+          
+          .community {
+            @include font-2xl-neuropolitical-normal;
+            font-size: 1.5rem;
+          }
+        }
+      } 
+    }
+  }
+  .leaders_row,.trend_row{
+    ul li {
+      h4{
+        font-size: 16px;;
+      }
+    }
+  }
+}
   @media only screen and (max-width: 740px) {
   .leaders_row,.trend_row{
     ul{
@@ -470,15 +557,22 @@
         }
       }
     }
+    .leaders_row,.trend_row{
+      ul li {
+        h4{
+          font-size: 15px;;
+        }
+      }
+    }
   }
   @media only screen and (max-width: 440px) {
     .societyContainer {
       .societyContainerBody {
         .headingNapa {
-          @include font-3xl-neuropolitical-normal;
+          @include font-2xl-neuropolitical-normal;
         }
         .headingSociety {
-          @include font-3xl-neuropolitical-normal;
+          @include font-2xl-neuropolitical-normal;
         }
 
         .societyLeftDescription {
@@ -497,12 +591,7 @@
         }
       }
     }
-    .sliderCounterText {
-      @include font-6xl-neuropolitical-normal;
-    }
-    .sliderSlashtext {
-      font-size: 2.2rem;
-    }
+   
   }
   @media only screen and (max-width: 340px) {
     .societyContainer {
@@ -512,18 +601,7 @@
             .headingSlider {
               @include font-4xl-neuropolitical-normal;
             }
-            .sliderRightSide {
-              .sliderContainer {
-                .sliderText {
-                  .sliderCounterText {
-                    @include font-md-avenir-medium;
-                  }
-                  .sliderSlashtext {
-                    @include font-xs-avenir-regular;
-                  }
-                }
-              }
-            }
+           
             .community {
               @include font-md-neuropolitical-normal;
               padding-bottom: 0;
@@ -541,17 +619,7 @@
             .headingSlider {
               @include font-3xl-neuropolitical-normal;
             }
-            .sliderContainer {
-              padding-top: 0.5rem;
-              .sliderText {
-                .sliderCounterText {
-                  @include font-sm-avenir-medium;
-                }
-                .sliderSlashtext {
-                  @include font-xs-avenir-regular;
-                }
-              }
-            }
+            
             .community {
               @include font-base-neuropolitical-normal;
               padding-bottom: 0;

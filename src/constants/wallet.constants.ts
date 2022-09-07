@@ -1,4 +1,8 @@
-import { AuthereumIcon, CoinbaseIcon, MetaMaskIcon } from '@/components/assets';
+import {
+  AuthereumIcon,
+  CoinbaseIcon,
+  MetaMaskIcon,
+} from '../components/assets';
 
 const walletButtonList = [
   {

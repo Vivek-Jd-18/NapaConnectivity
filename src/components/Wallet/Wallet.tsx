@@ -8,9 +8,9 @@ import { WalletConnectedIcon } from '../../components/assets';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 import { CustomToastWithLink } from '../CustomToast/CustomToast';
-import { walletButtonList } from '@/constants/wallet.constants';
+import { walletButtonList } from '../../constants/wallet.constants';
 import Image from 'next/image';
-import { ToastDescription, ToastTitle } from '@/typing/toast';
+import { ToastDescription, ToastTitle } from '../../typing/toast';
 
 type WalletComponentProps = {
   connectWallet: () => void;
@@ -39,7 +39,7 @@ const WalletComponent: NextPage<WalletComponentProps> = ({
           className={`row justify-content-between align-items-center col-12 ${styles.innerMainContainer}`}
         >
           <div className={`col-xl-6 col-md-12 d-flex justify-content-center`}>
-            <div className={styles.svgWrapper} onClick={() => push('/home')}>
+            <div className={styles.svgWrapper} onClick={() => push('/')}>
               <NapaLogo
                 className={styles.napaLogo}
                 width={'360'}

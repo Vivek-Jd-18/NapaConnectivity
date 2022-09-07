@@ -35,28 +35,16 @@ const timezones = [
 
 const currencies = [
   {
+    name: 'NAPA Society, NAPA',
+    value: 'NAPA',
+  },
+  {
     name: 'Ethereum, ETH',
     value: 'ETH',
   },
   {
-    name: 'Dinar, DZD',
-    value: 'DZD',
-  },
-  {
-    name: 'Dollar, AUD',
-    value: 'AUD',
-  },
-  {
-    name: 'Euro, EUR',
-    value: 'EUR',
-  },
-  {
-    name: 'Pound, EGP',
-    value: 'EGP',
-  },
-  {
-    name: 'Rupee, INR',
-    value: 'INR',
+    name: 'Binance, BNB',
+    value: 'BNB',
   },
 ];
 
@@ -64,46 +52,6 @@ const languages = [
   {
     name: 'English',
     value: 'English',
-  },
-  {
-    name: 'Spanish',
-    value: 'Spanish',
-  },
-  {
-    name: 'Hindi',
-    value: 'Hindi',
-  },
-  {
-    name: 'Bengali',
-    value: 'Bengali',
-  },
-  {
-    name: 'Japanese',
-    value: 'Japanese',
-  },
-  {
-    name: 'Russian',
-    value: 'Russian',
-  },
-  {
-    name: 'Turkish',
-    value: 'Turkish',
-  },
-  {
-    name: 'Korean',
-    value: 'Korean',
-  },
-  {
-    name: 'Italian',
-    value: 'Italian',
-  },
-  {
-    name: 'Sindhi',
-    value: 'Sindhi',
-  },
-  {
-    name: 'Deccan',
-    value: 'Deccan',
   },
 ];
 

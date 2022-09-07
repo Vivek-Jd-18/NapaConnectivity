@@ -1,23 +1,129 @@
+import type { NextPage } from 'next';
+import { useCallback, useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
+import { useRouter } from 'next/router';
+import styles from '../Settings.module.scss';
+import useWebThree from '../../..//hooks/useWebThree';
+import useProfile from '../../../hooks/useProfile';
+
 import {
   AccountNapaLogoIcon,
+  DoneIcon,
+  ErrorIcon,
   FacebookBlueIcon,
   TwitterBlueIcon,
-} from '@/components/assets';
-import DropDownComponent from '@/components/Dropdown/Dropdown';
-import Input from '@/components/Input/Input';
-import SocialMediaButton from '@/components/SocialMediaButton/SocialMediaButton';
-import {
-  currencies,
-  languages,
-  timezones,
-} from '@/constants/settings.constants';
-import type { NextPage } from 'next';
-import { useState } from 'react';
-import styles from '../Settings.module.scss';
+  WalletNeedsToConnected,
+} from '../../../components/assets';
+import { CustomToastWithLink } from '../../CustomToast/CustomToast';
+import DropDownComponent from '../../Dropdown/Dropdown';
+import Input from '../../Input/Input';
+import SocialMediaButton from '../../SocialMediaButton/SocialMediaButton';
+import Timezone from '../../TimezoneSelect/TimezoneSelect';
+import { currencies, languages } from '../../../constants/settings.constants';
+import { ToastDescription, ToastTitle } from '../../../typing/toast';
 
 const GeneralTab: NextPage = () => {
-  const [name, setName] = useState('Dwight Holland');
+  const [name, setName] = useState('');
   const [bio, setBio] = useState('');
+  const [currency, setCurrency] = useState('NAPA');
+  const [language, setLanguage] = useState('English');
+  const [selectedTimezone, setSelectedTimezone] = useState<any>('');
+  const [profileId, setProfileId] = useState('');
+  const { account } = useWebThree();
+  const { push } = useRouter();
+  const {
+    createUserProfile,
+    profileDetails,
+    updateUserProfile,
+    napaProfileId,
+  } = useProfile();
+
+  useEffect(() => {
+    if (profileDetails) {
+      setName(profileDetails.profile_name);
+      setBio(profileDetails.Bio || '');
+      setSelectedTimezone(profileDetails.Timezone || '');
+      setCurrency(profileDetails.primary_currency);
+      setLanguage(profileDetails.language || 'English');
+      setProfileId(profileDetails.napa_profile_id);
+    }
+  }, [profileDetails]);
+
+  const createUserProfileHandler = useCallback(async () => {
+    try {
+      const user = {
+        accountNumber: account,
+        profileName: name,
+        bio,
+        primaryCurrency: currency,
+        language: language || 'English',
+        timezone: selectedTimezone.value,
+        napaSocialMediaAccount: '',
+      };
+      // @ts-ignore
+      await createUserProfile(user);
+      toast.success(
+        CustomToastWithLink({
+          icon: DoneIcon,
+          title: ToastTitle.CHANGES_SAVED,
+          description: ToastDescription.CHANGES_SAVED,
+          time: 'Now',
+        })
+      );
+      push('/home');
+    } catch (error) {
+      toast.error(
+        CustomToastWithLink({
+          icon: ErrorIcon,
+          title: ToastTitle.ERROR,
+          description: ToastDescription.ERROR,
+          time: 'Now',
+        })
+      );
+    }
+  }, [name, bio, currency, language, selectedTimezone, account, profileId]);
+
+  const updateUserProfileHandler = useCallback(async () => {
+    try {
+      const user = {
+        accountNumber: account,
+        profileName: name,
+        bio,
+        primaryCurrency: currency,
+        language: language || 'English',
+        timezone: selectedTimezone.value || selectedTimezone,
+        napaSocialMediaAccount: '',
+      };
+      await updateUserProfile(user, napaProfileId);
+      toast.success(
+        CustomToastWithLink({
+          icon: DoneIcon,
+          title: ToastTitle.CHANGES_SAVED,
+          description: ToastDescription.CHANGES_SAVED,
+          time: 'Now',
+        })
+      );
+    } catch (error) {
+      toast.error(
+        CustomToastWithLink({
+          icon: ErrorIcon,
+          title: ToastTitle.ERROR,
+          description: ToastDescription.ERROR,
+          time: 'Now',
+        })
+      );
+    }
+  }, [
+    name,
+    bio,
+    currency,
+    language,
+    selectedTimezone,
+    profileDetails,
+    napaProfileId,
+    account,
+  ]);
+
   return (
     <div className={`row col-12 ${styles.leftSideContainer}`}>
       <div className={`col-xl-6`}>
@@ -33,10 +139,44 @@ const GeneralTab: NextPage = () => {
             <span>Bio</span>
             <textarea value={bio} onChange={(e) => setBio(e.target.value)} />
           </div>
-          <DropDownComponent title="Your Timezone" options={timezones} />
-          <DropDownComponent title="Currency" options={currencies} />
-          <DropDownComponent title="Language" options={languages} />
-          <button className={styles.saveChanges}>Save changes</button>
+          <Timezone value={selectedTimezone} onChange={setSelectedTimezone} />
+          <DropDownComponent
+            title="Currency"
+            options={currencies}
+            dropDownValue={currency}
+            onChange={(e) => setCurrency(e.target.value)}
+          />
+          <DropDownComponent
+            title="Language"
+            options={languages}
+            dropDownValue={language}
+            onChange={(e) => {
+              setLanguage(e.target.value);
+            }}
+          />
+          <button
+            className={styles.saveChanges}
+            onClick={() => {
+              if (!account) {
+                toast.error(
+                  CustomToastWithLink({
+                    icon: WalletNeedsToConnected,
+                    title: ToastTitle.WALLET_NEEDS_TO_CONNECTED,
+                    description: ToastDescription.WALLET_NEEDS_TO_CONNECTED,
+                    time: 'Now',
+                  })
+                );
+                return;
+              }
+              if (profileDetails) {
+                updateUserProfileHandler();
+                return;
+              }
+              createUserProfileHandler();
+            }}
+          >
+            Save changes
+          </button>
         </div>
       </div>
       <div className={`col-xl-6 ${styles.rightSideContainer}`}>
