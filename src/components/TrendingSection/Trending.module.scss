@@ -137,6 +137,9 @@
         .trending {
           @include font-4xl-neuropolitical-normal;
           max-width: 100px;
+          @media (max-width: 600px) {
+            font-size: $text-3xl;
+          }
         }
         .rightSideContainer:before{
           position: absolute;

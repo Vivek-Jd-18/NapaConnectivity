@@ -9,10 +9,18 @@
   transition: 1s ease;
   display: flex;
   flex-direction: column;
+  @media (max-width: 1199px) {
+    height: auto;
+    min-height: auto;
+  }
   .napaLoungeContainer {
     height: 100%;
     padding-right: 0;
     padding-bottom: 5rem;
+    @media (max-width: 1199px) {
+      padding-bottom: 15rem;
+      padding-top: 2rem;
+    }
     h1 {
       text-align: left;
     }
@@ -21,10 +29,16 @@
       text-align: left;
       -webkit-text-stroke: 2px $white;
       color: transparent;
+      @media (max-width: 600px) {
+        font-size: $text-3xl;
+      }
     }
     .lounge {
       @include font-6xl-neuropolitical-normal;
       color: $white;
+      @media (max-width: 600px) {
+        font-size: $text-3xl;
+      }
     }
     .leftSideContainer {
       --bs-gutter-x: 0rem;
@@ -35,9 +49,15 @@
         text-align: left;
         padding: 2rem;
         padding-top: 8rem;
+        @media (max-width: 600px) {
+          padding-top: 2rem;
+        }
         .description {
           color: $white;
           @include font-lg-neuropolitical-normal;
+          @media (max-width: 600px) {
+            font-size: 1.2rem;
+          }
         }
       }
       .active {
@@ -46,6 +66,14 @@
         .description {
           color: $black;
         }
+      }
+    }
+  }
+
+  .rightSideContainer {
+    .arrowContainer {
+      @media (max-width: 1199px) {
+        margin: 15px 0;
       }
     }
   }
