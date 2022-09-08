@@ -1,4 +1,5 @@
 import type { NextPage } from 'next';
+import { useEffect, useRef } from 'react';
 import ChatListItemCard from '../ChatListItemCard/ChatListItemCard';
 import styles from './ChatWindow.module.scss';
 
@@ -15,18 +16,28 @@ const ChatWindow: NextPage<ChatWindowProps> = ({
   messageHandler,
   messages,
 }) => {
+  const ref = useRef(null);
+
+  useEffect(() => {
+    if (ref.current) {
+      // @ts-ignore
+      ref.current.scrollTop = ref.current.scrollHeight;
+    }
+  }, [messages]);
+
   return (
     <>
-      <div className={styles.chatWindowContainer}>
+      <div className={styles.chatWindowContainer} ref={ref}>
         {messages &&
-          messages.length > 0 &&
-          messages.map(({ message }: any, index: number) => {
+          messages.length &&
+          messages.map(({ message, timetoken }: any, index: number) => {
             return (
               <ChatListItemCard
                 key={`chat-${index}`}
                 username={message.from}
                 // avatar={avatar}
                 description={message.text}
+                date={timetoken}
               />
             );
           })}
@@ -38,12 +49,27 @@ const ChatWindow: NextPage<ChatWindowProps> = ({
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           onKeyDown={(e) => {
+            if (!message) {
+              return;
+            }
             if (e.key === 'Enter') {
               messageHandler();
+              setMessage('');
             }
           }}
         />
-        <button className={styles.send} onClick={messageHandler}>
+        <button
+          className={styles.send}
+          onClick={() => {
+            // @ts-ignore
+            ref.current.scrollIntoView({ behavior: 'smooth' });
+            if (!message) {
+              return;
+            }
+            messageHandler();
+            setMessage('');
+          }}
+        >
           Send
         </button>
       </div>
