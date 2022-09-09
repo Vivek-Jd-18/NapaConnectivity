@@ -3,8 +3,7 @@ frontend:
   phases:
     preBuild:
       commands:
-        - npm install
-        - npm install peerdeps --dev eslint-config-airbnb-base
+        - npm install --legacy-peer-deps
     build:
       commands:
         - npm run build
