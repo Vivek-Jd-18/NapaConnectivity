@@ -1,6 +1,6 @@
 FROM node:16-alpine
 
-RUN mkdir -p /napa
+# RUN mkdir -p /napa
 WORKDIR /napa
 COPY package*.json ./
 
@@ -12,8 +12,14 @@ COPY public ./napa/public
 COPY styles ./napa/styles
 
 RUN npm config set unsafe-perm true
-RUN npm install -g typescript
+RUN npm install typescript --legacy-peer-deps
 RUN npm install -g ts-node
-RUN yarn install
+RUN yarn install --legacy-peer-deps
 
-CMD ["yarn", "dev"]
+RUN npm run build
+
+COPY . /napa/dist
+
+EXPOSE 3000
+
+CMD ["npm", "run", "dev"]

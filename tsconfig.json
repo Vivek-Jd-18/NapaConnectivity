@@ -20,7 +20,7 @@
     "noFallthroughCasesInSwitch": true,
 
     "target": "es2021",
-    "outDir": "build",
+    "outDir": ".next",
     "declaration": true,
     "sourceMap": true,
 

@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import { useEffect } from 'react';
 // import Vivus from 'vivus';
-import { NapaLogo, NapaLogoWhite } from '../Svg';
+// import { NapaLogo, NapaLogoWhite } from '../Svg';
 import styles from './Loader.module.scss';
 
 const Loader: NextPage = () => {
