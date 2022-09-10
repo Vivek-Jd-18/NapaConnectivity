@@ -73,14 +73,14 @@ const Header: NextPage<HeaderProps> = ({
 
 // scroll effect
 const body = document.body;
-const triggerMenu = document.querySelector(".page-header .trigger-menu");
-const nav = document.querySelector(".page-header nav");
-const menu = document.querySelector(".page-header .menu");
-const lottieWrapper = document.querySelector(".lottie-wrapper");
-const lottiePlayer = document.querySelector("lottie-player");
+// const triggerMenu = document.querySelector(".page-header .trigger-menu");
+// const nav = document.querySelector(".page-header nav");
+// const menu = document.querySelector(".page-header .menu");
+// const lottieWrapper = document.querySelector(".lottie-wrapper");
+// const lottiePlayer = document.querySelector("lottie-player");
 const scrollUp = "scroll-up";
 const scrollDown = "scroll-down";
-let lastScroll = 0;
+let lastScroll = 10;
 
 
 
