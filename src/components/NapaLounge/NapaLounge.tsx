@@ -101,7 +101,7 @@ const NapaLounge: NextPage = () => {
         </h1>
         <div className={`row col-12 ${styles.napaLoungeBodyContainer}`}>
           <div className="col-xl-6 col-md-12">
-            <div className={`row col-12 ${styles.leftSideContainer}`}>
+            <div className={`row cstm-box col-12 ${styles.leftSideContainer}`}>
               <div
                 className={`col-6 ${styles.boxes} ${
                   tabs === NapaLoungeTab.TIPS_AND_TUTORIALS && styles.active
