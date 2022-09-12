@@ -108,7 +108,7 @@
           justify-content: flex-end;
           display: flex;
           flex-direction: column;
-          // min-height: 8rem;
+          min-height: 8rem;
           .description {
             @include font-md-neuropolitical-normal;
           }
@@ -285,25 +285,4 @@
       }
     }
   }
-  @media (max-width: 1280px){
-    .napaLoungeContainer {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      h1 {
-        margin-bottom: 0em;
-      }
-      .napa {
-        @include font-4xl-neuropolitical-normal;
-        font-size: 3.5rem;
-      }
-      .lounge {
-        @include font-4xl-neuropolitical-normal;
-        font-size: 3.5rem;
-      }
-    }
 }
-}
-
-
-
