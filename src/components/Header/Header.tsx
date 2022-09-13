@@ -68,51 +68,45 @@ const Header: NextPage<HeaderProps> = ({
     });
   }, []);
 
+  // scroll effect
+  const body = document.body;
+  // const triggerMenu = document.querySelector(".page-header .trigger-menu");
+  // const nav = document.querySelector(".page-header nav");
+  // const menu = document.querySelector(".page-header .menu");
+  // const lottieWrapper = document.querySelector(".lottie-wrapper");
+  // const lottiePlayer = document.querySelector("lottie-player");
+  const scrollUp = 'scroll-up';
+  const scrollDown = 'scroll-down';
+  let lastScroll = 10;
 
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+    if (currentScroll <= 0) {
+      body.classList.remove(scrollUp);
+      return;
+    }
 
+    if (currentScroll > lastScroll && !body.classList.contains(scrollDown)) {
+      // down
+      body.classList.remove(scrollUp);
+      body.classList.add(scrollDown);
+      // lottiePlayer.play();
+    } else if (
+      currentScroll < lastScroll &&
+      body.classList.contains(scrollDown)
+    ) {
+      // up
+      body.classList.remove(scrollDown);
+      body.classList.add(scrollUp);
+      // lottiePlayer.stop();
+    }
+    lastScroll = currentScroll;
+  });
 
-// scroll effect
-const body = document.body;
-// const triggerMenu = document.querySelector(".page-header .trigger-menu");
-// const nav = document.querySelector(".page-header nav");
-// const menu = document.querySelector(".page-header .menu");
-// const lottieWrapper = document.querySelector(".lottie-wrapper");
-// const lottiePlayer = document.querySelector("lottie-player");
-const scrollUp = "scroll-up";
-const scrollDown = "scroll-down";
-let lastScroll = 10;
-
-
-
-window.addEventListener("scroll", () => {
-  const currentScroll = window.pageYOffset;
-  if (currentScroll <= 0) {
-    body.classList.remove(scrollUp);
-    return;
-  }
-
-  if (currentScroll > lastScroll && !body.classList.contains(scrollDown)) {
-    // down
-    body.classList.remove(scrollUp);
-    body.classList.add(scrollDown);
-    // lottiePlayer.play();
-  } else if (
-    currentScroll < lastScroll &&
-    body.classList.contains(scrollDown)
-  ) {
-    // up
-    body.classList.remove(scrollDown);
-    body.classList.add(scrollUp);
-    // lottiePlayer.stop();
-  }
-  lastScroll = currentScroll;
-});
-
-
-// 
+  //
 
   return (
-    <header className='page-header'>
+    <header className="page-header">
       <Container className={`${styles.innerContainer} innerContainer`}>
         <div onClick={openMenu}>
           <Image
@@ -162,7 +156,7 @@ window.addEventListener("scroll", () => {
                 napa={walletNapa}
                 bnb={walletBnb}
                 crypto={false}
-                profileName={profileDetails?.profile_name as string}
+                napaProfileName={profileDetails?.profileName as string}
               />
             )}
           </div>

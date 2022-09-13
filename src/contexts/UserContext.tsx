@@ -15,42 +15,45 @@ type UserContextType = {
   updateUserProfile: (user: any, id: string) => void;
   getProfileIdFromLocalStorage: () => void;
   profileDetails: ProfileDetails;
-  napaProfileId: string;
-  napaProfileName: string;
+  profileId: string;
+  profileName: string;
 };
 
 const UserContext = createContext<UserContextType>({} as UserContextType);
 
 export const UserContextProvider = (props: { children: React.ReactNode }) => {
   const [profileDetails, setProfileDetails] = useState<ProfileDetails>();
-  const [napaProfileId, setNapaProfileId] = useState('');
+  const [profileId, setProfileId] = useState('');
   const { account } = useWebThree();
-  const [napaProfileName, setNapaProfileName] = useState('');
+  const [profileName, setProfileName] = useState('');
 
   const getProfileIdFromLocalStorage = useCallback(async () => {
     const data = await localStorage.getItem('profileId');
     if (data !== null) {
-      setNapaProfileId(JSON.parse(data));
+      setProfileId(JSON.parse(data));
     }
-  }, [setNapaProfileId]);
+  }, [setProfileId]);
 
   useEffect(() => {
     getProfileIdFromLocalStorage();
   }, []);
 
   useEffect(() => {
-    if (napaProfileId || account) {
-      getUserProfileDetails(napaProfileId || account);
+    if (account) {
+      getUserProfileDetails(profileId || account);
     }
-  }, [napaProfileId || account]);
+  }, [profileId, account]);
 
   const getUserProfileDetails = useCallback(
     async (profileId: string) => {
       try {
+        if (!profileId) {
+          return;
+        }
         const response = await axios.get(
           `${API_URL}/user/account/details/${profileId}`
         );
-        setNapaProfileId(response?.data?.user?.napa_profile_id);
+        setProfileId(response?.data?.user?.profileId);
         setProfileDetails(response?.data?.user);
       } catch (error) {
         toast.error(
@@ -62,7 +65,7 @@ export const UserContextProvider = (props: { children: React.ReactNode }) => {
         );
       }
     },
-    [setNapaProfileId, setProfileDetails]
+    [setProfileId, setProfileDetails]
   );
 
   const createUserProfile = useCallback(
@@ -70,15 +73,12 @@ export const UserContextProvider = (props: { children: React.ReactNode }) => {
       const res = await axios.post(`${API_URL}/user/account/new`, {
         user,
       });
-      localStorage.setItem(
-        'profileId',
-        JSON.stringify(res?.data?.napa_profile_id)
-      );
-      setNapaProfileId(res?.data?.napa_profile_id);
+      localStorage.setItem('profileId', JSON.stringify(res?.data?.profileId));
+      setProfileId(res?.data?.profileId);
       setProfileDetails(res.data);
-      await getUserProfileDetails(profileDetails?.napa_profile_id || account);
+      await getUserProfileDetails(profileDetails?.profileId || account);
     },
-    [setNapaProfileId, setProfileDetails, account]
+    [setProfileId, setProfileDetails, account]
   );
 
   const updateUserProfile = useCallback(
@@ -89,18 +89,18 @@ export const UserContextProvider = (props: { children: React.ReactNode }) => {
           user,
         }
       );
-      setNapaProfileName(res?.data?.profile_name);
-      await getUserProfileDetails(res?.data?.napa_profile_id || account);
+      setProfileName(res?.data?.profileName);
+      await getUserProfileDetails(res?.data?.profileId || account);
     },
-    [setNapaProfileName, account]
+    [setProfileName, account]
   );
 
   const value = {
     profileDetails,
     getProfileIdFromLocalStorage,
     createUserProfile,
-    napaProfileId,
-    napaProfileName,
+    profileId,
+    profileName,
     getUserProfileDetails,
     updateUserProfile,
   };
