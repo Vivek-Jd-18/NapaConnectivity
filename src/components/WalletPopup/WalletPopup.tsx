@@ -17,7 +17,7 @@ type WalletPopupProps = {
   bnb?: string;
   napa?: string;
   crypto?: boolean;
-  profileName: string;
+  napaProfileName: string;
 };
 
 const WalletPopup: NextPage<WalletPopupProps> = ({
@@ -27,10 +27,10 @@ const WalletPopup: NextPage<WalletPopupProps> = ({
   ethereum,
   bnb,
   napa,
-  profileName,
+  napaProfileName,
 }) => {
   const ref = useRef(null);
-  const { napaProfileName } = useProfile();
+  const { profileName } = useProfile();
 
   useEffect(() => {
     const handleClickOutside = (event: any) => {

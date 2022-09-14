@@ -13,19 +13,14 @@
     position: fixed;
   }
   .napaLogoWhite {
-    // fill: $light-blue;
-    // opacity: 0;
-    // animation: fadeIn 1.5s ease;
-    // animation-delay: 1.5s;
-    // animation-fill-mode: forwards;
     fill: $light-blue;
     opacity: 0;
-    animation: fadeIn 2s ease-in;
+    animation: fadeIn 2s ease;
     animation-delay: 2s;
     animation-fill-mode: forwards;
   }
   .napaLogo {
-    stroke: rgba(255, 255, 255, 0.5);
+    stroke: $light-blue;
     stroke-width: 1.25px;
     animation: fadeOut 1s ease;
     animation-delay: 2.75s;
@@ -57,7 +52,7 @@
 
 @keyframes text-fill {
   100% {
-      width: 100%;
+    width: 100%;
   }
 }
 
@@ -73,10 +68,8 @@
 @keyframes fadeOut {
   from {
     opacity: 1;
-  
   }
   to {
     opacity: 0;
-   
   }
 }
