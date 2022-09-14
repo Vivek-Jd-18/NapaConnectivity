@@ -55,7 +55,18 @@ export const UserContextProvider = (props: { children: React.ReactNode }) => {
         );
         setProfileId(response?.data?.user?.profileId);
         setProfileDetails(response?.data?.user);
-      } catch (error) {
+      } catch (error: any) {
+        if (error.response.data.message === 'User Not Found') {
+          console.log('Account Not Found in our System');
+          toast.error(
+            CustomToastWithLink({
+              title: ToastTitle.ERROR,
+              icon: ErrorIcon,
+              description: 'Account Not Found in our System',
+            })
+          );
+          return;
+        }
         toast.error(
           CustomToastWithLink({
             title: ToastTitle.ERROR,
