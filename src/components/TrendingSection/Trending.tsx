@@ -109,7 +109,7 @@ const TrendingSection: NextPage<TrendingSectionProps> = ({ socket }) => {
   const fetchMessages = useCallback(async () => {
     try {
       const res = await axios.get(`${API_URL}/chat/messages`);
-      setMessages(res.data.messages);
+      setMessages(res.data.data.messages);
     } catch (error) {
       toast.error(
         CustomToastWithLink({
@@ -155,6 +155,7 @@ const TrendingSection: NextPage<TrendingSectionProps> = ({ socket }) => {
       );
     } catch (error) {
       setMessage('');
+      console.log('Unable to fetch messages');
       toast.error(
         CustomToastWithLink({
           icon: ErrorIcon,
