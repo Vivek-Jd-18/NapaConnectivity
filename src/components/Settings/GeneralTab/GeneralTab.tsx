@@ -75,6 +75,7 @@ const GeneralTab: NextPage = () => {
         language: language || 'English',
         timezone: selectedTimezone.value,
         napaSocialMediaAccount: '',
+        avatar: '',
       };
       // @ts-ignore
       await createUserProfile(user);
@@ -130,6 +131,7 @@ const GeneralTab: NextPage = () => {
         primaryCurrency: currency,
         language: language || 'English',
         timezone: selectedTimezone.value || selectedTimezone,
+        avatar: '',
         napaSocialMediaAccount: '',
       };
       await updateUserProfile(user, profileId || account);

@@ -53,8 +53,8 @@ export const UserContextProvider = (props: { children: React.ReactNode }) => {
         const response = await axios.get(
           `${API_URL}/user/account/details/${profileId}`
         );
-        setProfileId(response?.data?.user?.profileId);
-        setProfileDetails(response?.data?.user);
+        setProfileId(response?.data?.data?.profileId);
+        setProfileDetails(response?.data?.data);
       } catch (error: any) {
         if (error.response.data.message === 'User Not Found') {
           console.log('Account Not Found in our System');
@@ -81,27 +81,52 @@ export const UserContextProvider = (props: { children: React.ReactNode }) => {
 
   const createUserProfile = useCallback(
     async (user: any) => {
-      const res = await axios.post(`${API_URL}/user/account/new`, {
-        user,
-      });
-      localStorage.setItem('profileId', JSON.stringify(res?.data?.profileId));
-      setProfileId(res?.data?.profileId);
-      setProfileDetails(res.data);
-      await getUserProfileDetails(profileDetails?.profileId || account);
+      try {
+        const res = await axios.post(`${API_URL}/user/account/new`, {
+          user,
+        });
+        localStorage.setItem(
+          'profileId',
+          JSON.stringify(res?.data?.data.profileId)
+        );
+        setProfileId(res?.data?.data.profileId);
+        setProfileDetails(res.data.data);
+        await getUserProfileDetails(profileDetails?.profileId || account);
+      } catch (error) {
+        console.log('Unable to create profile');
+        toast.error(
+          CustomToastWithLink({
+            title: ToastTitle.ERROR,
+            icon: ErrorIcon,
+            description: ToastDescription.ERROR,
+          })
+        );
+      }
     },
     [setProfileId, setProfileDetails, account]
   );
 
   const updateUserProfile = useCallback(
     async (user: any, profileId: string) => {
-      const res = await axios.patch(
-        `${API_URL}/user/account/update/${profileId}`,
-        {
-          user,
-        }
-      );
-      setProfileName(res?.data?.profileName);
-      await getUserProfileDetails(res?.data?.profileId || account);
+      try {
+        const res = await axios.patch(
+          `${API_URL}/user/account/update/${profileId}`,
+          {
+            user,
+          }
+        );
+        setProfileName(res?.data?.data.profileName);
+        await getUserProfileDetails(res?.data?.data.profileId || account);
+      } catch (error) {
+        console.log('Unable to update profile');
+        toast.error(
+          CustomToastWithLink({
+            title: ToastTitle.ERROR,
+            icon: ErrorIcon,
+            description: ToastDescription.ERROR,
+          })
+        );
+      }
     },
     [setProfileName, account]
   );
