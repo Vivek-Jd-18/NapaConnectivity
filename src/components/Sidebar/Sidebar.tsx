@@ -1,9 +1,18 @@
 import type { NextPage } from 'next';
-import { ExitIcon, ProfileIcon, WalletIcon } from '../assets';
-import styles from './Sidebar.module.scss';
-import Button from '../../components/Button/Button';
-import { useRouter } from 'next/router';
 import Image from 'next/image';
+import { toast } from 'react-toastify';
+import { useRouter } from 'next/router';
+import styles from './Sidebar.module.scss';
+
+import { ToastDescription, ToastTitle } from '../../typing/toast';
+import { CustomToastWithLink } from '../CustomToast/CustomToast';
+import {
+  ExitIcon,
+  ProfileIcon,
+  WalletConnectedIcon,
+  WalletIcon,
+} from '../assets';
+import Button from '../../components/Button/Button';
 
 type SidebarProps = {
   onClick: () => void;
@@ -103,7 +112,20 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu, account }) => {
                   onClick();
                 }}
               />
-              <Button text="Wallet" icon={WalletIcon} />
+              <Button
+                text="Wallet"
+                icon={WalletIcon}
+                onClick={() => {
+                  toast.error(
+                    CustomToastWithLink({
+                      icon: WalletConnectedIcon,
+                      title: ToastTitle.WALLET_IS_ALREADY_CONNECTED,
+                      description: ToastDescription.WALLET_IS_ALREADY_CONNECTED,
+                      time: 'Now',
+                    })
+                  );
+                }}
+              />
             </>
           ) : (
             <>

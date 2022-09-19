@@ -11,17 +11,17 @@ import { CustomToastWithLink } from '../CustomToast/CustomToast';
 import { walletButtonList } from '../../constants/wallet.constants';
 import Image from 'next/image';
 import { ToastDescription, ToastTitle } from '../../typing/toast';
+import useProfile from '@/hooks/useProfile';
+import useWebThree from '@/hooks/useWebThree';
 
 type WalletComponentProps = {
-  connectWallet: () => void;
   account: string;
 };
 
-const WalletComponent: NextPage<WalletComponentProps> = ({
-  connectWallet,
-  account,
-}) => {
+const WalletComponent: NextPage<WalletComponentProps> = ({ account }) => {
   const { push } = useRouter();
+  const { connectWallet } = useWebThree();
+  const { getUserProfileDetails } = useProfile();
 
   useEffect(() => {
     new Vivus('napa-logo', {
@@ -31,6 +31,21 @@ const WalletComponent: NextPage<WalletComponentProps> = ({
       animTimingFunction: Vivus.EASE_OUT,
     });
   }, []);
+
+  const walletHandler = () => {
+    connectWallet()
+      // @ts-ignore
+      .then(async (response: string) => {
+        const profileDetails = await getUserProfileDetails(response);
+        // @ts-ignore
+        if (response && profileDetails) {
+          push('/home');
+        } else {
+          push('/settings');
+        }
+      })
+      .catch((err) => console.log('error', err));
+  };
 
   return (
     <div className={styles.backgroundImage}>
@@ -70,7 +85,7 @@ const WalletComponent: NextPage<WalletComponentProps> = ({
                   return (
                     <button
                       key={index}
-                      onClick={() => {
+                      onClick={async () => {
                         if (index === 0 && account) {
                           toast.error(
                             CustomToastWithLink({
@@ -84,7 +99,7 @@ const WalletComponent: NextPage<WalletComponentProps> = ({
                           return;
                         }
                         if (index === 0) {
-                          connectWallet();
+                          walletHandler();
                         }
                       }}
                       className={styles.walletBtn}
