@@ -33,6 +33,7 @@
     animation: glow 1s ease-in-out infinite alternate;
     line-height: 1.1em;
     margin-bottom: 0.3em;
+    margin-top: 0.4em;
   }
   @keyframes glow {
     from {
@@ -84,6 +85,7 @@
     color: $white;
     line-height: 2.1rem;
     margin-bottom: 0;
+    margin-top: 13.4rem;
   }
   .sliderSlashtext {
 
@@ -97,12 +99,14 @@
     position: relative;
     bottom: -27px;
     color: transparent;
+    margin-top: 13.4rem;
   }
   .sliderArrows{
     display: flex;
     width: 60px;
     justify-content: space-between;
     margin-top: 54px;
+    margin-top: 15.4rem;
   }
   .sliderArrows div img{
     opacity: 0.7;
@@ -121,7 +125,7 @@
   }
 }
   .sliderContainer {
-    padding-bottom: 3rem;
+    padding-bottom: 1rem;
     @include flex-row-between;
   }
   .innerSocietyContainer {
