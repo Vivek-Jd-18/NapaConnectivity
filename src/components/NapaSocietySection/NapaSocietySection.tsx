@@ -41,8 +41,8 @@ const NapaSociety: NextPage = () => {
 
   return (
     <div id="napa-society" className={styles.backgroundImage}>
-      {/* <Steper steps={2} top={5} /> */}
-      <Container className={`${styles.societyContainer} asinnerContainer`}>
+      <Steper steps={2} top={5} />
+      <Container className={styles.societyContainer}>
         <div className={styles.societyContainerBody}>
           <div className={styles.innerSocietyContainer}>
             <h1 className={styles.headingNapa}>NAPA</h1>
@@ -253,7 +253,7 @@ const NapaSociety: NextPage = () => {
             )}
           </div>
         </div>
-        {/* <div className={styles.mousePointer}>
+        <div className={styles.mousePointer}>
           <Image
             src={MouseIcon}
             onClick={() => scrollToNextSection('social-section-art')}
@@ -261,7 +261,7 @@ const NapaSociety: NextPage = () => {
             height={50}
             alt="mouse"
           />
-        </div> */}
+        </div>
       </Container>
     </div>
   );
