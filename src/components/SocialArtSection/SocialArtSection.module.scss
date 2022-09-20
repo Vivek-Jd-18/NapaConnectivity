@@ -22,6 +22,9 @@
 
   .socialArtContainer {
     height: 100%;
+    @media only screen and (max-width: 736px) {
+      padding: 0 20px;
+    }
   }
   .socialArtContainerBody {
     height: 92%;
@@ -72,10 +75,25 @@
     @include flex-row-between;
   }
   .carouselImage {
-    width: 50%;
-    left: 12px;
+    width: 52%;
+    left: 5px;
     position: absolute;
-    bottom: 0.5rem;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @media screen and (min-width: 1537px) {
+      left: -2%;
+    }
+    @media screen and (max-width: 1200px) {
+      left: 47px;
+    }
+    @media screen and (max-width: 1024px) {
+      left: 0px;
+    }
+    @media screen and (max-width: 1199px) and (min-width: 1025px) {
+      width: 45%;
+    }
     .image {
       width: 62%;
       object-fit: cover;
@@ -98,7 +116,10 @@
       width: 100%;
       padding-bottom: 2.5rem;
       z-index: 1;
-
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
       span {
         margin-right: 0.5rem;
       }
@@ -147,13 +168,21 @@
   .innerSocietyContainerRightSide {
     width: 45%;
     position: absolute;
-    right: 17px;
+    right: 7.5vw;
     margin-top: 70px;
     text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    .innerSocietyContainerwt {
+      max-width: 544px;
+      @media screen and (max-width: 1024px) {
+        max-width: 100%;
+      }
+    }
     .description {
       color: $white;
       padding-top: 1rem;
-      width: 30rem;
       @include font-base-avenir-medium;
     }
     .socialHeading {
@@ -182,7 +211,7 @@
 
   @media only screen and (max-width: 1536px) {
   .innerSocietyContainerRightSide {
-    right: 14px;
+    // right: 14px;
     margin-top: 73px;
   }
   .carouselImage {
@@ -196,9 +225,6 @@
 } 
 
 @media only screen and (max-width: 1200px) {
-  .innerSocietyContainerRightSide {
-    right: 0px;
-  }
   .carouselImage {
     .image {
       width: 85%;
@@ -236,7 +262,8 @@
     .innerSocietyContainerRightSide {
       width: 100%;
       position: relative;
-
+      left: 2.5vw;
+      right: 2.5vw;
       .description {
         @include font-sm-avenir-regular;
         width: 100%;
@@ -261,7 +288,12 @@
   }
  
   @media only screen and (max-width: 768px) {
- 
+    .innerSocietyContainerRightSide {
+      width: 100%;
+      position: relative;
+      left: 0px;
+      right: 0px;
+    }
     .innerSocietyContainerRightSide {
       width: 100%;
       position: relative;
@@ -298,6 +330,7 @@
       }
     }
   }
+  
   @media only screen and (max-width: 576px) {
     background-image: url('/assets/images/socialmedia-background-mobile.png');
     .carouselImage {
