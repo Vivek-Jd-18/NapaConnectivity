@@ -34,9 +34,9 @@ const ChatWindow: NextPage<ChatWindowProps> = ({
             return (
               <ChatListItemCard
                 key={`chat-${index}`}
-                username={message.from}
+                username={message?.from}
                 // avatar={avatar}
-                description={message.text}
+                description={message?.text}
                 date={timetoken}
               />
             );

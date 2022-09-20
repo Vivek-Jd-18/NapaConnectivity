@@ -1,20 +1,20 @@
 import React, { createContext, useCallback, useEffect, useState } from 'react';
 import lodash from 'lodash';
-import { getAlreadyConnectedWeb3, getWeb3 } from '../utils/wallet';
+import Web3 from 'web3';
 import { toast } from 'react-toastify';
+
+import { getAlreadyConnectedWeb3, getWeb3 } from '../utils/wallet';
 import { CustomToastWithLink } from '../components/CustomToast/CustomToast';
 import { ErrorIcon, WalletConnectedIcon } from '../components/assets';
 import { ToastDescription, ToastTitle } from '../typing/toast';
-import { useRouter } from 'next/router';
 import { numberWithCommas } from '../utils/NumberWithCommas';
-import Web3 from 'web3';
 
 type WebThreeContextType = {
   account: string;
   walletEth: number;
   walletBnb: string;
   walletNapa: string;
-  connectWallet: () => void;
+  connectWallet: () => Promise<void>;
   getAccounts: () => void;
 };
 
@@ -49,7 +49,6 @@ export const WebThreeContextProvider = (props: {
 }) => {
   const [account, setAccount] = useState('');
   const [walletEth, setWalletEth] = useState(0);
-  const { push } = useRouter();
   const [walletBnb, setWalletBnb] = useState('');
   const [walletNapa, setWalletNapa] = useState('');
 
@@ -124,9 +123,9 @@ export const WebThreeContextProvider = (props: {
       );
       setAccount(walletAddress[0]);
       setWalletEth(walletBalanceInEth);
-      push('/settings');
       getBalanceBnb();
       getBalanceNapa();
+      return walletAddress[0];
     } catch (error: any) {
       toast.error(
         CustomToastWithLink({

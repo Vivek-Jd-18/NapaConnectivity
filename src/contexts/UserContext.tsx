@@ -1,13 +1,15 @@
 import React, { createContext, useCallback, useEffect, useState } from 'react';
 import lodash from 'lodash';
+import { setCookie, getCookie } from 'cookies-next';
+import axios from 'axios';
 import { toast } from 'react-toastify';
-import { CustomToastWithLink } from '../components/CustomToast/CustomToast';
+import useWebThree from '../hooks/useWebThree';
+import { API_URL } from '../constants/url';
+
 import { ErrorIcon } from '../components/assets';
+import { CustomToastWithLink } from '../components/CustomToast/CustomToast';
 import { ToastDescription, ToastTitle } from '../typing/toast';
 import { ProfileDetails } from '../typing/typing';
-import { API_URL } from '../constants/url';
-import axios from 'axios';
-import useWebThree from '../hooks/useWebThree';
 
 type UserContextType = {
   getUserProfileDetails: (id: string) => void;
@@ -28,9 +30,10 @@ export const UserContextProvider = (props: { children: React.ReactNode }) => {
   const [profileName, setProfileName] = useState('');
 
   const getProfileIdFromLocalStorage = useCallback(async () => {
-    const data = await localStorage.getItem('profileId');
-    if (data !== null) {
-      setProfileId(JSON.parse(data));
+    const data = getCookie('profileId');
+    if (data) {
+      // @ts-ignore
+      setProfileId(data);
     }
   }, [setProfileId]);
 
@@ -55,6 +58,7 @@ export const UserContextProvider = (props: { children: React.ReactNode }) => {
         );
         setProfileId(response?.data?.data?.profileId);
         setProfileDetails(response?.data?.data);
+        return response?.data?.data;
       } catch (error: any) {
         if (error?.response?.data?.message === 'User Not Found') {
           console.log('Account Not Found in our System');
@@ -85,10 +89,7 @@ export const UserContextProvider = (props: { children: React.ReactNode }) => {
         const res = await axios.post(`${API_URL}/user/account/new`, {
           user,
         });
-        localStorage.setItem(
-          'profileId',
-          JSON.stringify(res?.data?.data.profileId)
-        );
+        setCookie('profileId', res?.data?.data.profileId);
         setProfileId(res?.data?.data.profileId);
         setProfileDetails(res.data.data);
         await getUserProfileDetails(profileDetails?.profileId || account);
