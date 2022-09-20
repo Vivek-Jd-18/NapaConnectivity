@@ -14,8 +14,8 @@ const SocialArtSectionWithoutLimit: NextPage = () => {
       className={styles.backgroundImage}
       id="social-art-section-without-limit"
     >
-      <Steper steps={1} top={0} />
-      <Container className={styles.socialContainer}>
+      {/* <Steper steps={1} top={0} /> */}
+      <Container className={`${styles.socialContainer} asinnerContainer` }>
         <div className={styles.socialContainerBody}>
           <div className={styles.innerSocialContainer}>
             <h1 className={styles.socialArt}>Social Art</h1>
