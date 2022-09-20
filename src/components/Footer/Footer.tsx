@@ -1,7 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
-import styles from './Footer.module.scss';
 import type { NextPage } from 'next';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import Image from 'next/image';
 import Container from '../../Layout/Container/Container';
+import styles from './Footer.module.scss';
+
+import { scrollToNextSection } from '../../utils/home';
 import {
   TwitterIcon,
   DiscordIcon,
@@ -14,10 +19,6 @@ import {
   GithubMobileIcon,
   MediumMobileIcon,
 } from '../../components/assets';
-import { scrollToNextSection } from '../../utils/home';
-import { useRouter } from 'next/router';
-import Link from 'next/link';
-import Image from 'next/image';
 
 type FooterProps = {
   footerIconShow: boolean;

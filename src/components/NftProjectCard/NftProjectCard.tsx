@@ -1,13 +1,14 @@
-import { Avatar, NapaIcon } from '../../components/assets';
 import type { NextPage } from 'next';
-import styles from './NftProjectCard.module.scss';
 import Image from 'next/image';
+import styles from './NftProjectCard.module.scss';
+
+import { Avatar, NapaIcon } from '../../components/assets';
 
 type Props = {
   backgroundImage?: string;
 };
 
-const NftProjectCard: NextPage<Props> = ({backgroundImage}) => {
+const NftProjectCard: NextPage<Props> = ({ backgroundImage }) => {
   return (
     <div
       className={styles.cardContainer}

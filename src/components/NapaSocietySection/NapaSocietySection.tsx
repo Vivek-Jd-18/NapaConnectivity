@@ -6,9 +6,7 @@ import Image from 'next/image';
 import styles from './NapaSocietySection.module.scss';
 import Container from '../../Layout/Container/Container';
 import HighlightButton from '../HighlightButton/HighlightButton';
-import Steper from '../Steper/Steper';
-import { scrollToNextSection } from '../../utils/home';
-import { LeftWhiteArrowIcon, MouseIcon, RightWhiteArrowIcon } from '../assets';
+import { LeftWhiteArrowIcon, RightWhiteArrowIcon } from '../assets';
 
 const NapaSociety: NextPage = () => {
   const [slider, setSlider] = useState(1);

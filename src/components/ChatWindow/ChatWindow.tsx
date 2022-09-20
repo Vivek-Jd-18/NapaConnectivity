@@ -1,7 +1,8 @@
-import type { NextPage } from 'next';
 import { useEffect, useRef } from 'react';
-import ChatListItemCard from '../ChatListItemCard/ChatListItemCard';
+import type { NextPage } from 'next';
 import styles from './ChatWindow.module.scss';
+
+import ChatListItemCard from '../ChatListItemCard/ChatListItemCard';
 
 type ChatWindowProps = {
   message: string;

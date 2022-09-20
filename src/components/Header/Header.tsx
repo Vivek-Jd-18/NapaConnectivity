@@ -1,21 +1,23 @@
+import type { NextPage } from 'next';
+import { useEffect, useState } from 'react';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
+import Vivus from 'vivus';
+import styles from './Header.module.scss';
+import Container from '../../Layout/Container/Container';
+
+import useWebThree from '../../hooks/useWebThree';
+import useProfile from '../../hooks/useProfile';
+
+import Sidebar from '../Sidebar/Sidebar';
+import WalletPopup from '../WalletPopup/WalletPopup';
+import { NapaLogo, NapaLogoWhite } from '../Svg';
 import {
   BurgerMenuIcon,
   SearchIcon,
   WalletBlueIcon,
   WalletIconWhite,
 } from '../../components/assets';
-import Container from '../../Layout/Container/Container';
-import type { NextPage } from 'next';
-import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
-import Vivus from 'vivus';
-import Sidebar from '../Sidebar/Sidebar';
-import { NapaLogo, NapaLogoWhite } from '../Svg';
-import styles from './Header.module.scss';
-import WalletPopup from '../WalletPopup/WalletPopup';
-import useWebThree from '../../hooks/useWebThree';
-import Image from 'next/image';
-import useProfile from '../../hooks/useProfile';
 
 // Please import define the logo and hamburger menu//
 // Decouple the search icon with the container //
