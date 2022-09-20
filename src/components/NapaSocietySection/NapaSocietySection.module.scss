@@ -21,10 +21,18 @@
   flex-direction: column;
   .societyContainer {
     height: 100%;
+    @media only screen and (max-width: 736px) {
+      padding: 0 20px;
+    }
   }
   .societyContainerBody {
     height: 100%;
     @include flex-row-between;
+    align-items: flex-start;
+    padding-top: 145px;
+    @media screen and (max-width: 768px) {
+      padding-top: 110px;
+    }
   }
   .headingNapa {
     @include font-8xl-neuropolitical-normal;
@@ -33,6 +41,13 @@
     animation: glow 1s ease-in-out infinite alternate;
     line-height: 1.1em;
     margin-bottom: 0.3em;
+    font-size: 132px;
+    @media screen and (max-width: 768px) {
+      font-size: 90px !important;
+    }
+    @media screen and (max-width: 375px) {
+      font-size: 44px !important;
+    }
   }
   @keyframes glow {
     from {
@@ -84,6 +99,7 @@
     color: $white;
     line-height: 2.1rem;
     margin-bottom: 0;
+    font-size: 132px;
   }
   .sliderSlashtext {
 
@@ -134,16 +150,18 @@
     line-height: 1rem;
     color: $white;
     margin-bottom: 0.5em;
+    font-size: 132px;
   }
 
   .community {
     @include font-3xl-neuropolitical-normal;
     color: $white;
     padding-bottom: 1.2rem;
+    font-size: 44px;
   }
 
   .innerSocietyContainerRightSide {
-    width: 45%;
+    width: 470px;
     text-align: left;
     .description {
       @include font-md-avenir-regular;
@@ -331,11 +349,13 @@
     background-image: url('/assets/images/napsociety-background-tablet.png');
     .societyContainer {
       @include flex-column-center;
+      align-items: flex-start !important;
 
       .societyContainerBody {
         width: 100%;
         @include flex-column-center;
-
+        align-items: flex-start !important;
+        justify-content: flex-start !important;
         .headingNapa {
           margin-bottom: 0;
           @include font-5xl-neuropolitical-normal;

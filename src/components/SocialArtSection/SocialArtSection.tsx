@@ -34,8 +34,8 @@ const SocialArtSection: NextPage = () => {
 
   return (
     <div id="social-section-art" className={styles.backgroundImage}>
-      <Steper steps={3} top={12} />
-      <Container className={styles.socialArtContainer}>
+      {/* <Steper steps={3} top={12} /> */}
+      <Container className={`${styles.socialArtContainer} asinnerContainer`}>
         <div className={styles.socialArtContainerBody}>
           <div className={styles.carouselImage}>
             {slider == 1 ? (
@@ -110,6 +110,7 @@ const SocialArtSection: NextPage = () => {
                   </>
                 )}
               </div>
+              <div>
               <span onClick={() => handleNextSection(1)}>
                 <svg
                   width="32"
@@ -195,14 +196,28 @@ const SocialArtSection: NextPage = () => {
                   <circle cx="16" cy="16" r="3" fill="white" />
                 </svg>
               </span>
+              </div>
+              
             </div>
             <div className={styles.innerSocietyContainer}></div>
           </div>
           <div className={styles.innerSocietyContainerRightSide}>
-            <div className={styles.socialHeading}>
-              <h2 className={styles.socialText}>Social</h2>
-              <h2 className={styles.artText}>Art</h2>
+            <div className={styles.innerSocietyContainerwt}>
+              <div className={styles.socialHeading}>
+                <h2 className={styles.socialText}>Social</h2>
+                <h2 className={styles.artText}>Art</h2>
+              </div>
+              <p className={styles.description}>
+                The NAPA Social Media App is the worlds only social media platform
+                that allows you to mint and monetize your posts in real time to
+                receive <strong>NAPA Tokens!</strong>
+                <br></br>
+                <br></br>Pick and choose your audience and share your social art
+                with millions of members in the NAPA Society community!
+              </p>
+              <HighlightButton title="Social Art Feed" />
             </div>
+            
 
             {/* <p className={styles.description}>
 >>>>>>> 05f8c9f7b340ac05ca05b8fbcdd435a1c0816cbf
@@ -219,15 +234,7 @@ const SocialArtSection: NextPage = () => {
               </strong>
 
             </p> */}
-            <p className={styles.description}>
-              The NAPA Social Media App is the worlds only social media platform
-              that allows you to mint and monetize your posts in real time to
-              receive <strong>NAPA Tokens!</strong>
-              <br></br>
-              <br></br>Pick and choose your audience and share your social art
-              with millions of members in the NAPA Society community!
-            </p>
-            <HighlightButton title="Social Art Feed" />
+            
           </div>
         </div>
         <div className={styles.mousePointer}>
