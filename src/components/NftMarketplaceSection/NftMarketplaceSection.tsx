@@ -24,8 +24,8 @@ const NftMarketplaceSection: NextPage = ({}) => {
 
   return (
     <div id="nft-marketplace" className={styles.backgroundImage}>
-      <Steper steps={4} bottom={0} />
-      <Container className={styles.nftContainer}>
+      {/* <Steper steps={4} bottom={0} /> */}
+      <Container className={`${styles.nftContainer} asinnerContainer`}>
         <h2 className={styles.nft}>NFT Marketplace</h2>
         <p className={styles.description}>
           Buy, sell and trade the most sought after professional and social art

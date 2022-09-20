@@ -107,7 +107,7 @@ const Header: NextPage<HeaderProps> = ({
 
   return (
     <header className="page-header">
-      <Container className={`${styles.innerContainer} innerContainer`}>
+      <Container className={`${styles.innerContainer} asinnerContainer`}>
         <div onClick={openMenu}>
           <Image
             src={BurgerMenuIcon}
