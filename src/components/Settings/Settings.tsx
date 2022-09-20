@@ -9,7 +9,7 @@ import styles from './Settings.module.scss';
 import WhitelistTab from './WhitelistTab/WhitelistTab';
 
 const SettingsComponent: NextPage = () => {
-  const [tab, setTab] = useState('General');
+  const [tab, setTab] = useState('general');
 
   return (
     <div className={styles.container}>
@@ -18,13 +18,19 @@ const SettingsComponent: NextPage = () => {
         <div className={styles.tabsContainer}>
           <div className={styles.tabsInnerContainer}>
             <ul className={styles.tab}>
-              {settingsTab.map(({ title }, index) => (
-                <Tab key={index} setTab={setTab} title={title} tab={tab} />
+              {settingsTab.map(({ title, value }, index) => (
+                <Tab
+                  value={value}
+                  key={index}
+                  setTab={setTab}
+                  title={title}
+                  tab={tab}
+                />
               ))}
             </ul>
           </div>
         </div>
-        {tab === 'General' ? <GeneralTab /> : <WhitelistTab />}
+        {tab === 'general' ? <GeneralTab /> : <WhitelistTab />}
       </Container>
       <div>
         <hr />

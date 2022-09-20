@@ -1,7 +1,8 @@
 import type { NextPage } from 'next';
 import Image from 'next/image';
-import { ActiveMintedPostIcon, NapaIcon } from '../assets';
 import styles from './ActiveMintedPostsCard.module.scss';
+
+import { ActiveMintedPostIcon, NapaIcon } from '../assets';
 
 type ActiveMintedPostsCardProps = {};
 

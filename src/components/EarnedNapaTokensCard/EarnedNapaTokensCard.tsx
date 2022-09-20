@@ -1,7 +1,8 @@
 import type { NextPage } from 'next';
 import Image from 'next/image';
-import { NapaIcon } from '../assets';
 import styles from './EarnedNapaTokensCard.module.scss';
+
+import { NapaIcon } from '../assets';
 
 type ActiveMintedPostsCardProps = {};
 

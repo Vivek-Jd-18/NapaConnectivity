@@ -1,8 +1,9 @@
-import Container from '../../Layout/Container/Container';
 import type { NextPage } from 'next';
 import Image from 'next/image';
-import { ExitIcon } from '../assets';
 import styles from './Search.module.scss';
+import Container from '../../Layout/Container/Container';
+
+import { ExitIcon } from '../assets';
 
 type SearchProps = {
   setShowSearch: (show: boolean) => void;

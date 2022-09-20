@@ -1,8 +1,9 @@
-import Container from '../../Layout/Container/Container';
 import type { NextPage } from 'next';
 import { useState } from 'react';
-import Tab from '../Tab/Tab';
+import Container from '../../Layout/Container/Container';
 import styles from './LeaderboardSection.module.scss';
+
+import Tab from '../Tab/Tab';
 import SliderComponent from '../Slider/Slider';
 import HighlightButton from '../HighlightButton/HighlightButton';
 import LeaderboardCard from '../LeaderboardCard/LeaderboardCard';
@@ -13,15 +14,19 @@ type LeaderboardSection = {};
 const LeaderboardTab = [
   {
     title: 'Most Viewed Post',
+    value: 'Post',
   },
   {
     title: 'Most Token Rewards',
+    value: 'Rewards',
   },
   {
     title: 'Most Discussed',
+    value: 'Discussed',
   },
   {
     title: 'Hot Sprints',
+    value: 'Sprints',
   },
 ];
 
@@ -65,7 +70,7 @@ const LeaderboardCards = [
 ];
 
 const LeaderboardSection: NextPage<LeaderboardSection> = () => {
-  const [tab, setTab] = useState('Most Viewed Post');
+  const [tab, setTab] = useState('Post');
 
   return (
     <div className={styles.backgroundImage} id="leaderboard">
@@ -75,8 +80,14 @@ const LeaderboardSection: NextPage<LeaderboardSection> = () => {
           <div className={styles.tabsContainer}>
             <div className={styles.tabsInnerContainer}>
               <ul className={styles.tab}>
-                {LeaderboardTab.map(({ title }, index) => (
-                  <Tab key={index} setTab={setTab} title={title} tab={tab} />
+                {LeaderboardTab.map(({ title, value }, index) => (
+                  <Tab
+                    value={value}
+                    key={index}
+                    setTab={setTab}
+                    title={title}
+                    tab={tab}
+                  />
                 ))}
               </ul>
             </div>

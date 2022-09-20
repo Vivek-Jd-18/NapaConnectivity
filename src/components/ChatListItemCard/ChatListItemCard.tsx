@@ -1,7 +1,8 @@
-import moment from 'moment';
 import type { NextPage } from 'next';
-import Image from 'next/image';
 import React from 'react';
+import moment from 'moment';
+import Image from 'next/image';
+
 import { HowardAvatar } from '../assets';
 import styles from './ChatListItemCard.module.scss';
 
