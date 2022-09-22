@@ -28,9 +28,13 @@ a {
 
 #nft-marketplace .NftProjectCard_cardContainer__IJxEQ:before,
 #nft-marketplace .NftProjectCard_cardContainer__IJxEQ:before {
-  background: linear-gradient(200deg, rgba(12, 27, 34, 0.58) 0%, rgba(12, 27, 34, 0.95) 100%);
+  background: linear-gradient(
+    200deg,
+    rgba(12, 27, 34, 0.58) 0%,
+    rgba(12, 27, 34, 0.95) 100%
+  );
   position: absolute;
-  content: "";
+  content: '';
   width: 100%;
   height: 100%;
   z-index: 0;
@@ -38,21 +42,37 @@ a {
   left: 50%;
   bottom: 0;
 }
-#nft-marketplace .slick-slide.slick-active .NftProjectCard_cardContainer__IJxEQ:before{
-  background:  linear-gradient(200deg, rgba(12, 27, 34, 0) 0%, rgba(12, 27, 34, 0.8) 100%);
+#nft-marketplace
+  .slick-slide.slick-active
+  .NftProjectCard_cardContainer__IJxEQ:before {
+  background: linear-gradient(
+    200deg,
+    rgba(12, 27, 34, 0) 0%,
+    rgba(12, 27, 34, 0.8) 100%
+  );
 }
-  #nft-marketplace .NftProjectCard_cardContainer__IJxEQ{
-  position: relative;    
-}  
-#nft-marketplace .slick-slide.slick-active.slick-current .NftProjectCard_cardContainer__IJxEQ:before{
-   display: none;  
+#nft-marketplace .NftProjectCard_cardContainer__IJxEQ {
+  position: relative;
+}
+#nft-marketplace
+  .slick-slide.slick-active.slick-current
+  .NftProjectCard_cardContainer__IJxEQ:before {
+  display: none;
 }
 #nft-marketplace .NftProjectCard_cardContainer__IJxEQ img,
-#nft-marketplace .NftProjectCard_cardContainer__IJxEQ .NftProjectCard_username__nOW9D{
+#nft-marketplace
+  .NftProjectCard_cardContainer__IJxEQ
+  .NftProjectCard_username__nOW9D {
   opacity: 0.5;
 }
-#nft-marketplace .slick-slide.slick-active.slick-current  .NftProjectCard_cardContainer__IJxEQ img,
-#nft-marketplace .slick-slide.slick-active.slick-current  .NftProjectCard_cardContainer__IJxEQ .NftProjectCard_username__nOW9D{
+#nft-marketplace
+  .slick-slide.slick-active.slick-current
+  .NftProjectCard_cardContainer__IJxEQ
+  img,
+#nft-marketplace
+  .slick-slide.slick-active.slick-current
+  .NftProjectCard_cardContainer__IJxEQ
+  .NftProjectCard_username__nOW9D {
   opacity: 1;
 }
 #nft-marketplace .slick-current .NftProjectCard_cardContainer__IJxEQ > div {
@@ -63,13 +83,13 @@ div#nft-marketplace .slick-current {
   position: relative;
   bottom: 28px;
 }
-.Home_child__4Kb2b{
+.Home_child__4Kb2b {
   overflow: hidden;
 }
 #nft-marketplace .slick-list {
   overflow: unset;
 }
-.Steper_container__5dFh4{
+.Steper_container__5dFh4 {
   z-index: 1;
 }
 @media (prefers-color-scheme: dark) {
@@ -141,7 +161,6 @@ div#nft-marketplace .slick-current {
   display: none;
 }
 
-
 .Toastify__toast-body {
   .Toastify__toast-icon {
     display: none;
@@ -167,25 +186,29 @@ div#nft-marketplace .slick-current {
   color: #fff !important;
 }
 
-.mx-width h1{
+.mx-width h1 {
   max-width: 386px;
 }
 
-@media (max-width:1400px){
+@media (max-width: 1400px) {
   div#nft-marketplace .slick-current {
     bottom: 19px;
+  }
 }
-}
-@media (max-width:767px){
+@media (max-width: 767px) {
   ul.NftMarketplaceSection_tab__wy7PM button {
     font-size: 16px;
   }
 }
-// new css 
-html .NapaLounge_backgroundImage___NtsM .NapaLounge_napaLoungeContainer__zt_mJ .NapaLounge_leftSideContainer__2mOTS .NapaLounge_boxes__JU_J_{
+// new css
+html
+  .NapaLounge_backgroundImage___NtsM
+  .NapaLounge_napaLoungeContainer__zt_mJ
+  .NapaLounge_leftSideContainer__2mOTS
+  .NapaLounge_boxes__JU_J_ {
   min-height: 19vh !important;
 }
-.TipsAndTutorialsCard_cardContainer__aXUt3{
+.TipsAndTutorialsCard_cardContainer__aXUt3 {
   min-height: 45vh !important;
 }
 html .Home_child__4Kb2b {
@@ -194,86 +217,128 @@ html .Home_child__4Kb2b {
 html .NapaLounge_backgroundImage___NtsM {
   height: 100% !important;
 }
-@media (max-width: 1600px){
-  .NapaLounge_backgroundImage___NtsM .NapaLounge_napaLoungeContainer__zt_mJ .NapaLounge_leftSideContainer__2mOTS .NapaLounge_boxes__JU_J_ {
+@media (max-width: 1600px) {
+  .NapaLounge_backgroundImage___NtsM
+    .NapaLounge_napaLoungeContainer__zt_mJ
+    .NapaLounge_leftSideContainer__2mOTS
+    .NapaLounge_boxes__JU_J_ {
     padding: 1rem !important;
     // min-height: 6rem !important;
+  }
 }
-}
-@media (max-width: 1280px){
+@media (max-width: 1280px) {
   .cstm-box {
     max-width: 600px !important;
     margin: 0 auto !important;
   }
   .NapaLounge_backgroundImage___NtsM .NapaLounge_napaLoungeContainer__zt_mJ {
     padding-bottom: 140px !important;
+  }
+  // .TipsAndTutorialsCard_cardContainer__aXUt3{
+  //   min-height: 14rem !important;
+  // }
+  .NapaLounge_backgroundImage___NtsM
+    .NapaLounge_napaLoungeContainer__zt_mJ
+    .NapaLounge_leftSideContainer__2mOTS
+    .NapaLounge_boxes__JU_J_
+    .NapaLounge_description__qPsf9 {
+    font-size: 12px !important;
+  }
 }
-// .TipsAndTutorialsCard_cardContainer__aXUt3{
-//   min-height: 14rem !important;
-// }
-.NapaLounge_backgroundImage___NtsM .NapaLounge_napaLoungeContainer__zt_mJ .NapaLounge_leftSideContainer__2mOTS .NapaLounge_boxes__JU_J_ .NapaLounge_description__qPsf9{
-  font-size: 12px !important;
-}
-}
-@media (max-width: 1200px){
-
-  .NapaLounge_backgroundImage___NtsM .NapaLounge_napaLoungeContainer__zt_mJ .NapaLounge_leftSideContainer__2mOTS .NapaLounge_boxes__JU_J_ {
+@media (max-width: 1200px) {
+  .NapaLounge_backgroundImage___NtsM
+    .NapaLounge_napaLoungeContainer__zt_mJ
+    .NapaLounge_leftSideContainer__2mOTS
+    .NapaLounge_boxes__JU_J_ {
     padding: 1rem !important;
     // min-height: 6rem !important;
+  }
+  // .TipsAndTutorialsCard_cardContainer__aXUt3{
+  //   min-height: 10rem !important;
+  // }
+  .NapaLounge_backgroundImage___NtsM
+    .NapaLounge_napaLoungeContainer__zt_mJ
+    .NapaLounge_leftSideContainer__2mOTS
+    .NapaLounge_boxes__JU_J_
+    .NapaLounge_description__qPsf9 {
+    font-size: 12px !important;
+  }
+  .NapaLounge_backgroundImage___NtsM
+    .NapaLounge_napaLoungeContainer__zt_mJ
+    .NapaLounge_lounge__LSQaa,
+  .NapaLounge_backgroundImage___NtsM
+    .NapaLounge_napaLoungeContainer__zt_mJ
+    .NapaLounge_napa__IQAmD {
+    font-size: 2.5rem !important;
+  }
+  .TipsAndTutorialsCard_cardContainer__aXUt3
+    .TipsAndTutorialsCard_cardInfo__nWGGe
+    .TipsAndTutorialsCard_title__iV9ul {
+    font-size: 1rem !important;
+  }
 }
-// .TipsAndTutorialsCard_cardContainer__aXUt3{
-//   min-height: 10rem !important;
-// }
-.NapaLounge_backgroundImage___NtsM .NapaLounge_napaLoungeContainer__zt_mJ .NapaLounge_leftSideContainer__2mOTS .NapaLounge_boxes__JU_J_ .NapaLounge_description__qPsf9{
-  font-size: 12px !important;
-}
-.NapaLounge_backgroundImage___NtsM .NapaLounge_napaLoungeContainer__zt_mJ .NapaLounge_lounge__LSQaa, .NapaLounge_backgroundImage___NtsM .NapaLounge_napaLoungeContainer__zt_mJ .NapaLounge_napa__IQAmD{
-  font-size: 2.5rem !important;
-}
-.TipsAndTutorialsCard_cardContainer__aXUt3 .TipsAndTutorialsCard_cardInfo__nWGGe .TipsAndTutorialsCard_title__iV9ul{
-  font-size: 1rem !important;
-}
-}
-@media (max-width: 1024px){
-  html .NapaLounge_backgroundImage___NtsM .NapaLounge_napaLoungeContainer__zt_mJ .NapaLounge_leftSideContainer__2mOTS .NapaLounge_boxes__JU_J_ {
+@media (max-width: 1024px) {
+  html
+    .NapaLounge_backgroundImage___NtsM
+    .NapaLounge_napaLoungeContainer__zt_mJ
+    .NapaLounge_leftSideContainer__2mOTS
+    .NapaLounge_boxes__JU_J_ {
     min-height: 12vh !important;
+  }
+  .TipsAndTutorialsCard_cardContainer__aXUt3 {
+    min-height: 26vh !important;
+  }
+  // .TipsAndTutorialsCard_cardContainer__aXUt3 {
+  //   min-height: 15rem !important;
+  // }
 }
-.TipsAndTutorialsCard_cardContainer__aXUt3 {
-  min-height: 26vh !important;
-}
-// .TipsAndTutorialsCard_cardContainer__aXUt3 {
-//   min-height: 15rem !important;
-// }
-}
-@media (max-width: 767px){
-  .NapaLounge_backgroundImage___NtsM .NapaLounge_napaLoungeContainer__zt_mJ .NapaLounge_leftSideContainer__2mOTS .NapaLounge_boxes__JU_J_ {
-    padding: .5rem !important;
+@media (max-width: 767px) {
+  .NapaLounge_backgroundImage___NtsM
+    .NapaLounge_napaLoungeContainer__zt_mJ
+    .NapaLounge_leftSideContainer__2mOTS
+    .NapaLounge_boxes__JU_J_ {
+    padding: 0.5rem !important;
     // min-height: 3rem !important;
+  }
+  // .TipsAndTutorialsCard_cardContainer__aXUt3{
+  //   min-height: 8rem !important;
+  // }
+  .NapaLounge_backgroundImage___NtsM
+    .NapaLounge_napaLoungeContainer__zt_mJ
+    .NapaLounge_leftSideContainer__2mOTS
+    .NapaLounge_boxes__JU_J_
+    .NapaLounge_description__qPsf9 {
+    font-size: 10px !important;
+  }
+  .NapaLounge_backgroundImage___NtsM
+    .NapaLounge_napaLoungeContainer__zt_mJ
+    .NapaLounge_lounge__LSQaa,
+  .NapaLounge_backgroundImage___NtsM
+    .NapaLounge_napaLoungeContainer__zt_mJ
+    .NapaLounge_napa__IQAmD {
+    font-size: 1.5rem !important;
+  }
+  .TipsAndTutorialsCard_cardContainer__aXUt3 {
+    padding: 1rem !important;
+  }
+  .TipsAndTutorialsCard_cardContainer__aXUt3
+    .TipsAndTutorialsCard_cardInfo__nWGGe
+    .TipsAndTutorialsCard_title__iV9ul {
+    font-size: 0.8rem !important;
+  }
 }
-// .TipsAndTutorialsCard_cardContainer__aXUt3{
-//   min-height: 8rem !important;
-// }
-.NapaLounge_backgroundImage___NtsM .NapaLounge_napaLoungeContainer__zt_mJ .NapaLounge_leftSideContainer__2mOTS .NapaLounge_boxes__JU_J_ .NapaLounge_description__qPsf9{
-  font-size: 10px !important;
-}
-.NapaLounge_backgroundImage___NtsM .NapaLounge_napaLoungeContainer__zt_mJ .NapaLounge_lounge__LSQaa, .NapaLounge_backgroundImage___NtsM .NapaLounge_napaLoungeContainer__zt_mJ .NapaLounge_napa__IQAmD{
-  font-size: 1.5rem !important;
-}
-.TipsAndTutorialsCard_cardContainer__aXUt3{
-  padding: 1rem !important
-}
-.TipsAndTutorialsCard_cardContainer__aXUt3 .TipsAndTutorialsCard_cardInfo__nWGGe .TipsAndTutorialsCard_title__iV9ul{
-  font-size: .8rem !important;
-}
-}
-@media (max-width: 480px){
+@media (max-width: 480px) {
   .NapaLounge_backgroundImage___NtsM .NapaLounge_napaLoungeContainer__zt_mJ {
     justify-content: start !important;
     padding-top: 20px !important;
   }
-  html .NapaLounge_backgroundImage___NtsM .NapaLounge_napaLoungeContainer__zt_mJ .NapaLounge_leftSideContainer__2mOTS .NapaLounge_boxes__JU_J_ {
+  html
+    .NapaLounge_backgroundImage___NtsM
+    .NapaLounge_napaLoungeContainer__zt_mJ
+    .NapaLounge_leftSideContainer__2mOTS
+    .NapaLounge_boxes__JU_J_ {
     min-height: 9vh !important;
-}
+  }
 }
 body.scroll-down header.page-header {
   transform: translateY(-100%);
@@ -283,22 +348,22 @@ body.scroll-up header.page-header {
   transform: transformY(0) !important;
   transition: 0.4s;
 }
-@media (max-width: 376px){
+@media (max-width: 376px) {
   .TipsAndTutorialsCard_cardContainer__aXUt3 {
     min-height: 16vh !important;
-}
+  }
 }
 .asinnerContainer {
   padding-left: 7.9vw !important;
   padding-right: 7.9vw !important;
 }
-@media (max-width: 768px){
+@media (max-width: 768px) {
   .asinnerContainer {
     padding-left: 40px !important;
     padding-right: 40px !important;
   }
 }
-@media (max-width: 736px){
+@media (max-width: 736px) {
   .asinnerContainer {
     padding-left: 20px !important;
     padding-right: 20px !important;
@@ -321,7 +386,8 @@ body.scroll-up header.page-header {
   display: flex;
   flex-direction: column;
 }
-.fp-right ul::before, .fp-right ul::after {
+.fp-right ul::before,
+.fp-right ul::after {
   font-family: 'Avenir LT Std';
   color: #fff;
   font-style: normal;
@@ -329,16 +395,16 @@ body.scroll-up header.page-header {
   font-size: 14px;
   line-height: 140%;
   text-align: center;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 .fp-right ul::before {
-  content: "01";
+  content: '01';
   position: absolute;
   top: -24px;
   left: -5px;
 }
 .fp-right ul::after {
-  content: "04";
+  content: '04';
   position: absolute;
   bottom: -28px;
   left: -7px;
@@ -349,18 +415,84 @@ body.scroll-up header.page-header {
   height: 25% !important;
 }
 .fp-right ul li a {
-  background: rgba(255,255,255,0.0);
+  background: rgba(255, 255, 255, 0);
   width: 3px !important;
   height: 100% !important;
   transition: all 0.2s ease-out;
 }
-.fp-right ul li a.active {background: #fff;}
+.fp-right ul li a.active {
+  background: #fff;
+}
 .fp-right ul li a span {
   display: none !important;
 }
 @media screen and (max-width: 1366px) {
-  .fp-right {left: 10px;}
+  .fp-right {
+    left: 10px;
+  }
 }
 @media screen and (max-width: 1230px) {
-  .fp-right {display: none !important;}
+  .fp-right {
+    display: none !important;
+  }
+}
+#earn-container {
+  background: #102324;
+}
+.earnpage {
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+  overflow-y: auto;
+}
+.datepickerBox {
+  margin-right: 40px;
+  .form-control {
+    background: transparent url(./img/down_arrow.svg) no-repeat 107px 9px !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    @include font-md-avenir-medium;
+    font-size: 18px;
+    line-height: 140%;
+    color: #fff !important;
+    padding: 0 15px 0 0;
+    width: 140px;
+  }
+}
+@media screen and (max-width: 991px) {
+  .col-lg-6-rspnsv {
+    padding-left: 54px !important;
+    padding-right: 54px !important;
+  }
+}
+@media screen and (max-width: 736px) {
+  .col-lg-6-rspnsv {
+    padding-left: 34px !important;
+    padding-right: 34px !important;
+  }
+  .datepickerBox {
+    margin-right: 0px;
+    .form-control {
+      font-size: 16px;
+    }
+  }
+}
+
+// datepkr inner
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.daterangepicker td.active,
+.daterangepicker td.active:hover {
+  background-color: #16e6ef !important;
+  color: #102324 !important;
+}
+.daterangepicker .applyBtn {
+  background: #16e6ef !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: #102324 !important;
 }
