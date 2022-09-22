@@ -104,11 +104,16 @@ const Header: NextPage<HeaderProps> = ({
     }
     lastScroll = currentScroll;
   });
-
+  const [scroll, setScroll] = useState(false);
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      setScroll(window.scrollY > 10);
+    });
+  }, []);
   //
 
   return (
-    <header className="page-header">
+    <header className={scroll ? "page-header scrolled" : "page-header"}>
       <Container className={`${styles.innerContainer} asinnerContainer`}>
         <div onClick={openMenu}>
           <Image

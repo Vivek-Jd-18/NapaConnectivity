@@ -30,7 +30,8 @@ export default function EarnPage() {
                 <div className={styles.MiddleCont}>
                   <label>Lock Amount</label>
                   <div className={styles.MiddleContInn}>
-                      <h3>0.48</h3>
+                      {/* <h3>0.48</h3> */}
+                      <input type="text" value={'0.48'} />
                       <span/>
                       <p>NAPA</p>
                   </div>

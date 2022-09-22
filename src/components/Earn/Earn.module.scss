@@ -72,13 +72,17 @@
   .MiddleContInn {
     display: flex;
     align-items: center;
-    h3 {
+    h3, input {
       @include font-6xl-neuropolitical-normal;
       font-size: 44px;
       line-height: 110%;
       text-align: center;
       color: #FFFFFF;
       margin-bottom: 0;
+      background: transparent;
+      border: none;
+      width: 135px;
+      outline: none;
     }
     span {
       height: 50px;
