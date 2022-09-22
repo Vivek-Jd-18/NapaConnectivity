@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { NapaIcon, NapaIconv2, SearchIconV2 } from '../assets';
 import Button from '../../components/Button/Button';
 import moment from 'moment';
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
 import DateRangePicker from 'react-bootstrap-daterangepicker';
 // you will need the css that comes with bootstrap@3. if you are using
 // a tool like webpack, you can do the following:
