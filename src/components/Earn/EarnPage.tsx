@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { NapaIcon, NapaIconv2, SearchIconV2 } from '../assets';
 import Button from '../../components/Button/Button';
 import moment from 'moment';
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import DateRangePicker from 'react-bootstrap-daterangepicker';
 // you will need the css that comes with bootstrap@3. if you are using
 // a tool like webpack, you can do the following:
@@ -14,26 +14,32 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-daterangepicker/daterangepicker.css';
 
 export default function EarnPage() {
-
+  const [lock, setLock] = useState(0);
   return (
     <div className={`${styles.container}`}>
       <Container className={`${styles.settingsContainer} asinnerContainer`}>
         <h1 className={styles.settings}>NAPA Earn</h1>
         <div className={styles.tabsContainer}>
-          <div className='row align-items-center'>
-            <div className='col-lg-6 col-lg-6-rspnsv'>
+          <div className="row align-items-center">
+            <div className="col-lg-6 col-lg-6-rspnsv">
               <div className={styles.max540}>
                 <div className={styles.TopLogo}>
                   <Image src={NapaIcon} alt="NapaIcon" width={48} height={48} />
-                  <h4>NAPA Token  <span>NAPA</span></h4>
+                  <h4>
+                    NAPA Token <span>NAPA</span>
+                  </h4>
                 </div>
                 <div className={styles.MiddleCont}>
                   <label>Lock Amount</label>
                   <div className={styles.MiddleContInn}>
-                      {/* <h3>0.48</h3> */}
-                      <input type="text" value={'0.48'} />
-                      <span/>
-                      <p>NAPA</p>
+                    {/* <h3>0.48</h3> */}
+                    <input
+                      type="number"
+                      value={lock}
+                      onChange={(e) => setLock(+e.target.value)}
+                    />
+                    <span />
+                    <p>NAPA</p>
                   </div>
                 </div>
                 <div className={styles.BottomCont}>
@@ -58,15 +64,11 @@ export default function EarnPage() {
                   </ul>
                 </div>
                 <div className={styles.BottomAction}>
-                  <Button
-                      text="Lock"
-                      outlined
-                  />
+                  <Button text="Lock" outlined />
                 </div>
-                
               </div>
             </div>
-            <div className='col-lg-6'>
+            <div className="col-lg-6">
               <div className={`${styles.EarnRightBox} ${styles.max540}`}>
                 <h4>Summary</h4>
                 <div className={styles.EarnRightBoxInner}>
@@ -80,8 +82,8 @@ export default function EarnPage() {
                 <div className={styles.EarnRightBoxInner}>
                   <p>Amount Locked</p>
                   <span className={styles.EarnRightBoxSpan}>
-                      <Image src={NapaIconv2} alt="" width={17} height={13} />
-                      20.01
+                    <Image src={NapaIconv2} alt="" width={17} height={13} />
+                    20.01
                   </span>
                 </div>
                 <div className={styles.EarnRightBoxInner}>
@@ -102,35 +104,45 @@ export default function EarnPage() {
                 </div>
               </div>
             </div>
-            <div className='col-lg-12 '>
+            <div className="col-lg-12 ">
               <div className={styles.MainTable}>
                 <h4>Staked</h4>
                 <div className={styles.RightTableSc}>
-                  <div className='datepickerBox'>
+                  <div className="datepickerBox">
                     <DateRangePicker
                       initialSettings={{
                         singleDatePicker: true,
                         showDropdowns: true,
                         maxYear: parseInt(moment().format('YYYY'), 10),
-                        opens: 'left'
-                     }}
+                        opens: 'left',
+                      }}
                     >
-                      <input type="text" className="form-control" placeholder='Start Date' />
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Start Date"
+                      />
                     </DateRangePicker>
                   </div>
-                  <div className='datepickerBox'>
+                  <div className="datepickerBox">
                     <DateRangePicker
                       initialSettings={{
                         singleDatePicker: true,
                         showDropdowns: true,
                         maxYear: parseInt(moment().format('YYYY'), 10),
-                        opens: 'left'
-                     }}
+                        opens: 'left',
+                      }}
                     >
-                      <input type="text" className="form-control" placeholder='End Date' />
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="End Date"
+                      />
                     </DateRangePicker>
                   </div>
-                  <button className={styles.SearchButton}><Image src={SearchIconV2} alt="" width={24} height={24} /></button>
+                  <button className={styles.SearchButton}>
+                    <Image src={SearchIconV2} alt="" width={24} height={24} />
+                  </button>
                 </div>
               </div>
               <div className={styles.MainTableTable}>
@@ -150,16 +162,17 @@ export default function EarnPage() {
                       12 Mar 2022
                     </h4>
                     <h4>
-                      <label>Interest Period</label>
-                      1 month
+                      <label>Interest Period</label>1 month
                     </h4>
                     <h4>
                       <label>Amount Locked</label>
-                      <div><Image src={NapaIconv2} alt="" width={17} height={13} /> 20.01</div>
+                      <div>
+                        <Image src={NapaIconv2} alt="" width={17} height={13} />{' '}
+                        20.01
+                      </div>
                     </h4>
                     <h4>
-                      <label>Lock Duration</label>
-                      2 months
+                      <label>Lock Duration</label>2 months
                     </h4>
                     <h4>
                       <label>APY</label>
@@ -180,16 +193,17 @@ export default function EarnPage() {
                       12 Mar 2022
                     </h4>
                     <h4>
-                      <label>Interest Period</label>
-                      1 month
+                      <label>Interest Period</label>1 month
                     </h4>
                     <h4>
                       <label>Amount Locked</label>
-                      <div><Image src={NapaIconv2} alt="" width={17} height={13} /> 20.01</div>
+                      <div>
+                        <Image src={NapaIconv2} alt="" width={17} height={13} />{' '}
+                        20.01
+                      </div>
                     </h4>
                     <h4>
-                      <label>Lock Duration</label>
-                      2 months
+                      <label>Lock Duration</label>2 months
                     </h4>
                     <h4>
                       <label>APY</label>
@@ -210,16 +224,17 @@ export default function EarnPage() {
                       12 Mar 2022
                     </h4>
                     <h4>
-                      <label>Interest Period</label>
-                      1 month
+                      <label>Interest Period</label>1 month
                     </h4>
                     <h4>
                       <label>Amount Locked</label>
-                      <div><Image src={NapaIconv2} alt="" width={17} height={13} /> 20.01</div>
+                      <div>
+                        <Image src={NapaIconv2} alt="" width={17} height={13} />{' '}
+                        20.01
+                      </div>
                     </h4>
                     <h4>
-                      <label>Lock Duration</label>
-                      2 months
+                      <label>Lock Duration</label>2 months
                     </h4>
                     <h4>
                       <label>APY</label>
@@ -240,16 +255,17 @@ export default function EarnPage() {
                       12 Mar 2022
                     </h4>
                     <h4>
-                      <label>Interest Period</label>
-                      1 month
+                      <label>Interest Period</label>1 month
                     </h4>
                     <h4>
                       <label>Amount Locked</label>
-                      <div><Image src={NapaIconv2} alt="" width={17} height={13} /> 20.01</div>
+                      <div>
+                        <Image src={NapaIconv2} alt="" width={17} height={13} />{' '}
+                        20.01
+                      </div>
                     </h4>
                     <h4>
-                      <label>Lock Duration</label>
-                      2 months
+                      <label>Lock Duration</label>2 months
                     </h4>
                     <h4>
                       <label>APY</label>
@@ -264,7 +280,6 @@ export default function EarnPage() {
                       2.450.00
                     </h4>
                   </div>
-                  
                 </div>
               </div>
             </div>
@@ -277,6 +292,4 @@ export default function EarnPage() {
       </div>
     </div>
   );
-};
-
-
+}
