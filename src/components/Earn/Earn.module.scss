@@ -1,0 +1,32 @@
+@import '../../../styles/abstracts/mixins.module';
+@import '../../../styles/abstracts/variable.module';
+
+.container {
+  width: 100%;
+ 
+  .settingsContainer {
+    height: 100%;
+    .settings {
+      padding-top: 9rem;
+      color: $white;
+      @include font-6xl-neuropolitical-normal;
+    }
+  }
+  @media (min-width: 1280px) {
+    .settingsContainer {
+      .settings {
+        padding-top: 7rem;
+        @include font-4xl-neuropolitical-normal;
+      }
+    }
+  }
+  @media (min-width: 1440px) {
+    .settingsContainer {
+      .settings {
+        padding-top: 9rem;
+        @include font-6xl-neuropolitical-normal;
+      }
+    }
+  }
+}
+
