@@ -367,3 +367,55 @@ body.scroll-up header.page-header {
 #earn-container {
   background: #102324;
 }
+.earnpage {
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+  overflow-y: auto;
+}
+.datepickerBox {
+  margin-right: 40px;
+  .form-control {
+    background: transparent url(./img/down_arrow.svg) no-repeat 107px 9px !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    @include font-md-avenir-medium;
+    font-size: 18px;
+    line-height: 140%;
+    color: #fff !important;
+    padding: 0 15px 0 0;
+    width: 140px;
+  }
+}
+@media screen and (max-width: 991px) {
+  .col-lg-6-rspnsv {
+    padding-left: 54px !important;
+    padding-right: 54px !important;
+  }
+}
+@media screen and (max-width: 736px) {
+  .col-lg-6-rspnsv {
+    padding-left: 34px !important;
+    padding-right: 34px !important;
+  }
+  .datepickerBox {
+    margin-right: 0px;
+    .form-control {
+      font-size: 16px;
+    }
+  }
+}
+
+// datepkr inner
+
+
+.daterangepicker td.active, .daterangepicker td.active:hover {
+  background-color: #16E6EF !important;
+  color: #102324 !important;
+}
+.daterangepicker .applyBtn {
+   background: #16E6EF !important;
+   border: none !important;
+   box-shadow: none !important;
+   color: #102324 !important;
+}
