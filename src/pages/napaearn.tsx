@@ -21,7 +21,7 @@ const Earn: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <section className={styles.container} id="earn-container">
-        <div className={`${styles.child} earnpage`}>
+        <div className={`${styles.child} earnpage`} id="scrollElement">
           <EarnPage />
         </div>
       </section>
