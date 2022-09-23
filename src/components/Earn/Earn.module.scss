@@ -301,7 +301,7 @@
       border-top: 1px solid rgb(145 165 166 / 30%);
       h4 {
         display: flex;
-        flex-basis: 14.28%;
+        flex-basis: 12.5%;
         text-align: left;
         align-items: flex-end;
         justify-content: flex-end;
@@ -329,6 +329,21 @@
           text-align: left;
           align-items: flex-start;
           justify-content: flex-start;
+        }
+        .ClaimBtn {
+          border: none !important;
+          background: transparent !important;
+          outline: none !important;
+          box-shadow: none !important;
+          @include font-6xl-neuropolitical-normal;
+          font-size: 18px;
+          line-height: 110%;
+          text-align: right;
+          color: #16E6EF;
+          transition: all 0.2s ease-out;
+          &:hover {
+            color: #12B7B2;
+          }
         }
       }
     }

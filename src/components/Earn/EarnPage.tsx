@@ -163,6 +163,7 @@ export default function EarnPage() {
                   <h4>APY</h4>
                   <h4>Daily APY</h4>
                   <h4>Redeem Rewards</h4>
+                  <h4></h4>
                 </div>
                 <div className={styles.TableRowMain}>
                   <div className={styles.TableRow}>
@@ -195,36 +196,9 @@ export default function EarnPage() {
                       <label>Redeem Rewards</label>
                       2.450.00
                     </h4>
-                  </div>
-                  <div className={styles.TableRow}>
                     <h4>
-                      <label>Lock Start Date</label>
-                      12 Mar 2022
-                    </h4>
-                    <h4>
-                      <label>Interest Period</label>1 month
-                    </h4>
-                    <h4>
-                      <label>Amount Locked</label>
-                      <div>
-                        <Image src={NapaIconv2} alt="" width={17} height={13} />{' '}
-                        20.01
-                      </div>
-                    </h4>
-                    <h4>
-                      <label>Lock Duration</label>2 months
-                    </h4>
-                    <h4>
-                      <label>APY</label>
-                      9.45%
-                    </h4>
-                    <h4>
-                      <label>Daily APY</label>
-                      5.4%
-                    </h4>
-                    <h4>
-                      <label>Redeem Rewards</label>
-                      2.450.00
+                      <label>&nbsp;</label>
+                      <button className={styles.ClaimBtn}>Claim</button>
                     </h4>
                   </div>
                   <div className={styles.TableRow}>
@@ -257,6 +231,10 @@ export default function EarnPage() {
                       <label>Redeem Rewards</label>
                       2.450.00
                     </h4>
+                    <h4>
+                      <label>&nbsp;</label>
+                      <button className={styles.ClaimBtn}>Claim</button>
+                    </h4>
                   </div>
                   <div className={styles.TableRow}>
                     <h4>
@@ -287,6 +265,45 @@ export default function EarnPage() {
                     <h4>
                       <label>Redeem Rewards</label>
                       2.450.00
+                    </h4>
+                    <h4>
+                      <label>&nbsp;</label>
+                      <button className={styles.ClaimBtn}>Claim</button>
+                    </h4>
+                  </div>
+                  <div className={styles.TableRow}>
+                    <h4>
+                      <label>Lock Start Date</label>
+                      12 Mar 2022
+                    </h4>
+                    <h4>
+                      <label>Interest Period</label>1 month
+                    </h4>
+                    <h4>
+                      <label>Amount Locked</label>
+                      <div>
+                        <Image src={NapaIconv2} alt="" width={17} height={13} />{' '}
+                        20.01
+                      </div>
+                    </h4>
+                    <h4>
+                      <label>Lock Duration</label>2 months
+                    </h4>
+                    <h4>
+                      <label>APY</label>
+                      9.45%
+                    </h4>
+                    <h4>
+                      <label>Daily APY</label>
+                      5.4%
+                    </h4>
+                    <h4>
+                      <label>Redeem Rewards</label>
+                      2.450.00
+                    </h4>
+                    <h4>
+                      <label>&nbsp;</label>
+                      <button className={styles.ClaimBtn}>Claim</button>
                     </h4>
                   </div>
                 </div>
