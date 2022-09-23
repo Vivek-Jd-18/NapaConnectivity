@@ -348,6 +348,14 @@ body.scroll-up header.page-header {
   transform: transformY(0) !important;
   transition: 0.4s;
 }
+body.scroll-down header.page-header .asinnerContainer {
+  transform: translateY(-100%);
+  transition: 0.4s;
+}
+body.scroll-up header.page-header .asinnerContainer {
+  transform: transformY(0) !important;
+  transition: 0.4s;
+}
 @media (max-width: 376px) {
   .TipsAndTutorialsCard_cardContainer__aXUt3 {
     min-height: 16vh !important;
