@@ -70,7 +70,7 @@ export const WebThreeContextProvider = (props: {
         CustomToastWithLink({
           icon: ErrorIcon,
           title: ToastTitle.ERROR,
-          description: 'Please switch your network to etheruem mainnet',
+          description: 'Please switch network to Etheruem Mainnet',
           time: 'Now',
         })
       );
