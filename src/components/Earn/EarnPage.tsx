@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { NapaIcon, NapaIconv2, SearchIconV2 } from '../assets';
 import Button from '../../components/Button/Button';
 import moment from 'moment';
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
 import DateRangePicker from 'react-bootstrap-daterangepicker';
 // you will need the css that comes with bootstrap@3. if you are using
 // a tool like webpack, you can do the following:
@@ -14,7 +14,15 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-daterangepicker/daterangepicker.css';
 
 export default function EarnPage() {
-  const [lock, setLock] = useState(0);
+  const [lock, setLock] = useState<string>();
+
+  const onAmountChange = (e: any) => {
+    const amount = e.target.value;
+
+    if (!amount || amount.match(/^\d{1,}(\.\d{0,4})?$/)) {
+      setLock(amount);
+    }
+  };
   return (
     <div className={`${styles.container}`}>
       <Container className={`${styles.settingsContainer} asinnerContainer`}>
@@ -36,19 +44,16 @@ export default function EarnPage() {
                     <input
                       type="number"
                       value={lock}
-                      onChange={(e) => setLock(+e.target.value)}
+                      placeholder="0.00"
+                      onChange={onAmountChange}
                     />
                     <span />
                     <p>NAPA</p>
                   </div>
                 </div>
                 <div className={styles.BottomCont}>
-                  <label>Lock Amount</label>
+                  <label>Lock Period</label>
                   <ul>
-                    <li>
-                      <input type="radio" name="lock-amout" id="amountOne" />
-                      <p>15 Days</p>
-                    </li>
                     <li>
                       <input type="radio" name="lock-amout" id="amountOne" />
                       <p>30 Days</p>
@@ -56,6 +61,10 @@ export default function EarnPage() {
                     <li>
                       <input type="radio" name="lock-amout" id="amountOne" />
                       <p>60 Days</p>
+                    </li>
+                    <li>
+                      <input type="radio" name="lock-amout" id="amountOne" />
+                      <p>90 Days</p>
                     </li>
                     <li>
                       <input type="radio" name="lock-amout" id="amountOne" />
@@ -70,7 +79,7 @@ export default function EarnPage() {
             </div>
             <div className="col-lg-6">
               <div className={`${styles.EarnRightBox} ${styles.max540}`}>
-                <h4>Summary</h4>
+                <h4>Staking Summary</h4>
                 <div className={styles.EarnRightBoxInner}>
                   <p>Lock Start Date</p>
                   <span>12 Mar 2022</span>
@@ -106,7 +115,7 @@ export default function EarnPage() {
             </div>
             <div className="col-lg-12 ">
               <div className={styles.MainTable}>
-                <h4>Staked</h4>
+                <h4>Staked Holdings</h4>
                 <div className={styles.RightTableSc}>
                   <div className="datepickerBox">
                     <DateRangePicker
@@ -154,6 +163,7 @@ export default function EarnPage() {
                   <h4>APY</h4>
                   <h4>Daily APY</h4>
                   <h4>Redeem Rewards</h4>
+                  <h4></h4>
                 </div>
                 <div className={styles.TableRowMain}>
                   <div className={styles.TableRow}>
@@ -186,36 +196,9 @@ export default function EarnPage() {
                       <label>Redeem Rewards</label>
                       2.450.00
                     </h4>
-                  </div>
-                  <div className={styles.TableRow}>
                     <h4>
-                      <label>Lock Start Date</label>
-                      12 Mar 2022
-                    </h4>
-                    <h4>
-                      <label>Interest Period</label>1 month
-                    </h4>
-                    <h4>
-                      <label>Amount Locked</label>
-                      <div>
-                        <Image src={NapaIconv2} alt="" width={17} height={13} />{' '}
-                        20.01
-                      </div>
-                    </h4>
-                    <h4>
-                      <label>Lock Duration</label>2 months
-                    </h4>
-                    <h4>
-                      <label>APY</label>
-                      9.45%
-                    </h4>
-                    <h4>
-                      <label>Daily APY</label>
-                      5.4%
-                    </h4>
-                    <h4>
-                      <label>Redeem Rewards</label>
-                      2.450.00
+                      <label>&nbsp;</label>
+                      <button className={styles.ClaimBtn}>Claim</button>
                     </h4>
                   </div>
                   <div className={styles.TableRow}>
@@ -248,6 +231,10 @@ export default function EarnPage() {
                       <label>Redeem Rewards</label>
                       2.450.00
                     </h4>
+                    <h4>
+                      <label>&nbsp;</label>
+                      <button className={styles.ClaimBtn}>Claim</button>
+                    </h4>
                   </div>
                   <div className={styles.TableRow}>
                     <h4>
@@ -278,6 +265,45 @@ export default function EarnPage() {
                     <h4>
                       <label>Redeem Rewards</label>
                       2.450.00
+                    </h4>
+                    <h4>
+                      <label>&nbsp;</label>
+                      <button className={styles.ClaimBtn}>Claim</button>
+                    </h4>
+                  </div>
+                  <div className={styles.TableRow}>
+                    <h4>
+                      <label>Lock Start Date</label>
+                      12 Mar 2022
+                    </h4>
+                    <h4>
+                      <label>Interest Period</label>1 month
+                    </h4>
+                    <h4>
+                      <label>Amount Locked</label>
+                      <div>
+                        <Image src={NapaIconv2} alt="" width={17} height={13} />{' '}
+                        20.01
+                      </div>
+                    </h4>
+                    <h4>
+                      <label>Lock Duration</label>2 months
+                    </h4>
+                    <h4>
+                      <label>APY</label>
+                      9.45%
+                    </h4>
+                    <h4>
+                      <label>Daily APY</label>
+                      5.4%
+                    </h4>
+                    <h4>
+                      <label>Redeem Rewards</label>
+                      2.450.00
+                    </h4>
+                    <h4>
+                      <label>&nbsp;</label>
+                      <button className={styles.ClaimBtn}>Claim</button>
                     </h4>
                   </div>
                 </div>

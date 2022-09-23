@@ -53,29 +53,53 @@ export const WebThreeContextProvider = (props: {
   const [walletNapa, setWalletNapa] = useState('');
 
   const getBalanceBnb = async () => {
-    const web3: any = await getAlreadyConnectedWeb3();
-    const accounts = await web3.eth.getAccounts();
-    const contract = new web3.eth.Contract(
-      balanceOfABI,
-      '0xB8c77482e45F1F44dE1745F52C74426C631bDD52'
-    );
-    const tokenBalance = await contract.methods.balanceOf(accounts[0]).call();
-    const bnbBalance = numberWithCommas(tokenBalance.slice(0, 8));
-    // @ts-ignore
-    setWalletBnb(bnbBalance);
+    try {
+      const web3: any = await getAlreadyConnectedWeb3();
+      const accounts = await web3.eth.getAccounts();
+      const contract = new web3.eth.Contract(
+        balanceOfABI,
+        '0xB8c77482e45F1F44dE1745F52C74426C631bDD52'
+      );
+      const tokenBalance = await contract.methods.balanceOf(accounts[0]).call();
+      const bnbBalance = numberWithCommas(tokenBalance.slice(0, 8));
+      // @ts-ignore
+      setWalletBnb(bnbBalance);
+    } catch (error) {
+      console.log('error', error);
+      toast.error(
+        CustomToastWithLink({
+          icon: ErrorIcon,
+          title: ToastTitle.ERROR,
+          description: 'Please switch network to Etheruem Mainnet',
+          time: 'Now',
+        })
+      );
+    }
   };
 
   const getBalanceNapa = async () => {
-    const web3: any = await getAlreadyConnectedWeb3();
-    const accounts = await web3.eth.getAccounts();
-    const contract = new web3.eth.Contract(
-      balanceOfABI,
-      '0x8EB2Df7137FB778a6387E84f17b80CC82cF9e884'
-    );
-    const tokenBalance = await contract.methods.balanceOf(accounts[0]).call();
-    const napaBalance = numberWithCommas(tokenBalance.slice(0, 8));
-    // @ts-ignore
-    setWalletNapa(napaBalance);
+    try {
+      const web3: any = await getAlreadyConnectedWeb3();
+      const accounts = await web3.eth.getAccounts();
+      const contract = new web3.eth.Contract(
+        balanceOfABI,
+        '0x8EB2Df7137FB778a6387E84f17b80CC82cF9e884'
+      );
+      const tokenBalance = await contract.methods.balanceOf(accounts[0]).call();
+      const napaBalance = numberWithCommas(tokenBalance.slice(0, 8));
+      // @ts-ignore
+      setWalletNapa(napaBalance);
+    } catch (error) {
+      console.log('error', error);
+      toast.error(
+        CustomToastWithLink({
+          icon: ErrorIcon,
+          title: ToastTitle.ERROR,
+          description: 'Please switch your network to etheruem mainnet',
+          time: 'Now',
+        })
+      );
+    }
   };
 
   const getAccounts = useCallback(async () => {

@@ -77,43 +77,42 @@ const Header: NextPage<HeaderProps> = ({
   // const menu = document.querySelector(".page-header .menu");
   // const lottieWrapper = document.querySelector(".lottie-wrapper");
   // const lottiePlayer = document.querySelector("lottie-player");
-  const scrollUp = 'scroll-up';
-  const scrollDown = 'scroll-down';
-  let lastScroll = 10;
 
-  window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    if (currentScroll <= 0) {
-      body.classList.remove(scrollUp);
-      return;
-    }
+  window.addEventListener('scroll', () => {});
 
-    if (currentScroll > lastScroll && !body.classList.contains(scrollDown)) {
-      // down
-      body.classList.remove(scrollUp);
-      body.classList.add(scrollDown);
-      // lottiePlayer.play();
-    } else if (
-      currentScroll < lastScroll &&
-      body.classList.contains(scrollDown)
-    ) {
-      // up
-      body.classList.remove(scrollDown);
-      body.classList.add(scrollUp);
-      // lottiePlayer.stop();
-    }
-    lastScroll = currentScroll;
-  });
-  const [scroll, setScroll] = useState(false);
   useEffect(() => {
-    window.addEventListener("scroll", () => {
-      setScroll(window.scrollY > 10);
+    const element = document.getElementById('scrollElement');
+    const scrollUp = 'scroll-up';
+    const scrollDown = 'scroll-down';
+    let lastScroll = 10;
+
+    element?.addEventListener('scroll', () => {
+      const currentScroll = element.scrollTop;
+      if (currentScroll <= 0) {
+        body.classList.remove(scrollUp);
+        return;
+      }
+
+      if (currentScroll > lastScroll && !body.classList.contains(scrollDown)) {
+        // down
+        body.classList.remove(scrollUp);
+        body.classList.add(scrollDown);
+        // lottiePlayer.play();
+      } else if (
+        currentScroll < lastScroll &&
+        body.classList.contains(scrollDown)
+      ) {
+        // up
+        body.classList.remove(scrollDown);
+        body.classList.add(scrollUp);
+        // lottiePlayer.stop();
+      }
+      lastScroll = currentScroll;
     });
   }, []);
-  //
 
   return (
-    <header className={scroll ? "page-header scrolled" : "page-header"}>
+    <header className="page-header">
       <Container className={`${styles.innerContainer} asinnerContainer`}>
         <div onClick={openMenu}>
           <Image

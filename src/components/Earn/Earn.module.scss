@@ -40,7 +40,9 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  >span {margin-right: 20px !important;}
+  > span {
+    margin-right: 20px !important;
+  }
   h4 {
     @include font-md-avenir-medium;
     font-weight: 500;
@@ -49,7 +51,7 @@
     margin: 0;
     color: #fff;
     span {
-      color: #91A5A6;
+      color: #91a5a6;
       margin-left: 5px;
       display: inline-flex;
     }
@@ -66,30 +68,31 @@
     @include font-md-avenir-regular;
     font-size: 14px;
     line-height: 140%;
-    color: #91A5A6;
+    color: #91a5a6;
     margin-bottom: 15px;
   }
   .MiddleContInn {
     display: flex;
     align-items: center;
-    h3, input {
+    h3,
+    input {
       @include font-6xl-neuropolitical-normal;
       font-size: 44px;
       line-height: 110%;
       text-align: center;
-      color: #FFFFFF;
+      color: #ffffff;
       margin-bottom: 0;
       background: transparent;
       border: none;
-      width: 212px;
-      margin-left: -45px;
+      width: 300px;
+      margin-left: -133px;
       outline: none;
       text-align: right;
     }
     span {
       height: 50px;
       width: 2px;
-      background: #91A5A6;
+      background: #91a5a6;
       margin: 0 30px 0 2px;
     }
     p {
@@ -97,7 +100,7 @@
       @include font-md-avenir-regular;
       font-size: 18px;
       line-height: 25px;
-      color: #91A5A6;
+      color: #91a5a6;
       margin-bottom: 0px;
       top: 12px;
     }
@@ -112,7 +115,7 @@
     @include font-md-avenir-regular;
     font-size: 14px;
     line-height: 140%;
-    color: #91A5A6;
+    color: #91a5a6;
     margin-bottom: 14px;
   }
   ul {
@@ -139,21 +142,20 @@
         @include font-md-avenir-medium;
         font-size: 18px;
         line-height: 25px;
-        border: 1px solid #16E6EF;
+        border: 1px solid #16e6ef;
         height: 40px;
-        color: #16E6EF;
+        color: #16e6ef;
         display: flex;
         align-items: center;
         justify-content: center;
         margin-bottom: 0;
       }
       input:checked + p {
-        background: #16E6EF;
+        background: #16e6ef;
         color: #102324;
       }
     }
   }
- 
 }
 .BottomAction {
   button {
@@ -163,13 +165,17 @@
     height: 72px;
     transition: all 0.2s ease-out;
     &:hover {
-      background: #16E6EF;
+      background: #16e6ef;
       color: #102324;
     }
   }
 }
 .EarnRightBox {
-  background: linear-gradient(180deg, rgb(145 163 166 / 10%) 0%, rgba(145, 165, 166, 0) 100%);
+  background: linear-gradient(
+    180deg,
+    rgb(145 163 166 / 10%) 0%,
+    rgba(145, 165, 166, 0) 100%
+  );
   padding: 35px 40px 26px 40px;
   margin-left: auto;
   @media screen and (max-width: 991px) {
@@ -182,31 +188,31 @@
     @include font-6xl-neuropolitical-normal;
     font-size: 24px;
     line-height: 110%;
-    color: #FFFFFF;
+    color: #ffffff;
     margin-bottom: 23px;
     text-align: left;
   }
-  .EarnRightBoxInner{
+  .EarnRightBoxInner {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
-    p{
+    p {
       @include font-md-avenir-regular;
       font-size: 18px;
       line-height: 140%;
-      color: #91A5A6;
+      color: #91a5a6;
       margin: 0;
     }
-    span{
+    span {
       @include font-md-avenir-medium;
       font-size: 18px;
       line-height: 140%;
       text-align: right;
-      color: #FFFFFF;
+      color: #ffffff;
     }
     .EarnRightBoxSpan {
-      >span{
+      > span {
         margin-right: 9px !important;
       }
     }
@@ -222,7 +228,7 @@
     @include font-6xl-neuropolitical-normal;
     font-size: 24px;
     line-height: 110%;
-    color: #FFFFFF;
+    color: #ffffff;
   }
   .RightTableSc {
     display: flex;
@@ -248,7 +254,7 @@
 .MainTableTable {
   position: relative;
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     left: 0;
     top: 0;
@@ -272,7 +278,7 @@
       font-weight: 400;
       font-size: 14px;
       line-height: 140%;
-      color: #91A5A6;
+      color: #91a5a6;
 
       &:first-child {
         text-align: left;
@@ -286,7 +292,7 @@
     margin-bottom: 30px;
     overflow-y: auto;
     height: 170px;
-    
+
     .TableRow {
       display: flex;
       align-items: center;
@@ -295,9 +301,9 @@
       border-top: 1px solid rgb(145 165 166 / 30%);
       h4 {
         display: flex;
-        flex-basis: 14.28%;
+        flex-basis: 12.5%;
         text-align: left;
-        align-items: center;
+        align-items: flex-end;
         justify-content: flex-end;
         @include font-md-avenir-medium;
         font-size: 18px;
@@ -308,7 +314,7 @@
           @include font-md-avenir-regular;
           font-size: 18px;
           line-height: 140%;
-          color: #91A5A6;
+          color: #91a5a6;
         }
         @media screen and (min-width: 992px) {
           label {
@@ -316,13 +322,28 @@
           }
           flex-direction: column;
         }
-        >span {
+        > span {
           margin-right: 8px !important;
         }
         &:first-child {
           text-align: left;
           align-items: flex-start;
           justify-content: flex-start;
+        }
+        .ClaimBtn {
+          border: none !important;
+          background: transparent !important;
+          outline: none !important;
+          box-shadow: none !important;
+          @include font-6xl-neuropolitical-normal;
+          font-size: 18px;
+          line-height: 110%;
+          text-align: right;
+          color: #16E6EF;
+          transition: all 0.2s ease-out;
+          &:hover {
+            color: #12B7B2;
+          }
         }
       }
     }
@@ -370,7 +391,7 @@
     padding-top: 27px;
   }
   .TopLogo {
-    >span {
+    > span {
       margin-right: 16px !important;
       height: 32px !important;
       width: 32px !important;
@@ -406,7 +427,6 @@
         }
       }
     }
-   
   }
 
   .BottomAction {
@@ -421,16 +441,16 @@
     h4 {
       margin-bottom: 20px;
     }
-    .EarnRightBoxInner{
+    .EarnRightBoxInner {
       margin-bottom: 18px;
-      p{
+      p {
         font-size: 16px;
       }
-      span{
+      span {
         font-size: 16px;
       }
       .EarnRightBoxSpan {
-        >span{
+        > span {
           margin-right: 8px !important;
           height: 12px !important;
           width: 15px !important;
@@ -438,7 +458,6 @@
       }
     }
   }
-
 
   .MainTable {
     align-items: flex-start;
