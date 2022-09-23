@@ -40,7 +40,7 @@ const WalletComponent: NextPage<WalletComponentProps> = ({ account }) => {
         // @ts-ignore
         if (response && profileDetails) {
           push('/home');
-        } else {
+        } else if (response) {
           push('/settings');
         }
       })
