@@ -14,7 +14,15 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-daterangepicker/daterangepicker.css';
 
 export default function EarnPage() {
-  const [lock, setLock] = useState(0);
+  const [lock, setLock] = useState<string>();
+
+  const onAmountChange = (e: any) => {
+    const amount = e.target.value;
+
+    if (!amount || amount.match(/^\d{1,}(\.\d{0,4})?$/)) {
+      setLock(amount);
+    }
+  };
   return (
     <div className={`${styles.container}`}>
       <Container className={`${styles.settingsContainer} asinnerContainer`}>
@@ -36,7 +44,8 @@ export default function EarnPage() {
                     <input
                       type="number"
                       value={lock}
-                      onChange={(e) => setLock(+e.target.value)}
+                      placeholder="0.00"
+                      onChange={onAmountChange}
                     />
                     <span />
                     <p>NAPA</p>
