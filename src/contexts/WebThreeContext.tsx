@@ -4,10 +4,10 @@ import Web3 from 'web3';
 import { toast } from 'react-toastify';
 
 import { getAlreadyConnectedWeb3, getWeb3 } from '../utils/wallet';
+import { numberWithCommas } from '../utils/NumberWithCommas';
+import { ToastDescription, ToastTitle } from '../typing/toast';
 import { CustomToastWithLink } from '../components/CustomToast/CustomToast';
 import { ErrorIcon, WalletConnectedIcon } from '../components/assets';
-import { ToastDescription, ToastTitle } from '../typing/toast';
-import { numberWithCommas } from '../utils/NumberWithCommas';
 
 type WebThreeContextType = {
   account: string;
@@ -52,43 +52,30 @@ export const WebThreeContextProvider = (props: {
   const [walletBnb, setWalletBnb] = useState('');
   const [walletNapa, setWalletNapa] = useState('');
 
-  const getBalanceBnb = async () => {
+  const getBalances = async () => {
     try {
       const web3: any = await getAlreadyConnectedWeb3();
       const accounts = await web3.eth.getAccounts();
-      const contract = new web3.eth.Contract(
+      const contractBnb = new web3.eth.Contract(
         balanceOfABI,
         '0xB8c77482e45F1F44dE1745F52C74426C631bDD52'
       );
-      const tokenBalance = await contract.methods.balanceOf(accounts[0]).call();
-      const bnbBalance = numberWithCommas(tokenBalance.slice(0, 8));
-      // @ts-ignore
-      setWalletBnb(bnbBalance);
-    } catch (error) {
-      console.log('error', error);
-      toast.error(
-        CustomToastWithLink({
-          icon: ErrorIcon,
-          title: ToastTitle.ERROR,
-          description: 'Please switch network to Etheruem Mainnet',
-          time: 'Now',
-        })
-      );
-    }
-  };
-
-  const getBalanceNapa = async () => {
-    try {
-      const web3: any = await getAlreadyConnectedWeb3();
-      const accounts = await web3.eth.getAccounts();
+      const tokenBalanceBnb = await contractBnb.methods
+        .balanceOf(accounts[0])
+        .call();
+      const bnbBalance = numberWithCommas(tokenBalanceBnb.slice(0, 8));
       const contract = new web3.eth.Contract(
         balanceOfABI,
         '0x8EB2Df7137FB778a6387E84f17b80CC82cF9e884'
       );
-      const tokenBalance = await contract.methods.balanceOf(accounts[0]).call();
-      const napaBalance = numberWithCommas(tokenBalance.slice(0, 8));
+      const tokenBalanceNapa = await contract.methods
+        .balanceOf(accounts[0])
+        .call();
+      const napaBalance = numberWithCommas(tokenBalanceNapa.slice(0, 8));
       // @ts-ignore
       setWalletNapa(napaBalance);
+      // @ts-ignore
+      setWalletBnb(bnbBalance);
     } catch (error) {
       console.log('error', error);
       toast.error(
@@ -113,8 +100,7 @@ export const WebThreeContextProvider = (props: {
           Math.round(Web3.utils.fromWei(walletBalanceInWei) * 1000) / 1000;
         setAccount(accounts[0]);
         setWalletEth(walletBalanceInEth);
-        getBalanceBnb();
-        getBalanceNapa();
+        getBalances();
       }
     } catch (error: any) {
       toast.error(
@@ -126,7 +112,7 @@ export const WebThreeContextProvider = (props: {
         })
       );
     }
-  }, []);
+  }, [getBalances, setWalletEth, setAccount]);
 
   const connectWallet = async () => {
     try {
@@ -147,8 +133,7 @@ export const WebThreeContextProvider = (props: {
       );
       setAccount(walletAddress[0]);
       setWalletEth(walletBalanceInEth);
-      getBalanceBnb();
-      getBalanceNapa();
+      getBalances();
       return walletAddress[0];
     } catch (error: any) {
       toast.error(
@@ -163,8 +148,10 @@ export const WebThreeContextProvider = (props: {
   };
 
   useEffect(() => {
-    getAccounts();
-  }, [getAccounts]);
+    if (!account) {
+      getAccounts();
+    }
+  }, [getAccounts, account]);
 
   const value = {
     account,
