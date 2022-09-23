@@ -52,12 +52,8 @@ export default function EarnPage() {
                   </div>
                 </div>
                 <div className={styles.BottomCont}>
-                  <label>Lock Amount</label>
+                  <label>Lock Period</label>
                   <ul>
-                    <li>
-                      <input type="radio" name="lock-amout" id="amountOne" />
-                      <p>15 Days</p>
-                    </li>
                     <li>
                       <input type="radio" name="lock-amout" id="amountOne" />
                       <p>30 Days</p>
@@ -65,6 +61,10 @@ export default function EarnPage() {
                     <li>
                       <input type="radio" name="lock-amout" id="amountOne" />
                       <p>60 Days</p>
+                    </li>
+                    <li>
+                      <input type="radio" name="lock-amout" id="amountOne" />
+                      <p>90 Days</p>
                     </li>
                     <li>
                       <input type="radio" name="lock-amout" id="amountOne" />
@@ -79,7 +79,7 @@ export default function EarnPage() {
             </div>
             <div className="col-lg-6">
               <div className={`${styles.EarnRightBox} ${styles.max540}`}>
-                <h4>Summary</h4>
+                <h4>Staking Summary</h4>
                 <div className={styles.EarnRightBoxInner}>
                   <p>Lock Start Date</p>
                   <span>12 Mar 2022</span>
@@ -115,7 +115,7 @@ export default function EarnPage() {
             </div>
             <div className="col-lg-12 ">
               <div className={styles.MainTable}>
-                <h4>Staked</h4>
+                <h4>Staked Holdings</h4>
                 <div className={styles.RightTableSc}>
                   <div className="datepickerBox">
                     <DateRangePicker
