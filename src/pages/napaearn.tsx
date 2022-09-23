@@ -24,7 +24,6 @@ const Earn: NextPage = () => {
         <div className={`${styles.child} earnpage`}>
           <EarnPage />
         </div>
-        
       </section>
     </>
   );
