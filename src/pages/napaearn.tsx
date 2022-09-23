@@ -1,18 +1,10 @@
-import Head from 'next/head';
-import styles from '../../styles/pages/Home.module.scss';
 import type { NextPage } from 'next';
-import { WEBSOCKET_URL } from '../constants/url';
-import { useEffect } from 'react';
-import EarnPage from '@/components/Earn/EarnPage';
+import Head from 'next/head';
+
+import styles from '../../styles/pages/Home.module.scss';
+import EarnPage from '../components/Earn/EarnPage';
 
 const Earn: NextPage = () => {
-  const socket = new WebSocket(WEBSOCKET_URL);
-  useEffect(() => {
-    socket.addEventListener('open', () => {
-      console.log('connected from client');
-    });
-  }, []);
-
   return (
     <>
       <Head>

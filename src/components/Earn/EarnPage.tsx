@@ -150,7 +150,7 @@ export default function EarnPage() {
                     </DateRangePicker>
                   </div>
                   <button className={styles.SearchButton}>
-                    <Image src={SearchIconV2} alt="" width={24} height={24} />
+                    {/* <Image src={SearchIconV2} alt="" width={24} height={24} /> */}
                   </button>
                 </div>
               </div>
