@@ -1,6 +1,7 @@
 import React, { createContext, useCallback, useEffect, useState } from 'react';
 import lodash from 'lodash';
 import Web3 from 'web3';
+import { isMobile, isTablet } from 'react-device-detect';
 import { toast } from 'react-toastify';
 
 import { getAlreadyConnectedWeb3, getWeb3 } from '../utils/wallet';
@@ -103,6 +104,17 @@ export const WebThreeContextProvider = (props: {
         getBalances();
       }
     } catch (error: any) {
+      if (isMobile || isTablet) {
+        toast.error(
+          CustomToastWithLink({
+            icon: ErrorIcon,
+            title: ToastTitle.ERROR,
+            description: 'Open website in Metamask Mobile App',
+            time: 'Now',
+          })
+        );
+        return;
+      }
       toast.error(
         CustomToastWithLink({
           icon: ErrorIcon,
