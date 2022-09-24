@@ -109,7 +109,7 @@ export const WebThreeContextProvider = (props: {
           CustomToastWithLink({
             icon: ErrorIcon,
             title: ToastTitle.ERROR,
-            description: 'Open website in Metamask Mobile App',
+            description: 'Open NAPA Website in Metamask Mobile App',
             time: 'Now',
           })
         );
