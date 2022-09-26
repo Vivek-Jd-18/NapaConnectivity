@@ -8,6 +8,7 @@ import Container from '../../Layout/Container/Container';
 import HighlightButton from '../HighlightButton/HighlightButton';
 import { scrollToNextSection } from '../../utils/home';
 import { Avatar, Carousel, MouseIcon } from '../../components/assets';
+
 //import image1 from .... (asset location in S3 bucket) ASSETS SHOULD BE IMPORTED AND DEFINED, DO NOT HARDCODE ASSETS PLEASE
 
 const SocialArtSection: NextPage = () => {
