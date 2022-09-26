@@ -26,15 +26,18 @@
     margin: 0 -40px;
   }
 }
-
-
-
-
 @media screen and (max-width: 736px) {
-  
   .tabsContainer {
     margin: 0 -20px;
     padding-top: 27px;
   }
-
+  .container {
+    .settingsContainer {
+      .settings {
+        padding-top: 108px;
+        font-size: 32px;
+        line-height: 110%;
+      }
+    }
+  }
 }
