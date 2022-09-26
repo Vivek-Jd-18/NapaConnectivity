@@ -69,11 +69,11 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu, account }) => {
           <div
             className={styles.link}
             onClick={() => {
-              push('/napaearn');
+              push('/earn');
               onClick();
             }}
           >
-            <a className={`${pathname === '/napaearn' && styles.active}`}>
+            <a className={`${pathname === '/earn' && styles.active}`}>
               NAPA Earn
             </a>
           </div>
