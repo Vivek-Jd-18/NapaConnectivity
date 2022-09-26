@@ -621,6 +621,7 @@ input::-webkit-inner-spin-button {
       margin-bottom: 14px;
       display: flex;
       align-items: center;
+      transition: all 0.2s ease-out;
       >span {
         margin-right: 8px !important;
       }
