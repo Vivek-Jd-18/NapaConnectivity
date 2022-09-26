@@ -2,7 +2,7 @@ import Container from '../../Layout/Container/Container';
 import Footer from '../Footer/Footer';
 import styles from './Earn.module.scss';
 import Image from 'next/image';
-import { NapaIcon, NapaIconv2, SearchIconV2 } from '../assets';
+import { NapaIcon, NapaIconv2 } from '../assets';
 import Button from '../../components/Button/Button';
 import moment from 'moment';
 import React, { useState } from 'react';
