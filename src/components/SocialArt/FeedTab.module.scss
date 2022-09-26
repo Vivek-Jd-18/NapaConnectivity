@@ -1,0 +1,380 @@
+@import '../../../styles/abstracts/mixins.module';
+@import '../../../styles/abstracts/variable.module';
+.MainListBox {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 65%, rgb(16 35 36 / 90%) 87%);
+    z-index: 1;
+    margin: 0 -7.9vw;
+    display: none;
+  }
+}
+.MainScrollBox {
+  text-align: left;
+  color: #fff;
+  // overflow-y: auto;
+  margin: 0 -7.9vw;
+  padding: 0 7.9vw;
+  overflow-y: auto;
+  height: 900px;
+}
+.MainTabBox {
+  margin: 0 -7.9vw;
+  padding: 0 7.9vw;
+  background: transparent;
+  transition: all 0.2s ease-out;
+  display: flex;
+  &.active {
+    background: rgba(145,165,166,0.03);
+  }
+  .leftBox {
+    display: flex;
+    flex-basis: 62.9%;
+    padding: 30px 30px 30px 0;
+    flex-direction: column;
+    .HadUserText {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      margin-bottom: 24px;
+      a {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+      }
+      .UserRightTxt {
+        text-align: right;
+      }
+      .UserNameTxt {
+        margin-left: 10px;
+      }
+      h4 {
+        @include font-md-avenir-medium;
+        font-size: 14px;
+        line-height: 140%;
+        color: #FFFFFF;
+        margin: 0px 0 1px 0;
+      }
+      p {
+        @include font-md-avenir-regular;
+        font-size: 12px;
+        line-height: 140%;
+        color: #FFFFFF;
+        margin: 0;
+      }
+    }
+    .MdlImage {
+      >span {
+        width: 100% !important;
+        height: auto !important;
+        img {
+          object-fit: cover;
+        }
+      }
+    }
+    .BotomTxt {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 24px; 
+      .BotomLikes {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        background: transparent !important;
+        border: none !important;
+        outline: none !important;
+        padding: 0;
+        span {
+          &:first-child {
+            filter: invert(1) brightness(100);
+          }
+        }
+        span {
+          margin-left: 12px;
+          font-size: 14px;
+          line-height: 140%;
+          color: #FFFFFF;
+          b {
+            font-weight: 400;
+          }
+        }
+        &:hover, &.active {
+          span {
+            &:first-child {
+              filter: invert(0) brightness(1);
+            }
+          }
+          span {
+            color: #16e6ef !important;
+          }
+        }
+      }
+    }
+  }
+  .ForShadow {
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0) 30%, rgb(20 39 40 / 89%) 100%);
+      z-index: 1;
+    }
+  }
+  .rightBox {
+    position: relative;
+    flex-basis: 37.1%;
+    padding: 30px 0 30px 90px;
+    transition: all 0.2s ease-out;
+    opacity: 0;
+    pointer-events: none;
+    &.active {
+      opacity: 1;
+      pointer-events: visible;
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      left: 30px;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: #91A5A6;
+      opacity: 0.08;
+    }
+    .ExitButton {
+      position: absolute;
+      left: 2px;
+      top: calc(50% - 30px);
+      background: #142728 !important;
+      border: 1px solid rgb(145 165 166 / 8%);
+      outline: none !important;
+      height: 60px;
+      width: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease-out;
+      &:hover {
+        border: 1px solid rgb(145 165 166 / 100%);
+      }
+    }
+    h1 {
+      font-family: 'Neuropolitical';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 110%;
+      color: #FFFFFF;
+      margin-bottom: 8px;
+    }
+    .UserComment {
+      position: relative;
+      overflow-y: auto;
+      height: 352px;
+      .FisrtComBox {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        margin-top: 23px;
+        .HadComment {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 100%;
+          .leftIcontxt {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            h4 {
+              font-size: 14px !important;
+              line-height: 140% !important;
+              color: #FFFFFF;
+              margin-left: 10px;
+              margin-bottom: 0;
+              @include font-md-avenir-medium;
+            }
+          }
+          p {
+            font-size: 12px !important;
+            line-height: 140% !important;
+            text-align: right;
+            color: #91A5A6;
+            @include font-md-avenir-regular;
+            margin-bottom: 0;
+          }
+        }
+        .btmcomment {
+          padding-left: 40px;
+          p {
+            font-size: 12px !important;
+            line-height: 140% !important;
+            color: #FFFFFF;
+            margin-top: 6px;
+            margin-bottom: 8px;
+            @include font-md-avenir-regular;
+          }
+          .LikeReplyTxt {
+            a {
+              text-decoration: none;
+              font-size: 12px;
+              line-height: 140%;
+              color: #91A5A6;
+              margin-right: 20px;
+              transition: all 0.2s ease-out;
+              &:hover {
+                color: #16e6ef;
+              }
+              &:last-child {
+                margin-right: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+    .BtmCommentBtn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 31px;
+      input {
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        outline: none;
+        @include font-md-avenir-regular;
+        font-size: 14px;
+        line-height: 140%;
+        color: #fff;
+        width: 85%;
+        &::placeholder {
+          @include font-md-avenir-regular;
+          font-size: 14px;
+          line-height: 140%;
+          color: #91A5A6;
+        }
+      }
+      button {
+        font-family: 'Neuropolitical';  
+        background: transparent;
+        border: none;
+        outline: none;
+        box-shadow: none;
+        font-size: 14px;
+        line-height: 140%;
+        color: #FFFFFF;
+        transition: all 0.2s ease-out;
+        &:hover {
+          color: #16e6ef;
+        }
+      }
+    }
+  }
+}
+
+
+
+@media screen and (max-width: 1200px) {
+  .MainTabBox {
+    flex-direction: column;
+    .leftBox {
+      padding-right: 0 !important;
+      flex-basis: 100%;
+    }
+  }
+  .rightBox {
+    padding: 0 !important;
+    display: none;
+    flex-basis: 100%;
+    &.active {
+      display: block;
+    }
+    &::before {
+      position: inherit !important;
+    }
+    .ExitButton {
+      left: inherit !important;
+      right: 0 !important;
+      top: 0px !important;
+      background: transparent !important;
+      border: none !important;
+      height: 24px !important;
+      width: 24px !important;
+    }
+  }
+  .BtmCommentBtn {
+    margin-bottom: 16px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .MainScrollBox {
+    margin: 0 -40px;
+    padding: 0 0px;
+    height: 900px;
+  }
+  .MainTabBox {
+    margin: 0px;
+    padding: 0px;
+    .leftBox {
+      .HadUserText {
+        padding: 0 40px;
+      }
+      .BotomTxt {
+        padding: 0 40px;
+      }
+    }
+    .rightBox {
+      padding: 10px 40px 30px 40px !important;
+      .ExitButton {
+        right: 35px !important;
+        top: 13px !important;
+      }
+      .UserComment {
+        height: 330px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 736px) {
+  .MainScrollBox { height: 625px;}
+  .MainTabBox {
+    
+    .leftBox {
+      
+      .BotomTxt {
+        .BotomLikes {
+          span {
+            &:first-child {
+              filter: invert(1) brightness(100);
+            }
+          }
+          span {
+            b {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+    .rightBox {
+      .UserComment {
+        height: 352px;
+      }
+    }
+  }
+}

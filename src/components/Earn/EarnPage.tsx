@@ -163,7 +163,7 @@ export default function EarnPage() {
                   <h4>Lock Duration</h4>
                   <h4>APY</h4>
                   <h4>Daily APY</h4>
-                  <h4>Redeem Rewards</h4>
+                  <h4>Earned Rewards</h4>
                   <h4></h4>
                 </div>
                 <div className={styles.TableRowMain}>

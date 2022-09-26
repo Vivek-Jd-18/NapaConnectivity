@@ -467,6 +467,9 @@ body.scroll-up header.page-header .asinnerContainer {
     width: 140px;
   }
 }
+.datepickerBoxv2 {
+  margin-right: 0 !important;
+}
 @media screen and (max-width: 991px) {
   .col-lg-6-rspnsv {
     padding-left: 54px !important;
@@ -503,4 +506,133 @@ input::-webkit-inner-spin-button {
   border: none !important;
   box-shadow: none !important;
   color: #102324 !important;
+}
+.default_tab {
+  border: none !important;
+  margin-top: 20px;
+  .nav-item {
+    margin-right: 48px;
+    &:last-child {margin-right: 0;}
+    .nav-link {
+      position: relative;
+      @include font-md-avenir-regular;
+      font-size: 18px;
+      line-height: 140%;
+      color: #91A5A6;
+      border: none;
+      padding: 0 0 14px 0;
+      background: transparent !important;
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0%;
+        height: 2px;
+        background: #fff;
+        transition: all 0.2s ease-out;
+      }
+      &.active, &:hover {
+        color: #fff !important;
+        &::before {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+.mb-30 {margin-bottom: 30px !important;}
+@media screen and (max-width: 736px) {
+  .default_tab {
+    .nav-item {
+      margin-right: 32px;
+      &:last-child {margin-right: 0;}
+      .nav-link {
+        font-size: 16px;
+        padding: 0 0 12px 0;
+       
+      }
+    }
+  }
+}
+
+
+.tooltipminted {
+  .rc-slider-rail{
+    height: 2px;
+    background-color: #91a5a626;
+    border-radius: 0;
+  }
+  .rc-slider-track{
+    height: 2px;
+    background-color: #ffffff;
+    border-radius: 0;
+  }
+  
+}
+
+.rc-tooltip-arrow{display: none !important;}
+.rc-tooltip-inner {
+  background-color: transparent !important;
+  color: #91A5A6 !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+.rc-slider-handle-dragging.rc-slider-handle-dragging.rc-slider-handle-dragging{
+  border: 0.8px solid white !important;
+  box-shadow: none !important;
+ 
+}
+.rc-slider-handle:focus-visible {
+  box-shadow: none !important;
+  border: 0.8px solid white !important;
+}
+.rc-slider-handle {
+  background: #000 url(./img/bg_mmm.png) no-repeat center;
+  background-size: cover !important;
+  background-color: #102324 !important;
+  margin-top: -11px !important;
+  border: 1px solid white !important;
+  outline: none !important;
+  width: 24px !important;
+  height: 24px !important;
+  opacity: 1 !important;
+}
+@media screen and (min-width: 737px) {
+  .datepickerBoxv3 {display: none;}  
+}
+.datepickerBoxv3 {
+  margin-right: 0;
+  margin-bottom: 20px;
+}
+
+
+.drpdwn_list {
+  background: rgb(29, 48, 49) !important;
+  box-shadow: rgb(16 35 36) 0px 0px 50px;
+  padding: 24px 0px 8px 20px !important;
+  li {
+    list-style: none !important;
+    a {
+      @include font-md-avenir-medium;
+      font-size: 18px;
+      line-height: 140%;
+      color: #FFFFFF;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      transition: all 0.2s ease-out;
+      >span {
+        margin-right: 8px !important;
+      }
+      &:hover , :focus {
+        background: #16E6EF !important;
+        >span {
+          img {
+            filter: invert(1) brightness(100);
+          }
+        }
+      }
+    }
+  }
 }
