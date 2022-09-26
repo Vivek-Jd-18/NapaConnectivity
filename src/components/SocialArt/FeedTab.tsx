@@ -26,16 +26,18 @@ export default function FeedTab() {
           <div className={styles.leftBox}>
             <div className={styles.HadUserText}>
               <Link href="/" className={styles.HadUserImage}>
-                <Image
-                  src="/img/user_had.png"
-                  alt=""
-                  width="40px"
-                  height="40px"
-                />
-                <div className={styles.UserNameTxt}>
-                  <h4>Catherine Patton</h4>
-                  <p>5 Aug 2022</p>
-                </div>
+                <>
+                  <Image
+                    src="/img/user_had.png"
+                    alt=""
+                    width="40px"
+                    height="40px"
+                  />
+                  <div className={styles.UserNameTxt}>
+                    <h4>Catherine Patton</h4>
+                    <p>5 Aug 2022</p>
+                  </div>
+                </>
               </Link>
               <div className={styles.UserRightTxt}>
                 <h4>10:22:12</h4>
@@ -260,16 +262,18 @@ export default function FeedTab() {
           <div className={styles.leftBox}>
             <div className={styles.HadUserText}>
               <Link href="/" className={styles.HadUserImage}>
-                <Image
-                  src="/img/user_had_sc.svg"
-                  alt=""
-                  width="40px"
-                  height="40px"
-                />
-                <div className={styles.UserNameTxt}>
-                  <h4>Tom Bradley</h4>
-                  <p>2 Aug 2022</p>
-                </div>
+                <>
+                  <Image
+                    src="/img/user_had_sc.svg"
+                    alt=""
+                    width="40px"
+                    height="40px"
+                  />
+                  <div className={styles.UserNameTxt}>
+                    <h4>Tom Bradley</h4>
+                    <p>2 Aug 2022</p>
+                  </div>
+                </>
               </Link>
               <div className={styles.UserRightTxt}>
                 <h4>08:46:23</h4>
