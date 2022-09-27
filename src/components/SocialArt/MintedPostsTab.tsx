@@ -59,7 +59,7 @@ export default function MintedPostsTab(props: any) {
                   min={0}
                   max={10}
                   defaultValue={[3, 8]}
-                  tipFormatter={(value) => `${value}`}
+                  tipFormatter={(value: number) => `${value}`}
                   {...props}
                   className="tooltipminted"
                 />
@@ -78,7 +78,7 @@ export default function MintedPostsTab(props: any) {
                   min={0}
                   max={10}
                   defaultValue={[3, 8]}
-                  tipFormatter={(value) => `${value}`}
+                  tipFormatter={(value: any) => `${value}`}
                   {...props}
                   className="tooltipminted"
                 />
@@ -174,7 +174,7 @@ export default function MintedPostsTab(props: any) {
               min={0}
               max={10}
               defaultValue={[3, 8]}
-              tipFormatter={(value) => `${value}`}
+              tipFormatter={(value: any) => `${value}`}
               {...props}
               className="tooltipminted"
             />
@@ -188,7 +188,7 @@ export default function MintedPostsTab(props: any) {
               min={0}
               max={10}
               defaultValue={[3, 8]}
-              tipFormatter={(value) => `${value}`}
+              tipFormatter={(value: any) => `${value}`}
               {...props}
               className="tooltipminted"
             />
