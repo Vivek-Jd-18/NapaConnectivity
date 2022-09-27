@@ -59,7 +59,7 @@ export default function MintedPostsTab(props: any) {
                   min={0}
                   max={10}
                   defaultValue={[3, 8]}
-                  tipFormatter={(value) => `${value}`}
+                  tipFormatter={(value: number) => `${value}`}
                   {...props}
                   className="tooltipminted"
                 />
@@ -78,7 +78,7 @@ export default function MintedPostsTab(props: any) {
                   min={0}
                   max={10}
                   defaultValue={[3, 8]}
-                  tipFormatter={(value) => `${value}`}
+                  tipFormatter={(value: any) => `${value}`}
                   {...props}
                   className="tooltipminted"
                 />
@@ -91,9 +91,9 @@ export default function MintedPostsTab(props: any) {
             </button>
           </div>
           <div className={styles.RightThreeBtn} id="nav-tab" role="tablist">
-            <button className={styles.SearchButton}>
+            {/* <button className={styles.SearchButton}>
               <Image src="/img/search_icon.svg" alt="" width={24} height={24} />
-            </button>
+            </button> */}
             <button
               className={`${styles.GridBtn} nav-link active`}
               id="nav-home-tab"
@@ -174,7 +174,7 @@ export default function MintedPostsTab(props: any) {
               min={0}
               max={10}
               defaultValue={[3, 8]}
-              tipFormatter={(value) => `${value}`}
+              tipFormatter={(value: any) => `${value}`}
               {...props}
               className="tooltipminted"
             />
@@ -188,7 +188,7 @@ export default function MintedPostsTab(props: any) {
               min={0}
               max={10}
               defaultValue={[3, 8]}
-              tipFormatter={(value) => `${value}`}
+              tipFormatter={(value: any) => `${value}`}
               {...props}
               className="tooltipminted"
             />

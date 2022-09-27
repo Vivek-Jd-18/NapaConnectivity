@@ -37,7 +37,16 @@ const Header: NextPage<HeaderProps> = ({
 }) => {
   const { push } = useRouter();
   const [popupShow, setPopupShow] = useState(false);
-  const { walletEth, account, walletBnb, walletNapa } = useWebThree();
+  const [show, setShow] = useState(true);
+  const { walletEth, account, walletBnb, walletNapa, getAccounts } =
+    useWebThree();
+
+  useEffect(() => {
+    if (show) {
+      getAccounts();
+      setShow(false);
+    }
+  }, [show]);
 
   const handleScroll = () => {
     const header = document.querySelector<HTMLElement>('.innerContainer');

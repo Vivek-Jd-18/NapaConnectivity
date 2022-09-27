@@ -14,6 +14,9 @@
     pointer-events: none;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0) 60%, rgba(16, 35, 36, 0.9882352941) 100%);
     z-index: 1;
+    @media screen and (max-width: 1280px) {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0) 60%, rgb(16 35 36 / 70%) 100%);
+    }
   }
 }
 .MintedMiiddle {
