@@ -91,11 +91,11 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu, account }) => {
           <div
             className={styles.link}
             onClick={() => {
-              push('/leaderboard');
+              push('/leaderboards');
               onClick();
             }}
           >
-            <a className={`${pathname === '/leaderboard' && styles.active}`}>
+            <a className={`${pathname === '/leaderboards' && styles.active}`}>
               Leaderboard
             </a>
           </div>

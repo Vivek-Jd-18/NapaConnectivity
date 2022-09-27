@@ -588,3 +588,21 @@
     padding-top: 0;
   }
 }
+@media screen and (max-width: 480px) {
+  .container {
+    .footerContainer {
+      .footerMobileIconsContainer {
+
+        .footerMobileIconItem {
+          padding: 0px 0.5rem !important;
+          img {
+            width: 26px !important;
+          }
+        }
+      }
+      img {
+        width: 105px;
+      }
+    }
+  }
+}
