@@ -2,13 +2,7 @@ import useProfile from '../../hooks/useProfile';
 import type { NextPage } from 'next';
 import Image from 'next/image';
 import { useEffect, useRef } from 'react';
-import {
-  BnbIcon,
-  EthereumBlackIcon,
-  SmallExitIcon,
-  NapaTokenIcon,
-  NapaIcon,
-} from '../assets';
+import { BnbIcon, EthereumBlackIcon, SmallExitIcon, NapaIcon } from '../assets';
 import styles from './WalletPopup.module.scss';
 
 type WalletPopupProps = {
