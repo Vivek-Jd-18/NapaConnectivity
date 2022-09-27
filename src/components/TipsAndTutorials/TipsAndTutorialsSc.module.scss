@@ -1,0 +1,197 @@
+@import '../../../styles/abstracts/mixins.module';
+@import '../../../styles/abstracts/variable.module';
+
+.container {
+  width: 100%;
+  hr {
+    border: 0px solid $gray;
+    margin-bottom: 5rem;
+    @media screen and (max-width: 1200px) {
+      margin-bottom: 0rem;
+    }
+  }
+  .settingsContainer {
+    height: 100%;
+    .settings {
+      padding-top: 113px;
+      color: $white;
+      text-align: left;
+      @include font-6xl-neuropolitical-normal;
+      font-size: 76px;
+      line-height: 110%;
+    }
+  }
+}
+.tabsContainer {
+  padding-top: 15px;
+  @media screen and (max-width: 991px) {
+    padding-top: 42px;
+    margin: 0 -40px;
+  }
+}
+@media screen and (max-width: 736px) {
+  .tabsContainer {
+    margin: 0 -20px;
+    padding-top: 27px;
+  }
+  .container {
+    .settingsContainer {
+      .settings {
+        padding-top: 108px;
+        font-size: 32px;
+        line-height: 110%;
+      }
+    }
+  }
+}
+.tipandtotolmain{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 15px;
+  padding-bottom: 39px;
+}
+.buttonpernt{
+  button{
+    background: transparent;
+    border: none;
+    box-shadow: none;
+  }
+}
+.boxinnrcont{
+  position: relative;
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+  .apernt{
+    text-decoration: none;
+    display: flex;
+    width: 100% !important;
+    height: 372px;
+    >span{
+      width: 100% !important;
+    }
+    .mainimg{
+      width: 100% !important;
+      object-fit: cover;
+    }
+    .linkupcontent{
+      display: flex;
+      align-items: center;
+      position: absolute;
+      top: 32px;
+      left: 32px;
+      .tutoril{
+        display: flex;
+        align-items: center;
+        img{}
+        p{
+          font-family: 'Avenir';
+          font-style: normal;
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 140%;
+          display: flex;
+          align-items: center;
+          color: #FFFFFF;
+          margin: 0 0 0 11px;
+        }
+      }
+      .timecont{
+        display: flex;
+        align-items: center;
+        margin-left: 21px;
+        img{}
+        p{
+          margin: 0 0 0 8px;
+          font-family: 'Avenir';
+          font-style: normal;
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 140%;
+          display: flex;
+          align-items: center;
+          color: #FFFFFF;
+          margin: 0 0 0 8px;
+          span{
+            margin-left: 8px;
+          }
+        }
+      }
+    }
+    .dwoncontent{
+      position: absolute;
+      bottom: 0;
+      bottom: 26px;
+      left: 32px;
+      padding-right: 32px;
+      h4{
+        font-family: 'Neuropolitical';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 110%;
+        color: #FFFFFF;
+        max-width: 309px;
+        text-align: start;
+      }
+      p{
+        margin: 0;
+        font-family: 'Avenir';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 140%;
+        color: #FFFFFF;
+        max-width: 309px;
+        text-align: start;
+      }
+    }
+  }
+}
+.CustomGridContainer {
+  display: grid;
+  grid-gap: 40px;
+  grid-template-columns: repeat(3, minmax(0px, 1fr));
+}
+.disnonelast{
+  display: none;
+  h6{
+    font-family: 'Avenir';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 140%;
+    color: #FFFFFF;
+  }
+}
+@media screen and (max-width:1200px) {
+  .CustomGridContainer {
+    display: grid;
+    grid-gap: 24px;
+    grid-template-columns: repeat(2, minmax(0px, 1fr));
+  }
+}
+@media screen and (max-width: 736px) {
+  .CustomGridContainer {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(1, minmax(0px, 1fr));
+  }
+  .linkupcontent{
+    .tutoril{
+      p{
+        font-size: 14px !important;
+      }
+    }
+    .timecont{
+      p{
+        font-size: 14px !important;
+      }
+    }
+  }
+  .disnonelast{
+    display: block;
+  }
+ 
+}
