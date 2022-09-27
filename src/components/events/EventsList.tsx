@@ -2,7 +2,7 @@ import Container from '../../Layout/Container/Container';
 import Footer from '../Footer/Footer';
 import styles from './Events.module.scss';
 import React from 'react';
-import Image from 'next/image';
+// import Image from 'next/image';
 import Cardlist from './Cardlist';
 
 export default function EventsList() {
