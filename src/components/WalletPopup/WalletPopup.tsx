@@ -7,6 +7,7 @@ import {
   EthereumBlackIcon,
   SmallExitIcon,
   NapaTokenIcon,
+  NapaIcon,
 } from '../assets';
 import styles from './WalletPopup.module.scss';
 
@@ -65,13 +66,13 @@ const WalletPopup: NextPage<WalletPopupProps> = ({
         <span>{account}</span>
       </div>
       <div className={styles.body}>
-        <Image src={NapaTokenIcon} alt={'NAPA Token'} width={90} height={90} />
+        <Image src={NapaIcon} alt={'NAPA Token'} width={90} height={90} />
         <h2>{napa}</h2>
         {crypto && <span>$98,22 USD</span>}
       </div>
       <div className={styles.footer}>
         <div className={styles.footerLeftSide}>
-          <Image src={NapaTokenIcon} width={25} height={40} alt="NAPA" />
+          <Image src={NapaIcon} width={40} height={40} alt="NAPA" />
           <span className={styles.ethereum}>NAPA</span>
           {/* <span className={styles.eth}>NAPA</span> */}
         </div>
