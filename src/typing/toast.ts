@@ -7,9 +7,9 @@ export enum ToastTitle {
   FAVORITE_NO_LONGER = 'Favorite No Longer Available',
   WALLET_CONNECTED = 'Wallet Connected',
   WALLET_DISCONNECTED = 'Wallet Disconnected',
-  WALLET_NEEDS_TO_CONNECTED = 'Wallet Needs to Connected',
-  WALLET_IS_ALREADY_CONNECTED = 'Wallet is Already Connected',
-  PROFILE_NEEDS_TO_BE_CREATED = 'Profile needs to be created',
+  WALLET_NEEDS_TO_CONNECTED = 'Wallet Needs to Be Connected',
+  WALLET_IS_ALREADY_CONNECTED = 'Wallet Connected',
+  PROFILE_NEEDS_TO_BE_CREATED = 'Profile Needs To Be Created',
 }
 
 export enum ToastDescription {
@@ -22,6 +22,6 @@ export enum ToastDescription {
   WALLET_CONNECTED = 'Your wallet has been successfully connected.',
   WALLET_DISCONNECTED = 'Your wallet has been disconnected.',
   WALLET_NEEDS_TO_CONNECTED = 'Please connect your wallet.',
-  WALLET_IS_ALREADY_CONNECTED = 'Your wallet has been already connected.',
+  WALLET_IS_ALREADY_CONNECTED = 'Your wallet is already connected.',
   PROFILE_NEEDS_TO_BE_CREATED = 'Please create your profile.',
 }
