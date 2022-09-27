@@ -66,7 +66,7 @@ const WalletPopup: NextPage<WalletPopupProps> = ({
       </div>
       <div className={styles.footer}>
         <div className={styles.footerLeftSide}>
-          <Image src={NapaIcon} width={40} height={40} alt="NAPA" />
+          <Image src={NapaIcon} width={90} height={90} alt="NAPA" />
           <span className={styles.ethereum}>NAPA</span>
           {/* <span className={styles.eth}>NAPA</span> */}
         </div>
