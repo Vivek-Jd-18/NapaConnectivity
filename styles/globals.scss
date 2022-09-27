@@ -636,3 +636,14 @@ input::-webkit-inner-spin-button {
     }
   }
 }
+.hovereffect {
+  .evmtimg {
+    transition: all 0.2s ease-out;
+    transform: scale(1);
+  }
+  &:hover {
+    .evmtimg {
+      transform: scale(1.1);
+    }
+  }
+}
