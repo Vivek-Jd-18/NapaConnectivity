@@ -636,3 +636,78 @@ input::-webkit-inner-spin-button {
     }
   }
 }
+
+// Select css ajit
+.select_main{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.select_pernt{
+  margin-right: 60px;
+
+  .cntrslct__control{
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+    display: inline-flex;
+  }
+  .cntrslct__placeholder{
+    font-family: 'Avenir';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 140%;
+    color: #FFFFFF;
+  }
+  .cntrslct__value-container {
+    padding: 0;
+    color: #91A5A6;
+  }
+  .cntrslct__indicator-separator{
+    display: none;
+  }
+  .cntrslct__indicator{
+    padding: 0;
+    svg{
+      color: #91A5A6 !important;
+      margin-left: 12px;
+    }
+  }
+  .cntrslct__single-value {
+    font-family: 'Avenir';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 140%;
+    color: #FFFFFF;
+  }
+  .cntrslct__menu{
+    background-color: rgb(125 125 125 / 40%);
+    backdrop-filter: blur(50px);
+    padding: 0;
+    min-width: 150px;
+    border-radius: 5px;
+    margin: 0;
+  }
+  .cntrslct__option{
+    background: transparent;
+    color: #fff;
+    border-radius: 5px;
+    &:hover{
+      color: #16E6EF;
+      background: rgb(67 93 88);
+
+    }
+  }
+  .cntrslct__menu-list{
+    padding: 0;
+  }
+}
+@media screen and (max-width:736px) {
+  .select_main{
+    display: none !important;
+  }
+}
