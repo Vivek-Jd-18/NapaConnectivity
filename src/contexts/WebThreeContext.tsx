@@ -1,4 +1,4 @@
-import React, { createContext, useCallback, useEffect, useState } from 'react';
+import React, { createContext, useCallback, useState } from 'react';
 import lodash from 'lodash';
 import Web3 from 'web3';
 import { isMobile, isTablet } from 'react-device-detect';
@@ -158,12 +158,6 @@ export const WebThreeContextProvider = (props: {
       );
     }
   };
-
-  useEffect(() => {
-    if (!account) {
-      getAccounts();
-    }
-  }, [getAccounts, account]);
 
   const value = {
     account,

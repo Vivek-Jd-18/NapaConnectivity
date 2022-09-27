@@ -1,5 +1,5 @@
 import { NapaLogo, NapaLogoWhite } from '../../components/Svg';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Vivus from 'vivus';
 import Container from '../../Layout/Container/Container';
 import type { NextPage } from 'next';
@@ -20,8 +20,16 @@ type WalletComponentProps = {
 
 const WalletComponent: NextPage<WalletComponentProps> = ({ account }) => {
   const { push } = useRouter();
-  const { connectWallet } = useWebThree();
+  const { connectWallet, getAccounts } = useWebThree();
+  const [show, setShow] = useState(true);
   const { getUserProfileDetails } = useProfile();
+
+  useEffect(() => {
+    if (show) {
+      getAccounts();
+      setShow(false);
+    }
+  }, [show]);
 
   useEffect(() => {
     new Vivus('napa-logo', {
