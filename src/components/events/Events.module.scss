@@ -147,6 +147,59 @@
     }
   }
 }
+.AnyObjects {
+  display: none;
+  margin-right: 48px;
+  .FilterButton {
+    @include font-md-avenir-regular;
+    font-size: 18px;
+    line-height: 140%;
+    color: #FFFFFF;
+    margin-bottom: 0;
+    background: transparent !important;
+    border: none !important;
+    padding: 0;
+  }
+}
+
+.FilterBox {
+  position: fixed;
+  bottom: -300px;
+  left: 0;
+  width: 100%;
+  z-index: 99;
+  padding: 30px;
+  background: #1D3031;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 130px;
+  box-shadow: 0 0 50px 0 rgb(0 0 0 / 0%);
+  transition: all 0.2s ease-out;
+  &.active {
+    bottom: 0;
+    box-shadow: 0 0 50px 0 rgb(0 0 0 / 47%);
+  }
+  .MobileDatpcker {
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+  }
+  .RangePrnt {
+    margin-top: 35px;
+    span {
+      min-width: 125px;
+    }
+  }
+  .ExitButton {
+    background: transparent;
+    border: none;
+    padding: 0;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+}
 @media screen and (max-width: 736px) {
   .EventsListGridBx{
     grid-template-columns: repeat(1, minmax(0px, 1fr));  
@@ -164,4 +217,40 @@
 }
 
 
+.tipandtotolmain{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 15px;
+  padding-bottom: 0;
+}
+.buttonpernt{
+  button{
+    background: transparent;
+    border: none;
+    box-shadow: none;
+  }
+}
+.disnonelast{
+  display: none;
+  h6{
+    font-family: 'Avenir';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 140%;
+    color: #FFFFFF;
+  }
+}
+@media screen and (max-width:736px) {
+  .disnonelast{
+    display: block;
+  }
+  .AnyObjects {
+    display: block;
+  }
+  .select_main{
+    display: block !important;
+  }
+}
 

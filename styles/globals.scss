@@ -710,6 +710,19 @@ input::-webkit-inner-spin-button {
   .select_main{
     display: none !important;
   }
+  .MobileDatpckerEvent {
+    .select_main {
+      display: flex !important;
+    }
+  }
+  .MobileDatpckertips {
+    .select_main {
+      display: block !important;
+    }
+    .datepickerBox {
+      margin: 12px 0;
+    }
+  }
 
 }
 .hovereffect {
@@ -721,5 +734,23 @@ input::-webkit-inner-spin-button {
     .evmtimg {
       transform: scale(1.1);
     }
+  }
+}
+
+.OvelayContent{
+  z-index: 2;
+}
+.bottom_overly_pernt{
+  position: relative;
+  &::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0px;
+    min-height: 255px;
+    background: linear-gradient(180deg, rgba(12, 27, 34, 0) 0%, rgb(16 35 36) 100%);
+    z-index: 3;
+    width: 100%;
   }
 }

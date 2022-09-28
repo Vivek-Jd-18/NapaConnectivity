@@ -71,8 +71,8 @@
     >span{
       width: 100% !important;
     }
-    .mainimg{
-      width: 100% !important;
+    img{
+      // width: 100% !important;
       object-fit: cover;
     }
     .linkupcontent{
@@ -81,10 +81,10 @@
       position: absolute;
       top: 32px;
       left: 32px;
+      z-index: 2;
       .tutoril{
         display: flex;
         align-items: center;
-        img{}
         p{
           font-family: 'Avenir';
           font-style: normal;
@@ -101,7 +101,6 @@
         display: flex;
         align-items: center;
         margin-left: 21px;
-        img{}
         p{
           margin: 0 0 0 8px;
           font-family: 'Avenir';
@@ -125,6 +124,7 @@
       bottom: 26px;
       left: 32px;
       padding-right: 32px;
+      // z-index: 2;
       h4{
         font-family: 'Neuropolitical';
         font-style: normal;
@@ -147,6 +147,7 @@
         text-align: start;
       }
     }
+  
   }
 }
 .CustomGridContainer {
@@ -165,6 +166,93 @@
     color: #FFFFFF;
   }
 }
+
+.AnyObjects {
+  display: none;
+  margin-right: 48px;
+  .FilterButton {
+    @include font-md-avenir-regular;
+    font-size: 18px;
+    line-height: 140%;
+    color: #FFFFFF;
+    margin-bottom: 0;
+    background: transparent !important;
+    border: none !important;
+    padding: 0;
+  }
+}
+
+.FilterBox {
+  position: fixed;
+  bottom: -300px;
+  left: 0;
+  width: 100%;
+  z-index: 99;
+  padding: 30px;
+  background: #1D3031;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 245px;
+  box-shadow: 0 0 50px 0 rgb(0 0 0 / 0%);
+  transition: all 0.2s ease-out;
+  &.active {
+    bottom: 0;
+    box-shadow: 0 0 50px 0 rgb(0 0 0 / 47%);
+  }
+  .MobileDatpcker {
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+  }
+  .RangePrnt {
+    margin-top: 35px;
+    span {
+      min-width: 125px;
+    }
+  }
+  .ExitButton {
+    background: transparent;
+    border: none;
+    padding: 0;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+}
+.TipsTulsOverlay {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0px;
+    min-height: 255px;
+    background: linear-gradient(180deg, rgba(12, 27, 34, 0) 0%, rgba(12, 27, 34, 0.9) 100%);
+    z-index: 1;
+    width: 100%;
+  }
+  &::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    min-height: 117px;
+    background: linear-gradient(180deg, rgba(12, 27, 34, 0) 0%, rgba(12, 27, 34, 0.9) 100%);
+    transform: matrix(1, 0, 0, -1, 0, 0);
+    z-index: 1;
+    width: 100%;
+  }
+}
+.apernt{
+  .OvelayContent {
+    z-index: 2 ;
+  }
+}
+
+
 @media screen and (max-width:1200px) {
   .CustomGridContainer {
     display: grid;
@@ -193,5 +281,15 @@
   .disnonelast{
     display: block;
   }
+  .AnyObjects {
+    display: block;
+  }
+  .select_main{
+    display: block !important;
+  }
  
+}
+.ForShadow {
+    overflow-y: auto;
+    height: 812px;
 }
