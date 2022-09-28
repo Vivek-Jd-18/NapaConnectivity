@@ -128,7 +128,7 @@
 }
 .EventsListcrol{
   overflow-y: auto;
-  height: 750px;
+  height: 768px;
 }
 
 
@@ -145,6 +145,61 @@
     &::before{
       background: linear-gradient(180deg, rgba(16, 35, 36, 0) 0%, #10232469 100%);
     }
+  }
+}
+.AnyObjects {
+  display: none;
+  margin-right: 48px;
+  .FilterButton {
+    @include font-md-avenir-regular;
+    font-size: 18px;
+    line-height: 140%;
+    color: #FFFFFF;
+    margin-bottom: 0;
+    background: transparent !important;
+    border: none !important;
+    padding: 0;
+  }
+}
+
+.FilterBox {
+  position: fixed;
+  bottom: -340px;
+  left: 0;
+  width: 100%;
+  z-index: 99;
+  padding: 30px;
+  background: #1D3031;
+  display: flex;
+  justify-content: start;
+  align-items: self-start;
+  height: 340px;
+  box-shadow: 0 0 50px 0 rgb(0 0 0 / 0%);
+  transition: all 0.2s ease-out;
+  &.active {
+    bottom: 0;
+    box-shadow: 0 0 50px 0 rgb(0 0 0 / 47%);
+  }
+  .MobileDatpcker {
+    display: flex;
+    align-items: center;
+    padding-left: 0;
+    justify-content: center;
+    width: 100%;
+  }
+  .RangePrnt {
+    margin-top: 35px;
+    span {
+      min-width: 125px;
+    }
+  }
+  .ExitButton {
+    background: transparent;
+    border: none;
+    padding: 0;
+    position: absolute;
+    right: 10px;
+    top: 10px;
   }
 }
 @media screen and (max-width: 736px) {
@@ -164,4 +219,40 @@
 }
 
 
+.tipandtotolmain{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 15px;
+  padding-bottom: 0;
+}
+.buttonpernt{
+  button{
+    background: transparent;
+    border: none;
+    box-shadow: none;
+  }
+}
+.disnonelast{
+  display: none;
+  h6{
+    font-family: 'Avenir';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 140%;
+    color: #FFFFFF;
+  }
+}
+@media screen and (max-width:736px) {
+  .disnonelast{
+    display: block;
+  }
+  .AnyObjects {
+    display: block;
+  }
+  .select_main{
+    display: block !important;
+  }
+}
 

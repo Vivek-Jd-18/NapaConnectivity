@@ -7,6 +7,8 @@ import Image from 'next/image';
 export default function LeaderboardsSc() {
   return (
     <>
+    <div className={styles.LederBordBg}>
+    
     <div className={`${styles.container}`}>
       <Container className={`${styles.settingsContainer} asinnerContainer`}>
         <h1 className={styles.settings}>Leaderboards</h1>
@@ -135,6 +137,7 @@ export default function LeaderboardsSc() {
         <hr />
         <Footer footerIconShow={false} />
       </div>
+    </div>
     </div>
     </>
   )

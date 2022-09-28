@@ -691,6 +691,7 @@ input::-webkit-inner-spin-button {
     min-width: 150px;
     border-radius: 5px;
     margin: 0;
+    z-index: 2;
   }
   .cntrslct__option{
     background: transparent;
@@ -710,6 +711,19 @@ input::-webkit-inner-spin-button {
   .select_main{
     display: none !important;
   }
+  .MobileDatpckerEvent {
+    .select_main {
+      display: flex !important;
+    }
+  }
+  .MobileDatpckertips {
+    .select_main {
+      display: block !important;
+    }
+    .datepickerBox {
+      margin: 12px 0;
+    }
+  }
 
 }
 .hovereffect {
@@ -720,6 +734,33 @@ input::-webkit-inner-spin-button {
   &:hover {
     .evmtimg {
       transform: scale(1.1);
+    }
+  }
+}
+
+.OvelayContent{
+  z-index: 1;
+}
+.bottom_overly_pernt{
+  position: relative;
+  &::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0px;
+    min-height: 255px;
+    background: linear-gradient(180deg, rgba(12, 27, 34, 0) 0%, rgb(16 35 36) 100%);
+    z-index: 3;
+    width: 100%;
+    pointer-events: none;
+  }
+}
+@media screen and (max-width: 736px) {
+  .select_mainas {
+    .select_pernt {margin-right: 0;}
+    .datepickerBox .form-control {
+      width: 120px;
     }
   }
 }
