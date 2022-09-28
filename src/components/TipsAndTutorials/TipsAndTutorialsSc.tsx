@@ -80,7 +80,7 @@ export default function TipsAndTutorialsSc() {
                         <Image src="/img/exit_icon.svg" alt="" width="24px" height="24px" />
                     </button>
                     <div className={`${styles.MobileDatpcker} MobileDatpckertips`} >
-                    <div className='select_main'>
+                    <div className='select_main select_mainas'>
                         <Select 
                             options={options} 
                             // menuIsOpen={true}
@@ -270,7 +270,7 @@ export default function TipsAndTutorialsSc() {
                                 </div>
                             </div>
                         </div>
-                        <div className={styles.CustomGrid}>
+                        {/* <div className={styles.CustomGrid}>
                             <div  className={styles.TipsTulsOverlay}>
                                 <div className={styles.boxinnrcont}>
                                     <Link href="#">
@@ -294,207 +294,7 @@ export default function TipsAndTutorialsSc() {
                                     </Link>
                                 </div>
                             </div>
-                        </div>
-                        <div className={styles.CustomGrid}>
-                            <div  className={styles.TipsTulsOverlay}>
-                                <div className={styles.boxinnrcont}>
-                                    <Link href="#">
-                                        <a href='#' className={`${styles.apernt} hovereffect`}>
-                                            <Image src='/img/tutorial_img06.png' height="373px" width="372px" alt='' className="evmtimg" />
-                                            <div className={styles.linkupcontent}>
-                                                <div className={styles.tutoril}>
-                                                    <img src='/img/tutorl_ic.svg' alt='' className='' />
-                                                    <p>16 tips</p>
-                                                </div>
-                                                <div className={styles.timecont}>
-                                                    <img src='/img/time_ic.svg' alt='' className='' />
-                                                    <p>7 hrs  <span>46 min</span></p>
-                                                </div>
-                                            </div>
-                                            <div className={`${styles.dwoncontent} OvelayContent`}>
-                                                <h4>Beware of fake Web3 wallet prompts</h4>
-                                                <p>Fake Metamask interfaces are a common way to scam people and trick them into sharing their seed phrase.</p>
-                                            </div>
-                                        </a>
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
-                        <div className={styles.CustomGrid}>
-                            <div  className={styles.TipsTulsOverlay}>
-                                <div className={styles.boxinnrcont}>
-                                    <Link href="#">
-                                        <a href='#' className={`${styles.apernt} hovereffect`}>
-                                            <Image src='/img/tutorial_img06.png' height="373px" width="372px" alt='' className="evmtimg" />
-                                            <div className={styles.linkupcontent}>
-                                                <div className={styles.tutoril}>
-                                                    <img src='/img/tutorl_ic.svg' alt='' className='' />
-                                                    <p>16 tips</p>
-                                                </div>
-                                                <div className={styles.timecont}>
-                                                    <img src='/img/time_ic.svg' alt='' className='' />
-                                                    <p>7 hrs  <span>46 min</span></p>
-                                                </div>
-                                            </div>
-                                            <div className={`${styles.dwoncontent} OvelayContent`}>
-                                                <h4>Beware of fake Web3 wallet prompts</h4>
-                                                <p>Fake Metamask interfaces are a common way to scam people and trick them into sharing their seed phrase.</p>
-                                            </div>
-                                        </a>
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
-                        <div className={styles.CustomGrid}>
-                            <div  className={styles.TipsTulsOverlay}>
-                                <div className={styles.boxinnrcont}>
-                                    <Link href="#">
-                                        <a href='#' className={`${styles.apernt} hovereffect`}>
-                                            <Image src='/img/tutorial_img06.png' height="373px" width="372px" alt='' className="evmtimg" />
-                                            <div className={styles.linkupcontent}>
-                                                <div className={styles.tutoril}>
-                                                    <img src='/img/tutorl_ic.svg' alt='' className='' />
-                                                    <p>16 tips</p>
-                                                </div>
-                                                <div className={styles.timecont}>
-                                                    <img src='/img/time_ic.svg' alt='' className='' />
-                                                    <p>7 hrs  <span>46 min</span></p>
-                                                </div>
-                                            </div>
-                                            <div className={`${styles.dwoncontent} OvelayContent`}>
-                                                <h4>Beware of fake Web3 wallet prompts</h4>
-                                                <p>Fake Metamask interfaces are a common way to scam people and trick them into sharing their seed phrase.</p>
-                                            </div>
-                                        </a>
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
-                        <div className={styles.CustomGrid}>
-                            <div  className={styles.TipsTulsOverlay}>
-                                <div className={styles.boxinnrcont}>
-                                    <Link href="#">
-                                        <a href='#' className={`${styles.apernt} hovereffect`}>
-                                            <Image src='/img/tutorial_img06.png' height="373px" width="372px" alt='' className="evmtimg" />
-                                            <div className={styles.linkupcontent}>
-                                                <div className={styles.tutoril}>
-                                                    <img src='/img/tutorl_ic.svg' alt='' className='' />
-                                                    <p>16 tips</p>
-                                                </div>
-                                                <div className={styles.timecont}>
-                                                    <img src='/img/time_ic.svg' alt='' className='' />
-                                                    <p>7 hrs  <span>46 min</span></p>
-                                                </div>
-                                            </div>
-                                            <div className={`${styles.dwoncontent} OvelayContent`}>
-                                                <h4>Beware of fake Web3 wallet prompts</h4>
-                                                <p>Fake Metamask interfaces are a common way to scam people and trick them into sharing their seed phrase.</p>
-                                            </div>
-                                        </a>
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
-                        <div className={styles.CustomGrid}>
-                            <div  className={styles.TipsTulsOverlay}>
-                                <div className={styles.boxinnrcont}>
-                                    <Link href="#">
-                                        <a href='#' className={`${styles.apernt} hovereffect`}>
-                                            <Image src='/img/tutorial_img06.png' height="373px" width="372px" alt='' className="evmtimg" />
-                                            <div className={styles.linkupcontent}>
-                                                <div className={styles.tutoril}>
-                                                    <img src='/img/tutorl_ic.svg' alt='' className='' />
-                                                    <p>16 tips</p>
-                                                </div>
-                                                <div className={styles.timecont}>
-                                                    <img src='/img/time_ic.svg' alt='' className='' />
-                                                    <p>7 hrs  <span>46 min</span></p>
-                                                </div>
-                                            </div>
-                                            <div className={`${styles.dwoncontent} OvelayContent`}>
-                                                <h4>Beware of fake Web3 wallet prompts</h4>
-                                                <p>Fake Metamask interfaces are a common way to scam people and trick them into sharing their seed phrase.</p>
-                                            </div>
-                                        </a>
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
-                        <div className={styles.CustomGrid}>
-                            <div  className={styles.TipsTulsOverlay}>
-                                <div className={styles.boxinnrcont}>
-                                    <Link href="#">
-                                        <a href='#' className={`${styles.apernt} hovereffect`}>
-                                            <Image src='/img/tutorial_img06.png' height="373px" width="372px" alt='' className="evmtimg" />
-                                            <div className={styles.linkupcontent}>
-                                                <div className={styles.tutoril}>
-                                                    <img src='/img/tutorl_ic.svg' alt='' className='' />
-                                                    <p>16 tips</p>
-                                                </div>
-                                                <div className={styles.timecont}>
-                                                    <img src='/img/time_ic.svg' alt='' className='' />
-                                                    <p>7 hrs  <span>46 min</span></p>
-                                                </div>
-                                            </div>
-                                            <div className={`${styles.dwoncontent} OvelayContent`}>
-                                                <h4>Beware of fake Web3 wallet prompts</h4>
-                                                <p>Fake Metamask interfaces are a common way to scam people and trick them into sharing their seed phrase.</p>
-                                            </div>
-                                        </a>
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
-                        <div className={styles.CustomGrid}>
-                            <div  className={styles.TipsTulsOverlay}>
-                                <div className={styles.boxinnrcont}>
-                                    <Link href="#">
-                                        <a href='#' className={`${styles.apernt} hovereffect`}>
-                                            <Image src='/img/tutorial_img06.png' height="373px" width="372px" alt='' className="evmtimg" />
-                                            <div className={styles.linkupcontent}>
-                                                <div className={styles.tutoril}>
-                                                    <img src='/img/tutorl_ic.svg' alt='' className='' />
-                                                    <p>16 tips</p>
-                                                </div>
-                                                <div className={styles.timecont}>
-                                                    <img src='/img/time_ic.svg' alt='' className='' />
-                                                    <p>7 hrs  <span>46 min</span></p>
-                                                </div>
-                                            </div>
-                                            <div className={`${styles.dwoncontent} OvelayContent`}>
-                                                <h4>Beware of fake Web3 wallet prompts</h4>
-                                                <p>Fake Metamask interfaces are a common way to scam people and trick them into sharing their seed phrase.</p>
-                                            </div>
-                                        </a>
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
-                        <div className={styles.CustomGrid}>
-                            <div  className={styles.TipsTulsOverlay}>
-                                <div className={styles.boxinnrcont}>
-                                    <Link href="#">
-                                        <a href='#' className={`${styles.apernt} hovereffect`}>
-                                            <Image src='/img/tutorial_img06.png' height="373px" width="372px" alt='' className="evmtimg" />
-                                            <div className={styles.linkupcontent}>
-                                                <div className={styles.tutoril}>
-                                                    <img src='/img/tutorl_ic.svg' alt='' className='' />
-                                                    <p>16 tips</p>
-                                                </div>
-                                                <div className={styles.timecont}>
-                                                    <img src='/img/time_ic.svg' alt='' className='' />
-                                                    <p>7 hrs  <span>46 min</span></p>
-                                                </div>
-                                            </div>
-                                            <div className={`${styles.dwoncontent} OvelayContent`}>
-                                                <h4>Beware of fake Web3 wallet prompts</h4>
-                                                <p>Fake Metamask interfaces are a common way to scam people and trick them into sharing their seed phrase.</p>
-                                            </div>
-                                        </a>
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </Container>

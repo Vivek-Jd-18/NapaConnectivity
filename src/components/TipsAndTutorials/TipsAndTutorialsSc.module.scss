@@ -81,7 +81,7 @@
       position: absolute;
       top: 32px;
       left: 32px;
-      z-index: 2;
+      z-index: 1;
       .tutoril{
         display: flex;
         align-items: center;
@@ -118,6 +118,7 @@
         }
       }
     }
+    
     .dwoncontent{
       position: absolute;
       bottom: 0;
@@ -184,16 +185,16 @@
 
 .FilterBox {
   position: fixed;
-  bottom: -300px;
+  bottom: -390px;
   left: 0;
   width: 100%;
   z-index: 99;
   padding: 30px;
   background: #1D3031;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 245px;
+  justify-content: start;
+  align-items: self-start;
+  height: 390px;
   box-shadow: 0 0 50px 0 rgb(0 0 0 / 0%);
   transition: all 0.2s ease-out;
   &.active {
@@ -203,7 +204,9 @@
   .MobileDatpcker {
     display: flex;
     align-items: center;
-    padding-left: 30px;
+    padding-left: 0;
+    justify-content: center;
+    width: 100%;
   }
   .RangePrnt {
     margin-top: 35px;
@@ -242,7 +245,7 @@
     min-height: 117px;
     background: linear-gradient(180deg, rgba(12, 27, 34, 0) 0%, rgba(12, 27, 34, 0.9) 100%);
     transform: matrix(1, 0, 0, -1, 0, 0);
-    z-index: 1;
+    // z-index: 1;
     width: 100%;
   }
 }

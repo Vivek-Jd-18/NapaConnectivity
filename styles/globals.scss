@@ -691,6 +691,7 @@ input::-webkit-inner-spin-button {
     min-width: 150px;
     border-radius: 5px;
     margin: 0;
+    z-index: 2;
   }
   .cntrslct__option{
     background: transparent;
@@ -738,7 +739,7 @@ input::-webkit-inner-spin-button {
 }
 
 .OvelayContent{
-  z-index: 2;
+  z-index: 1;
 }
 .bottom_overly_pernt{
   position: relative;
@@ -752,5 +753,14 @@ input::-webkit-inner-spin-button {
     background: linear-gradient(180deg, rgba(12, 27, 34, 0) 0%, rgb(16 35 36) 100%);
     z-index: 3;
     width: 100%;
+    pointer-events: none;
+  }
+}
+@media screen and (max-width: 736px) {
+  .select_mainas {
+    .select_pernt {margin-right: 0;}
+    .datepickerBox .form-control {
+      width: 120px;
+    }
   }
 }

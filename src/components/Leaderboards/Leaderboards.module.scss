@@ -2,16 +2,13 @@
 @import '../../../styles/abstracts/variable.module';
 
 .LederBordBg {
-  background: url('/assets/images/leaderbord_bg.jpg') no-repeat center;
+  background: url('/assets/images/leaderbord_bg.jpg') no-repeat center top;
   background-size: cover;
   width: 100%;
   position: absolute;
   top: 0;
   left: 0;
-  height: 100vh;
-  @media screen and (max-width: 768px) {
-    height: 245px !important;
-  }
+  
 }
 .container {
   width: 100%;
