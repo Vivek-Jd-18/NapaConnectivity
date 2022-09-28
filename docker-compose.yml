@@ -4,7 +4,7 @@ services:
  napa-app-website:
     build:
       context: .
-      dockerfile: Dockerfile-dev
+      dockerfile: Dockerfile
     image: napasociety-website
     ports:
       - '3000:3000'
