@@ -79,6 +79,17 @@ export const WebThreeContextProvider = (props: {
       setWalletBnb(bnbBalance);
     } catch (error) {
       console.log('error', error);
+      if (isMobile || isTablet) {
+        toast.error(
+          CustomToastWithLink({
+            icon: ErrorIcon,
+            title: ToastTitle.ERROR,
+            description: 'Open NAPA Website in Metamask Mobile App',
+            time: 'Now',
+          })
+        );
+        return;
+      }
       toast.error(
         CustomToastWithLink({
           icon: ErrorIcon,
@@ -148,6 +159,17 @@ export const WebThreeContextProvider = (props: {
       getBalances();
       return walletAddress[0];
     } catch (error: any) {
+      if (isMobile || isTablet) {
+        toast.error(
+          CustomToastWithLink({
+            icon: ErrorIcon,
+            title: ToastTitle.ERROR,
+            description: 'Open NAPA Website in Metamask Mobile App',
+            time: 'Now',
+          })
+        );
+        return;
+      }
       toast.error(
         CustomToastWithLink({
           icon: ErrorIcon,
