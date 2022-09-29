@@ -102,11 +102,11 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu, account }) => {
           <div
             className={styles.link}
             onClick={() => {
-              push('/leaderboards');
+              push('/partners');
               onClick();
             }}
           >
-            <a className={`${pathname === '/leaderboards' && styles.active}`}>
+            <a className={`${pathname === '/partners' && styles.active}`}>
               Partners Portal
             </a>
           </div>
