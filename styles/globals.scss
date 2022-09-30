@@ -750,10 +750,13 @@ input::-webkit-inner-spin-button {
     right: 0;
     bottom: 0px;
     min-height: 255px;
-    background: linear-gradient(180deg, rgba(12, 27, 34, 0) 0%, rgb(16 35 36) 100%);
+    // background: linear-gradient(180deg, rgba(12, 27, 34, 0) 0%, rgb(16 35 36) 100%);
     z-index: 3;
     width: 100%;
     pointer-events: none;
+    @media screen and (max-width: 991px) {
+      background: linear-gradient(180deg, rgba(12, 27, 34, 0) 0%, rgb(16 35 36 / 45%) 100%);
+    }
   }
 }
 @media screen and (max-width: 736px) {
@@ -767,4 +770,12 @@ input::-webkit-inner-spin-button {
 .sclart_bg {
   background: url(/assets/images/social_art_feed.jpg) no-repeat center top;
   background-size: cover;
+}
+.datails{
+  background: url(/assets/images/howto_bg.png) no-repeat center top;
+  background-size: cover;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
