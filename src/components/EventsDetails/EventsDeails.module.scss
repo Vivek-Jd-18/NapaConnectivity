@@ -5,7 +5,7 @@
   width: 100%;
   hr {
     border: 0px solid $gray;
-    margin-bottom: 5rem;
+    margin-bottom: 10.0rem;
     @media screen and (max-width: 1200px) {
       margin-bottom: 0rem;
     }
@@ -13,7 +13,7 @@
   .settingsContainer {
     height: 100%;
     .settings {
-      // padding-top: 113px;
+      padding-top: 80px;
       color: $white;
       text-align: left;
       @include font-6xl-neuropolitical-normal;
@@ -49,7 +49,7 @@
   .container {
     .settingsContainer {
       .settings {
-        padding-top: 0;
+        padding-top: 2px;
         font-size: 32px;
         line-height: 110%;
       }
@@ -60,7 +60,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding: 108px 0 8px 0;
+  padding: 110px 0 8px 0;
   width: inherit;
   a{
     text-decoration: none;
@@ -87,7 +87,7 @@
 .CustomGridContainer{
   display: flex;
   align-items: flex-start;
-  padding-top: 67px;
+  padding-top: 80px;
   .firstGridmian{
     flex-basis: 25%;
     button{
