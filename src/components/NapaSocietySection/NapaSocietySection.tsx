@@ -6,9 +6,7 @@ import Image from 'next/image';
 import styles from './NapaSocietySection.module.scss';
 import Container from '../../Layout/Container/Container';
 import HighlightButton from '../HighlightButton/HighlightButton';
-import Steper from '../Steper/Steper';
-import { scrollToNextSection } from '../../utils/home';
-import { LeftWhiteArrowIcon, MouseIcon, RightWhiteArrowIcon } from '../assets';
+import { LeftWhiteArrowIcon, RightWhiteArrowIcon } from '../assets';
 
 const NapaSociety: NextPage = () => {
   const [slider, setSlider] = useState(1);
@@ -41,8 +39,8 @@ const NapaSociety: NextPage = () => {
 
   return (
     <div id="napa-society" className={styles.backgroundImage}>
-      <Steper steps={2} top={5} />
-      <Container className={styles.societyContainer}>
+      {/* <Steper steps={2} top={5} /> */}
+      <Container className={`${styles.societyContainer} asinnerContainer`}>
         <div className={styles.societyContainerBody}>
           <div className={styles.innerSocietyContainer}>
             <h1 className={styles.headingNapa}>NAPA</h1>
@@ -253,7 +251,7 @@ const NapaSociety: NextPage = () => {
             )}
           </div>
         </div>
-        <div className={styles.mousePointer}>
+        {/* <div className={styles.mousePointer}>
           <Image
             src={MouseIcon}
             onClick={() => scrollToNextSection('social-section-art')}
@@ -261,7 +259,7 @@ const NapaSociety: NextPage = () => {
             height={50}
             alt="mouse"
           />
-        </div>
+        </div> */}
       </Container>
     </div>
   );

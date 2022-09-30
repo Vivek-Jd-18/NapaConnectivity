@@ -1,6 +1,7 @@
 import type { NextPage } from 'next';
 import Image from 'next/image';
 import styles from './SocialMediaReview.module.scss';
+import moment from 'moment';
 
 type SocialMediaReviewProps = {
   description: string;
@@ -26,7 +27,9 @@ const SocialMediaReview: NextPage<SocialMediaReviewProps> = ({
         </div>
         <div className={styles.userInfo}>
           <span className={styles.userName}>{username}</span>
-          <span className={styles.date}>{date}</span>
+          <span className={styles.date}>
+            {moment(date).format('DD MMMM YYYY')}
+          </span>
         </div>
       </div>
     </div>

@@ -1,7 +1,8 @@
 import type { NextPage } from 'next';
 import Image from 'next/image';
-import { Avatar, NapaIcon, TimeIcon } from '../assets';
 import styles from './CoBatchingCard.module.scss';
+
+import { Avatar, NapaIcon, TimeIcon } from '../assets';
 
 type CoBatchingPoolsCardProps = {};
 

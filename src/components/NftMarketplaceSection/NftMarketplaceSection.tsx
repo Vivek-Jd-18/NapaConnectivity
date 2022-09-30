@@ -2,7 +2,6 @@ import Container from '../../Layout/Container/Container';
 import type { NextPage } from 'next';
 import { useState } from 'react';
 import NftProjectCard from '../NftProjectCard/NftProjectCard';
-import Steper from '../Steper/Steper';
 import Tab from '../Tab/Tab';
 import styles from './NftMarketplaceSection.module.scss';
 import SliderComponent from '../Slider/Slider';
@@ -13,19 +12,21 @@ import HighlightButton from '../HighlightButton/HighlightButton';
 const marketPlaceTab = [
   {
     title: 'Professional NFT Projects',
+    value: 'Nft Projects',
   },
   {
     title: 'Social Art Minted',
+    value: 'Art Minted',
   },
 ];
 
 const NftMarketplaceSection: NextPage = ({}) => {
-  const [tab, setTab] = useState('Professional NFT Projects');
+  const [tab, setTab] = useState('Nft Projects');
 
   return (
     <div id="nft-marketplace" className={styles.backgroundImage}>
-      <Steper steps={4} bottom={0} />
-      <Container className={styles.nftContainer}>
+      {/* <Steper steps={4} bottom={0} /> */}
+      <Container className={`${styles.nftContainer} asinnerContainer`}>
         <h2 className={styles.nft}>NFT Marketplace</h2>
         <p className={styles.description}>
           Buy, sell and trade the most sought after professional and social art
@@ -34,8 +35,14 @@ const NftMarketplaceSection: NextPage = ({}) => {
         <div className={styles.tabsContainer}>
           <div className={styles.tabsInnerContainer}>
             <ul className={styles.tab}>
-              {marketPlaceTab.map(({ title }, index) => (
-                <Tab key={index} setTab={setTab} title={title} tab={tab} />
+              {marketPlaceTab.map(({ title, value }, index) => (
+                <Tab
+                  value={value}
+                  key={index}
+                  setTab={setTab}
+                  title={title}
+                  tab={tab}
+                />
               ))}
             </ul>
           </div>

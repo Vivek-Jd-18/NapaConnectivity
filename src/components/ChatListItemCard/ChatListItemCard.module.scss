@@ -12,8 +12,14 @@
       @include flex-column-start;
       margin-left: 1rem;
       text-align: left;
-      .userName {
-        @include font-sm-avenir-medium;
+      .userNameContainer {
+        .userName {
+          @include font-sm-avenir-medium;
+          margin-right: 1rem;
+        }
+        span {
+          @include font-xs-avenir-regular;
+        }
       }
       .description {
         @include font-xs-avenir-regular;
@@ -30,8 +36,13 @@
         }
       }
       .userInfo {
-        .userName {
-          @include font-lg-avenir-medium;
+        .userNameContainer {
+          .userName {
+            @include font-lg-avenir-medium;
+          }
+          span {
+            @include font-sm-avenir-medium;
+          }
         }
         .description {
           @include font-md-avenir-regular;

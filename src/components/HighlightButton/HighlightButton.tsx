@@ -1,7 +1,8 @@
-import { RightArrowBlueIcon } from '../assets';
-import styles from './HighlightButton.module.scss';
 import type { NextPage } from 'next';
 import Image from 'next/image';
+import styles from './HighlightButton.module.scss';
+
+import { RightArrowBlueIcon } from '../assets';
 
 type HighlightButtonProps = {
   title: string;

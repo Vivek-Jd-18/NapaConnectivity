@@ -1,68 +1,21 @@
+import type { NextPage } from 'next';
+import { useEffect } from 'react';
 import Head from 'next/head';
 import styles from '../../styles/pages/Home.module.scss';
-import type { NextPage } from 'next';
+
+import { WEBSOCKET_URL } from '../constants/url';
+
 import TrendingSection from '../components/TrendingSection/Trending';
 import LeaderboardSection from '../components/LeaderboardSection/LeaderboardSection';
 import NapaLounge from '../components/NapaLounge/NapaLounge';
-import { WEBSOCKET_URL } from '../constants/url';
-import { useCallback, useEffect, useState } from 'react';
-import { scrollToNextSection } from '@/utils/home';
 
 const Home: NextPage = () => {
   const socket = new WebSocket(WEBSOCKET_URL);
-  const [currentSection, setCurrentSection] = useState('trending');
   useEffect(() => {
     socket.addEventListener('open', () => {
       console.log('connected from client');
     });
   }, []);
-
-  const checkScrollDirectionIsUp = (event: any) => {
-    if (event.wheelDelta) {
-      return event.wheelDelta > 0;
-    }
-    return event.deltaY < 0;
-  };
-
-  useEffect(() => {
-    window.addEventListener('wheel', checkScrollDirection);
-    return () => {
-      window.removeEventListener('wheel', checkScrollDirection);
-    };
-  }, [currentSection]);
-
-  useEffect(() => {
-    scrollToNextSection(currentSection);
-  }, [currentSection]);
-
-  const handleSectionChange = (id: string) => {
-    setTimeout(() => {
-      setCurrentSection(id);
-    }, 1000);
-  };
-
-  const checkScrollDirection = useCallback(
-    (event: any) => {
-      if (checkScrollDirectionIsUp(event)) {
-        if (currentSection == 'napa-lounge') {
-          handleSectionChange('leaderboard');
-        } else if (currentSection == 'leaderboard') {
-          handleSectionChange('trending');
-        } else {
-          return;
-        }
-      } else {
-        if (currentSection == 'trending') {
-          handleSectionChange('leaderboard');
-        } else if (currentSection == 'leaderboard') {
-          handleSectionChange('napa-lounge');
-        } else {
-          return;
-        }
-      }
-    },
-    [setCurrentSection, currentSection]
-  );
 
   return (
     <>

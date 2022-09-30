@@ -1,70 +1,28 @@
-import Container from '../../Layout/Container/Container';
+import axios from 'axios';
+import { useCallback, useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import type { NextPage } from 'next';
 import styles from './Trending.module.scss';
-import { ErrorIcon, HowardAvatar, WalletNeedsToConnected } from '../assets';
-import Tab from '../Tab/Tab';
-import { useCallback, useEffect, useState } from 'react';
-import SocialMediaReview from '../SocialMediaReview/SocialMediaReview';
-import ChatWindow from '../ChatWindow/ChatWindow';
 import { API_URL } from '../../constants/url';
-import axios from 'axios';
-import { toast } from 'react-toastify';
-import { CustomToastWithLink } from '../CustomToast/CustomToast';
-import { ToastDescription, ToastTitle } from '../../typing/toast';
 import useProfile from '../../hooks/useProfile';
 import useWebThree from '../../hooks/useWebThree';
+import Container from '../../Layout/Container/Container';
+
+import { ErrorIcon, HowardAvatar, WalletNeedsToConnected } from '../assets';
+import Tab from '../Tab/Tab';
+import SocialMediaReview from '../SocialMediaReview/SocialMediaReview';
+import ChatWindow from '../ChatWindow/ChatWindow';
+import { CustomToastWithLink } from '../CustomToast/CustomToast';
+import { ToastDescription, ToastTitle } from '../../typing/toast';
 
 const trendingTabList = [
   {
     title: 'In Social Media',
+    value: 'SOCIAL',
   },
   {
     title: 'In NFT’s',
-  },
-];
-
-const reviewCardData = [
-  {
-    description:
-      'Made last it seen went no just when of by. Occasional entreaties comparison.',
-    avatar: HowardAvatar,
-    userName: 'Howard Copeland',
-    date: '4 Aug 2022',
-  },
-  {
-    description:
-      'Weather however luckily enquire so certain do. Aware did stood was day under ask.',
-    avatar: HowardAvatar,
-    userName: 'Dorothy Mccoy',
-    date: '1 Aug 2022',
-  },
-  {
-    description:
-      'Dearest affixed enquire on explain opinion he. Reached who the mrs joy offices pleased.',
-    avatar: HowardAvatar,
-    userName: 'Rufus Flores',
-    date: '1 Jul 2022',
-  },
-  {
-    description:
-      'Dearest affixed enquire on explain opinion he. Reached who the mrs joy offices pleased.',
-    avatar: HowardAvatar,
-    userName: 'Rufus Flores',
-    date: '1 Jul 2022',
-  },
-  {
-    description:
-      'Dearest affixed enquire on explain opinion he. Reached who the mrs joy offices pleased.',
-    avatar: HowardAvatar,
-    userName: 'Rufus Flores',
-    date: '1 Jul 2022',
-  },
-  {
-    description:
-      'Dearest affixed enquire on explain opinion he. Reached who the mrs joy offices pleased.',
-    avatar: HowardAvatar,
-    userName: 'Rufus Flores',
-    date: '1 Jul 2022',
+    value: 'NFT',
   },
 ];
 
@@ -73,43 +31,114 @@ type TrendingSectionProps = {
 };
 
 const TrendingSection: NextPage<TrendingSectionProps> = ({ socket }) => {
-  const [tab, setTab] = useState('In Social Media');
+  const [tab, setTab] = useState('SOCIAL');
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
+  const [trendingList, setTrendingList] = useState([]);
   const { account } = useWebThree();
   const { profileDetails } = useProfile();
+
+  const handleTrending = (trending: any) => {
+    //@ts-ignore
+    setTrendingList((prevState) => {
+      if (prevState) {
+        const data = [...prevState, trending];
+        const filteredTrending = data.filter(
+          (v, i, a) => a.findIndex((v2) => v2?.articleId === v?.articleId) === i
+        );
+        return [...filteredTrending];
+      } else {
+        let data = [];
+        // @ts-ignore
+        data.push(trending);
+        return [...data];
+      }
+    });
+  };
+
+  const handleNewMessage = (
+    channel: string,
+    message: string,
+    timetoken: string,
+    uuid: string
+  ) => {
+    const newMessage = {
+      channel: channel,
+      message: message,
+      messageType: null,
+      timetoken: timetoken,
+      uuid: uuid,
+    };
+    //@ts-ignore
+    setMessages((prevMessage) => {
+      if (prevMessage) {
+        const data = [...prevMessage, newMessage];
+        const filteredMessages = data.filter(
+          (v, i, a) => a.findIndex((v2) => v2.timetoken === v.timetoken) === i
+        );
+        return [...filteredMessages];
+      } else {
+        let data = [];
+        // @ts-ignore
+        data.push(newMessage);
+        return [...data];
+      }
+    });
+  };
 
   useEffect(() => {
     // @ts-ignore
     socket.addEventListener('message', ({ data }) => {
       const response = JSON.parse(data);
-      const newMessage = {
-        channel: response.message.channel,
-        message: response.message.message,
-        messageType: null,
-        timetoken: response.message.timetoken,
-        uuid: response.message.publisher,
-      };
-      //@ts-ignore
-      setMessages([...messages, newMessage]);
+      if (response?.event === 'message') {
+        handleNewMessage(
+          response?.message?.channel,
+          response?.message?.message,
+          response?.message?.timetoken,
+          response?.message?.publisher
+        );
+      }
+      if (response?.event === 'trending') {
+        const response = JSON.parse(data);
+        handleTrending(response?.trending);
+      }
     });
     return () => {
       socket.removeEventListener('message', () => {});
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [messages]);
+  }, []);
+
+  const fetchTrending = useCallback(async () => {
+    try {
+      const res = await axios.get(`${API_URL}/trending/feed/list?status=${1}`);
+      setTrendingList(res?.data?.data);
+    } catch (error) {
+      toast.error(
+        CustomToastWithLink({
+          icon: ErrorIcon,
+          title: ToastTitle.ERROR,
+          description: ToastDescription.ERROR,
+          time: 'Now',
+        })
+      );
+    }
+  }, [setTrendingList]);
 
   useEffect(() => {
-    if (account) {
-      fetchMessages();
-    }
+    fetchTrending();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [account]);
+  }, []);
+
+  useEffect(() => {
+    fetchMessages();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const fetchMessages = useCallback(async () => {
     try {
       const res = await axios.get(`${API_URL}/chat/messages`);
-      setMessages(res.data.messages);
+      setMessages(res?.data?.data?.messages);
     } catch (error) {
       toast.error(
         CustomToastWithLink({
@@ -127,7 +156,7 @@ const TrendingSection: NextPage<TrendingSectionProps> = ({ socket }) => {
       if (account && profileDetails) {
         await axios.post(`${API_URL}/chat/send`, {
           message: message,
-          from: profileDetails?.profile_name,
+          from: profileDetails?.profileName,
         });
         setMessage('');
         return;
@@ -155,6 +184,7 @@ const TrendingSection: NextPage<TrendingSectionProps> = ({ socket }) => {
       );
     } catch (error) {
       setMessage('');
+      console.log('Unable to fetch messages');
       toast.error(
         CustomToastWithLink({
           icon: ErrorIcon,
@@ -175,26 +205,34 @@ const TrendingSection: NextPage<TrendingSectionProps> = ({ socket }) => {
             <div className={styles.tabsContainer}>
               <div className={styles.tabsInnerContainer}>
                 <ul className={styles.tab}>
-                  {trendingTabList.map(({ title }, index) => (
-                    <Tab key={index} setTab={setTab} title={title} tab={tab} />
+                  {trendingTabList.map(({ title, value }, index) => (
+                    <Tab
+                      key={index}
+                      setTab={setTab}
+                      title={title}
+                      tab={tab}
+                      value={value}
+                    />
                   ))}
                 </ul>
               </div>
             </div>
             <div className={styles.socialMediaReviewContainer}>
-              {reviewCardData.map(
-                ({ description, userName, avatar, date }, index) => {
-                  return (
-                    <SocialMediaReview
-                      key={`social-media-${index}`}
-                      description={description}
-                      date={date}
-                      icon={avatar}
-                      username={userName}
-                    />
-                  );
-                }
-              )}
+              {trendingList &&
+                trendingList.length &&
+                trendingList
+                  .filter(({ articleType }) => articleType === tab)
+                  .map(({ articleTitle, author, createdAt }, index) => {
+                    return (
+                      <SocialMediaReview
+                        key={`social-media-${index}`}
+                        description={articleTitle}
+                        date={createdAt}
+                        icon={HowardAvatar}
+                        username={author}
+                      />
+                    );
+                  })}
             </div>
           </div>
           <div className={`col-xl-4 col-md-12 ${styles.rightSideContainer}`}>

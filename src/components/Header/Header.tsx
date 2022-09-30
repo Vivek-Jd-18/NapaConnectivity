@@ -1,21 +1,23 @@
+import type { NextPage } from 'next';
+import { useEffect, useState } from 'react';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
+import Vivus from 'vivus';
+import styles from './Header.module.scss';
+import Container from '../../Layout/Container/Container';
+
+import useWebThree from '../../hooks/useWebThree';
+import useProfile from '../../hooks/useProfile';
+
+import Sidebar from '../Sidebar/Sidebar';
+import WalletPopup from '../WalletPopup/WalletPopup';
+import { NapaLogo, NapaLogoWhite } from '../Svg';
 import {
   BurgerMenuIcon,
   SearchIcon,
   WalletBlueIcon,
   WalletIconWhite,
 } from '../../components/assets';
-import Container from '../../Layout/Container/Container';
-import type { NextPage } from 'next';
-import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
-import Vivus from 'vivus';
-import Sidebar from '../Sidebar/Sidebar';
-import { NapaLogo, NapaLogoWhite } from '../Svg';
-import styles from './Header.module.scss';
-import WalletPopup from '../WalletPopup/WalletPopup';
-import useWebThree from '../../hooks/useWebThree';
-import Image from 'next/image';
-import useProfile from '../../hooks/useProfile';
 
 // Please import define the logo and hamburger menu//
 // Decouple the search icon with the container //
@@ -35,7 +37,16 @@ const Header: NextPage<HeaderProps> = ({
 }) => {
   const { push } = useRouter();
   const [popupShow, setPopupShow] = useState(false);
-  const { walletEth, account, walletBnb, walletNapa } = useWebThree();
+  const [show, setShow] = useState(true);
+  const { walletEth, account, walletBnb, walletNapa, getAccounts } =
+    useWebThree();
+
+  useEffect(() => {
+    if (show) {
+      getAccounts();
+      setShow(false);
+    }
+  }, [show]);
 
   const handleScroll = () => {
     const header = document.querySelector<HTMLElement>('.innerContainer');
@@ -67,9 +78,51 @@ const Header: NextPage<HeaderProps> = ({
       animTimingFunction: Vivus.EASE_OUT,
     });
   }, []);
+
+  // scroll effect
+  const body = document.body;
+  // const triggerMenu = document.querySelector(".page-header .trigger-menu");
+  // const nav = document.querySelector(".page-header nav");
+  // const menu = document.querySelector(".page-header .menu");
+  // const lottieWrapper = document.querySelector(".lottie-wrapper");
+  // const lottiePlayer = document.querySelector("lottie-player");
+
+  window.addEventListener('scroll', () => {});
+
+  useEffect(() => {
+    const element = document.getElementById('scrollElement');
+    const scrollUp = 'scroll-up';
+    const scrollDown = 'scroll-down';
+    let lastScroll = 10;
+
+    element?.addEventListener('scroll', () => {
+      const currentScroll = element.scrollTop;
+      if (currentScroll <= 0) {
+        body.classList.remove(scrollUp);
+        return;
+      }
+
+      if (currentScroll > lastScroll && !body.classList.contains(scrollDown)) {
+        // down
+        body.classList.remove(scrollUp);
+        body.classList.add(scrollDown);
+        // lottiePlayer.play();
+      } else if (
+        currentScroll < lastScroll &&
+        body.classList.contains(scrollDown)
+      ) {
+        // up
+        body.classList.remove(scrollDown);
+        body.classList.add(scrollUp);
+        // lottiePlayer.stop();
+      }
+      lastScroll = currentScroll;
+    });
+  }, []);
+
   return (
-    <header>
-      <Container className={`${styles.innerContainer} innerContainer`}>
+    <header className="page-header">
+      <Container className={`${styles.innerContainer} asinnerContainer`}>
         <div onClick={openMenu}>
           <Image
             src={BurgerMenuIcon}
@@ -118,7 +171,7 @@ const Header: NextPage<HeaderProps> = ({
                 napa={walletNapa}
                 bnb={walletBnb}
                 crypto={false}
-                profileName={profileDetails?.profile_name as string}
+                napaProfileName={profileDetails?.profileName as string}
               />
             )}
           </div>

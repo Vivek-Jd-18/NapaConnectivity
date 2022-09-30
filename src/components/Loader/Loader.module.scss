@@ -15,17 +15,44 @@
   .napaLogoWhite {
     fill: $light-blue;
     opacity: 0;
-    animation: fadeIn 1.5s ease;
-    animation-delay: 1.5s;
+    animation: fadeIn 2s ease;
+    animation-delay: 2s;
     animation-fill-mode: forwards;
   }
   .napaLogo {
-    // stroke: $light-blue;
-    // stroke-width: 1.25px;
-    fill: $light-blue;
-    animation: fadeIn 3s ease;
-    animation-delay: 3s;
+    stroke: $light-blue;
+    stroke-width: 1.25px;
+    animation: fadeOut 1s ease;
+    animation-delay: 2.75s;
     animation-fill-mode: forwards;
+  }
+  .loaderText {
+    font-size: 3rem;
+    font-weight: 400;
+    font-style: normal;
+    font-family: Neuropolitical;
+    margin: 0;
+    -webkit-text-stroke: 1px $light-blue;
+    color: transparent;
+    position: relative;
+    &::before {
+      content: attr(data-text);
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: $light-blue;
+      -webkit-text-stroke: 3px $light-blue;
+      width: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      animation: text-fill 2s ease-in forwards;
+    }
+  }
+}
+
+@keyframes text-fill {
+  100% {
+    width: 100%;
   }
 }
 
@@ -41,10 +68,8 @@
 @keyframes fadeOut {
   from {
     opacity: 1;
-  
   }
   to {
     opacity: 0;
-   
   }
 }

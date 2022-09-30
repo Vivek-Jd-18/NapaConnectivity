@@ -1,9 +1,18 @@
 import type { NextPage } from 'next';
-import { ExitIcon, ProfileIcon, WalletIcon } from '../assets';
-import styles from './Sidebar.module.scss';
-import Button from '../../components/Button/Button';
-import { useRouter } from 'next/router';
 import Image from 'next/image';
+import { toast } from 'react-toastify';
+import { useRouter } from 'next/router';
+import styles from './Sidebar.module.scss';
+
+import { ToastDescription, ToastTitle } from '../../typing/toast';
+import { CustomToastWithLink } from '../CustomToast/CustomToast';
+import {
+  ExitIcon,
+  ProfileIcon,
+  WalletConnectedIcon,
+  WalletIcon,
+} from '../assets';
+import Button from '../../components/Button/Button';
 
 type SidebarProps = {
   onClick: () => void;
@@ -60,11 +69,11 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu, account }) => {
           <div
             className={styles.link}
             onClick={() => {
-              push('/napaearn');
+              push('/earn');
               onClick();
             }}
           >
-            <a className={`${pathname === '/napaearn' && styles.active}`}>
+            <a className={`${pathname === '/earn' && styles.active}`}>
               NAPA Earn
             </a>
           </div>
@@ -82,12 +91,23 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu, account }) => {
           <div
             className={styles.link}
             onClick={() => {
-              push('/leaderboard');
+              push('/leaderboards');
               onClick();
             }}
           >
-            <a className={`${pathname === '/leaderboard' && styles.active}`}>
-              Leaderboard
+            <a className={`${pathname === '/leaderboards' && styles.active}`}>
+              Leaderboards
+            </a>
+          </div>
+          <div
+            className={styles.link}
+            onClick={() => {
+              push('/partners');
+              onClick();
+            }}
+          >
+            <a className={`${pathname === '/partners' && styles.active}`}>
+              Partners Portal
             </a>
           </div>
         </div>
@@ -103,7 +123,20 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu, account }) => {
                   onClick();
                 }}
               />
-              <Button text="Wallet" icon={WalletIcon} />
+              <Button
+                text="Wallet"
+                icon={WalletIcon}
+                onClick={() => {
+                  toast.error(
+                    CustomToastWithLink({
+                      icon: WalletConnectedIcon,
+                      title: ToastTitle.WALLET_IS_ALREADY_CONNECTED,
+                      description: ToastDescription.WALLET_IS_ALREADY_CONNECTED,
+                      time: 'Now',
+                    })
+                  );
+                }}
+              />
             </>
           ) : (
             <>

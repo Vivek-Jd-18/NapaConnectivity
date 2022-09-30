@@ -1,5 +1,5 @@
 import { NapaLogo, NapaLogoWhite } from '../../components/Svg';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Vivus from 'vivus';
 import Container from '../../Layout/Container/Container';
 import type { NextPage } from 'next';
@@ -11,17 +11,25 @@ import { CustomToastWithLink } from '../CustomToast/CustomToast';
 import { walletButtonList } from '../../constants/wallet.constants';
 import Image from 'next/image';
 import { ToastDescription, ToastTitle } from '../../typing/toast';
+import useProfile from '@/hooks/useProfile';
+import useWebThree from '@/hooks/useWebThree';
 
 type WalletComponentProps = {
-  connectWallet: () => void;
   account: string;
 };
 
-const WalletComponent: NextPage<WalletComponentProps> = ({
-  connectWallet,
-  account,
-}) => {
+const WalletComponent: NextPage<WalletComponentProps> = ({ account }) => {
   const { push } = useRouter();
+  const { connectWallet, getAccounts } = useWebThree();
+  const [show, setShow] = useState(true);
+  const { getUserProfileDetails } = useProfile();
+
+  useEffect(() => {
+    if (show) {
+      getAccounts();
+      setShow(false);
+    }
+  }, [show]);
 
   useEffect(() => {
     new Vivus('napa-logo', {
@@ -31,6 +39,21 @@ const WalletComponent: NextPage<WalletComponentProps> = ({
       animTimingFunction: Vivus.EASE_OUT,
     });
   }, []);
+
+  const walletHandler = () => {
+    connectWallet()
+      // @ts-ignore
+      .then(async (response: string) => {
+        const profileDetails = await getUserProfileDetails(response);
+        // @ts-ignore
+        if (response && profileDetails) {
+          push('/home');
+        } else if (response) {
+          push('/settings');
+        }
+      })
+      .catch((err) => console.log('error', err));
+  };
 
   return (
     <div className={styles.backgroundImage}>
@@ -70,7 +93,7 @@ const WalletComponent: NextPage<WalletComponentProps> = ({
                   return (
                     <button
                       key={index}
-                      onClick={() => {
+                      onClick={async () => {
                         if (index === 0 && account) {
                           toast.error(
                             CustomToastWithLink({
@@ -84,7 +107,7 @@ const WalletComponent: NextPage<WalletComponentProps> = ({
                           return;
                         }
                         if (index === 0) {
-                          connectWallet();
+                          walletHandler();
                         }
                       }}
                       className={styles.walletBtn}

@@ -4,7 +4,7 @@ import Head from 'next/head';
 import useWebThree from '../hooks/useWebThree';
 
 const Wallet: NextPage = () => {
-  const { account, connectWallet } = useWebThree();
+  const { account } = useWebThree();
 
   return (
     <>
@@ -13,7 +13,7 @@ const Wallet: NextPage = () => {
         <meta name="description" content="NAPA Developmeent Environment" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <WalletComponent account={account} connectWallet={connectWallet} />
+      <WalletComponent account={account} />
     </>
   );
 };

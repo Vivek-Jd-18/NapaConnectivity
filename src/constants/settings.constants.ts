@@ -58,9 +58,11 @@ const languages = [
 const settingsTab = [
   {
     title: 'General',
+    value: 'general',
   },
   {
     title: 'Whitelist',
+    value: 'whitelist',
   },
 ];
 

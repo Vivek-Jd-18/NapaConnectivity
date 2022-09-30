@@ -1,71 +1,21 @@
+import React, { useEffect } from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { useCallback, useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import bootstrap CSS
+import ReactFullpage from '@fullpage/react-fullpage';
+
 import SocialArtSectionWithoutLimit from '../components/SocialArtSectionWithoutLimit/SocialArtSectionWithoutLimit';
-import styles from '../../styles/pages/Home.module.scss';
-
-import { scrollToNextSection } from '../utils/home';
-
 import NapaSociety from '../components/NapaSocietySection/NapaSocietySection';
 import SocialArtSection from '../components/SocialArtSection/SocialArtSection';
 import NftMarketplaceSection from '../components/NftMarketplaceSection/NftMarketplaceSection';
 
 const Index: NextPage = () => {
-  const [currentSection, setCurrentSection] = useState(
-    'social-art-section-without-limit'
-  );
-
-  const checkScrollDirectionIsUp = (event: any) => {
-    if (event.wheelDelta) {
-      return event.wheelDelta > 0;
-    }
-    return event.deltaY < 0;
-  };
-
   useEffect(() => {
-    window.addEventListener('wheel', checkScrollDirection);
+    document.body.classList.add('landing_page');
     return () => {
-      window.removeEventListener('wheel', checkScrollDirection);
+      document.body.classList.remove('landing_page');
     };
-  }, [currentSection]);
-
-  useEffect(() => {
-    scrollToNextSection(currentSection);
-  }, [currentSection]);
-
-  const handleSectionChange = (id: string) => {
-    setTimeout(() => {
-      setCurrentSection(id);
-    }, 600);
-  };
-
-  const checkScrollDirection = useCallback(
-    (event: any) => {
-      if (checkScrollDirectionIsUp(event)) {
-        if (currentSection == 'nft-marketplace') {
-          handleSectionChange('social-section-art');
-        } else if (currentSection == 'social-section-art') {
-          handleSectionChange('napa-society');
-        } else if (currentSection == 'napa-society') {
-          handleSectionChange('social-art-section-without-limit');
-        } else if (currentSection == 'social-art-section-without-limit') {
-          return;
-        }
-      } else {
-        if (currentSection == 'social-art-section-without-limit') {
-          handleSectionChange('napa-society');
-        } else if (currentSection == 'napa-society') {
-          handleSectionChange('social-section-art');
-        } else if (currentSection == 'social-section-art') {
-          handleSectionChange('nft-marketplace');
-        } else if (currentSection == 'nft-marketplace') {
-          return;
-        }
-      }
-    },
-    [setCurrentSection, currentSection]
-  );
+  }, []);
   return (
     <>
       <Head>
@@ -75,20 +25,30 @@ const Index: NextPage = () => {
         <meta name="description" content="NAPA Staging Environment" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <section className={styles.container} id="container">
-        <div className={styles.child}>
-          <SocialArtSectionWithoutLimit />
-        </div>
-        <div className={styles.child}>
-          <NapaSociety />
-        </div>
-        <div className={styles.child}>
-          <SocialArtSection />
-        </div>
-        <div className={styles.child}>
-          <NftMarketplaceSection />
-        </div>
-      </section>
+      <div className="hm_sc">
+        <ReactFullpage
+          navigation
+          scrollingSpeed={1000} /* Options here */
+          render={() => {
+            return (
+              <ReactFullpage.Wrapper>
+                <div className="section">
+                  <SocialArtSectionWithoutLimit />
+                </div>
+                <div className="section">
+                  <NapaSociety />
+                </div>
+                <div className="section">
+                  <SocialArtSection />
+                </div>
+                <div className="section">
+                  <NftMarketplaceSection />
+                </div>
+              </ReactFullpage.Wrapper>
+            );
+          }}
+        />
+      </div>
     </>
   );
 };

@@ -12,7 +12,7 @@
   background-color: rgba(16, 35, 36, 0.4);
   backdrop-filter: blur(50px);
   overflow-x: hidden;
-  z-index: 2;
+  z-index: 999;
   transition: 0.3s;
   .overlayContentContainer {
     height: 100%;
@@ -423,7 +423,7 @@
       .overlayContent {
         padding-left: 6.7rem;
         padding-right: 5rem;
-        top: 15%;
+        top: 12%;
 
         a:hover,
         a:focus {

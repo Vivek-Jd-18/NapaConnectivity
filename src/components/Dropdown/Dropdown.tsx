@@ -1,6 +1,7 @@
-import { Options } from '../../typing/typing';
 import type { NextPage } from 'next';
 import styles from './Dropdown.module.scss';
+
+import { Options } from '../../typing/typing';
 
 type DropDownComponentProps = {
   options: Options[];

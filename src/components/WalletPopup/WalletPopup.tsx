@@ -2,12 +2,7 @@ import useProfile from '../../hooks/useProfile';
 import type { NextPage } from 'next';
 import Image from 'next/image';
 import { useEffect, useRef } from 'react';
-import {
-  BnbIcon,
-  EthereumBlackIcon,
-  SmallExitIcon,
-  NapaTokenIcon,
-} from '../assets';
+import { BnbIcon, EthereumBlackIcon, SmallExitIcon, NapaIcon } from '../assets';
 import styles from './WalletPopup.module.scss';
 
 type WalletPopupProps = {
@@ -17,7 +12,7 @@ type WalletPopupProps = {
   bnb?: string;
   napa?: string;
   crypto?: boolean;
-  profileName: string;
+  napaProfileName: string;
 };
 
 const WalletPopup: NextPage<WalletPopupProps> = ({
@@ -27,10 +22,10 @@ const WalletPopup: NextPage<WalletPopupProps> = ({
   ethereum,
   bnb,
   napa,
-  profileName,
+  napaProfileName,
 }) => {
   const ref = useRef(null);
-  const { napaProfileName } = useProfile();
+  const { profileName } = useProfile();
 
   useEffect(() => {
     const handleClickOutside = (event: any) => {
@@ -65,13 +60,13 @@ const WalletPopup: NextPage<WalletPopupProps> = ({
         <span>{account}</span>
       </div>
       <div className={styles.body}>
-        <Image src={NapaTokenIcon} alt={'NAPA Token'} width={90} height={90} />
+        <Image src={NapaIcon} alt={'NAPA Token'} width={90} height={90} />
         <h2>{napa}</h2>
         {crypto && <span>$98,22 USD</span>}
       </div>
       <div className={styles.footer}>
         <div className={styles.footerLeftSide}>
-          <Image src={NapaTokenIcon} width={25} height={40} alt="NAPA" />
+          <Image src={NapaIcon} width={90} height={90} alt="NAPA" />
           <span className={styles.ethereum}>NAPA</span>
           {/* <span className={styles.eth}>NAPA</span> */}
         </div>

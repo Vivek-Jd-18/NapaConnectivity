@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 import styles from '../Settings.module.scss';
+
 import useWebThree from '../../..//hooks/useWebThree';
 import useProfile from '../../../hooks/useProfile';
 
@@ -28,29 +29,45 @@ const GeneralTab: NextPage = () => {
   const [currency, setCurrency] = useState('NAPA');
   const [language, setLanguage] = useState('English');
   const [selectedTimezone, setSelectedTimezone] = useState<any>('');
-  const [profileId, setProfileId] = useState('');
   const { account } = useWebThree();
   const { push } = useRouter();
-  const {
-    createUserProfile,
-    profileDetails,
-    updateUserProfile,
-    napaProfileId,
-  } = useProfile();
+  const { createUserProfile, profileDetails, updateUserProfile, profileId } =
+    useProfile();
 
   useEffect(() => {
     if (profileDetails) {
-      setName(profileDetails.profile_name);
-      setBio(profileDetails.Bio || '');
-      setSelectedTimezone(profileDetails.Timezone || '');
-      setCurrency(profileDetails.primary_currency);
+      setName(profileDetails.profileName);
+      setBio(profileDetails.bio || '');
+      setSelectedTimezone(profileDetails.timezone || '');
+      setCurrency(profileDetails.primaryCurrency);
       setLanguage(profileDetails.language || 'English');
-      setProfileId(profileDetails.napa_profile_id);
     }
   }, [profileDetails]);
 
   const createUserProfileHandler = useCallback(async () => {
     try {
+      if (!account) {
+        toast.error(
+          CustomToastWithLink({
+            icon: WalletNeedsToConnected,
+            title: ToastTitle.WALLET_NEEDS_TO_CONNECTED,
+            description: ToastDescription.WALLET_NEEDS_TO_CONNECTED,
+            time: 'Now',
+          })
+        );
+        return;
+      }
+      if (!name) {
+        toast.error(
+          CustomToastWithLink({
+            icon: ErrorIcon,
+            title: 'Profile name is required',
+            description: 'Field is required',
+            time: 'Now',
+          })
+        );
+        return;
+      }
       const user = {
         accountNumber: account,
         profileName: name,
@@ -59,6 +76,7 @@ const GeneralTab: NextPage = () => {
         language: language || 'English',
         timezone: selectedTimezone.value,
         napaSocialMediaAccount: '',
+        avatar: '',
       };
       // @ts-ignore
       await createUserProfile(user);
@@ -85,6 +103,28 @@ const GeneralTab: NextPage = () => {
 
   const updateUserProfileHandler = useCallback(async () => {
     try {
+      if (!account) {
+        toast.error(
+          CustomToastWithLink({
+            icon: WalletNeedsToConnected,
+            title: ToastTitle.WALLET_NEEDS_TO_CONNECTED,
+            description: ToastDescription.WALLET_NEEDS_TO_CONNECTED,
+            time: 'Now',
+          })
+        );
+        return;
+      }
+      if (!name) {
+        toast.error(
+          CustomToastWithLink({
+            icon: ErrorIcon,
+            title: 'Profile name is required',
+            description: 'Field is required',
+            time: 'Now',
+          })
+        );
+        return;
+      }
       const user = {
         accountNumber: account,
         profileName: name,
@@ -92,9 +132,10 @@ const GeneralTab: NextPage = () => {
         primaryCurrency: currency,
         language: language || 'English',
         timezone: selectedTimezone.value || selectedTimezone,
+        avatar: '',
         napaSocialMediaAccount: '',
       };
-      await updateUserProfile(user, napaProfileId);
+      await updateUserProfile(user, profileId || account);
       toast.success(
         CustomToastWithLink({
           icon: DoneIcon,
@@ -120,7 +161,7 @@ const GeneralTab: NextPage = () => {
     language,
     selectedTimezone,
     profileDetails,
-    napaProfileId,
+    profileId,
     account,
   ]);
 

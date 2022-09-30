@@ -1,9 +1,25 @@
-import Container from '../../Layout/Container/Container';
-import type { NextPage } from 'next';
-import styles from './NapaLounge.module.scss';
-import Footer from '../Footer/Footer';
 import { useCallback, useRef, useState } from 'react';
+import type { NextPage } from 'next';
+import Image from 'next/image';
+import Container from '../../Layout/Container/Container';
+import styles from './NapaLounge.module.scss';
+
 import { NapaLoungeTab } from '../../typing/typing';
+import {
+  events,
+  tipsAndTutorialsCards,
+  upcomingNftProjects,
+} from '../../constants/home.constants';
+
+import HighlightButton from '../HighlightButton/HighlightButton';
+import TipsAndTutorialsCard from '../TipsAndTutorialsCard/TipsAndTutorialsCard';
+import CoBatchingPoolsCard from '../CoBatchingCard/CoBatchingCard';
+import UpcomingNftProjectsCard from '../UpcomingNftProjectsCard/UpcomingNftProjectsCard';
+import SliderComponent from '../Slider/Slider';
+import EventsCard from '../EventsCard/EventsCard';
+import ActiveMintedPostsCard from '../ActiveMintedPosts/ActiveMintedPostsCard';
+import EarnedNapaTokensCard from '../EarnedNapaTokensCard/EarnedNapaTokensCard';
+import Footer from '../Footer/Footer';
 import {
   ActiveMintedPostsBackground,
   CoBatchingPoolsBackground,
@@ -14,20 +30,6 @@ import {
   NftProjectsBackground,
   RightWhiteArrowIcon,
 } from '../assets';
-import HighlightButton from '../HighlightButton/HighlightButton';
-import SliderComponent from '../Slider/Slider';
-import {
-  events,
-  tipsAndTutorialsCards,
-  upcomingNftProjects,
-} from '../../constants/home.constants';
-import TipsAndTutorialsCard from '../TipsAndTutorialsCard/TipsAndTutorialsCard';
-import CoBatchingPoolsCard from '../CoBatchingCard/CoBatchingCard';
-import UpcomingNftProjectsCard from '../UpcomingNftProjectsCard/UpcomingNftProjectsCard';
-import EventsCard from '../EventsCard/EventsCard';
-import ActiveMintedPostsCard from '../ActiveMintedPosts/ActiveMintedPostsCard';
-import EarnedNapaTokensCard from '../EarnedNapaTokensCard/EarnedNapaTokensCard';
-import Image from 'next/image';
 
 const NapaLounge: NextPage = () => {
   const [tabs, setTabs] = useState(NapaLoungeTab.TIPS_AND_TUTORIALS);
@@ -101,7 +103,7 @@ const NapaLounge: NextPage = () => {
         </h1>
         <div className={`row col-12 ${styles.napaLoungeBodyContainer}`}>
           <div className="col-xl-6 col-md-12">
-            <div className={`row col-12 ${styles.leftSideContainer}`}>
+            <div className={`row cstm-box col-12 ${styles.leftSideContainer}`}>
               <div
                 className={`col-6 ${styles.boxes} ${
                   tabs === NapaLoungeTab.TIPS_AND_TUTORIALS && styles.active
