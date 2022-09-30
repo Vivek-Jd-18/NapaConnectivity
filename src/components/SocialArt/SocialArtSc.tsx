@@ -20,7 +20,7 @@ export default function SocialArtSc() {
           id="uncontrolled-tab-example"
           className="default_tab mb-30"
         >
-          <Tab eventKey="home" title="Feed">
+          <Tab eventKey="home" title="NAPA Society Posts">
             <FeedTab />
           </Tab>
           <Tab eventKey="profile" title="My Minted Posts">
