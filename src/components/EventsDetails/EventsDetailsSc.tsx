@@ -58,7 +58,7 @@ export default function EventsDetailsSc() {
                 <div className={styles.leftcontentMain}>
                     <div className={styles.aboutcontent}>
                       <h6>About Event</h6>
-                      <p>Imagine buying a piece of digital artwork on the Internet at a reasonable price and getting a unique digital token known which proves your authority over the artwork you bought. Wouldn't it be great? Well, that opportunity exists now, thanks to NFTs.</p>
+                      <p>Imagine buying a piece of digital artwork on the Internet at a reasonable price and getting a unique digital token known which proves your authority over the artwork you bought. Would it not be great? Well, that opportunity exists now, thanks to NFTs.</p>
                     </div>
                     <div className={styles.Perkscontent}>
                       <h4>Perks</h4>
@@ -78,7 +78,7 @@ export default function EventsDetailsSc() {
                         </div>
                         <div className={styles.Perksinnrcontent}>
                           <Image src="/img/perks_img04.png" alt="" height="120px" width="120px" />
-                          <p>Free Video Library with Guides on NFT's</p>  
+                          <p>Free Video Library with Guides on NFTs</p>  
                         </div>
                       </div>
                     </div>
