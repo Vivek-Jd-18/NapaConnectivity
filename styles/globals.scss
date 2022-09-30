@@ -768,3 +768,29 @@ input::-webkit-inner-spin-button {
   background: url(/assets/images/social_art_feed.jpg) no-repeat center top;
   background-size: cover;
 }
+
+
+.Border_none{
+  border-bottom: none !important;
+  padding-top: 55px !important;
+}
+.pedding_none{
+  padding: 0px !important;
+}
+.order_pernt {
+  @media screen and (min-width:  1201px) {
+    position: relative;
+    top: -25px;  
+  }
+  
+}
+@media screen and (max-width:1200px) {
+  .pedding_none{
+    display: flex !important;
+    flex-direction: column !important;
+    .order_pernt{
+      order: 2;
+      width: 100% !important;
+    }
+  }
+}
