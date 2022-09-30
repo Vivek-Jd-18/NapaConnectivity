@@ -19,7 +19,6 @@ export default function Cardlist() {
                 </div>
             </a>            
         </Link>              
-    </div>
-    
+    </div>    
   )
 }

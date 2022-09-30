@@ -23,26 +23,23 @@
     }
   }
 }
-
 @media screen and (max-width: 736px) {
   .container {
     .settingsContainer {
       .settings {
-        padding-top: 108px;
         font-size: 32px;
         line-height: 110%;
+        margin: 11px 0 0 0 !important;
       }
     }
   }
 }
-
 
 .StaylsHed{
   align-items: center;
   text-align: start;
   display: flex;
   margin-top: 44px;
- 
 }
 .StaylsSecHead {
   display: flex;
@@ -66,6 +63,7 @@
     font-size: 32px;
     line-height: 110%;
     color: #FFFFFF;
+    margin-bottom: 0 !important;
   }
 }
 .StaylsSecSixPregrf{
@@ -141,18 +139,27 @@
     z-index: 1;
     margin-bottom: 0;
   }
-  button{
+  .VideobButton {
     position: absolute;
-    top: 40%;
-    left: 40%;
-    background: transparent !important;
-    padding: 0;
-    margin: 0;
-    min-height: inherit;
-    border: none !important;
-    box-shadow: none !important;
-    @media screen and (max-width: 1440px) {left: 40%;}
-  } 
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    button{
+      background: transparent !important;
+      padding: 0;
+      margin: 0;
+      height: 48px !important;
+      border: none !important;
+      box-shadow: none !important;
+      // >span {
+      //   img {width: 48;}
+      // }
+    } 
+  }
 }
 .StaylinkFrst{
   padding-top: 108px !important;
@@ -163,12 +170,14 @@
     line-height: 140%;
     color: #FFFFFF;
     text-decoration: none;
+    display: flex;
+    align-items: center;
     cursor: pointer;
     transition: all 0.2s ease-out;
     &:hover {
       color: #16E6EF;
       >span {
-        img {filter: invert(61%) sepia(95%) saturate(1057%) hue-rotate(143deg) brightness(113%) contrast(87%);}
+        img {filter: invert(1%) sepia(162%) saturate(1057%) hue-rotate(143deg) brightness(100%) contrast(85%)}
       }
     }
     >span {
@@ -179,23 +188,123 @@
 .LdrbrdList{
   overflow-y: auto;
   height: 584px;
-  .LdrbrdListOverlay {
-    position: relative;
-    &::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      min-height: 100px;
-      background: linear-gradient(180deg, rgba(16, 35, 36, 0) 0%, #102324 100%);
-      z-index: 2;
-      width: 100%;
-      pointer-events: none;
-      @media screen and (max-width: 768px) {
-        background: linear-gradient(180deg, rgba(16, 35, 36, 0) 0%, #102324a8 100%);
+}
+.LdrbrdListOverlay {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    min-height: 268px;
+    background: linear-gradient(180deg, rgba(16, 35, 36, 0) 0%, #102324 100%);
+    z-index: 2;
+    width: 100%;
+    pointer-events: none;
+    @media screen and (max-width: 768px) {
+      min-height: 148px;
+      background: linear-gradient(180deg, rgba(16, 35, 36, 0) 0%, #102324a8 100%);
+    }
+  }
+}
+@media screen and (max-width: 1200px) {
+  .CustomGridContainer {
+    grid-template-columns: repeat(2, minmax(0px, 1fr));
+  }
+}
+@media screen and (max-width: 768px) {
+  .StaylinkFrst{
+    padding-top: 112px !important;
+  }
+  .StaylsSecSixPregrf{
+    p{
+      margin-top: 53px;
+    }
+  }
+  .CustomGridContainer {
+    grid-gap: 24px;
+    grid-template-columns: repeat(2, minmax(0px, 1fr));
+  }
+  .ostmImg{
+    p{
+      font-size: 14px;
+    }
+    h4 {
+      bottom: 29px;
+    }
+  }
+  .LdrbrdList{
+    overflow-y: auto;
+    height: 544px;
+  }
+}
+@media screen and (max-width: 736px) {
+  .StaylinkFrst{
+    padding-top: 111px !important;
+    a{
+      font-size: 12px;
+      line-height: 16.8px;
+      >span {
+        margin-right: 6px !important;
       }
     }
   }
+  .StaylsHed{
+    margin-top: 35px;
+  }
+  .StaylsSecSixPregrf{
+    p{
+      margin-top: 33px;
+      margin-bottom: 34px;
+    }
+  }
+  .CustomGridContainer {
+    grid-gap: 20px;
+    grid-template-columns: repeat(1, minmax(0px, 1fr));
+  }
+  .ostmImg{
+    p{
+      font-size: 14px;
+    }
+    h4 {
+      font-size: 18px;
+    }
+  }
+  .LdrbrdList{
+    height: 850px;
+  }
+  .StaylsSecHead {
+    flex-direction: column;
+    align-items: flex-start;
+    &:last-child{
+      margin-left: 64px;
+    }
+    >span {
+      height: 40px !important;
+      width: 40px !important;
+    }
+  }
+  .StaylsSecSixhed{
+    margin-left: 0px;
+    margin-top: 12px;
+    h4{
+      font-size: 14px;
+      line-height: 19.6px;
+      margin-bottom: 2px;
+    }
+    h2{
+      font-size: 18px;
+      line-height: 19.6px;
+    }
+  }
+  .StaylsSecSixPregrf{
+    text-align: start;
+    p{
+      font-size: 16px;
+      line-height: 22.4px;
+      margin-top: 33px;
+      margin-bottom: 34px;
+    }
+  } 
 }

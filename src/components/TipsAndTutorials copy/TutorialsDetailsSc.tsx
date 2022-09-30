@@ -45,8 +45,8 @@ export default function TutorialsDetailsSc() {
               <div className={styles.StaylsSecSixPregrf}>
                 <p>Cryptocurrency, blockchain, NFT: these are all terms that are gradually becoming more and more present in everyday conversations.</p>
               </div>
-              <div className={styles.LdrbrdList}>
-                <div className={styles.LdrbrdListOverlay}>
+              <div className={styles.LdrbrdListOverlay}>
+                <div className={styles.LdrbrdList}>
                   <div className={styles.CustomGridContainer}>
                     <div className={styles.ostmImg}>
                       <Image
@@ -55,9 +55,11 @@ export default function TutorialsDetailsSc() {
                         width="373px"
                         alt=""
                       />
-                      <button className={styles.VideobButton}>
-                        <Image src="/img/butan_ic.png" alt="" width="48px" height="48px"/>
-                      </button>
+                      <div className={styles.VideobButton}>
+                        <button className={styles.VideobButtonPlay}>
+                          <Image src="/img/butan_ic.png" alt="" width="48px" height="48px"/>
+                        </button>
+                      </div>
                       <p>02:44</p>
                       <h4>1. Blockchain Tutorial for Beginners</h4>
                     </div>
@@ -69,9 +71,11 @@ export default function TutorialsDetailsSc() {
                         width="373px"
                         alt=""
                       />
-                      <button className={styles.VideobButton}>
-                        <Image src="/img/butan_ic.png" alt="" width="48px" height="48px"/>
-                      </button>
+                      <div className={styles.VideobButton}>
+                        <button className={styles.VideobButtonPlay}>
+                          <Image src="/img/butan_ic.png" alt="" width="48px" height="48px"/>
+                        </button>
+                      </div>
                       <p>04:56</p>
                       <h4>2. What is Blockchain Technology?</h4>
                     </div>
@@ -82,9 +86,11 @@ export default function TutorialsDetailsSc() {
                         width="373px"
                         alt=""
                       />
-                      <button className={styles.VideobButton}>
-                        <Image src="/img/butan_ic.png" alt="" width="48px" height="48px"/>
-                      </button>
+                      <div className={styles.VideobButton}>
+                        <button className={styles.VideobButtonPlay}>
+                          <Image src="/img/butan_ic.png" alt="" width="48px" height="48px"/>
+                        </button>
+                      </div>
                       <p>15:24</p>
                       <h4>3. Why is Blockchain Important?</h4>
                     </div>
@@ -95,9 +101,11 @@ export default function TutorialsDetailsSc() {
                         width="373px"
                         alt=""
                       />
-                      <button className={styles.VideobButton}>
-                        <Image src="/img/butan_ic.png" alt="" width="48px" height="48px"/>
-                      </button>
+                      <div className={styles.VideobButton}>
+                        <button className={styles.VideobButtonPlay}>
+                          <Image src="/img/butan_ic.png" alt="" width="48px" height="48px"/>
+                        </button>
+                      </div>
                       <p>01:23</p>
                       <h4>4. What is Blockchain? Features and Use Cases</h4>
                     </div>
@@ -108,9 +116,11 @@ export default function TutorialsDetailsSc() {
                         width="373px"
                         alt=""
                       />
-                      <button className={styles.VideobButton}>
-                        <Image src="/img/butan_ic.png" alt="" width="48px" height="48px"/>
-                      </button>
+                      <div className={styles.VideobButton}>
+                        <button className={styles.VideobButtonPlay}>
+                          <Image src="/img/butan_ic.png" alt="" width="48px" height="48px"/>
+                        </button>
+                      </div>
                       <p>08:34</p>
                       <h4>5. Bitcoin vs Ethereum: Which One is Better?</h4>
                     </div>
@@ -121,9 +131,11 @@ export default function TutorialsDetailsSc() {
                         width="373px"
                         alt=""
                       />
-                      <button className={styles.VideobButton}>
-                        <Image src="/img/butan_ic.png" alt="" width="48px" height="48px"/>
-                      </button>
+                      <div className={styles.VideobButton}>
+                        <button className={styles.VideobButtonPlay}>
+                          <Image src="/img/butan_ic.png" alt="" width="48px" height="48px"/>
+                        </button>
+                      </div>
                       <p>06:12</p>
                       <h4>6. The Complete Guide for Types of Blockchain!</h4>
                     </div>
@@ -134,9 +146,11 @@ export default function TutorialsDetailsSc() {
                         width="373px"
                         alt=""
                       />
-                      <button className={styles.VideobButton}>
-                        <Image src="/img/butan_ic.png" alt="" width="48px" height="48px"/>
-                      </button>
+                      <div className={styles.VideobButton}>
+                        <button className={styles.VideobButtonPlay}>
+                          <Image src="/img/butan_ic.png" alt="" width="48px" height="48px"/>
+                        </button>
+                      </div>
                       <p>01:23</p>
                       <h4>4. What is Blockchain? Features and Use Cases</h4>
                     </div>
@@ -147,9 +161,11 @@ export default function TutorialsDetailsSc() {
                         width="373px"
                         alt=""
                       />
-                      <button className={styles.VideobButton}>
-                        <Image src="/img/butan_ic.png" alt="" width="48px" height="48px"/>
-                      </button>
+                      <div className={styles.VideobButton}>
+                        <button className={styles.VideobButtonPlay}>
+                          <Image src="/img/butan_ic.png" alt="" width="48px" height="48px"/>
+                        </button>
+                      </div>
                       <p>08:34</p>
                       <h4>5. Bitcoin vs Ethereum: Which One is Better?</h4>
                     </div>
@@ -160,9 +176,11 @@ export default function TutorialsDetailsSc() {
                         width="373px"
                         alt=""
                       />
-                      <button className={styles.VideobButton}>
-                        <Image src="/img/butan_ic.png" alt="" width="48px" height="48px"/>
-                      </button>
+                     <div className={styles.VideobButton}>
+                        <button className={styles.VideobButtonPlay}>
+                          <Image src="/img/butan_ic.png" alt="" width="48px" height="48px"/>
+                        </button>
+                      </div>
                       <p>06:12</p>
                       <h4>6. The Complete Guide for Types of Blockchain!</h4>
                     </div>
