@@ -512,18 +512,20 @@ input::-webkit-inner-spin-button {
   margin-top: 20px;
   .nav-item {
     margin-right: 48px;
-    &:last-child {margin-right: 0;}
+    &:last-child {
+      margin-right: 0;
+    }
     .nav-link {
       position: relative;
       @include font-md-avenir-regular;
       font-size: 18px;
       line-height: 140%;
-      color: #91A5A6;
+      color: #91a5a6;
       border: none;
       padding: 0 0 14px 0;
       background: transparent !important;
       &::before {
-        content: "";
+        content: '';
         position: absolute;
         left: 0;
         bottom: 0;
@@ -532,7 +534,8 @@ input::-webkit-inner-spin-button {
         background: #fff;
         transition: all 0.2s ease-out;
       }
-      &.active, &:hover {
+      &.active,
+      &:hover {
         color: #fff !important;
         &::before {
           width: 100%;
@@ -541,47 +544,49 @@ input::-webkit-inner-spin-button {
     }
   }
 }
-.mb-30 {margin-bottom: 30px !important;}
+.mb-30 {
+  margin-bottom: 30px !important;
+}
 @media screen and (max-width: 736px) {
   .default_tab {
     .nav-item {
       margin-right: 32px;
-      &:last-child {margin-right: 0;}
+      &:last-child {
+        margin-right: 0;
+      }
       .nav-link {
         font-size: 16px;
         padding: 0 0 12px 0;
-       
       }
     }
   }
 }
 
-
 .tooltipminted {
-  .rc-slider-rail{
+  .rc-slider-rail {
     height: 2px;
     background-color: #91a5a626;
     border-radius: 0;
   }
-  .rc-slider-track{
+  .rc-slider-track {
     height: 2px;
     background-color: #ffffff;
     border-radius: 0;
   }
-  
 }
 
-.rc-tooltip-arrow{display: none !important;}
+.rc-tooltip-arrow {
+  display: none !important;
+}
 .rc-tooltip-inner {
   background-color: transparent !important;
-  color: #91A5A6 !important;
+  color: #91a5a6 !important;
   border: none !important;
   box-shadow: none !important;
 }
-.rc-slider-handle-dragging.rc-slider-handle-dragging.rc-slider-handle-dragging{
+.rc-slider-handle-dragging.rc-slider-handle-dragging.rc-slider-handle-dragging {
   border: 0.8px solid white !important;
   box-shadow: none !important;
- 
 }
 .rc-slider-handle:focus-visible {
   box-shadow: none !important;
@@ -599,13 +604,14 @@ input::-webkit-inner-spin-button {
   opacity: 1 !important;
 }
 @media screen and (min-width: 737px) {
-  .datepickerBoxv3 {display: none;}  
+  .datepickerBoxv3 {
+    display: none;
+  }
 }
 .datepickerBoxv3 {
   margin-right: 0;
   margin-bottom: 20px;
 }
-
 
 .drpdwn_list {
   background: rgb(29, 48, 49) !important;
@@ -617,17 +623,18 @@ input::-webkit-inner-spin-button {
       @include font-md-avenir-medium;
       font-size: 18px;
       line-height: 140%;
-      color: #FFFFFF;
+      color: #ffffff;
       margin-bottom: 14px;
       display: flex;
       align-items: center;
       transition: all 0.2s ease-out;
-      >span {
+      > span {
         margin-right: 8px !important;
       }
-      &:hover , :focus {
-        background: #16E6EF !important;
-        >span {
+      &:hover,
+      :focus {
+        background: #16e6ef !important;
+        > span {
           img {
             filter: invert(1) brightness(100);
           }
@@ -638,15 +645,15 @@ input::-webkit-inner-spin-button {
 }
 
 // Select css ajit
-.select_main{
+.select_main {
   display: flex;
   align-items: center;
   justify-content: flex-start;
 }
-.select_pernt{
+.select_pernt {
   margin-right: 60px;
 
-  .cntrslct__control{
+  .cntrslct__control {
     background: transparent;
     border: none;
     padding: 0;
@@ -654,25 +661,25 @@ input::-webkit-inner-spin-button {
     box-shadow: none;
     display: inline-flex;
   }
-  .cntrslct__placeholder{
+  .cntrslct__placeholder {
     font-family: 'Avenir';
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
     line-height: 140%;
-    color: #FFFFFF;
+    color: #ffffff;
   }
   .cntrslct__value-container {
     padding: 0;
-    color: #91A5A6;
+    color: #91a5a6;
   }
-  .cntrslct__indicator-separator{
+  .cntrslct__indicator-separator {
     display: none;
   }
-  .cntrslct__indicator{
+  .cntrslct__indicator {
     padding: 0;
-    svg{
-      color: #91A5A6 !important;
+    svg {
+      color: #91a5a6 !important;
       margin-left: 12px;
     }
   }
@@ -682,9 +689,9 @@ input::-webkit-inner-spin-button {
     font-weight: 400;
     font-size: 18px;
     line-height: 140%;
-    color: #FFFFFF;
+    color: #ffffff;
   }
-  .cntrslct__menu{
+  .cntrslct__menu {
     background-color: rgb(125 125 125 / 40%);
     backdrop-filter: blur(50px);
     padding: 0;
@@ -693,22 +700,21 @@ input::-webkit-inner-spin-button {
     margin: 0;
     z-index: 2;
   }
-  .cntrslct__option{
+  .cntrslct__option {
     background: transparent;
     color: #fff;
     border-radius: 5px;
-    &:hover{
-      color: #16E6EF;
+    &:hover {
+      color: #16e6ef;
       background: rgb(67 93 88);
-
     }
   }
-  .cntrslct__menu-list{
+  .cntrslct__menu-list {
     padding: 0;
   }
 }
-@media screen and (max-width:736px) {
-  .select_main{
+@media screen and (max-width: 736px) {
+  .select_main {
     display: none !important;
   }
   .MobileDatpckerEvent {
@@ -724,7 +730,6 @@ input::-webkit-inner-spin-button {
       margin: 12px 0;
     }
   }
-
 }
 .hovereffect {
   .evmtimg {
@@ -738,13 +743,13 @@ input::-webkit-inner-spin-button {
   }
 }
 
-.OvelayContent{
+.OvelayContent {
   z-index: 1;
 }
-.bottom_overly_pernt{
+.bottom_overly_pernt {
   position: relative;
-  &::before{
-    content: "";
+  &::before {
+    content: '';
     position: absolute;
     left: 0;
     right: 0;
@@ -755,13 +760,19 @@ input::-webkit-inner-spin-button {
     width: 100%;
     pointer-events: none;
     @media screen and (max-width: 991px) {
-      background: linear-gradient(180deg, rgba(12, 27, 34, 0) 0%, rgb(16 35 36 / 45%) 100%);
+      background: linear-gradient(
+        180deg,
+        rgba(12, 27, 34, 0) 0%,
+        rgb(16 35 36 / 45%) 100%
+      );
     }
   }
 }
 @media screen and (max-width: 736px) {
   .select_mainas {
-    .select_pernt {margin-right: 0;}
+    .select_pernt {
+      margin-right: 0;
+    }
     .datepickerBox .form-control {
       width: 120px;
     }
@@ -771,11 +782,35 @@ input::-webkit-inner-spin-button {
   background: url(/assets/images/social_art_feed.jpg) no-repeat center top;
   background-size: cover;
 }
-.datails{
+.datails {
   background: url(/assets/images/howto_bg.png) no-repeat center top;
   background-size: cover;
   width: 100%;
   position: absolute;
   top: 0;
   left: 0;
+}
+
+.Border_none {
+  border-bottom: none !important;
+  padding-top: 55px !important;
+}
+.pedding_none {
+  padding: 0px !important;
+}
+.order_pernt {
+  @media screen and (min-width: 1201px) {
+    position: relative;
+    top: -25px;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .pedding_none {
+    display: flex !important;
+    flex-direction: column !important;
+    .order_pernt {
+      order: 2;
+      width: 100% !important;
+    }
+  }
 }
