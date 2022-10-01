@@ -245,6 +245,8 @@
           display: flex;
           justify-content: center;
           align-items: center;
+          text-decoration: none !important;
+          transition: all 0.2s ease-out;
           >span{
             margin-right: 12px !important;
           }
@@ -701,4 +703,12 @@
       }
     }
   }
+}
+@media screen and (max-width:480px) {
+  .secondGrid{
+    .applyEventpernt{
+      align-items: flex-start !important;
+    }
+  }
+ 
 }
