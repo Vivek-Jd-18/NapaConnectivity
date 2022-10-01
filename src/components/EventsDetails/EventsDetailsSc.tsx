@@ -124,8 +124,8 @@ export default function EventsDetailsSc() {
                   <div className={styles.ShareEventMain}>
                     <h1>Share Event</h1>
                     <div className={styles.twobuttonPernt}>
-                      <a><Image src="/img/twitter_icon.svg" alt="" height="16px" width="16px" className={styles.aaaa}/> On Twitter</a>
-                      <a><Image src="/img/facebook_icon.svg" alt="" height="16px" width="16px" className={styles.aaaa}/> On Facebook</a>
+                      <a href='#'><Image src="/img/twitter_icon.svg" alt="" height="16px" width="16px" className={styles.aaaa}/> On Twitter</a>
+                      <a href='#'><Image src="/img/facebook_icon.svg" alt="" height="16px" width="16px" className={styles.aaaa}/> On Facebook</a>
                   </div>
                   </div>
                 </div>
