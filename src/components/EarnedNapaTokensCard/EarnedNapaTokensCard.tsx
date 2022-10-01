@@ -2,7 +2,6 @@ import type { NextPage } from 'next';
 import Image from 'next/image';
 import styles from './EarnedNapaTokensCard.module.scss';
 
-import { NapaIcon } from '../assets';
 
 type ActiveMintedPostsCardProps = {};
 
@@ -41,7 +40,7 @@ const EarnedNapaTokensCard: NextPage<ActiveMintedPostsCardProps> = () => {
     <div className={styles.cardContainer}>
       <h3 className={styles.subtitle}>Amount Locked</h3>
       <div className={styles.amountContainer}>
-        <Image src={NapaIcon} alt="napa" width={60} height={60} />
+        <Image src="/img/napa_icon_card.png" alt="" width={56} height={56} />
         <span className={styles.amount}>12.35 </span>
         <span className={styles.napa}>NAPA</span>
       </div>
@@ -49,7 +48,7 @@ const EarnedNapaTokensCard: NextPage<ActiveMintedPostsCardProps> = () => {
         {lockDurations.map((item, index) => {
           return (
             <div key={index} className={styles.lockDurationInnerContainer}>
-              <span>{item.title}</span>
+              <span className={styles.lockDuratspan}>{item.title}</span>
               <span>{item.date}</span>
             </div>
           );
@@ -59,7 +58,25 @@ const EarnedNapaTokensCard: NextPage<ActiveMintedPostsCardProps> = () => {
         {redeemRewards.map((item, index) => {
           return (
             <div key={index} className={styles.lockDurationInnerContainer}>
-              <span>{item.title}</span>
+              <span className={styles.lockDuratspan}>{item.title}</span>
+              <span>{item.value}</span>
+            </div>
+          );
+        })}
+      </div>
+      <div className={styles.MobileGrid}>
+        {lockDurations.map((item, index) => {
+            return (
+              <div key={index} className={styles.lockDurationInnerContainer}>
+                <span className={styles.lockDuratspan}>{item.title}</span>
+                <span>{item.date}</span>
+              </div>
+            );
+          })}
+          {redeemRewards.map((item, index) => {
+          return (
+            <div key={index} className={styles.lockDurationInnerContainer}>
+              <span className={styles.lockDuratspan}>{item.title}</span>
               <span>{item.value}</span>
             </div>
           );

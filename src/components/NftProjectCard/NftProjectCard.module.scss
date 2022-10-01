@@ -11,6 +11,9 @@
   align-items: flex-start;
   justify-content: space-between;
   width: 100%;
+  @media screen and (max-width: 736px) {
+    height: 380px;
+  }
   .avatarContainer {
     display: flex;
     align-items: center;
@@ -18,6 +21,7 @@
       @include font-xs-avenir-regular;
       padding-left: 0.7rem;
       color: $white;
+      font-size: 14px !important;
     }
     .avatar {
       width: 2rem;
@@ -35,6 +39,11 @@
       color: $white;
       text-align: left;
       padding-bottom: 1.5rem;
+      font-size: 32px !important;
+      line-height: 110% !important;
+      @media screen and (max-width: 1023px) {
+        font-size: 28px !important;
+      }
     }
 
     .description {
@@ -89,7 +98,7 @@
         padding-bottom: 0.5rem;
       }
       .description {
-        @include flex-column-start;
+        // @include flex-column-start;
         .bitContainer {
           .bit {
             @include font-xxs-avenir-regular;
@@ -118,7 +127,7 @@
             @include font-xs-avenir-regular;
           }
           &:last-child {
-            padding-top: 1rem;
+            // padding-top: 1rem;
           }
         }
       }
