@@ -9,7 +9,7 @@
   object-fit: fill;
 
   color: $white;
-  height: 453px;
+  height: 400px;
   padding: 20px 30px;
   .likesContainer {
     @include flex-row-center;
@@ -58,7 +58,7 @@
     }
   }
   @media (min-width: 1400px) {
-    height: 30rem;
+    // height: 30rem;
     padding: 1.2rem;
     .likesContainer {
       .likesCount {
