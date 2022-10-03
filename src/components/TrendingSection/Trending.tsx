@@ -217,7 +217,7 @@ const TrendingSection: NextPage<TrendingSectionProps> = ({ socket }) => {
                 </ul>
               </div>
             </div>
-            <div className={styles.socialMediaReviewContainer}>
+            <div className={`${styles.socialMediaReviewContainer} otherscroll`}>
               {trendingList &&
                 trendingList.length &&
                 trendingList
