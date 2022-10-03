@@ -56,7 +56,7 @@ const NapaLounge: NextPage = () => {
 
   const titleHandler = useCallback(() => {
     if (tabs === NapaLoungeTab.TIPS_AND_TUTORIALS) {
-      return 'More Tutorials';
+      return 'Whats Trending';
     }
     if (tabs === NapaLoungeTab.CO_BATCHING_POOLS) {
       return 'More Pools';
@@ -111,7 +111,7 @@ const NapaLounge: NextPage = () => {
                 onClick={() => tabsHandler(NapaLoungeTab.TIPS_AND_TUTORIALS)}
               >
                 <span className={`${styles.description}`}>
-                  Tips and Tutorials
+                Whats Trending
                 </span>
               </div>
               <div
