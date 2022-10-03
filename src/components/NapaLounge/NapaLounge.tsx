@@ -96,13 +96,13 @@ const NapaLounge: NextPage = () => {
       style={{ backgroundImage: changeBackgroundHandler() }}
       id="napa-lounge"
     >
-      <Container className={styles.napaLoungeContainer}>
+      <Container className={`${styles.napaLoungeContainer} asinnerContainer asinnerContainerv2`}>
         <h1>
           <span className={styles.napa}>The NAPA</span>
           <span className={styles.lounge}> Lounge</span>
         </h1>
         <div className={`row col-12 ${styles.napaLoungeBodyContainer}`}>
-          <div className="col-xl-6 col-md-12">
+          <div className="col-xl-6 col-md-12 rspnsv_order2">
             <div className={`row cstm-box col-12 ${styles.leftSideContainer}`}>
               <div
                 className={`col-6 ${styles.boxes} ${

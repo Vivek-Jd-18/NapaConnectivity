@@ -9,6 +9,7 @@
   position: relative;
   height: 100vh;
   width: 100%;
+  padding-bottom: 10px !important;
   @include flex-column-between;
   .leaderboardContainer {
     height: 100%;
@@ -21,6 +22,17 @@
       animation: glow 1s ease-in-out infinite alternate;
       color: transparent;
       margin-bottom: 0;
+      font-size: 132px !important;
+      line-height: 110% !important;
+      @media (max-width: 1300px) {
+        font-size: 76px !important;
+      }
+      @media (max-width: 768px) {
+        padding-top: 80px !important;
+      }
+      @media (max-width: 736px) {
+        font-size: 36px !important;
+      }
       @media (max-width: 600px) {
         font-size: $text-2xl;
       }
@@ -48,9 +60,19 @@
   .tabsContainer {
     @include flex-column-start;
     margin-bottom: 0.5rem;
-    width: 100%;
+    max-width: 100%;
     .tabsInnerContainer {
       @include flex-row-center;
+      overflow-x: scroll;
+      max-width: 100%;
+      @media screen and (max-width: 1023px) {
+        margin-top: 30px !important;
+        margin-bottom: 35px !important;
+      }
+      @media screen and (max-width: 736px) {
+        margin-top: 20px !important;
+        margin-bottom: 25px !important;
+      }
       .tab {
         display: flex;
         flex-wrap: nowrap;

@@ -36,11 +36,13 @@
     margin-bottom: 0;
     margin-top: -80px;
     font-size: 112px;
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1200px) {
       font-size: 90px !important;
+      margin-bottom: 0 !important;
     }
-    @media screen and (max-width: 375px) {
+    @media screen and (max-width: 736px) {
       font-size: 44px !important;
+      margin-bottom: 2px !important;
     }
   }
   @keyframes glow {
@@ -73,7 +75,7 @@
     color: $white;
     margin-bottom: 0;
     font-size: 90px;
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1200px) {
       font-size: 76px !important;
     }
     @media screen and (max-width: 736px) {
@@ -87,7 +89,7 @@
     text-align: left;
     .description {
       @include font-md-avenir-medium;
-      font-size: 18px;
+      font-size: 18px !important;
       color: $white;
       font-weight: 100;
       margin-bottom: 0.2rem;
@@ -133,31 +135,31 @@
       margin-top: -92px;
     }
   }
-  @media only screen and (max-width: 1340px) {
-    .socialArt {
-      @include font-7xl-neuropolitical-normal;
-    }
-    .withoutLimits {
-      @include font-5xl-neuropolitical-normal;
-    }
-  }
-  @media only screen and (max-width: 1260px) {
-    .socialArt {
-      @include font-7xl-neuropolitical-normal;
-    }
-    .withoutLimits {
-      @include font-5xl-neuropolitical-normal;
-    }
-  }
-  @media only screen and (max-width: 1199px) {
-    .socialArt {
-      @include font-6xl-neuropolitical-normal;
-    }
-    .withoutLimits {
-      @include font-4xl-neuropolitical-normal;
-    }
+  // @media only screen and (max-width: 1340px) {
+  //   .socialArt {
+  //     @include font-7xl-neuropolitical-normal;
+  //   }
+  //   .withoutLimits {
+  //     @include font-5xl-neuropolitical-normal;
+  //   }
+  // }
+  // @media only screen and (max-width: 1260px) {
+  //   .socialArt {
+  //     @include font-7xl-neuropolitical-normal;
+  //   }
+  //   .withoutLimits {
+  //     @include font-5xl-neuropolitical-normal;
+  //   }
+  // }
+  // @media only screen and (max-width: 1199px) {
+  //   .socialArt {
+  //     @include font-6xl-neuropolitical-normal;
+  //   }
+  //   .withoutLimits {
+  //     @include font-4xl-neuropolitical-normal;
+  //   }
     
-  }
+  // }
   @media only screen and (max-width: 1024px) {
     background-image: url('/assets/images/socialart-background-tablet.png'); r 
     .socialContainer {
@@ -173,13 +175,13 @@
           margin-bottom: 0;
           text-align: left;
           width: 100%;
-          @include font-6xl-neuropolitical-normal;
+          // @include font-6xl-neuropolitical-normal;
         }
         .withoutLimits {
           margin-bottom: 0;
           text-align: left;
           width: 100%;
-          @include font-5xl-neuropolitical-normal;
+          // @include font-5xl-neuropolitical-normal;
         }
       }
       .innerSocialContainerRightSide {
@@ -198,7 +200,7 @@
     }
     .innerSocialContainerRightSide {
       width: 100%;
-      margin-top: 20px;
+      margin-top: 23px;
     }
     .innerSocialContainer {
       width: 100%;
@@ -219,19 +221,17 @@
     .socialContainer {
       .innerSocialContainer {
         .socialArt {
-          @include font-5xl-neuropolitical-normal;
+          // @include font-5xl-neuropolitical-normal;
           margin-bottom: 0.5rem;
         }
-        .withoutLimits {
-          @include font-3xl-neuropolitical-normal;
-        }
+        // .withoutLimits {
+        //   @include font-3xl-neuropolitical-normal;
+        // }
       }
       .innerSocialContainerRightSide {
         .description {
           @include font-md-avenir-regular;
-
           font-weight: 100;
-
         }
       }
     }
@@ -240,12 +240,12 @@
     background-image: url('/assets/images/socialart-background-mobile.png');
     .socialContainer {
       .innerSocialContainer {
-        .socialArt {
-          @include font-4xl-neuropolitical-normal;
-        }
-        .withoutLimits {
-          @include font-3xl-neuropolitical-normal;
-        }
+        // .socialArt {
+        //   @include font-4xl-neuropolitical-normal;
+        // }
+        // .withoutLimits {
+        //   @include font-3xl-neuropolitical-normal;
+        // }
       }
       .innerSocialContainerRightSide {
         .description {
@@ -261,12 +261,12 @@
     background-image: url('/assets/images/socialart-background-mobile.png');
     .socialContainer {
       .innerSocialContainer {
-        .socialArt {
-          @include font-3xl-neuropolitical-normal;
-        }
-        .withoutLimits {
-          @include font-2xl-neuropolitical-normal;
-        }
+        // .socialArt {
+        //   @include font-3xl-neuropolitical-normal;
+        // }
+        // .withoutLimits {
+        //   @include font-2xl-neuropolitical-normal;
+        // }
       }
       .innerSocialContainerRightSide {
         .description {
@@ -278,4 +278,7 @@
       }
     }
   }
+}
+@media screen and (max-width: 736px) {
+  
 }

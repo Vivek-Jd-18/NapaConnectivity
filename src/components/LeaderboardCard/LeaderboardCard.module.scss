@@ -9,6 +9,8 @@
   object-fit: fill;
 
   color: $white;
+  height: 400px;
+  padding: 20px 30px;
   .likesContainer {
     @include flex-row-center;
     .likesCount {
@@ -37,8 +39,7 @@
   }
 
   @media (min-width: 1280px) {
-    height: 25rem;
-    padding: 1.2rem;
+   
     .likesContainer {
       .likesCount {
         @include font-xl-neuropolitical-normal;
@@ -57,7 +58,7 @@
     }
   }
   @media (min-width: 1400px) {
-    height: 30rem;
+    // height: 30rem;
     padding: 1.2rem;
     .likesContainer {
       .likesCount {
@@ -79,7 +80,7 @@
   @media (min-width: 1536px) {
     padding: 1.5rem;
     height: 30rem;
-    width: 23rem;
+    // width: 23rem;
     .likesContainer {
       .likesCount {
         @include font-3xl-neuropolitical-normal;
