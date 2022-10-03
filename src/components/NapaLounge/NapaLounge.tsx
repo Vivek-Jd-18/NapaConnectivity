@@ -73,6 +73,14 @@ const NapaLounge: NextPage = () => {
     return 'More Earned Tokens ';
   }, [tabs]);
 
+  const linkHandler = useCallback(() => {
+    if (tabs === NapaLoungeTab.TIPS_AND_TUTORIALS) {
+      return 'trending';
+    }
+
+    return '';
+  }, [tabs]);
+
   const tabsHandler = useCallback(
     (tab: NapaLoungeTab) => {
       setTabs(tab);
@@ -96,7 +104,9 @@ const NapaLounge: NextPage = () => {
       style={{ backgroundImage: changeBackgroundHandler() }}
       id="napa-lounge"
     >
-      <Container className={`${styles.napaLoungeContainer} asinnerContainer asinnerContainerv2`}>
+      <Container
+        className={`${styles.napaLoungeContainer} asinnerContainer asinnerContainerv2`}
+      >
         <h1>
           <span className={styles.napa}>The NAPA</span>
           <span className={styles.lounge}> Lounge</span>
@@ -110,9 +120,7 @@ const NapaLounge: NextPage = () => {
                 }`}
                 onClick={() => tabsHandler(NapaLoungeTab.TIPS_AND_TUTORIALS)}
               >
-                <span className={`${styles.description}`}>
-                Whats Trending
-                </span>
+                <span className={`${styles.description}`}>Whats Trending</span>
               </div>
               <div
                 className={`col-6 ${styles.boxes} ${
@@ -288,7 +296,10 @@ const NapaLounge: NextPage = () => {
               )}
             </div>
             <div className={styles.buttonContainer}>
-              <HighlightButton title={`${titleHandler()}`} />
+              <HighlightButton
+                title={`${titleHandler()}`}
+                link={`${linkHandler()}`}
+              />
             </div>
           </div>
         </div>
