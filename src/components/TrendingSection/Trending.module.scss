@@ -36,18 +36,18 @@
         padding-top: 3rem;
         height: calc(100vh - 410px);
         overflow-y: auto;
-        mask-image: linear-gradient(
-          transparent,
-          black 0,
-          black 0,
-          transparent 100%
-        );
-        -webkit-mask-image: linear-gradient(
-          transparent,
-          black 0,
-          black 0,
-          transparent 100%
-        );
+        // mask-image: linear-gradient(
+        //   transparent,
+        //   black 0,
+        //   black 0,
+        //   transparent 100%
+        // );
+        // -webkit-mask-image: linear-gradient(
+        //   transparent,
+        //   black 0,
+        //   black 0,
+        //   transparent 100%
+        // );
       }
     }
     .trending {
