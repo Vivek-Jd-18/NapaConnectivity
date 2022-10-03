@@ -10,6 +10,7 @@
     text-align: left;
     width: 100%;
     display: flex;
+    cursor: pointer;
     p{
       display: flex;
       width: 100%;
@@ -26,6 +27,7 @@
   .userContainer {
     @include flex-align-center;
     align-items: flex-start;
+    cursor: pointer;
     @media screen and (max-width:736px) {
       flex-direction: column;
     }
