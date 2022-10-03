@@ -206,7 +206,10 @@ html
   .NapaLounge_napaLoungeContainer__zt_mJ
   .NapaLounge_leftSideContainer__2mOTS
   .NapaLounge_boxes__JU_J_ {
-  min-height: 190px !important;
+  min-height: 170px !important;
+  @media screen and (max-width: 1680px) {
+    min-height: 100px !important;
+  }
   @media screen and (max-width: 1199px) {
     min-height: 70px !important;
     
