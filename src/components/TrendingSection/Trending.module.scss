@@ -33,7 +33,7 @@
         }
       }
       .socialMediaReviewContainer {
-        padding-top: 3rem;
+        padding-top: 2rem;
         height: calc(100vh - 410px);
         overflow-y: auto;
         // mask-image: linear-gradient(
@@ -133,7 +133,7 @@
       }
       .trending {
         @include font-4xl-neuropolitical-normal;
-        max-width: 100px;
+        max-width: 100%;
         @media (max-width: 600px) {
           font-size: $text-3xl;
         }
