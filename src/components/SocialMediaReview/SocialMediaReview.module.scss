@@ -8,9 +8,27 @@
   .review {
     @include font-md-neuropolitical-normal;
     text-align: left;
+    width: 100%;
+    display: flex;
+    p{
+      display: flex;
+      width: 100%;
+      button{
+        background: transparent;
+        box-shadow: none;
+        border: none;
+        margin-left: auto;
+        padding-left: 15px;
+      }
+    }
+    
   }
   .userContainer {
     @include flex-align-center;
+    align-items: flex-start;
+    @media screen and (max-width:736px) {
+      flex-direction: column;
+    }
     .avatar {
       margin-right: 1rem;
     }
@@ -50,6 +68,118 @@
       .date {
         @include font-md-avenir-medium;
       }
+    }
+  }
+}
+.twoLinkAj{
+  display: flex;
+  align-items: center;
+  .twoLinkInnr{
+    // display: flex;
+    // align-items: center;
+    a{
+      font-family: 'Avenir';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 140%;
+      color: #16E6EF;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      >span{
+        margin-left: 4px !important;
+      }
+      
+    }
+    &:first-child{
+      margin-left: 24px;
+    }
+    &:last-child{
+      margin-left: 32px;
+    }
+  }
+}
+
+.allPeragraphMain{
+  margin-top: 15px;
+  &:first-child{
+    
+  }
+  p{
+    font-family: 'Avenir';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 120%;
+    color: #FFFFFF;
+    max-width: 719px;
+  }
+  .ulPerent{
+    margin-top: 30px;
+    ul{
+      padding: 0;
+      margin: 0;
+      &:last-child{
+        margin: 0 !important;
+      }
+      li{
+        list-style: none;
+        padding: 0;
+        margin: 0 8px 0 0;
+        display: inline-block;
+        vertical-align: top;
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+      
+        p{
+        margin: 0;
+        padding: 5px 8px 2px 8px;
+        font-family: 'Avenir';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 140%;
+        color: #FFFFFF;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width:736px) {
+  .twoLinkAj{
+    flex-direction: column;
+    align-items: flex-start;
+    .twoLinkInnr{
+      a{
+        
+      }
+      &:first-child{
+        margin-left: 0;
+        margin-top: 12px;
+      }
+      &:last-child{
+        margin-left: 0;
+        margin-top: 6px;
+        margin-bottom: 10px;
+      }
+    }
+  }
+  .reviewContainer {
+    .review {
+      p{
+        position: relative;
+        button{
+          position: absolute;
+          right: 0;
+          top: -30px;
+        }
+      }
+    }
+  }
+  .allPeragraphMain{
+    .ulPerent{
+      margin-top: 20px;
     }
   }
 }

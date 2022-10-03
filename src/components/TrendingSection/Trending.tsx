@@ -198,7 +198,7 @@ const TrendingSection: NextPage<TrendingSectionProps> = ({ socket }) => {
 
   return (
     <div className={styles.backgroundImage} id="trending">
-      <Container className={styles.trendingContainer}>
+      <Container className={`${styles.trendingContainer} asinnerContainer`}>
         <div className={`row col-12 ${styles.trendingBodyContainer}`}>
           <div className={`col-xl-8 col-md-12`}>
             <h1 className={styles.trending}>Whats Trending</h1>

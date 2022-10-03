@@ -36,6 +36,7 @@
     -webkit-text-stroke: 2px $white;
     animation: glow 1s ease-in-out infinite alternate;
     margin-bottom: 0;
+    font-size: 90px !important;
   }
   @-webkit-keyframes glow {
     from {
@@ -163,6 +164,7 @@
     @include font-6xl-neuropolitical-normal;
     color: $white;
     margin-bottom: 0;
+    font-size: 90px !important;
   }
 
   .innerSocietyContainerRightSide {
@@ -184,6 +186,8 @@
       color: $white;
       padding-top: 1rem;
       @include font-base-avenir-medium;
+      font-size: 18px !important;
+      @media only screen and (max-width: 736px) {font-size: 16px !important;}
     }
     .socialHeading {
       display: flex;
@@ -277,7 +281,7 @@
         }
 
         .artText {
-          padding-left: 2.5rem;
+          padding-left: 40px;
           margin-bottom: 0;
           @include font-5xl-neuropolitical-normal;
         }
@@ -297,7 +301,7 @@
     .innerSocietyContainerRightSide {
       width: 100%;
       position: relative;
-      margin-top: 54px;
+      margin-top: 44px;
       .description {
         width: 100%;
         
@@ -310,9 +314,8 @@
       }
 
       .socialHeading {
-        @include flex-col;
         padding-left: 0rem;
-
+        display: flex;
         .socialText {
           @include font-4xl-neuropolitical-normal;
           margin-bottom: 0;
@@ -324,13 +327,12 @@
           @include font-4xl-neuropolitical-normal;
           width: 100%;
           margin-bottom: 0;
-          padding-left: 0;
+          padding-left: 40px;
           @include flex-column-start;
         }
       }
     }
   }
-  
   @media only screen and (max-width: 576px) {
     background-image: url('/assets/images/socialmedia-background-mobile.png');
     .carouselImage {
@@ -430,7 +432,7 @@
       
     }
     .innerSocietyContainerRightSide {
-      padding-top: 3rem;
+      padding-top: 0rem;
       width: 100%;
       position: relative;
 
@@ -470,6 +472,40 @@
       padding-top: 8rem;
       width: 100%;
       position: relative;
+    }
+  }
+}
+@media only screen and (max-width: 736px) {
+  .innerSocietyContainerRightSide {
+    .socialHeading {
+      flex-direction: column !important;
+    }
+  }
+  .innerSocietyContainerRightSide {
+    width: 100%;
+    position: relative;
+    margin-top: 54px;
+    .description {
+      padding-top: 16px !important;
+      margin-bottom: 21px !important;
+    }
+
+    .viewFeedContainer {
+      .viewFeedBtn {
+        @include font-base-neuropolitical-normal;
+      }
+    }
+
+    .socialHeading {
+      padding-left: 0rem;
+      display: flex;
+      .socialText {
+        font-size: 64px !important;
+      }
+      .artText {
+        padding-left: 0px !important;
+        font-size: 64px !important;
+      }
     }
   }
 }

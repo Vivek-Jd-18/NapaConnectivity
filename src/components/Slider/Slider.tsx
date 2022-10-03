@@ -21,7 +21,7 @@ const SliderComponent: NextPage<any, SliderProps> = React.forwardRef(
       cssEase: 'linear',
       responsive: [
         {
-          breakpoint: 1024,
+          breakpoint: 1279,
           settings: {
             slidesToShow: 2,
           },
@@ -29,7 +29,7 @@ const SliderComponent: NextPage<any, SliderProps> = React.forwardRef(
         {
           breakpoint: 768,
           settings: {
-            slidesToShow: 2,
+            slidesToShow: 1,
           },
         },
         {

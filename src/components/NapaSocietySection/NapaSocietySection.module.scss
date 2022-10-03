@@ -43,7 +43,7 @@
     margin-bottom: 0.3em;
     font-size: 132px;
     @media screen and (max-width: 768px) {
-      font-size: 90px !important;
+      font-size: 132px !important;
     }
     @media screen and (max-width: 375px) {
       font-size: 44px !important;
@@ -71,13 +71,16 @@
   }
   .societyLeftDescription {
     text-align: left;
-    padding-right: 20rem;
-    padding-left: 0.5rem;
-    padding-top: 0.7rem;
+    // padding-right: 20rem;
+    // padding-left: 0.5rem;
+    padding-top: 13px;
     color: $white;
     @include font-base-avenir-regular;
     max-width: 49rem;
-    font-size: 18px;
+    font-size: 18px !important;
+    @media screen and (max-width: 736px) {
+      font-size: 16px !important;
+    }
   }
   .headingSlider {
     @include font-9xl-neuropolitical-normal;
@@ -99,10 +102,13 @@
     color: $white;
     line-height: 2.1rem;
     margin-bottom: 0;
-    font-size: 132px;
+    font-size: 132px !important;
+    @media screen and (max-width: 736px) {
+      font-size: 44px !important;
+      bottom: -4px;
+    }
   }
   .sliderSlashtext {
-
     padding-left: 0.5rem;
     padding-right: 0.5rem;
     color: $white;
@@ -113,12 +119,25 @@
     position: relative;
     bottom: -27px;
     color: transparent;
+    font-size: 44px !important;
+    @media screen and (max-width: 736px) {
+      font-size: 24px !important;
+      bottom: -4px;
+    }
   }
   .sliderArrows{
     display: flex;
     width: 60px;
     justify-content: space-between;
     margin-top: 54px;
+    position: relative;
+    top: 6px;
+    @media screen and (max-width: 1536px) {
+      top: 0px;
+    }
+    @media screen and (max-width: 736px) {
+      top: -19px;
+    }
   }
   .sliderArrows div img{
     opacity: 0.7;
@@ -150,14 +169,19 @@
     line-height: 1rem;
     color: $white;
     margin-bottom: 0.5em;
-    font-size: 132px;
+    font-size: 132px !important;
+    line-height: 145px !important;
   }
 
   .community {
     @include font-3xl-neuropolitical-normal;
     color: $white;
     padding-bottom: 1.2rem;
-    font-size: 44px;
+    font-size: 44px !important;
+    @media screen and (max-width: 736px) {
+      font-size: 24px !important;
+      padding: 0 !important;
+    }
   }
 
   .innerSocietyContainerRightSide {
@@ -194,8 +218,14 @@
       li{
         width:100%;
         float: left;
-        margin-bottom: 15px;
+        margin-bottom: 8px;
         display: flex;
+        @media screen and (max-width: 768px) {
+          margin-bottom: 20px;
+        }
+        @media screen and (max-width: 736px) {
+          margin-bottom: 16px;
+        }
         div{
           display: flex;
           flex-direction: column;
@@ -210,13 +240,20 @@
         p{
           font-size: 12px;
           color:#fff;
-          margin-bottom: 5px;
+          margin-bottom: 3px;
+          @media screen and (max-width: 736px) {
+            margin-bottom: 0px;
+            font-size: 10px;
+          }
         }
         h4{
           @include font-lg-neuropolitical-normal;
           font-size: 18px;
           color:#fff;
-          line-height: 1em;
+          margin-bottom: 0 !important;
+          @media screen and (max-width: 736px) {
+            font-size: 14px !important;
+          }
         }
       }
     }
@@ -229,9 +266,15 @@
       li{
         width:100%;
         float: left;
-        margin-bottom: 15px;
+        margin-bottom: 8px;
         display: flex;
         justify-content: space-between;
+        @media screen and (max-width: 768px) {
+          margin-bottom: 20px;
+        }
+        @media screen and (max-width: 736px) {
+          margin-bottom: 16px;
+        }
         img{
           width: 80px;
           height: 80px;
@@ -246,20 +289,36 @@
         }
         p{
           @include font-sm-neuropolitical-normal;
-          font-size: 24px;
+          font-size: 24px !important;
           -webkit-text-stroke: 1px #fff;
           margin-bottom: 0px;
           color:transparent;
           display: flex;
           justify-content: space-between;
+          margin-bottom: 7px !important;
+          @media screen and (max-width: 736px) {
+            margin-bottom: 5px !important;
+            font-size: 18px !important;
+          }
           strong{
             margin-left: 40px;
             font-weight: normal;
+            position: relative;
+            top: 18px;
+            @media screen and (max-width: 1024px) {
+              top: 0px;
+            }
+            @media screen and (max-width: 736px) {
+              top: 12px;
+            }
               i {
                   color: #16E6EF;
                   -webkit-text-stroke: 0;
                   font-style: normal;
                   font-size: 24px;
+                  @media screen and (max-width: 736px) {
+                    font-size: 18px !important;
+                  } 
               }
               u {
                 font-size: 12px;
@@ -277,6 +336,7 @@
           font-size: 18px;
           color:#fff;
           line-height: 1em;
+          margin-bottom: 0 !important;
         }
       }
     }
@@ -303,9 +363,9 @@
     .sliderContainer {
       padding-bottom: 0.5rem;
     }
-    .sliderSlashtext {
-      bottom: -13px;
-    }
+    // .sliderSlashtext {
+    //   bottom: -13px;
+    // }
   }
   @media only screen and (max-width: 1340px) {
     .headingNapa {
@@ -319,10 +379,10 @@
     .sliderCounterText {
       @include font-5xl-neuropolitical-normal;
     }
-    .sliderSlashtext {
-      font-size: 2rem;
-      bottom: -17px;
-    }
+    // .sliderSlashtext {
+    //   font-size: 2rem;
+    //   bottom: -17px;
+    // }
     .sliderContainer {
       padding-bottom: 1rem;
     }
@@ -330,12 +390,12 @@
       
       padding-right: 7rem;
     }
-    .leaders_row,.trend_row{
-       ul li img{
-        width: 60px;
-        height: 60px;
-       }
-    }
+    // .leaders_row,.trend_row{
+    //    ul li img{
+    //     width: 60px;
+    //     height: 60px;
+    //    }
+    // }
     .slideImages {
       margin-bottom: 2rem;
       img {
@@ -345,7 +405,7 @@
     }
   }
   
-  @media only screen and (max-width: 1024px) {
+  @media only screen and (max-width: 1280px) {
     background-image: url('/assets/images/napsociety-background-tablet.png');
     .societyContainer {
       @include flex-column-center;
@@ -358,7 +418,6 @@
         justify-content: flex-start !important;
         .headingNapa {
           margin-bottom: 0;
-          @include font-5xl-neuropolitical-normal;
           text-align: left;
           width: 100%;
         }
@@ -374,6 +433,9 @@
           padding-top: 1rem;
           padding-left: 0.3rem;
           max-width: 580px;
+          @media screen and (max-width: 1280px) {
+            max-width: 100%;
+          }
         }
       }
       .innerSocietyContainer {
@@ -453,7 +515,7 @@
             }
             .community {
               padding-top: 0.5rem;
-              padding-bottom: 0;
+              // padding-bottom: 0;
               @include font-3xl-neuropolitical-normal;
             }
           }
@@ -477,16 +539,16 @@
     }
    
 }
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 736px) {
   .sliderCounterText {
     @include font-3xl-neuropolitical-normal;
   }
-  .sliderSlashtext {
-    font-size: 1.5rem;    bottom: -5px;
-  }
-  .sliderArrows{
-    margin-top: 24px;
-  }
+  // .sliderSlashtext {
+  //   font-size: 1.5rem;    bottom: -5px;
+  // }
+  // .sliderArrows{
+  //   margin-top: 24px;
+  // }
   .societyContainer {
 
     .societyContainerBody {
@@ -496,14 +558,16 @@
       }
       .headingSociety {
         @include font-3xl-neuropolitical-normal;
+        font-size: 132px;
       }
     }
   }
   .leaders_row,.trend_row{
     ul li{
       img{
-        width:50px;
-        height: 50px;
+        width: 44px;
+        height: 44px;
+        margin-right: 16px;
       }
     }
   }
@@ -526,7 +590,7 @@
   .leaders_row,.trend_row{
     ul li {
       h4{
-        font-size: 16px;;
+        font-size: 14px;;
       }
     }
   }
@@ -535,6 +599,7 @@
   .leaders_row,.trend_row{
     ul{
       padding: 0;
+      margin-bottom: 0;
     li{
       width: 100% !important;
       padding-right: 0px;
@@ -645,6 +710,29 @@
               padding-bottom: 0;
             }
           }
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 1280px) {
+  .backgroundImage {
+    .societyContainerBody {
+      padding-top: 55px;
+    }
+  }
+}
+@media only screen and (max-width: 736px) {
+  .backgroundImage {
+    .societyContainer {
+      .societyContainerBody {  
+        .headingNapa {
+          font-size: 44px !important;
+          line-height: 48px !important;
+        }
+        .headingSociety {
+          font-size: 44px !important;
+          line-height: 48px !important;
         }
       }
     }
