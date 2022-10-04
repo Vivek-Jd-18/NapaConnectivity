@@ -27,7 +27,7 @@ const SocialArtSectionWithoutLimit: NextPage = () => {
               {/* <strong>Blockchain Inspired Web3 Social Media Has Arrived</strong> */}
               {/* Welcome to the NAPA Society experience, we are the face of crypto social media in the web3 revolution! Join our society and turn your social media into social art, mint your social art in our social media app and earn NAPA tokens, buy and sell NFTs in the largest marketplace in the world */}
             </h6>
-            <HighlightButton title="NAPA Society" />
+            <HighlightButton title="Explore All Projects" link="" />
           </div>
         </div>
         <div className={styles.mousePointer}>
