@@ -104,7 +104,7 @@ const NapaSociety: NextPage = () => {
                   {/* <strong>Checkout the NAPA Lounge!</strong> */}
                 </h6>
                 {/* <div className={styles.slideImages}><img src='assets/images/image-lounge.jpg'></img></div> */}
-                <HighlightButton title="Visit NAPA Lounge" />
+                <HighlightButton title="Explore All Projects" link="" />
               </div>
             ) : slider === 2 ? (
               <div>
@@ -145,7 +145,7 @@ const NapaSociety: NextPage = () => {
                     </li>
                   </ul>
                 </div>
-                <HighlightButton title="Get Updates" />
+                <HighlightButton title="Explore All Projects" link="" />
               </div>
             ) : slider === 3 ? (
               <div>
@@ -204,7 +204,7 @@ const NapaSociety: NextPage = () => {
                     </li>
                   </ul>
                 </div>
-                <HighlightButton title="Who is Leading" />
+                <HighlightButton title="Explore All Projects" link="" />
               </div>
             ) : (
               <div>
@@ -246,7 +246,7 @@ const NapaSociety: NextPage = () => {
                     </li>
                   </ul>
                 </div>
-                <HighlightButton title="More Events" />
+                <HighlightButton title="Explore All Projects" link="" />
               </div>
             )}
           </div>
