@@ -197,7 +197,7 @@ const TrendingSection: NextPage<TrendingSectionProps> = ({ socket }) => {
     }
   }, [message, account, profileDetails]);
 
-  const [chatPerson, setChatPerson] = useState("Title goes here")
+  const [chatPerson, setChatPerson] = useState('Title goes here');
 
   return (
     <div className={styles.backgroundImage} id="trending">
@@ -235,7 +235,7 @@ const TrendingSection: NextPage<TrendingSectionProps> = ({ socket }) => {
                         date={createdAt}
                         icon={HowardAvatar}
                         username={author}
-                        onChatClicked={() => setChatPerson(author)}
+                        onChatClicked={() => setChatPerson(articleTitle)}
                       />
                     );
                   })}
