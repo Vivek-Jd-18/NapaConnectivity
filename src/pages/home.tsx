@@ -44,9 +44,9 @@ const Home: NextPage = () => {
       </section> */}
       
       <div className="hm_sc">
-        <ReactFullpage
+        {/* <ReactFullpage
           navigation
-          scrollingSpeed={1000} /* Options here */
+          scrollingSpeed={1000} 
           render={() => {
             return (
               <ReactFullpage.Wrapper>
@@ -62,7 +62,8 @@ const Home: NextPage = () => {
               </ReactFullpage.Wrapper>
             );
           }}
-        />
+        /> */}
+        <NapaLounge />
       </div>
     </>
   );

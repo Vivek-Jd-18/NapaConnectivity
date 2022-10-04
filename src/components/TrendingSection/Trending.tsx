@@ -14,6 +14,7 @@ import SocialMediaReview from '../SocialMediaReview/SocialMediaReview';
 import ChatWindow from '../ChatWindow/ChatWindow';
 import { CustomToastWithLink } from '../CustomToast/CustomToast';
 import { ToastDescription, ToastTitle } from '../../typing/toast';
+import Footer from '../Footer/Footer';
 
 const trendingTabList = [
   {
@@ -196,12 +197,16 @@ const TrendingSection: NextPage<TrendingSectionProps> = ({ socket }) => {
     }
   }, [message, account, profileDetails]);
 
+  const [chatPerson, setChatPerson] = useState('Title goes here');
+
   return (
     <div className={styles.backgroundImage} id="trending">
       <Container className={`${styles.trendingContainer} asinnerContainer`}>
         <div className={`row col-12 ${styles.trendingBodyContainer}`}>
-          <div className={`col-xl-8 col-md-12`}>
-            <h1 className={styles.trending}>Whats Trending</h1>
+          <div className={`col-xl-7 col-md-12`}>
+            <h1 className={styles.trending}>
+              Whats <span>Trending</span>
+            </h1>
             <div className={styles.tabsContainer}>
               <div className={styles.tabsInnerContainer}>
                 <ul className={styles.tab}>
@@ -217,7 +222,7 @@ const TrendingSection: NextPage<TrendingSectionProps> = ({ socket }) => {
                 </ul>
               </div>
             </div>
-            <div className={styles.socialMediaReviewContainer}>
+            <div className={`${styles.socialMediaReviewContainer} otherscroll`}>
               {trendingList &&
                 trendingList.length &&
                 trendingList
@@ -230,12 +235,14 @@ const TrendingSection: NextPage<TrendingSectionProps> = ({ socket }) => {
                         date={createdAt}
                         icon={HowardAvatar}
                         username={author}
+                        onChatClicked={() => setChatPerson(articleTitle)}
                       />
                     );
                   })}
             </div>
           </div>
-          <div className={`col-xl-4 col-md-12 ${styles.rightSideContainer}`}>
+          <div className={`col-xl-5 col-md-12 ${styles.rightSideContainer}`}>
+            <h2 className={styles.TrendingTitle}>{chatPerson}</h2>
             <ChatWindow
               setMessage={setMessage}
               message={message}
@@ -245,6 +252,7 @@ const TrendingSection: NextPage<TrendingSectionProps> = ({ socket }) => {
           </div>
         </div>
       </Container>
+      <Footer footerIconShow />
     </div>
   );
 };

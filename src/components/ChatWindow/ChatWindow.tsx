@@ -28,7 +28,7 @@ const ChatWindow: NextPage<ChatWindowProps> = ({
 
   return (
     <>
-      <div className={styles.chatWindowContainer} ref={ref}>
+      <div className={`${styles.chatWindowContainer} otherscroll`} ref={ref}>
         {messages &&
           messages.length &&
           messages.map(({ message, timetoken }: any, index: number) => {

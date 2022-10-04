@@ -10,6 +10,7 @@ type SocialMediaReviewProps = {
   icon: string;
   date: string;
   username: string;
+  onChatClicked: () => void;
 };
 
 const SocialMediaReview: NextPage<SocialMediaReviewProps> = ({
@@ -17,6 +18,7 @@ const SocialMediaReview: NextPage<SocialMediaReviewProps> = ({
   icon,
   date,
   username,
+  onChatClicked,
 }) => {
   const [open, setOpen] = useState(false);
   return (
@@ -73,6 +75,25 @@ const SocialMediaReview: NextPage<SocialMediaReviewProps> = ({
                   />
                 </a>
               </Link>
+            </div>
+            <div className={styles.twoLinkInnr}>
+              <a
+                role="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  e.cancelable = true;
+                  onChatClicked();
+                }}
+              >
+                Chat{' '}
+                <Image
+                  src="/img/left_erow_ic.svg"
+                  alt=""
+                  width="14px"
+                  height="14px"
+                />
+              </a>
             </div>
           </div>
         )}
