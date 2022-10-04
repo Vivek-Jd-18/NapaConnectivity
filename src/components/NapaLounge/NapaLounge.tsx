@@ -31,6 +31,24 @@ import {
   RightWhiteArrowIcon,
 } from '../assets';
 
+const TABS = [
+  NapaLoungeTab.TIPS_AND_TUTORIALS,
+  NapaLoungeTab.CO_BATCHING_POOLS,
+  NapaLoungeTab.UPCOMING_NFT_PROJECTS,
+  NapaLoungeTab.EVENTS,
+  NapaLoungeTab.ACTIVE_MINTED_POSTS,
+  NapaLoungeTab.EARNED_NAPA_TOKENS,
+];
+
+const TAB_TITLES = {
+  [NapaLoungeTab.TIPS_AND_TUTORIALS]: 'Whats Trending',
+  [NapaLoungeTab.CO_BATCHING_POOLS]: 'Co Batching Pools',
+  [NapaLoungeTab.UPCOMING_NFT_PROJECTS]: 'Upcoming NFT Projects',
+  [NapaLoungeTab.EVENTS]: 'Events',
+  [NapaLoungeTab.ACTIVE_MINTED_POSTS]: 'Active Minted Posts',
+  [NapaLoungeTab.EARNED_NAPA_TOKENS]: 'Earned NAPA Tokens',
+};
+
 const NapaLounge: NextPage = () => {
   const [tabs, setTabs] = useState(NapaLoungeTab.TIPS_AND_TUTORIALS);
   const tutorialRef = useRef(null);
@@ -56,7 +74,7 @@ const NapaLounge: NextPage = () => {
 
   const titleHandler = useCallback(() => {
     if (tabs === NapaLoungeTab.TIPS_AND_TUTORIALS) {
-      return 'More Tutorials';
+      return 'Whats Trending';
     }
     if (tabs === NapaLoungeTab.CO_BATCHING_POOLS) {
       return 'More Pools';
@@ -71,6 +89,14 @@ const NapaLounge: NextPage = () => {
       return 'More Posts';
     }
     return 'More Earned Tokens ';
+  }, [tabs]);
+
+  const linkHandler = useCallback(() => {
+    if (tabs === NapaLoungeTab.TIPS_AND_TUTORIALS) {
+      return 'trending';
+    }
+
+    return '';
   }, [tabs]);
 
   const tabsHandler = useCallback(
@@ -96,72 +122,27 @@ const NapaLounge: NextPage = () => {
       style={{ backgroundImage: changeBackgroundHandler() }}
       id="napa-lounge"
     >
-      <Container className={`${styles.napaLoungeContainer} asinnerContainer asinnerContainerv2`}>
+      <Container
+        className={`${styles.napaLoungeContainer} asinnerContainer asinnerContainerv2`}
+      >
         <h1>
           <span className={styles.napa}>The NAPA</span>
           <span className={styles.lounge}> Lounge</span>
         </h1>
         <div className={`row col-12 ${styles.napaLoungeBodyContainer}`}>
-          <div className="col-xl-6 col-md-12 rspnsv_order2">
+          <div className={`col-xl-6 col-md-12 rspnsv_order2 ${styles.napaLoungeBody}`}>
             <div className={`row cstm-box col-12 ${styles.leftSideContainer}`}>
-              <div
-                className={`col-6 ${styles.boxes} ${
-                  tabs === NapaLoungeTab.TIPS_AND_TUTORIALS && styles.active
-                }`}
-                onClick={() => tabsHandler(NapaLoungeTab.TIPS_AND_TUTORIALS)}
-              >
-                <span className={`${styles.description}`}>
-                  Tips and Tutorials
-                </span>
-              </div>
-              <div
-                className={`col-6 ${styles.boxes} ${
-                  tabs === NapaLoungeTab.CO_BATCHING_POOLS && styles.active
-                }`}
-                onClick={() => tabsHandler(NapaLoungeTab.CO_BATCHING_POOLS)}
-              >
-                <span className={`${styles.description}`}>
-                  Co Batching Pools
-                </span>
-              </div>
-              <div
-                className={`col-6 ${styles.boxes} ${
-                  tabs === NapaLoungeTab.UPCOMING_NFT_PROJECTS && styles.active
-                }`}
-                onClick={() => tabsHandler(NapaLoungeTab.UPCOMING_NFT_PROJECTS)}
-              >
-                <span className={`${styles.description}`}>
-                  Upcoming NFT Projects
-                </span>
-              </div>
-              <div
-                className={`col-6 ${styles.boxes} ${
-                  tabs === NapaLoungeTab.EVENTS && styles.active
-                }`}
-                onClick={() => tabsHandler(NapaLoungeTab.EVENTS)}
-              >
-                <span className={`${styles.description}`}>Events</span>
-              </div>
-              <div
-                className={`col-6 ${styles.boxes} ${
-                  tabs === NapaLoungeTab.ACTIVE_MINTED_POSTS && styles.active
-                }`}
-                onClick={() => tabsHandler(NapaLoungeTab.ACTIVE_MINTED_POSTS)}
-              >
-                <span className={`${styles.description}`}>
-                  Active Minted Posts
-                </span>
-              </div>
-              <div
-                className={`col-6 ${styles.boxes} ${
-                  tabs === NapaLoungeTab.EARNED_NAPA_TOKENS && styles.active
-                }`}
-                onClick={() => tabsHandler(NapaLoungeTab.EARNED_NAPA_TOKENS)}
-              >
-                <span className={`${styles.description}`}>
-                  Earned NAPA Tokens
-                </span>
-              </div>
+              {TABS.map((tab) => (
+                <div
+                  className={`col-2 col-sm-6 ${styles.boxes} ${
+                    tabs === tab ? styles.active : ''
+                  }`}
+                  onClick={() => tabsHandler(tab)}
+                  key={tab}
+                >
+                  <span className={styles.description}>{TAB_TITLES[tab]}</span>
+                </div>
+              ))}
             </div>
           </div>
           <div className={`col-xl-6 col-md-12 ${styles.rightSideContainer}`}>
@@ -288,7 +269,10 @@ const NapaLounge: NextPage = () => {
               )}
             </div>
             <div className={styles.buttonContainer}>
-              <HighlightButton title={`${titleHandler()}`} />
+              <HighlightButton
+                title={`${titleHandler()}`}
+                link={`${linkHandler()}`}
+              />
             </div>
           </div>
         </div>

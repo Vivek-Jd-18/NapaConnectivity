@@ -18,6 +18,10 @@ const marketPlaceTab = [
     title: 'Social Art Minted',
     value: 'Art Minted',
   },
+  {
+    title: 'NFT Rankings',
+    value: 'NFT Listings',
+  },
 ];
 
 const NftMarketplaceSection: NextPage = ({}) => {
@@ -46,7 +50,7 @@ const NftMarketplaceSection: NextPage = ({}) => {
               ))}
             </ul>
           </div>
-          <HighlightButton title="Explore All Projects" />
+          <HighlightButton title="Explore All Projects" link="" />
         </div>
         <div id="sliderComponent">
           <SliderComponent centerMode={true}>
