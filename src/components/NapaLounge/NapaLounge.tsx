@@ -43,7 +43,7 @@ const TABS = [
 const TAB_TITLES = {
   [NapaLoungeTab.TIPS_AND_TUTORIALS]: 'Whats Trending',
   [NapaLoungeTab.CO_BATCHING_POOLS]: 'Co Batching Pools',
-  [NapaLoungeTab.UPCOMING_NFT_PROJECTS]: 'Upcoming NFT Projects',
+  [NapaLoungeTab.UPCOMING_NFT_PROJECTS]: 'NFT Projects',
   [NapaLoungeTab.EVENTS]: 'Events',
   [NapaLoungeTab.ACTIVE_MINTED_POSTS]: 'Active Minted Posts',
   [NapaLoungeTab.EARNED_NAPA_TOKENS]: 'Earned NAPA Tokens',
@@ -80,15 +80,15 @@ const NapaLounge: NextPage = () => {
       return 'More Pools';
     }
     if (tabs === NapaLoungeTab.UPCOMING_NFT_PROJECTS) {
-      return 'More Projects';
+      return 'NFT Projects';
     }
     if (tabs === NapaLoungeTab.EVENTS) {
-      return 'More Events';
+      return 'NAPA Events';
     }
     if (tabs === NapaLoungeTab.ACTIVE_MINTED_POSTS) {
-      return 'More Posts';
+      return 'Minted Posts';
     }
-    return 'More Earned Tokens ';
+    return 'Earned Tokens ';
   }, [tabs]);
 
   const linkHandler = useCallback(() => {
@@ -126,8 +126,8 @@ const NapaLounge: NextPage = () => {
         className={`${styles.napaLoungeContainer} asinnerContainer asinnerContainerv2`}
       >
         <h1>
-          <span className={styles.napa}>The NAPA</span>
-          <span className={styles.lounge}> Lounge</span>
+          <span className={styles.napa}>NAPA</span>
+          <span className={styles.lounge}> Society</span>
         </h1>
         <div className={`row col-12 ${styles.napaLoungeBodyContainer}`}>
           <div className={`col-xl-6 col-md-12 rspnsv_order2 ${styles.napaLoungeBody}`}>

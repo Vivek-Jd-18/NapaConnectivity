@@ -16,7 +16,8 @@
   .napaLoungeContainer {
     height: 100%;
     padding-right: 0;
-    padding-bottom: 5rem;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
     @media (max-width: 1279px) {
       padding-bottom: 15rem;
       padding-top: 2rem;
@@ -70,7 +71,7 @@
       }
     }
     .leftSideContainer {
-      --bs-gutter-x: 0rem;
+      --bs-gutter-x: .5rem;
       padding-top: 2rem;
       .boxes {
         border: 1px solid rgba(255, 255, 255, 0.15);
