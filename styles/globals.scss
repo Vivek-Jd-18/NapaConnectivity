@@ -207,9 +207,9 @@ html
   .NapaLounge_leftSideContainer__2mOTS
   .NapaLounge_boxes__JU_J_ {
   min-height: 170px !important;
-  @media screen and (max-width: 1680px) {
-    min-height: 100px !important;
-  }
+  // @media screen and (max-width: 1680px) {
+  //   min-height: 100px !important;
+  // }
   @media screen and (max-width: 1199px) {
     min-height: 70px !important;
     
@@ -794,7 +794,6 @@ input::-webkit-inner-spin-button {
 }
 .otherscroll::-webkit-scrollbar {
   width: 5px !important;
-  display: block;
 }
  
 .otherscroll::-webkit-scrollbar-track {
