@@ -91,7 +91,7 @@ const LeaderboardSection: NextPage<LeaderboardSection> = () => {
                 ))}
               </ul>
             </div>
-            <HighlightButton title="All Leaderboards" />
+            <HighlightButton title="Explore All Projects" link="" />
           </div>
         </div>
 
