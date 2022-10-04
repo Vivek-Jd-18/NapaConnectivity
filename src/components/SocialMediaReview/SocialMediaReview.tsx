@@ -51,7 +51,7 @@ const SocialMediaReview: NextPage<SocialMediaReviewProps> = ({
             <div className={styles.twoLinkInnr}>
               <Link href="#">
                 <a>
-                  In Social Media{' '}
+                  NAPA Social Media{' '}
                   <Image
                     src="/img/left_erow_ic.svg"
                     alt=""

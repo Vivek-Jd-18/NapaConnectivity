@@ -17,11 +17,11 @@ import { ToastDescription, ToastTitle } from '../../typing/toast';
 
 const trendingTabList = [
   {
-    title: 'In Social Media',
+    title: 'Social Media',
     value: 'SOCIAL',
   },
   {
-    title: 'In NFT’s',
+    title: 'NFT’s',
     value: 'NFT',
   },
 ];

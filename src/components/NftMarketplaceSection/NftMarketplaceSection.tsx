@@ -18,6 +18,10 @@ const marketPlaceTab = [
     title: 'Social Art Minted',
     value: 'Art Minted',
   },
+  {
+    title: 'NFT Rankings',
+    value: 'NFT Listings',
+  },
 ];
 
 const NftMarketplaceSection: NextPage = ({}) => {
