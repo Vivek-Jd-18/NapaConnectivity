@@ -214,7 +214,7 @@ const SocialArtSection: NextPage = () => {
                 <br></br>Pick and choose your audience and share your social art
                 with millions of members in the NAPA Society community!
               </p>
-              <HighlightButton title="NAPA Social Art" link="/socailart" />
+              <HighlightButton title="NAPA Social Art" link="/socialart" />
             </div>
 
             {/* <p className={styles.description}>
