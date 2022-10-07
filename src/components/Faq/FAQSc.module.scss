@@ -1,0 +1,26 @@
+@import '../../../styles/abstracts/mixins.module';
+@import '../../../styles/abstracts/variable.module';
+
+
+.MainContact {
+  min-height: 85vh;
+  padding-top: 112px;
+}
+.WidthFull {
+  width: 100%;
+}
+.MainTextHelp h1 {
+  font-family: 'Neuropolitical';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 76px;
+  line-height: 110%;
+  text-align: start;
+  color: #FFFFFF;
+  margin-bottom: 43px;
+}
+
+.AccodianFaq {
+  padding-left: 110px;
+  text-align: start;
+}
