@@ -148,6 +148,12 @@
     }
   }
 }
+.SmallContent {
+  p {
+    margin-bottom: 0;
+    font-size: 14px;
+  }
+}
 @media screen and (max-width:736px) {
   .twoLinkAj{
     flex-direction: column;
