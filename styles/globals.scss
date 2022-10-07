@@ -851,3 +851,48 @@ input::-webkit-inner-spin-button {
   background-color: rgba(255, 255, 255, 0.48) !important;
   outline: 1px solid rgba(255, 255, 255, 0.48) !important;
 }
+
+
+.AccodianFaq .accordion-header .accordion-button::after {
+  display: none;
+}
+.acoordin_btn_ic[aria-expanded="true"] .img_plus{
+  display: none !important;
+}
+.acoordin_btn_ic[aria-expanded="false"] .minus_img{
+  display: none !important;
+}
+.accodian_img_bx>div>span {
+  margin-right: 20px !important;
+}
+.AccodianFaq .accordion-item {
+  background: transparent;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid #91A5A6;
+  border-radius: 0 !important;
+}
+.AccodianFaq .accordion-item .acoordin_btn_ic {
+  outline: none;
+  box-shadow: none;
+  background: transparent !important;
+  font-family: 'Neuropolitical';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 110%;
+  color: #FFFFFF;
+}
+.AccodianFaq .acodian_in_p p {
+  font-family: 'Avenir';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 140%;
+  color: #FFFFFF;
+  margin-bottom: 22px;
+  text-align: start;
+  max-width: 855px;
+  padding-left: 36px;
+}
