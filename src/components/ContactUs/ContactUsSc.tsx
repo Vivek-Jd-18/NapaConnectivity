@@ -42,12 +42,11 @@ export default function ContactUsSc() {
                 <span>Email</span>
                 <h5>info@napasociety.io</h5>
                 <div className={styles.SocialLinks}>
-                  <a><Image src="/img/twitter_icon.png" alt="" width={24} height={24} /></a>
-                  <a><Image src="/img/discord_icon.png" alt="" width={24} height={24} /></a>
-                  <a><Image src="/img/github_icon.png" alt="" width={24} height={24} /></a>
-                  <a className={styles.lastIcon}><Image src="/img/medium_icon.png" alt="" width={24} height={24} /></a>
+                  <Link href="#"><a><Image src="/img/twitter_icon.png" alt="" width={24} height={24} /></a></Link>
+                  <Link href="#"><a><Image src="/img/discord_icon.png" alt="" width={24} height={24} /></a></Link>
+                  <Link href="#"><a><Image src="/img/github_icon.png" alt="" width={24} height={24} /></a></Link>
+                  <Link href="#"><a className={styles.lastIcon}><Image src="/img/medium_icon.png" alt="" width={24} height={24} /></a></Link>
                 </div>
-                 
               </div>
             </div>
           </div>

@@ -17,10 +17,14 @@
   line-height: 110%;
   text-align: start;
   color: #FFFFFF;
-  margin-bottom: 43px;
+  margin-bottom: 60px;
 }
 
-.AccodianFaq {
-  padding-left: 110px;
-  text-align: start;
+
+@media screen and (max-width:736px) {
+  .MainTextHelp h1 {
+    margin-bottom: 35px;
+    font-size: 32px;
+    line-height: 110%;
+  }
 }
