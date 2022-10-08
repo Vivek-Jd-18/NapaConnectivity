@@ -151,6 +151,10 @@
     .footerBottomText {
       cursor: pointer;
       color: $white;
+      a {
+        text-decoration: none;
+        color: $white;
+      }
     }
     .footerListItem {
       @include flex-start;
@@ -592,7 +596,6 @@
   .container {
     .footerContainer {
       .footerMobileIconsContainer {
-
         .footerMobileIconItem {
           padding: 0px 0.5rem !important;
           img {

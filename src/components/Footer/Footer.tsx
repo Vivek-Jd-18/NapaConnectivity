@@ -162,10 +162,14 @@ const Footer: NextPage<FooterProps> = ({ footerIconShow }) => {
 
             <div>
               <ul className={styles.footerListItem}>
-                <li className={styles.footerBottomText}>FAQ</li>
-                <li className={styles.footerBottomText}>Privacy Policy</li>
                 <li className={styles.footerBottomText}>
-                  Terms and Conditions
+                  <a href="/faq">FAQ</a>
+                </li>
+                <li className={styles.footerBottomText}>
+                  <a href="/privacy-policy">Privacy Policy</a>
+                </li>
+                <li className={styles.footerBottomText}>
+                  <a href="/terms-conditions">Terms and Conditions</a>
                 </li>
               </ul>
             </div>
