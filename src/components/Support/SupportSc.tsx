@@ -42,7 +42,26 @@ export default function SupportSc() {
                     <textarea></textarea>
                   </div>
                   <div className={styles.SendBtnn}>
-                    <button>Send</button>
+                    <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Send</button>
+                    <div className="modal fade" id="exampleModal"  aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div className="modal-dialog">
+                        <div className="modal-content modal-contentv2">
+                          <div className="modal-header">
+                            <img src='img/popup_icon.png'width={120} height={120} alt=''/>
+                            <h1 className="modal-title fs-5" id="exampleModalLabel">Thank for your message!</h1>
+                            <p className='ptag'>You will be contacted shortly.</p>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          {/* <div className="modal-body">
+                            ...
+                          </div> */}
+                          {/* <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" className="btn btn-primary">Save changes</button>
+                          </div> */}
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -188,7 +207,7 @@ export default function SupportSc() {
                   </div>
                   <div className={styles.LastMessageInpt}>
                     <input type="text" placeholder="Message.." />
-                    <button>Send</button>
+                    <button >Send</button>
                   </div>
                 </div>
               </div>
