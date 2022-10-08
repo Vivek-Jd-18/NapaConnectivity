@@ -89,17 +89,18 @@
       text-decoration: none;
       display: flex;
       align-items: center;
+      margin-left: 24px;
       >span{
         margin-left: 4px !important;
       }
-      
+      @media screen and (max-width: 736px) {
+        margin-left: 0px;
+        margin-bottom: 5px;
+      }
     }
-    &:first-child{
-      margin-left: 24px;
-    }
-    &:last-child{
-      margin-left: 32px;
-    }
+    // &:last-child{
+    //   margin-left: 32px;
+    // }
   }
 }
 

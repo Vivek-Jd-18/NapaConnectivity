@@ -2,7 +2,6 @@ import React from 'react'
 import styles from './PrivacyPolicySc.module.scss';
 import Footer from '../Footer/Footer';
 import Container from '../../Layout/Container/Container';
-import Image from 'next/image';
 
 export default function PrivacyPolicySc() {
   return (
