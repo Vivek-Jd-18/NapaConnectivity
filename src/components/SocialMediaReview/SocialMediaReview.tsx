@@ -8,6 +8,7 @@ import { useState } from 'react';
 type SocialMediaReviewProps = {
   description: string;
   icon: string;
+  articleBody: string;
   date: string;
   username: string;
   onChatClicked: () => void;
@@ -15,6 +16,7 @@ type SocialMediaReviewProps = {
 
 const SocialMediaReview: NextPage<SocialMediaReviewProps> = ({
   description,
+  articleBody,
   icon,
   date,
   username,
@@ -100,11 +102,15 @@ const SocialMediaReview: NextPage<SocialMediaReviewProps> = ({
         )}
       </div>
       <div className={styles.SmallContent}>
-        <p>{description.split('\n', 1)[0]}</p>
+        <p>
+          {!open &&
+            articleBody.substring(0, 400) +
+              (articleBody.length > 400 ? '...' : '')}
+        </p>
       </div>
       {open && (
         <div className={styles.allPeragraphMain}>
-          {description.split('\n', 1)[1]}
+          {articleBody}
           <div className={styles.ulPerent}>
             <ul>
               <li>
