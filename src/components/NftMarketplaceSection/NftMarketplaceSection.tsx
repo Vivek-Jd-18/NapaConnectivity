@@ -33,8 +33,8 @@ const NftMarketplaceSection: NextPage = ({}) => {
       <Container className={`${styles.nftContainer} asinnerContainer`}>
         <h2 className={styles.nft}>Marketplace</h2>
         <p className={styles.description}>
-          Buy, sell and trade the most sought after professional and social art
-          NFT’s with your NAPA token rewards today!
+          Buy, sell and trade the most sought after professional NFTs and social art SFTs
+          with your NAPA token rewards today!
         </p>
         <div className={styles.tabsContainer}>
           <div className={styles.tabsInnerContainer}>
