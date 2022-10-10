@@ -12,20 +12,20 @@ export default function LeaderboardsSc() {
     
     <div className={`${styles.container}`}>
       <Container className={`${styles.settingsContainer} asinnerContainer`}>
-        <h1 className={styles.settings}>Leaderboards</h1>
+        <h1 className={styles.settings}>SFT Leaders</h1>
         <div className={styles.TabLinks}>
             <ul>
                 <li>
-                    <button className={styles.active}>Most Liked Post</button>
+                    <button className={styles.active}>Most Token Rewards</button>
                 </li>
                 <li>
-                    <button>Most Token Rewards</button>
+                    <button>Most Liked Posts</button>
                 </li>
                 <li>
                     <button>Most Discussed</button>
                 </li>
                 <li>
-                    <button>Social Media Minted NFT</button>
+                    <button>Hot Sprint SFTs</button>
                 </li>
             </ul>
         </div>

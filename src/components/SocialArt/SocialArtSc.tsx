@@ -23,7 +23,7 @@ export default function SocialArtSc() {
           <Tab eventKey="home" title="NAPA Society Posts">
             <FeedTab />
           </Tab>
-          <Tab eventKey="profile" title="My Minted Posts">
+          <Tab eventKey="profile" title="My SFTs">
             <MintedPostsTab />
             <div className="tab-content" id="nav-tabContent">
               <div className="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
