@@ -3,6 +3,7 @@ import styles from './FAQSc.module.scss';
 import Footer from '../Footer/Footer';
 import Container from '../../Layout/Container/Container';
 import Image from 'next/image';
+import Link from 'next/link';
 
 
 export default function FAQSc() {
@@ -16,6 +17,9 @@ export default function FAQSc() {
       >
         <div className={styles.MainContact}>
           <div className={styles.MainTextHelp}>
+            <div className={styles.StaylinkFrst}>
+              <Link href="/help-center"><a> <Image src="/img/arrow_icon.svg" alt="" width="30px" height="16px"/>Back</a></Link>
+            </div>
             <h1>FAQ</h1>
             <div className="AccodianFaq">
               <div className="accordion" id="accordionExample">

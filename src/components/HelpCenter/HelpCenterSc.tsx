@@ -17,10 +17,10 @@ export default function HelpCenterSc() {
         <div className={styles.MainContact}>
           <div className={styles.MainTextHelp}>
            <h1>Hi, How Can We Help?</h1>
-            <div className={styles.InputInHelp}>
+            {/* <div className={styles.InputInHelp}>
               <Image src="/img/search_ic.png" alt="" width={18} height={18} />
               <input type="text" placeholder='Search..' />
-            </div>
+            </div> */}
             <div className={styles.ThreeLinks}>
                 <Link href="/support">
                   <a className={styles.InrAThre}>

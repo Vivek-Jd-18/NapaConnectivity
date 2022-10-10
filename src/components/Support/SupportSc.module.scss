@@ -3,7 +3,7 @@
 
 
 .MainContact {
-  min-height: 100vh;
+  // min-height: 100vh;
   padding-top: 112px;
 }
 .WidthFull {
@@ -27,7 +27,31 @@
   padding-bottom: 76px;
 }
 
-
+.StaylinkFrst{
+  padding-top: 0px !important;
+  display: flex;
+  text-align: start;
+  a{
+    font-size: 16px;
+    line-height: 140%;
+    color: #FFFFFF;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+    &:hover {
+      color: #16E6EF;
+      >span {
+        img {filter: invert(1%) sepia(162%) saturate(1057%) hue-rotate(143deg) brightness(100%) contrast(85%)}
+      }
+    }
+    >span {
+      margin-right: 7px !important;
+    }
+    @media screen and (max-width:736px) {margin-bottom: 5px !important;}
+  }
+}
 .InputContact {
   display: flex;
   align-items: flex-start;
