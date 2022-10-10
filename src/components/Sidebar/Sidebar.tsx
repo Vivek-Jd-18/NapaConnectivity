@@ -63,7 +63,7 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu, account }) => {
             }}
           >
             <a className={`${pathname === '/nftmarketplace' && styles.active}`}>
-              NFT Marketplace
+              Marketplace
             </a>
           </div>
           <div
@@ -96,7 +96,7 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu, account }) => {
             }}
           >
             <a className={`${pathname === '/leaderboards' && styles.active}`}>
-              Leaderboards
+              SFT Leaders
             </a>
           </div>
           <div
