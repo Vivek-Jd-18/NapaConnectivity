@@ -16,6 +16,9 @@ export default function ContactUsSc() {
       >
         <div className={styles.MainContact}>
           <div className={styles.MainTextHelp}>
+            <div className={styles.StaylinkFrst}>
+              <Link href="/help-center"><a> <Image src="/img/arrow_icon.svg" alt="" width="30px" height="16px"/>Back</a></Link>
+            </div>
            <h1>Contact Us</h1>
             <div className={styles.ContactUsMain}>
               <div className={styles.LeftContact}>

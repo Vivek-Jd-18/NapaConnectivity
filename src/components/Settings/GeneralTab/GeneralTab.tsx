@@ -22,6 +22,7 @@ import SocialMediaButton from '../../SocialMediaButton/SocialMediaButton';
 import Timezone from '../../TimezoneSelect/TimezoneSelect';
 import { currencies, languages } from '../../../constants/settings.constants';
 import { ToastDescription, ToastTitle } from '../../../typing/toast';
+import Image from 'next/image';
 
 const GeneralTab: NextPage = () => {
   const [name, setName] = useState('');
@@ -164,10 +165,51 @@ const GeneralTab: NextPage = () => {
     profileId,
     account,
   ]);
+  ////////
+  const [selectedFile, setSelectedFile] = useState()
+  const [preview, setPreview] = useState('')
+
+  // create a preview as a side effect, whenever selected file is changed
+  useEffect(() => {
+      if (!selectedFile) {
+          setPreview('')
+          return
+      }
+
+      const objectUrl = URL.createObjectURL(selectedFile)
+      setPreview(objectUrl)
+
+      // free memory when ever this component is unmounted
+      return () => URL.revokeObjectURL(objectUrl)
+  }, [selectedFile])
+
+  const onSelectFile = (e:any) => {
+      if (!e.target.files || e.target.files.length === 0) {
+          setSelectedFile(undefined)
+          return
+      }
+
+      // I've kept this example simple by using the first image instead of multiple
+      setSelectedFile(e.target.files[0])
+  }
 
   return (
     <div className={`row col-12 ${styles.leftSideContainer}`}>
-      <div className={`col-xl-6`}>
+      <div className={styles.Avtar}>
+        <div className={styles.AvtarBox}>
+          <div className={styles.AvarCircle} />
+          <input type='file' onChange={onSelectFile} />
+          {selectedFile &&  <img src={preview} /> }
+        </div>
+        <div className={styles.AvtarAction}>
+          <div className={styles.ChangeBtn}>
+            Change
+            <input type='file' onChange={onSelectFile} />
+          </div> 
+          <button className={styles.RemoveBtn}>Remove</button>
+        </div> 
+      </div>
+      <div className={`col-xl-6 padng_none`}>
         <div className={styles.formContainer}>
           <Input
             value={name}
@@ -221,7 +263,7 @@ const GeneralTab: NextPage = () => {
         </div>
       </div>
       <div className={`col-xl-6 ${styles.rightSideContainer}`}>
-        <div className={styles.firstChild}>
+        <div className={styles.firstChild} data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
           <h1 className={styles.napa}>NAPA Social Media</h1>
           <SocialMediaButton
             className={styles.accountBtn}
@@ -229,6 +271,32 @@ const GeneralTab: NextPage = () => {
             textColor="#16E6EF"
             icon={AccountNapaLogoIcon}
           />
+        </div>
+        <div className="collapse" id="collapseExample">
+          <div className={styles.SocialNapaForm}>
+            <div className={styles.HadFormNapa}>
+              <h5>Log In to NAPA Social Media</h5>
+              <button data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><Image src="/img/exit_icon_form.svg" alt="" width={24} height={24} /></button>
+            </div>
+            <Input
+              value={"dwight.holland@gmail.com"}
+              type="text"
+              placeholder="Username"
+              label="Username"
+              onChange={(e) => setName(e.target.value)}
+            />
+             <Input
+              value={". . . . . . . ."}
+              type="text"
+              placeholder="Username"
+              label="Password"
+              onChange={(e) => setName(e.target.value)}
+            />
+            <button
+            className={styles.LogInButton} >
+            Log In
+          </button>
+          </div>
         </div>
         <div className={styles.secondChild}>
           <h1 className={styles.social}>Social Connections</h1>

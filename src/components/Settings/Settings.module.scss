@@ -13,7 +13,7 @@
     .settings {
       padding-top: 9rem;
       color: $white;
-      @include font-6xl-neuropolitical-normal;
+      @include font-3xl-neuropolitical-normal;
     }
     .tabsContainer {
       @include flex-column-start;
@@ -33,6 +33,8 @@
       }
     }
     .leftSideContainer {
+      margin: 0;
+     
       .formContainer {
         width: 100%;
         padding-top: 2rem;
@@ -178,6 +180,36 @@
       }
     }
   }
+  @media (min-width: 736px) {
+    .settings {
+      font-size: 3.625rem !important;
+    }
+    
+    
+  }
+  @media (max-width: 736px) {
+    .accountBtn {
+      padding: 12px;
+    }
+    .accountBtn {
+      span {
+        font-size: 16px !important;
+        padding-left: 12px;
+      }
+    } 
+    .twitterBtn {
+      span {
+        font-size: 16px !important;
+        padding-left: 12px;
+      }
+    }
+    .facebookBtn {
+      span {
+        font-size: 16px !important;
+        padding-left: 12px;
+      }
+    }
+  }
 }
 .switch {
   position: relative;
@@ -185,7 +217,6 @@
   width: 60px;
   height: 34px;
 }
-
 .switch input {
   opacity: 0;
   width: 0;
@@ -237,4 +268,191 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+.SocialNapaForm {
+  background: #91a5a61a;
+  margin-top: 32px;
+  padding: 32px 40px;
+}
+.HadFormNapa {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.HadFormNapa h5 {
+  font-family: 'Avenir';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 140%;
+  color: #FFFFFF;
+}
+.HadFormNapa {
+  margin-bottom: 27px;
+}
+.HadFormNapa button {
+  background: transparent;
+  box-shadow: none;
+  border: none;
+  outline: none;
+}
+.LogInButton {
+  font-family: 'Neuropolitical';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 110%;
+  color: #16E6EF;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  outline: none;
+}
+
+@media screen and (max-width: 736px) {
+  .SocialNapaForm {
+    margin-top: 20px;
+    padding: 27px 20px;
+  }
+  .HadFormNapa {
+    margin-bottom: 22px;
+  }
+  .LogInButton {
+    font-size: 18px;
+    line-height: 110%;
+  }
+  .HadFormNapa h5 {
+    font-size: 18px;
+    line-height: 140%;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .SocialNapaForm {
+    margin-top: 16px;
+    padding: 12px;
+  }
+  .HadFormNapa {
+    margin-bottom: 10px;
+  }
+  .LogInButton {
+    font-size: 18px;
+    line-height: 110%;
+  }
+  .HadFormNapa h5 {
+    font-size: 18px;
+    line-height: 140%;
+  }
+}
+.Avtar {
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+  .AvtarBox {
+    position: relative;
+    margin-right: 48px;
+    .AvarCircle {
+      height: 140px;
+      width: 140px;
+      background: #25494b;
+      border-radius: 50%;
+    }
+    input {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      z-index: 1;
+      opacity: 0;
+    }
+    img {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 140px;
+      width: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  }
+  .AvtarAction {
+    display: flex;
+    align-items: center;
+    .ChangeBtn {
+      position: relative;
+      @include font-3xl-neuropolitical-normal;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 110%;
+      color: #16E6EF;
+      margin-right: 54px;
+      input {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 1;
+        opacity: 0;
+      }
+    }
+    .RemoveBtn {
+      @include font-3xl-neuropolitical-normal;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 110%;
+      color: #91A5A6;
+      border: none !important;
+      background: transparent !important;
+      cursor: pointer;
+    }
+  }
+  @media screen and (max-width: 736px) {
+    .AvtarBox {
+      position: relative;
+      margin-right: 32px;
+      .AvarCircle {
+        height: 100px;
+        width: 100px;
+      }
+      img {
+        height: 100px;
+        width: 100px;
+      }
+    }
+    .AvtarAction {
+      .ChangeBtn {
+        font-size: 14px;
+        margin-right: 32px;
+      }
+      .RemoveBtn {
+        font-size: 14px;
+      }
+    }
+  }
+  @media screen and (max-width: 360px) {
+    .AvtarBox {
+      position: relative;
+      margin-right: 15px;
+      .AvarCircle {
+        height: 80px;
+        width: 80px;
+      }
+      img {
+        height: 80px;
+        width: 80px;
+      }
+    }
+    .AvtarAction {
+      .ChangeBtn {
+        font-size: 14px;
+        margin-right: 15px;
+      }
+      .RemoveBtn {
+        font-size: 14px;
+      }
+    }
+  }
 }

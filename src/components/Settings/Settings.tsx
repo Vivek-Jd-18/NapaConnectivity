@@ -14,7 +14,7 @@ const SettingsComponent: NextPage = () => {
   return (
     <div className={styles.container}>
       <Container className={styles.settingsContainer}>
-        <h1 className={styles.settings}>User Settings</h1>
+        <h1 className={styles.settings}>Settings</h1>
         <div className={styles.tabsContainer}>
           <div className={styles.tabsInnerContainer}>
             <ul className={styles.tab}>

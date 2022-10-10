@@ -3,6 +3,7 @@ import styles from './SupportSc.module.scss';
 import Footer from '../Footer/Footer';
 import Container from '../../Layout/Container/Container';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function SupportSc() {
   const [active, setActive] = React.useState(false);
@@ -25,6 +26,9 @@ export default function SupportSc() {
         // }
         >
           <div className={styles.MainTextHelp}>
+            <div className={styles.StaylinkFrst}>
+              <Link href="/help-center"><a> <Image src="/img/arrow_icon.svg" alt="" width="30px" height="16px"/>Back</a></Link>
+            </div>
             <h1>Support</h1>
             <div className={styles.ContactUsMain}>
               <div className={styles.LeftContact}>

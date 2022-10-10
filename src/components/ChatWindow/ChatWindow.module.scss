@@ -5,6 +5,9 @@
   height: 405px !important;
   position: relative;
   overflow: auto;
+  @media screen and (min-width: 1600px) {
+    height: 650px !important;
+  }
 
   @media (min-width: 1336px) OR (min-height: 625px) {
     height: 19rem;
