@@ -227,18 +227,24 @@ const TrendingSection: NextPage<TrendingSectionProps> = ({ socket }) => {
                 trendingList.length &&
                 trendingList
                   .filter(({ articleType }) => articleType === tab)
-                  .map(({ articleTitle, author, createdAt }, index) => {
-                    return (
-                      <SocialMediaReview
-                        key={`social-media-${index}`}
-                        description={articleTitle}
-                        date={createdAt}
-                        icon={HowardAvatar}
-                        username={author}
-                        onChatClicked={() => setChatPerson(articleTitle)}
-                      />
-                    );
-                  })}
+                  .map(
+                    (
+                      { articleTitle, author, createdAt, articleBody },
+                      index
+                    ) => {
+                      return (
+                        <SocialMediaReview
+                          key={`social-media-${index}`}
+                          description={articleTitle}
+                          articleBody={articleBody}
+                          date={createdAt}
+                          icon={HowardAvatar}
+                          username={author}
+                          onChatClicked={() => setChatPerson(articleTitle)}
+                        />
+                      );
+                    }
+                  )}
             </div>
           </div>
           <div className={`col-xl-5 col-md-12 ${styles.rightSideContainer}`}>

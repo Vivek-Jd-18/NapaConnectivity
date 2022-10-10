@@ -151,6 +151,10 @@
     .footerBottomText {
       cursor: pointer;
       color: $white;
+      a {
+        text-decoration: none;
+        color: $white;
+      }
     }
     .footerListItem {
       @include flex-start;
@@ -261,7 +265,7 @@
         }
         li {
           @include font-xs-avenir-regular;
-          padding: 0 0.5rem 0 0.5rem;
+          padding: 0 0.5rem 0 16px !important;
         }
       }
       .footerBottomText {
@@ -592,7 +596,6 @@
   .container {
     .footerContainer {
       .footerMobileIconsContainer {
-
         .footerMobileIconItem {
           padding: 0px 0.5rem !important;
           img {
