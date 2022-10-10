@@ -23,7 +23,6 @@ import Timezone from '../../TimezoneSelect/TimezoneSelect';
 import { currencies, languages } from '../../../constants/settings.constants';
 import { ToastDescription, ToastTitle } from '../../../typing/toast';
 import Image from 'next/image';
-import Button from '@/components/Button/Button';
 
 const GeneralTab: NextPage = () => {
   const [name, setName] = useState('');
@@ -264,7 +263,7 @@ const GeneralTab: NextPage = () => {
         </div>
       </div>
       <div className={`col-xl-6 ${styles.rightSideContainer}`}>
-        <div className={styles.firstChild} data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-bs-expanded="false" aria-bs-controls="collapseExample">
+        <div className={styles.firstChild} data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
           <h1 className={styles.napa}>NAPA Social Media</h1>
           <SocialMediaButton
             className={styles.accountBtn}
@@ -277,7 +276,7 @@ const GeneralTab: NextPage = () => {
           <div className={styles.SocialNapaForm}>
             <div className={styles.HadFormNapa}>
               <h5>Log In to NAPA Social Media</h5>
-              <button data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-bs-expanded="false" aria-bs-controls="collapseExample"><Image src="/img/exit_icon_form.svg" alt="" width={24} height={24} /></button>
+              <button data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><Image src="/img/exit_icon_form.svg" alt="" width={24} height={24} /></button>
             </div>
             <Input
               value={"dwight.holland@gmail.com"}
