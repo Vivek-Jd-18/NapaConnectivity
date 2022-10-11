@@ -564,6 +564,14 @@ input::-webkit-inner-spin-button {
 .mb-30 {
   margin-bottom: 30px !important;
 }
+@media screen and (max-width: 1280px) {
+  .default_tab_wt_scroll {
+    overflow-x: auto;
+    white-space: nowrap;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+  }
+}
 @media screen and (max-width: 736px) {
   .default_tab {
     .nav-item {
@@ -729,6 +737,9 @@ input::-webkit-inner-spin-button {
   .cntrslct__menu-list {
     padding: 0;
   }
+}
+@media screen and (max-width: 1200px) {
+  .slctrspnsv {margin-right: 0 !important;}
 }
 @media screen and (max-width: 736px) {
   .select_main {
@@ -1041,5 +1052,13 @@ input::-webkit-inner-spin-button {
   .ptag{
     font-weight: 400;
     font-size: 16px;
+  }
+}
+@media screen and (max-width:1200px) {
+  .select_main{
+    display: none !important;
+  }
+  .MobileDatpckertips .select_main{
+    display: block !important;
   }
 }
