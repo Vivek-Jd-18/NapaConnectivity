@@ -564,6 +564,14 @@ input::-webkit-inner-spin-button {
 .mb-30 {
   margin-bottom: 30px !important;
 }
+@media screen and (max-width: 1280px) {
+  .default_tab_wt_scroll {
+    overflow-x: auto;
+    white-space: nowrap;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+  }
+}
 @media screen and (max-width: 736px) {
   .default_tab {
     .nav-item {
@@ -729,6 +737,9 @@ input::-webkit-inner-spin-button {
   .cntrslct__menu-list {
     padding: 0;
   }
+}
+@media screen and (max-width: 1200px) {
+  .slctrspnsv {margin-right: 0 !important;}
 }
 @media screen and (max-width: 736px) {
   .select_main {
@@ -1039,4 +1050,62 @@ input::-webkit-inner-spin-button {
 }
 .section.no-overflow .fp-overflow {
   overflow-y: visible;
+}
+@media screen and (max-width:1200px) {
+  .select_main{
+    display: none !important;
+  }
+  .MobileDatpckertips .select_main{
+    display: block !important;
+  }
+}
+
+
+
+
+.poolt_teb_prnt{
+  background: #91a5a61a;
+  border: none;
+  max-width: 320px;
+  width: 100%;
+  margin-bottom: 0 !important;
+  li{
+    button{
+      font-family: 'Avenir';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 140%;
+      text-align: center;
+      color: #91A5A6 !important;
+      border-radius: 0 !important;
+      outline: none !important;
+      box-shadow: none !important;
+      border: 1px solid #1d3031 !important;
+      width: 160px;
+    }
+    button[aria-selected="true"]{
+      color: #FFFFFF !important;
+      font-weight: 500 !important;
+      border: 1px solid #91a5a61a !important;
+      background: #102324 !important;
+      border-radius: 0 !important;
+      outline: none !important;
+    }
+  }  
+}
+.btvn_bx_ab{
+  display: flex;
+  justify-content: space-between;
+  button{
+    background: url(../public/assets/images/more_icon_btn_bg.png) no-repeat center;
+    background-size: cover;
+    height: 24px !important;
+    width: 24px !important;
+    border: none;
+  }
+}
+.select_main_ab{
+  margin-right: auto !important;
+  margin-left: 60px;
 }
