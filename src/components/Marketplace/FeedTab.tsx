@@ -331,7 +331,7 @@ export default function FeedTab() {
                                             <p>@HowardCopeland</p>
                                         </div>
                                         <div className={styles.downCont}>
-                                            <h3>Raphael's hallucination</h3>
+                                            <h3>Raphaels hallucination</h3>
                                             <div className={styles.flexPernt}>
                                                 <div className={styles.currentBit}>
                                                     <h5>Current Bit</h5>
