@@ -50,7 +50,7 @@ const NftMarketplaceSection: NextPage = ({}) => {
               ))}
             </ul>
           </div>
-          <HighlightButton title="Explore All Projects" link="" />
+          <HighlightButton title="Explore All Projects" link="/marketplace" />
         </div>
         <div id="sliderComponent">
           <SliderComponent centerMode={true}>
