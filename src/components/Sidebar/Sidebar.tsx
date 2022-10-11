@@ -58,11 +58,11 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu, account }) => {
           <div
             className={styles.link}
             onClick={() => {
-              push('/nftmarketplace');
+              push('/marketplace');
               onClick();
             }}
           >
-            <a className={`${pathname === '/nftmarketplace' && styles.active}`}>
+            <a className={`${pathname === '/marketplace' && styles.active}`}>
               Marketplace
             </a>
           </div>
