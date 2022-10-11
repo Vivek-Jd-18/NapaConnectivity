@@ -4,7 +4,6 @@ import 'bootstrap-daterangepicker/daterangepicker.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import moment from 'moment';
 import styles from './ValuatorTabTwo.module.scss';
-import Link from 'next/link';
 import 'bootstrap-daterangepicker/daterangepicker.css';
 import DateRangePicker from 'react-bootstrap-daterangepicker';
 

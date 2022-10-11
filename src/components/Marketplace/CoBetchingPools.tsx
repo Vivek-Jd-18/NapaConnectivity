@@ -1,17 +1,10 @@
 import React from 'react';
-import Image from 'next/image';
 import Select from 'react-select';
 import 'bootstrap-daterangepicker/daterangepicker.css';
 import DateRangePicker from 'react-bootstrap-daterangepicker';
 import 'bootstrap/dist/css/bootstrap.css';
 import moment from 'moment';
 import styles from './CoBetchingPools.module.scss';
-import Link from 'next/link';
-
-import Tab from 'react-bootstrap/Tab';
-import Tabs from 'react-bootstrap/Tabs';
-import FeedTab from './FeedTab';
-import CoBatchingPoolsCard from '../CoBatchingCard/CoBatchingCard';
 import CoBatchingPoolsPool from '../CoBatchingPool/CoBatchingPool';
 import CoBatchingPoolTwo from '../CoBatchingPoolTwo/CoBatchingPoolTwo';
 import CoBatchingPoolThree from '../CoBatchingPoolThree/CoBatchingPoolThree';
@@ -25,10 +18,10 @@ export default function CoBetchingPools() {
         { value: '3', label: '100%' },
       ];
    
-      const [active, setActive] = React.useState(false);
-      const handleClick = () => {
-        setActive(!active);
-      };
+    //   const [active, setActive] = React.useState(false);
+    //   const handleClick = () => {
+    //     setActive(!active);
+    //   };
   return (
     <>
        
