@@ -6,6 +6,7 @@ import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import FeedTab from './FeedTab';
 import CoBetchingPools from './CoBetchingPools';
+import ValuatorTabTwo from './ValuatorTabTwo';
 
 export default function MarketplaceSc() {
 
@@ -28,7 +29,9 @@ export default function MarketplaceSc() {
               Trade SFTs
             </Tab>
             <Tab eventKey="profile" title="Valuator">
-              Valuator
+              <div className={`${styles.ourlyPerntAj}`}>
+                <ValuatorTabTwo />
+              </div>
             </Tab>
             <Tab eventKey="Swapping" title="Swapping">
               Swapping
