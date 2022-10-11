@@ -19,10 +19,13 @@ export default function MarketplaceSc() {
             id="uncontrolled-tab-example"
             className="default_tab mb-30 default_tab_wt_scroll"
           >
-            <Tab eventKey="home" title="Feed">
+            <Tab eventKey="home" title="Trade NFTs">
             <div className={`${styles.ourlyPerntAj}`}>
             <FeedTab />
             </div>
+            </Tab>
+            <Tab eventKey="Trade SFTs" title="Trade SFTs">
+              Trade SFTs
             </Tab>
             <Tab eventKey="profile" title="Valuator">
               Valuator
@@ -34,6 +37,9 @@ export default function MarketplaceSc() {
               <CoBetchingPools />
             </Tab>
             <Tab eventKey="MyNFTs" title="My NFTs">
+              My NFTs
+            </Tab>
+            <Tab eventKey="MySFTs" title="My SFTs">
               My NFTs
             </Tab>
             <Tab eventKey="MyFavorites" title="My Favorites">
