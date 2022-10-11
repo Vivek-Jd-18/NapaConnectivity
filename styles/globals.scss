@@ -1112,3 +1112,8 @@ input::-webkit-inner-spin-button {
   margin-right: auto !important;
   margin-left: 60px;
 }
+@media screen and (max-width: 520px) {
+  .datepickerBoxaj_margin{
+    margin-right: 25px !important;
+  }
+}
