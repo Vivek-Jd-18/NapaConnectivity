@@ -5,6 +5,7 @@ import React from 'react';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import FeedTab from './FeedTab';
+import CoBetchingPools from './CoBetchingPools';
 
 export default function MarketplaceSc() {
 
@@ -30,7 +31,7 @@ export default function MarketplaceSc() {
               Swapping
             </Tab>
             <Tab eventKey="Co-BatchingPools" title="Co-Batching Pools">
-              Co-Batching Pools
+              <CoBetchingPools />
             </Tab>
             <Tab eventKey="MyNFTs" title="My NFTs">
               My NFTs
