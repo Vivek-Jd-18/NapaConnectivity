@@ -2,11 +2,11 @@ import React from 'react';
 import Image from 'next/image';
 import Select from 'react-select';
 import 'bootstrap-daterangepicker/daterangepicker.css';
-import DateRangePicker from 'react-bootstrap-daterangepicker';
+// import DateRangePicker from 'react-bootstrap-daterangepicker';
 import 'bootstrap/dist/css/bootstrap.css';
-import moment from 'moment';
+// import moment from 'moment';
 import styles from './Swapping.module.scss';
-import Link from 'next/link';
+// import Link from 'next/link';
 
 export default function Swapping() {
     const options = [
@@ -170,7 +170,7 @@ export default function Swapping() {
                                 className="expolr"
                             />
                             <div className={styles.ExpolatinText}>
-                                <h4>Raphael's Hallucination</h4>
+                                <h4>Raphaels Hallucination</h4>
                                 <div className={styles.ExpolatinNapaLogo}>
                                     <Image src='/img/expoyr_tex.svg' alt='' height="10px" width="13px" className='' />
                                     <span>0.34 NAPA</span>
