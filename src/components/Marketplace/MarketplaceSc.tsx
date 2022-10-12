@@ -9,6 +9,8 @@ import CoBetchingPools from './CoBetchingPools';
 import ValuatorTabTwo from './ValuatorTabTwo';
 import Swapping from './Swapping';
 import MyNFTs from './MyNFTs';
+import MyFavorites from './MyFavorites';
+import MyWatchlist from './MyWatchlist';
 
 export default function MarketplaceSc() {
 
@@ -24,7 +26,7 @@ export default function MarketplaceSc() {
           >
             <Tab eventKey="home" title="Feed">
             <div className={`${styles.ourlyPerntAj}`}>
-            <FeedTab />
+              <FeedTab />
             </div>
             </Tab>
             <Tab eventKey="profile" title="Valuator">
@@ -39,13 +41,15 @@ export default function MarketplaceSc() {
               <CoBetchingPools />
             </Tab>
             <Tab eventKey="MyNFTs" title="My NFTs">
-              <MyNFTs />
+              <div className={`${styles.ourlyPerntAj}`}>
+                <MyNFTs />
+              </div>
             </Tab>
             <Tab eventKey="MyFavorites" title="My Favorites">
-              My Favorites
+              <MyFavorites />
             </Tab>
             <Tab eventKey="MyWatchlist" title="My Watchlist">
-              My Watchlist
+              <MyWatchlist />
             </Tab>
           </Tabs>
         </Container>

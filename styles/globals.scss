@@ -1114,3 +1114,12 @@ input::-webkit-inner-spin-button {
     margin-right: 25px !important;
   }
 }
+
+@media screen and (max-width:1440px) {
+  .select_main_NFT {
+    .select_pernt {
+      margin-right: 12px;
+    }
+  }
+  
+}
