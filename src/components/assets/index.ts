@@ -20,6 +20,7 @@ export const DiscordIcon = '/assets/images/discord.svg';
 export const MediumIcon = '/assets/images/medium.svg';
 export const ExitIcon = '/assets/images/exit-icon.svg';
 export const WalletIcon = '/assets/images/wallet-icon.svg';
+export const WalletIconTwo = '/assets/images/wallet-icontwo.svg';
 export const ProfileIcon = '/assets/images/user-icon.svg';
 export const FooterLogoIcon =
   'https://napa-website.s3.ap-southeast-1.amazonaws.com/napa-logo.svg';
