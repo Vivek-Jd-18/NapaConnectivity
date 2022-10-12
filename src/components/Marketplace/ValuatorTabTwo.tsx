@@ -45,7 +45,7 @@ export default function FeedTab() {
                                 <div className={styles.diplyBlock}>
                                     <div className={styles.flexPernt}>
                                         <div className={styles.currentBit}>
-                                            <h5>Current Bit</h5>
+                                            <h5>Current Bid</h5>
                                             <div className={styles.txtimgFlex}>
                                                 <Image
                                                     src="/img/napa_ic.svg"
@@ -80,7 +80,7 @@ export default function FeedTab() {
                         <div className={styles.diplyNone}>
                             <div className={styles.flexPernt}>
                                 <div className={styles.currentBit}>
-                                    <h5>Current Bit</h5>
+                                    <h5>Current Bid</h5>
                                     <div className={styles.txtimgFlex}>
                                         <Image
                                             src="/img/napa_ic.svg"
@@ -318,7 +318,7 @@ export default function FeedTab() {
                                 <div className={styles.diplyBlock}>
                                     <div className={styles.flexPernt}>
                                         <div className={styles.currentBit}>
-                                            <h5>Current Bit</h5>
+                                            <h5>Current Bid</h5>
                                             <div className={styles.txtimgFlex}>
                                                 <Image
                                                     src="/img/etherium_ic.svg"
@@ -353,7 +353,7 @@ export default function FeedTab() {
                         <div className={styles.diplyNone}>
                             <div className={styles.flexPernt}>
                                 <div className={styles.currentBit}>
-                                    <h5>Current Bit</h5>
+                                    <h5>Current Bid</h5>
                                     <div className={styles.txtimgFlex}>
                                         <Image
                                             src="/img/napa_ic.svg"
@@ -591,7 +591,7 @@ export default function FeedTab() {
                                 <div className={styles.diplyBlock}>
                                     <div className={styles.flexPernt}>
                                         <div className={styles.currentBit}>
-                                            <h5>Current Bit</h5>
+                                            <h5>Current Bid</h5>
                                             <div className={styles.txtimgFlex}>
                                                 <Image
                                                     src="/img/etherium_ic.svg"
@@ -626,7 +626,7 @@ export default function FeedTab() {
                         <div className={styles.diplyNone}>
                             <div className={styles.flexPernt}>
                                 <div className={styles.currentBit}>
-                                    <h5>Current Bit</h5>
+                                    <h5>Current Bid</h5>
                                     <div className={styles.txtimgFlex}>
                                         <Image
                                             src="/img/napa_ic.svg"
@@ -864,7 +864,7 @@ export default function FeedTab() {
                                 <div className={styles.diplyBlock}>
                                     <div className={styles.flexPernt}>
                                         <div className={styles.currentBit}>
-                                            <h5>Current Bit</h5>
+                                            <h5>Current Bid</h5>
                                             <div className={styles.txtimgFlex}>
                                                 <Image
                                                     src="/img/napa_ic.svg"
@@ -899,7 +899,7 @@ export default function FeedTab() {
                         <div className={styles.diplyNone}>
                             <div className={styles.flexPernt}>
                                 <div className={styles.currentBit}>
-                                    <h5>Current Bit</h5>
+                                    <h5>Current Bid</h5>
                                     <div className={styles.txtimgFlex}>
                                         <Image
                                             src="/img/napa_ic.svg"
