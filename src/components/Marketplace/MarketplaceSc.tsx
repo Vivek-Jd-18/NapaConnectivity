@@ -9,6 +9,7 @@ import CoBetchingPools from './CoBetchingPools';
 import ValuatorTabTwo from './ValuatorTabTwo';
 import Swapping from './Swapping';
 import MyNFTs from './MyNFTs';
+// import MySFTs from './MySFTs';
 import MyFavorites from './MyFavorites';
 import MyWatchlist from './MyWatchlist';
 
@@ -24,10 +25,31 @@ export default function MarketplaceSc() {
             id="uncontrolled-tab-example"
             className="default_tab mb-30 default_tab_wt_scroll"
           >
-            <Tab eventKey="home" title="Feed">
+            <Tab eventKey="home" title="Trade NFTs">
             <div className={`${styles.ourlyPerntAj}`}>
               <FeedTab />
             </div>
+            </Tab>
+            <Tab eventKey="tradeNFT" title="Trade SFTs">
+              <div className={`${styles.ourlyPerntAj}`}>
+                <ValuatorTabTwo />
+              </div>
+            </Tab>
+            <Tab eventKey="MyNFTs" title="My NFTs">
+              <div className={`${styles.ourlyPerntAj}`}>
+                <MyNFTs />
+              </div>
+              </Tab>
+              <Tab eventKey="MySFTs" title="My SFTs">
+              <div className={`${styles.ourlyPerntAj}`}>
+                <MyNFTs />
+              </div>
+            </Tab>
+            <Tab eventKey="MyFavorites" title="My Favorites">
+              <MyFavorites />
+            </Tab>
+            <Tab eventKey="MyWatchlist" title="My Watchlist">
+              <MyWatchlist />
             </Tab>
             <Tab eventKey="profile" title="Valuator">
               <div className={`${styles.ourlyPerntAj}`}>
@@ -39,17 +61,6 @@ export default function MarketplaceSc() {
             </Tab>
             <Tab eventKey="Co-BatchingPools" title="Co-Batching Pools">
               <CoBetchingPools />
-            </Tab>
-            <Tab eventKey="MyNFTs" title="My NFTs">
-              <div className={`${styles.ourlyPerntAj}`}>
-                <MyNFTs />
-              </div>
-            </Tab>
-            <Tab eventKey="MyFavorites" title="My Favorites">
-              <MyFavorites />
-            </Tab>
-            <Tab eventKey="MyWatchlist" title="My Watchlist">
-              <MyWatchlist />
             </Tab>
           </Tabs>
         </Container>
