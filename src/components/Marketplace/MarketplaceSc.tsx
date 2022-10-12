@@ -7,6 +7,8 @@ import Tabs from 'react-bootstrap/Tabs';
 import FeedTab from './FeedTab';
 import CoBetchingPools from './CoBetchingPools';
 import ValuatorTabTwo from './ValuatorTabTwo';
+import Swapping from './Swapping';
+import MyNFTs from './MyNFTs';
 
 export default function MarketplaceSc() {
 
@@ -20,13 +22,10 @@ export default function MarketplaceSc() {
             id="uncontrolled-tab-example"
             className="default_tab mb-30 default_tab_wt_scroll"
           >
-            <Tab eventKey="home" title="Trade NFTs">
+            <Tab eventKey="home" title="Feed">
             <div className={`${styles.ourlyPerntAj}`}>
             <FeedTab />
             </div>
-            </Tab>
-            <Tab eventKey="Trade SFTs" title="Trade SFTs">
-              Trade SFTs
             </Tab>
             <Tab eventKey="profile" title="Valuator">
               <div className={`${styles.ourlyPerntAj}`}>
@@ -34,16 +33,13 @@ export default function MarketplaceSc() {
               </div>
             </Tab>
             <Tab eventKey="Swapping" title="Swapping">
-              Swapping
+              <Swapping />
             </Tab>
             <Tab eventKey="Co-BatchingPools" title="Co-Batching Pools">
               <CoBetchingPools />
             </Tab>
             <Tab eventKey="MyNFTs" title="My NFTs">
-              My NFTs
-            </Tab>
-            <Tab eventKey="MySFTs" title="My SFTs">
-              My NFTs
+              <MyNFTs />
             </Tab>
             <Tab eventKey="MyFavorites" title="My Favorites">
               My Favorites
