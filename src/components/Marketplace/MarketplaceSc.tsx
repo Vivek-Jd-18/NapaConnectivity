@@ -7,6 +7,11 @@ import Tabs from 'react-bootstrap/Tabs';
 import FeedTab from './FeedTab';
 import CoBetchingPools from './CoBetchingPools';
 import ValuatorTabTwo from './ValuatorTabTwo';
+import Swapping from './Swapping';
+import MyNFTs from './MyNFTs';
+// import MySFTs from './MySFTs';
+import MyFavorites from './MyFavorites';
+import MyWatchlist from './MyWatchlist';
 
 export default function MarketplaceSc() {
 
@@ -22,11 +27,29 @@ export default function MarketplaceSc() {
           >
             <Tab eventKey="home" title="Trade NFTs">
             <div className={`${styles.ourlyPerntAj}`}>
-            <FeedTab />
+              <FeedTab />
             </div>
             </Tab>
-            <Tab eventKey="Trade SFTs" title="Trade SFTs">
-              Trade SFTs
+            <Tab eventKey="tradeNFT" title="Trade SFTs">
+              <div className={`${styles.ourlyPerntAj}`}>
+                <ValuatorTabTwo />
+              </div>
+            </Tab>
+            <Tab eventKey="MyNFTs" title="My NFTs">
+              <div className={`${styles.ourlyPerntAj}`}>
+                <MyNFTs />
+              </div>
+              </Tab>
+              <Tab eventKey="MySFTs" title="My SFTs">
+              <div className={`${styles.ourlyPerntAj}`}>
+                <MyNFTs />
+              </div>
+            </Tab>
+            <Tab eventKey="MyFavorites" title="My Favorites">
+              <MyFavorites />
+            </Tab>
+            <Tab eventKey="MyWatchlist" title="My Watchlist">
+              <MyWatchlist />
             </Tab>
             <Tab eventKey="profile" title="Valuator">
               <div className={`${styles.ourlyPerntAj}`}>
@@ -34,22 +57,10 @@ export default function MarketplaceSc() {
               </div>
             </Tab>
             <Tab eventKey="Swapping" title="Swapping">
-              Swapping
+              <Swapping />
             </Tab>
             <Tab eventKey="Co-BatchingPools" title="Co-Batching Pools">
               <CoBetchingPools />
-            </Tab>
-            <Tab eventKey="MyNFTs" title="My NFTs">
-              My NFTs
-            </Tab>
-            <Tab eventKey="MySFTs" title="My SFTs">
-              My NFTs
-            </Tab>
-            <Tab eventKey="MyFavorites" title="My Favorites">
-              My Favorites
-            </Tab>
-            <Tab eventKey="MyWatchlist" title="My Watchlist">
-              My Watchlist
             </Tab>
           </Tabs>
         </Container>
