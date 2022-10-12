@@ -310,11 +310,14 @@
         line-height: 140%;
         text-align: center;
         color: #91A5A6;
-        &:hover,  &:active{
+        &:hover{
           background: #102324;
           color: #FFFFFF;
           }
       }
+    }
+    .active{
+      background: #102324;
     }
   }
 }

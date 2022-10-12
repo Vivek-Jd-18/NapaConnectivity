@@ -7,7 +7,7 @@ export default function MintedTabList() {
     <>    
         <div className={styles.myWachtUpcontnt}>
             <ul>
-                <li><button>1h</button></li>
+                <li className={styles.active}><button>1h</button></li>
                 <li><button>6h</button></li>
                 <li><button>24h</button></li>
                 <li><button>7d</button></li>
