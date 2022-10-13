@@ -173,11 +173,11 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu, account }) => {
               <div
                 className={styles.newlink}
                 onClick={() => {
-                  push('/marketplace');
+                  push('/co-batching-pools');
                   onClick();
                 }}
               >
-                <a className={`${pathname === '/marketplace' && styles.active}`}>
+                <a className={`${pathname === '/co-batching-pools' && styles.active}`}>
                   Co-Batching Pools
                 </a>
               </div>
@@ -238,11 +238,11 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu, account }) => {
               <div
                 className={styles.link}
                 onClick={() => {
-                  push('/marketplace');
+                  push('/valuator');
                   onClick();
                 }}
               >
-                <a className={`${pathname === '/marketplace' && styles.active}`}>
+                <a className={`${pathname === '/valuator' && styles.active}`}>
                   Valuator
                 </a>
               </div>
@@ -264,11 +264,11 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu, account }) => {
               <div
                 className={styles.link}
                 onClick={() => {
-                  push('/marketplace');
+                  push('/swapping');
                   onClick();
                 }}
               >
-                <a className={`${pathname === '/marketplace' && styles.active}`}>
+                <a className={`${pathname === '/swapping' && styles.active}`}>
                   Swapping
                 </a>
               </div>
