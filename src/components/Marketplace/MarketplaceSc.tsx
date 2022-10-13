@@ -5,9 +5,9 @@ import React from 'react';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import FeedTab from './FeedTab';
-import CoBetchingPools from './CoBetchingPools';
-import ValuatorTabTwo from './ValuatorTabTwo';
-import Swapping from './Swapping';
+// import CoBetchingPools from './CoBetchingPools';
+// import ValuatorTabTwo from './ValuatorTabTwo';
+// import Swapping from './Swapping';
 import MyNFTs from './MyNFTs';
 import MyFavorites from './MyFavorites';
 import MyWatchlist from './MyWatchlist';
@@ -29,17 +29,17 @@ export default function MarketplaceSc() {
               <FeedTab />
             </div>
             </Tab>
-            <Tab eventKey="profile" title="Valuator">
+            {/* <Tab eventKey="profile" title="Valuator">
               <div className={`${styles.ourlyPerntAj}`}>
                 <ValuatorTabTwo />
               </div>
-            </Tab>
-            <Tab eventKey="Swapping" title="Swapping">
+            </Tab> */}
+            {/* <Tab eventKey="Swapping" title="Swapping">
               <Swapping />
-            </Tab>
-            <Tab eventKey="Co-BatchingPools" title="Co-Batching Pools">
+            </Tab> */}
+            {/* <Tab eventKey="Co-BatchingPools" title="Co-Batching Pools">
               <CoBetchingPools />
-            </Tab>
+            </Tab> */}
             <Tab eventKey="MyNFTs" title="My NFTs">
               <div className={`${styles.ourlyPerntAj}`}>
                 <MyNFTs />
