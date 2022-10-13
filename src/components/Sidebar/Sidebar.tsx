@@ -1,15 +1,15 @@
 import type { NextPage } from 'next';
 import Image from 'next/image';
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 import styles from './Sidebar.module.scss';
 
-import { ToastDescription, ToastTitle } from '../../typing/toast';
-import { CustomToastWithLink } from '../CustomToast/CustomToast';
+// import { ToastDescription, ToastTitle } from '../../typing/toast';
+// import { CustomToastWithLink } from '../CustomToast/CustomToast';
 import {
   ExitIcon,
   ProfileIcon,
-  WalletConnectedIcon,
+  // WalletConnectedIcon,
   WalletIconTwo,
 } from '../assets';
 import Button from '../../components/Button/Button';
