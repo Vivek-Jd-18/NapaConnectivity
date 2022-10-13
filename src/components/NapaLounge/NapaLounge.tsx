@@ -80,13 +80,13 @@ const NapaLounge: NextPage = () => {
       return 'More Pools';
     }
     if (tabs === NapaLoungeTab.UPCOMING_NFT_PROJECTS) {
-      return 'NFT Projects';
+      return 'Marketplace';
     }
     if (tabs === NapaLoungeTab.EVENTS) {
       return 'NAPA Events';
     }
     if (tabs === NapaLoungeTab.ACTIVE_MINTED_POSTS) {
-      return 'My SFTs';
+      return 'My Active SFTs';
     }
     return 'Earned Tokens ';
   }, [tabs]);
@@ -94,6 +94,16 @@ const NapaLounge: NextPage = () => {
   const linkHandler = useCallback(() => {
     if (tabs === NapaLoungeTab.TIPS_AND_TUTORIALS) {
       return 'trending';
+    } else if (tabs === NapaLoungeTab.CO_BATCHING_POOLS) {
+      return '';
+    } else if (tabs === NapaLoungeTab.EVENTS) {
+      return 'events';
+    } else if (tabs === NapaLoungeTab.EARNED_NAPA_TOKENS) {
+      return 'earn';
+    } else if (tabs === NapaLoungeTab.ACTIVE_MINTED_POSTS) {
+      return 'socialart';
+    } else if (tabs === NapaLoungeTab.UPCOMING_NFT_PROJECTS) {
+      return 'marketplace';
     }
 
     return '';
