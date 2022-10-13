@@ -28,6 +28,9 @@ export default function MarketplaceSc() {
               <FeedTab />
             </div>
           </Tab>
+          <Tab eventKey="Trade SFTs" title="Trade SFTs">
+            Trade SFTs
+          </Tab>
           {/* <Tab eventKey="profile" title="Valuator">
               <div className={`${styles.ourlyPerntAj}`}>
                 <ValuatorTabTwo />
@@ -43,6 +46,9 @@ export default function MarketplaceSc() {
             <div className={`${styles.ourlyPerntAj}`}>
               <MyNFTs />
             </div>
+          </Tab>
+          <Tab eventKey="MySFTs" title="My SFTs">
+            <MyNFTs />
           </Tab>
           <Tab eventKey="MyFavorites" title="My Favorites">
             <MyFavorites />
