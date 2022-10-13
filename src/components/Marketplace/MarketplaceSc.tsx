@@ -12,6 +12,8 @@ import MyNFTs from './MyNFTs';
 // import MySFTs from './MySFTs';
 import MyFavorites from './MyFavorites';
 import MyWatchlist from './MyWatchlist';
+import MySFTs from './MySFTs';
+import TradeSFTs from './TradeSFTs';
 
 export default function MarketplaceSc() {
   return (
@@ -29,7 +31,7 @@ export default function MarketplaceSc() {
             </div>
           </Tab>
           <Tab eventKey="Trade SFTs" title="Trade SFTs">
-            Trade SFTs
+            <TradeSFTs />
           </Tab>
           {/* <Tab eventKey="profile" title="Valuator">
               <div className={`${styles.ourlyPerntAj}`}>
@@ -48,7 +50,7 @@ export default function MarketplaceSc() {
             </div>
           </Tab>
           <Tab eventKey="MySFTs" title="My SFTs">
-            <MyNFTs />
+            <MySFTs />
           </Tab>
           <Tab eventKey="MyFavorites" title="My Favorites">
             <MyFavorites />
