@@ -10,7 +10,7 @@ export default function ValuatorSc() {
     <div className={`${styles.container}`}>
       
         <Container className={`${styles.settingsContainer} asinnerContainer`}>
-          <h1 className={styles.settings}>Valuator</h1>
+          <h1 className={styles.settings}>NAPA Valuator</h1>
           <ValuatorTabTwo />
         </Container>
       
