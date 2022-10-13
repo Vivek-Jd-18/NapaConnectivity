@@ -32,19 +32,19 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu, account }) => {
           <Image width={40} height={40} src={ExitIcon} alt="Close" />
         </div>
         <div className={styles.conctWlltSet}>
-        <div className={styles.buttonsContainerStylAj}>
-          {account ? (
-            <>
-              <Button
-                text="My Profile"
-                outlined
-                icon={ProfileIcon}
-                onClick={() => {
-                  push('/settings');
-                  onClick();
-                }}
-              />
-              <Button
+          <div className={styles.buttonsContainerStylAj}>
+            {account ? (
+              <>
+                <Button
+                  text="My Profile"
+                  outlined
+                  icon={ProfileIcon}
+                  onClick={() => {
+                    push('/settings');
+                    onClick();
+                  }}
+                />
+                {/* <Button
                 text="Wallet"
                 icon={WalletIconTwo}
                 onClick={() => {
@@ -57,22 +57,22 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu, account }) => {
                     })
                   );
                 }}
-              />
-            </>
-          ) : (
-            <>
-              <Button
-                text="Connect Wallet"
-                icon={WalletIconTwo}
-                customStyle={styles.btnConnectWallet}
-                onClick={() => {
-                  push('/wallet');
-                  onClick();
-                }}
-              />
-            </>
-          )}
-        </div>
+              /> */}
+              </>
+            ) : (
+              <>
+                <Button
+                  text="Connect Wallet"
+                  icon={WalletIconTwo}
+                  customStyle={styles.btnConnectWallet}
+                  onClick={() => {
+                    push('/wallet');
+                    onClick();
+                  }}
+                />
+              </>
+            )}
+          </div>
         </div>
       </div>
       <div className={styles.overlayContentContainer}>
@@ -155,7 +155,7 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu, account }) => {
               Partners Portal
             </a>
           </div> */}
-         <div className={styles.NewMenu}>
+          <div className={styles.NewMenu}>
             <div>
               <div
                 className={styles.newlink}
@@ -173,11 +173,15 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu, account }) => {
               <div
                 className={styles.newlink}
                 onClick={() => {
-                  push('/marketplace');
+                  push('/co-batching-pools');
                   onClick();
                 }}
               >
-                <a className={`${pathname === '/marketplace' && styles.active}`}>
+                <a
+                  className={`${
+                    pathname === '/co-batching-pools' && styles.active
+                  }`}
+                >
                   Co-Batching Pools
                 </a>
               </div>
@@ -190,10 +194,10 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu, account }) => {
                   onClick();
                 }}
               >
-              <a className={`${pathname === '/socialart' && styles.active}`}>
-                Social Art
-              </a>
-            </div>
+                <a className={`${pathname === '/socialart' && styles.active}`}>
+                  Social Art
+                </a>
+              </div>
             </div>
             <div>
               <div
@@ -203,20 +207,22 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu, account }) => {
                   onClick();
                 }}
               >
-              <a className={`${pathname === '/earn' && styles.active}`}>
-                NAPA Earn
-              </a>
+                <a className={`${pathname === '/earn' && styles.active}`}>
+                  NAPA Earn
+                </a>
+              </div>
             </div>
-            </div>
-              <div>
-                <div
-                  className={styles.link}
-                  onClick={() => {
-                    push('/marketplace');
-                    onClick();
-                  }}
+            <div>
+              <div
+                className={styles.link}
+                onClick={() => {
+                  push('/marketplace');
+                  onClick();
+                }}
+              >
+                <a
+                  className={`${pathname === '/marketplace' && styles.active}`}
                 >
-                <a className={`${pathname === '/marketplace' && styles.active}`}>
                   Marketplace
                 </a>
               </div>
@@ -238,11 +244,11 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu, account }) => {
               <div
                 className={styles.link}
                 onClick={() => {
-                  push('/marketplace');
+                  push('/valuator');
                   onClick();
                 }}
               >
-                <a className={`${pathname === '/marketplace' && styles.active}`}>
+                <a className={`${pathname === '/valuator' && styles.active}`}>
                   Valuator
                 </a>
               </div>
@@ -255,7 +261,9 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu, account }) => {
                   onClick();
                 }}
               >
-                <a className={`${pathname === '/leaderboards' && styles.active}`}>
+                <a
+                  className={`${pathname === '/leaderboards' && styles.active}`}
+                >
                   SFT Leaders
                 </a>
               </div>
@@ -264,11 +272,11 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu, account }) => {
               <div
                 className={styles.link}
                 onClick={() => {
-                  push('/marketplace');
+                  push('/swapping');
                   onClick();
                 }}
               >
-                <a className={`${pathname === '/marketplace' && styles.active}`}>
+                <a className={`${pathname === '/swapping' && styles.active}`}>
                   Swapping
                 </a>
               </div>
@@ -286,7 +294,7 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu, account }) => {
                 </a>
               </div>
             </div>
-         </div>
+          </div>
         </div>
         {/* <div className={styles.buttonsContainer}>
           {account ? (
