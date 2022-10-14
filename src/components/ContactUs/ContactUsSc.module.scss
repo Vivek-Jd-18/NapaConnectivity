@@ -59,6 +59,52 @@
   text-align: start;
   width: 100%;
 }
+.FrstInput input::placeholder {
+  color: #fff;
+}
+.FrstInput input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  margin-bottom: 34px;
+  border-bottom: 2px solid #FFFFFF;
+  padding: 16px 12px 0 20px !important;
+}
+.FrstInput {
+  width: 100%;
+  >div {
+    margin: 0 !important;
+  }
+}
+.FrstInput input {
+  font-family: 'Avenir';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 140%;
+  color: #ffffff;
+  padding-bottom: 0px;
+}
+.FrstInput input::placeholder {
+  color: #fff !important;
+}
+.FrstInput {
+  .Input_inputField {
+    margin: 0 !important;
+  }
+}
+
+.FrstInput label {
+  padding: 0 0 0px 20px;
+  font-family: 'Avenir';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 140%;
+  color: #91A5A6;
+}
 .InputContact input {
   width: 100%;
   background: transparent;
@@ -71,17 +117,7 @@
 .FrstInput {
   width: 100%;
 }
-.FrstInput p {
-  font-family: 'Avenir';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 140%;
-  margin-bottom: 5px;
-  color: #91A5A6;
-  margin: 0;
-  padding-left: 20px;
-}
+
 .FrstInput input {
   font-family: 'Avenir';
   font-style: normal;
