@@ -1,11 +1,14 @@
-import React from 'react'
+import React , {useState} from 'react';
 import styles from './ContactUsSc.module.scss';
 import Footer from '../Footer/Footer';
 import Container from '../../Layout/Container/Container';
 import Image from 'next/image';
 import Link from 'next/link';
+import Input from '../Input/Input';
 
 export default function ContactUsSc() {
+  const [name, setName] = useState('');
+  const [namesec, setNamesec] = useState('');
   return (
     <>
     <div
@@ -23,13 +26,23 @@ export default function ContactUsSc() {
             <div className={styles.ContactUsMain}>
               <div className={styles.LeftContact}>
                 <div className={styles.InputContact}>
-                  <div className={styles.FrstInput}>
-                    <p>Name</p>
-                    <input type="text" placeholder='John Ridley' />
+                   <div className={styles.FrstInput}>
+                      <Input
+                          value={name}
+                          type="text"
+                          placeholder="John Ridley"
+                          label="Name"
+                          onChange={(e) => setName(e.target.value)}
+                      />
                   </div>
                   <div className={styles.FrstInput}>
-                    <p>Email</p>
-                    <input type="text" placeholder='john.ridley@gmail.com' />
+                      <Input
+                          value={namesec}
+                          type="text"
+                          placeholder="john.ridley@gmail.com"
+                          label="Email"
+                          onChange={(e) => setNamesec(e.target.value)}
+                      />
                   </div>
                   <div className={styles.TextArea}>
                     <p>Message</p> 

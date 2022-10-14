@@ -1131,3 +1131,114 @@ input::-webkit-inner-spin-button {
   background: url(/assets/images/marketplace_feed.jpg) no-repeat center top;
   background-size: cover;
 }
+
+.radiopoolbox {
+  display: flex;
+  align-items: center;
+  .form-check-input {
+    border: 2px solid rgb(145 165 166 / 20%);
+    border-radius: 8px;
+    width: 24px;
+    height: 24px;
+    box-shadow: none !important;
+    outline: none !important;
+  }
+  .form-check-input:checked {
+    background: #10C6CE;
+    border-color: #10C6CE;
+    border: 2px solid transparent;
+    outline: none !important;
+  }
+  .form-check-input:checked + label {
+    color: #fff;
+  }
+  .form-check label {
+    font-family: 'Avenir';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 140%;
+    color: #91A5A6;
+    margin-left: 16px;
+  }
+  .frst_radio {
+    margin-right: 60px;
+  }
+  .form-check {
+    display: flex;
+    align-items: center;
+    input {
+      border: 2px solid #91A5A6;
+      background: transparent;
+    }
+  }
+  .scnd_radio {
+    margin-right: 60px;
+  }
+}
+.switchpool {
+  padding-top: 40px;
+  /* opacity: 0.15; */
+  border-top: 1px solid hsl(183deg 11% 61% / 15%);
+  margin-top: 40px;
+  .form-switch {
+    display: flex;
+    align-items: center;
+    .form-check-input:checked {
+      background-color: #10C6CE;
+    }
+    input {
+      width: 48px;
+      height: 30px;
+      border-radius: 30px;
+      outline: none;
+      box-shadow: none;
+      border: none;
+    }
+    label {
+      font-family: 'Avenir';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 140%;
+      color: #FFFFFF;
+      text-align: left;
+      margin-left: 20px;
+    }
+    .form-check-input {
+      background-repeat: no-repeat;
+    }
+  }
+}
+
+.datepickerBoxpool {
+  border-bottom: 2px solid #fff;
+  padding-bottom: 15px;
+  padding-left: 20px;
+  position: relative;
+  .datepiker_img_bx {
+    position: absolute;
+    right: 20px;
+    top: 0;
+  }
+}
+.datepickerBoxpool .form-control {
+  background: transparent !important;
+  width: 100%;
+}
+
+.selectprntpool {
+  .select_pernt {
+    border-bottom: 2px solid #fff;
+    margin: 0;
+    .cntrslct__control {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .cntrslct__placeholder {
+      text-align: left;
+      padding-left: 20px;
+    }
+  }
+}
