@@ -1,12 +1,12 @@
 import Container from '../../Layout/Container/Container';
 import Footer from '../Footer/Footer';
-import styles from './CreateNewPoolScThree.module.scss';
+import styles from './CreateNewPoolScFour.module.scss';
 import React from 'react';
 // import Image from 'next/image';
 // import Link from 'next/link';
-import CreateNewPoolThree from './CreateNewPoolThree';
+import CreateNewPoolFour from './CreateNewPoolFour';
 
-export default function CreateNewPoolScThree() {
+export default function CreateNewPoolScFour() {
   return (
     <div className={`${styles.container}`}>
       <Container className={`${styles.settingsContainer} asinnerContainer`}>
@@ -22,7 +22,7 @@ export default function CreateNewPoolScThree() {
           </ul>
         </div> */}
         <div className={styles.MainBox}>
-          <CreateNewPoolThree />
+          <CreateNewPoolFour />
         </div>
       </Container>
 

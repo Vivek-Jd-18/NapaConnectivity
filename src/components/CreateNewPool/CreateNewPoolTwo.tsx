@@ -6,7 +6,7 @@ import Input from '../Input/Input';
 import DateRangePicker from 'react-bootstrap-daterangepicker';
 import moment from 'moment';
 import Select from 'react-select';
-
+import Link from 'next/link';
 
 export default function CreateNewPoolTwo() {
     const [name, setName] = useState('');
@@ -139,7 +139,8 @@ export default function CreateNewPoolTwo() {
                                 </div>
                             </div>
                             <div className={styles.ContinueBtn}>
-                                <button>Continue</button>
+                                {/* <button>Continue</button> */}
+                                <Link href="/create-new-pool-three"><a>Continue</a></Link>
                             </div>
                         </div>
                     </div>

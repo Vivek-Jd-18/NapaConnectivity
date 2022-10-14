@@ -205,7 +205,7 @@ export default function CreateNewPoolOne() {
                                                 </div>
                                             </div>
                                             <div className={styles.chosBtnPernt}>
-                                               <Link href="/createnewpooltwo"><a>Choose</a></Link>
+                                               <Link href="/create-new-pool-two"><a>Choose</a></Link>
                                             </div>
                                         </div>
                                     </div>
@@ -257,7 +257,7 @@ export default function CreateNewPoolOne() {
                                                 </div>
                                             </div>
                                             <div className={styles.chosBtnPernt}>
-                                               <Link href="#" target="_blank"><a>Choose</a></Link>
+                                               <Link href="/create-new-pool-two" target="_blank"><a>Choose</a></Link>
                                             </div>
                                         </div>
                                     </div>
@@ -309,7 +309,7 @@ export default function CreateNewPoolOne() {
                                                 </div>
                                             </div>
                                             <div className={styles.chosBtnPernt}>
-                                               <Link href="#"><a>Choose</a></Link>
+                                               <Link href="/create-new-pool-two"><a>Choose</a></Link>
                                             </div>
                                         </div>
                                     </div>
@@ -362,7 +362,7 @@ export default function CreateNewPoolOne() {
                                                 </div>
                                             </div>
                                             <div className={styles.chosBtnPernt}>
-                                               <Link href="#"><a>Choose</a></Link>
+                                               <Link href="/create-new-pool-two"><a>Choose</a></Link>
                                             </div>
                                         </div>
                                     </div>
@@ -415,7 +415,7 @@ export default function CreateNewPoolOne() {
                                                 </div>
                                             </div>
                                             <div className={styles.chosBtnPernt}>
-                                               <Link href="#"><a>Choose</a></Link>
+                                               <Link href="/create-new-pool-two"><a>Choose</a></Link>
                                             </div>
                                         </div>
                                     </div>
@@ -468,7 +468,7 @@ export default function CreateNewPoolOne() {
                                                 </div>
                                             </div>
                                             <div className={styles.chosBtnPernt}>
-                                               <Link href="#"><a>Choose</a></Link>
+                                               <Link href="/create-new-pool-two"><a>Choose</a></Link>
                                             </div>
                                         </div>
                                     </div>
@@ -521,7 +521,7 @@ export default function CreateNewPoolOne() {
                                                 </div>
                                             </div>
                                             <div className={styles.chosBtnPernt}>
-                                               <Link href="#"><a>Choose</a></Link>
+                                               <Link href="/create-new-pool-two"><a>Choose</a></Link>
                                             </div>
                                         </div>
                                     </div>
@@ -574,7 +574,7 @@ export default function CreateNewPoolOne() {
                                                 </div>
                                             </div>
                                             <div className={styles.chosBtnPernt}>
-                                               <Link href="#"><a>Choose</a></Link>
+                                               <Link href="/create-new-pool-two"><a>Choose</a></Link>
                                             </div>
                                         </div>
                                     </div>

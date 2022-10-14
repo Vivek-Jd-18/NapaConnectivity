@@ -1,13 +1,13 @@
 import React from 'react';
 import 'bootstrap-daterangepicker/daterangepicker.css';
 import 'bootstrap/dist/css/bootstrap.css';
-import styles from './CreateNewPoolThree.module.scss';
+import styles from './CreateNewPoolFour.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
 import { TimeIcon } from '../assets';
 
 
-export default function CreateNewPoolThree() {
+export default function CreateNewPoolFour() {
   return (
     <>
         <div className={styles.CreatePoolThree}>

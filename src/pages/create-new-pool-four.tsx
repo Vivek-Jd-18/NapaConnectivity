@@ -3,7 +3,7 @@ import styles from '../../styles/pages/Home.module.scss';
 import type { NextPage } from 'next';
 import { WEBSOCKET_URL } from '../constants/url';
 import { useEffect } from 'react';
-import CreateNewPoolScThree from '@/components/CreateNewPool/CreateNewPoolScThree';
+import CreateNewPoolScFour from '@/components/CreateNewPool/CreateNewPoolScFour';
 
 const CreateNewPool: NextPage = () => {
   const socket = new WebSocket(WEBSOCKET_URL);
@@ -22,7 +22,7 @@ const CreateNewPool: NextPage = () => {
       </Head>
       <section className={styles.container} id="earn-container">
         <div className={`${styles.child} earnpage mrktplcbg`} id="scrollElement">
-          <CreateNewPoolScThree />
+          <CreateNewPoolScFour />
         </div>
       </section>
     </>
