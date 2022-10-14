@@ -11,7 +11,7 @@ export default function CoBatchingPoolsSc() {
     <div className={`${styles.container}`}>
       
         <Container className={`${styles.settingsContainer} asinnerContainer`}>
-          <h1 className={styles.settings}>Co-Betching Pools</h1>
+          <h1 className={styles.settings}>Co-Batching Pools</h1>
           <CoBetchingPools />
         </Container>
       

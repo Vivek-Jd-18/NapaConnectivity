@@ -164,8 +164,8 @@ export default function CreateNewPoolOne() {
                     <div className={styles.CustomGrid}>
                         <div className={styles.TipsTulsOverlay}>
                             <div className={styles.boxinnrcont}>
-                                <Link href="#">
-                                    <a href="#" className={`${styles.apernt} hovereffect`}>
+                                {/* <Link href="#"> */}
+                                    <div className={`${styles.apernt} hovereffect`}>
                                         <Image
                                             src="/img/createnew_pool01.png"
                                             height="372px"
@@ -205,19 +205,19 @@ export default function CreateNewPoolOne() {
                                                 </div>
                                             </div>
                                             <div className={styles.chosBtnPernt}>
-                                               <Link href="#"><a>Choose</a></Link>
+                                               <Link href="/create-new-pool-two"><a>Choose</a></Link>
                                             </div>
                                         </div>
-                                    </a>
-                                </Link>
+                                    </div>
+                                {/* </Link> */}
                             </div>
                         </div>
                     </div>
                     <div className={styles.CustomGrid}>
                         <div className={styles.TipsTulsOverlay}>
                             <div className={styles.boxinnrcont}>
-                                <Link href="#">
-                                    <a href="#" className={`${styles.apernt} hovereffect`}>
+                                {/* <Link href="#"> */}
+                                    <div className={`${styles.apernt} hovereffect`}>
                                         <Image
                                             src="/img/createnew_pool02.png"
                                             height="372px"
@@ -257,19 +257,19 @@ export default function CreateNewPoolOne() {
                                                 </div>
                                             </div>
                                             <div className={styles.chosBtnPernt}>
-                                               <Link href="#"><a>Choose</a></Link>
+                                               <Link href="/create-new-pool-two" target="_blank"><a>Choose</a></Link>
                                             </div>
                                         </div>
-                                    </a>
-                                </Link>
+                                    </div>
+                                {/* </Link> */}
                             </div>
                         </div>
                     </div>
                     <div className={styles.CustomGrid}>
                         <div className={styles.TipsTulsOverlay}>
                             <div className={styles.boxinnrcont}>
-                                <Link href="#">
-                                    <a href="#" className={`${styles.apernt} hovereffect`}>
+                                {/* <Link href="#"> */}
+                                    <div className={`${styles.apernt} hovereffect`}>
                                         <Image
                                             src="/img/createnew_pool03.png"
                                             height="372px"
@@ -309,11 +309,11 @@ export default function CreateNewPoolOne() {
                                                 </div>
                                             </div>
                                             <div className={styles.chosBtnPernt}>
-                                               <Link href="#"><a>Choose</a></Link>
+                                               <Link href="/create-new-pool-two"><a>Choose</a></Link>
                                             </div>
                                         </div>
-                                    </a>
-                                </Link>
+                                    </div>
+                                {/* </Link> */}
                             </div>
                         </div>
                     </div>
@@ -321,8 +321,8 @@ export default function CreateNewPoolOne() {
                     <div className={styles.CustomGrid}>
                         <div className={styles.TipsTulsOverlay}>
                             <div className={styles.boxinnrcont}>
-                                <Link href="#">
-                                    <a href="#" className={`${styles.apernt} hovereffect`}>
+                                {/* <Link href="#"> */}
+                                    <div className={`${styles.apernt} hovereffect`}>
                                         <Image
                                             src="/img/createnew_pool04.png"
                                             height="372px"
@@ -362,11 +362,11 @@ export default function CreateNewPoolOne() {
                                                 </div>
                                             </div>
                                             <div className={styles.chosBtnPernt}>
-                                               <Link href="#"><a>Choose</a></Link>
+                                               <Link href="/create-new-pool-two"><a>Choose</a></Link>
                                             </div>
                                         </div>
-                                    </a>
-                                </Link>
+                                    </div>
+                                {/* </Link> */}
                             </div>
                         </div>
                     </div>
@@ -374,8 +374,8 @@ export default function CreateNewPoolOne() {
                     <div className={styles.CustomGrid}>
                         <div className={styles.TipsTulsOverlay}>
                             <div className={styles.boxinnrcont}>
-                                <Link href="#">
-                                    <a href="#" className={`${styles.apernt} hovereffect`}>
+                                {/* <Link href="#"> */}
+                                    <div className={`${styles.apernt} hovereffect`}>
                                         <Image
                                             src="/img/createnew_pool05.png"
                                             height="372px"
@@ -415,11 +415,11 @@ export default function CreateNewPoolOne() {
                                                 </div>
                                             </div>
                                             <div className={styles.chosBtnPernt}>
-                                               <Link href="#"><a>Choose</a></Link>
+                                               <Link href="/create-new-pool-two"><a>Choose</a></Link>
                                             </div>
                                         </div>
-                                    </a>
-                                </Link>
+                                    </div>
+                                {/* </Link> */}
                             </div>
                         </div>
                     </div>
@@ -427,8 +427,8 @@ export default function CreateNewPoolOne() {
                     <div className={styles.CustomGrid}>
                         <div className={styles.TipsTulsOverlay}>
                             <div className={styles.boxinnrcont}>
-                                <Link href="#">
-                                    <a href="#" className={`${styles.apernt} hovereffect`}>
+                                {/* <Link href="#"> */}
+                                    <div className={`${styles.apernt} hovereffect`}>
                                         <Image
                                             src="/img/createnew_pool06.png"
                                             height="372px"
@@ -468,11 +468,11 @@ export default function CreateNewPoolOne() {
                                                 </div>
                                             </div>
                                             <div className={styles.chosBtnPernt}>
-                                               <Link href="#"><a>Choose</a></Link>
+                                               <Link href="/create-new-pool-two"><a>Choose</a></Link>
                                             </div>
                                         </div>
-                                    </a>
-                                </Link>
+                                    </div>
+                                {/* </Link> */}
                             </div>
                         </div>
                     </div>
@@ -480,8 +480,8 @@ export default function CreateNewPoolOne() {
                     <div className={styles.CustomGrid}>
                         <div className={styles.TipsTulsOverlay}>
                             <div className={styles.boxinnrcont}>
-                                <Link href="#">
-                                    <a href="#" className={`${styles.apernt} hovereffect`}>
+                                {/* <Link href="#"> */}
+                                    <div className={`${styles.apernt} hovereffect`}>
                                         <Image
                                             src="/img/createnew_pool07.png"
                                             height="372px"
@@ -521,11 +521,11 @@ export default function CreateNewPoolOne() {
                                                 </div>
                                             </div>
                                             <div className={styles.chosBtnPernt}>
-                                               <Link href="#"><a>Choose</a></Link>
+                                               <Link href="/create-new-pool-two"><a>Choose</a></Link>
                                             </div>
                                         </div>
-                                    </a>
-                                </Link>
+                                    </div>
+                                {/* </Link> */}
                             </div>
                         </div>
                     </div>
@@ -533,8 +533,8 @@ export default function CreateNewPoolOne() {
                     <div className={styles.CustomGrid}>
                         <div className={styles.TipsTulsOverlay}>
                             <div className={styles.boxinnrcont}>
-                                <Link href="#">
-                                    <a href="#" className={`${styles.apernt} hovereffect`}>
+                                {/* <Link href="#"> */}
+                                    <div className={`${styles.apernt} hovereffect`}>
                                         <Image
                                             src="/img/createnew_pool08.png"
                                             height="372px"
@@ -574,11 +574,11 @@ export default function CreateNewPoolOne() {
                                                 </div>
                                             </div>
                                             <div className={styles.chosBtnPernt}>
-                                               <Link href="#"><a>Choose</a></Link>
+                                               <Link href="/create-new-pool-two"><a>Choose</a></Link>
                                             </div>
                                         </div>
-                                    </a>
-                                </Link>
+                                    </div>
+                                {/* </Link> */}
                             </div>
                         </div>
                     </div>
