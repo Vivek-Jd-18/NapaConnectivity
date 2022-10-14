@@ -1242,3 +1242,9 @@ input::-webkit-inner-spin-button {
     }
   }
 }
+.form-switch .form-check-input {
+  background-image: url(/img/switch-dark.svg) !important;
+}
+.form-switch .form-check-input:checked {
+  background-image: url(/img/switch.svg) !important;
+}

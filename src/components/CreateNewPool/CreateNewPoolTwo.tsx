@@ -126,13 +126,13 @@ export default function CreateNewPoolTwo() {
                             <h5 className={styles.DefultPoolh5}>Type Pool</h5>
                             <div className="radiopoolbox">
                                 <div className="form-check frst_radio">
-                                    <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" checked />
+                                    <input className="form-check-input" type="radio" name="exampleRadiosTwo" id="exampleRadios3" value="option3" checked />
                                     <label className="form-check-label" htmlFor="exampleRadios3">
                                         Public
                                     </label>
                                 </div>
                                 <div className="form-check">
-                                    <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios4" value="option4" />
+                                    <input className="form-check-input" type="radio" name="exampleRadiosTwo" id="exampleRadios4" value="option4" />
                                     <label className="form-check-label" htmlFor="exampleRadios4">
                                         Private
                                     </label>
