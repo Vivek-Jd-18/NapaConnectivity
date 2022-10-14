@@ -9,6 +9,7 @@ import CoBatchingPoolsPool from '../CoBatchingPool/CoBatchingPool';
 import CoBatchingPoolTwo from '../CoBatchingPoolTwo/CoBatchingPoolTwo';
 import CoBatchingPoolThree from '../CoBatchingPoolThree/CoBatchingPoolThree';
 import CoBatchingPoolFour from '../CoBatchingPoolFour/CoBatchingPoolFour';
+import Link from 'next/link';
 
 export default function CoBetchingPools() {
    
@@ -32,7 +33,7 @@ export default function CoBetchingPools() {
                             <button className="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">My Pools</button>
                         </li>
                         <li className="nav-item" role="presentation">
-                            <button className="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Other Pools</button>
+                            <button className="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false"> Member Pools</button>
                         </li>
                     </ul>
                 </div>                
@@ -63,7 +64,7 @@ export default function CoBetchingPools() {
                 </div>
                
                 <div className={styles.buttonperntAj}>
-                   <button className={styles.buttocreateBtn}><a href='#'>Create New Pool</a></button>
+                   <button className={styles.buttocreateBtn}><Link href='/create-new-pool'><a >Create New Pool</a></Link></button>
                 </div>
             </div>
             <div className="tab-content" id="myTabContent">
