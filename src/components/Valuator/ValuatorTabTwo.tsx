@@ -11,9 +11,9 @@ export default function FeedTab() {
    
   return (
     <>
-        <div className={styles.valtrTabTwoHed}>
+        {/* <div className={styles.valtrTabTwoHed}>
             <h1>4 NFT’s are Selected</h1>
-        </div>
+        </div> */}
         <div className={styles.valtrGrdContmain}>
             <div className={styles.CustomGridContainer}>
                 <div className={styles.CustomGrid}>
