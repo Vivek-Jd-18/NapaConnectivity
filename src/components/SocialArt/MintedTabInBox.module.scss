@@ -21,7 +21,7 @@
 }
 .MintedMiiddle {
   overflow-y: auto;
-  height: 600px;
+  max-height: 650px;
   color: #fff;
   text-align: left;
   padding-top: 10px;
@@ -61,6 +61,20 @@
     line-height: 110%;
     color: #FFFFFF;
     margin-bottom: 0;
+  }
+  h6 {
+    @include font-md-avenir-medium;
+    font-size: 14px;
+    line-height: 140%;
+    color: #fff;
+    margin-top: 12px;
+    margin-bottom: 5px;
+    span {
+      @include font-md-avenir-regular;
+      font-size: 14px;
+      line-height: 140%;
+      color: #91A5A6;
+    }
   }
   .DarinImgpspan{
     display: flex;
