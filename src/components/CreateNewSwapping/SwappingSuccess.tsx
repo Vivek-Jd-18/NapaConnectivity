@@ -38,10 +38,10 @@ export default function SwappingSuccess() {
                             alt=""
                             className=""
                         />
-                           Share on Napa Social
+                           Share on Napa Society
                     </button>
                     <button className={styles.SuccesScndBtn}>
-                        Include in the Feed of the Popular NAPA.
+                        Share on the NAPA Popular Feed
                     </button>
                     <Link href="/swapping">Return to Swapping List</Link>
                 </div>
