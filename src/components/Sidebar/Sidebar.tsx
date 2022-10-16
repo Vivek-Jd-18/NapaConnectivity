@@ -285,7 +285,7 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu, account }) => {
               <div
                 className={styles.link}
                 onClick={() => {
-                  push('/partners');
+                  push('https://partners-demo.napasociety.io');
                   onClick();
                 }}
               >
