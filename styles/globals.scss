@@ -1216,6 +1216,7 @@ input::-webkit-inner-spin-button {
   padding-bottom: 15px;
   padding-left: 20px;
   position: relative;
+  margin-right: 0px !important;
   .datepiker_img_bx {
     position: absolute;
     right: 20px;
@@ -1247,4 +1248,54 @@ input::-webkit-inner-spin-button {
 }
 .form-switch .form-check-input:checked {
   background-image: url(/img/switch.svg) !important;
+}
+.selectprntswapping {
+  .cntrslct__indicator svg {
+    margin-right: 12px;
+  }
+}
+
+.checkboxswapping {
+  margin-top: 60px;
+  label {
+    font-family: 'Avenir';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 140%;
+    color: #FFFFFF;
+    padding-left: 16px;
+    text-align: start;
+    display: flex;
+    align-items: flex-start;
+    padding-top: 5px;
+  }
+  .form-check {
+    display: flex;
+    align-items: center;
+    padding-top: 0;
+    .form-check-input {
+      box-shadow: none;
+      border: none;
+      border-radius: 0;
+      background: #16E6EF;
+    }
+    .form-check-input:checked[type=checkbox] {
+      background-image: url('/assets/images/chkbx_right.png');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 13px;
+    }
+    input {
+      height: 24px;
+      width: 24px;
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+.datepickerBoxswappng .datepiker_img_bx {
+  position: absolute;
+  right: 20px;
+  top: 22px;
 }

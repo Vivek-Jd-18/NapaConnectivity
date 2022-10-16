@@ -52,7 +52,7 @@
       top: -5px;
     }
   }
-  button{
+  button, a{
     background: transparent;
     border: none;
     padding: 0;
@@ -64,6 +64,7 @@
     line-height: 110%;
     text-align: right;
     color: #16E6EF;
+    text-decoration: none;
     transition: all 0.2s ease-out;
     &:hover {
       color: #fff;

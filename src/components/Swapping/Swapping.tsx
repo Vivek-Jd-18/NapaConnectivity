@@ -4,6 +4,7 @@ import Select from 'react-select';
 import 'bootstrap-daterangepicker/daterangepicker.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import styles from './Swapping.module.scss';
+import Link from 'next/link';
 
 export default function Swapping() {
     const options = [
@@ -26,7 +27,8 @@ export default function Swapping() {
                 </div>
                 <div className={styles.buttonperntAj}>
                     <button className={styles.SearchBtnHad}><Image src='/img/search_icon_aj.svg' alt='' height="24px" width="24px" className='' /></button>
-                    <button className={styles.marginPrnt}>Create New</button>
+                    {/* <button >Create New</button> */}
+                    <Link href="/create-new-swapping"><a className={styles.marginPrnt}>Create New</a></Link>
                     {/* <button><Image src='/img/grid_ic_dark.svg' alt='' height="24px" width="24px" className='' /></button> */}
                 </div>
                
