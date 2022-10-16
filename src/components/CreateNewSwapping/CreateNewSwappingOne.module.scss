@@ -218,6 +218,20 @@
     }
   }
 }
+.SwappingOverLay {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0px;
+    min-height: 268px;
+    background: linear-gradient(180deg, rgba(16, 35, 36, 0) 0%, #102324 100%);
+    z-index: 2;
+    width: 100%;
+  }
+}
 .TipsTulsOverlay {
   position: relative;
   &::before {
@@ -231,18 +245,18 @@
     z-index: 1;
     width: 100%;
   }
-  &::after{
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    min-height: 117px;
-    background: linear-gradient(180deg, rgba(12, 27, 34, 0) 0%, rgba(12, 27, 34, 0.9) 100%);
-    transform: matrix(1, 0, 0, -1, 0, 0);
-    // z-index: 1;
-    width: 100%;
-  }
+  // &::after{
+  //   content: "";
+  //   position: absolute;
+  //   left: 0;
+  //   right: 0;
+  //   top: 0;
+  //   min-height: 117px;
+  //   background: linear-gradient(180deg, rgba(12, 27, 34, 0) 0%, rgba(12, 27, 34, 0.9) 100%);
+  //   transform: matrix(1, 0, 0, -1, 0, 0);
+  //   // z-index: 1;
+  //   width: 100%;
+  // }
 }
 .scrollPernt{
   overflow-y: auto;
@@ -260,7 +274,7 @@
     grid-gap: 24px;
     grid-template-columns: repeat(2, minmax(0px, 1fr));
   }
-  // .downCont{right: 10px; }
+  .downCont{right: 10px;}
   .buttonperntAj{
     .marginPrnt{
       margin: 0 23px 0 48px;
@@ -279,3 +293,27 @@
   }
 }
 // select_mainas
+.chosBtnPernt{
+  padding-top: 33px;
+  a{
+    font-family: 'Neuropolitical';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 110%;
+    text-align: center;
+    color: #16E6EF;
+    text-decoration: none;
+    border: 1px solid #16E6EF;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    width: 100%;
+    padding: 12px 0;
+    display: block;
+    transition: all 0.2s ease-out;
+    cursor: pointer;
+    &:hover{
+      background: #16E6EF !important;
+      color: #102324 !important;
+    }
+  }
+}
