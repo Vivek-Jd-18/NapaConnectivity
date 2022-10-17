@@ -37,9 +37,9 @@ export default function CreateNewSwappingTwo() {
                                 }}
                             >
                                 <input
-                                type="text"
-                                className="form-control"
-                                placeholder="End Date"
+                                    type="text"
+                                    className="form-control"
+                                    placeholder="End Date"
                                 />
                             </DateRangePicker>
                             <div className="datepiker_img_bx">
