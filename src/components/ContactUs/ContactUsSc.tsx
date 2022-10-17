@@ -5,10 +5,16 @@ import Container from '../../Layout/Container/Container';
 import Image from 'next/image';
 import Link from 'next/link';
 import Input from '../Input/Input';
+import Select from 'react-select';
 
 export default function ContactUsSc() {
   const [name, setName] = useState('');
   const [namesec, setNamesec] = useState('');
+  const options = [
+    { value: 'admin', label: 'admin' },
+    { value: 'tecnical', label: 'tecnical' },
+    { value: 'finance', label: 'finance' },
+  ];
   return (
     <>
     <div
@@ -43,6 +49,17 @@ export default function ContactUsSc() {
                           label="Email"
                           onChange={(e) => setNamesec(e.target.value)}
                       />
+                  </div>
+                  <div className={styles.FrstInput}>
+                    <div className='slct_cnctus'>
+                      <Select
+                            options={options}
+                            // menuIsOpen={true}
+                            className="select_pernt"
+                            placeholder="Rating"
+                            classNamePrefix="cntrslct"
+                        />
+                    </div>
                   </div>
                   <div className={styles.TextArea}>
                     <p>Message</p> 
