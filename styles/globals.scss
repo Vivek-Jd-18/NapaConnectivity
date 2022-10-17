@@ -1299,3 +1299,20 @@ input::-webkit-inner-spin-button {
   right: 20px;
   top: 22px;
 }
+
+.slct_cnctus {
+  .cntrslct__control {
+    width: 100%;
+    padding: 0 20px;
+    border-bottom: 1px solid rgb(255, 255, 255);
+    border-radius: 0;
+    // margin-bottom: 20px;
+    &:hover {
+      box-shadow: none;
+      border-bottom: 1px solid rgb(255, 255, 255);
+    }
+  }
+  .select_pernt {
+      margin: 0 0 35px 0;
+  }
+} 

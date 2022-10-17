@@ -123,7 +123,7 @@ const Footer: NextPage<FooterProps> = ({ footerIconShow }) => {
               {/* <li>NAPA Earn</li> */}
               {/* <li>Leaderboards</li> */}
               {/* <li>Lauchpad</li> */}
-              <Link href={'/support'}>
+              <Link href={'/help-center'}>
                 <li>Help Center</li>
               </Link>
             </ul>
