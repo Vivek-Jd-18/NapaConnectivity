@@ -72,7 +72,7 @@ export default function FeedTab() {
                                         </div>
                                     </div>
                                     <div className={styles.lastpp}>
-                                        <p>However venture pursuit he am mr cordial. Forming musical am hearing studied.</p>
+                                        <p>Valuation is based on market conditions and historical public data.</p>
                                     </div>
                                 </div>
                             </div>
