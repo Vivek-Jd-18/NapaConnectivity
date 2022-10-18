@@ -36,6 +36,7 @@
     "react-bootstrap-daterangepicker": "^8.0.0",
     "react-device-detect": "^2.2.2",
     "react-dom": "^18.2.0",
+    "react-drag-drop-files": "^2.3.7",
     "react-fullpage": "^0.1.19",
     "react-scroll-section": "^3.1.0",
     "react-select": "^5.4.0",
