@@ -58,7 +58,7 @@ export default function HelpCenterSc() {
                 <Link href="/tutorials">
                   <a className={styles.InrAThre}>
                     <div className={styles.MainImgTxtHlp}>
-                      <Image src="/img/support_lft.png" alt="" width={32} height={32} />
+                      <Image src="/img/send_icon_tip_turil_aj.png" alt="" width={32} height={32} />
                       <h6>Tips and Tutorials</h6>
                     </div>
                     <div className={styles.ArrowImg}>
