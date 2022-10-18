@@ -11,7 +11,7 @@ export default function CreateNewNFTSc() {
     <div className={`${styles.container}`}>
       <Container className={`${styles.settingsContainer} asinnerContainer`}>
       <div className={styles.StaylinkFrst}>
-          <Link href="/co-batching-pools"><a> <Image src="/img/arrow_icon.svg" alt="" width="18px" height="12px"/>My NFTs</a></Link>
+          <Link href="/marketplace"><a> <Image src="/img/arrow_icon.svg" alt="" width="18px" height="12px"/>Marketplace</a></Link>
         </div>
           <h1 className={styles.settings}>Create New NFT</h1>
         <div>
