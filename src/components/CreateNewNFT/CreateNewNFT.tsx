@@ -12,9 +12,10 @@ const fileTypes = ["JPG", "PNG", "GIF"];
 
 export default function CreateNewNFT() {
     const [name, setName] = useState('');
-    const [file, setFile] = useState(null);
+    // const [file, setFile] = useState(null);
     const handleChange = (file: any) => {
-      setFile(file);
+    //   setFile(file);
+      console.log(file); 
     };
 
     const optionsthree = [
@@ -72,7 +73,7 @@ export default function CreateNewNFT() {
                         </div>
                         <div className={styles.PropertiesNft}>
                             <h5 className={styles.DefultNfth4}>Properties</h5>
-                            <p className={styles.DefultPNft}>Properties show up underneath your item, are clickable, and can be filtered in your collection's sidebar.</p>
+                            <p className={styles.DefultPNft}>Properties show up underneath your item, are clickable, and can be filtered in your collection{"'"}s sidebar.</p>
                             <div className={styles.TwoInptNft}>
                                 <div className={styles.FrstInput}>
                                     <Input
@@ -102,7 +103,7 @@ export default function CreateNewNFT() {
                         </div>
                         <div className={styles.PropertiesNft}>
                             <h5 className={styles.DefultNfth4}>Stats</h5>
-                            <p className={styles.DefultPNft}>Stats show up underneath your item, are clickable, and can be filtered in your collection's sidebar.</p>
+                            <p className={styles.DefultPNft}>Stats show up underneath your item, are clickable, and can be filtered in your collection{"'"}s sidebar.</p>
                             <div className={styles.StartInpt}>
                                 <div className={styles.FrstInput}>
                                     <Input
@@ -173,7 +174,7 @@ export default function CreateNewNFT() {
                             </div>
                         </div>
                         <div className={styles.DefltBtn}>
-                            <Link href="/create-new-nft-tow"><a>Create</a></Link>
+                            <Link href="/create-new-nft-two"><a>Create</a></Link>
                         </div>
                     </div>
                 </div>
@@ -197,7 +198,7 @@ export default function CreateNewNFT() {
                 </div>
                 <div className={styles.PropertiesNft}>
                     <h5 className={styles.DefultNfth4}>Levels</h5>
-                    <p className={styles.DefultPNft}>Levels show up underneath your item, are clickable, and can be filtered in your collection's sidebar</p>
+                    <p className={styles.DefultPNft}>Levels show up underneath your item, are clickable, and can be filtered in your collection{"'"}s sidebar</p>
                     <div className={styles.StartInpt}>
                         <div className={styles.FrstInput}>
                             <Input

@@ -111,3 +111,40 @@
 }
 
 
+.CurrentBitBox{
+  padding-top: 35px;
+  display: flex;
+  align-items: center;
+  .CurrentBitBoxInrr{
+    margin-right: 60px;
+    &:last-child{
+      margin-right: 0;
+    }
+    p{
+      font-family: 'Avenir';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 140%;
+      color: #FFFFFF;
+      margin: 0 0 5px 0;
+    }
+    .imgAdnHH{
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      >span{
+        margin-right: 16px !important;
+      }
+    }
+    h3{
+      font-family: 'Neuropolitical';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 32px;
+      line-height: 110%;
+      color: #FFFFFF;
+      margin: 0;
+    }
+  }
+}

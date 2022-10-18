@@ -20,9 +20,33 @@ export default function SectionOne() {
                         <Image src="/img/tombradley_img_aj.svg" alt="" width={40} height={40} />
                         <p>Tom Bradley</p>
                     </div>
+                    {/* <div className={styles.CurrentBitBox}>
+                        <div className={styles.CurrentBitBoxInrr}>
+                            <p>Current Bit</p>
+                            <div className={styles.imgAdnHH}>
+                                <Image
+                                    src="/img/napa_ic.svg"
+                                    height="28px"
+                                    width="28px"
+                                    alt=""
+                                    className=""
+                                />
+                                <h3>0.24</h3>
+                            </div>
+                        </div>
+                        <div className={styles.CurrentBitBoxInrr}>
+                            <p>Ending In</p>
+                            <div className={styles.imgAdnHH}>
+                                <h3>4 h 32 min</h3>
+                            </div>
+                        </div>
+                    </div> */}
                     <div className={styles.thrBtnPrnt}>
                         <Link  href="/" ><a className={styles.linkPernt}>Edit</a></Link>
-                        <Link href="/" ><a className={styles.linkPernt}>Sell</a></Link>
+                        <Link href="/sell-nft-page-sc" ><a className={styles.linkPernt}>Sell</a></Link>
+                        {/* <Link  href="/" ><a className={styles.linkPernt}>Cancel</a></Link>
+                        <Link  href="/" ><a className={styles.linkPernt}>Low Price</a></Link>
+                        <Link  href="/" ><a className={styles.linkPernt}>Buy Now for 0.24 NAPA</a></Link> */}
                         <div className={`${styles.RowLabel} ${styles.RowSeven}`}>
                             <div className={styles.butnPernt}>
                                 <button role="button" data-bs-toggle="dropdown" aria-expanded="false">
