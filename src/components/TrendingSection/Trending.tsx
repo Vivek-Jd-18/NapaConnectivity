@@ -158,6 +158,7 @@ const TrendingSection: NextPage<TrendingSectionProps> = ({ socket }) => {
         await axios.post(`${API_URL}/chat/send`, {
           message: message,
           from: profileDetails?.profileName,
+          avatar: profileDetails?.avatar,
         });
         setMessage('');
         return;
