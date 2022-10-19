@@ -358,7 +358,7 @@ export default function LaunchpadDatals() {
                                         className="evmtimg"
                                     />
                                     <div className={styles.downCont}>
-                                        <h3>Raphael's Hallucination</h3>
+                                        <h3>Raphael{"'"}s Hallucination</h3>
                                         <div className={styles.flexPernt}>
                                             <div className={styles.currentBit}>
                                                 <h5>Current Bid</h5>
