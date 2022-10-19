@@ -743,6 +743,7 @@ input::-webkit-inner-spin-button {
 }
 @media screen and (max-width: 1200px) {
   .slctrspnsv {margin-right: 0 !important;}
+  
 }
 @media screen and (max-width: 736px) {
   .select_main {
@@ -1139,7 +1140,11 @@ input::-webkit-inner-spin-button {
   background-size: cover;
   min-height: 724px;
 }
-
+@media screen and (max-width:1280px) {
+  .RowLabelprnt_ajv2 {
+    align-items: flex-start !important;
+  }
+}
 .radiopoolbox {
   display: flex;
   align-items: center;
@@ -1427,4 +1432,22 @@ input::-webkit-inner-spin-button {
 .crtnwnfttw{
   background: url(/assets/images/create_newnft_tow_bg.jpeg) no-repeat center top !important;
   background-size: cover !important;
+}
+@media screen and (max-width: 1200px) {
+  .select_mainonn {
+    display: flex !important;
+    .cntrslct__control {
+      margin-right: 16px;
+    }
+  }
+}
+@media screen and (max-width: 736px) {
+  .select_mainonn {
+    display: flex !important;
+    flex-direction: column;
+    align-items: flex-start;
+    .cntrslct__control {
+      margin-right: 0;
+    }
+  }
 }

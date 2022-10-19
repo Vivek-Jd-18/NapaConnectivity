@@ -3,9 +3,9 @@ import styles from '../../styles/pages/Home.module.scss';
 import type { NextPage } from 'next';
 import { WEBSOCKET_URL } from '../constants/url';
 import { useEffect } from 'react';
-import CoBatchingPoolsSc from '@/components/CoBatchingPools/CoBatchingPoolsSc';
+import TopNFTsSc from '@/components/TopNFT/TopNFTsSc';
 
-const CoBatchingPools: NextPage = () => {
+const TopNFT: NextPage = () => {
   const socket = new WebSocket(WEBSOCKET_URL);
   useEffect(() => {
     socket.addEventListener('open', () => {
@@ -22,11 +22,11 @@ const CoBatchingPools: NextPage = () => {
       </Head>
       <section className={styles.container} id="earn-container">
         <div className={`${styles.child} earnpage`} id="scrollElement">
-          <CoBatchingPoolsSc />
+          <TopNFTsSc />
         </div>
       </section>
     </>
   );
 };
 
-export default CoBatchingPools;
+export default TopNFT;
