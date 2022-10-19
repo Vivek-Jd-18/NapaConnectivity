@@ -7,7 +7,7 @@ const Settings: NextPage = () => {
   return (
     <>
       <Head>
-        <title>NAPA Society Staging Server</title>
+        <title>NAPA Society | Settings</title>
         <meta name="description" content="NAPA Staging Environment" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
