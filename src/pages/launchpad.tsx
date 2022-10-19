@@ -3,9 +3,9 @@ import styles from '../../styles/pages/Home.module.scss';
 import type { NextPage } from 'next';
 import { WEBSOCKET_URL } from '../constants/url';
 import { useEffect } from 'react';
-import LeaderboardsSc from '@/components/Leaderboards/LeaderboardsSc';
+import LaunchPadSc from '@/components/Launchpad/LaunchPadSc';
 
-const Leaderboards: NextPage = () => {
+const Launchpad: NextPage = () => {
   const socket = new WebSocket(WEBSOCKET_URL);
   useEffect(() => {
     socket.addEventListener('open', () => {
@@ -16,17 +16,18 @@ const Leaderboards: NextPage = () => {
   return (
     <>
       <Head>
-        <title>NAPA Society | SFT Leaaders</title>
+        <title>NAPA Society | Launchpad</title>
         <meta name="description" content="NAPA Developmeent Environment" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <section className={styles.container} id="earn-container">
-        <div className={`${styles.child} earnpage`} id="scrollElement">
-          <LeaderboardsSc />
+        <div className={`${styles.child} earnpage lnchpadbg`} id="scrollElement">
+          {/* <CreateNewSwappingFourSc /> */}
+          <LaunchPadSc />
         </div>
       </section>
     </>
   );
 };
 
-export default Leaderboards;
+export default Launchpad;
