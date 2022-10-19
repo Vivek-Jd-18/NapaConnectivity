@@ -16,7 +16,7 @@ const ContactUs: NextPage = () => {
   return (
     <>
       <Head>
-        <title>NAPA Society</title>
+        <title>NAPA Society | Contact Us</title>
         <meta name="description" content="NAPA Developmeent Environment" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
