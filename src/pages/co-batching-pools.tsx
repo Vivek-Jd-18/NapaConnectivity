@@ -21,7 +21,7 @@ const CoBatchingPools: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <section className={styles.container} id="earn-container">
-        <div className={`${styles.child} earnpage lnchpadbg`} id="scrollElement">
+        <div className={`${styles.child} earnpage mrktplcbg`} id="scrollElement">
           <CoBatchingPoolsSc />
         </div>
       </section>
