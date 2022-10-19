@@ -30,7 +30,7 @@ export default function TopNFTs() {
     <>
         <div className={styles.LaunchPadMain}>
           <div className={styles.LeftLaunchPad}>
-            <h1 className={styles.LaunchPadDeflt}>Top NFTs</h1>
+            <h1 className={styles.LaunchPadDeflt}>Top NFTs and SFTs</h1>
           </div>
           <div className={styles.tipandtotolmain}>
             <div className="select_main select_mainonn">
@@ -40,6 +40,14 @@ export default function TopNFTs() {
                     className="select_pernt slctrspnsv"
                     placeholder="Project"
                     classNamePrefix="cntrslct"
+                />
+                <Select
+                    options={optionsone}
+                    // menuIsOpen={true}
+                    className="select_pernt slctrspnsv"
+                    placeholder="Type"
+                    classNamePrefix="cntrslct"
+                    // Type is NFT or SFT //
                 />
                 <Select
                     options={optionsthree}
@@ -222,10 +230,11 @@ export default function TopNFTs() {
                           3
                         </div>
                         <div className={`${styles.RowLabel} ${styles.RowOne}`}>
+                        
                             <Image src="/img/nfts03.png" alt="" width={72} height={72} />
                             <div className={styles.RspnsvListtext}>
-                                <div className={styles.TxtH3}>
-                                    <h3><span>3.</span>The Potatoz</h3>
+                                <div className={styles.TxtH3} onClick={handleClick}>
+                                    <h3><span>3.</span>The Potatoes</h3>
                                 </div>
                                 <div className={styles.RspnsvEarn}>
                                     <Image src="/img/napa_icon_blue.png" alt="" width={17} height={13} />

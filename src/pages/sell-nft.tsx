@@ -3,9 +3,10 @@ import styles from '../../styles/pages/Home.module.scss';
 import type { NextPage } from 'next';
 import { WEBSOCKET_URL } from '../constants/url';
 import { useEffect } from 'react';
-import LaunchPadSc from '@/components/Launchpad/LaunchPadSc';
+// import CreateNewNFTSc from '@/components/CreateNewNFT/CreateNewNFTSc';
+import SellNFTPageSc from '@/components/CreateNewNFT/SellNFTPageSc';
 
-const launchpad: NextPage = () => {
+const CreateNewPool: NextPage = () => {
   const socket = new WebSocket(WEBSOCKET_URL);
   useEffect(() => {
     socket.addEventListener('open', () => {
@@ -16,18 +17,18 @@ const launchpad: NextPage = () => {
   return (
     <>
       <Head>
-        <title>NAPA Society | Launchpad</title>
-        <meta name="description" content="NAPA Society Launchpad" />
+        <title>NAPA Society</title>
+        <meta name="description" content="NAPA Developmeent Environment" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <section className={styles.container} id="earn-container">
-        <div className={`${styles.child} earnpage`} id="scrollElement">
-          {/* <CreateNewSwappingFourSc /> */}
-          <LaunchPadSc />
+        <div className={`${styles.child} earnpage `} id="scrollElement">
+          {/* <CreateNewNFTSc /> */}
+          <SellNFTPageSc />
         </div>
       </section>
     </>
   );
 };
 
-export default launchpad;
+export default CreateNewPool;
