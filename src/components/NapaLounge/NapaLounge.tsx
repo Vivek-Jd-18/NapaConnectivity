@@ -95,7 +95,7 @@ const NapaLounge: NextPage = () => {
     if (tabs === NapaLoungeTab.TIPS_AND_TUTORIALS) {
       return 'trending';
     } else if (tabs === NapaLoungeTab.CO_BATCHING_POOLS) {
-      return '';
+      return 'co-batching-pools';
     } else if (tabs === NapaLoungeTab.EVENTS) {
       return 'events';
     } else if (tabs === NapaLoungeTab.EARNED_NAPA_TOKENS) {
