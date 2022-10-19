@@ -21,7 +21,7 @@ const LaunchpadDatals: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <section className={styles.container} id="earn-container">
-        <div className={`${styles.child} earnpage mrktplcbg`} id="scrollElement">
+        <div className={`${styles.child} earnpage launchpad_datals_bg`} id="scrollElement">
           {/* <CreateNewSwappingFourSc /> */}
           <LaunchpadDatalsSc />
         </div>

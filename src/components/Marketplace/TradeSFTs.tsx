@@ -164,8 +164,8 @@ export default function TradeSFTs() {
                     <div className={styles.CustomGrid}>
                         <div className={styles.TipsTulsOverlay}>
                             <div className={styles.boxinnrcont}>
-                                <Link href="#">
-                                    <a href="#" className={`${styles.apernt} hovereffect`}>
+                                <Link href="/create-new-nft-two">
+                                    <Link href="/create-new-nft-two" className={`${styles.apernt} hovereffect`}>
                                         <Image
                                             src="/img/feeg_grid_img01.png"
                                             height="372px"
@@ -205,7 +205,7 @@ export default function TradeSFTs() {
                                                 </div>
                                             </div>
                                         </div>
-                                    </a>
+                                    </Link>
                                 </Link>
                             </div>
                         </div>
@@ -214,7 +214,7 @@ export default function TradeSFTs() {
                         <div className={styles.TipsTulsOverlay}>
                             <div className={styles.boxinnrcont}>
                                 <Link href="#">
-                                    <a href="#" className={`${styles.apernt} hovereffect`}>
+                                    <Link href="#" className={`${styles.apernt} hovereffect`}>
                                         <Image
                                             src="/img/feeg_grid_img02.png"
                                             height="372px"
@@ -254,7 +254,7 @@ export default function TradeSFTs() {
                                                 </div>
                                             </div>
                                         </div>
-                                    </a>
+                                    </Link>
                                 </Link>
                             </div>
                         </div>
@@ -263,7 +263,7 @@ export default function TradeSFTs() {
                         <div className={styles.TipsTulsOverlay}>
                             <div className={styles.boxinnrcont}>
                                 <Link href="#">
-                                    <a href="#" className={`${styles.apernt} hovereffect`}>
+                                    <Link href="#" className={`${styles.apernt} hovereffect`}>
                                         <Image
                                             src="/img/feeg_grid_img03.png"
                                             height="372px"
@@ -303,7 +303,7 @@ export default function TradeSFTs() {
                                                 </div>
                                             </div>
                                         </div>
-                                    </a>
+                                    </Link>
                                 </Link>
                             </div>
                         </div>
@@ -312,7 +312,7 @@ export default function TradeSFTs() {
                         <div className={styles.TipsTulsOverlay}>
                             <div className={styles.boxinnrcont}>
                                 <Link href="#">
-                                    <a href="#" className={`${styles.apernt} hovereffect`}>
+                                    <Link href="#" className={`${styles.apernt} hovereffect`}>
                                         <Image
                                             src="/img/feeg_grid_img04.png"
                                             height="372px"
@@ -352,7 +352,7 @@ export default function TradeSFTs() {
                                                 </div>
                                             </div>
                                         </div>
-                                    </a>
+                                    </Link>
                                 </Link>
                             </div>
                         </div>
@@ -361,7 +361,7 @@ export default function TradeSFTs() {
                         <div className={styles.TipsTulsOverlay}>
                             <div className={styles.boxinnrcont}>
                                 <Link href="#">
-                                    <a href="#" className={`${styles.apernt} hovereffect`}>
+                                    <Link href="#" className={`${styles.apernt} hovereffect`}>
                                         <Image
                                             src="/img/feeg_grid_img05.png"
                                             height="372px"
@@ -401,7 +401,7 @@ export default function TradeSFTs() {
                                                 </div>
                                             </div>
                                         </div>
-                                    </a>
+                                    </Link>
                                 </Link>
                             </div>
                         </div>
@@ -410,7 +410,7 @@ export default function TradeSFTs() {
                         <div className={styles.TipsTulsOverlay}>
                             <div className={styles.boxinnrcont}>
                                 <Link href="#">
-                                    <a href="#" className={`${styles.apernt} hovereffect`}>
+                                    <Link href="#" className={`${styles.apernt} hovereffect`}>
                                         <Image
                                             src="/img/feeg_grid_img06.png"
                                             height="372px"
@@ -450,7 +450,7 @@ export default function TradeSFTs() {
                                                 </div>
                                             </div>
                                         </div>
-                                    </a>
+                                    </Link>
                                 </Link>
                             </div>
                         </div>
@@ -459,7 +459,7 @@ export default function TradeSFTs() {
                         <div className={styles.TipsTulsOverlay}>
                             <div className={styles.boxinnrcont}>
                                 <Link href="#">
-                                    <a href="#" className={`${styles.apernt} hovereffect`}>
+                                    <Link href="#" className={`${styles.apernt} hovereffect`}>
                                         <Image
                                             src="/img/feeg_grid_img07.png"
                                             height="372px"
@@ -499,7 +499,7 @@ export default function TradeSFTs() {
                                                 </div>
                                             </div>
                                         </div>
-                                    </a>
+                                    </Link>
                                 </Link>
                             </div>
                         </div>
@@ -508,7 +508,7 @@ export default function TradeSFTs() {
                         <div className={styles.TipsTulsOverlay}>
                             <div className={styles.boxinnrcont}>
                                 <Link href="#">
-                                    <a href="#" className={`${styles.apernt} hovereffect`}>
+                                    <Link href="#" className={`${styles.apernt} hovereffect`}>
                                         <Image
                                             src="/img/feeg_grid_img08.png"
                                             height="372px"
@@ -548,7 +548,7 @@ export default function TradeSFTs() {
                                                 </div>
                                             </div>
                                         </div>
-                                    </a>
+                                    </Link>
                                 </Link>
                             </div>
                         </div>
@@ -557,7 +557,7 @@ export default function TradeSFTs() {
                         <div className={styles.TipsTulsOverlay}>
                             <div className={styles.boxinnrcont}>
                                 <Link href="#">
-                                    <a href="#" className={`${styles.apernt} hovereffect`}>
+                                    <Link href="#" className={`${styles.apernt} hovereffect`}>
                                         <Image
                                             src="/img/feeg_grid_img08.png"
                                             height="372px"
@@ -597,7 +597,7 @@ export default function TradeSFTs() {
                                                 </div>
                                             </div>
                                         </div>
-                                    </a>
+                                    </Link>
                                 </Link>
                             </div>
                         </div>

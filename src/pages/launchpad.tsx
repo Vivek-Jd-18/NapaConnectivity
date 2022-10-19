@@ -17,11 +17,11 @@ const Launchpad: NextPage = () => {
     <>
       <Head>
         <title>NAPA Society | Launchpad</title>
-        <meta name="description" content="NAPA Developmeent Environment" />
+        <meta name="description" content="NAPA Society Launchpad" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <section className={styles.container} id="earn-container">
-        <div className={`${styles.child} earnpage lnchpadbg`} id="scrollElement">
+        <div className={`${styles.child} earnpage`} id="scrollElement">
           {/* <CreateNewSwappingFourSc /> */}
           <LaunchPadSc />
         </div>
