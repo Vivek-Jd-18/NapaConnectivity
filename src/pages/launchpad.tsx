@@ -5,7 +5,7 @@ import { WEBSOCKET_URL } from '../constants/url';
 import { useEffect } from 'react';
 import LaunchPadSc from '@/components/Launchpad/LaunchPadSc';
 
-const launchpad: NextPage = () => {
+const Launchpad: NextPage = () => {
   const socket = new WebSocket(WEBSOCKET_URL);
   useEffect(() => {
     socket.addEventListener('open', () => {
@@ -16,7 +16,7 @@ const launchpad: NextPage = () => {
   return (
     <>
       <Head>
-        <title>NAPA Society</title>
+        <title>NAPA Society | Launchpad</title>
         <meta name="description" content="NAPA Developmeent Environment" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -30,4 +30,4 @@ const launchpad: NextPage = () => {
   );
 };
 
-export default launchpad;
+export default Launchpad;
