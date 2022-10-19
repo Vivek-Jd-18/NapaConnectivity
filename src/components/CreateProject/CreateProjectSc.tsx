@@ -2,8 +2,6 @@ import Container from '../../Layout/Container/Container';
 import Footer from '../Footer/Footer';
 import styles from './CreateProjectSc.module.scss';
 import React from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
 import CreateProject from './CreateProject';
 // import CreateNewNFT from './CreateNewNFT';
 

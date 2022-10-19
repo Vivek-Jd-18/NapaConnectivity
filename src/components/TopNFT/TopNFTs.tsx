@@ -22,10 +22,7 @@ export default function TopNFTs() {
     { value: '2', label: '50%' },
     { value: '3', label: '100%' },
   ];
-  const [active, setActive] = React.useState(false);
-  const handleClick = () => {
-    setActive(!active);
-  };
+  
   return (
     <>
         <div className={styles.LaunchPadMain}>

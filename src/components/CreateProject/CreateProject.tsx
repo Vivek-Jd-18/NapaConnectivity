@@ -13,7 +13,6 @@ export default function CreateProject() {
   
     const [nameone, setNameone] = useState('');
     const [nametwo, setNametwo] = useState('');
-    const [namethree, setNamethree] = useState('');
     const [namefour, setNamefour] = useState('');
     const [namefive, setNamefive] = useState('');
     const [namesix, setNamesix] = useState('');
@@ -63,7 +62,7 @@ export default function CreateProject() {
                     </div>
                 </div>
                 <div className={styles.CreateGrner}>
-                    <h4>Your Project's Sale Start Date </h4>
+                    <h4>Your Project{"'"}s Sale Start Date </h4>
                     <div className={`${styles.sdffdsf} ${styles.FrstInputThrdaj} FrstInputThrdajPrnt`}>
                         <p>Date</p>
                         <div className="datepickerBox datepickerBoxpool">
