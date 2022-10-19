@@ -6,20 +6,28 @@
   background-image: url('/assets/images/marketplace-background-mobile.png');
   background-size: cover;
   position: relative;
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
   @include flex-column-between;
   // @media (max-width: 1279px) {
   //   height: auto;
   // }
   .nft {
-    padding-top: 1rem;
+    padding-top: 110px;
     text-align: left;
     -webkit-text-stroke: 2px white;
     animation: glow 1s ease-in-out infinite alternate;
     @include font-lg-neuropolitical-normal;
     color: transparent;
     margin-bottom: 0;
+    font-size: 112px !important;
+    line-height: 110% !important;
+    @media screen and (max-width: 1060px) {
+      font-size: 76px !important;
+    }
+    @media screen and (max-width: 736px) {
+      font-size: 36px !important;
+    }
   }
   @keyframes glow {
     from {
@@ -52,9 +60,14 @@
   .description {
     color: $white;
     text-align: left;
-    padding-top: 0.5rem;
+    padding-top: 19px !important;
     @include font-xs-avenir-regular;
     margin-bottom: 0;
+    font-size: 18px !important;
+    @media screen and (max-width: 736px) {
+      font-size: 16px !important;
+      margin-bottom: 0 !important;
+    }
   }
   .carouselContainer {
     display: flex;
@@ -64,6 +77,10 @@
     @include flex-column-start;
     margin-bottom: 0.5rem;
     width: 100%;
+    padding-top: 26px !important;
+    @media screen and (max-width: 1023px) {
+      margin-bottom: 45px !important;
+    }
     .tabsInnerContainer {
       @include flex-row-center;
       .tab {
@@ -237,7 +254,7 @@
   @media (min-width: 1280px) {
     background-image: url('/assets/images/marketplace-background-nolines.png');
     .nft {
-      padding-top: 4rem;
+      padding-top: 2.3rem;
       max-width: 100%;
       @include font-5xl-neuropolitical-normal;
     }

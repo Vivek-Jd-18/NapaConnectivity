@@ -16,19 +16,39 @@
   .napaLoungeContainer {
     height: 100%;
     padding-right: 0;
-    padding-bottom: 5rem;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
     @media (max-width: 1279px) {
       padding-bottom: 15rem;
       padding-top: 2rem;
     }
     h1 {
       text-align: left;
+      @media screen and (max-width: 1280px) {
+        padding-top: 130px !important;
+      }
+      @media screen and (max-width: 1199px) {
+        padding-top: 30px !important;
+      }
+      @media screen and (max-width: 736px) {
+        padding-top: 80px !important;
+      }
     }
     .napa {
       @include font-6xl-neuropolitical-normal;
       text-align: left;
       -webkit-text-stroke: 2px $white;
+      font-size: 90px !important;
       color: transparent;
+      @media (max-width: 1200px) {
+        font-size: 76px !important;
+      }
+      @media screen and (max-width: 1199px) {
+        font-size: 56px !important;
+      }
+      @media screen and (max-width: 736px) {
+        font-size: 36px !important;
+      }
       @media (max-width: 600px) {
         font-size: $text-3xl;
       }
@@ -36,12 +56,22 @@
     .lounge {
       @include font-6xl-neuropolitical-normal;
       color: $white;
+      font-size: 90px !important;
+      @media (max-width: 1200px) {
+        font-size: 76px !important;
+      }
+      @media screen and (max-width: 1199px) {
+        font-size: 56px !important;
+      }
+      @media screen and (max-width: 736px) {
+        font-size: 36px !important;
+      }
       @media (max-width: 600px) {
         font-size: $text-3xl;
       }
     }
     .leftSideContainer {
-      --bs-gutter-x: 0rem;
+      --bs-gutter-x: .5rem;
       padding-top: 2rem;
       .boxes {
         border: 1px solid rgba(255, 255, 255, 0.15);
@@ -49,15 +79,25 @@
         text-align: left;
         padding: 2rem;
         padding-top: 8rem;
+
         @media (max-width: 600px) {
           padding-top: 2rem;
         }
         .description {
           color: $white;
           @include font-lg-neuropolitical-normal;
+          @media (max-width: 1200px) {
+            font-size: 18px !important;
+          }
+          @media screen and (max-width: 736px) {
+            font-size: 14px !important;
+          }
           @media (max-width: 600px) {
             font-size: 1.2rem;
           }
+        }
+        @media screen and (max-width: 1280px) {
+          min-height: 97px !important;
         }
       }
       .active {
@@ -65,6 +105,8 @@
         border: 1px solid transparent;
         .description {
           color: $black;
+          // font-size: 18px !important;
+          // line-height: 110% !important;
         }
       }
     }
@@ -90,7 +132,7 @@
       flex-direction: column;
       justify-content: center;
       h1 {
-        margin-bottom: 0em;
+        margin-bottom: 0;
       }
       .napa {
         @include font-4xl-neuropolitical-normal;
@@ -121,13 +163,13 @@
         .buttonContainer {
           display: flex;
           justify-content: flex-end;
-          padding-right: 6rem;
+          // padding-right: 0 !important;
+          padding-right: 6vw !important;
         }
         .arrowContainer {
           display: flex;
           flex-direction: row;
           justify-content: flex-end;
-          padding-right: 6.5rem;
           span {
             padding-right: 8rem !important;
             span {
@@ -139,6 +181,13 @@
           }
         }
       }
+    }
+  }
+  .arrowContainer {
+    // padding-right: 0 !important;
+    padding-right: 6vw !important;
+    @media screen and (max-width: 1199px) {
+      padding-right: 0 !important;
     }
   }
   @media (min-width: 1440px) {
@@ -285,7 +334,7 @@
       }
     }
   }
-  @media (max-width: 1280px){
+  @media (max-width: 1280px) {
     .napaLoungeContainer {
       display: flex;
       flex-direction: column;
@@ -302,8 +351,60 @@
         font-size: 3.5rem;
       }
     }
+  }
 }
+@media screen and (max-width: 1199px) {
+  .buttonContainer {
+    margin-top: 30px;
+    margin-bottom: 0px;
+  }
+  .rightSideContainer {
+    position: relative;
+    margin-top: 30px;
+    .arrowContainer {
+      position: absolute;
+      right: 8px;
+      bottom: -13px;
+    }
+  }
 }
 
+@media screen and (max-width: 736px) {
+  .rightSideContainer {
+    .arrowContainer {
+      bottom: -20px;
+    }
+  }
+}
 
-
+@media (max-width: 600px) {
+  .backgroundImage {
+    .napaLoungeContainer {
+      .napaLoungeBody {
+        order: 0;
+        width: 100vw;
+        .leftSideContainer {
+          overflow: scroll;
+          flex-wrap: nowrap;
+          min-width: calc(100vw - 48px);
+          .boxes {
+            white-space: nowrap;
+            width: fit-content;
+            border: none;
+            min-height: 20px !important;
+            line-height: 110%;
+            opacity: 0.5;
+            &.active {
+              opacity: 1;
+              background-color: transparent;
+              .description {
+                font-size: 18px !important;
+                color: white;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

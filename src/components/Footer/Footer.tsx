@@ -45,14 +45,14 @@ const Footer: NextPage<FooterProps> = ({ footerIconShow }) => {
                   <li>Social Art</li>
                 </Link>
                 <Link href={'/marketplace'}>
-                  <li>NFT Marketplace</li>
+                  <li>Marketplace</li>
                 </Link>
                 <Link href={'/earn'}>
                   <li>NAPA Earn</li>
                 </Link>
                 {/* <li>Leaderboards</li> */}
                 {/* <li>Lauchpad</li> */}
-                <Link href={'/support'}>
+                <Link href={'/help-center'}>
                   <li>Help Center</li>
                 </Link>
               </ul>
@@ -123,7 +123,7 @@ const Footer: NextPage<FooterProps> = ({ footerIconShow }) => {
               {/* <li>NAPA Earn</li> */}
               {/* <li>Leaderboards</li> */}
               {/* <li>Lauchpad</li> */}
-              <Link href={'/support'}>
+              <Link href={'/help-center'}>
                 <li>Help Center</li>
               </Link>
             </ul>
@@ -162,10 +162,14 @@ const Footer: NextPage<FooterProps> = ({ footerIconShow }) => {
 
             <div>
               <ul className={styles.footerListItem}>
-                <li className={styles.footerBottomText}>FAQ</li>
-                <li className={styles.footerBottomText}>Privacy Policy</li>
                 <li className={styles.footerBottomText}>
-                  Terms and Conditions
+                  <Link href="/faq">FAQ</Link>
+                </li>
+                <li className={styles.footerBottomText}>
+                  <Link href="/privacy-policy">Privacy Policy</Link>
+                </li>
+                <li className={styles.footerBottomText}>
+                  <Link href="/terms-conditions">Terms and Conditions</Link>
                 </li>
               </ul>
             </div>

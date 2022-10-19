@@ -3,6 +3,7 @@ import type { NextPage } from 'next';
 import styles from './ChatWindow.module.scss';
 
 import ChatListItemCard from '../ChatListItemCard/ChatListItemCard';
+import useProfile from '@/hooks/useProfile';
 
 type ChatWindowProps = {
   message: string;
@@ -18,6 +19,7 @@ const ChatWindow: NextPage<ChatWindowProps> = ({
   messages,
 }) => {
   const ref = useRef(null);
+  const { profileDetails } = useProfile();
 
   useEffect(() => {
     if (ref.current) {
@@ -28,15 +30,16 @@ const ChatWindow: NextPage<ChatWindowProps> = ({
 
   return (
     <>
-      <div className={styles.chatWindowContainer} ref={ref}>
+      <div className={`${styles.chatWindowContainer} otherscroll`} ref={ref}>
         {messages &&
-          messages.length &&
+          messages.length > 0 &&
           messages.map(({ message, timetoken }: any, index: number) => {
+            console.log('message', message);
             return (
               <ChatListItemCard
                 key={`chat-${index}`}
                 username={message?.from}
-                // avatar={avatar}
+                avatar={profileDetails?.avatar}
                 description={message?.text}
                 date={timetoken}
               />

@@ -31,7 +31,7 @@ const NapaSociety: NextPage = () => {
 
   const handleDecrement = () => {
     if (slider < 2) {
-      setSlider(4);
+      setSlider(1);
       return;
     }
     setSlider(slider - 1);
@@ -49,8 +49,8 @@ const NapaSociety: NextPage = () => {
               Join NAPA Society and turn your social media into{' '}
               <strong>Social Art! </strong>
               <br></br>
-              <br></br>Mint your posts in our social media app into NFTs to earn
-              NAPA tokens to buy and sell NFTs in the largest marketplace in the
+              <br></br>Mint your posts in our social media app into SFTs to earn
+              NAPA tokens to buy and sell NFTs and SFTs in the largest marketplace in the
               world!
             </p>
           </div>
@@ -61,7 +61,7 @@ const NapaSociety: NextPage = () => {
                   <div className={styles.sliderText}>
                     <p className={styles.sliderCounterText}>0{slider}</p>
                     <p className={styles.sliderSlashtext}>/</p>
-                    <p className={styles.sliderSlashtext}>04</p>
+                    <p className={styles.sliderSlashtext}>03</p>
                   </div>
                   <div className={styles.sliderArrows}>
                     <div onClick={handleDecrement}>
@@ -85,31 +85,18 @@ const NapaSociety: NextPage = () => {
                   </div>
                 </div>
                 {slider === 1 ? (
-                  <h3 className={styles.community}>Lounge</h3>
-                ) : slider === 2 ? (
                   <h3 className={styles.community}>Trending</h3>
-                ) : slider === 3 ? (
+                ) : slider === 2 ? (
                   <h3 className={styles.community}>Leaders</h3>
                 ) : (
                   <h3 className={styles.community}>Events</h3>
                 )}
               </div>
             </div>
-
-            {/* // Insert the following headings and sections 01 Community, 02 Trending, 03 Leaderboard, 04 The Lounge
-          We will need mini images for sections 2, 3 and 4 */}
             {slider === 1 ? (
               <div>
                 <h6 className={styles.description}>
-                  {/* <strong>Checkout the NAPA Lounge!</strong> */}
-                </h6>
-                {/* <div className={styles.slideImages}><img src='assets/images/image-lounge.jpg'></img></div> */}
-                <HighlightButton title="Visit NAPA Lounge" />
-              </div>
-            ) : slider === 2 ? (
-              <div>
-                <h6 className={styles.description}>
-                  <strong>{/* // Insert Mini Trending Window // */}</strong>
+                  {/* <strong>// Insert Mini Trending Window //</strong> */}
                 </h6>
                 <div className={styles.trend_row}>
                   <ul>
@@ -145,9 +132,9 @@ const NapaSociety: NextPage = () => {
                     </li>
                   </ul>
                 </div>
-                <HighlightButton title="Get Updates" />
+                <HighlightButton title="Get Updates" link="/trending" />
               </div>
-            ) : slider === 3 ? (
+            ) : slider === 2 ? (
               <div>
                 <h6 className={styles.description}>
                   <strong>{/* // Insert Mini Leaders List// */}</strong>
@@ -204,9 +191,9 @@ const NapaSociety: NextPage = () => {
                     </li>
                   </ul>
                 </div>
-                <HighlightButton title="Who is Leading" />
+                <HighlightButton title="Who is Leading" link="/leaderboards" />
               </div>
-            ) : (
+            ) :(
               <div>
                 <h6 className={styles.description}>
                   <strong>{/* // Display Next Event Image // */}</strong>
@@ -246,7 +233,7 @@ const NapaSociety: NextPage = () => {
                     </li>
                   </ul>
                 </div>
-                <HighlightButton title="More Events" />
+                <HighlightButton title="More Events" link="/events" />
               </div>
             )}
           </div>

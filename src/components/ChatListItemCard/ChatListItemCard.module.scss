@@ -12,6 +12,7 @@
       @include flex-column-start;
       margin-left: 1rem;
       text-align: left;
+      width: calc(100% - 2rem);
       .userNameContainer {
         .userName {
           @include font-sm-avenir-medium;
@@ -23,6 +24,7 @@
       }
       .description {
         @include font-xs-avenir-regular;
+        word-break: break-all;
       }
     }
   }

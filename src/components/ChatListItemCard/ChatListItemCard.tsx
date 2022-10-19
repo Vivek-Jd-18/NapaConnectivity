@@ -17,6 +17,7 @@ const ChatListItemCard: NextPage<any, ChatListItemCardProps> = ({
   username,
   description,
   date,
+  avatar,
 }) => {
   const time = new Date(Math.ceil(Number(date) / 10000000) * 1000);
   return (
@@ -24,7 +25,12 @@ const ChatListItemCard: NextPage<any, ChatListItemCardProps> = ({
     <div className={styles.chatItemContainer}>
       <div className={styles.userContainer}>
         <div className={styles.avatar}>
-          <Image src={HowardAvatar} width={32} height={32} alt="avatar" />
+          <Image
+            src={avatar ? `data:image;base64,${avatar}` : HowardAvatar}
+            width={32}
+            height={32}
+            alt="avatar"
+          />
         </div>
         <div className={styles.userInfo}>
           <div className={styles.userNameContainer}>

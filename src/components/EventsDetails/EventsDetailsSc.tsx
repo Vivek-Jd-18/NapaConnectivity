@@ -58,7 +58,7 @@ export default function EventsDetailsSc() {
                 <div className={styles.leftcontentMain}>
                     <div className={styles.aboutcontent}>
                       <h6>About Event</h6>
-                      <p>Imagine buying a piece of digital artwork on the Internet at a reasonable price and getting a unique digital token known which proves your authority over the artwork you bought. Wouldn't it be great? Well, that opportunity exists now, thanks to NFTs.</p>
+                      <p>Imagine buying a piece of digital artwork on the Internet at a reasonable price and getting a unique digital token known which proves your authority over the artwork you bought. Wouldn{"'"}t it be great? Well, that opportunity exists now, thanks to NFTs.</p>
                     </div>
                     <div className={styles.Perkscontent}>
                       <h4>Perks</h4>
@@ -66,7 +66,7 @@ export default function EventsDetailsSc() {
                         
                         <div className={styles.Perksinnrcontent}>
                           <Image src="/img/perks_img01.png" alt="" height="120px" width="120px" />
-                          <p>New Big Community for NFT’s Exchange</p>
+                          <p>New Big Community for NFT{"'"}s Exchange</p>
                         </div>
                         <div className={styles.Perksinnrcontent}>
                           <Image src="/img/perks_img02.png" alt="" height="120px" width="120px" />
@@ -78,7 +78,7 @@ export default function EventsDetailsSc() {
                         </div>
                         <div className={styles.Perksinnrcontent}>
                           <Image src="/img/perks_img04.png" alt="" height="120px" width="120px" />
-                          <p>Free Video Library with Guides on NFT's</p>  
+                          <p>Free Video Library with Guides on NFT{"'"}s</p>  
                         </div>
                       </div>
                     </div>
@@ -124,8 +124,8 @@ export default function EventsDetailsSc() {
                   <div className={styles.ShareEventMain}>
                     <h1>Share Event</h1>
                     <div className={styles.twobuttonPernt}>
-                      <a><Image src="/img/twitter_icon.svg" alt="" height="16px" width="16px" className={styles.aaaa}/> On Twitter</a>
-                      <a><Image src="/img/facebook_icon.svg" alt="" height="16px" width="16px" className={styles.aaaa}/> On Facebook</a>
+                      <a href='#'><Image src="/img/twitter_icon.svg" alt="" height="16px" width="16px" className={styles.aaaa}/> On Twitter</a>
+                      <a href='#'><Image src="/img/facebook_icon.svg" alt="" height="16px" width="16px" className={styles.aaaa}/> On Facebook</a>
                   </div>
                   </div>
                 </div>

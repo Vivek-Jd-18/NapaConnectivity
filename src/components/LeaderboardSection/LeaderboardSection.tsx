@@ -74,7 +74,7 @@ const LeaderboardSection: NextPage<LeaderboardSection> = () => {
 
   return (
     <div className={styles.backgroundImage} id="leaderboard">
-      <Container className={styles.leaderboardContainer}>
+      <Container className={`${styles.leaderboardContainer} asinnerContainer`}>
         <div>
           <h2 className={styles.leaderboard}>Leaderboards</h2>
           <div className={styles.tabsContainer}>
@@ -91,7 +91,7 @@ const LeaderboardSection: NextPage<LeaderboardSection> = () => {
                 ))}
               </ul>
             </div>
-            <HighlightButton title="All Leaderboards" />
+            <HighlightButton title="Explore All Projects" link="" />
           </div>
         </div>
 

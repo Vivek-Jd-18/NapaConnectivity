@@ -11,12 +11,16 @@ import HighlightButton from '../HighlightButton/HighlightButton';
 
 const marketPlaceTab = [
   {
-    title: 'Professional NFT Projects',
+    title: 'NFT Projects',
     value: 'Nft Projects',
   },
   {
-    title: 'Social Art Minted',
+    title: 'Social Art Minted SFT',
     value: 'Art Minted',
+  },
+  {
+    title: 'Top NFTs and SFTs',
+    value: 'NFT Listings',
   },
 ];
 
@@ -27,10 +31,10 @@ const NftMarketplaceSection: NextPage = ({}) => {
     <div id="nft-marketplace" className={styles.backgroundImage}>
       {/* <Steper steps={4} bottom={0} /> */}
       <Container className={`${styles.nftContainer} asinnerContainer`}>
-        <h2 className={styles.nft}>NFT Marketplace</h2>
+        <h2 className={styles.nft}>Marketplace</h2>
         <p className={styles.description}>
-          Buy, sell and trade the most sought after professional and social art
-          NFT’s with your NAPA token rewards today!
+          Buy, sell and trade the most sought after professional NFTs and social art SFTs
+          with your NAPA token rewards today!
         </p>
         <div className={styles.tabsContainer}>
           <div className={styles.tabsInnerContainer}>
@@ -46,7 +50,7 @@ const NftMarketplaceSection: NextPage = ({}) => {
               ))}
             </ul>
           </div>
-          <HighlightButton title="Explore All Projects" />
+          <HighlightButton title="Explore All Projects" link="/marketplace" />
         </div>
         <div id="sliderComponent">
           <SliderComponent centerMode={true}>

@@ -12,9 +12,10 @@ export default function MintedTabInBox() {
             <div className={styles.LeftMiddle}>          
                 <div className={styles.DarknesBox}>
                     <div className={styles.DarkimgBox}>
-                        <Image src="/img/darknes_ic.svg" alt="" width={80} height={80} />
+                        <Image src="/img/darknes_ic.svg" alt="" width={105} height={105} />
                         <div className={styles.DarinHedh}>                     
                             <h3 className={styles.DariH}>Illusions of Darkness</h3>
+                            <h6><span>Etherscan Address:</span> 0x8eb2df7137fb74...6e884</h6>
                             <div className={styles.DarinImgpspan}>
                                 <Image src="/img/napa_icon_darknes.svg" alt="" width={24} height={24} />
                                 <h2>12.35 NAPA<span>Earned</span></h2>
@@ -53,9 +54,10 @@ export default function MintedTabInBox() {
             <div className={styles.RightMiiddle}>
                 <div className={styles.DarknesBox}>
                     <div className={styles.DarkimgBox}>
-                        <Image src="/img/darknes_ic_02.png" alt="" width={80} height={80} />
+                        <Image src="/img/darknes_ic_02.png" alt="" width={105} height={105} />
                         <div className={styles.DarinHedh}>                     
                             <h3 className={styles.DariH}>We Came As Aliens</h3>
+                            <h6><span>Etherscan Address:</span> L97hUtYRfb6g50Ik...88y64</h6>
                             <div className={styles.DarinImgpspan}>
                                 <Image src="/img/napa_icon_darknes.svg" alt="" width={24} height={24} />
                                 <h2>8.21 NAPA<span>Earned</span></h2>
@@ -96,9 +98,10 @@ export default function MintedTabInBox() {
             <div className={styles.LeftMiddle}>          
                 <div className={styles.DarknesBox}>
                     <div className={styles.DarkimgBox}>
-                        <Image src="/img/darknes_ic_03.svg" alt="" width={80} height={80} />
+                        <Image src="/img/darknes_ic_03.svg" alt="" width={105} height={105} />
                         <div className={styles.DarinHedh}>                     
                             <h3 className={styles.DariH}>Of Aliens & Men</h3>
+                            <h6><span>Etherscan Address:</span> s853jYgR530Ja52J...er736k</h6>
                             <div className={styles.DarinImgpspan}>
                                 <Image src="/img/napa_icon_darknes.svg" alt="" width={24} height={24} />
                                 <h2>10.33 NAPA<span>Earned</span></h2>
@@ -137,9 +140,10 @@ export default function MintedTabInBox() {
             <div className={styles.RightMiiddle}>
                 <div className={styles.DarknesBox}>
                     <div className={styles.DarkimgBox}>
-                        <Image src="/img/darknes_ic_04.png" alt="" width={80} height={80} />
+                        <Image src="/img/darknes_ic_04.png" alt="" width={105} height={105} />
                         <div className={styles.DarinHedh}>                     
                             <h3 className={styles.DariH}>The Magic Galaxies</h3>
+                            <h6><span>Etherscan Address:</span> 9k8g36d8skjYgR93...ks728</h6>
                             <div className={styles.DarinImgpspan}>
                                 <Image src="/img/napa_icon_darknes.svg" alt="" width={24} height={24} />
                                 <h2>6.02 NAPA<span>Earned</span></h2>
@@ -180,12 +184,13 @@ export default function MintedTabInBox() {
             <div className={styles.LeftMiddle}>          
                 <div className={styles.DarknesBox}>
                     <div className={styles.DarkimgBox}>
-                        <Image src="/img/darknes_ic_03.svg" alt="" width={80} height={80} />
+                        <Image src="/img/darknes_ic.svg" alt="" width={105} height={105} />
                         <div className={styles.DarinHedh}>                     
-                            <h3 className={styles.DariH}>Of Aliens & Men</h3>
+                            <h3 className={styles.DariH}>Illusions of Darkness</h3>
+                            <h6><span>Etherscan Address:</span> 0x8eb2df7137fb74...6e884</h6>
                             <div className={styles.DarinImgpspan}>
                                 <Image src="/img/napa_icon_darknes.svg" alt="" width={24} height={24} />
-                                <h2>10.33 NAPA<span>Earned</span></h2>
+                                <h2>12.35 NAPA<span>Earned</span></h2>
                             </div>
                         </div>
                     </div>
@@ -193,23 +198,23 @@ export default function MintedTabInBox() {
                         <div className={styles.DarkiBxFrst}>
                             <div className={styles.DarkiBxhpdata}>
                                 <p>Date Minted</p>
-                                <h3>24 Apr 2022</h3>
+                                <h3>12 Mar 2022</h3>
                             </div>
                             <div className={styles.DarkiBxhpdata}>
                                 <p>Live Start Date</p>
-                                <h3>19 Aug 2022 </h3>
+                                <h3>4 Aug 2022 </h3>
                             </div>
-                        </div>    
+                        </div>
                         <div className={styles.DarkiBxSecond}>
                             <div className={styles.DarkiBxhpdata}>
                                 <p>Live End Date</p>
-                                <h3>24 Aug 2022 </h3>
+                                <h3>17 Aug 2022 </h3>
                             </div>
                             <div className={styles.DarkiBxhpdata}>
                                 <p>Current Rewards Tier</p>
-                                <h3>0.95 NAPA</h3>
+                                <h3>0.24 NAPA</h3>
                             </div>
-                        </div>                        
+                        </div>
                     </div>
                     <div className={styles.DarkiBoxbtnlst}>
                         <button className={styles.DarkiBlubtn}>Redeem Tokens</button>
@@ -222,12 +227,13 @@ export default function MintedTabInBox() {
             <div className={styles.RightMiiddle}>
                 <div className={styles.DarknesBox}>
                     <div className={styles.DarkimgBox}>
-                        <Image src="/img/darknes_ic_04.png" alt="" width={80} height={80} />
+                        <Image src="/img/darknes_ic_02.png" alt="" width={105} height={105} />
                         <div className={styles.DarinHedh}>                     
-                            <h3 className={styles.DariH}>The Magic Galaxies</h3>
+                            <h3 className={styles.DariH}>We Came As Aliens</h3>
+                            <h6><span>Etherscan Address:</span> L97hUtYRfb6g50Ik...88y64</h6>
                             <div className={styles.DarinImgpspan}>
                                 <Image src="/img/napa_icon_darknes.svg" alt="" width={24} height={24} />
-                                <h2>6.02 NAPA<span>Earned</span></h2>
+                                <h2>8.21 NAPA<span>Earned</span></h2>
                             </div>
                         </div>
                     </div>
@@ -235,23 +241,24 @@ export default function MintedTabInBox() {
                         <div className={styles.DarkiBxFrst}>
                             <div className={styles.DarkiBxhpdata}>
                                 <p>Date Minted</p>
-                                <h3>9 Apr 2022</h3>
+                                <h3>8 Mar 2022</h3>
                             </div>
                             <div className={styles.DarkiBxhpdata}>
                                 <p>Live Start Date</p>
-                                <h3>2 Aug 2022</h3>
+                                <h3>1 Aug 2022 </h3>
                             </div>
                         </div>
                         <div className={styles.DarkiBxSecond}>
                             <div className={styles.DarkiBxhpdata}>
                                 <p>Live End Date</p>
-                                <h3>29 Aug 2022</h3>
+                                <h3>12 Aug 2022 </h3>
                             </div>
                             <div className={styles.DarkiBxhpdata}>
                                 <p>Current Rewards Tier</p>
-                                <h3>0.48 NAPA</h3>
+                                <h3>0.32 NAPA</h3>
                             </div>
-                        </div>                                                
+                        </div>
+                        
                     </div>
                     <div className={styles.DarkiBoxbtnlst}>
                         <button className={styles.DarkiBlubtn}>Redeem Tokens</button>

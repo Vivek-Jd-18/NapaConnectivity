@@ -41,7 +41,7 @@ const Index: NextPage = () => {
                 <div className="section">
                   <SocialArtSection />
                 </div>
-                <div className="section">
+                <div className="section no-overflow">
                   <NftMarketplaceSection />
                 </div>
               </ReactFullpage.Wrapper>

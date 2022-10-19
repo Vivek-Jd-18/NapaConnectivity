@@ -128,7 +128,7 @@ export default function TipsAndTutorialsSc() {
                 <div className={styles.CustomGrid}>
                   <div className={styles.TipsTulsOverlay}>
                     <div className={styles.boxinnrcont}>
-                      <Link href="#">
+                      <Link href="tutorials-details">
                         <a href="#" className={`${styles.apernt} hovereffect`}>
                           <Image
                             src="/img/tutorial_img01.png"
@@ -139,15 +139,23 @@ export default function TipsAndTutorialsSc() {
                           />
                           <div className={styles.linkupcontent}>
                             <div className={styles.tutoril}>
-                              <img
+                              <Image
                                 src="/img/tutorl_ic.svg"
                                 alt=""
                                 className=""
+                                height="16px"
+                                width="16px"
                               />
                               <p>6 tutorials</p>
                             </div>
                             <div className={styles.timecont}>
-                              <img src="/img/time_ic.svg" alt="" className="" />
+                              <Image 
+                                src="/img/time_ic.svg" 
+                                alt="" 
+                                className=""
+                                height="16px"
+                                width="16px"
+                              />
                               <p>
                                 1 hrs <span>12 min</span>
                               </p>
@@ -156,7 +164,7 @@ export default function TipsAndTutorialsSc() {
                           <div
                             className={`${styles.dwoncontent} OvelayContent`}
                           >
-                            <h4>How to Make an NFT out of a Video</h4>
+                            <h4>How to make an SFT of your video</h4>
                             <p>
                               Cryptocurrency, blockchain, NFT: these are all
                               terms that are gradually becoming more and more
@@ -182,15 +190,23 @@ export default function TipsAndTutorialsSc() {
                           />
                           <div className={styles.linkupcontent}>
                             <div className={styles.tutoril}>
-                              <img
+                              <Image
                                 src="/img/tutorl_ic.svg"
                                 alt=""
                                 className=""
+                                height="16px"
+                                width="16px"
                               />
                               <p>12 tips</p>
                             </div>
                             <div className={styles.timecont}>
-                              <img src="/img/time_ic.svg" alt="" className="" />
+                              <Image 
+                                src="/img/time_ic.svg" 
+                                alt="" 
+                                className=""
+                                height="16px"
+                                width="16px"
+                              />
                               <p>
                                 6 hrs <span>34 min</span>
                               </p>
@@ -225,15 +241,23 @@ export default function TipsAndTutorialsSc() {
                           />
                           <div className={styles.linkupcontent}>
                             <div className={styles.tutoril}>
-                              <img
+                              <Image
                                 src="/img/tutorl_ic.svg"
                                 alt=""
                                 className=""
+                                height="16px"
+                                width="16px"
                               />
                               <p>7 tutorials</p>
                             </div>
                             <div className={styles.timecont}>
-                              <img src="/img/time_ic.svg" alt="" className="" />
+                              <Image 
+                                src="/img/time_ic.svg" 
+                                alt="" 
+                                className=""
+                                height="16px"
+                                width="16px"
+                              />
                               <p>
                                 2 hrs <span>16 min</span>
                               </p>
@@ -268,15 +292,23 @@ export default function TipsAndTutorialsSc() {
                           />
                           <div className={styles.linkupcontent}>
                             <div className={styles.tutoril}>
-                              <img
+                              <Image
                                 src="/img/tutorl_ic.svg"
                                 alt=""
                                 className=""
+                                height="16px"
+                                width="16px"
                               />
                               <p>4 tips</p>
                             </div>
                             <div className={styles.timecont}>
-                              <img src="/img/time_ic.svg" alt="" className="" />
+                            <Image 
+                                src="/img/time_ic.svg" 
+                                alt="" 
+                                className=""
+                                height="16px"
+                                width="16px"
+                              />
                               <p>
                                 2 hrs <span>24 min</span>
                               </p>
@@ -311,15 +343,23 @@ export default function TipsAndTutorialsSc() {
                           />
                           <div className={styles.linkupcontent}>
                             <div className={styles.tutoril}>
-                              <img
+                              <Image
                                 src="/img/tutorl_ic.svg"
                                 alt=""
                                 className=""
+                                height="16px"
+                                width="16px"
                               />
                               <p>10 tutorials</p>
                             </div>
                             <div className={styles.timecont}>
-                              <img src="/img/time_ic.svg" alt="" className="" />
+                            <Image 
+                                src="/img/time_ic.svg" 
+                                alt="" 
+                                className=""
+                                height="16px"
+                                width="16px"
+                              />
                               <p>
                                 2 hrs <span>54 min</span>
                               </p>
@@ -354,15 +394,23 @@ export default function TipsAndTutorialsSc() {
                           />
                           <div className={styles.linkupcontent}>
                             <div className={styles.tutoril}>
-                              <img
+                              <Image
                                 src="/img/tutorl_ic.svg"
                                 alt=""
                                 className=""
+                                height="16px"
+                                width="16px"
                               />
                               <p>16 tips</p>
                             </div>
                             <div className={styles.timecont}>
-                              <img src="/img/time_ic.svg" alt="" className="" />
+                            <Image 
+                                src="/img/time_ic.svg" 
+                                alt="" 
+                                className=""
+                                height="16px"
+                                width="16px"
+                              />
                               <p>
                                 7 hrs <span>46 min</span>
                               </p>
@@ -391,11 +439,23 @@ export default function TipsAndTutorialsSc() {
                                             <Image src='/img/tutorial_img06.png' height="373px" width="372px" alt='' className="evmtimg" />
                                             <div className={styles.linkupcontent}>
                                                 <div className={styles.tutoril}>
-                                                    <img src='/img/tutorl_ic.svg' alt='' className='' />
+                                                    <Image 
+                                                      src='/img/tutorl_ic.svg' 
+                                                      alt='' 
+                                                      className='' 
+                                                       height="16px"
+                                                        width="16px"
+                                                    />
                                                     <p>16 tips</p>
                                                 </div>
                                                 <div className={styles.timecont}>
-                                                    <img src='/img/time_ic.svg' alt='' className='' />
+                                                     <Image 
+                                                        src="/img/time_ic.svg" 
+                                                        alt="" 
+                                                        className=""
+                                                        height="16px"
+                                                        width="16px"
+                                                      />
                                                     <p>7 hrs  <span>46 min</span></p>
                                                 </div>
                                             </div>
