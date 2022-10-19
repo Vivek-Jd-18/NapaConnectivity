@@ -230,7 +230,7 @@ export default function TopNFTs() {
                         
                             <Image src="/img/nfts03.png" alt="" width={72} height={72} />
                             <div className={styles.RspnsvListtext}>
-                                <div className={styles.TxtH3} onClick={handleClick}>
+                                <div className={styles.TxtH3}>
                                     <h3><span>3.</span>The Potatoes</h3>
                                 </div>
                                 <div className={styles.RspnsvEarn}>

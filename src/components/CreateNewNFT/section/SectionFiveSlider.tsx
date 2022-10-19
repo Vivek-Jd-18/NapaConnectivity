@@ -10,7 +10,7 @@ export default function SectionFiveSlider() {
     <div className={styles.SectionFive}>
         <div className={styles.SliderUpCont}>
             <h2>More from this Collection</h2>
-            <Link href="/"><a>View All Collection</a></Link>
+            <Link href="/"><a>View Collection</a></Link>
         </div>
         <div className={styles.NftContainer}>
           <div id="NftsliderComponent">
