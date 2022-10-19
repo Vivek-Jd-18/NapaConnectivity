@@ -82,23 +82,22 @@ export default function CreateNewPoolFour() {
                             <p>Selling of Fractional Contributions</p>
                             <h6>Yes</h6>       
                        </div>
-                       
                     </div>
                     <div className={styles.progressContainer}>
                         <div className={styles.innerProgressParentContainer}>
                             <div className={styles.innerProgressContainer}>
                                 <p>Balance</p>
-                            <div className={styles.NapaIcontxt}>
-                                <Image src='/img/ab_napa_eht_ic_card_02.svg' alt="" width={17} height={13} />
-                                <span className={styles.SpanDefltMrgn}>14.02</span>
-                            </div>
+                                <div className={styles.NapaIcontxt}>
+                                    <Image src='/img/ab_napa_eht_ic_card_02.svg' alt="" width={17} height={13} />
+                                    <span className={styles.SpanDefltMrgn}>14.02</span>
+                                </div>
                             </div>
                             <div className={`${styles.innerProgressContainer} ${styles.innerProgressContainerv2}`}>
                                 <p>Target</p>
-                            <div className={styles.NapaIcontxt}>
-                                <Image src='/img/ab_napa_eht_ic_card_02.svg' alt="" width={17} height={13} />
-                                <span className={styles.SpanDefltMrgn}>Target</span>
-                            </div>
+                                <div className={styles.NapaIcontxt}>
+                                    <Image src='/img/ab_napa_eht_ic_card_02.svg' alt="" width={17} height={13} />
+                                    <span className={styles.SpanDefltMrgn}>Target</span>
+                                </div>
                             </div>
                         </div>
                         <div className={styles.progressBarContainer}>
@@ -110,7 +109,8 @@ export default function CreateNewPoolFour() {
                             <button>Contribute</button>
                             <button className={styles.rightDotBtn}><Image src='/img/more_icon.svg' alt="" width={24} height={24} /></button>
                         </div>
-                    </div></div>
+                    </div>
+                    </div>
                 </div>
             </div>
             <div className={styles.ContributionHistoryTable}>

@@ -3,9 +3,10 @@ import styles from '../../styles/pages/Home.module.scss';
 import type { NextPage } from 'next';
 import { WEBSOCKET_URL } from '../constants/url';
 import { useEffect } from 'react';
-import LaunchpadDatalsSc from '@/components/Launchpad/LaunchpadDatalsSc';
+import CreateProjectSc from '@/components/CreateProject/CreateProjectSc';
+// import CreateNewNFTSc from '@/components/CreateNewNFT/CreateNewNFTSc';
 
-const LaunchpadDatals: NextPage = () => {
+const CreateProject: NextPage = () => {
   const socket = new WebSocket(WEBSOCKET_URL);
   useEffect(() => {
     socket.addEventListener('open', () => {
@@ -21,13 +22,13 @@ const LaunchpadDatals: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <section className={styles.container} id="earn-container">
-        <div className={`${styles.child} earnpage launchpad_datals_bg`} id="scrollElement">
-          {/* <CreateNewSwappingFourSc /> */}
-          <LaunchpadDatalsSc />
+        <div className={`${styles.child} earnpage `} id="scrollElement">
+          {/* <CreateNewNFTSc /> */}
+          <CreateProjectSc />
         </div>
       </section>
     </>
   );
 };
 
-export default LaunchpadDatals;
+export default CreateProject;
