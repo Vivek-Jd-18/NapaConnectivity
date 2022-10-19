@@ -165,7 +165,7 @@ export default function FeedTab() {
                         <div className={styles.TipsTulsOverlay}>
                             <div className={styles.boxinnrcont}>
                                 <Link href="/create-new-nft-two">
-                                    <a href="/create-new-nft-two" className={`${styles.apernt} hovereffect`}>
+                                    <a href="" className={`${styles.apernt} hovereffect`}>
                                         <Image
                                             src="/img/feeg_grid_img01.png"
                                             height="372px"
