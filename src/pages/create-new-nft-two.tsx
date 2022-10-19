@@ -3,7 +3,7 @@ import styles from '../../styles/pages/Home.module.scss';
 import type { NextPage } from 'next';
 import { WEBSOCKET_URL } from '../constants/url';
 import { useEffect } from 'react';
-import CreateNewPoolScTwo from '@/components/CreateNewPool/CreateNewPoolScTwo';
+import CreateNewNFTScTow from '@/components/CreateNewNFT/CreateNewNFTScTow';
 
 const CreateNewPool: NextPage = () => {
   const socket = new WebSocket(WEBSOCKET_URL);
@@ -21,8 +21,8 @@ const CreateNewPool: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <section className={styles.container} id="earn-container">
-        <div className={`${styles.child} CreateNewNFTTow_bg`} id="scrollElement">
-          <CreateNewPoolScTwo />
+        <div className={`${styles.child} earnpage crtnwnfttw`}>
+          <CreateNewNFTScTow />
         </div>
       </section>
     </>

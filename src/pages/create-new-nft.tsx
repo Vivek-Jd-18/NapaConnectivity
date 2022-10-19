@@ -5,7 +5,7 @@ import { WEBSOCKET_URL } from '../constants/url';
 import { useEffect } from 'react';
 import CreateNewNFTSc from '@/components/CreateNewNFT/CreateNewNFTSc';
 
-const CreateNewPool: NextPage = () => {
+const CreateNewNft: NextPage = () => {
   const socket = new WebSocket(WEBSOCKET_URL);
   useEffect(() => {
     socket.addEventListener('open', () => {
@@ -29,4 +29,4 @@ const CreateNewPool: NextPage = () => {
   );
 };
 
-export default CreateNewPool;
+export default CreateNewNft;

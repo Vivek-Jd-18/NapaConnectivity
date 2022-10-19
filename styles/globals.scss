@@ -101,7 +101,10 @@ div#nft-marketplace .slick-current {
     background: black;
   }
 }
-
+.page-header {
+  position: relative;
+  z-index: 999;
+}
 .main-container {
   position: relative;
   height: 100vh;
@@ -1407,4 +1410,19 @@ input::-webkit-inner-spin-button {
   >span {
     margin-right: 12px !important;
   }
+}
+.typePrntaj{
+  border-bottom: 1px solid hsla(183deg, 11%, 61%, 0.15) !important;
+  padding-bottom: 55px;
+}
+#NftsliderComponent .slick-slide {
+  transform: scale(1) !important;
+}
+// .CreateNewnftTow{
+//   background: url(/assets/images/create_newnft_tow_bg.jpeg) no-repeat center top !important;
+//   background-size: cover !important;
+// }
+.crtnwnfttw{
+  background: url(/assets/images/create_newnft_tow_bg.jpeg) no-repeat center top !important;
+  background-size: cover !important;
 }

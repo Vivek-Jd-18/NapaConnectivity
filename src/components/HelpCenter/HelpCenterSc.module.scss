@@ -46,10 +46,12 @@
   color: #91A5A6;
 }
 .ThreeLinks {
-  display: grid;
+  display: flex;
   grid-gap: 40px;
-  grid-template-columns: repeat(3, 1fr);
   margin-bottom: 70px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 .ThreeLinks a {
   border: 1px solid #16E6EF;
@@ -69,6 +71,7 @@
   padding: 32px;
   justify-content: space-between;
   text-decoration: none;
+  flex-basis: calc(31.33% - 40px);
 }
 .MainImgTxtHlp {
   display: flex;
@@ -86,6 +89,9 @@
   text-decoration: none !important;
   margin-bottom: 0;
 }
+@media screen and (max-width: 1365px) {
+  .ThreeLinks .InrAThre {flex-basis: calc(50% - 40px);}
+}
 @media screen and (max-width: 1280px) {
   .MainTextHelp .InputInHelp {
     width: 100%;
@@ -93,6 +99,7 @@
   .ThreeLinks {
     grid-template-columns: repeat(1, 1fr);
   }
+  .ThreeLinks .InrAThre {flex-basis: calc(100% - 40px);}
 }
 @media screen and (max-width: 736px) {
   .MainContact {

@@ -174,7 +174,7 @@ export default function CreateNewNFT() {
                             </div>
                         </div>
                         <div className={styles.DefltBtn}>
-                            <Link href="/create-new-nft-two"><a>Create</a></Link>
+                            <Link href="/create-new-sfts-two"><a>Create</a></Link>
                         </div>
                     </div>
                 </div>
