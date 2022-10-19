@@ -1134,6 +1134,11 @@ input::-webkit-inner-spin-button {
   background: url(/assets/images/marketplace_feed.jpg) no-repeat center top;
   background-size: cover;
 }
+.lnchpadbg {
+  background: url(/assets/images/launchpadbg.jpg) no-repeat center top;
+  background-size: cover;
+  min-height: 724px;
+}
 
 .radiopoolbox {
   display: flex;
@@ -1400,9 +1405,6 @@ input::-webkit-inner-spin-button {
   }
 }
 
-.nft_selct {
-  
-}
 .cstm_napa_slct {
   display: flex;
   align-items: center;

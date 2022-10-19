@@ -3,9 +3,9 @@ import styles from '../../styles/pages/Home.module.scss';
 import type { NextPage } from 'next';
 import { WEBSOCKET_URL } from '../constants/url';
 import { useEffect } from 'react';
-import CoBatchingPoolsSc from '@/components/CoBatchingPools/CoBatchingPoolsSc';
+import LaunchPadSc from '@/components/Launchpad/LaunchPadSc';
 
-const CoBatchingPools: NextPage = () => {
+const launchpad: NextPage = () => {
   const socket = new WebSocket(WEBSOCKET_URL);
   useEffect(() => {
     socket.addEventListener('open', () => {
@@ -22,11 +22,12 @@ const CoBatchingPools: NextPage = () => {
       </Head>
       <section className={styles.container} id="earn-container">
         <div className={`${styles.child} earnpage lnchpadbg`} id="scrollElement">
-          <CoBatchingPoolsSc />
+          {/* <CreateNewSwappingFourSc /> */}
+          <LaunchPadSc />
         </div>
       </section>
     </>
   );
 };
 
-export default CoBatchingPools;
+export default launchpad;
