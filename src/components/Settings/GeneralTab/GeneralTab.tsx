@@ -288,7 +288,7 @@ const GeneralTab: NextPage = () => {
           aria-expanded="false"
           aria-controls="collapseExample"
         >
-          <h1 className={styles.napa}>NAPA Social Media</h1>
+          <h1 className={styles.napa}>NAPA Social Art</h1>
           <SocialMediaButton
             className={styles.accountBtn}
             title="Your Account"
@@ -299,7 +299,7 @@ const GeneralTab: NextPage = () => {
         <div className="collapse" id="collapseExample">
           <div className={styles.SocialNapaForm}>
             <div className={styles.HadFormNapa}>
-              <h5>Log In to NAPA Social Media</h5>
+              <h5>Connect NAPA Social Art Account</h5>
               <button
                 data-bs-toggle="collapse"
                 data-bs-target="#collapseExample"
