@@ -128,7 +128,7 @@ export default function TipsAndTutorialsSc() {
                 <div className={styles.CustomGrid}>
                   <div className={styles.TipsTulsOverlay}>
                     <div className={styles.boxinnrcont}>
-                      <Link href="#">
+                      <Link href="tutorials-details">
                         <a href="#" className={`${styles.apernt} hovereffect`}>
                           <Image
                             src="/img/tutorial_img01.png"
@@ -164,7 +164,7 @@ export default function TipsAndTutorialsSc() {
                           <div
                             className={`${styles.dwoncontent} OvelayContent`}
                           >
-                            <h4>How to Make an NFT out of a Video</h4>
+                            <h4>How to make an SFT of your video</h4>
                             <p>
                               Cryptocurrency, blockchain, NFT: these are all
                               terms that are gradually becoming more and more
