@@ -8,7 +8,7 @@ import 'bootstrap-daterangepicker/daterangepicker.css';
 import DateRangePicker from 'react-bootstrap-daterangepicker';
 
 export default function FeedTab() {
-   
+ 
   return (
     <>
         {/* <div className={styles.valtrTabTwoHed}>
@@ -30,7 +30,20 @@ export default function FeedTab() {
                             </div>
                             <div className={styles.leftContMian}>
                                 <div className={styles.ImgperntLeftCont}>
-                                    <h2>Illusions of Darkness</h2>
+                                   <div className={styles.SpaceBtwnBx}>
+                                        <h2>Dark Hopeless</h2>
+                                        <button role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                                            <Image src="/img/dotet_ic.png" alt="" width={24} height={24} />
+                                        </button>
+                                        <ul className="dropdown-menu dropdown-menu-end drpdwn_list drpdwn_list_empty">
+                                            <li>
+                                               <a>aaaaa</a>
+                                            </li>
+                                            <li>
+                                                <a>bbbbbb</a>
+                                            </li>
+                                        </ul>
+                                   </div>
                                     <div className={styles.smallImg}>
                                         <Image
                                             src="/img/feed_small_img02.png"
@@ -111,37 +124,52 @@ export default function FeedTab() {
                             </div>
                         </div>
                         <div className={styles.datepkrflx}>
-                            <div className="datepickerBox datepickerBoxaj_margin">
-                                <DateRangePicker
-                                    initialSettings={{
-                                    singleDatePicker: true,
-                                    showDropdowns: true,
-                                    maxYear: parseInt(moment().format('YYYY'), 10),
-                                    opens: 'left',
-                                    }}
-                                >
-                                    <input
-                                    type="text"
-                                    className="form-control"
-                                    placeholder="End Date"
-                                    />
-                                </DateRangePicker>
-                            </div>
-                            <div className="datepickerBox">
-                                <DateRangePicker
-                                    initialSettings={{
-                                    singleDatePicker: true,
-                                    showDropdowns: true,
-                                    maxYear: parseInt(moment().format('YYYY'), 10),
-                                    opens: 'left',
-                                    }}
-                                >
-                                    <input
-                                    type="text"
-                                    className="form-control"
-                                    placeholder="End Date"
-                                    />
-                                </DateRangePicker>
+                            <div className="spacebtwnbx">
+                                <div className="alingment">
+                                    <div className="datepickerBox datepickerBoxaj_margin">
+                                        <DateRangePicker
+                                            initialSettings={{
+                                            singleDatePicker: true,
+                                            showDropdowns: true,
+                                            maxYear: parseInt(moment().format('YYYY'), 10),
+                                            opens: 'left',
+                                            }}
+                                        >
+                                            <input
+                                            type="text"
+                                            className="form-control"
+                                            placeholder="End Date"
+                                            />
+                                        </DateRangePicker>
+                                    </div>
+                                    <div className="datepickerBox">
+                                        <DateRangePicker
+                                            initialSettings={{
+                                            singleDatePicker: true,
+                                            showDropdowns: true,
+                                            maxYear: parseInt(moment().format('YYYY'), 10),
+                                            opens: 'left',
+                                            }}
+                                        >
+                                            <input
+                                            type="text"
+                                            className="form-control"
+                                            placeholder="End Date"
+                                            />
+                                        </DateRangePicker>
+                                    </div>
+                                </div>
+                                <div className='dflt_btn_info'>
+                                    <button>
+                                        <Image
+                                            src="/img/info_icon.png"
+                                            height="16px"
+                                            width="16px"
+                                            alt=""
+                                            className=""
+                                        />
+                                    </button>
+                                </div>
                             </div>
                         </div>
                         <div className={styles.graficBox}>
@@ -303,7 +331,20 @@ export default function FeedTab() {
                             </div>
                             <div className={styles.leftContMian}>
                                 <div className={styles.ImgperntLeftCont}>
-                                    <h2>We Came As Aliens</h2>
+                                    <div className={styles.SpaceBtwnBx}>
+                                        <h2>Vecna Drive Me</h2>
+                                        <button role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                                            <Image src="/img/dotet_ic.png" alt="" width={24} height={24} />
+                                        </button>
+                                        <ul className="dropdown-menu dropdown-menu-end drpdwn_list drpdwn_list_empty">
+                                            <li>
+                                               <a>aaaaa</a>
+                                            </li>
+                                            <li>
+                                                <a>bbbbbb</a>
+                                            </li>
+                                        </ul>
+                                   </div>
                                     <div className={styles.smallImg}>
                                         <Image
                                             src="/img/feed_small_img06.png"
@@ -384,37 +425,52 @@ export default function FeedTab() {
                             </div>
                         </div>
                         <div className={styles.datepkrflx}>
-                            <div className="datepickerBox datepickerBoxaj_margin">
-                                <DateRangePicker
-                                    initialSettings={{
-                                    singleDatePicker: true,
-                                    showDropdowns: true,
-                                    maxYear: parseInt(moment().format('YYYY'), 10),
-                                    opens: 'left',
-                                    }}
-                                >
-                                    <input
-                                    type="text"
-                                    className="form-control"
-                                    placeholder="End Date"
-                                    />
-                                </DateRangePicker>
-                            </div>
-                            <div className="datepickerBox">
-                                <DateRangePicker
-                                    initialSettings={{
-                                    singleDatePicker: true,
-                                    showDropdowns: true,
-                                    maxYear: parseInt(moment().format('YYYY'), 10),
-                                    opens: 'left',
-                                    }}
-                                >
-                                    <input
-                                    type="text"
-                                    className="form-control"
-                                    placeholder="End Date"
-                                    />
-                                </DateRangePicker>
+                            <div className="spacebtwnbx">
+                                <div className="alingment">
+                                    <div className="datepickerBox datepickerBoxaj_margin">
+                                        <DateRangePicker
+                                            initialSettings={{
+                                            singleDatePicker: true,
+                                            showDropdowns: true,
+                                            maxYear: parseInt(moment().format('YYYY'), 10),
+                                            opens: 'left',
+                                            }}
+                                        >
+                                            <input
+                                            type="text"
+                                            className="form-control"
+                                            placeholder="End Date"
+                                            />
+                                        </DateRangePicker>
+                                    </div>
+                                    <div className="datepickerBox">
+                                        <DateRangePicker
+                                            initialSettings={{
+                                            singleDatePicker: true,
+                                            showDropdowns: true,
+                                            maxYear: parseInt(moment().format('YYYY'), 10),
+                                            opens: 'left',
+                                            }}
+                                        >
+                                            <input
+                                            type="text"
+                                            className="form-control"
+                                            placeholder="End Date"
+                                            />
+                                        </DateRangePicker>
+                                    </div>
+                                </div>
+                                <div className='dflt_btn_info'>
+                                    <button>
+                                        <Image
+                                            src="/img/info_icon.png"
+                                            height="16px"
+                                            width="16px"
+                                            alt=""
+                                            className=""
+                                        />
+                                    </button>
+                                </div>
                             </div>
                         </div>
                         <div className={styles.graficBox}>
@@ -576,7 +632,20 @@ export default function FeedTab() {
                             </div>
                             <div className={styles.leftContMian}>
                                 <div className={styles.ImgperntLeftCont}>
+                                    <div className={styles.SpaceBtwnBx}>
                                     <h2>Of Aliens & Men</h2>
+                                        <button role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                                            <Image src="/img/dotet_ic.png" alt="" width={24} height={24} />
+                                        </button>
+                                        <ul className="dropdown-menu dropdown-menu-end drpdwn_list drpdwn_list_empty">
+                                            <li>
+                                               <a>aaaaa</a>
+                                            </li>
+                                            <li>
+                                                <a>bbbbbb</a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                     <div className={styles.smallImg}>
                                         <Image
                                             src="/img/feed_small_img01.png"
@@ -657,37 +726,52 @@ export default function FeedTab() {
                             </div>
                         </div>
                         <div className={styles.datepkrflx}>
-                            <div className="datepickerBox datepickerBoxaj_margin">
-                                <DateRangePicker
-                                    initialSettings={{
-                                    singleDatePicker: true,
-                                    showDropdowns: true,
-                                    maxYear: parseInt(moment().format('YYYY'), 10),
-                                    opens: 'left',
-                                    }}
-                                >
-                                    <input
-                                    type="text"
-                                    className="form-control"
-                                    placeholder="End Date"
-                                    />
-                                </DateRangePicker>
-                            </div>
-                            <div className="datepickerBox">
-                                <DateRangePicker
-                                    initialSettings={{
-                                    singleDatePicker: true,
-                                    showDropdowns: true,
-                                    maxYear: parseInt(moment().format('YYYY'), 10),
-                                    opens: 'left',
-                                    }}
-                                >
-                                    <input
-                                    type="text"
-                                    className="form-control"
-                                    placeholder="End Date"
-                                    />
-                                </DateRangePicker>
+                        <div className="spacebtwnbx">
+                                <div className="alingment">
+                                    <div className="datepickerBox datepickerBoxaj_margin">
+                                        <DateRangePicker
+                                            initialSettings={{
+                                            singleDatePicker: true,
+                                            showDropdowns: true,
+                                            maxYear: parseInt(moment().format('YYYY'), 10),
+                                            opens: 'left',
+                                            }}
+                                        >
+                                            <input
+                                            type="text"
+                                            className="form-control"
+                                            placeholder="End Date"
+                                            />
+                                        </DateRangePicker>
+                                    </div>
+                                    <div className="datepickerBox">
+                                        <DateRangePicker
+                                            initialSettings={{
+                                            singleDatePicker: true,
+                                            showDropdowns: true,
+                                            maxYear: parseInt(moment().format('YYYY'), 10),
+                                            opens: 'left',
+                                            }}
+                                        >
+                                            <input
+                                            type="text"
+                                            className="form-control"
+                                            placeholder="End Date"
+                                            />
+                                        </DateRangePicker>
+                                    </div>
+                                </div>
+                                <div className='dflt_btn_info'>
+                                    <button>
+                                        <Image
+                                            src="/img/info_icon.png"
+                                            height="16px"
+                                            width="16px"
+                                            alt=""
+                                            className=""
+                                        />
+                                    </button>
+                                </div>
                             </div>
                         </div>
                         <div className={styles.graficBox}>
@@ -835,7 +919,7 @@ export default function FeedTab() {
                         </div>
                     </div>
                 </div>
-                <div className={styles.CustomGrid}>
+                {/* <div className={styles.CustomGrid}>
                     <div className={styles.bgPernt}>
                         <div className={styles.flexImgpernt}>
                             <div className={styles.Imgpernt}>
@@ -1008,7 +1092,6 @@ export default function FeedTab() {
                                     <div className={styles.flexBsis02}>
                                         <h3>Project</h3>
                                     </div>
-                                    {/* <div className={styles.rspsivTow}> */}
                                         <div className={styles.marginPernt}>
                                             <p>Network</p>
                                             <h6>OpenSea</h6>
@@ -1026,8 +1109,6 @@ export default function FeedTab() {
                                                 <h6>3.1</h6>
                                             </div>
                                         </div>
-                                    {/* </div> */}
-                                    {/* <div className={styles.rspsivTow}> */}
                                         <div className={`${styles.marginPernt} ${styles.rsomrGin} adddadadada`}>
                                             <p>Utility Score</p>
                                             <div className={styles.flexDiv}>
@@ -1045,13 +1126,11 @@ export default function FeedTab() {
                                             <p>Project Extras</p>
                                             <h6 className={styles.bordrBttm}>View</h6>
                                         </div>
-                                    {/* </div> */}
                                 </div>
                                 <div className={styles.Projectbox}>
                                     <div className={styles.flexBsis02}>
                                          <h3 className={styles.nftText}>NFT</h3>
                                     </div>
-                                    {/* <div className={styles.rspsivTow}> */}
                                         <div className={styles.marginPernt}>
                                             <p>Ranking</p>
                                             <div className={styles.flexDiv}>
@@ -1069,8 +1148,6 @@ export default function FeedTab() {
                                             <p>Price Change</p>
                                             <h6>20%</h6>
                                         </div>
-                                    {/* </div> */}
-                                    {/* <div className={styles.rspsivTow}> */}
                                         <div className={`${styles.marginPernt} ${styles.rsomrGin} adddadadada`}>
                                             <p>Actual Value</p>
                                             <div className={styles.flexDiv}>
@@ -1097,7 +1174,6 @@ export default function FeedTab() {
                                                 <h6>0.48</h6>
                                             </div>
                                         </div>
-                                    {/* </div> */}
                                 </div>
                             </div>
                             <div className={styles.butndblck}>
@@ -1107,7 +1183,20 @@ export default function FeedTab() {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
+
+                {/* <lastone */}
+                <button className={styles.AddNftSft}>
+                    <Image
+                        src="/img/nftplus_ic.png"
+                        height="120px"
+                        width="120px"
+                        alt=""
+                        className=""
+                    />
+                    <h2>Add NFT or SFT for Valuation</h2>
+                </button> 
+                {/* <lastoneend */}
             </div>
         </div>
     </>
