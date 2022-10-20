@@ -18,8 +18,20 @@ const CoBatchingPoolFour: NextPage<CoBatchingPoolsCardProps> = () => {
       </div>
       <div className={styles.rightSide}>
         <div className='btvn_bx_ab'>
+          <div className={styles.SpaceBtwnBx}>
           <h2 className={styles.title}>Bring Me the Open Space </h2>
-          <button></button>
+            <button role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                <Image src="/img/dotet_ic.png" alt="" width={24} height={24} />
+            </button>
+            <ul className="dropdown-menu dropdown-menu-end drpdwn_list drpdwn_list_empty">
+                <li>
+                    <a>aaaaa</a>
+                </li>
+                <li>
+                    <a>bbbbbb</a>
+                </li>
+            </ul>
+        </div>
         </div>
         <div className={styles.timeContainer}>
           <Image src={TimeIcon} alt="TimeIcon" width={20} height={20} />

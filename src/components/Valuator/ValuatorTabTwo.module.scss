@@ -57,6 +57,7 @@
 }
 .leftContMian{
   margin-left: 32px;
+  width: 100%;
 }
 .flexImgpernt{
   display: flex;
@@ -66,7 +67,17 @@
 }
 .Imgpernt{}
 .ImgperntLeftCont{
- 
+  .SpaceBtwnBx {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    button {
+      border: none;
+      box-shadow: none;
+      background: transparent;
+      outline: none;
+    }
+  }
   h2{
     font-family: 'Neuropolitical';
     font-style: normal;
@@ -425,5 +436,37 @@
   }
   .marginPernt{
     flex-basis: 29%;
+  }
+}
+
+
+.AddNftSft {
+  background: transparent;
+  border: 1px solid #91a5a626;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  button {
+    background: transparent;
+    border: none;
+    outline: none;
+    box-shadow: none;
+  }
+  h2 {
+    font-family: 'Avenir';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 140%;
+    text-align: center;
+    color: #FFFFFF;
+    margin-top: 25px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .AddNftSft {
+    padding: 32px 0;
   }
 }
