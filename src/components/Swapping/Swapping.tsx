@@ -28,7 +28,7 @@ export default function Swapping() {
                 <div className={styles.buttonperntAj}>
                     <button className={styles.SearchBtnHad}><Image src='/img/search_icon_aj.svg' alt='' height="24px" width="24px" className='' /></button>
                     {/* <button >Create New</button> */}
-                    <Link href="/create-new-swapping"><a className={styles.marginPrnt}>Create New</a></Link>
+                    <Link href="/create-new-swapping"><a className={`${styles.marginPrnt} ${styles.CreateNewBtn}`}>Create New</a></Link>
                     {/* <button><Image src='/img/grid_ic_dark.svg' alt='' height="24px" width="24px" className='' /></button> */}
                 </div>
                

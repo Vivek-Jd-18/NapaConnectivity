@@ -39,7 +39,7 @@
   align-items: center;
   justify-content: space-between;
   padding-bottom: 40px;
-  margin-top: 15px;
+  margin-top: 0;
 }
 .buttonperntAj{
   display: flex;
@@ -72,6 +72,9 @@
   }
   .marginPrnt{
     margin: 0 23px 0 60px;
+  }
+  .CreateNewBtn {
+    margin: 0 0px 0 60px;
   }
 }
 
