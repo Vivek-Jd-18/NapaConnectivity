@@ -23,18 +23,18 @@ export default function CoBatchingPoolsSc() {
           </div>
           <div className="collapse" id="collapseExample">
             <div className="valuatercmmnt">
-            <div className='dflt_spcebtwn'>
-              <h1><span>1.</span> Find or create a co-batching pool</h1>
-              <Link href="#">
-                <a data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                  <Image
-                      src="/img/close_ic.svg"
-                      alt=""
-                      width="24px"
-                      height="24px"
-                  />
-                </a>
-              </Link>
+              <div className='dflt_spcebtwn'>
+                <h1><span>1.</span> Find or create a co-batching pool</h1>
+                <Link href="#">
+                  <a data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    <Image
+                        src="/img/close_ic.svg"
+                        alt=""
+                        width="24px"
+                        height="24px"
+                    />
+                  </a>
+                </Link>
              </div>
               <p>Imagine buying a piece of digital artwork on the Internet at a reasonable price and getting a unique digital token known which proves your authority over the artworyou bought. Wouldn{"'"}t it be great? Well, that opportunity exists now, thanks to NFTs.</p>
               <h1 className='margntop'><span>2.</span> Difficulty on insensible reasonable in. From as went he they.  </h1>

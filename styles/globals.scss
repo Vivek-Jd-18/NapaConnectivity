@@ -1234,6 +1234,7 @@ input::-webkit-inner-spin-button {
     position: absolute;
     right: 20px;
     top: 0;
+    pointer-events: none;
   }
 }
 .datepickerBoxpool .form-control {
@@ -1529,9 +1530,31 @@ input::-webkit-inner-spin-button {
   justify-content: space-between;
 }
 
-
+@media screen and (max-width: 1440px) {
+ .slectmainmargnsmll {
+  .datepickerBox {
+    margin-right: 0 !important;
+  }
+  .select_pernt {
+    margin-right: 12px !important;
+  }
+ }
+ .slectmainmargnsmlltwo {
+  .select_pernt {
+    .cntrslct__placeholder {
+      font-size: 14px !important;
+    }
+  }
+}
+}
+@media screen and (max-width: 1280px) {
+  .slectmainmargnsmll {
+   .select_pernt {
+     margin-right: 0 !important;
+   }
+  }
+ }
 @media screen and (max-width:736px) {
-  .va
   .valuatercmmnt  {
     padding: 16px;
     h1{

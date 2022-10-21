@@ -206,7 +206,7 @@ export default function CreateNewSwappingThree() {
                                                     </div>
                                                 </div>
                                                 <div className={styles.chosBtnPernt}>
-                                                    <Link href="/create-new-swapping-four"><a className={styles.ChooseBtnedr}>Choose</a></Link>
+                                                    <Link href="/create-new-swapping-confirmation"><a className={styles.ChooseBtnedr}>Choose</a></Link>
                                                     <Link href="/"><a className={styles.ChooseMasej}>Message</a></Link>
                                                 </div>
                                             </div>
@@ -259,7 +259,7 @@ export default function CreateNewSwappingThree() {
                                                     </div>
                                                 </div>
                                                 <div className={styles.chosBtnPernt}>
-                                                    <Link href="/create-new-swapping-four"><a className={styles.ChooseBtnedr}>Choose</a></Link>
+                                                    <Link href="/create-new-swapping-confirmation"><a className={styles.ChooseBtnedr}>Choose</a></Link>
                                                     <Link href="/"><a className={styles.ChooseMasej}>Message</a></Link>
                                                 </div>
                                             </div>
@@ -315,7 +315,7 @@ export default function CreateNewSwappingThree() {
                                                     </div>
                                                 </div>
                                                 <div className={styles.chosBtnPernt}>
-                                                    <Link href="/create-new-swapping-four"><a className={styles.ChooseBtnedr}>Choose</a></Link>
+                                                    <Link href="/create-new-swapping-confirmation"><a className={styles.ChooseBtnedr}>Choose</a></Link>
                                                     <Link href="/"><a className={styles.ChooseMasej}>Message</a></Link>
                                                 </div>
                                             </div>
@@ -369,7 +369,7 @@ export default function CreateNewSwappingThree() {
                                                     </div>
                                                 </div>
                                                 <div className={styles.chosBtnPernt}>
-                                                    <Link href="/create-new-swapping-four"><a className={styles.ChooseBtnedr}>Choose</a></Link>
+                                                    <Link href="/create-new-swapping-confirmation"><a className={styles.ChooseBtnedr}>Choose</a></Link>
                                                     <Link href="/"><a className={styles.ChooseMasej}>Message</a></Link>
                                                 </div>
                                             </div>
@@ -423,7 +423,7 @@ export default function CreateNewSwappingThree() {
                                                     </div>
                                                 </div>
                                                 <div className={styles.chosBtnPernt}>
-                                                    <Link href="/create-new-swapping-four"><a className={styles.ChooseBtnedr}>Choose</a></Link>
+                                                    <Link href="/create-new-swapping-confirmation"><a className={styles.ChooseBtnedr}>Choose</a></Link>
                                                     <Link href="/"><a className={styles.ChooseMasej}>Message</a></Link>
                                                 </div>
                                             </div>
@@ -477,7 +477,7 @@ export default function CreateNewSwappingThree() {
                                                     </div>
                                                 </div>
                                                 <div className={styles.chosBtnPernt}>
-                                                    <Link href="/create-new-swapping-four"><a className={styles.ChooseBtnedr}>Choose</a></Link>
+                                                    <Link href="/create-new-swapping-confirmation"><a className={styles.ChooseBtnedr}>Choose</a></Link>
                                                     <Link href="/"><a className={styles.ChooseMasej}>Message</a></Link>
                                                 </div>
                                             </div>
@@ -531,7 +531,7 @@ export default function CreateNewSwappingThree() {
                                                     </div>
                                                 </div>
                                                 <div className={styles.chosBtnPernt}>
-                                                    <Link href="/create-new-swapping-four"><a className={styles.ChooseBtnedr}>Choose</a></Link>
+                                                    <Link href="/create-new-swapping-confirmation"><a className={styles.ChooseBtnedr}>Choose</a></Link>
                                                     <Link href="/"><a className={styles.ChooseMasej}>Message</a></Link>
                                                 </div>
                                             </div>
@@ -585,7 +585,7 @@ export default function CreateNewSwappingThree() {
                                                     </div>
                                                 </div>
                                                 <div className={styles.chosBtnPernt}>
-                                                    <Link href="/create-new-swapping-four"><a className={styles.ChooseBtnedr}>Choose</a></Link>
+                                                    <Link href="/create-new-swapping-confirmation"><a className={styles.ChooseBtnedr}>Choose</a></Link>
                                                     <Link href="/"><a className={styles.ChooseMasej}>Message</a></Link>
                                                 </div>
                                             </div>

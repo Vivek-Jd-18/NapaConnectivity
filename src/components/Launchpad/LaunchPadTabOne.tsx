@@ -70,7 +70,7 @@ export default function LaunchPadTabOne() {
         <div className={styles.OverLayIn}>
           <div className={styles.scrollPernt}>
               <div className={styles.CustomGridContainer}>
-                  <Link href="/launchpad-datals">
+                  <Link href="/launchpad-details">
                     <a>
                       <div className={styles.CustomGrid}>
                         <div className={styles.TipsTulsOverlay}>
@@ -100,7 +100,7 @@ export default function LaunchPadTabOne() {
                     </a>
                   </Link>
                   {/* SECND */}
-                  <Link href="/launchpad-datals">
+                  <Link href="/launchpad-details">
                     <a>
                       <div className={styles.CustomGrid}>
                           <div className={styles.TipsTulsOverlay}>
@@ -131,7 +131,7 @@ export default function LaunchPadTabOne() {
                   </Link>
 
                   {/* 4 box */}
-                  <Link href="/launchpad-datals">
+                  <Link href="/launchpad-details">
                     <a>
                       <div className={styles.CustomGrid}>
                         <div className={styles.TipsTulsOverlay}>
@@ -161,7 +161,7 @@ export default function LaunchPadTabOne() {
                     </a>
                   </Link>
                   {/* 5 box */}
-                  <Link href="/launchpad-datals">
+                  <Link href="/launchpad-details">
                     <a>
                       <div className={styles.CustomGrid}>
                         <div className={styles.TipsTulsOverlay}>
@@ -191,7 +191,7 @@ export default function LaunchPadTabOne() {
                     </a>
                   </Link>
                   {/* 6 box */}
-                  <Link href="/launchpad-datals">
+                  <Link href="/launchpad-details">
                     <a>
                       <div className={styles.CustomGrid}>
                         <div className={styles.TipsTulsOverlay}>
@@ -221,7 +221,7 @@ export default function LaunchPadTabOne() {
                     </a>
                   </Link>
                   {/* 7 box */}
-                 <Link href="/launchpad-datals">
+                 <Link href="/launchpad-details">
                     <a>
                       <div className={styles.CustomGrid}>
                         <div className={styles.TipsTulsOverlay}>
@@ -251,7 +251,7 @@ export default function LaunchPadTabOne() {
                     </a>
                  </Link>
                   {/* last box */}
-                  <Link href="/launchpad-datals">
+                  <Link href="/launchpad-details">
                     <a>
                       <div className={styles.CustomGrid}>
                         <div className={styles.TipsTulsOverlay}>
@@ -281,7 +281,7 @@ export default function LaunchPadTabOne() {
                     </a>
                   </Link>
                   {/* commnt */}
-                  <Link href="/launchpad-datals">
+                  <Link href="/launchpad-details">
                     <a>
                       <div className={styles.CustomGrid}>
                         <div className={styles.TipsTulsOverlay}>

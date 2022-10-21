@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import styles from '../../styles/pages/Home.module.scss';
 import type { NextPage } from 'next';
 import { WEBSOCKET_URL } from '../constants/url';
 import { useEffect } from 'react';
@@ -20,8 +19,8 @@ const CreateNewPool: NextPage = () => {
         <meta name="description" content="NAPA Developmeent Environment" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <section className={styles.container} id="earn-container">
-        <div className={`${styles.child} CreateNewNFTTow_bg`} id="scrollElement">
+      <section id="earn-container">
+        <div className={`CreateNewNFTTow_bg`} id="scrollElement">
           <CreateNewPoolScTwo />
         </div>
       </section>
