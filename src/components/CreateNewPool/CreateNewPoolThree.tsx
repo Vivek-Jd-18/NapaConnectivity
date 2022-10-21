@@ -184,7 +184,7 @@ export default function CreateNewPoolThree() {
                         </button>                        
                 </div>
                 <div className={styles.CreatePool}>
-                    <Link href="/create-new-pool-four"><a>Create Pool</a></Link>
+                    <Link href="/pool-details"><a>Create Pool</a></Link>
                 </div>
             </div>
         </div>

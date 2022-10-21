@@ -196,7 +196,7 @@ export default function CreateNewSwappingOne() {
                                                     </div>
                                                 </div>
                                                 <div className={styles.chosBtnPernt}>
-                                                <Link href="/create-new-swapping-two"><a>Choose</a></Link>
+                                                <Link href="/create-new-swapping-details"><a>Choose</a></Link>
                                                 </div>
                                             </div>
                                         </div>
@@ -238,7 +238,7 @@ export default function CreateNewSwappingOne() {
                                                     </div>
                                                 </div>
                                                 <div className={styles.chosBtnPernt}>
-                                                <Link href="/create-new-swapping-two" target="_blank"><a>Choose</a></Link>
+                                                <Link href="/create-new-swapping-details" target="_blank"><a>Choose</a></Link>
                                                 </div>
                                             </div>
                                         </div>
@@ -280,7 +280,7 @@ export default function CreateNewSwappingOne() {
                                                     </div>
                                                 </div>
                                                 <div className={styles.chosBtnPernt}>
-                                                <Link href="/create-new-swapping-two"><a>Choose</a></Link>
+                                                <Link href="/create-new-swapping-details"><a>Choose</a></Link>
                                                 </div>
                                             </div>
                                         </div>
@@ -323,7 +323,7 @@ export default function CreateNewSwappingOne() {
                                                     </div>
                                                 </div>
                                                 <div className={styles.chosBtnPernt}>
-                                                <Link href="/create-new-swapping-two"><a>Choose</a></Link>
+                                                <Link href="/create-new-swapping-details"><a>Choose</a></Link>
                                                 </div>
                                             </div>
                                         </div>
@@ -366,7 +366,7 @@ export default function CreateNewSwappingOne() {
                                                     </div>
                                                 </div>
                                                 <div className={styles.chosBtnPernt}>
-                                                <Link href="/create-new-swapping-two"><a>Choose</a></Link>
+                                                <Link href="/create-new-swapping-details"><a>Choose</a></Link>
                                                 </div>
                                             </div>
                                         </div>
@@ -409,7 +409,7 @@ export default function CreateNewSwappingOne() {
                                                     </div>
                                                 </div>
                                                 <div className={styles.chosBtnPernt}>
-                                                <Link href="/create-new-swapping-two"><a>Choose</a></Link>
+                                                <Link href="/create-new-swapping-details"><a>Choose</a></Link>
                                                 </div>
                                             </div>
                                         </div>
@@ -452,7 +452,7 @@ export default function CreateNewSwappingOne() {
                                                     </div>
                                                 </div>
                                                 <div className={styles.chosBtnPernt}>
-                                                <Link href="/create-new-swapping-two"><a>Choose</a></Link>
+                                                <Link href="/create-new-swapping-details"><a>Choose</a></Link>
                                                 </div>
                                             </div>
                                         </div>
@@ -496,7 +496,7 @@ export default function CreateNewSwappingOne() {
                                                     </div>
                                                 </div>
                                                 <div className={styles.chosBtnPernt}>
-                                                <Link href="/create-new-swapping-two"><a>Choose</a></Link>
+                                                <Link href="/create-new-swapping-details"><a>Choose</a></Link>
                                                 </div>
                                             </div>
                                         </div>

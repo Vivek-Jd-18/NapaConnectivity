@@ -140,7 +140,7 @@ export default function CreateNewPoolTwo() {
                             </div>
                             <div className={styles.ContinueBtn}>
                                 {/* <button>Continue</button> */}
-                                <Link href="/create-new-pool-three"><a>Continue</a></Link>
+                                <Link href="/create-new-pool-participants"><a>Continue</a></Link>
                             </div>
                         </div>
                     </div>
