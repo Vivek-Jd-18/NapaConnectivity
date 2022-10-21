@@ -1234,6 +1234,7 @@ input::-webkit-inner-spin-button {
     position: absolute;
     right: 20px;
     top: 0;
+    pointer-events: none;
   }
 }
 .datepickerBoxpool .form-control {
