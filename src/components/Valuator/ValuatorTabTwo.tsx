@@ -37,10 +37,10 @@ export default function FeedTab() {
                                         </button>
                                         <ul className="dropdown-menu dropdown-menu-end drpdwn_list drpdwn_list_empty">
                                             <li>
-                                               <a>aaaaa</a>
+                                               <a>Reomve</a>
                                             </li>
                                             <li>
-                                                <a>bbbbbb</a>
+                                                <a>Re-Run Valuation</a>
                                             </li>
                                         </ul>
                                    </div>
@@ -338,10 +338,10 @@ export default function FeedTab() {
                                         </button>
                                         <ul className="dropdown-menu dropdown-menu-end drpdwn_list drpdwn_list_empty">
                                             <li>
-                                               <a>aaaaa</a>
+                                               <a>Remove</a>
                                             </li>
                                             <li>
-                                                <a>bbbbbb</a>
+                                                <a>Re-Run Valuation</a>
                                             </li>
                                         </ul>
                                    </div>
@@ -639,10 +639,10 @@ export default function FeedTab() {
                                         </button>
                                         <ul className="dropdown-menu dropdown-menu-end drpdwn_list drpdwn_list_empty">
                                             <li>
-                                               <a>aaaaa</a>
+                                               <a>Remove</a>
                                             </li>
                                             <li>
-                                                <a>bbbbbb</a>
+                                                <a>Re-Run Valuation</a>
                                             </li>
                                         </ul>
                                     </div>

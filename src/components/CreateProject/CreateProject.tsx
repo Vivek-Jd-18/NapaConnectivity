@@ -226,7 +226,7 @@ export default function CreateProject() {
                 </div>
             </div>
             <div className={styles.linkPrnt}>
-                <Link href="/"><a>Submit</a></Link>
+                <Link href="createproject"><a>Submit</a></Link>
             </div>
         </div>
         
