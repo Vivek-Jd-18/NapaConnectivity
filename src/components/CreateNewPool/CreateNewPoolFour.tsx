@@ -192,7 +192,7 @@ export default function CreateNewPoolFour() {
                         <h4 className={styles.RigthImgh4}><Image src='/img/tablegirl08.png' alt="" width={40} height={40} />Gerardo Swanson</h4>
                     </div>
                     <div className={styles.RigthImgLastH4}>
-                        <h4 className={styles.RigthImgh4}><Image src='/img/last_iconplus.png' alt="" width={40} height={40} />Add User</h4>
+                        <h4 className={styles.RigthImgh4}><Image src='/img/last_iconplus.png' alt="" width={40} height={40} />Add Participant</h4>
                     </div>
                 </div>
             </div>
