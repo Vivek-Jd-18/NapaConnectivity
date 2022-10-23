@@ -181,7 +181,7 @@ export default function MySFTs(props: any) {
                         <button><Image src='/img/search_icon_aj.svg' alt='' height="24px" width="24px" className='' /></button>
                         <button className={styles.marginPrnt}><Image src='/img/grid_ic_light.svg' alt='' height="24px" width="24px" className='' /></button>
                         <button><Image src='/img/grid_ic_dark.svg' alt='' height="24px" width="24px" className='' /></button>
-                    <button className={styles.CreateNFTBtn}><Link href='/create-new-sfts'><a>Create New SFT</a></Link></button>
+                    <button className={styles.CreateNFTBtn}><Link href='/create-new-sfts'><a>Create New SNFT</a></Link></button>
                 </div>
             </div>
             {/* pstnbx */}
