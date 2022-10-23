@@ -15,7 +15,7 @@ export default function TutorialsDetailsSc() {
             <div className={styles.StaylinkFrst}>
               <Link href="tutorials"><a> <Image src="/img/arrow_icon.svg" alt="" width="18px" height="12px"/>Tips and Tutorials</a></Link>
             </div>
-              <h1 className={styles.settings}>How to make an SFT of your video</h1>
+              <h1 className={styles.settings}>How to make an SNFT of your video</h1>
               <div className={styles.StaylsHed}>
                 <div className={styles.StaylsSecHead}>
                   <Image

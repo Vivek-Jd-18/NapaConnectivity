@@ -45,7 +45,7 @@ const TAB_TITLES = {
   [NapaLoungeTab.CO_BATCHING_POOLS]: 'Co Batching Pools',
   [NapaLoungeTab.UPCOMING_NFT_PROJECTS]: 'NFT Projects',
   [NapaLoungeTab.EVENTS]: 'Events',
-  [NapaLoungeTab.ACTIVE_MINTED_POSTS]: 'Active SFTs',
+  [NapaLoungeTab.ACTIVE_MINTED_POSTS]: 'Active SNFTs',
   [NapaLoungeTab.EARNED_NAPA_TOKENS]: 'Earned NAPA Tokens',
 };
 
@@ -86,7 +86,7 @@ const NapaLounge: NextPage = () => {
       return 'NAPA Events';
     }
     if (tabs === NapaLoungeTab.ACTIVE_MINTED_POSTS) {
-      return 'My Active SFTs';
+      return 'My Active SNFTs';
     }
     return 'Earned Tokens ';
   }, [tabs]);

@@ -30,7 +30,7 @@ export default function MarketplaceSc() {
               <FeedTab />
             </div>
           </Tab>
-          <Tab eventKey="Trade SFTs" title="Trade SFTs">
+          <Tab eventKey="Trade SFTs" title="Trade SNFTs">
             <TradeSFTs />
           </Tab>
           {/* <Tab eventKey="profile" title="Valuator">
@@ -49,7 +49,7 @@ export default function MarketplaceSc() {
               <MyNFTs />
             </div>
           </Tab>
-          <Tab eventKey="MySFTs" title="My SFTs">
+          <Tab eventKey="MySFTs" title="My SNFTs">
             <MySFTs />
           </Tab>
           <Tab eventKey="MyFavorites" title="My Favorites">

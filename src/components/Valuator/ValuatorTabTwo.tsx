@@ -1194,7 +1194,7 @@ export default function FeedTab() {
                         alt=""
                         className=""
                     />
-                    <h2>Add NFT or SFT for Valuation</h2>
+                    <h2>Add NFT or SNFT for Valuation</h2>
                 </button> 
                 {/* <lastoneend */}
             </div>

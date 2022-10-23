@@ -16,7 +16,7 @@ const CreateNeSFTsTwo: NextPage = () => {
   return (
     <>
       <Head>
-        <title>NAPA Society | SFT</title>
+        <title>NAPA Society |  Create SNFT</title>
         <meta name="description" content="NAPA Developmeent Environment" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

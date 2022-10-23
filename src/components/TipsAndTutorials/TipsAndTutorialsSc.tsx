@@ -164,7 +164,7 @@ export default function TipsAndTutorialsSc() {
                           <div
                             className={`${styles.dwoncontent} OvelayContent`}
                           >
-                            <h4>How to make an SFT of your video</h4>
+                            <h4>How to make an SNFT of your video</h4>
                             <p>
                               Cryptocurrency, blockchain, NFT: these are all
                               terms that are gradually becoming more and more
