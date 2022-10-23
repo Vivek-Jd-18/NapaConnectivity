@@ -198,7 +198,7 @@ const TrendingSection: NextPage<TrendingSectionProps> = ({ socket }) => {
     }
   }, [message, account, profileDetails]);
 
-  const [chatPerson, setChatPerson] = useState('Title goes here');
+  const [chatPerson, setChatPerson] = useState('');
 
   return (
     <div className={styles.backgroundImage} id="trending">

@@ -1,7 +1,7 @@
 import React from 'react';
 import 'bootstrap-daterangepicker/daterangepicker.css';
 import 'bootstrap/dist/css/bootstrap.css';
-import styles from './TopNFTs.module.scss';
+import styles from './TopNFTsSc.module.scss';
 import 'bootstrap-daterangepicker/daterangepicker.css';
 import Select from 'react-select';
 import Image from 'next/image';
