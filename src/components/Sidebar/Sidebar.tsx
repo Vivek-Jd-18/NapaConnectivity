@@ -264,7 +264,7 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu, account }) => {
                 <a
                   className={`${pathname === '/leaderboards' && styles.active}`}
                 >
-                  SFT Leaders
+                  SNFT Leaders
                 </a>
               </div>
             </div>

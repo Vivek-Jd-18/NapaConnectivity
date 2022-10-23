@@ -3,21 +3,23 @@ import Footer from '../Footer/Footer';
 import styles from './LaunchPadSc.module.scss';
 import React from 'react';
 import LaunchPad from './LaunchPad';
+import LaunchPadTab from './LaunchPadTab';
 
 export default function LaunchPadSc() {
   return (
     <div className={`${styles.container}`}>
       <div className={styles.OverLayLaunchpad}>
-        <Container className={`${styles.settingsContainer} asinnerContainer`}>
-        <div className={`${styles.StaylinkFrst}`}>
-            {/* <Link href="/marketplace"><a> <Image src="/img/arrow_icon.svg" alt="" width="18px" height="12px"/>Marketplace</a></Link> */}
-          {/* </div>
-            <h1 className={styles.settings}>Create New NFT</h1>
-          <div> */}
+        <Container className={`${styles.settingsContainer} asinnerContainer lnchpadbg`}>
+          <div className={`${styles.StaylinkFrst}`}>
             <LaunchPad />
           </div>
         </Container>
-      </div>
+        </div>
+        <Container className={`${styles.settingsContainer} asinnerContainer`}>
+          <div className={`${styles.LaunchPadTabMain}`}>
+           <LaunchPadTab />
+          </div>
+        </Container>
       <div>
         <hr />
         <Footer footerIconShow={false} />

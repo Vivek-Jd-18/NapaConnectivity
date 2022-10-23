@@ -49,8 +49,8 @@ const NapaSociety: NextPage = () => {
               Join NAPA Society and turn your social media into{' '}
               <strong>Social Art! </strong>
               <br></br>
-              <br></br>Mint your posts in our social media app into SFTs to earn
-              NAPA tokens to buy and sell NFTs and SFTs in the largest marketplace in the
+              <br></br>Mint your posts in our social media app into SNFTs to earn
+              NAPA tokens to buy and sell NFTs and SNFTs in the largest marketplace in the
               world!
             </p>
           </div>

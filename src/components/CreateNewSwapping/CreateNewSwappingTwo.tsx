@@ -81,7 +81,7 @@ export default function CreateNewSwappingTwo() {
                         </div>
                     </div>
                     <div className={styles.ContinueBtn}>
-                        <Link href="/create-new-swapping-three"><a>Continue</a></Link>
+                        <Link href="/create-new-swapping-offers"><a>Continue</a></Link>
                     </div>
                 </div>
             </div>

@@ -64,8 +64,8 @@ export default function SectionOne() {
                                         </a>
                                     </li>
                                     <li>
-                                        <a className="dropdown-item" href="#">
-                                            Add to Favorites
+                                        <a className="dropdown-item" href="co-batching-pools">
+                                        Create New Pool
                                         </a>
                                     </li>
                                 </ul>
@@ -79,3 +79,4 @@ export default function SectionOne() {
     </div>
   )
 }
+// for create new pool the NFT or SFT will be added to co-bathing pools on step 2 //

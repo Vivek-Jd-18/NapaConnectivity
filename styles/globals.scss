@@ -743,6 +743,7 @@ input::-webkit-inner-spin-button {
 }
 @media screen and (max-width: 1200px) {
   .slctrspnsv {margin-right: 0 !important;}
+  
 }
 @media screen and (max-width: 736px) {
   .select_main {
@@ -1139,7 +1140,11 @@ input::-webkit-inner-spin-button {
   background-size: cover;
   min-height: 724px;
 }
-
+@media screen and (max-width:1280px) {
+  .RowLabelprnt_ajv2 {
+    align-items: flex-start !important;
+  }
+}
 .radiopoolbox {
   display: flex;
   align-items: center;
@@ -1229,6 +1234,7 @@ input::-webkit-inner-spin-button {
     position: absolute;
     right: 20px;
     top: 0;
+    pointer-events: none;
   }
 }
 .datepickerBoxpool .form-control {
@@ -1427,4 +1433,135 @@ input::-webkit-inner-spin-button {
 .crtnwnfttw{
   background: url(/assets/images/create_newnft_tow_bg.jpeg) no-repeat center top !important;
   background-size: cover !important;
+}
+@media screen and (max-width: 1200px) {
+  .select_mainonn {
+    display: flex !important;
+    .cntrslct__control {
+      margin-right: 16px;
+    }
+  }
+}
+@media screen and (max-width: 736px) {
+  .select_mainonn {
+    display: flex !important;
+    flex-direction: column;
+    align-items: flex-start;
+    .cntrslct__control {
+      margin-right: 0;
+    }
+  }
+}
+.launchpad_datals_bg{
+  background: url(/assets/images/launchpad_datals_bg.jpeg) no-repeat center top !important;
+  background-size: cover !important;
+}
+.FrstInputThrdajPrnt{
+  .datepickerBoxpool{
+    padding-bottom: 5.8px !important;
+  }
+}
+
+.valuatercmmnt {
+  background: #91a5a61a;
+  padding: 27px 32px;
+  text-align: start;
+  margin-bottom: 40px;
+  margin-top: 27px;
+  h1 {
+    font-family: 'Neuropolitical';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 110%;
+    color: #ffffff;
+    margin-bottom: 16px;
+    span {
+      color: #91A5A6;
+    }
+  }
+  .margntop {
+    margin-top: 21px;
+  }
+  p {
+    font-family: 'Avenir';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 140%;
+    color: #FFFFFF;
+    margin-bottom: 0;
+    max-width: 1136px;
+  }
+  .mrgnp {
+    margin-bottom: 22px;
+  }
+}
+.alingment {
+  display: flex;
+  align-items: center;
+}
+.spacebtwnbx {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.dflt_btn_info {
+  button {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    outline: none;
+    margin-right: 0;
+  }
+}
+.drpdwn_list_empty {
+  li {
+    a {
+      color: #fff !important;
+      font-size: 14px !important;
+    }
+  }
+}
+.dflt_spcebtwn {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 1440px) {
+ .slectmainmargnsmll {
+  .datepickerBox {
+    margin-right: 0 !important;
+  }
+  .select_pernt {
+    margin-right: 12px !important;
+  }
+ }
+ .slectmainmargnsmlltwo {
+  .select_pernt {
+    .cntrslct__placeholder {
+      font-size: 14px !important;
+    }
+  }
+}
+}
+@media screen and (max-width: 1280px) {
+  .slectmainmargnsmll {
+   .select_pernt {
+     margin-right: 0 !important;
+   }
+  }
+ }
+@media screen and (max-width:736px) {
+  .valuatercmmnt  {
+    padding: 16px;
+    h1{
+      font-size: 18px;
+    }
+   p {
+    font-size: 12px;
+   }
+  }
 }

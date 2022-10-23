@@ -15,11 +15,11 @@ const marketPlaceTab = [
     value: 'Nft Projects',
   },
   {
-    title: 'Social Art Minted SFT',
+    title: 'Social Art Minted SNFT',
     value: 'Art Minted',
   },
   {
-    title: 'Top NFTs and SFTs',
+    title: 'Top NFTs and SNFTs',
     value: 'NFT Listings',
   },
 ];
@@ -33,7 +33,7 @@ const NftMarketplaceSection: NextPage = ({}) => {
       <Container className={`${styles.nftContainer} asinnerContainer`}>
         <h2 className={styles.nft}>Marketplace</h2>
         <p className={styles.description}>
-          Buy, sell and trade the most sought after professional NFTs and social art SFTs
+          Buy, sell and trade the most sought after professional NFTs and social art SNFTs
           with your NAPA token rewards today!
         </p>
         <div className={styles.tabsContainer}>

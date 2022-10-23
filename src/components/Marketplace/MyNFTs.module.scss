@@ -330,3 +330,167 @@
   }
 }
 // select_mainas
+
+
+
+
+.buttonperntAj {
+  .PstnBtnEnter {
+    margin-right: 20px;
+  }
+  input {
+    font-family: 'Avenir';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 140%;
+    color: #ffffff80;
+    text-decoration: none;
+    width: 100%;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    outline: none;
+    margin-right: 80px;
+  }
+}
+.PstnSetBxMain {
+  position: relative;
+  
+}
+.ScrollPstn {
+  height: 320px;
+  overflow-y: auto;
+  position: absolute;
+  z-index: 9;
+  top: -20px;
+  right: 7%;
+  max-width: 342px;
+  width: 100%;
+  opacity: 0;
+  &.Active {
+    opacity: 1;
+  }
+}
+.PositionProject {
+  // position: relative;
+  // &::before {
+  //   content: "";
+  //   position: absolute;
+  //   left: 0;
+  //   right: 0;
+  //   bottom: 0px;
+  //   min-height: 286px;
+  //   background: linear-gradient(180deg, rgba(16, 35, 36, 0) 80%, #102324 100%);
+  //   z-index: 2;
+  //   width: 100%;
+  //   pointer-events: none;
+  // }
+  .ProjectPsnIn {
+    background: rgba(29, 48, 49, 0.7);
+    backdrop-filter: blur(20px);
+    padding: 00px 24px 0 24px;
+    .UpScPstn {
+      p {
+        font-family: 'Avenir';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 140%;
+        color: #ffffff80;
+        text-align: start;
+        margin-bottom: 0;
+        padding-top: 20px ;
+      }
+    }
+  }
+  .FuturisticFierceBx {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 12px;
+    .FuturisticFsrst {
+      display: flex;
+      align-items: center;
+      .FuturisticText {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        text-align: start;
+        margin-left: 12px;
+        h6 {
+          font-family: 'Avenir';
+          font-style: normal;
+          font-weight: 400;
+          font-size: 18px;
+          line-height: 110%;
+          color: #FFFFFF;
+          span {color: #ffffff80;margin-left: 5px;}
+          margin-bottom: 5px;
+          text-align: start;
+        }
+        p {
+          font-family: 'Avenir';
+          font-style: normal;
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 140%;
+          color: #ffffff80;
+          text-align: start;
+          margin-bottom: 0;
+        }
+      }
+    }
+    .Last24Text {
+      display: flex;
+      align-items: flex-start;
+      h5 {
+        font-family: 'Avenir';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 140%;
+        color: #FFFFFF;
+        margin-left: 12px;
+      }
+    }
+  }
+}
+@media screen and (max-width:1440px) {
+  .buttonperntAj {
+    .PstnBtnEnter {
+      margin-right: 0px;
+    }
+  }
+}
+@media screen and (max-width:1280px) {
+  .buttonperntAj {
+    .PstnBtnEnter {
+      margin-right: 0px;
+    }
+  }
+}
+
+@media screen and (max-width:575px) {
+  .AnyObjects {
+    margin-right: 12px;
+  }
+  .buttonperntAj {
+    .PstnBtnEnter {
+      margin-right: 12px;
+    }
+    input {
+      font-size: 12px;
+      margin-right: 20px;
+    }
+  }
+  .buttonperntAj{
+    .marginPrnt{
+      margin: 0 14px 0 14px;
+    }
+  }
+  .ScrollPstn {
+    right: 1%;
+  }
+}

@@ -8,7 +8,7 @@ export default function SectionTow() {
         <div className={styles.CustomGridContainer}>
             <div className={styles.CustomGrid}>
                 <div className={styles.DetailsCont}>
-                    <h1>Details</h1>
+                    <h1>NFT Details</h1>
                     <div className={styles.flexPrntSc02}>
                         <h6>Contract Address</h6>
                         <p>0x9324...74dCa</p>

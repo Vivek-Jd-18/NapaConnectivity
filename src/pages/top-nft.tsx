@@ -3,9 +3,9 @@ import styles from '../../styles/pages/Home.module.scss';
 import type { NextPage } from 'next';
 import { WEBSOCKET_URL } from '../constants/url';
 import { useEffect } from 'react';
-import CreateNewPoolScTwo from '@/components/CreateNewPool/CreateNewPoolScTwo';
+import TopNFTsSc from '@/components/TopNFT/TopNFTsSc';
 
-const CreateNewPool: NextPage = () => {
+const TopNFT: NextPage = () => {
   const socket = new WebSocket(WEBSOCKET_URL);
   useEffect(() => {
     socket.addEventListener('open', () => {
@@ -16,17 +16,17 @@ const CreateNewPool: NextPage = () => {
   return (
     <>
       <Head>
-        <title>NAPA Society</title>
+        <title>NAPA Society | Top NFTS</title>
         <meta name="description" content="NAPA Developmeent Environment" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <section className={styles.container} id="earn-container">
-        <div className={`${styles.child} CreateNewNFTTow_bg`} id="scrollElement">
-          <CreateNewPoolScTwo />
+        <div className={`${styles.child} earnpage`} id="scrollElement">
+          <TopNFTsSc />
         </div>
       </section>
     </>
   );
 };
 
-export default CreateNewPool;
+export default TopNFT;

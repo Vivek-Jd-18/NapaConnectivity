@@ -16,7 +16,7 @@ const Leaderboards: NextPage = () => {
   return (
     <>
       <Head>
-        <title>NAPA Society | SFT Leaaders</title>
+        <title>NAPA Society | SNFT Leaaders</title>
         <meta name="description" content="NAPA Developmeent Environment" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

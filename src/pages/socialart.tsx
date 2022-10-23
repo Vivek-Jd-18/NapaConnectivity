@@ -16,7 +16,7 @@ const SocialArt: NextPage = () => {
   return (
     <>
       <Head>
-        <title>NAPA Society</title>
+        <title>NAPA Society | Social Art</title>
         <meta name="description" content="NAPA Developmeent Environment" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

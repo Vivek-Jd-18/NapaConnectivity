@@ -1,11 +1,10 @@
 import Head from 'next/head';
-import styles from '../../styles/pages/Home.module.scss';
 import type { NextPage } from 'next';
 import { WEBSOCKET_URL } from '../constants/url';
 import { useEffect } from 'react';
-import CreateNewSwappingFourSc from '@/components/CreateNewSwapping/CreateNewSwappingFourSc';
+import CreateNewPoolScTwo from '@/components/CreateNewPool/CreateNewPoolScTwo';
 
-const CreateNewSwapping: NextPage = () => {
+const CreateNewPool: NextPage = () => {
   const socket = new WebSocket(WEBSOCKET_URL);
   useEffect(() => {
     socket.addEventListener('open', () => {
@@ -16,17 +15,17 @@ const CreateNewSwapping: NextPage = () => {
   return (
     <>
       <Head>
-        <title>NAPA Society</title>
+        <title>NAPA Society| New Co-Batching Pool</title>
         <meta name="description" content="NAPA Developmeent Environment" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <section className={styles.container} id="earn-container">
-        <div className={`${styles.child} earnpage mrktplcbg`} id="scrollElement">
-          <CreateNewSwappingFourSc />
+      <section id="earn-container">
+        <div className={`CreateNewNFTTow_bg`} id="scrollElement">
+          <CreateNewPoolScTwo />
         </div>
       </section>
     </>
   );
 };
 
-export default CreateNewSwapping;
+export default CreateNewPool;
