@@ -9,8 +9,8 @@ const Wallet: NextPage = () => {
   return (
     <>
       <Head>
-        <title>NAPA Connect Wallet</title>
-        <meta name="description" content="NAPA Staging Environment" />
+        <title>NAPA Society | Wallet</title>
+        <meta name="description" content="NAPA Developmeent Environment" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <WalletComponent account={account} />
