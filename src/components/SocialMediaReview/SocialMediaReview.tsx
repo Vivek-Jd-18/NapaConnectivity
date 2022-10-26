@@ -103,14 +103,26 @@ const SocialMediaReview: NextPage<SocialMediaReviewProps> = ({
       </div>
       <div className={styles.SmallContent}>
         <p>
-          {!open &&
-            articleBody.substring(0, 400) +
-              (articleBody.length > 400 ? '...' : '')}
+          {!open && (
+            <div
+              className={styles.description}
+              dangerouslySetInnerHTML={{
+                __html:
+                  articleBody.substring(0, 400) +
+                  (articleBody.length > 400 ? '...' : ''),
+              }}
+            ></div>
+          )}
         </p>
       </div>
       {open && (
         <div className={styles.allPeragraphMain}>
-          {articleBody}
+          <div
+            className={styles.description}
+            dangerouslySetInnerHTML={{
+              __html: articleBody,
+            }}
+          ></div>
           <div className={styles.ulPerent}>
             <ul>
               <li>
