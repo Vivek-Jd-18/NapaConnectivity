@@ -1,7 +1,7 @@
 import React from 'react';
 import type { NextPage } from 'next';
 import Image from 'next/image';
-import { MoreIcon, NapaIcon } from '../../assets';
+import { NapaIcon } from '../../assets';
 import styles from './WhiteListComponent.module.scss';
 import { useState } from 'react';
 import DropDownComponent from '../../Dropdown/Dropdown';
