@@ -137,6 +137,7 @@
         .whitelistRightSide {
           display: flex;
           align-items: center;
+          cursor: pointer !important;
           span {
             @include font-md-neuropolitical-normal;
             color: $light-blue;
@@ -453,6 +454,106 @@ input:checked + .slider:before {
       .RemoveBtn {
         font-size: 14px;
       }
+    }
+  }
+}
+
+.NewAddressBox{
+  padding: 32px 40px 0 40px;
+  .NewAddreBtnSpbt{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 32px;
+    cursor: pointer;
+    h3{
+      @include font-3xl-neuropolitical-normal;
+      font-style: normal;
+      font-size: 32px;
+      line-height: 110%;
+      color: #FFFFFF;
+    }
+  }
+}
+.NewAddressBoxMin{
+  position: fixed;
+  right: 0;
+  top: 0;
+  max-width: 480px;
+  z-index: 999;
+  background: #1D3031;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.2s ease-out;
+  &.Active {
+    opacity: 1;
+    pointer-events: visible;
+  }
+}
+.NewAddrBtnCnlSve{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  .Cancel{
+    @include font-3xl-neuropolitical-normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 110%;
+    text-align: center;
+    color: #91A5A6;
+    height: 72px;
+    border-radius: 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    &:hover{
+      background: rgba(255, 255, 255, 0);
+      color: #91A5A6;
+    }
+  }
+  .Save{
+    width: 100%;
+    background: #16E6EF;
+    border-radius: 0;
+    height: 72px;
+    border: 2px solid #16E6EF;
+    @include font-3xl-neuropolitical-normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 110%;
+    text-align: center;
+    color: #102324;
+    &:hover{
+      background: #fff;
+      color: #102324;
+      border: none;
+    }
+  }
+}
+@media screen and (max-width: 1200px) {
+  .NewAddressBoxMin{
+    left: 0;
+    max-width: 100%;
+  }
+  .NewAddressBox{
+    padding: 56px 40px 0 40px;
+  }
+}
+@media screen and (max-width: 736px) {
+  .NewAddressBox{
+    padding: 56px 20px 0 20px;
+    .NewAddreBtnSpbt{    
+      h3{
+        font-size: 24px;
+      }
+    }
+  }
+  .NewAddrBtnCnlSve{
+    button{
+      height: 82px !important;
     }
   }
 }

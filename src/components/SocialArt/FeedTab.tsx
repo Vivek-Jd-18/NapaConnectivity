@@ -93,6 +93,42 @@ export default function FeedTab() {
                   12 <b>awards</b>
                 </span>
               </a>
+              <button
+                className={
+                  active
+                    ? `${styles.BotomLikes} ${styles.active}`
+                    : `${styles.BotomLikes}`
+                }
+                onClick={handleClick}
+              >
+                <Image
+                  src="/img/mint_icon.svg"
+                  alt=""
+                  width="24px"
+                  height="24px"
+                />
+                <span>
+                  Mint
+                </span>
+              </button>
+              <button
+                className={
+                  active
+                    ? `${styles.BotomLikes} ${styles.active}`
+                    : `${styles.BotomLikes}`
+                }
+                onClick={handleClick}
+              >
+                <Image
+                  src="/img/edit_icon_ic.svg"
+                  alt=""
+                  width="24px"
+                  height="24px"
+                />
+                <span>
+                  Post
+                </span>
+              </button>
               <a href="#" className={styles.BotomLikes}>
                 <Image
                   src="/img/share_icon.svg"
@@ -329,6 +365,42 @@ export default function FeedTab() {
                   12 <b>awards</b>
                 </span>
               </a>
+              <button
+                className={
+                  active
+                    ? `${styles.BotomLikes} ${styles.active}`
+                    : `${styles.BotomLikes}`
+                }
+                onClick={handleClick}
+              >
+                <Image
+                  src="/img/mint_icon.svg"
+                  alt=""
+                  width="24px"
+                  height="24px"
+                />
+                <span>
+                  Mint
+                </span>
+              </button>
+              <button
+                className={
+                  active
+                    ? `${styles.BotomLikes} ${styles.active}`
+                    : `${styles.BotomLikes}`
+                }
+                onClick={handleClick}
+              >
+                <Image
+                  src="/img/edit_icon_ic.svg"
+                  alt=""
+                  width="24px"
+                  height="24px"
+                />
+                <span>
+                  Post
+                </span>
+              </button>
               <a href="#" className={styles.BotomLikes}>
                 <Image
                   src="/img/share_icon.svg"

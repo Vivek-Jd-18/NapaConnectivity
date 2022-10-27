@@ -169,7 +169,7 @@ export default function TradeSFTs(props: any) {
                                 placeholder="Rating"
                                 classNamePrefix="cntrslct"
                             />
-                        </div>
+                        </div>  
                     </div>
                 </div>
                 <div className={styles.buttonperntAj}>
@@ -179,8 +179,8 @@ export default function TradeSFTs(props: any) {
 
                     </div>
                     <button onClick={toggleClass}><Image src='/img/search_icon_aj.svg' alt='' height="24px" width="24px" className='' /></button>
-                    <button className={styles.marginPrnt}><Image src='/img/grid_ic_light.svg' alt='' height="24px" width="24px" className='' /></button>
-                    <button><Image src='/img/grid_ic_dark.svg' alt='' height="24px" width="24px" className='' /></button>
+                    {/* <button className={styles.marginPrnt}><Image src='/img/grid_ic_light.svg' alt='' height="24px" width="24px" className='' /></button>
+                    <button><Image src='/img/grid_ic_dark.svg' alt='' height="24px" width="24px" className='' /></button> */}
                     {/* pstnbx */}
                     <div
                         className={styles.PstnSetBxMain}

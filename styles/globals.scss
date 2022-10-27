@@ -103,7 +103,7 @@ div#nft-marketplace .slick-current {
 }
 .page-header {
   position: relative;
-  z-index: 999;
+  z-index: 9999;
 }
 .main-container {
   position: relative;
@@ -1564,4 +1564,30 @@ input::-webkit-inner-spin-button {
     font-size: 12px;
    }
   }
+}
+
+
+
+.GeneralInputBox{
+  margin-top: 40px;
+  .FrstInput{
+    input{      
+      padding: 35px 12px 22px 12px !important;
+      &::placeholder{
+        color: #FFFFFF !important;
+      }
+    }   
+    .form-floating>label{
+      top: -15px !important;
+    } 
+  }
+}
+@media screen and (max-width:736px) {
+  .GeneralInputBox{
+    margin-top: 20px;
+  }
+}
+.two_dot_btn{
+  background: none;
+  border: none;
 }
