@@ -8,10 +8,6 @@ import styles from './Footer.module.scss';
 
 import { scrollToNextSection } from '../../utils/home';
 import {
-  TwitterIcon,
-  DiscordIcon,
-  GithubIcon,
-  MediumIcon,
   FooterLogoIcon,
   MouseIcon,
   TwitterMobileIcon,
@@ -93,17 +89,17 @@ const Footer: NextPage<FooterProps> = ({ footerIconShow }) => {
               </li>
             </ul>
             <ul className={styles.footerIconsContainer}>
-              <li className={styles.footerIconItem}>
-                <Image src={TwitterIcon} alt="twitter" width={32} height={30} />
+              <li className={`${styles.footerIconItem} ${styles.SocialLinks}`}>
+                <Link href="https://twitter.com/NapaSociety"><a><Image src="/img/twitter_icon.png" alt="" width={32} height={30} /></a></Link>
               </li>
-              <li className={styles.footerIconItem}>
-                <Image src={DiscordIcon} alt="discord" width={32} height={30} />
+              <li className={`${styles.footerIconItem} ${styles.SocialLinks}`}>
+                <Link href="https://discord.gg/pV2vxbkqpb"><a><Image src="/img/discord_icon.png" alt="" width={32} height={30} /></a></Link>
               </li>
-              <li className={styles.footerIconItem}>
-                <Image src={GithubIcon} alt="github" width={32} height={30} />
+              <li className={`${styles.footerIconItem} ${styles.SocialLinks}`}>
+                <Link href="https://github.com/NAPA-Society"><a><Image src="/img/github_icon.png" alt="" width={32} height={30} /></a></Link>
               </li>
-              <li className={styles.footerIconItem}>
-                <Image src={MediumIcon} alt="medium" width={32} height={30} />
+              <li className={`${styles.footerIconItem} ${styles.SocialLinks}`}>
+                <Link href="https://medium.com/@Napa_Society"><a><Image src="/img/medium_icon.png" alt="" width={32} height={30} /></a></Link>
               </li>
             </ul>
           </div>
