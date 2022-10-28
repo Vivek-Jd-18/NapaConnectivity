@@ -19,9 +19,6 @@ import {
   WalletIconWhite,
 } from '../../components/assets';
 
-// Please import define the logo and hamburger menu//
-// Decouple the search icon with the container //
-
 type HeaderProps = {
   openMenu: () => void;
   setIsMenu: (menu: boolean) => void;
@@ -48,27 +45,6 @@ const Header: NextPage<HeaderProps> = ({
     }
   }, [show]);
 
-  const handleScroll = () => {
-    const header = document.querySelector<HTMLElement>('.innerContainer');
-    if (header) {
-      if (window.scrollY > 74) {
-        header.style.backgroundColor = 'rgb(0,0,0,0.4)';
-        header.style.paddingBottom = '1rem';
-        header.style.transition = '0.8s ease';
-      } else {
-        header.style.backgroundColor = `rgb(0,0,0,${
-          (window.scrollY / 150) * 0.4
-        })`;
-        header.style.paddingBottom = '0';
-        header.style.transition = '0.8s ease';
-      }
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-  }, []);
-
   const { profileDetails } = useProfile();
 
   useEffect(() => {
@@ -76,47 +52,6 @@ const Header: NextPage<HeaderProps> = ({
       type: 'delayed',
       duration: 200,
       animTimingFunction: Vivus.EASE_OUT,
-    });
-  }, []);
-
-  // scroll effect
-  const body = document.body;
-  // const triggerMenu = document.querySelector(".page-header .trigger-menu");
-  // const nav = document.querySelector(".page-header nav");
-  // const menu = document.querySelector(".page-header .menu");
-  // const lottieWrapper = document.querySelector(".lottie-wrapper");
-  // const lottiePlayer = document.querySelector("lottie-player");
-
-  window.addEventListener('scroll', () => {});
-
-  useEffect(() => {
-    const element = document.getElementById('scrollElement');
-    const scrollUp = 'scroll-up';
-    const scrollDown = 'scroll-down';
-    let lastScroll = 10;
-
-    element?.addEventListener('scroll', () => {
-      const currentScroll = element.scrollTop;
-      if (currentScroll <= 0) {
-        body.classList.remove(scrollUp);
-        return;
-      }
-
-      if (currentScroll > lastScroll && !body.classList.contains(scrollDown)) {
-        // down
-        body.classList.remove(scrollUp);
-        body.classList.add(scrollDown);
-        // lottiePlayer.play();
-      } else if (
-        currentScroll < lastScroll &&
-        body.classList.contains(scrollDown)
-      ) {
-        // up
-        body.classList.remove(scrollDown);
-        body.classList.add(scrollUp);
-        // lottiePlayer.stop();
-      }
-      lastScroll = currentScroll;
     });
   }, []);
 
