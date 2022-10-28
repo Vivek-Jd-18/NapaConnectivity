@@ -324,7 +324,11 @@
   padding-left: 4rem;
   padding-right: 4rem;
 }
-
+.overlay {
+  .closebtn {
+    z-index: 9;
+  }
+}
 @media screen and (min-width: 1280px) {
   .overlay {
     .overlayContentContainer {
