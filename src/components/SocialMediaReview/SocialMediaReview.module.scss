@@ -11,10 +11,10 @@
     width: 100%;
     display: flex;
     cursor: pointer;
-    p{
+    p {
       display: flex;
       width: 100%;
-      button{
+      button {
         background: transparent;
         box-shadow: none;
         border: none;
@@ -22,17 +22,19 @@
         padding-left: 15px;
       }
     }
-    
   }
   .userContainer {
     @include flex-align-center;
     align-items: flex-start;
     cursor: pointer;
-    @media screen and (max-width:736px) {
+    @media screen and (max-width: 736px) {
       flex-direction: column;
     }
     .avatar {
       margin-right: 1rem;
+      .avatarImg {
+        border-radius: 50%;
+      }
     }
     .userInfo {
       @include flex-column;
@@ -73,24 +75,24 @@
     }
   }
 }
-.twoLinkAj{
+.twoLinkAj {
   display: flex;
   align-items: center;
-  .twoLinkInnr{
+  .twoLinkInnr {
     // display: flex;
     // align-items: center;
-    a{
+    a {
       font-family: 'Avenir';
       font-style: normal;
       font-weight: 500;
       font-size: 14px;
       line-height: 140%;
-      color: #16E6EF;
+      color: #16e6ef;
       text-decoration: none;
       display: flex;
       align-items: center;
       margin-left: 24px;
-      >span{
+      > span {
         margin-left: 4px !important;
       }
       @media screen and (max-width: 736px) {
@@ -104,29 +106,28 @@
   }
 }
 
-.allPeragraphMain{
+.allPeragraphMain {
   margin-top: 15px;
-  &:first-child{
-    
+  &:first-child {
   }
-  p{
+  p {
     font-family: 'Avenir';
     font-style: normal;
     font-weight: 400;
     font-size: 15px;
     line-height: 120%;
-    color: #FFFFFF;
+    color: #ffffff;
     max-width: 719px;
   }
-  .ulPerent{
+  .ulPerent {
     margin-top: 30px;
-    ul{
+    ul {
       padding: 0;
       margin: 0;
-      &:last-child{
+      &:last-child {
         margin: 0 !important;
       }
-      li{
+      li {
         list-style: none;
         padding: 0;
         margin: 0 8px 0 0;
@@ -134,16 +135,16 @@
         vertical-align: top;
         background: rgba(255, 255, 255, 0.2);
         backdrop-filter: blur(10px);
-      
-        p{
-        margin: 0;
-        padding: 5px 8px 2px 8px;
-        font-family: 'Avenir';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 12px;
-        line-height: 140%;
-        color: #FFFFFF;
+
+        p {
+          margin: 0;
+          padding: 5px 8px 2px 8px;
+          font-family: 'Avenir';
+          font-style: normal;
+          font-weight: 400;
+          font-size: 12px;
+          line-height: 140%;
+          color: #ffffff;
         }
       }
     }
@@ -155,19 +156,18 @@
     font-size: 14px;
   }
 }
-@media screen and (max-width:736px) {
-  .twoLinkAj{
+@media screen and (max-width: 736px) {
+  .twoLinkAj {
     flex-direction: column;
     align-items: flex-start;
-    .twoLinkInnr{
-      a{
-        
+    .twoLinkInnr {
+      a {
       }
-      &:first-child{
+      &:first-child {
         margin-left: 0;
         margin-top: 12px;
       }
-      &:last-child{
+      &:last-child {
         margin-left: 0;
         margin-top: 6px;
         margin-bottom: 10px;
@@ -176,9 +176,9 @@
   }
   .reviewContainer {
     .review {
-      p{
+      p {
         position: relative;
-        button{
+        button {
           position: absolute;
           right: 0;
           top: -30px;
@@ -186,8 +186,8 @@
       }
     }
   }
-  .allPeragraphMain{
-    .ulPerent{
+  .allPeragraphMain {
+    .ulPerent {
       margin-top: 20px;
     }
   }

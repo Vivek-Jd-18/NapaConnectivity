@@ -230,7 +230,13 @@ const TrendingSection: NextPage<TrendingSectionProps> = ({ socket }) => {
                   .filter(({ articleType }) => articleType === tab)
                   .map(
                     (
-                      { articleTitle, author, createdAt, articleBody },
+                      {
+                        articleTitle,
+                        author,
+                        createdAt,
+                        articleBody,
+                        userProfilePic,
+                      },
                       index
                     ) => {
                       return (
@@ -239,7 +245,7 @@ const TrendingSection: NextPage<TrendingSectionProps> = ({ socket }) => {
                           description={articleTitle}
                           articleBody={articleBody}
                           date={createdAt}
-                          icon={HowardAvatar}
+                          icon={userProfilePic ? userProfilePic : HowardAvatar}
                           username={author}
                           onChatClicked={() => setChatPerson(articleTitle)}
                         />

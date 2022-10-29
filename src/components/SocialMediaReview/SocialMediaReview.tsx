@@ -42,7 +42,13 @@ const SocialMediaReview: NextPage<SocialMediaReviewProps> = ({
       </div>
       <div className={styles.userContainer}>
         <div className={styles.avatar}>
-          <Image src={icon} width={40} height={40} alt="avatar" />
+          <Image
+            src={icon}
+            className={styles.avatarImg}
+            width={40}
+            height={40}
+            alt="avatar"
+          />
         </div>
         <div className={styles.userInfo}>
           <span className={styles.userName}>{username}</span>
