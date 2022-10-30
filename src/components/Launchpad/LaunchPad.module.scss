@@ -72,13 +72,17 @@
   }
 }
 .FrstBtn {
+  background: transparent;
+  border: none;
+  outline: none;
+}
+.FrstBtn a{
   font-family: 'Neuropolitical';
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
   line-height: 110%;
   color: #16E6EF;
-  background: transparent;
   display: flex;
   border: none;
   align-items: center;
