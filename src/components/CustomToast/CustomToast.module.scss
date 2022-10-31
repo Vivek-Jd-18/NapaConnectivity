@@ -2,15 +2,13 @@
 @import '../../../styles/abstracts/mixins.module';
 
 .toast {
-  //   background: rgba(255, 255, 255, 0.1) !important;
-  //   padding: 1rem;
-  //   backdrop-filter: blur(60px) !important;
   justify-content: space-between;
   align-items: center;
 
   .toastIcon {
     width: 3.2rem;
     height: 3.2rem;
+    margin-right: 1rem;
     border: 1px solid $gray;
     border-radius: 50%;
     @include flex-row-center;
@@ -28,6 +26,7 @@
   }
   .toastTime {
     @include font-sm-avenir-regular;
+    padding-left: 3rem;
     color: $white;
     margin: 0;
   }

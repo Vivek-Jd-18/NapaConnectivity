@@ -69,3 +69,4 @@ export const InviteIcon = '/assets/images/invite-icon.svg';
 export const InvitationPoolIcon = '/assets/images/invitaiton-pool.svg';
 export const BnbIcon = '/assets/images/bnb.png';
 export const NapaTokenIcon = '/assets/images/napa-token.png';
+export const AvatarIcon = '/assets/images/avatar-icon.svg';

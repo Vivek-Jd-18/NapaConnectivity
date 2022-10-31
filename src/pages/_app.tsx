@@ -16,12 +16,14 @@ import Loader from '../components/Loader/Loader';
 import { useRouter } from 'next/router';
 import { WebThreeContextProvider } from '../contexts/WebThreeContext';
 import { UserContextProvider } from '../contexts/UserContext';
+import 'tippy.js/dist/tippy.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [isMenu, setIsMenu] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const [loading, setLoading] = useState(true);
   const { pathname } = useRouter();
+  const [lastScroll, setLastScroll] = useState(0);
 
   useEffect(() => {
     setTimeout(() => {
@@ -36,6 +38,31 @@ function MyApp({ Component, pageProps }: AppProps) {
     require('bootstrap/dist/js/bootstrap.bundle.min.js');
     AOS.init();
   }, []);
+
+  const handleScroll = (element: any) => {
+    const body = document.body;
+    const scrollUp = 'scroll-up';
+    const scrollDown = 'scroll-down';
+    const currentScroll = element.scrollTop;
+    if (currentScroll <= 0) {
+      body.classList.remove(scrollUp);
+      return;
+    }
+
+    if (currentScroll > lastScroll && !body.classList.contains(scrollDown)) {
+      // down
+      body.classList.remove(scrollUp);
+      body.classList.add(scrollDown);
+    } else if (
+      currentScroll < lastScroll &&
+      body.classList.contains(scrollDown)
+    ) {
+      // up
+      body.classList.remove(scrollDown);
+      body.classList.add(scrollUp);
+    }
+    setLastScroll(currentScroll);
+  };
 
   return (
     <>
@@ -61,9 +88,11 @@ function MyApp({ Component, pageProps }: AppProps) {
                   {showSearch && <Search setShowSearch={setShowSearch} />}
                 </>
               )}
-              <Component {...pageProps} />
-
+              <div onScrollCapture={(e) => handleScroll(e.target)}>
+                <Component {...pageProps} />
+              </div>
               <ToastContainer
+                autoClose={1500}
                 key="toast"
                 {...{
                   position: 'top-right',
