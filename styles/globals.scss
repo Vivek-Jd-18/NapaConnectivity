@@ -760,6 +760,11 @@ input::-webkit-inner-spin-button {
     border-radius: 5px;
     margin: 0;
     z-index: 2;
+    .cntrslct__option--is-selected {
+        color: #16e6ef !important;
+        background: rgb(67 93 88) !important;
+        border-radius: 5px;
+    }
   }
   .cntrslct__option {
     background: transparent;
@@ -770,10 +775,13 @@ input::-webkit-inner-spin-button {
       background: rgb(67 93 88);
     }
   }
+  
+
   .cntrslct__menu-list {
     padding: 0;
   }
 }
+
 .select_pernt_v2 {
   .cntrslct__value-container {
     position: relative;

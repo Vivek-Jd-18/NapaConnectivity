@@ -54,7 +54,7 @@ export default function ContactUsSc() {
                     <div className='slct_cnctus'>
                       <Select
                             options={options}
-                            // menuIsOpen={true}
+                            menuIsOpen={true}
                             className="select_pernt"
                             placeholder="Rating"
                             classNamePrefix="cntrslct"
