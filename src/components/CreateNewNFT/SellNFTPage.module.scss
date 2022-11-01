@@ -139,8 +139,13 @@
     align-items: center;
     justify-content: center;
     padding: 17px 0;
+    transition: all 0.2s ease-out;
     >span{
       margin-right: 8px !important;
+    }
+    &:hover {
+      background: #102324;
+      color: #fff;
     }
   }
   .Active{
