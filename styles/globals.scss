@@ -970,6 +970,10 @@ input::-webkit-inner-spin-button {
   margin-top: 45px;
   padding-top: 0;
   padding-bottom: 0;
+  transition: all 0.2s ease-out;
+  &:hover {
+    color: #91a5a6;
+  }
 }
 .AccodianFaq .acodian_in_p {
   padding-top: 0;
