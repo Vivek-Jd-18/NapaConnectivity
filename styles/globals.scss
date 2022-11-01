@@ -732,6 +732,7 @@ input::-webkit-inner-spin-button {
   .cntrslct__value-container {
     padding: 0;
     color: #91a5a6;
+    .cntrslct__placeholder {margin-left: 0;}
   }
   .cntrslct__indicator-separator {
     display: none;
@@ -771,6 +772,13 @@ input::-webkit-inner-spin-button {
   }
   .cntrslct__menu-list {
     padding: 0;
+  }
+}
+.select_pernt_v2 {
+  .cntrslct__value-container {
+    position: relative;
+    top: 1px;
+    padding-bottom: 10px;
   }
 }
 @media screen and (max-width: 1200px) {
@@ -1387,6 +1395,11 @@ input::-webkit-inner-spin-button {
     margin-right: 0;
   }
 }
+.selectprntnftssell {
+  .cntrslct__control {
+    padding-bottom: 0px;
+  }
+}
 .nft_last_switch {
   .switchnft {
     .other_opation_label {
@@ -1637,5 +1650,10 @@ input::-webkit-inner-spin-button {
     button {
       display: none;
     }
+  }
+}
+.frstinputsell {
+  .form-floating>.form-control {
+    height: calc(3.6rem + 2px) !important;
   }
 }

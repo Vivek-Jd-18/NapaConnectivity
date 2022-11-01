@@ -35,17 +35,17 @@ export default function SellNFTPage() {
                         <div className={styles.typePrnt}>
                             <h1 className={styles.DefHed}>Price</h1>
                             <div className={styles.MixInputPool}>
-                                <div className="selectprntnft">
-                                    <p>Collection</p>
+                                <div className={`${styles.SelectPrntNftSell} selectprntnft selectprntnftssell`}>
+                                    <p className={styles.ClctionTxt}>Collection</p>
                                     <Select
                                         options={optionsone}
                                         // menuIsOpen={true}
-                                        className="select_pernt"
+                                        className="select_pernt select_pernt_v2"
                                         placeholder="Bring Me the Open Space "
                                         classNamePrefix="cntrslct"
                                     />
                                 </div>
-                                <div className={styles.FrstInput}>
+                                <div className={`${styles.FrstInput} frstinputsell`}>
                                     <Input
                                         value={name}
                                         type="text"
