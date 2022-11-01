@@ -780,6 +780,12 @@ input::-webkit-inner-spin-button {
     top: 1px;
     padding-bottom: 10px;
   }
+  .cntrslct__placeholder {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+  }
 }
 @media screen and (max-width: 1200px) {
   .slctrspnsv {
