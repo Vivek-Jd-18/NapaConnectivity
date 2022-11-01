@@ -1165,6 +1165,12 @@ input::-webkit-inner-spin-button {
     height: 24px !important;
     width: 24px !important;
     border: none;
+    position: relative;
+    top: 0;
+    transition: all 0.3s ease-out;
+    &:hover {
+      top: -5px;
+    }
   }
 }
 .select_main_ab {
