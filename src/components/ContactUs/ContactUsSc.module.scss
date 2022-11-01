@@ -195,7 +195,7 @@
   color: #91A5A6;
   margin-bottom: 5px;
 }
-.RightContact h5{
+.RightContact a, .RightContact h5{
   font-family: 'Avenir';
   font-style: normal;
   font-weight: 500;
@@ -203,6 +203,7 @@
   line-height: 140%;
   color: #FFFFFF;
   margin-bottom: 33px;
+  text-decoration: none;
 }
 .SocialLinks a>span {
   margin-right: 32px !important;
