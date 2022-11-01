@@ -14,10 +14,12 @@ import WalletPopup from '../WalletPopup/WalletPopup';
 import { NapaLogo, NapaLogoWhite } from '../Svg';
 import {
   BurgerMenuIcon,
+  ProfileIcon,
   SearchIcon,
   WalletBlueIcon,
   WalletIconWhite,
 } from '../../components/assets';
+import Button from '../Button/Button';
 
 type HeaderProps = {
   openMenu: () => void;
@@ -75,10 +77,38 @@ const Header: NextPage<HeaderProps> = ({
             <NapaLogoWhite className={styles.napaLogoWhite} />
           </div>
         </div>
-        <div className="d-flex align-items-center">
+        <div className="d-flex align-items-center had_right_btns">
           <div className={styles.search} onClick={() => setShowSearch(true)}>
             <Image width={36} height={36} src={SearchIcon} alt="search" />
           </div>
+          {account && (
+            <>
+                <Button
+                  // text="My Profile"
+                  text=""
+                  outlined
+                  icon={ProfileIcon}
+                  onClick={() => {
+                    push('/settings');
+                    setIsMenu(false);
+                  }}
+                />
+              {/* <Button
+                text="Wallet"
+                icon={WalletIconTwo}
+                onClick={() => {
+                  toast.error(
+                    CustomToastWithLink({
+                      icon: WalletConnectedIcon,
+                      title: ToastTitle.WALLET_IS_ALREADY_CONNECTED,
+                      description: ToastDescription.WALLET_IS_ALREADY_CONNECTED,
+                      time: 'Now',
+                    })
+                  );
+                }}
+              /> */}
+            </>
+          )}
           <div className={styles.wallet}>
             <div
               onClick={() => {

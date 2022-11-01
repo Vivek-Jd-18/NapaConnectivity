@@ -21,6 +21,7 @@
   flex-direction: column;
   .socialContainer {
     height: 100%;
+    z-index: 2;
   }
   .socialContainerBody {
     height: 100%;
@@ -161,7 +162,7 @@
     
   // }
   @media only screen and (max-width: 1024px) {
-    background-image: url('/assets/images/socialart-background-tablet.png'); r 
+    // background-image: url('/assets/images/socialart-background-tablet.png'); r 
     .socialContainer {
       @include flex-center-column;
       .socialContainerBody {
@@ -217,7 +218,7 @@
   }
   
   @media only screen and (max-width: 768px) { 
-    background-image: url('/assets/images/socialart-background-mobile.png');
+    // background-image: url('/assets/images/socialart-background-mobile.png');
     .socialContainer {
       .innerSocialContainer {
         .socialArt {
@@ -237,7 +238,7 @@
     }
   }
   @media only screen and (max-width: 576px) {
-    background-image: url('/assets/images/socialart-background-mobile.png');
+    // background-image: url('/assets/images/socialart-background-mobile.png');
     .socialContainer {
       .innerSocialContainer {
         // .socialArt {
@@ -258,7 +259,7 @@
     }
   }
   @media only screen and (max-width: 440px) {
-    background-image: url('/assets/images/socialart-background-mobile.png');
+    // background-image: url('/assets/images/socialart-background-mobile.png');
     .socialContainer {
       .innerSocialContainer {
         // .socialArt {
