@@ -90,16 +90,16 @@ const Footer: NextPage<FooterProps> = ({ footerIconShow }) => {
             </ul>
             <ul className={styles.footerIconsContainer}>
               <li className={`${styles.footerIconItem} ${styles.SocialLinks}`}>
-                <Link href="https://twitter.com/NapaSociety"><a><Image src="/img/twitter_icon.png" alt="" width={32} height={30} /></a></Link>
+                <Link href="https://twitter.com/NapaSociety"><a target="_blank"><Image src="/img/twitter_icon.png" alt="" width={32} height={30} /></a></Link>
               </li>
               <li className={`${styles.footerIconItem} ${styles.SocialLinks}`}>
-                <Link href="https://discord.gg/pV2vxbkqpb"><a><Image src="/img/discord_icon.png" alt="" width={32} height={30} /></a></Link>
+                <Link href="https://discord.gg/pV2vxbkqpb"><a target="_blank"><Image src="/img/discord_icon.png" alt="" width={32} height={30} /></a></Link>
               </li>
               <li className={`${styles.footerIconItem} ${styles.SocialLinks}`}>
-                <Link href="https://github.com/NAPA-Society"><a><Image src="/img/github_icon.png" alt="" width={32} height={30} /></a></Link>
+                <Link href="https://github.com/NAPA-Society"><a target="_blank"><Image src="/img/github_icon.png" alt="" width={32} height={30} /></a></Link>
               </li>
               <li className={`${styles.footerIconItem} ${styles.SocialLinks}`}>
-                <Link href="https://medium.com/@Napa_Society"><a><Image src="/img/medium_icon.png" alt="" width={32} height={30} /></a></Link>
+                <Link href="https://medium.com/@Napa_Society"><a target="_blank"><Image src="/img/medium_icon.png" alt="" width={32} height={30} /></a></Link>
               </li>
             </ul>
           </div>
