@@ -8,11 +8,7 @@ import styles from './Sidebar.module.scss';
 // import { CustomToastWithLink } from '../CustomToast/CustomToast';
 import {
   ExitIcon,
-  ProfileIcon,
-  // WalletConnectedIcon,
-  WalletIconTwo,
 } from '../assets';
-import Button from '../../components/Button/Button';
 
 type SidebarProps = {
   onClick: () => void;
@@ -20,7 +16,7 @@ type SidebarProps = {
   account?: string;
 };
 
-const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu, account }) => {
+const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu }) => {
   const { push, pathname } = useRouter();
   return (
     <div

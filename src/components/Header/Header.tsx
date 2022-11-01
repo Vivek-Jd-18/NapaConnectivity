@@ -17,7 +17,6 @@ import {
   ProfileIcon,
   SearchIcon,
   WalletBlueIcon,
-  WalletIconTwo,
   WalletIconWhite,
 } from '../../components/assets';
 import Button from '../Button/Button';
