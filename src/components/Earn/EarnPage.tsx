@@ -47,6 +47,7 @@ export default function EarnPage() {
                       value={lock}
                       placeholder="0.00"
                       onChange={onAmountChange}
+                      disabled
                     />
                     <span />
                     <p>NAPA</p>
