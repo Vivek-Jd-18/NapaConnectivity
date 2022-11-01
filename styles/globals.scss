@@ -1284,6 +1284,7 @@ input::-webkit-inner-spin-button {
 .datepickerBoxpool .form-control {
   background: transparent !important;
   width: 100%;
+  cursor: pointer;
 }
 
 .selectprntpool {
@@ -1310,6 +1311,7 @@ input::-webkit-inner-spin-button {
 .selectprntswapping {
   .cntrslct__indicator svg {
     margin-right: 12px;
+    cursor: pointer;
   }
 }
 
