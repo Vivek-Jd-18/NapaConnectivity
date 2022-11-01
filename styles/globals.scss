@@ -1585,6 +1585,11 @@ input::-webkit-inner-spin-button {
     box-shadow: none;
     outline: none;
     margin-right: 0;
+    scale: 1;
+    transition: all 0.3s ease-out;
+    &:hover {
+      scale: 1.2;
+    }
   }
 }
 .drpdwn_list_empty {
@@ -1599,6 +1604,13 @@ input::-webkit-inner-spin-button {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  a {
+    scale: 1;
+    transition: all 0.3s ease-out;
+    &:hover {
+      scale: 1.2;
+    }
+  }
 }
 
 @media screen and (max-width: 1440px) {
