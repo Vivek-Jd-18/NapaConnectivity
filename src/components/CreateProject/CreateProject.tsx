@@ -191,7 +191,11 @@ export default function CreateProject() {
                         <textarea></textarea>
                     </div>
                     <div className={styles.TextArea}>
-                        <p>Hard and soft cap to raise for their project</p> 
+                        <p>Hard Cap</p> 
+                        <textarea></textarea>
+                    </div>
+                    <div className={styles.TextArea}>
+                        <p>List of planned incentives</p> 
                         <textarea></textarea>
                     </div>
                     <div className={styles.FrstInput}>
@@ -211,7 +215,7 @@ export default function CreateProject() {
                         <textarea></textarea>
                     </div>
                     <div className={styles.TextArea}>
-                        <p>List of planned incentives</p> 
+                        <p>Soft Cap</p> 
                         <textarea></textarea>
                     </div>
                     <div className={styles.FrstInput}>

@@ -162,9 +162,21 @@
     background: transparent;
     border: none;
     margin-right: 24px;
+    position: relative;
+    bottom: 0;
+    transition: all 0.3s ease-out;
+    &:hover {
+      bottom: 5px;
+    }
   }
   a{
     margin-right: 24px;
+    position: relative;
+    bottom: 0;
+    transition: all 0.3s ease-out;
+    &:hover {
+      bottom: 5px;
+    }
     &:last-child{
       margin-right: 0;
     }

@@ -221,7 +221,7 @@ html
   .NapaLounge_napaLoungeContainer__zt_mJ
   .NapaLounge_leftSideContainer__2mOTS
   .NapaLounge_boxes__JU_J_ {
-  min-height: 155px !important;
+  min-height: 115px !important;
   // @media screen and (max-width: 1680px) {
   //   min-height: 100px !important;
   // }
@@ -732,6 +732,7 @@ input::-webkit-inner-spin-button {
   .cntrslct__value-container {
     padding: 0;
     color: #91a5a6;
+    .cntrslct__placeholder {margin-left: 0;}
   }
   .cntrslct__indicator-separator {
     display: none;
@@ -759,6 +760,11 @@ input::-webkit-inner-spin-button {
     border-radius: 5px;
     margin: 0;
     z-index: 2;
+    .cntrslct__option--is-selected {
+        color: #16e6ef !important;
+        background: rgb(67 93 88) !important;
+        border-radius: 5px;
+    }
   }
   .cntrslct__option {
     background: transparent;
@@ -769,8 +775,24 @@ input::-webkit-inner-spin-button {
       background: rgb(67 93 88);
     }
   }
+  
+
   .cntrslct__menu-list {
     padding: 0;
+  }
+}
+
+.select_pernt_v2 {
+  .cntrslct__value-container {
+    position: relative;
+    top: 1px;
+    padding-bottom: 10px;
+  }
+  .cntrslct__placeholder {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
   }
 }
 @media screen and (max-width: 1200px) {
@@ -956,6 +978,10 @@ input::-webkit-inner-spin-button {
   margin-top: 45px;
   padding-top: 0;
   padding-bottom: 0;
+  transition: all 0.2s ease-out;
+  &:hover {
+    color: #91a5a6;
+  }
 }
 .AccodianFaq .acodian_in_p {
   padding-top: 0;
@@ -1250,6 +1276,7 @@ input::-webkit-inner-spin-button {
     }
     .form-check-input {
       background-repeat: no-repeat;
+      cursor: pointer;
     }
   }
 }
@@ -1270,6 +1297,7 @@ input::-webkit-inner-spin-button {
 .datepickerBoxpool .form-control {
   background: transparent !important;
   width: 100%;
+  cursor: pointer;
 }
 
 .selectprntpool {
@@ -1296,6 +1324,7 @@ input::-webkit-inner-spin-button {
 .selectprntswapping {
   .cntrslct__indicator svg {
     margin-right: 12px;
+    cursor: pointer;
   }
 }
 
@@ -1385,6 +1414,11 @@ input::-webkit-inner-spin-button {
     padding-left: 20px;
     padding-bottom: 8px;
     margin-right: 0;
+  }
+}
+.selectprntnftssell {
+  .cntrslct__control {
+    padding-bottom: 0px;
   }
 }
 .nft_last_switch {
@@ -1637,5 +1671,10 @@ input::-webkit-inner-spin-button {
     button {
       display: none;
     }
+  }
+}
+.frstinputsell {
+  .form-floating>.form-control {
+    height: calc(3.6rem + 2px) !important;
   }
 }
