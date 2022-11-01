@@ -19,6 +19,7 @@ const SocialArtSectionWithoutLimit: NextPage = () => {
           <source src='/img/bg_video.webm' />
         </video>
       </div>
+      
       {/* <Steper steps={1} top={0} /> */}
       <Container className={`${styles.socialContainer} asinnerContainer`}>
         <div className={styles.socialContainerBody}>
