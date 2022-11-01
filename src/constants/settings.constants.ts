@@ -61,7 +61,7 @@ const settingsTab = [
     value: 'general',
   },
   {
-    title: 'Whitelist',
+    title: 'Whitelist Crypto Addresses',
     value: 'whitelist',
   },
 ];
