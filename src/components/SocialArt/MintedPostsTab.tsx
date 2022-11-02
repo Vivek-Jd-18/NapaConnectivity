@@ -107,7 +107,7 @@ export default function MintedPostsTab(props: any) {
               <Image src="/img/grid4_icon.svg" alt="" width={24} height={24} />
             </button>
             <button
-              className={`${styles.ListBtn} nav-link`}
+              className={`${styles.ListBtn} nav-link active`}
               id="nav-profile-tab"
               data-bs-toggle="tab"
               data-bs-target="#nav-profile"
