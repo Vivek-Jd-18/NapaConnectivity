@@ -26,10 +26,11 @@ const ChatListItemCard: NextPage<any, ChatListItemCardProps> = ({
       <div className={styles.userContainer}>
         <div className={styles.avatar}>
           <Image
-            src={avatar ? `data:image;base64,${avatar}` : HowardAvatar}
+            src={avatar ? `${avatar}` : HowardAvatar}
             width={32}
             height={32}
             alt="avatar"
+            className={styles.avatarImage}
           />
         </div>
         <div className={styles.userInfo}>

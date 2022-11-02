@@ -236,6 +236,7 @@ const TrendingSection: NextPage<TrendingSectionProps> = ({ socket }) => {
                         createdAt,
                         articleBody,
                         userProfilePic,
+                        articleTags,
                       },
                       index
                     ) => {
@@ -248,6 +249,7 @@ const TrendingSection: NextPage<TrendingSectionProps> = ({ socket }) => {
                           icon={userProfilePic ? userProfilePic : HowardAvatar}
                           username={author}
                           onChatClicked={() => setChatPerson(articleTitle)}
+                          articlesTags={articleTags}
                         />
                       );
                     }

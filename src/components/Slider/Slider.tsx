@@ -16,7 +16,7 @@ const SliderComponent: NextPage<any, SliderProps> = React.forwardRef(
       centerMode: centerMode,
       slidesToShow: slidesToShow ? slidesToShow : 3,
       infinite: true,
-      autoplay: true,
+      autoplay: false,
       autoplaySpeed: 2600,
       cssEase: 'linear',
       responsive: [

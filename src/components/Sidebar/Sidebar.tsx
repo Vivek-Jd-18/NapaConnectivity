@@ -8,11 +8,7 @@ import styles from './Sidebar.module.scss';
 // import { CustomToastWithLink } from '../CustomToast/CustomToast';
 import {
   ExitIcon,
-  ProfileIcon,
-  // WalletConnectedIcon,
-  WalletIconTwo,
 } from '../assets';
-import Button from '../../components/Button/Button';
 
 type SidebarProps = {
   onClick: () => void;
@@ -20,7 +16,7 @@ type SidebarProps = {
   account?: string;
 };
 
-const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu, account }) => {
+const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu }) => {
   const { push, pathname } = useRouter();
   return (
     <div
@@ -31,7 +27,7 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu, account }) => {
         <div className={styles.closebtn} onClick={onClick}>
           <Image width={40} height={40} src={ExitIcon} alt="Close" />
         </div>
-        <div className={styles.conctWlltSet}>
+        {/* <div className={styles.conctWlltSet}>
           <div className={styles.buttonsContainerStylAj}>
             {account ? (
               <>
@@ -44,20 +40,7 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu, account }) => {
                     onClick();
                   }}
                 />
-                {/* <Button
-                text="Wallet"
-                icon={WalletIconTwo}
-                onClick={() => {
-                  toast.error(
-                    CustomToastWithLink({
-                      icon: WalletConnectedIcon,
-                      title: ToastTitle.WALLET_IS_ALREADY_CONNECTED,
-                      description: ToastDescription.WALLET_IS_ALREADY_CONNECTED,
-                      time: 'Now',
-                    })
-                  );
-                }}
-              /> */}
+                
               </>
             ) : (
               <>
@@ -73,7 +56,7 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu, account }) => {
               </>
             )}
           </div>
-        </div>
+        </div> */}
       </div>
       <div className={styles.overlayContentContainer}>
         <div className={styles.overlayContent}>

@@ -19,6 +19,7 @@ type UserContextType = {
   profileDetails: ProfileDetails;
   profileId: string;
   profileName: string;
+  loading: boolean;
 };
 
 const UserContext = createContext<UserContextType>({} as UserContextType);
@@ -28,6 +29,7 @@ export const UserContextProvider = (props: { children: React.ReactNode }) => {
   const [profileId, setProfileId] = useState('');
   const { account } = useWebThree();
   const [profileName, setProfileName] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const getProfileIdFromLocalStorage = useCallback(async () => {
     const data = getCookie('profileId');
@@ -53,13 +55,16 @@ export const UserContextProvider = (props: { children: React.ReactNode }) => {
         if (!profileId) {
           return;
         }
+        setLoading(true);
         const response = await axios.get(
           `${API_URL}/user/account/details/${profileId}`
         );
         setProfileId(response?.data?.data?.profileId);
         setProfileDetails(response?.data?.data);
+        setLoading(false);
         return response?.data?.data;
       } catch (error: any) {
+        setLoading(false);
         if (error?.response?.data?.message === 'User Not Found') {
           console.log('Account Not Found in our System');
           toast.error(
@@ -140,6 +145,7 @@ export const UserContextProvider = (props: { children: React.ReactNode }) => {
     profileName,
     getUserProfileDetails,
     updateUserProfile,
+    loading,
   };
 
   return (

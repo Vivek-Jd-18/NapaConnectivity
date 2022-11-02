@@ -12,6 +12,7 @@ type SocialMediaReviewProps = {
   date: string;
   username: string;
   onChatClicked: () => void;
+  articlesTags: string;
 };
 
 const SocialMediaReview: NextPage<SocialMediaReviewProps> = ({
@@ -21,6 +22,7 @@ const SocialMediaReview: NextPage<SocialMediaReviewProps> = ({
   date,
   username,
   onChatClicked,
+  articlesTags,
 }) => {
   const [open, setOpen] = useState(false);
   return (
@@ -131,18 +133,14 @@ const SocialMediaReview: NextPage<SocialMediaReviewProps> = ({
           ></div>
           <div className={styles.ulPerent}>
             <ul>
-              <li>
-                <p>NFT</p>
-              </li>
-              <li>
-                <p>Tokens</p>
-              </li>
-              <li>
-                <p>Blockchain</p>
-              </li>
-              <li>
-                <p>Crypto</p>
-              </li>
+              {articlesTags &&
+                articlesTags?.split(',').map((tag, index) => {
+                  return (
+                    <li key={`article-tag-${index}`}>
+                      <p>{tag}</p>
+                    </li>
+                  );
+                })}
             </ul>
           </div>
         </div>
