@@ -126,14 +126,6 @@ export const WebThreeContextProvider = (props: {
         );
         return;
       }
-      toast.error(
-        CustomToastWithLink({
-          icon: ErrorIcon,
-          title: ToastTitle.ERROR,
-          description: ToastDescription.ERROR,
-          time: 'Now',
-        })
-      );
     }
   }, [getBalances, setWalletEth, setAccount]);
 
@@ -170,14 +162,20 @@ export const WebThreeContextProvider = (props: {
         );
         return;
       }
-      toast.error(
-        CustomToastWithLink({
-          icon: ErrorIcon,
-          title: ToastTitle.ERROR,
-          description: ToastDescription.ERROR,
-          time: 'Now',
-        })
-      );
+      if (
+        error.message ===
+        "Cannot read properties of undefined (reading 'request')"
+      ) {
+        toast.error(
+          CustomToastWithLink({
+            icon: ErrorIcon,
+            title: 'Metamask Extension Not Found',
+            description: 'Please install a metamask extension to login',
+            time: 'Now',
+          })
+        );
+        return;
+      }
     }
   };
 
