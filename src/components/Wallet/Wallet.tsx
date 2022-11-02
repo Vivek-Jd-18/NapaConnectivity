@@ -104,6 +104,7 @@ const WalletComponent: NextPage<WalletComponentProps> = ({ account }) => {
                               time: 'Now',
                             })
                           );
+                          push('/home');
                           return;
                         }
                         if (index === 0) {
