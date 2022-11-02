@@ -343,6 +343,9 @@
     &.Active {
       opacity: 1;
       pointer-events: visible;
+      border: 1px solid #354647b5;
+      border-radius: 4px;
+      padding: 2px 0px 2px 4px;
     }
   }
   input {
