@@ -13,10 +13,10 @@ export default function ValuatorSc() {
       
         <Container className={`${styles.settingsContainer} asinnerContainer`}>
           <div className={styles.ValuaterMain}>
-            <h1 className={styles.settings}>NAPA Valuator</h1>
+            <h1 className={styles.settings}>Dave</h1>
                 <Link href="#">
                   <a data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                    How to use the NAPA Valuator?
+                    How to use Dave?
                   </a>
                 </Link>
           </div>

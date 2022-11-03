@@ -60,7 +60,7 @@ export default function SectionOne() {
                                     </li>
                                     <li>
                                         <a className="dropdown-item" href="#">
-                                            Add to Valuator
+                                            Ask Dave
                                         </a>
                                     </li>
                                     <li>
