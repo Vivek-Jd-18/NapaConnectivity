@@ -12,7 +12,7 @@
 }
 
 .backgroundImage {
-  background-image: url('/assets/images/napasociety-background.png');
+  background-image: url('/assets/images/npg.png');
   background-size: cover;
   position: relative;
   height: 100vh;
@@ -406,7 +406,7 @@
   }
   
   @media only screen and (max-width: 1280px) {
-    background-image: url('/assets/images/napsociety-background-tablet.png');
+    background-image: url('/assets/images/npg.png');
     .societyContainer {
       @include flex-column-center;
       align-items: flex-start !important;

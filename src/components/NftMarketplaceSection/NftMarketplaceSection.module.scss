@@ -3,7 +3,7 @@
 
 
 .backgroundImage {
-  background-image: url('/assets/images/marketplace-background-mobile.png');
+  background-image: url('/assets/images/npg.png');
   background-size: cover;
   position: relative;
   min-height: 100vh;
@@ -157,7 +157,7 @@
   }
 
   @media (min-width: 768px) {
-    background-image: url('/assets/images/marketplace-background-tablet.png');
+    background-image: url('/assets/images/npg.png');
     .nft {
       text-align: left;
       padding-top: 5rem;
@@ -252,7 +252,7 @@
 }
 
   @media (min-width: 1280px) {
-    background-image: url('/assets/images/marketplace-background-nolines.png');
+    background-image: url('/assets/images/npg.png');
     .nft {
       padding-top: 2.3rem;
       max-width: 100%;
