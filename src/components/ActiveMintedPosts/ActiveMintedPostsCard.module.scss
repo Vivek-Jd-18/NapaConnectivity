@@ -13,6 +13,10 @@
   @media screen and (max-width: 736px) {
     height: 276px !important;
   }
+  @media screen and (max-width: 300px) {
+    height: 254px !important;
+    padding: 16px 20px 16px 20px !important;
+  }
   .innerCardContainer {
     display: flex;
     height: 164px !important;
@@ -40,6 +44,9 @@
         padding-left: 20px !important;
         justify-content: flex-start;
       }
+      @media screen and (max-width: 300px) {
+        padding-left: 10px !important;
+      }
       .title {
         @include font-xl-neuropolitical-normal;
         margin-bottom: 15px !important;
@@ -50,6 +57,9 @@
         @media screen and (max-width: 736px) {
           font-size: 18px !important;
           margin-bottom: 10px !important;
+        }
+        @media screen and (max-width: 300px) {
+          font-size: 12px !important;
         }
       }
       .innerRightSideContainer {
@@ -104,6 +114,9 @@
         padding-right: 0px !important;
         margin-top: 20px;
       }
+      @media screen and (max-width: 300px) {
+        margin-top: 10px;
+      }
       &:last-child {
         padding-left: 0px !important;
       }
@@ -117,6 +130,9 @@
         @include font-sm-avenir-regular;
         font-size: 14px !important;
         line-height: 140% !important;
+        @media screen and (max-width: 300px) {
+          font-size: 14px !important;
+        }
       }
     }
   }

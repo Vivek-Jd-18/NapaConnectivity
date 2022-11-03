@@ -24,8 +24,8 @@ const Footer: NextPage<FooterProps> = ({ footerIconShow }) => {
   const { push } = useRouter();
   return (
     <footer>
-      <div className={styles.container}>
-        <Container>
+      <div className={`${styles.container} asinnerContainer`}>
+        
           <div className={styles.footerContainer}>
             <div onClick={() => push('/')} className={styles.logo}>
               <img src={FooterLogoIcon} alt="FooterLogoIcon" />
@@ -124,10 +124,9 @@ const Footer: NextPage<FooterProps> = ({ footerIconShow }) => {
               </Link>
             </ul>
           </div>
-        </Container>
       </div>
       <div className={styles.footerListMobile}>
-        <Container>
+        <Container className='asinnerContainer'>
           <ul
             className={`${styles.footerListItem} ${styles.activeFooterListItem}`}
           >
@@ -150,7 +149,7 @@ const Footer: NextPage<FooterProps> = ({ footerIconShow }) => {
         </Container>
       </div>
       <div className={styles.footerBottomContainer}>
-        <Container>
+        <Container className='asinnerContainer'>
           <div className={styles.footerContainer}>
             <p className={styles.footerBottomText}>
               ©2022 NAPA Society Limited

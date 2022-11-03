@@ -31,7 +31,10 @@
         padding-top: 30px !important;
       }
       @media screen and (max-width: 736px) {
-        padding-top: 80px !important;
+        padding-top: 60px !important;
+      }
+      @media screen and (max-width: 300px) {
+        padding-top: 60px !important;
       }
     }
     .napa {
@@ -73,6 +76,12 @@
     .leftSideContainer {
       --bs-gutter-x: .5rem;
       padding-top: 2rem;
+      @media (max-width: 600px) {
+        padding-top: 1rem;
+      }
+      @media (max-width: 300px) {
+        padding-top: 0.80rem;
+      }
       .boxes {
         border: 1px solid rgba(255, 255, 255, 0.15);
         cursor: pointer;
@@ -345,10 +354,16 @@
       .napa {
         @include font-4xl-neuropolitical-normal;
         font-size: 3.5rem;
+        @media screen and (max-width: 300px) {
+          font-size: 26px !important;
+        }
       }
       .lounge {
         @include font-4xl-neuropolitical-normal;
         font-size: 3.5rem;
+        @media screen and (max-width: 300px) {
+          font-size: 26px !important;
+        }
       }
     }
   }
@@ -357,6 +372,7 @@
   .buttonContainer {
     margin-top: 30px;
     margin-bottom: 0px;
+   
   }
   .rightSideContainer {
     position: relative;
@@ -406,5 +422,16 @@
         }
       }
     }
+  }
+}
+  
+@media screen and (max-width: 740px) {
+  .buttonContainer {
+    margin-top: 10px;
+  }
+}
+@media screen and (max-width: 300px) {
+  .buttonContainer {
+    margin-top: 10px;
   }
 }

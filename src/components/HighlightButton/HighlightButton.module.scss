@@ -24,6 +24,9 @@
       font-size: 18px !important;
       margin-right: 12px !important;
     }
+    @media screen and (max-width: 300px) {
+      font-size: 14px !important;
+    }
   }
   a {
     text-decoration: none;

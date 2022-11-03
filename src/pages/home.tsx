@@ -43,7 +43,7 @@ const Home: NextPage = () => {
         </div>
       </section> */}
       
-      <div className="hm_sc">
+      <div className="hm_sc hm_sc_nplng">
         {/* <ReactFullpage
           navigation
           scrollingSpeed={1000} 
