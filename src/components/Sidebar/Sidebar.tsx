@@ -227,12 +227,12 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu }) => {
               <div
                 className={styles.link}
                 onClick={() => {
-                  push('/valuator');
+                  push('/dave');
                   onClick();
                 }}
               >
-                <a className={`${pathname === '/valuator' && styles.active}`}>
-                  Valuator
+                <a className={`${pathname === '/dave' && styles.active}`}>
+                  Dave
                 </a>
               </div>
             </div>
