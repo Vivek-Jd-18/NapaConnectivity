@@ -245,7 +245,7 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu }) => {
                 }}
               >
                 <a className={`${pathname === '/dave' && styles.active}`}>
-                  Dave
+                  DAVE
                 </a>
               </div>
             </div>
