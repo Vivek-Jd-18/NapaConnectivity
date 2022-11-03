@@ -135,7 +135,7 @@ const NapaLounge: NextPage = () => {
       <Container
         className={`${styles.napaLoungeContainer} asinnerContainer asinnerContainerv2`}
       >
-        <h1>
+        <h1 className={styles.Napa_scty_h1}>
           <span className={styles.napa}>NAPA</span>
           <span className={styles.lounge}> Society</span>
         </h1>

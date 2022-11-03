@@ -44,6 +44,9 @@
     color: #FFFFFF;
     margin-bottom: 22px;
     text-align: start;
+    @media screen and (max-width: 736px) {
+      font-size: 32px;
+    }
   }
 
   .tipandtotolmain{
@@ -370,6 +373,9 @@
     background: linear-gradient(to bottom, transparent 35%,rgba(12, 27, 34, 0.9) 100%);
     pointer-events: none;
     z-index: 2;
+    @media screen and (max-width: 736px) {
+      position: inherit !important;
+    }
   }
 }
 .MainListList {

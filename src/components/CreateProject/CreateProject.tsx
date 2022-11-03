@@ -190,13 +190,14 @@ export default function CreateProject() {
                         <p>Short description about project</p> 
                         <textarea></textarea>
                     </div>
-                    <div className={styles.TextArea}>
-                        <p>Hard Cap</p> 
-                        <textarea></textarea>
-                    </div>
-                    <div className={styles.TextArea}>
-                        <p>List of planned incentives</p> 
-                        <textarea></textarea>
+                    <div className={styles.FrstInput}>
+                        <Input
+                            value={namenaine}
+                            type="text"
+                            placeholder="www.opensea.io/collection/of-aliens-and-men"
+                            label="Hard Cap"
+                            onChange={(e) => setNamenaine(e.target.value)}
+                        />
                     </div>
                     <div className={styles.FrstInput}>
                         <Input
@@ -207,16 +208,20 @@ export default function CreateProject() {
                             onChange={(e) => setNameten(e.target.value)}
                         />
                     </div>
-                    
                 </div>
                 <div className={`${styles.CreateGrner} ${styles.CreateGrnerSecand}`}>
                     <div className={styles.TextArea}>
                         <p>How will your project improve the NFT community?</p> 
                         <textarea></textarea>
                     </div>
-                    <div className={styles.TextArea}>
-                        <p>Soft Cap</p> 
-                        <textarea></textarea>
+                    <div className={styles.FrstInput}>
+                        <Input
+                            value={namenaine}
+                            type="text"
+                            placeholder="www.opensea.io/collection/of-aliens-and-men"
+                            label="Soft Cap"
+                            onChange={(e) => setNamenaine(e.target.value)}
+                        />
                     </div>
                     <div className={styles.FrstInput}>
                         {/* <Input
