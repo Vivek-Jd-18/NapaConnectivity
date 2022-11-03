@@ -114,7 +114,11 @@ div#nft-marketplace .slick-current {
   }
 }
 .page-header {
-  position: relative;
+  // position: relative;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
   z-index: 9999;
 }
 .main-container {
@@ -238,6 +242,9 @@ html .Home_child__4Kb2b {
 html .NapaLounge_backgroundImage___NtsM {
   height: 100vh !important;
 }
+.hm_sc_nplng {
+  background-image: url(/public/assets/images/upcoming-nft-projects.png) !important;
+}
 @media (max-width: 1600px) {
   .NapaLounge_backgroundImage___NtsM
     .NapaLounge_napaLoungeContainer__zt_mJ
@@ -301,6 +308,9 @@ html .NapaLounge_backgroundImage___NtsM {
     .TipsAndTutorialsCard_cardInfo__nWGGe
     .TipsAndTutorialsCard_title__iV9ul {
     font-size: 1rem !important;
+    @media screen and (max-width: 300px) {
+      font-size: 0.7rem !important;
+    }
   }
 }
 @media (max-width: 1199px) {
@@ -413,6 +423,9 @@ body.scroll-up header.page-header .asinnerContainer {
 .asinnerContainer {
   padding-left: 7.9vw !important;
   padding-right: 7.9vw !important;
+  max-width: 1905px !important;
+  margin: 0 auto !important;
+  width: 100% !important;
 }
 .asinnerContainerv2 {
   padding-right: 0 !important;
@@ -1696,5 +1709,23 @@ input::-webkit-inner-spin-button {
 .frstinputsell {
   .form-floating>.form-control {
     height: calc(3.6rem + 2px) !important;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .rspnv_none {
+    display: none !important;
+  }
+}
+
+@media screen and (min-width: 575px) {
+ .trending_rsponce {
+  display: none;
+ }
+}
+
+@media screen and (max-width: 575px) {
+  .rspnsv_dis_none {
+    display: none !important;
   }
 }

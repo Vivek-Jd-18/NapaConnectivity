@@ -5,7 +5,7 @@
   @include flex-between;
   @include align-center;
   padding-top: 40px !important;
-  position: fixed;
+  position: relative;
   z-index: 1;
   .wallet {
     position: relative;
@@ -71,7 +71,18 @@
   .innerContainer  div  span {
     width: 54px !important;
   }
-
+}
+@media screen and (max-width: 300px) {
+  .innerContainer  div  span {
+    width: 40px !important;
+  }
+}
+@media screen and (max-width: 300px) {
+  .innerContainer {
+    .svgWrapper {
+      margin-left: -5rem;
+    }
+  }
 }
 
 @media screen and (min-width: 320px) {
