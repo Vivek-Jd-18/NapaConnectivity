@@ -16,7 +16,7 @@ const TopNFT: NextPage = () => {
   return (
     <>
       <Head>
-        <title>NAPA Society | Top NFTS</title>
+        <title>NAPA Society | Rankings</title>
         <meta name="description" content="NAPA Developmeent Environment" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

@@ -271,7 +271,7 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu }) => {
                 }}
               >
                 <a className={`${pathname === '/top-nft' && styles.active}`}>
-                Top NFTs
+                Rankings
                 </a>
               </div>
             </div>
