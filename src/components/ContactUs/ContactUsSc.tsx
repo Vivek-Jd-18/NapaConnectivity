@@ -11,9 +11,9 @@ export default function ContactUsSc() {
   const [name, setName] = useState('');
   const [namesec, setNamesec] = useState('');
   const options = [
-    { value: 'admin', label: 'admin' },
-    { value: 'tecnical', label: 'tecnical' },
-    { value: 'finance', label: 'finance' },
+    { value: 'Legal', label: 'Legal' },
+    { value: 'Marketing', label: 'Marketing' },
+    { value: 'Finance', label: 'Finance' },
   ];
   return (
     <>
@@ -56,7 +56,7 @@ export default function ContactUsSc() {
                             options={options}
                             // menuIsOpen={true}
                             className="select_pernt"
-                            placeholder="Rating"
+                            placeholder="Please select which department you wish to contact"
                             classNamePrefix="cntrslct"
                         />
                     </div>

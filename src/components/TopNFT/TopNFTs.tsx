@@ -27,7 +27,7 @@ export default function TopNFTs() {
     <>
       <div className={styles.LaunchPadMain}>
         <div className={styles.LeftLaunchPad}>
-          <h1 className={styles.LaunchPadDeflt}>Top NFTs and SNFTs</h1>
+          <h1 className={styles.LaunchPadDeflt}>Rankings</h1>
         </div>
         <div className={styles.tipandtotolmain}>
           <div className="select_main select_mainonn">
