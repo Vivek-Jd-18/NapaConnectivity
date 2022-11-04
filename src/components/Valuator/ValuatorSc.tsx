@@ -16,7 +16,7 @@ export default function ValuatorSc() {
             <h1 className={styles.settings}>DAVE</h1>
                 <Link href="#">
                   <a data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                    How to use DAVE?
+                    How to use DAVE? <strong>(Digital Asset Valuation Expert) </strong>
                   </a>
                 </Link>
           </div>
