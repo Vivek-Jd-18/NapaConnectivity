@@ -105,7 +105,7 @@ const GeneralTab: NextPage = () => {
           time: 'Now',
         })
       );
-      push('/home');
+      push('/trending');
     } catch (error) {
       toast.error(
         CustomToastWithLink({

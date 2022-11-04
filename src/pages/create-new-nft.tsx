@@ -21,7 +21,7 @@ const CreateNewNft: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <section className={styles.container} id="earn-container">
-        <div className={`${styles.child} earnpage `} id="scrollElement">
+        <div className={`${styles.child} earnpage mrktplcbg`} id="scrollElement">
           <CreateNewNFTSc />
         </div>
       </section>

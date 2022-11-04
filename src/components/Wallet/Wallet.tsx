@@ -48,7 +48,7 @@ const WalletComponent: NextPage<WalletComponentProps> = ({ account }) => {
         const profileDetails = await getUserProfileDetails(response);
         // @ts-ignore
         if (response && profileDetails) {
-          push('/home');
+          push('/trending');
         } else if (response) {
           push('/settings');
         }

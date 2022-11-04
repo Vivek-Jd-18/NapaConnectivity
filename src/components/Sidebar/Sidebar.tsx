@@ -143,12 +143,12 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu }) => {
               <div
                 className={`${styles.newlink} `}
                 onClick={() => {
-                  push('/home');
+                  push('/trending');
                   onClick();
                 }}
               >
-                <a className={`${pathname === '/home' && styles.active}`}>
-                  NAPA Society
+                <a className={`${pathname === '/trending' && styles.active}`}>
+                  Whats Trending
                 </a>
               </div>
             </div>
