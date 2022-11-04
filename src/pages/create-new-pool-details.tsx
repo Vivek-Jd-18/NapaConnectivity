@@ -20,7 +20,7 @@ const CreateNewPool: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <section id="earn-container">
-        <div className={`CreateNewNFTTow_bg`} id="scrollElement">
+        <div className={`mrktplcbg`} id="scrollElement">
           <CreateNewPoolScTwo />
         </div>
       </section>

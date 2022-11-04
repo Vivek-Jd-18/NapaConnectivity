@@ -12,7 +12,7 @@ export default function LeaderboardsSc() {
     
     <div className={`${styles.container}`}>
       <Container className={`${styles.settingsContainer} asinnerContainer`}>
-        <h1 className={styles.settings}>SFT Leaders</h1>
+        <h1 className={styles.settings}>SNFT Leaders</h1>
         <div className={styles.TabLinks}>
             <ul>
                 <li>

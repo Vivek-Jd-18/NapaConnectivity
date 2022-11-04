@@ -8,12 +8,12 @@ const Earn: NextPage = () => {
   return (
     <>
       <Head>
-        <title>NAPA Society | Earn</title>
+        <title>NAPA Society | Earn </title>
         <meta name="description" content="NAPA Developmeent Environment" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <section className={styles.container} id="earn-container">
-        <div className={`${styles.child} earnpage`} id="scrollElement">
+        <div className={`${styles.child} earnpage mrktplcbg`} id="scrollElement">
           <EarnPage />
         </div>
       </section>

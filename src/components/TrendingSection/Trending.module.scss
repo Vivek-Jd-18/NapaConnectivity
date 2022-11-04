@@ -58,7 +58,7 @@
       @include font-6xl-neuropolitical-normal;
       text-align: left;
       color: $white;
-      padding-top: 90px;
+      padding-top: 140px;
       span {
         color: transparent;
         -webkit-text-stroke: 2px white;
@@ -89,16 +89,16 @@
   }
 
   @media (min-width: 280px) {
-    background-image: url('/assets/images/trending-mobile-background.png');
+    background-image: url('/assets/images/tdb.png');
   }
   @media (min-width: 768px) {
-    background-image: url('/assets/images/trending-tablet-background.png');
+    background-image: url('/assets/images/tdb.png');
     .mousePointer {
       display: none;
     }
   }
   @media (min-width: 1280px) {
-    background-image: url('/assets/images/trending-desktop-background.png');
+    background-image: url('/assets/images/tdb.png');
     .trendingContainer {
       .trendingBodyContainer {
         height: 84%;
