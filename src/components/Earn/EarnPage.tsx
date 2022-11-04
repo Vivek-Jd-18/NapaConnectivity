@@ -8,6 +8,7 @@ import Button from '../../components/Button/Button';
 import moment from 'moment';
 import React, { useState } from 'react';
 import DateRangePicker from 'react-bootstrap-daterangepicker';
+import Link from 'next/link';
 // you will need the css that comes with bootstrap@3. if you are using
 // a tool like webpack, you can do the following:
 import 'bootstrap/dist/css/bootstrap.css';
@@ -35,7 +36,7 @@ export default function EarnPage() {
                 <div className={styles.TopLogo}>
                   <Image src={NapaIcon} alt="NapaIcon" width={48} height={48} />
                   <h4>
-                    NAPA Token <span>NAPA</span>
+                    NAPA Society Token <Link href="https://etherscan.io/token/0x8eb2df7137fb778a6387e84f17b80cc82cf9e884">Etherscan </Link>
                   </h4>
                 </div>
                 <div className={styles.MiddleCont}>
