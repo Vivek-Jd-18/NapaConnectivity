@@ -34,8 +34,8 @@ const Footer: NextPage<FooterProps> = ({ footerIconShow }) => {
               <ul
                 className={`${styles.footerListItem} ${styles.activeFooterListItem}`}
               >
-                <Link href={'/home'}>
-                  <li>NAPA Society</li>
+                <Link href={'/trending'}>
+                  <li>Whats Trending</li>
                 </Link>
                 <Link href={'/socialart'}>
                   <li>Social Art</li>
@@ -107,8 +107,8 @@ const Footer: NextPage<FooterProps> = ({ footerIconShow }) => {
             <ul
               className={`${styles.footerListItem} ${styles.activeFooterListItem}`}
             >
-              <Link href={'/home'}>
-                <li>NAPA Society</li>
+              <Link href={'/trending'}>
+                <li>Whats Trending</li>
               </Link>
               <Link href={'/socialart'}>
                 <li>Social Art</li>
@@ -130,8 +130,8 @@ const Footer: NextPage<FooterProps> = ({ footerIconShow }) => {
           <ul
             className={`${styles.footerListItem} ${styles.activeFooterListItem}`}
           >
-            <Link href={'/home'}>
-              <li>NAPA Society</li>
+            <Link href={'/trending'}>
+              <li>Whats Trending</li>
             </Link>
             <Link href={'/socialart'}>
               <li>Social Art</li>
