@@ -41,8 +41,9 @@
       @include font-xs-avenir-regular;
       color: $gray;
 
-      .termsPrivacyText {
+      .termsPrivacyText a{
         color: $white;
+        text-decoration: none;
       }
     }
     .btnContainer {
