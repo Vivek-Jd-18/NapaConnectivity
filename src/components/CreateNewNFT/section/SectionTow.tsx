@@ -10,36 +10,36 @@ export default function SectionTow() {
                 <div className={styles.DetailsCont}>
                     <h1>NFT Details</h1>
                     <div className={styles.flexPrntSc02}>
-                        <h6>Contract Address</h6>
-                        <p>0x9324...74dCa</p>
+                        <h6>NFT Project</h6>
+                        <p>(project name)</p>
                     </div>
                     <div className={styles.flexPrntSc02}>
                         <h6>Etherscan Address</h6>
-                        <p>3a215a...09sfH</p>
+                        <p>(etherscan address)</p>
                     </div>
                     <div className={styles.flexPrntSc02}>
                         <h6>Token ID</h6>
                         <p>2193</p>
                     </div>
                     <div className={styles.flexPrntSc02}>
-                        <h6>Token Standart</h6>
+                        <h6>Token Standard</h6>
                         <p>ERC-284</p>
                     </div>  
                     <div className={styles.flexPrntSc02}>
-                        <h6>Blockchain</h6>
+                        <h6>Network</h6>
                         <div className={styles.flexNapa}>
                             <Image src="/img/napa_ic_aj.svg" alt="" width={17} height={13} />
-                            <p>NAPA</p>
+                            <p>(network)</p>
                         </div>
                         
                     </div>
                     <div className={styles.flexPrntSc02}>
                         <h6>Last Updated</h6>
-                        <p>17 days ago</p>
+                        <p>(date)</p>
                     </div>
                     <div className={styles.flexPrntSc02}>
                         <h6>Creator Earnings</h6>
-                        <p>5%</p>
+                        <p>(earnings)</p>
                     </div>
                 </div>
             </div>
