@@ -36,8 +36,8 @@ export default function EarnPage() {
                 <div className={styles.TopLogo}>
                   <Image src={NapaIcon} alt="NapaIcon" width={48} height={48} />
                   <h4>
-                    NAPA Society Token | <Link href="https://etherscan.io/token/0x8eb2df7137fb778a6387e84f17b80cc82cf9e884"> Etherscan </Link> 
-                     | Current Token Price $0.05
+                    NAPA Token | <Link href="https://etherscan.io/token/0x8eb2df7137fb778a6387e84f17b80cc82cf9e884"> Etherscan </Link> 
+                     | Price $0.05 24h Chg +24%
                   </h4>
                 </div>
                 <div className={styles.MiddleCont}>
