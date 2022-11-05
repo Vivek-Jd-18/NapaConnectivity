@@ -3,9 +3,9 @@ import Image from 'next/image';
 import Select from 'react-select';
 import 'bootstrap-daterangepicker/daterangepicker.css';
 import 'bootstrap/dist/css/bootstrap.css';
-import styles from './SadNessActivity.module.scss';
+import styles from './ProjectsActivity.module.scss';
 
-export default function SadNessActivity() {
+export default function ProjectsActivity() {
       const optionsthree = [
         { value: '1', label: '20%' },
         { value: '2', label: '50%' },

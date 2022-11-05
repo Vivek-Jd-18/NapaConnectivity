@@ -347,7 +347,7 @@ export default function ProjectsMarketPlace(props: any) {
                     <div className={styles.CustomGrid}>
                         <div className={styles.TipsTulsOverlay}>
                             <div className={styles.boxinnrcont}>
-                                <Link href="/sadness">
+                                <Link href="/projects">
                                     <a href="" className={`${styles.apernt} hovereffect`}>
                                         <Image
                                             src="/img/project011.png"
@@ -373,7 +373,7 @@ export default function ProjectsMarketPlace(props: any) {
                     <div className={styles.CustomGrid}>
                         <div className={styles.TipsTulsOverlay}>
                             <div className={styles.boxinnrcont}>
-                                <Link href="/sadness">
+                                <Link href="/projects">
                                     <a href="" className={`${styles.apernt} hovereffect`}>
                                         <Image
                                             src="/img/project012.png"
@@ -399,7 +399,7 @@ export default function ProjectsMarketPlace(props: any) {
                     <div className={styles.CustomGrid}>
                         <div className={styles.TipsTulsOverlay}>
                             <div className={styles.boxinnrcont}>
-                                <Link href="/sadness">
+                                <Link href="/projects">
                                     <a href="" className={`${styles.apernt} hovereffect`}>
                                         <Image
                                             src="/img/project013.png"
@@ -425,7 +425,7 @@ export default function ProjectsMarketPlace(props: any) {
                     <div className={styles.CustomGrid}>
                         <div className={styles.TipsTulsOverlay}>
                             <div className={styles.boxinnrcont}>
-                                <Link href="/sadness">
+                                <Link href="/projects">
                                     <a href="" className={`${styles.apernt} hovereffect`}>
                                         <Image
                                             src="/img/project014.png"
@@ -451,7 +451,7 @@ export default function ProjectsMarketPlace(props: any) {
                     <div className={styles.CustomGrid}>
                         <div className={styles.TipsTulsOverlay}>
                             <div className={styles.boxinnrcont}>
-                                <Link href="/sadness">
+                                <Link href="/projects">
                                     <a href="" className={`${styles.apernt} hovereffect`}>
                                         <Image
                                             src="/img/project015.png"
@@ -477,7 +477,7 @@ export default function ProjectsMarketPlace(props: any) {
                     <div className={styles.CustomGrid}>
                         <div className={styles.TipsTulsOverlay}>
                             <div className={styles.boxinnrcont}>
-                                <Link href="/sadness">
+                                <Link href="/projects">
                                     <a href="" className={`${styles.apernt} hovereffect`}>
                                         <Image
                                             src="/img/project016.png"
@@ -503,7 +503,7 @@ export default function ProjectsMarketPlace(props: any) {
                     <div className={styles.CustomGrid}>
                         <div className={styles.TipsTulsOverlay}>
                             <div className={styles.boxinnrcont}>
-                                <Link href="/sadness">
+                                <Link href="/projects">
                                     <a href="" className={`${styles.apernt} hovereffect`}>
                                         <Image
                                             src="/img/project017.png"
@@ -529,7 +529,7 @@ export default function ProjectsMarketPlace(props: any) {
                     <div className={styles.CustomGrid}>
                         <div className={styles.TipsTulsOverlay}>
                             <div className={styles.boxinnrcont}>
-                                <Link href="/sadness">
+                                <Link href="/projects">
                                     <a href="" className={`${styles.apernt} hovereffect`}>
                                         <Image
                                             src="/img/project018.png"
@@ -556,7 +556,7 @@ export default function ProjectsMarketPlace(props: any) {
                     <div className={styles.CustomGrid}>
                         <div className={styles.TipsTulsOverlay}>
                             <div className={styles.boxinnrcont}>
-                                <Link href="/sadness">
+                                <Link href="/projects">
                                     <a href="" className={`${styles.apernt} hovereffect`}>
                                         <Image
                                             src="/img/project018.png"

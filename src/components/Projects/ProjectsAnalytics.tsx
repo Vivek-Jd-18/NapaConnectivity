@@ -3,10 +3,10 @@ import Image from 'next/image';
 import Select from 'react-select';
 import 'bootstrap-daterangepicker/daterangepicker.css';
 import 'bootstrap/dist/css/bootstrap.css';
-import styles from './SadNessAnalytics.module.scss';
+import styles from './ProjectsAnalytics.module.scss';
 import Link from 'next/link';
 
-export default function SadNessAnalytics() {
+export default function ProjectsAnalytics() {
       const optionsthree = [
         { value: '1', label: 'Last 7 Days' },
         { value: '2', label: 'Last 30 Days' },
