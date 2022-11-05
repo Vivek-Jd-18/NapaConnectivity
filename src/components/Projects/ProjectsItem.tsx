@@ -5,10 +5,10 @@ import 'bootstrap-daterangepicker/daterangepicker.css';
 import DateRangePicker from 'react-bootstrap-daterangepicker';
 import 'bootstrap/dist/css/bootstrap.css';
 import moment from 'moment';
-import styles from './SadNessItem.module.scss';
+import styles from './ProjectsItem.module.scss';
 import Link from 'next/link';
 
-export default function SadNessItem(props: any) {
+export default function ProjectsItem(props: any) {
       const optionstow = [
         { value: '1', label: 'Price 20 MRP' },
         { value: '2', label: 'Price 250 MRP' },

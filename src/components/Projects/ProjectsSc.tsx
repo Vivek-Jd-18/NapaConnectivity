@@ -1,16 +1,16 @@
 import Container from '../../Layout/Container/Container';
 import Footer from '../Footer/Footer';
-import styles from './SadNessSc.module.scss';
+import styles from './ProjectsSc.module.scss';
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
-import SadNessActivity from './SadNessActivity';
-import SadNessItem from './SadNessItem';
-import SadNessAnalytics from './SadNessAnalytics';
+import SadNessActivity from './ProjectsActivity';
+import SadNessItem from './ProjectsItem';
+import SadNessAnalytics from './ProjectsAnalytics';
 
-export default function SadNessSc() {
+export default function ProjectsSc() {
   return (
     <div className={`${styles.container}`}>
       <Container className={`${styles.settingsContainer} asinnerContainer`}>
