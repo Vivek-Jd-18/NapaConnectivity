@@ -1,19 +1,108 @@
 import React from 'react'
-import styles from './MyWatchlist.module.scss';
+import styles from './WatchlistRanking.module.scss';
 import Image from 'next/image';
+import moment from 'moment';
+import Select from 'react-select';
 
-export default function MintedTabList() {
+export default function WatchlistRanking() {
+    const options = [
+        { value: 'Project 1', label: 'Project 1' },
+        { value: 'Project 2', label: 'Project 2' },
+        { value: 'Project 3', label: 'Project 3' },
+      ];
+      const optionstow = [
+        { value: '1', label: 'Price 20 MRP' },
+        { value: '2', label: 'Price 250 MRP' },
+        { value: '3', label: 'Price 50 MRP' },
+      ];
+      const optionsthree = [
+        { value: '1', label: '20%' },
+        { value: '2', label: '50%' },
+        { value: '3', label: '100%' },
+      ];
+      const optionsfour = [
+        { value: 'chocolate', label: '4h 32 min' },
+        { value: 'strawberry', label: '3h 32 min' },
+        { value: 'vanilla', label: '2h 32 min' },
+      ];
+      const [active, setActive] = React.useState(false);
+      const handleClick = () => {
+        setActive(!active);
+      };
   return (
     <>    
-        <div className={styles.myWachtUpcontnt}>
-            <ul>
-                <li className={styles.active}><button>1h</button></li>
-                <li><button>6h</button></li>
-                <li><button>24h</button></li>
-                <li><button>7d</button></li>
-                <li><button>30d</button></li>
-                <li><button>All</button></li>
-            </ul>
+    
+        <div className={styles.tipandtotolMain}>
+            <div className="select_main slectmainmargnsmll">
+                <Select
+                    options={options}
+                    // menuIsOpen={true}
+                    className="select_pernt slctrspnsv"
+                    placeholder="Project"
+                    classNamePrefix="cntrslct"
+                />
+                <Select
+                    options={optionsthree}
+                    // menuIsOpen={true}
+                    className="select_pernt slctrspnsv"
+                    placeholder="Last 24 hours"
+                    classNamePrefix="cntrslct"
+                />
+                <Select
+                    options={optionsfour}
+                    // menuIsOpen={true}
+                    className="select_pernt"
+                    placeholder="All Chains"
+                    classNamePrefix="cntrslct"
+                />
+            </div>
+
+            <div className={styles.AnyObjects}>
+                <button className={styles.FilterButton} onClick={handleClick}>
+                Filters
+                </button>
+            </div>
+            <div
+                className={
+                active
+                    ? `${styles.FilterBox} ${styles.active}`
+                    : `${styles.FilterBox}`
+                }
+            >
+                <button className={styles.ExitButton} onClick={handleClick}>
+                <Image
+                    src="/img/exit_icon.svg"
+                    alt=""
+                    width="24px"
+                    height="24px"
+                />
+                </button>
+                <div className={`${styles.MobileDatpcker} MobileDatpckertips`}>
+                    <div className="select_main">
+                    <Select
+                    options={options}
+                    // menuIsOpen={true}
+                    className="select_pernt slctrspnsv"
+                    placeholder="Project"
+                    classNamePrefix="cntrslct"
+                    />
+                    <Select
+                        options={optionsthree}
+                        // menuIsOpen={true}
+                        className="select_pernt slctrspnsv"
+                        placeholder="Last 24 hours"
+                        classNamePrefix="cntrslct"
+                    />
+                    <Select
+                        options={optionsfour}
+                        // menuIsOpen={true}
+                        className="select_pernt"
+                        placeholder="All Chains"
+                        classNamePrefix="cntrslct"
+                    />
+                    </div>
+                </div>
+            </div>
         </div>
         <div className={styles.MainListBox}>
             <div className={styles.MainListHead}>

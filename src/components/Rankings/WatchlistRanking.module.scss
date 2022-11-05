@@ -15,7 +15,8 @@
       right: 0;
       bottom: 0;
       pointer-events: none;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0) 30%, rgba(20, 39, 40, 0.89) 100%);
+      // background: linear-gradient(180deg, rgba(255, 255, 255, 0) 30%, rgba(20, 39, 40, 0.89) 100%);
+      background: linear-gradient(180deg, rgba(16, 35, 36, 0) 0%, #102324 100%);
       z-index: 1;
     }
     .MainListList {
@@ -51,6 +52,7 @@
       flex-basis: 7%;
     }
   }
+
   // .MainListList {}
   .MainListListInn {
     display: flex;
@@ -323,5 +325,98 @@
     .active{
       background: #102324;
     }
+  }
+}
+
+.AnyObjects {
+  display: none;
+  margin-right: 48px;
+  text-align: start;
+  .FilterButton {
+    @include font-md-avenir-regular;
+    font-size: 18px;
+    line-height: 140%;
+    color: #FFFFFF;
+    margin-bottom: 0;
+    background: transparent !important;
+    border: none !important;
+    padding: 0;
+  }
+}
+@media screen and (max-width:1200px) {
+  .AnyObjects {
+    display: block;
+  }
+}
+.FilterBox {
+  position: fixed;
+  bottom: -390px;
+  left: 0;
+  width: 100%;
+  z-index: 99;
+  padding: 30px;
+  background: #1D3031;
+  display: flex;
+  justify-content: start;
+  align-items: self-start;
+  height: 390px;
+  box-shadow: 0 0 50px 0 rgb(0 0 0 / 0%);
+  transition: all 0.2s ease-out;
+  &.active {
+    bottom: 0;
+    box-shadow: 0 0 50px 0 rgb(0 0 0 / 47%);
+  }
+  .MobileDatpcker {
+    display: flex;
+    align-items: center;
+    padding-left: 0;
+    justify-content: center;
+    width: 100%;
+  }
+  .RangePrnt {
+    margin-top: 35px;
+    span {
+      min-width: 125px;
+    }
+  }
+  .ExitButton {
+    background: transparent;
+    border: none;
+    padding: 0;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+}
+@media screen and (max-width:1200px) {
+  .AnyObjects {
+    display: block;
+  }
+  .select_main{
+    display: none !important;
+  }
+  .CustomGridContainer {
+    display: grid;
+    grid-gap: 24px;
+    grid-template-columns: repeat(2, minmax(0px, 1fr));
+  }
+  // .downCont{right: 10px; }
+  .buttonperntAj{
+    .marginPrnt{
+      margin: 0 23px 0 48px;
+    }
+  }
+ 
+}
+.tipandtotolMain{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 40px;
+}
+
+@media screen and (max-width:1200px) {
+  .tipandtotolMain{
+    padding-bottom: 20px;
   }
 }
