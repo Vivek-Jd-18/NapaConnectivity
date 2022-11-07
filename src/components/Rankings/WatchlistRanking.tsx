@@ -1,7 +1,6 @@
 import React from 'react'
 import styles from './WatchlistRanking.module.scss';
 import Image from 'next/image';
-import moment from 'moment';
 import Select from 'react-select';
 
 export default function WatchlistRanking() {
@@ -9,11 +8,6 @@ export default function WatchlistRanking() {
         { value: 'Project 1', label: 'Project 1' },
         { value: 'Project 2', label: 'Project 2' },
         { value: 'Project 3', label: 'Project 3' },
-      ];
-      const optionstow = [
-        { value: '1', label: 'Price 20 MRP' },
-        { value: '2', label: 'Price 250 MRP' },
-        { value: '3', label: 'Price 50 MRP' },
       ];
       const optionsthree = [
         { value: '1', label: '20%' },
