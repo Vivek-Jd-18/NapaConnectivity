@@ -392,7 +392,7 @@ body.scroll-down header.page-header .asinnerContainer {
   transition: 0.4s;
   z-index: 1 !important;
 }
-.video_play_bx{
+.video_play_bx {
   position: absolute;
   top: 0;
   left: 0;
@@ -747,7 +747,9 @@ input::-webkit-inner-spin-button {
   .cntrslct__value-container {
     padding: 0;
     color: #91a5a6;
-    .cntrslct__placeholder {margin-left: 0;}
+    .cntrslct__placeholder {
+      margin-left: 0;
+    }
   }
   .cntrslct__indicator-separator {
     display: none;
@@ -776,9 +778,9 @@ input::-webkit-inner-spin-button {
     margin: 0;
     z-index: 2;
     .cntrslct__option--is-selected {
-        color: #16e6ef !important;
-        background: rgb(67 93 88) !important;
-        border-radius: 5px;
+      color: #16e6ef !important;
+      background: rgb(67 93 88) !important;
+      border-radius: 5px;
     }
   }
   .cntrslct__option {
@@ -790,7 +792,6 @@ input::-webkit-inner-spin-button {
       background: rgb(67 93 88);
     }
   }
-  
 
   .cntrslct__menu-list {
     padding: 0;
@@ -1696,7 +1697,7 @@ input::-webkit-inner-spin-button {
     margin-right: 0;
     border: transparent;
     margin-bottom: 5px;
-    >span {
+    > span {
       margin-left: 12px !important;
       filter: brightness(0) invert(1) !important;
     }
@@ -1711,7 +1712,7 @@ input::-webkit-inner-spin-button {
   }
 }
 .frstinputsell {
-  .form-floating>.form-control {
+  .form-floating > .form-control {
     height: calc(3.6rem + 2px) !important;
   }
 }
@@ -1723,9 +1724,9 @@ input::-webkit-inner-spin-button {
 }
 
 @media screen and (min-width: 575px) {
- .trending_rsponce {
-  display: none;
- }
+  .trending_rsponce {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 575px) {
@@ -1736,7 +1737,6 @@ input::-webkit-inner-spin-button {
 .pstnrltv {
   position: relative !important;
 }
-
 
 .checkbx_analitics {
   display: flex;
@@ -1764,7 +1764,7 @@ input::-webkit-inner-spin-button {
     font-size: 18px;
     line-height: 140%;
     text-align: right;
-    color: #FFFFFF;
+    color: #ffffff;
     margin-left: 16px;
   }
 }
@@ -1774,10 +1774,8 @@ input::-webkit-inner-spin-button {
 .slct_analitics {
   display: flex;
   align-items: center;
-  >span {
+  > span {
     margin-right: 8px !important;
     margin-bottom: 4px !important;
   }
 }
-
-

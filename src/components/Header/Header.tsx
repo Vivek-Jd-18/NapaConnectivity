@@ -20,6 +20,7 @@ import {
   WalletIconWhite,
 } from '../../components/assets';
 import Button from '../Button/Button';
+import MobileSideBar from '../MobileSideBar/MobileSideBar';
 
 type HeaderProps = {
   openMenu: () => void;
@@ -37,6 +38,7 @@ const Header: NextPage<HeaderProps> = ({
   const { push } = useRouter();
   const [popupShow, setPopupShow] = useState(false);
   const [show, setShow] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
   const { walletEth, account, walletBnb, walletNapa, getAccounts } =
     useWebThree();
 
@@ -46,6 +48,19 @@ const Header: NextPage<HeaderProps> = ({
       setShow(false);
     }
   }, [show]);
+
+  const handleResize = () => {
+    if (window.innerWidth <= 1024) {
+      return setIsMobile(true);
+    }
+    setIsMobile(false);
+  };
+
+  useEffect(() => {
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const { profileDetails } = useProfile();
 
@@ -83,16 +98,16 @@ const Header: NextPage<HeaderProps> = ({
           </div>
           {account && (
             <>
-                <Button
-                  // text="My Profile"
-                  text=""
-                  outlined
-                  icon={ProfileIcon}
-                  onClick={() => {
-                    push('/settings');
-                    setIsMenu(false);
-                  }}
-                />
+              <Button
+                // text="My Profile"
+                text=""
+                outlined
+                icon={ProfileIcon}
+                onClick={() => {
+                  push('/settings');
+                  setIsMenu(false);
+                }}
+              />
               {/* <Button
                 text="Wallet"
                 icon={WalletIconTwo}
@@ -142,7 +157,13 @@ const Header: NextPage<HeaderProps> = ({
           </div>
         </div>
       </Container>
-      {isMenu && (
+      {isMenu && isMobile ? (
+        <MobileSideBar
+          isMenu={isMenu}
+          onClick={() => setIsMenu(false)}
+          account={account}
+        />
+      ) : (
         <Sidebar
           isMenu={isMenu}
           onClick={() => setIsMenu(false)}
