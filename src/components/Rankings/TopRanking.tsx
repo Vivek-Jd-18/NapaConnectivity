@@ -2,9 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import Select from 'react-select';
 import 'bootstrap-daterangepicker/daterangepicker.css';
-import DateRangePicker from 'react-bootstrap-daterangepicker';
 import 'bootstrap/dist/css/bootstrap.css';
-import moment from 'moment';
 import styles from './TopRanking.module.scss';
 
 export default function TopRanking() {
@@ -12,11 +10,6 @@ export default function TopRanking() {
         { value: 'Project 1', label: 'Project 1' },
         { value: 'Project 2', label: 'Project 2' },
         { value: 'Project 3', label: 'Project 3' },
-      ];
-      const optionstow = [
-        { value: '1', label: 'Price 20 MRP' },
-        { value: '2', label: 'Price 250 MRP' },
-        { value: '3', label: 'Price 50 MRP' },
       ];
       const optionsthree = [
         { value: '1', label: '20%' },

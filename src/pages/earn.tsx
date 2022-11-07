@@ -8,7 +8,7 @@ const Earn: NextPage = () => {
   return (
     <>
       <Head>
-        <title>NAPA Society | Earn </title>
+        <title>NAPA Society | EARN </title>
         <meta name="description" content="NAPA Developmeent Environment" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

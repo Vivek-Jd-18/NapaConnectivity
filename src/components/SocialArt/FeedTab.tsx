@@ -111,24 +111,24 @@ export default function FeedTab() {
                   Mint
                 </span>
               </button>
-              <button
+              {/* <button
                 className={
                   active
                     ? `${styles.BotomLikes} ${styles.active}`
                     : `${styles.BotomLikes}`
                 }
                 onClick={handleClick}
-              >
-                <Image
+              > */}
+                {/* <Image
                   src="/img/edit_icon_ic.svg"
                   alt=""
                   width="24px"
                   height="24px"
-                />
-                <span>
+                /> */}
+                {/* <span>
                   Post
-                </span>
-              </button>
+                </span> */}
+              {/* </button> */}
               <a href="#" className={styles.BotomLikes}>
                 <Image
                   src="/img/share_icon.svg"
@@ -383,7 +383,7 @@ export default function FeedTab() {
                   Mint
                 </span>
               </button>
-              <button
+              {/* <button
                 className={
                   active
                     ? `${styles.BotomLikes} ${styles.active}`
@@ -400,7 +400,7 @@ export default function FeedTab() {
                 <span>
                   Post
                 </span>
-              </button>
+              </button> */}
               <a href="#" className={styles.BotomLikes}>
                 <Image
                   src="/img/share_icon.svg"
