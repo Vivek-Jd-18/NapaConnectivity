@@ -16,7 +16,7 @@ const Valuator: NextPage = () => {
   return (
     <>
       <Head>
-        <title>NAPA Society | Valuator</title>
+        <title>NAPA Society | DAVE</title>
         <meta name="description" content="NAPA Developmeent Environment" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
