@@ -43,12 +43,53 @@ const MobileSideBar: NextPage<MobileSideBarProps> = ({ onClick, isMenu }) => {
               <div
                 className={`${styles.newlink} `}
                 onClick={() => {
+                  push('/leaderboards');
+                  onClick();
+                }}
+              >
+                <a
+                  className={`${pathname === '/leaderboards' && styles.active}`}
+                >
+                  SNFT Leaders
+                </a>
+              </div>
+            </div>
+            <div>
+              <div
+                className={`${styles.newlink} `}
+                onClick={() => {
                   push('/socialart');
                   onClick();
                 }}
               >
                 <a className={`${pathname === '/socialart' && styles.active}`}>
                   Social Art
+                </a>
+              </div>
+            </div>
+            <div>
+              <div
+                className={`${styles.newlink} `}
+                onClick={() => {
+                  push('/earn');
+                  onClick();
+                }}
+              >
+                <a className={`${pathname === '/earn' && styles.active}`}>
+                  NAPA Earn
+                </a>
+              </div>
+            </div>
+            <div>
+              <div
+                className={`${styles.newlink} `}
+                onClick={() => {
+                  push('/rankings');
+                  onClick();
+                }}
+              >
+                <a className={`${pathname === '/rankings' && styles.active}`}>
+                  Rankings
                 </a>
               </div>
             </div>
@@ -77,47 +118,6 @@ const MobileSideBar: NextPage<MobileSideBarProps> = ({ onClick, isMenu }) => {
               >
                 <a className={`${pathname === '/dave' && styles.active}`}>
                   DAVE
-                </a>
-              </div>
-            </div>
-            <div>
-              <div
-                className={`${styles.newlink} `}
-                onClick={() => {
-                  push('/rankings');
-                  onClick();
-                }}
-              >
-                <a className={`${pathname === '/rankings' && styles.active}`}>
-                  Rankings
-                </a>
-              </div>
-            </div>
-            <div>
-              <div
-                className={`${styles.newlink} `}
-                onClick={() => {
-                  push('/earn');
-                  onClick();
-                }}
-              >
-                <a className={`${pathname === '/earn' && styles.active}`}>
-                  NAPA Earn
-                </a>
-              </div>
-            </div>
-            <div>
-              <div
-                className={`${styles.newlink} `}
-                onClick={() => {
-                  push('/leaderboards');
-                  onClick();
-                }}
-              >
-                <a
-                  className={`${pathname === '/leaderboards' && styles.active}`}
-                >
-                  SNFT Leaders
                 </a>
               </div>
             </div>
