@@ -203,9 +203,9 @@
       color: $white;
       padding-top: 1rem;
       @include font-base-avenir-medium;
-      font-size: 18px !important;
+      font-size: 18px;
       @media only screen and (max-width: 736px) {
-        font-size: 16px !important;
+        font-size: 16px;
       }
     }
     .socialHeading {
@@ -279,6 +279,55 @@
     }
     .Dawnldnapabtn {
       display: none;
+    }
+  }
+  @media only screen and (max-width: 736px) {
+    .carouselImage {
+      .image {
+        width: 200px !important;
+      }
+      :after {
+        width: 200px !important;
+      }
+
+      .carouselBottom {
+        @include flex-column-center;
+        margin-left: 6rem;
+        animation-name: example;
+        animation-duration: 4s;
+        animation-fill-mode: forwards;
+        width: 100%;
+        padding-bottom: 2rem;
+        .avatar {
+          width: 3rem;
+          height: 3rem;
+          object-fit: contain;
+          padding-bottom: 0.5rem;
+        }
+        .carouselBottomText {
+          font-size: 1rem;
+          line-height: 2.1rem;
+          color: $white;
+          font-family: $text-avenir;
+          font-weight: 500;
+          @media (max-width: 600px) {
+            font-size: 1.2rem;
+          }
+        }
+        @keyframes example {
+          0% {
+            margin-left: 6rem;
+          }
+          100% {
+            margin-left: 0px;
+          }
+        }
+      }
+      .slideBtn {
+        span {
+          margin-right: 0 !important;
+        }
+      }
     }
   }
   @media only screen and (max-width: 736px) {
@@ -364,11 +413,15 @@
       left: 0px;
       right: 0px;
       top: 80px;
+      .socialHeading {
+        margin-top: 0rem;
+      }
     }
     .innerSocietyContainerRightSide {
       width: 100%;
       position: relative;
       margin-top: 44px;
+      top: 0;
       .description {
         width: 100%;
       }
@@ -383,14 +436,15 @@
         padding-left: 0rem;
         display: flex;
         .socialText {
-          @include font-4xl-neuropolitical-normal;
+          @include font-3xl-neuropolitical-normal;
           margin-bottom: 0;
-          width: 100%;
+          width: auto;
+          margin-right: 1rem;
           @include flex-column-start;
         }
 
         .artText {
-          @include font-4xl-neuropolitical-normal;
+          @include font-3xl-neuropolitical-normal;
           width: 100%;
           margin-bottom: 0;
           padding-left: 40px;
@@ -544,6 +598,7 @@
   .innerSocietyContainerRightSide {
     .socialHeading {
       flex-direction: row !important;
+      margin-top: 1rem !important;
     }
   }
   .innerSocietyContainerRightSide {
@@ -551,8 +606,8 @@
     position: relative;
     margin-top: 54px;
     .description {
+      font-size: 14px;
       padding-top: 16px !important;
-      margin-bottom: 21px !important;
     }
 
     .viewFeedContainer {
@@ -565,11 +620,11 @@
       padding-left: 0rem;
       display: flex;
       .socialText {
-        font-size: 64px !important;
+        font-size: 42px !important;
       }
       .artText {
         padding-left: 0px !important;
-        font-size: 64px !important;
+        font-size: 42px !important;
       }
     }
   }
