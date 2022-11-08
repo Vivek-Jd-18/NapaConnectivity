@@ -216,11 +216,24 @@ const SocialArtSection: NextPage = () => {
               </p>
               <HighlightButton title="NAPA Social Art" link="/socialart" />
               <div className={styles.socialImages}>
-                <Image src="/img/qrcode_ic.png" alt="" width="300px" height="300px" className={styles.MrgnRgt30} />
-                <Image src="/img/qrcode_ic.png" alt="" width="300px" height="300px" />
+                <Image
+                  src="/img/qrcode_ic.png"
+                  alt=""
+                  width="300px"
+                  height="300px"
+                  className={styles.MrgnRgt30}
+                />
+                <Image
+                  src="/img/qrcode_ic.png"
+                  alt=""
+                  width="300px"
+                  height="300px"
+                />
               </div>
               <div>
-               <button className={styles.Dawnldnapabtn}>Download The NAPA App</button>
+                <button className={styles.Dawnldnapabtn}>
+                  Download The NAPA App
+                </button>
               </div>
             </div>
 
