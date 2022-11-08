@@ -41,14 +41,14 @@
     @include font-md-avenir-regular;
     font-size: 18px;
     line-height: 140%;
-    color: #FFFFFF;
+    color: #ffffff;
     margin-bottom: 0;
     background: transparent !important;
     border: none !important;
     padding: 0;
   }
 }
-@media screen and (max-width:1200px) {
+@media screen and (max-width: 1200px) {
   .AnyObjects {
     display: block;
   }
@@ -60,7 +60,7 @@
   width: 100%;
   z-index: 99;
   padding: 30px;
-  background: #1D3031;
+  background: #1d3031;
   display: flex;
   justify-content: start;
   align-items: self-start;
@@ -93,23 +93,23 @@
     top: 10px;
   }
 }
-.tipandtotolmain{
+.tipandtotolmain {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding-bottom: 40px;
 }
-.buttonperntAj{
+.buttonperntAj {
   display: flex;
   align-items: center;
   position: relative;
-  button{
+  button {
     background: transparent;
     border: none;
     padding: 0;
     height: auto;
   }
-  .marginPrnt{
+  .marginPrnt {
     margin: 0 23px 0 60px;
   }
 }
@@ -118,102 +118,102 @@
   grid-gap: 24px;
   grid-template-columns: repeat(4, minmax(0px, 1fr));
 }
-.boxinnrcont{
+.boxinnrcont {
   position: relative;
-  .apernt{
+  .apernt {
     text-decoration: none;
     display: flex;
     width: 100% !important;
     height: 372px;
-    >span{
+    > span {
       width: 100% !important;
     }
-    img{
+    img {
       width: 100% !important;
       object-fit: cover;
     }
   }
 }
-.upCont{
+.upCont {
   display: flex;
   align-items: center;
   position: absolute;
   top: 32px;
   left: 32px;
   z-index: 1;
-  p{
+  p {
     font-family: 'Avenir';
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 140%;
-    color: #FFFFFF;
+    color: #ffffff;
     margin: 0 0 0 10px;
   }
 }
-.downCont{
+.downCont {
   position: absolute;
   bottom: 32px;
   left: 32px;
   right: 32px;
   z-index: 1;
-  h3{
+  h3 {
     font-family: 'Neuropolitical';
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
     line-height: 110%;
-    color: #FFFFFF;
+    color: #ffffff;
     text-align: start;
     max-width: 218px;
     margin: 0 0 26px 0;
   }
-  .flexPernt{
+  .flexPernt {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    .currentBit{
+    .currentBit {
       text-align: start;
-      h5{
+      h5 {
         font-family: 'Avenir';
         font-style: normal;
         font-weight: 400;
         font-size: 12px;
         line-height: 140%;
-        color: #FFFFFF;
+        color: #ffffff;
         margin: 0 0 12px 0;
       }
-      .txtimgFlex{
+      .txtimgFlex {
         display: flex;
         align-items: center;
-        p{
+        p {
           font-family: 'Avenir';
           font-style: normal;
           font-weight: 500;
           font-size: 14px;
           line-height: 140%;
-          color: #FFFFFF;
+          color: #ffffff;
           margin: 0 0 0 12px;
         }
       }
     }
-    .endingIn{
-      p{
+    .endingIn {
+      p {
         font-family: 'Avenir';
         font-style: normal;
         font-weight: 400;
         font-size: 12px;
         line-height: 140%;
         margin: 0 0 12px 0;
-        color: #FFFFFF;
+        color: #ffffff;
       }
-      h3{
+      h3 {
         font-family: 'Avenir';
         font-style: normal;
         font-weight: 500;
         font-size: 14px;
         line-height: 140%;
-        color: #FFFFFF;
+        color: #ffffff;
         margin: 0;
       }
     }
@@ -222,38 +222,46 @@
 .TipsTulsOverlay {
   position: relative;
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     left: 0;
     right: 0;
     bottom: 0px;
     min-height: 255px;
-    background: linear-gradient(180deg, rgba(12, 27, 34, 0) 0%, rgba(12, 27, 34, 0.9) 100%);
+    background: linear-gradient(
+      180deg,
+      rgba(12, 27, 34, 0) 0%,
+      rgba(12, 27, 34, 0.9) 100%
+    );
     z-index: 1;
     width: 100%;
   }
-  &::after{
-    content: "";
+  &::after {
+    content: '';
     position: absolute;
     left: 0;
     right: 0;
     top: 0;
     min-height: 117px;
-    background: linear-gradient(180deg, rgba(12, 27, 34, 0) 0%, rgba(12, 27, 34, 0.9) 100%);
+    background: linear-gradient(
+      180deg,
+      rgba(12, 27, 34, 0) 0%,
+      rgba(12, 27, 34, 0.9) 100%
+    );
     transform: matrix(1, 0, 0, -1, 0, 0);
     // z-index: 1;
     width: 100%;
   }
 }
-.scrollPernt{
+.scrollPernt {
   overflow-y: auto;
   height: 768px;
 }
-@media screen and (max-width:1200px) {
+@media screen and (max-width: 1200px) {
   .AnyObjects {
     display: block;
   }
-  .select_main{
+  .select_main {
     display: none !important;
   }
   .CustomGridContainer {
@@ -262,15 +270,14 @@
     grid-template-columns: repeat(2, minmax(0px, 1fr));
   }
   // .downCont{right: 10px; }
-  .buttonperntAj{
-    .marginPrnt{
+  .buttonperntAj {
+    .marginPrnt {
       margin: 0 23px 0 48px;
     }
   }
- 
 }
-@media screen and (max-width:736px) {
-  .tipandtotolmain{
+@media screen and (max-width: 736px) {
+  .tipandtotolmain {
     padding-bottom: 32px !important;
   }
   .CustomGridContainer {
@@ -280,9 +287,6 @@
   }
 }
 // select_mainas
-
-
-
 
 .buttonperntAj {
   .PstnBtnEnter {
@@ -357,7 +361,7 @@
         color: #ffffff80;
         text-align: start;
         margin-bottom: 0;
-        padding-top: 20px ;
+        padding-top: 20px;
       }
     }
   }
@@ -382,8 +386,11 @@
           font-weight: 400;
           font-size: 18px;
           line-height: 110%;
-          color: #FFFFFF;
-          span {color: #ffffff80;margin-left: 5px;}
+          color: #ffffff;
+          span {
+            color: #ffffff80;
+            margin-left: 5px;
+          }
           margin-bottom: 5px;
           text-align: start;
         }
@@ -408,13 +415,13 @@
         font-weight: 500;
         font-size: 14px;
         line-height: 140%;
-        color: #FFFFFF;
+        color: #ffffff;
         margin-left: 12px;
       }
     }
   }
 }
-@media screen and (max-width:1280px) {
+@media screen and (max-width: 1280px) {
   .buttonperntAj {
     .PstnBtnEnter {
       margin-right: 0px;
@@ -422,7 +429,7 @@
   }
 }
 
-@media screen and (max-width:575px) {
+@media screen and (max-width: 575px) {
   .AnyObjects {
     margin-right: 12px;
   }
@@ -435,8 +442,8 @@
       margin-right: 20px;
     }
   }
-  .buttonperntAj{
-    .marginPrnt{
+  .buttonperntAj {
+    .marginPrnt {
       margin: 0 14px 0 14px;
     }
   }
@@ -445,7 +452,7 @@
   }
 }
 
-.tipandtotolmain{
+.tipandtotolmain {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -454,7 +461,6 @@
     padding-bottom: 20px;
   }
 }
-
 
 .MainListHead {
   margin-bottom: 18px;
@@ -467,7 +473,7 @@
     font-size: 14px;
     line-height: 140%;
     text-align: right;
-    color: #91A5A6;
+    color: #91a5a6;
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -476,7 +482,12 @@
     flex-basis: 22%;
     justify-content: flex-start;
   }
-  .LabelTwo, .LabelThree, .LabelFour, .LabelFive, .LabelSix, .LabelSeven {
+  .LabelTwo,
+  .LabelThree,
+  .LabelFour,
+  .LabelFive,
+  .LabelSix,
+  .LabelSeven {
     flex-basis: 13%;
   }
   .Labeleeight {
@@ -500,7 +511,7 @@
       @include font-md-avenir-medium;
       font-size: 18px;
       line-height: 140%;
-      color: #FFFFFF;
+      color: #ffffff;
       display: flex;
       align-items: center;
       margin-bottom: 0;
@@ -514,7 +525,7 @@
           @include font-md-avenir-medium;
           font-size: 18px;
           line-height: 140%;
-          color: #FFFFFF;
+          color: #ffffff;
           display: flex;
           align-items: center;
           min-width: 164px;
@@ -528,11 +539,11 @@
     .RspnsvIcnSpn {
       display: flex;
       align-items: center;
-      >span {
+      > span {
         margin-right: 8px !important;
       }
       .BlueH6 {
-        color: #16E6EF;
+        color: #16e6ef;
         font-size: 18px;
         line-height: 140%;
         @include font-md-avenir-medium;
@@ -543,15 +554,15 @@
   .RowOne {
     flex-basis: 22%;
     justify-content: flex-start;
-    >span {
+    > span {
       margin-right: 30px !important ;
       min-width: 76px;
     }
   }
   .RowFive {
     flex-basis: 13%;
-    >span {
-      margin-right: 8px !important; 
+    > span {
+      margin-right: 8px !important;
     }
   }
   .RowSeven {
@@ -561,17 +572,20 @@
     align-items: center;
     justify-content: center;
   }
-  .RowTwo, .RowThree, .RowFour, .RowSix {
+  .RowTwo,
+  .RowThree,
+  .RowFour,
+  .RowSix {
     flex-basis: 13%;
-    >span {
+    > span {
       margin-right: 8px !important;
     }
   }
   .RowSix {
-    >span {
-      margin-right: 8px !important; 
+    > span {
+      margin-right: 8px !important;
     }
-    color: #16E6EF;
+    color: #16e6ef;
   }
   .RspnsvEarn {
     display: none;
@@ -582,208 +596,215 @@
 }
 
 .RowLabel {
+  .peraAj {
+    margin: 0;
+    font-family: 'Avenir';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 140%;
+    text-align: right;
+    color: #91a5a6;
+  }
+  .colorPernt {
+    color: #16e6ef !important;
+  }
+  .colorPerntRed {
+    color: #db243a !important;
+  }
+}
 
-.peraAj{
-  margin: 0;
-  font-family: 'Avenir';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 140%;
-  text-align: right;
-  color: #91A5A6;
+@media screen and (max-width: 1024px) {
+  .MainListBox {
+    height: calc(100vh - 486px);
+    overflow-y: scroll;
+  }
 }
-.colorPernt{
-  color: #16E6EF !important;
-}
-.colorPerntRed{
-  color: #DB243A !important;
-}
-}
-
 
 @media screen and (max-width: 1280px) {
-.MainListBox {
-  .MainListHead {
-    display: none;
-  }
-  .MainListListInn {
-    position: relative;
-    flex-wrap: wrap;
-    padding: 40px;
-    .RowLabel {
-      justify-content: flex-start;
-      flex-basis: 16.5%;
-      margin-top: 36px;
-      .RspnsvIcnSpn {
-        display: flex;
-        align-items: center;
-        >span {
-          margin-right: 8px !important;
+  .MainListBox {
+    .MainListHead {
+      display: none;
+    }
+    .MainListListInn {
+      position: relative;
+      flex-wrap: wrap;
+      padding: 40px;
+      .RowLabel {
+        justify-content: flex-start;
+        flex-basis: 16.5%;
+        margin-top: 36px;
+        .RspnsvIcnSpn {
+          display: flex;
+          align-items: center;
+          > span {
+            margin-right: 8px !important;
+          }
         }
-      }
-      .RspnsvListtext {
-        .TxtH3 {
-          h3 {
-            margin-bottom: 4px;
+        .RspnsvListtext {
+          .TxtH3 {
+            h3 {
+              margin-bottom: 4px;
+            }
           }
         }
       }
-    }
-    
-    .RowOne {
-      flex-basis: 100% !important;
-      margin-top: 0px;
-      >span {
-        margin-right: 26px !important ;
-      }
-    }
-    .RowSix {
-      display: none;
-    }
-    .RspnsvEarn {
-      display: block;
-    }
-    .Rspnsvh4 {
-      display: block;
-      h4 {
-        @include font-md-avenir-regular;
-        font-size: 14px;
-        line-height: 140%;
-        color: #91A5A6;
-        margin-bottom: 0;
-      }
-    }
-    .RowTwo , .RowThree, .RowFour, .RowFive{
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: flex-start;
-    }
-    .RowSeven {
-      display: none;
-      button {
-        position: absolute;
-        top: 66px;
-        right: 0;
-      }
-      margin-top: 0;
-    }
-    .RspnsvEarn {
-      display: none;
-      >span {
-        margin-right: 8px !important; 
-      }
-      color: #16E6EF;
-    }
-  }
-  .DefSpan {
-    font-size: 14px;
-    line-height: 140%;
-    color: #91A5A6;
-    @include font-md-avenir-regular;
-    margin-left: 12px;
-  }
-}
-.MainListList {
-  margin-top: 20px;
-}
-.RowLabelprnt_aj {
-  align-items: flex-start !important;
-}
-}
 
+      .RowOne {
+        flex-basis: 100% !important;
+        margin-top: 0px;
+        > span {
+          margin-right: 26px !important ;
+        }
+      }
+      .RowSix {
+        display: none;
+      }
+      .RspnsvEarn {
+        display: block;
+      }
+      .Rspnsvh4 {
+        display: block;
+        h4 {
+          @include font-md-avenir-regular;
+          font-size: 14px;
+          line-height: 140%;
+          color: #91a5a6;
+          margin-bottom: 0;
+        }
+      }
+      .RowTwo,
+      .RowThree,
+      .RowFour,
+      .RowFive {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+      }
+      .RowSeven {
+        display: none;
+        button {
+          position: absolute;
+          top: 66px;
+          right: 0;
+        }
+        margin-top: 0;
+      }
+      .RspnsvEarn {
+        display: none;
+        > span {
+          margin-right: 8px !important;
+        }
+        color: #16e6ef;
+      }
+    }
+    .DefSpan {
+      font-size: 14px;
+      line-height: 140%;
+      color: #91a5a6;
+      @include font-md-avenir-regular;
+      margin-left: 12px;
+    }
+  }
+  .MainListList {
+    margin-top: 20px;
+  }
+  .RowLabelprnt_aj {
+    align-items: flex-start !important;
+  }
+}
 
 @media screen and (max-width: 736px) {
-.MainListList {
-  margin: 0 -40px;
-  padding: 0 20px;
-}
-.MainListListInn {
-  padding: 32px 20px 26px 20px !important;
-  .RowLabel {
-    justify-content: flex-start;
-    flex-basis: 50% !important;
-    margin-top: 26px !important; 
+  .MainListList {
+    margin: 0 -40px;
+    padding: 0 20px;
+  }
+  .MainListListInn {
+    padding: 32px 20px 26px 20px !important;
+    .RowLabel {
+      justify-content: flex-start;
+      flex-basis: 50% !important;
+      margin-top: 26px !important;
       h6 {
         font-size: 16px !important;
       }
-  }
-  .RowOne {
-    >span {
-      margin-right: 20px !important ;
     }
-    margin-top: 0 !important;
-  }
-  .RowSeven {
-    margin-top: 0 !important;
-  }
-}
-.RspnsvListtext {
-  .TxtH3 {
-    h3 {
-      font-size: 16px;
+    .RowOne {
+      > span {
+        margin-right: 20px !important ;
+      }
+      margin-top: 0 !important;
+    }
+    .RowSeven {
+      margin-top: 0 !important;
     }
   }
-}
-.Rspnsvh4 {
-  h4 {
-    font-size: 12px !important;
+  .RspnsvListtext {
+    .TxtH3 {
+      h3 {
+        font-size: 16px;
+      }
+    }
   }
-}
+  .Rspnsvh4 {
+    h4 {
+      font-size: 12px !important;
+    }
+  }
 }
 
 .Rspnsvh4 {
->span {
-  display: none;
-}
-}
-@media screen and (max-width: 1280px) {
-.RowFour>span {
-  display: none !important;
-}
-.Rspnsvh4v2 {
-  display: flex !important;
-  >span {
-    margin-right: 8px !important;
+  > span {
+    display: none;
   }
 }
-.Rspnsvh4 {
-  margin-bottom: 5px;
-}
-.RspnsvListtext {
-  .TxtH3 {
-    h3 {
-      span {
-        display: flex !important;
+@media screen and (max-width: 1280px) {
+  .RowFour > span {
+    display: none !important;
+  }
+  .Rspnsvh4v2 {
+    display: flex !important;
+    > span {
+      margin-right: 8px !important;
+    }
+  }
+  .Rspnsvh4 {
+    margin-bottom: 5px;
+  }
+  .RspnsvListtext {
+    .TxtH3 {
+      h3 {
+        span {
+          display: flex !important;
+        }
       }
     }
   }
 }
-}
 .MainListShdo {
-position: relative;
-&::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  // background: linear-gradient(to bottom, transparent 35%,rgba(12, 27, 34, 0.9) 100%);
-  background: linear-gradient(180deg, rgba(16, 35, 36, 0) 0%, #102324 100%);
-  pointer-events: none;
-  z-index: 2;
-  @media screen and (max-width: 736px) {
-    position: inherit !important;
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    // background: linear-gradient(to bottom, transparent 35%,rgba(12, 27, 34, 0.9) 100%);
+    background: linear-gradient(180deg, rgba(16, 35, 36, 0) 0%, #102324 100%);
+    pointer-events: none;
+    z-index: 2;
+    @media screen and (max-width: 736px) {
+      position: inherit !important;
+    }
   }
 }
-}
 .MainListList {
-overflow-y: auto;
-height: 368px;
+  overflow-y: auto;
+  height: 368px;
 }
 @media screen and (max-width: 1280px) {
-.MainListList {
-  height: 100%;
-}
+  .MainListList {
+    height: 100%;
+  }
 }
