@@ -8,7 +8,7 @@
   .MainListShdo {
     position: relative;
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       left: 0;
       top: 0;
@@ -22,7 +22,7 @@
     .MainListList {
       position: relative;
       overflow-y: auto;
-      height: 370px;
+      height: 344px;
     }
   }
   .MainListHead {
@@ -35,7 +35,7 @@
       font-size: 14px;
       line-height: 140%;
       text-align: right;
-      color: #91A5A6;
+      color: #91a5a6;
       display: flex;
       align-items: center;
       justify-content: flex-end;
@@ -45,7 +45,12 @@
       justify-content: flex-start;
       padding-left: 20px;
     }
-    .LabelTwo, .LabelThree, .LabelFour, .LabelFive, .LabelSix, .LabelSeven {
+    .LabelTwo,
+    .LabelThree,
+    .LabelFour,
+    .LabelFive,
+    .LabelSix,
+    .LabelSeven {
       flex-basis: 13%;
     }
     .Labeleeight {
@@ -69,7 +74,7 @@
         @include font-md-avenir-medium;
         font-size: 18px;
         line-height: 140%;
-        color: #FFFFFF;
+        color: #ffffff;
         display: flex;
         align-items: center;
         margin-bottom: 0;
@@ -83,7 +88,7 @@
             @include font-md-avenir-medium;
             font-size: 18px;
             line-height: 140%;
-            color: #FFFFFF;
+            color: #ffffff;
             display: flex;
             align-items: center;
             min-width: 164px;
@@ -94,11 +99,11 @@
       .RspnsvIcnSpn {
         display: flex;
         align-items: center;
-        >span {
+        > span {
           margin-right: 8px !important;
         }
         .BlueH6 {
-          color: #16E6EF;
+          color: #16e6ef;
           font-size: 18px;
           line-height: 140%;
           @include font-md-avenir-medium;
@@ -109,15 +114,15 @@
     .RowOne {
       flex-basis: 20%;
       justify-content: flex-start;
-      >span {
+      > span {
         margin-right: 30px !important ;
         min-width: 76px;
       }
     }
     .RowFive {
       flex-basis: 13%;
-      >span {
-        margin-right: 8px !important; 
+      > span {
+        margin-right: 8px !important;
       }
     }
     .RowSeven {
@@ -129,14 +134,17 @@
         margin-right: 24px;
       }
     }
-    .RowTwo, .RowThree, .RowFour, .RowSix {
+    .RowTwo,
+    .RowThree,
+    .RowFour,
+    .RowSix {
       flex-basis: 13%;
     }
     .RowSix {
-      >span {
-        margin-right: 8px !important; 
+      > span {
+        margin-right: 8px !important;
       }
-      color: #16E6EF;
+      color: #16e6ef;
     }
     .RspnsvEarn {
       display: none;
@@ -147,8 +155,7 @@
   }
 }
 .RowLabel {
- 
-  .peraAj{
+  .peraAj {
     margin: 0;
     font-family: 'Avenir';
     font-style: normal;
@@ -156,15 +163,27 @@
     font-size: 12px;
     line-height: 140%;
     text-align: right;
-    color: #91A5A6;
+    color: #91a5a6;
   }
-  .colorPernt{
-    color: #16E6EF !important;
+  .colorPernt {
+    color: #16e6ef !important;
   }
-  .colorPerntRed{
-    color: #DB243A !important;
+  .colorPerntRed {
+    color: #db243a !important;
   }
 }
+
+@media screen and (max-width: 1024px) {
+  .MainListBox {
+    .MainListShdo {
+      .MainListList {
+        height: calc(100vh - 540px);
+        overflow-y: scroll;
+      }
+    }
+  }
+}
+
 @media screen and (max-width: 1280px) {
   .MainListBox {
     .MainListHead {
@@ -181,7 +200,7 @@
         .RspnsvIcnSpn {
           display: flex;
           align-items: center;
-          >span {
+          > span {
             margin-right: 8px !important;
           }
         }
@@ -196,7 +215,7 @@
       .RowOne {
         flex-basis: 100% !important;
         margin-top: 0px;
-        >span {
+        > span {
           margin-right: 26px !important ;
         }
       }
@@ -212,11 +231,14 @@
           @include font-md-avenir-regular;
           font-size: 14px;
           line-height: 140%;
-          color: #91A5A6;
+          color: #91a5a6;
           margin-bottom: 0;
         }
       }
-      .RowTwo , .RowThree, .RowFour, .RowFive{
+      .RowTwo,
+      .RowThree,
+      .RowFour,
+      .RowFive {
         flex-direction: column;
         justify-content: flex-start;
         align-items: flex-start;
@@ -230,30 +252,28 @@
         margin-top: 0;
       }
       .RspnsvEarn {
-        >span {
+        > span {
           margin-right: 8px !important;
-         img {
-          display: none !important;
-          margin-right: 0px !important;
-         }
+          img {
+            display: none !important;
+            margin-right: 0px !important;
+          }
         }
-        color: #16E6EF;
+        color: #16e6ef;
       }
     }
     .DefSpan {
       font-size: 14px;
       line-height: 140%;
-      color: #91A5A6;
+      color: #91a5a6;
       @include font-md-avenir-regular;
       margin-left: 12px;
     }
   }
   .MainListList {
     margin-top: 20px;
-    
   }
 }
-
 
 @media screen and (max-width: 736px) {
   .MainListList {
@@ -265,13 +285,13 @@
     .RowLabel {
       justify-content: flex-start;
       flex-basis: 50% !important;
-      margin-top: 26px !important; 
-        h6 {
-          font-size: 16px !important;
-        }
+      margin-top: 26px !important;
+      h6 {
+        font-size: 16px !important;
+      }
     }
     .RowOne {
-      >span {
+      > span {
         margin-right: 20px !important ;
       }
       margin-top: 0 !important;
@@ -293,9 +313,9 @@
     }
   }
 }
-.myWachtUpcontnt{
+.myWachtUpcontnt {
   padding-bottom: 37px;
-  ul{
+  ul {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -303,9 +323,9 @@
     background: rgba(145, 165, 166, 0.1);
     max-width: 360px;
     padding: 2px 2px;
-    li{
+    li {
       list-style: none;
-      button{
+      button {
         border: none;
         background: transparent;
         padding: 8px 15px;
@@ -315,14 +335,14 @@
         font-size: 18px;
         line-height: 140%;
         text-align: center;
-        color: #91A5A6;
-        &:hover{
+        color: #91a5a6;
+        &:hover {
           background: #102324;
-          color: #FFFFFF;
-          }
+          color: #ffffff;
+        }
       }
     }
-    .active{
+    .active {
       background: #102324;
     }
   }
@@ -336,14 +356,14 @@
     @include font-md-avenir-regular;
     font-size: 18px;
     line-height: 140%;
-    color: #FFFFFF;
+    color: #ffffff;
     margin-bottom: 0;
     background: transparent !important;
     border: none !important;
     padding: 0;
   }
 }
-@media screen and (max-width:1200px) {
+@media screen and (max-width: 1200px) {
   .AnyObjects {
     display: block;
   }
@@ -355,7 +375,7 @@
   width: 100%;
   z-index: 99;
   padding: 30px;
-  background: #1D3031;
+  background: #1d3031;
   display: flex;
   justify-content: start;
   align-items: self-start;
@@ -388,11 +408,11 @@
     top: 10px;
   }
 }
-@media screen and (max-width:1200px) {
+@media screen and (max-width: 1200px) {
   .AnyObjects {
     display: block;
   }
-  .select_main{
+  .select_main {
     display: none !important;
   }
   .CustomGridContainer {
@@ -401,22 +421,21 @@
     grid-template-columns: repeat(2, minmax(0px, 1fr));
   }
   // .downCont{right: 10px; }
-  .buttonperntAj{
-    .marginPrnt{
+  .buttonperntAj {
+    .marginPrnt {
       margin: 0 23px 0 48px;
     }
   }
- 
 }
-.tipandtotolMain{
+.tipandtotolMain {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding-bottom: 40px;
 }
 
-@media screen and (max-width:1200px) {
-  .tipandtotolMain{
+@media screen and (max-width: 1200px) {
+  .tipandtotolMain {
     padding-bottom: 20px;
   }
 }

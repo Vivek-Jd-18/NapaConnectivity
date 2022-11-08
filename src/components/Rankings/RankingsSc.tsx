@@ -18,7 +18,7 @@ export default function RankingsSc() {
           className="default_tab mb-30 default_tab_wt_scroll"
         >
           <Tab eventKey="Top" title="Top">
-              <TopRanking />
+            <TopRanking />
           </Tab>
           <Tab eventKey="Trending" title="Trending">
             <TopRanking />
