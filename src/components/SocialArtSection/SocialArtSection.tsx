@@ -34,7 +34,9 @@ const SocialArtSection: NextPage = () => {
   return (
     <div id="social-section-art" className={styles.backgroundImage}>
       {/* <Steper steps={3} top={12} /> */}
-      <Container className={`${styles.socialArtContainer} asinnerContainer pstnrltv`}>
+      <Container
+        className={`${styles.socialArtContainer} asinnerContainer pstnrltv`}
+      >
         <div className={styles.socialArtContainerBody}>
           <div className={styles.carouselImage}>
             {slider == 1 ? (
