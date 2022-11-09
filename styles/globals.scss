@@ -1710,16 +1710,13 @@ input::-webkit-inner-spin-button {
       display: none;
     }
   }
+  .rspnv_none {
+    display: none !important;
+  }
 }
 .frstinputsell {
   .form-floating > .form-control {
     height: calc(3.6rem + 2px) !important;
-  }
-}
-
-@media screen and (max-width: 575px) {
-  .rspnv_none {
-    display: none !important;
   }
 }
 
