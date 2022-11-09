@@ -13,13 +13,13 @@ const SocialArtSectionWithoutLimit: NextPage = () => {
       className={styles.backgroundImage}
       id="social-art-section-without-limit"
     >
-      <div className='video_play_bx'>
-        <video autoPlay muted loop className='video_bg_hmpg'>
-          <source src='https://napa-website.s3.ap-southeast-1.amazonaws.com/coming_soon.mp4' />
-          <source src='https://napa-website.s3.ap-southeast-1.amazonaws.com/coming_soon.mp4' />
+      <div className="video_play_bx">
+        <video data-autoPlay muted loop className="video_bg_hmpg">
+          <source src="https://napa-website.s3.ap-southeast-1.amazonaws.com/coming_soon.mp4" />
+          <source src="https://napa-website.s3.ap-southeast-1.amazonaws.com/coming_soon.mp4" />
         </video>
       </div>
-      
+
       {/* <Steper steps={1} top={0} /> */}
       <Container className={`${styles.socialContainer} asinnerContainer`}>
         <div className={styles.socialContainerBody}>
