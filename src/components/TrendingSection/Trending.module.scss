@@ -2,7 +2,8 @@
 @import '../../../styles/abstracts/variable.module';
 
 .backgroundImage {
-  background-size: cover;
+  // background-image: url('/assets/images/tdb.webp');
+  // background-size: cover;
   position: relative;
   height: 100vh;
   @media (max-width: 1313px) {
@@ -75,17 +76,12 @@
     }
   }
 
-  @media (min-width: 280px) {
-    background-image: url('/assets/images/tdb.png');
-  }
   @media (min-width: 768px) {
-    background-image: url('/assets/images/tdb.png');
     .mousePointer {
       display: none;
     }
   }
   @media (min-width: 1280px) {
-    background-image: url('/assets/images/tdb.png');
     .trendingContainer {
       .trendingBodyContainer {
         height: 84%;
