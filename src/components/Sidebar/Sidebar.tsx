@@ -39,6 +39,21 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu }) => {
                 </a>
               </div>
             </div>
+            <div className="rspnsv_dis_none">
+              <div
+                className={styles.link}
+                onClick={() => {
+                  push('/marketplace');
+                  onClick();
+                }}
+              >
+                <a
+                  className={`${pathname === '/marketplace' && styles.active}`}
+                >
+                  Marketplace
+                </a>
+              </div>
+            </div>
             <div className="trending_rsponce">
               <div
                 className={`${styles.newlink}`}
@@ -54,14 +69,29 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu }) => {
             </div>
             <div className="rspnsv_dis_none">
               <div
-                className={`${styles.newlink}`}
+                className={styles.link}
                 onClick={() => {
-                  push('/events');
+                  push('/leaderboards');
                   onClick();
                 }}
               >
-                <a className={`${pathname === '/events' && styles.active}`}>
-                  Events
+                <a
+                  className={`${pathname === '/leaderboards' && styles.active}`}
+                >
+                  SNFT Leaders
+                </a>
+              </div>
+            </div>
+            <div>
+              <div
+                className={styles.link}
+                onClick={() => {
+                  push('/dave');
+                  onClick();
+                }}
+              >
+                <a className={`${pathname === '/dave' && styles.active}`}>
+                  DAVE
                 </a>
               </div>
             </div>
@@ -82,12 +112,16 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu }) => {
               <div
                 className={`${styles.newlink}`}
                 onClick={() => {
-                  push('/tutorials');
+                  push('/co-batching-pools');
                   onClick();
                 }}
               >
-                <a className={`${pathname === '/tutorials' && styles.active}`}>
-                  Tips and Tutorials
+                <a
+                  className={`${
+                    pathname === '/co-batching-pools' && styles.active
+                  }`}
+                >
+                  Co-Batching Pools
                 </a>
               </div>
             </div>
@@ -108,14 +142,25 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu }) => {
               <div
                 className={styles.link}
                 onClick={() => {
-                  push('/marketplace');
+                  push('/swapping');
                   onClick();
                 }}
               >
-                <a
-                  className={`${pathname === '/marketplace' && styles.active}`}
-                >
-                  Marketplace
+                <a className={`${pathname === '/swapping' && styles.active}`}>
+                  Swapping
+                </a>
+              </div>
+            </div>
+            <div className="rspnsv_dis_none">
+              <div
+                className={`${styles.newlink}`}
+                onClick={() => {
+                  push('/events');
+                  onClick();
+                }}
+              >
+                <a className={`${pathname === '/events' && styles.active}`}>
+                  Events
                 </a>
               </div>
             </div>
@@ -132,16 +177,16 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu }) => {
                 </a>
               </div>
             </div>
-            <div>
+            <div className="rspnsv_dis_none">
               <div
-                className={styles.link}
+                className={`${styles.newlink}`}
                 onClick={() => {
-                  push('/dave');
+                  push('/tutorials');
                   onClick();
                 }}
               >
-                <a className={`${pathname === '/dave' && styles.active}`}>
-                  DAVE
+                <a className={`${pathname === '/tutorials' && styles.active}`}>
+                  Tips and Tutorials
                 </a>
               </div>
             </div>
@@ -168,51 +213,6 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu }) => {
               >
                 <a className={`${pathname === '/top-nft' && styles.active}`}>
                   Rankings
-                </a>
-              </div>
-            </div>
-            <div className="rspnsv_dis_none">
-              <div
-                className={styles.link}
-                onClick={() => {
-                  push('/leaderboards');
-                  onClick();
-                }}
-              >
-                <a
-                  className={`${pathname === '/leaderboards' && styles.active}`}
-                >
-                  SNFT Leaders
-                </a>
-              </div>
-            </div>
-            <div className="rspnsv_dis_none">
-              <div
-                className={styles.link}
-                onClick={() => {
-                  push('/swapping');
-                  onClick();
-                }}
-              >
-                <a className={`${pathname === '/swapping' && styles.active}`}>
-                  Swapping
-                </a>
-              </div>
-            </div>
-            <div className="rspnsv_dis_none">
-              <div
-                className={`${styles.newlink}`}
-                onClick={() => {
-                  push('/co-batching-pools');
-                  onClick();
-                }}
-              >
-                <a
-                  className={`${
-                    pathname === '/co-batching-pools' && styles.active
-                  }`}
-                >
-                  Co-Batching Pools
                 </a>
               </div>
             </div>

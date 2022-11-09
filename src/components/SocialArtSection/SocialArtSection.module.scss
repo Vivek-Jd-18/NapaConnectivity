@@ -110,16 +110,20 @@
       object-fit: cover;
     }
     :after {
-      background: linear-gradient(180deg, rgba(0, 32, 47, 0) 0%, rgb(0 19 47 / 15%) 100%);
+      background: linear-gradient(
+        180deg,
+        rgba(0, 32, 47, 0) 0%,
+        rgb(0 19 47 / 15%) 100%
+      );
       position: absolute;
-      content: "";
+      content: '';
       width: 62.1%;
       height: 500px;
       z-index: -1;
       transform: translate(-50%, 0);
       left: 50%;
       bottom: 0;
-  }
+    }
 
     .slideBtn {
       position: absolute;
@@ -186,7 +190,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    @media screen and (max-width: 1920px) and (min-width: 1500px){
+    @media screen and (max-width: 1920px) and (min-width: 1500px) {
       top: 126px;
     }
     .innerSocietyContainerwt {
@@ -199,14 +203,15 @@
       color: $white;
       padding-top: 1rem;
       @include font-base-avenir-medium;
-      font-size: 18px !important;
-      @media only screen and (max-width: 736px) {font-size: 16px !important;}
+      font-size: 18px;
+      @media only screen and (max-width: 736px) {
+        font-size: 16px;
+      }
     }
     .socialHeading {
       display: flex;
       flex-direction: column;
       margin-top: 3.6em;
-     
     }
   }
   .viewFeedBtn {
@@ -227,95 +232,139 @@
   }
 
   @media only screen and (max-width: 1536px) {
-  .carouselImage {
-    .image {
-      width: 70%;
-    }
-    :after{
-      width: 70%;height: 100%;
-    }
-  }
-} 
-.socialImages {
-  margin-top: 50px;
-  >span:first-child {
-    margin-right: 30px !important;
-  }
-  
-  >span {
-    img {
-      width: 200px !important;
-      @media only screen and (max-width: 1440px) {
-        width: 100px !important;
+    .carouselImage {
+      .image {
+        width: 70%;
+      }
+      :after {
+        width: 70%;
+        height: 100%;
       }
     }
   }
-}
-.Dawnldnapabtn {
-  cursor: pointer;
-  font-size: 1.5rem;
-  font-weight: 400;
-  line-height: 110%;
-  font-style: normal;
-  font-family: 'Neuropolitical';
-  color: #16e6ef;
-  background-color: transparent;
-  border: 1px solid transparent;
-  margin-top: 40px;
-  transition: all 0.3s ease-out;
-  &:hover {
-    color: #fff;
-  }
-}
-@media only screen and (max-width: 1024px) {
   .socialImages {
-    margin-top: 20px;
-    >span {
+    margin-top: 50px;
+    > span:first-child {
+      margin-right: 30px !important;
+    }
+
+    > span {
       img {
         width: 200px !important;
-      }
-    }
-  }
-}
-@media only screen and (max-width: 736px) {
-  .socialImages {
-    margin-top: 20px;
-    >span {
-      img {
-        width: 80px !important;
+        @media only screen and (max-width: 1440px) {
+          width: 100px !important;
+        }
       }
     }
   }
   .Dawnldnapabtn {
-    font-size: 18px;
-    margin-top: 20px;
-  }
-}
-@media only screen and (max-width: 1024px) {
-  margin-top: 20px;
-}
-@media only screen and (max-width: 1200px) {
-  .carouselImage {
-    .image {
-      width: 85%;
+    cursor: pointer;
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 110%;
+    font-style: normal;
+    font-family: 'Neuropolitical';
+    color: #16e6ef;
+    background-color: transparent;
+    border: 1px solid transparent;
+    margin-top: 40px;
+    transition: all 0.3s ease-out;
+    &:hover {
+      color: #fff;
     }
-    :after{
-      width: 85%;
+  }
+  @media only screen and (max-width: 1024px) {
+    .socialImages {
+      display: none;
+    }
+    .Dawnldnapabtn {
+      display: none;
     }
   }
-  
-}
+  @media only screen and (max-width: 736px) {
+    .carouselImage {
+      .image {
+        width: 200px !important;
+      }
+      :after {
+        width: 200px !important;
+      }
+
+      .carouselBottom {
+        @include flex-column-center;
+        margin-left: 6rem;
+        animation-name: example;
+        animation-duration: 4s;
+        animation-fill-mode: forwards;
+        width: 100%;
+        padding-bottom: 2rem;
+        .avatar {
+          width: 3rem;
+          height: 3rem;
+          object-fit: contain;
+          padding-bottom: 0.5rem;
+        }
+        .carouselBottomText {
+          font-size: 1rem;
+          line-height: 2.1rem;
+          color: $white;
+          font-family: $text-avenir;
+          font-weight: 500;
+          @media (max-width: 600px) {
+            font-size: 1.2rem;
+          }
+        }
+        @keyframes example {
+          0% {
+            margin-left: 6rem;
+          }
+          100% {
+            margin-left: 0px;
+          }
+        }
+      }
+      .slideBtn {
+        span {
+          margin-right: 0 !important;
+        }
+      }
+    }
+  }
+  @media only screen and (max-width: 736px) {
+    .socialImages {
+      margin-top: 20px;
+      > span {
+        img {
+          width: 80px !important;
+        }
+      }
+    }
+    .Dawnldnapabtn {
+      font-size: 18px;
+      margin-top: 20px;
+    }
+  }
+  @media only screen and (max-width: 1200px) {
+    .carouselImage {
+      .image {
+        width: 85%;
+      }
+      :after {
+        width: 85%;
+      }
+    }
+  }
   @media only screen and (max-width: 1024px) {
     background-image: url('/assets/images/npg2.png');
 
     .carouselImage {
       left: auto;
-      right: 80px;
+      right: auto;
       bottom: 0%;
       .image {
         width: 330px;
       }
-      :after{
+      :after {
         width: 330px;
       }
     }
@@ -355,10 +404,8 @@
         }
       }
     }
-    
-    
   }
- 
+
   @media only screen and (max-width: 768px) {
     .innerSocietyContainerRightSide {
       width: 100%;
@@ -366,14 +413,17 @@
       left: 0px;
       right: 0px;
       top: 80px;
+      .socialHeading {
+        margin-top: 0rem;
+      }
     }
     .innerSocietyContainerRightSide {
       width: 100%;
       position: relative;
       margin-top: 44px;
+      top: 0;
       .description {
         width: 100%;
-        
       }
 
       .viewFeedContainer {
@@ -386,14 +436,15 @@
         padding-left: 0rem;
         display: flex;
         .socialText {
-          @include font-4xl-neuropolitical-normal;
+          @include font-3xl-neuropolitical-normal;
           margin-bottom: 0;
-          width: 100%;
+          width: auto;
+          margin-right: 1rem;
           @include flex-column-start;
         }
 
         .artText {
-          @include font-4xl-neuropolitical-normal;
+          @include font-3xl-neuropolitical-normal;
           width: 100%;
           margin-bottom: 0;
           padding-left: 40px;
@@ -407,7 +458,7 @@
     .carouselImage {
       left: 10%;
       width: 80%;
-     
+
       .slideBtn {
         padding-bottom: 1rem;
         span {
@@ -441,7 +492,6 @@
 
       .description {
         width: 100%;
-        
       }
 
       .viewFeedContainer {
@@ -482,7 +532,7 @@
         width: 300px;
         height: 340px;
       }
-      :after{
+      :after {
         width: 300px;
       }
     }
@@ -499,7 +549,6 @@
       bottom: 0%;
       left: 5%;
       width: 90%;
-      
     }
     .innerSocietyContainerRightSide {
       padding-top: 0rem;
@@ -549,6 +598,7 @@
   .innerSocietyContainerRightSide {
     .socialHeading {
       flex-direction: row !important;
+      margin-top: 1rem !important;
     }
   }
   .innerSocietyContainerRightSide {
@@ -556,8 +606,8 @@
     position: relative;
     margin-top: 54px;
     .description {
+      font-size: 14px;
       padding-top: 16px !important;
-      margin-bottom: 21px !important;
     }
 
     .viewFeedContainer {
@@ -570,11 +620,11 @@
       padding-left: 0rem;
       display: flex;
       .socialText {
-        font-size: 64px !important;
+        font-size: 42px !important;
       }
       .artText {
         padding-left: 0px !important;
-        font-size: 64px !important;
+        font-size: 42px !important;
       }
     }
   }
