@@ -9,6 +9,11 @@
 }
 
 .container {
+  background-image: url('/assets/images/sbg.png');
+  background-size: cover;
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
   min-height: 100vh;
   @include flex-column-between;
   hr {
@@ -517,7 +522,7 @@ input:checked + .slider:before {
   top: 0;
   max-width: 480px;
   z-index: 99999;
-  background: #1D3031;
+  background: #1d3031;
   height: 100%;
   opacity: 0;
   pointer-events: none;
