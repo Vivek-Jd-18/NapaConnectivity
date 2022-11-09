@@ -19,8 +19,6 @@ const Index: NextPage = () => {
   return (
     <>
       <Head>
-        <title>NAPA Society Development Server</title>
-        <meta name="description" content="NAPA Developmeent Environment" />
         <title>NAPA Society Staging Enviornment</title>
         <meta name="description" content="NAPA Staging Environment" />
         <link rel="icon" href="/favicon.ico" />
