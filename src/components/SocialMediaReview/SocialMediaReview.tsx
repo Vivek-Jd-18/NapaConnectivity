@@ -3,7 +3,6 @@ import Image from 'next/image';
 import styles from './SocialMediaReview.module.scss';
 import moment from 'moment';
 import Link from 'next/link';
-import { useState } from 'react';
 
 type SocialMediaReviewProps = {
   description: string;
@@ -13,6 +12,9 @@ type SocialMediaReviewProps = {
   username: string;
   onChatClicked: () => void;
   articlesTags: string;
+  currentIndex: number;
+  openIndex: null | number;
+  setOpenIndex: CallableFunction;
 };
 
 const SocialMediaReview: NextPage<SocialMediaReviewProps> = ({
@@ -23,15 +25,20 @@ const SocialMediaReview: NextPage<SocialMediaReviewProps> = ({
   username,
   onChatClicked,
   articlesTags,
+  currentIndex,
+  openIndex,
+  setOpenIndex,
 }) => {
-  const [open, setOpen] = useState(false);
   return (
-    <div className={styles.reviewContainer} onClick={() => setOpen(!open)}>
+    <div
+      className={styles.reviewContainer}
+      onClick={() => openIndex !== currentIndex && setOpenIndex(currentIndex)}
+    >
       <div className={styles.review}>
         <p>
           {description}{' '}
-          {open && (
-            <button onClick={() => setOpen(!open)}>
+          {openIndex === currentIndex && (
+            <button onClick={() => setOpenIndex(null)}>
               <Image
                 src="/img/close_ic.svg"
                 alt=""
@@ -59,7 +66,7 @@ const SocialMediaReview: NextPage<SocialMediaReviewProps> = ({
           </span>
         </div>
 
-        {open && (
+        {openIndex === currentIndex && (
           <div className={styles.twoLinkAj}>
             <div className={styles.twoLinkInnr}>
               <Link href="#">
@@ -111,7 +118,7 @@ const SocialMediaReview: NextPage<SocialMediaReviewProps> = ({
       </div>
       <div className={styles.SmallContent}>
         <p>
-          {!open && (
+          {openIndex !== currentIndex && (
             <div
               className={styles.description}
               dangerouslySetInnerHTML={{
@@ -123,7 +130,7 @@ const SocialMediaReview: NextPage<SocialMediaReviewProps> = ({
           )}
         </p>
       </div>
-      {open && (
+      {openIndex === currentIndex && (
         <div className={styles.allPeragraphMain}>
           <div
             className={styles.description}

@@ -2,7 +2,7 @@
 @import '../../../styles/abstracts/variable.module';
 
 .chatWindowContainer {
-  height: 405px !important;
+  height: 405px;
   position: relative;
   overflow: auto;
   @media screen and (min-width: 1600px) {
@@ -24,6 +24,11 @@
 
   @media (min-width: 2560px) {
     height: 50rem;
+  }
+}
+@media screen and (min-width: 1356px) {
+  .chatWindowContainer {
+    height: 300px;
   }
 }
 .chatInputContainer {
