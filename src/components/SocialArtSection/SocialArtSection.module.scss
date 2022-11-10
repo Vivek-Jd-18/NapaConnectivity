@@ -12,7 +12,7 @@
 }
 
 .backgroundImage {
-  background-image: url('/assets/images/npg2.png');
+  background-image: url('/assets/images/npg2.webp');
   background-size: cover;
   position: relative;
   height: 100vh;
@@ -355,7 +355,7 @@
     }
   }
   @media only screen and (max-width: 1024px) {
-    background-image: url('/assets/images/npg2.png');
+    background-image: url('/assets/images/npg2.webp');
 
     .carouselImage {
       left: auto;
