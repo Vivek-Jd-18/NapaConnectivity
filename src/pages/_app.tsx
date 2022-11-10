@@ -39,17 +39,21 @@ function MyApp({ Component, pageProps }: AppProps) {
     AOS.init();
   }, []);
 
+  useEffect(() => {
+    document.body.classList.add('scroll-up');
+  }, []);
+
   const handleScroll = (element: any) => {
     const body = document.body;
     const scrollUp = 'scroll-up';
     const scrollDown = 'scroll-down';
     const currentScroll = element.scrollTop;
-    if (currentScroll <= 0) {
-      body.classList.remove(scrollUp);
-      return;
-    }
 
     if (currentScroll > lastScroll && !body.classList.contains(scrollDown)) {
+      console.log(
+        'currentScroll > lastScroll && !body.classList.contains(scrollDown)'
+      );
+
       // down
       body.classList.remove(scrollUp);
       body.classList.add(scrollDown);
@@ -57,6 +61,10 @@ function MyApp({ Component, pageProps }: AppProps) {
       currentScroll < lastScroll &&
       body.classList.contains(scrollDown)
     ) {
+      console.log(
+        'currentScroll < lastScroll && body.classList.contains(scrollDown)'
+      );
+
       // up
       body.classList.remove(scrollDown);
       body.classList.add(scrollUp);
