@@ -10,9 +10,8 @@ import Link from 'next/link';
 
 export default function FeedTab(props: any) {
     const options = [
-        { value: 'chocolate', label: 'Chocolate' },
-        { value: 'strawberry', label: 'Strawberry' },
-        { value: 'vanilla', label: 'Vanilla' },
+        { value: 'Azuki', label: 'Azuki' },
+        { value: 'BAYC', label: 'BAYC' },
       ];
       const optionstow = [
         { value: '1', label: 'Price 20 MRP' },
