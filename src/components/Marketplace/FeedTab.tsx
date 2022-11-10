@@ -10,9 +10,8 @@ import Link from 'next/link';
 
 export default function FeedTab(props: any) {
     const options = [
-        { value: 'chocolate', label: 'Chocolate' },
-        { value: 'strawberry', label: 'Strawberry' },
-        { value: 'vanilla', label: 'Vanilla' },
+        { value: 'Azuki', label: 'Azuki' },
+        { value: 'BAYC', label: 'BAYC' },
       ];
       const optionstow = [
         { value: '1', label: 'Price 20 MRP' },
@@ -174,192 +173,193 @@ export default function FeedTab(props: any) {
                 </div>
                 <div className={styles.buttonperntAj}>
                     <div   
-                         className={styles.PstnBtnEnter}>
-                        <input type="text" placeholder='Enter name or eth address..' onClick={toggleClass}  />
+                         className={isActiveTwo ? `${styles.PstnBtnEnter} ${styles.Active}` : `${styles.PstnBtnEnter}`}>
+                        <input type="text" placeholder='Enter name or eth address..'  />
 
                     </div>
-                    <button><Image src='/img/search_icon_aj.svg' alt='' height="24px" width="24px" className='' /></button>
-                    <button className={styles.marginPrnt}><Image src='/img/grid_ic_light.svg' alt='' height="24px" width="24px" className='' /></button>
-                    <button><Image src='/img/grid_ic_dark.svg' alt='' height="24px" width="24px" className='' /></button>
+                    <button onClick={toggleClass}><Image src='/img/search_icon_aj.svg' alt='' height="24px" width="24px" className='' /></button>
+                    {/* <button className={styles.marginPrnt}><Image src='/img/grid_ic_light.svg' alt='' height="24px" width="24px" className='' /></button>
+                    <button><Image src='/img/grid_ic_dark.svg' alt='' height="24px" width="24px" className='' /></button> */}
+                    {/* pstnbx */}
+                    <div
+                        className={styles.PstnSetBxMain}
+                        >
+                            <div className={isActiveTwo ? `${styles.ScrollPstn} ${styles.Active}` : `${styles.ScrollPstn}`}>
+                                <div className={styles.PositionProject}>
+                                    <div className={styles.ProjectPsnIn}>
+                                    <div className={styles.UpScPstn}>
+                                        <p>Projects</p>          
+                                        </div>   
+                                        <div className={styles.FuturisticFierceBx}>
+                                            <div className={styles.FuturisticFsrst}>
+                                                <Image
+                                                    src="/img/pstnfrst01.png"
+                                                    height="48px"
+                                                    width="48px"
+                                                    alt=""
+                                                    className=""
+                                                />
+                                                <div className={styles.FuturisticText}>
+                                                    <h6>Futuristic<span>Fierce</span></h6>
+                                                    <p>8,213 items</p>
+                                                </div>
+                                            </div>
+                                            <div className={styles.Last24Text}>
+                                                <Image
+                                                    src="/img/napa_ic.svg"
+                                                    height="20px"
+                                                    width="20px"
+                                                    alt=""
+                                                    className=""
+                                                />
+                                                <h5>0.24</h5>
+                                            </div>
+                                        </div> 
+                                        <div className={styles.FuturisticFierceBx}>
+                                            <div className={styles.FuturisticFsrst}>
+                                                <Image
+                                                    src="/img/pstnfrst02.png"
+                                                    height="48px"
+                                                    width="48px"
+                                                    alt=""
+                                                    className=""
+                                                />
+                                                <div className={styles.FuturisticText}>
+                                                    <h6><span>Man in</span> Futuristic</h6>
+                                                    <p>2,347 items</p>
+                                                </div>
+                                            </div>
+                                            <div className={styles.Last24Text}>
+                                                <Image
+                                                    src="/img/napa_ic.svg"
+                                                    height="20px"
+                                                    width="20px"
+                                                    alt=""
+                                                    className=""
+                                                />
+                                                <h5>1.03</h5>
+                                            </div>
+                                        </div>                     
+                                    </div>
+                                    {/* secnd */}
+                                    <div className={styles.ProjectPsnIn}>
+                                    <div className={styles.UpScPstn}>
+                                        <p>Items</p>          
+                                        </div>   
+                                        <div className={styles.FuturisticFierceBx}>
+                                            <div className={styles.FuturisticFsrst}>
+                                                <Image
+                                                    src="/img/pstnfrst03.png"
+                                                    height="48px"
+                                                    width="48px"
+                                                    alt=""
+                                                    className=""
+                                                />
+                                                <div className={styles.FuturisticText}>
+                                                    <h6>Futuristic <span>Spaces</span></h6>
+                                                    <p>Ending In 5h 44 min</p>
+                                                </div>
+                                            </div>
+                                            <div className={styles.Last24Text}>
+                                                <Image
+                                                    src="/img/napa_ic.svg"
+                                                    height="20px"
+                                                    width="20px"
+                                                    alt=""
+                                                    className=""
+                                                />
+                                                <h5>3.14</h5>
+                                            </div>
+                                        </div> 
+                                        <div className={styles.FuturisticFierceBx}>
+                                            <div className={styles.FuturisticFsrst}>
+                                                <Image
+                                                    src="/img/pstnfrst04.png"
+                                                    height="48px"
+                                                    width="48px"
+                                                    alt=""
+                                                    className=""
+                                                />
+                                                <div className={styles.FuturisticText}>
+                                                    <h6><span>Horizont</span> Futuristic</h6>
+                                                    <p>Ending In 2h 22 min</p>
+                                                </div>
+                                            </div>
+                                            <div className={styles.Last24Text}>
+                                                <Image
+                                                    src="/img/napa_ic.svg"
+                                                    height="20px"
+                                                    width="20px"
+                                                    alt=""
+                                                    className=""
+                                                />
+                                                <h5>3.16</h5>
+                                            </div>
+                                        </div>                     
+                                    </div>
+                                    {/* lstOne */}
+                                    <div className={styles.ProjectPsnIn}>
+                                    <div className={styles.UpScPstn}>
+                                        <p>Projects</p>          
+                                        </div>   
+                                        <div className={styles.FuturisticFierceBx}>
+                                            <div className={styles.FuturisticFsrst}>
+                                                <Image
+                                                    src="/img/pstnfrst01.png"
+                                                    height="48px"
+                                                    width="48px"
+                                                    alt=""
+                                                    className=""
+                                                />
+                                                <div className={styles.FuturisticText}>
+                                                    <h6>Futuristic<span>Fierce</span></h6>
+                                                    <p>8,213 items</p>
+                                                </div>
+                                            </div>
+                                            <div className={styles.Last24Text}>
+                                                <Image
+                                                    src="/img/napa_ic.svg"
+                                                    height="20px"
+                                                    width="20px"
+                                                    alt=""
+                                                    className=""
+                                                />
+                                                <h5>0.24</h5>
+                                            </div>
+                                        </div> 
+                                        <div className={styles.FuturisticFierceBx}>
+                                            <div className={styles.FuturisticFsrst}>
+                                                <Image
+                                                    src="/img/pstnfrst02.png"
+                                                    height="48px"
+                                                    width="48px"
+                                                    alt=""
+                                                    className=""
+                                                />
+                                                <div className={styles.FuturisticText}>
+                                                    <h6><span>Man in</span> Futuristic</h6>
+                                                    <p>2,347 items</p>
+                                                </div>
+                                            </div>
+                                            <div className={styles.Last24Text}>
+                                                <Image
+                                                    src="/img/napa_ic.svg"
+                                                    height="20px"
+                                                    width="20px"
+                                                    alt=""
+                                                    className=""
+                                                />
+                                                <h5>1.03</h5>
+                                            </div>
+                                        </div>                     
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    {/* pstnbx */}
                 </div>
             </div>
-            {/* pstnbx */}
-            <div
-                className={styles.PstnSetBxMain}
-                >
-                    <div className={isActiveTwo ? `${styles.ScrollPstn} ${styles.Active}` : `${styles.ScrollPstn}`}>
-                        <div className={styles.PositionProject}>
-                            <div className={styles.ProjectPsnIn}>
-                            <div className={styles.UpScPstn}>
-                                <p>Projects</p>          
-                                </div>   
-                                <div className={styles.FuturisticFierceBx}>
-                                    <div className={styles.FuturisticFsrst}>
-                                        <Image
-                                            src="/img/pstnfrst01.png"
-                                            height="48px"
-                                            width="48px"
-                                            alt=""
-                                            className=""
-                                        />
-                                        <div className={styles.FuturisticText}>
-                                            <h6>Futuristic<span>Fierce</span></h6>
-                                            <p>8,213 items</p>
-                                        </div>
-                                    </div>
-                                    <div className={styles.Last24Text}>
-                                        <Image
-                                            src="/img/napa_ic.svg"
-                                            height="20px"
-                                            width="20px"
-                                            alt=""
-                                            className=""
-                                        />
-                                        <h5>0.24</h5>
-                                    </div>
-                                </div> 
-                                <div className={styles.FuturisticFierceBx}>
-                                    <div className={styles.FuturisticFsrst}>
-                                        <Image
-                                            src="/img/pstnfrst02.png"
-                                            height="48px"
-                                            width="48px"
-                                            alt=""
-                                            className=""
-                                        />
-                                        <div className={styles.FuturisticText}>
-                                            <h6><span>Man in</span> Futuristic</h6>
-                                            <p>2,347 items</p>
-                                        </div>
-                                    </div>
-                                    <div className={styles.Last24Text}>
-                                        <Image
-                                            src="/img/napa_ic.svg"
-                                            height="20px"
-                                            width="20px"
-                                            alt=""
-                                            className=""
-                                        />
-                                        <h5>1.03</h5>
-                                    </div>
-                                </div>                     
-                            </div>
-                            {/* secnd */}
-                            <div className={styles.ProjectPsnIn}>
-                            <div className={styles.UpScPstn}>
-                                <p>Items</p>          
-                                </div>   
-                                <div className={styles.FuturisticFierceBx}>
-                                    <div className={styles.FuturisticFsrst}>
-                                        <Image
-                                            src="/img/pstnfrst03.png"
-                                            height="48px"
-                                            width="48px"
-                                            alt=""
-                                            className=""
-                                        />
-                                        <div className={styles.FuturisticText}>
-                                            <h6>Futuristic <span>Spaces</span></h6>
-                                            <p>Ending In 5h 44 min</p>
-                                        </div>
-                                    </div>
-                                    <div className={styles.Last24Text}>
-                                        <Image
-                                            src="/img/napa_ic.svg"
-                                            height="20px"
-                                            width="20px"
-                                            alt=""
-                                            className=""
-                                        />
-                                        <h5>3.14</h5>
-                                    </div>
-                                </div> 
-                                <div className={styles.FuturisticFierceBx}>
-                                    <div className={styles.FuturisticFsrst}>
-                                        <Image
-                                            src="/img/pstnfrst04.png"
-                                            height="48px"
-                                            width="48px"
-                                            alt=""
-                                            className=""
-                                        />
-                                        <div className={styles.FuturisticText}>
-                                            <h6><span>Horizont</span> Futuristic</h6>
-                                            <p>Ending In 2h 22 min</p>
-                                        </div>
-                                    </div>
-                                    <div className={styles.Last24Text}>
-                                        <Image
-                                            src="/img/napa_ic.svg"
-                                            height="20px"
-                                            width="20px"
-                                            alt=""
-                                            className=""
-                                        />
-                                        <h5>3.16</h5>
-                                    </div>
-                                </div>                     
-                            </div>
-                            {/* lstOne */}
-                            <div className={styles.ProjectPsnIn}>
-                            <div className={styles.UpScPstn}>
-                                <p>Projects</p>          
-                                </div>   
-                                <div className={styles.FuturisticFierceBx}>
-                                    <div className={styles.FuturisticFsrst}>
-                                        <Image
-                                            src="/img/pstnfrst01.png"
-                                            height="48px"
-                                            width="48px"
-                                            alt=""
-                                            className=""
-                                        />
-                                        <div className={styles.FuturisticText}>
-                                            <h6>Futuristic<span>Fierce</span></h6>
-                                            <p>8,213 items</p>
-                                        </div>
-                                    </div>
-                                    <div className={styles.Last24Text}>
-                                        <Image
-                                            src="/img/napa_ic.svg"
-                                            height="20px"
-                                            width="20px"
-                                            alt=""
-                                            className=""
-                                        />
-                                        <h5>0.24</h5>
-                                    </div>
-                                </div> 
-                                <div className={styles.FuturisticFierceBx}>
-                                    <div className={styles.FuturisticFsrst}>
-                                        <Image
-                                            src="/img/pstnfrst02.png"
-                                            height="48px"
-                                            width="48px"
-                                            alt=""
-                                            className=""
-                                        />
-                                        <div className={styles.FuturisticText}>
-                                            <h6><span>Man in</span> Futuristic</h6>
-                                            <p>2,347 items</p>
-                                        </div>
-                                    </div>
-                                    <div className={styles.Last24Text}>
-                                        <Image
-                                            src="/img/napa_ic.svg"
-                                            height="20px"
-                                            width="20px"
-                                            alt=""
-                                            className=""
-                                        />
-                                        <h5>1.03</h5>
-                                    </div>
-                                </div>                     
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {/* pstnbx */}
+            
             <div className={styles.scrollPernt}>
                 <div className={styles.CustomGridContainer}>
                     <div className={styles.CustomGrid}>

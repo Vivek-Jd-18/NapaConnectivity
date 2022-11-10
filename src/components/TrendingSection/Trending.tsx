@@ -15,6 +15,7 @@ import ChatWindow from '../ChatWindow/ChatWindow';
 import { CustomToastWithLink } from '../CustomToast/CustomToast';
 import { ToastDescription, ToastTitle } from '../../typing/toast';
 import Footer from '../Footer/Footer';
+import Image from 'next/image';
 
 const trendingTabList = [
   {
@@ -198,69 +199,100 @@ const TrendingSection: NextPage<TrendingSectionProps> = ({ socket }) => {
     }
   }, [message, account, profileDetails]);
 
-  const [chatPerson, setChatPerson] = useState('Title goes here');
+  const [chatPerson, setChatPerson] = useState('');
 
   return (
-    <div className={styles.backgroundImage} id="trending">
-      <Container className={`${styles.trendingContainer} asinnerContainer`}>
-        <div className={`row col-12 ${styles.trendingBodyContainer}`}>
-          <div className={`col-xl-7 col-md-12`}>
-            <h1 className={styles.trending}>
-              Whats <span>Trending</span>
-            </h1>
-            <div className={styles.tabsContainer}>
-              <div className={styles.tabsInnerContainer}>
-                <ul className={styles.tab}>
-                  {trendingTabList.map(({ title, value }, index) => (
-                    <Tab
-                      key={index}
-                      setTab={setTab}
-                      title={title}
-                      tab={tab}
-                      value={value}
-                    />
-                  ))}
-                </ul>
+    <>
+      <div
+        style={{
+          zIndex: -1,
+          position: 'fixed',
+          width: '100vw',
+          height: '100vh',
+        }}
+      >
+        <Image
+          src={'/assets/images/tdb.webp'}
+          alt="Trending"
+          layout="fill"
+          objectFit="cover"
+          loading="eager"
+          priority={true}
+        />
+      </div>
+      <div className={styles.backgroundImage} id="trending">
+        <Container className={`${styles.trendingContainer} asinnerContainer`}>
+          <div className={`row col-12 ${styles.trendingBodyContainer}`}>
+            <div className={`col-xl-7 col-md-12`}>
+              <h1 className={styles.trending}>
+                Whats <span>Trending</span>
+              </h1>
+              <div className={styles.tabsContainer}>
+                <div className={styles.tabsInnerContainer}>
+                  <ul className={styles.tab}>
+                    {trendingTabList.map(({ title, value }, index) => (
+                      <Tab
+                        key={index}
+                        setTab={setTab}
+                        title={title}
+                        tab={tab}
+                        value={value}
+                      />
+                    ))}
+                  </ul>
+                </div>
+              </div>
+              <div
+                className={`${styles.socialMediaReviewContainer} otherscroll`}
+              >
+                {trendingList &&
+                  trendingList.length &&
+                  trendingList
+                    .filter(({ articleType }) => articleType === tab)
+                    .map(
+                      (
+                        {
+                          articleTitle,
+                          author,
+                          createdAt,
+                          articleBody,
+                          userProfilePic,
+                          articleTags,
+                        },
+                        index
+                      ) => {
+                        return (
+                          <SocialMediaReview
+                            key={`social-media-${index}`}
+                            description={articleTitle}
+                            articleBody={articleBody}
+                            date={createdAt}
+                            icon={
+                              userProfilePic ? userProfilePic : HowardAvatar
+                            }
+                            username={author}
+                            onChatClicked={() => setChatPerson(articleTitle)}
+                            articlesTags={articleTags}
+                          />
+                        );
+                      }
+                    )}
               </div>
             </div>
-            <div className={`${styles.socialMediaReviewContainer} otherscroll`}>
-              {trendingList &&
-                trendingList.length &&
-                trendingList
-                  .filter(({ articleType }) => articleType === tab)
-                  .map(
-                    (
-                      { articleTitle, author, createdAt, articleBody },
-                      index
-                    ) => {
-                      return (
-                        <SocialMediaReview
-                          key={`social-media-${index}`}
-                          description={articleTitle}
-                          articleBody={articleBody}
-                          date={createdAt}
-                          icon={HowardAvatar}
-                          username={author}
-                          onChatClicked={() => setChatPerson(articleTitle)}
-                        />
-                      );
-                    }
-                  )}
+            <div className={`col-xl-5 col-md-12 ${styles.rightSideContainer}`}>
+              <h2 className={styles.TrendingTitle}>{chatPerson}</h2>
+              <ChatWindow
+                setMessage={setMessage}
+                message={message}
+                messageHandler={messageHandler}
+                messages={messages}
+              />
             </div>
           </div>
-          <div className={`col-xl-5 col-md-12 ${styles.rightSideContainer}`}>
-            <h2 className={styles.TrendingTitle}>{chatPerson}</h2>
-            <ChatWindow
-              setMessage={setMessage}
-              message={message}
-              messageHandler={messageHandler}
-              messages={messages}
-            />
-          </div>
-        </div>
-      </Container>
-      <Footer footerIconShow />
-    </div>
+        </Container>
+        <Footer footerIconShow />
+      </div>
+    </>
   );
 };
 

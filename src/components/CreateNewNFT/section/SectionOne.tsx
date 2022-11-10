@@ -42,7 +42,7 @@ export default function SectionOne() {
                         </div>
                     </div> */}
                     <div className={styles.thrBtnPrnt}>
-                        <Link  href="/" ><a className={styles.linkPernt}>Edit</a></Link>
+                        <Link  href="/create-new-nft" ><a className={styles.linkPernt}>Edit</a></Link>
                         <Link href="/sell-nft-page-sc" ><a className={styles.linkPernt}>Sell</a></Link>
                         {/* <Link  href="/" ><a className={styles.linkPernt}>Cancel</a></Link>
                         <Link  href="/" ><a className={styles.linkPernt}>Low Price</a></Link>
@@ -60,7 +60,7 @@ export default function SectionOne() {
                                     </li>
                                     <li>
                                         <a className="dropdown-item" href="#">
-                                            Add to Valuator
+                                            Add to DAVE
                                         </a>
                                     </li>
                                     <li>

@@ -13,7 +13,7 @@ const NapaSociety: NextPage = () => {
 
   useEffect(() => {
     const interval = setInterval(
-      () => setSlider((prevCount) => (prevCount > 3 ? 1 : prevCount + 1)),
+      () => setSlider((prevCount) => (prevCount > 2 ? 1 : prevCount + 1)),
       5000
     );
     return () => {
@@ -22,7 +22,7 @@ const NapaSociety: NextPage = () => {
   }, []);
 
   const handleIncrement = () => {
-    if (slider > 3) {
+    if (slider > 2) {
       setSlider(1);
       return;
     }
@@ -31,7 +31,7 @@ const NapaSociety: NextPage = () => {
 
   const handleDecrement = () => {
     if (slider < 2) {
-      setSlider(1);
+      setSlider(3);
       return;
     }
     setSlider(slider - 1);
@@ -49,9 +49,9 @@ const NapaSociety: NextPage = () => {
               Join NAPA Society and turn your social media into{' '}
               <strong>Social Art! </strong>
               <br></br>
-              <br></br>Mint your posts in our social media app into SNFTs to earn
-              NAPA tokens to buy and sell NFTs and SNFTs in the largest marketplace in the
-              world!
+              <br></br>Mint your posts in our social media app into SNFTs to
+              earn NAPA tokens to buy and sell NFTs and SNFTs in the largest
+              marketplace in the world!
             </p>
           </div>
           <div className={styles.innerSocietyContainerRightSide}>
@@ -193,7 +193,7 @@ const NapaSociety: NextPage = () => {
                 </div>
                 <HighlightButton title="Who is Leading" link="/leaderboards" />
               </div>
-            ) :(
+            ) : (
               <div>
                 <h6 className={styles.description}>
                   <strong>{/* // Display Next Event Image // */}</strong>

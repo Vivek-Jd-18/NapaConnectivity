@@ -32,6 +32,13 @@
   @media screen and (max-width: 1199px) {
     min-height: 280px !important;
   }
+  @media screen and (max-width: 740px) {
+    min-height: 236px !important;
+    max-width: 100%;
+  }
+  @media screen and (max-width: 300px) {
+    min-height: 214px !important;
+  }
   .time {
     @include font-lg-neuropolitical-normal;
   }

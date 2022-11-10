@@ -14,6 +14,7 @@ import MyFavorites from './MyFavorites';
 import MyWatchlist from './MyWatchlist';
 import MySFTs from './MySFTs';
 import TradeSFTs from './TradeSFTs';
+// import ProjectsMarketPlace from './ProjectsMarketPlace';
 
 export default function MarketplaceSc() {
   return (
@@ -30,7 +31,10 @@ export default function MarketplaceSc() {
               <FeedTab />
             </div>
           </Tab>
-          <Tab eventKey="Trade SFTs" title="Trade SNFTs">
+          {/* <Tab eventKey="projects" title="Projects">
+           <ProjectsMarketPlace />
+          </Tab> */}
+          <Tab eventKey="Trade SNFTs" title="Trade SNFTs">
             <TradeSFTs />
           </Tab>
           {/* <Tab eventKey="profile" title="Valuator">

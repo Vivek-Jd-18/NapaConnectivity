@@ -19,7 +19,7 @@ const marketPlaceTab = [
     value: 'Art Minted',
   },
   {
-    title: 'Top NFTs and SNFTs',
+    title: 'NFT and SNFT Rankings',
     value: 'NFT Listings',
   },
 ];

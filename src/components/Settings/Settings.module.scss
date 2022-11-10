@@ -1,7 +1,19 @@
 @import '../../../styles/abstracts/mixins.module';
 @import '../../../styles/abstracts/variable.module';
 
+.loaderContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 40vh;
+}
+
 .container {
+  background-image: url('/assets/images/sbg.webp');
+  background-size: cover;
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
   min-height: 100vh;
   @include flex-column-between;
   hr {
@@ -34,7 +46,38 @@
     }
     .leftSideContainer {
       margin: 0;
-     
+      .uploadBtnContainer {
+        @include flex-row;
+        @include font-md-neuropolitical-normal;
+        .changeBtn {
+          color: $light-blue;
+          margin: 0 3rem;
+          cursor: pointer;
+        }
+        .removeBtn {
+          color: $gray;
+          cursor: pointer;
+        }
+      }
+      .uploadImageConatiner {
+        @include align-center;
+        padding-top: 2rem;
+        .banner {
+          width: 120px;
+          height: 120px;
+          border-radius: 50%;
+          border: 2px dashed rgba(145, 165, 166, 0.2);
+          @include align-center;
+          @include justify-center;
+        }
+        .preview {
+          width: 120px;
+          height: 120px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+      }
+
       .formContainer {
         width: 100%;
         padding-top: 2rem;
@@ -137,6 +180,7 @@
         .whitelistRightSide {
           display: flex;
           align-items: center;
+          cursor: pointer !important;
           span {
             @include font-md-neuropolitical-normal;
             color: $light-blue;
@@ -184,8 +228,6 @@
     .settings {
       font-size: 3.625rem !important;
     }
-    
-    
   }
   @media (max-width: 736px) {
     .accountBtn {
@@ -196,7 +238,7 @@
         font-size: 16px !important;
         padding-left: 12px;
       }
-    } 
+    }
     .twitterBtn {
       span {
         font-size: 16px !important;
@@ -286,7 +328,7 @@ input:checked + .slider:before {
   font-weight: 500;
   font-size: 24px;
   line-height: 140%;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 .HadFormNapa {
   margin-bottom: 27px;
@@ -303,7 +345,7 @@ input:checked + .slider:before {
   font-weight: 400;
   font-size: 24px;
   line-height: 110%;
-  color: #16E6EF;
+  color: #16e6ef;
   background: transparent;
   border: none;
   box-shadow: none;
@@ -355,7 +397,7 @@ input:checked + .slider:before {
     .AvarCircle {
       height: 140px;
       width: 140px;
-      background: #25494b;
+      background: #000000;
       border-radius: 50%;
     }
     input {
@@ -386,7 +428,7 @@ input:checked + .slider:before {
       font-weight: 400;
       font-size: 18px;
       line-height: 110%;
-      color: #16E6EF;
+      color: #16e6ef;
       margin-right: 54px;
       input {
         position: absolute;
@@ -403,7 +445,7 @@ input:checked + .slider:before {
       font-weight: 400;
       font-size: 18px;
       line-height: 110%;
-      color: #91A5A6;
+      color: #91a5a6;
       border: none !important;
       background: transparent !important;
       cursor: pointer;
@@ -453,6 +495,106 @@ input:checked + .slider:before {
       .RemoveBtn {
         font-size: 14px;
       }
+    }
+  }
+}
+
+.NewAddressBox {
+  padding: 32px 40px 0 40px;
+  .NewAddreBtnSpbt {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 32px;
+    cursor: pointer;
+    h3 {
+      @include font-3xl-neuropolitical-normal;
+      font-style: normal;
+      font-size: 32px;
+      line-height: 110%;
+      color: #ffffff;
+    }
+  }
+}
+.NewAddressBoxMin {
+  position: fixed;
+  right: 0;
+  top: 0;
+  max-width: 480px;
+  z-index: 99999;
+  background: #1d3031;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.2s ease-out;
+  &.Active {
+    opacity: 1;
+    pointer-events: visible;
+  }
+}
+.NewAddrBtnCnlSve {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  .Cancel {
+    @include font-3xl-neuropolitical-normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 110%;
+    text-align: center;
+    color: #91a5a6;
+    height: 72px;
+    border-radius: 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    &:hover {
+      background: rgba(255, 255, 255, 0);
+      color: #91a5a6;
+    }
+  }
+  .Save {
+    width: 100%;
+    background: #16e6ef;
+    border-radius: 0;
+    height: 72px;
+    border: 2px solid #16e6ef;
+    @include font-3xl-neuropolitical-normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 110%;
+    text-align: center;
+    color: #102324;
+    &:hover {
+      background: #fff;
+      color: #102324;
+      border: none;
+    }
+  }
+}
+@media screen and (max-width: 1200px) {
+  .NewAddressBoxMin {
+    left: 0;
+    max-width: 100%;
+  }
+  .NewAddressBox {
+    padding: 56px 40px 0 40px;
+  }
+}
+@media screen and (max-width: 736px) {
+  .NewAddressBox {
+    padding: 56px 20px 0 20px;
+    .NewAddreBtnSpbt {
+      h3 {
+        font-size: 24px;
+      }
+    }
+  }
+  .NewAddrBtnCnlSve {
+    button {
+      height: 82px !important;
     }
   }
 }

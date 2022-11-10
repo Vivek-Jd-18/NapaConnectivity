@@ -13,6 +13,7 @@ import Image from 'next/image';
 import { ToastDescription, ToastTitle } from '../../typing/toast';
 import useProfile from '@/hooks/useProfile';
 import useWebThree from '@/hooks/useWebThree';
+import Link from 'next/link';
 
 type WalletComponentProps = {
   account: string;
@@ -47,7 +48,7 @@ const WalletComponent: NextPage<WalletComponentProps> = ({ account }) => {
         const profileDetails = await getUserProfileDetails(response);
         // @ts-ignore
         if (response && profileDetails) {
-          push('/home');
+          push('/trending');
         } else if (response) {
           push('/settings');
         }
@@ -83,10 +84,10 @@ const WalletComponent: NextPage<WalletComponentProps> = ({ account }) => {
               <span className={styles.descriptionText}>
                 By connecting your wallet, you agree to our{' '}
                 <span className={styles.termsPrivacyText}>
-                  Terms of Service
+                  <Link href="/terms-conditions">Terms of Service</Link>
                 </span>
                 &nbsp;and our{' '}
-                <span className={styles.termsPrivacyText}>Privacy Policy.</span>
+                <span className={styles.termsPrivacyText}><Link href="/privacy-policy">Privacy Policy.</Link></span>
               </span>
               <div className={`${styles.btnContainer} flex-column`}>
                 {walletButtonList.map(({ borderColor, text, icon }, index) => {
@@ -104,6 +105,7 @@ const WalletComponent: NextPage<WalletComponentProps> = ({ account }) => {
                               time: 'Now',
                             })
                           );
+                          push('/home');
                           return;
                         }
                         if (index === 0) {

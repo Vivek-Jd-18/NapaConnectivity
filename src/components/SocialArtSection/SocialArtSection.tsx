@@ -8,6 +8,7 @@ import Container from '../../Layout/Container/Container';
 import HighlightButton from '../HighlightButton/HighlightButton';
 import { scrollToNextSection } from '../../utils/home';
 import { Avatar, Carousel, MouseIcon } from '../../components/assets';
+
 //import image1 from .... (asset location in S3 bucket) ASSETS SHOULD BE IMPORTED AND DEFINED, DO NOT HARDCODE ASSETS PLEASE
 
 const SocialArtSection: NextPage = () => {
@@ -34,7 +35,9 @@ const SocialArtSection: NextPage = () => {
   return (
     <div id="social-section-art" className={styles.backgroundImage}>
       {/* <Steper steps={3} top={12} /> */}
-      <Container className={`${styles.socialArtContainer} asinnerContainer`}>
+      <Container
+        className={`${styles.socialArtContainer} asinnerContainer pstnrltv`}
+      >
         <div className={styles.socialArtContainerBody}>
           <div className={styles.carouselImage}>
             {slider == 1 ? (
@@ -214,6 +217,26 @@ const SocialArtSection: NextPage = () => {
                 with millions of members in the NAPA Society community!
               </p>
               <HighlightButton title="NAPA Social Art" link="/socialart" />
+              <div className={styles.socialImages}>
+                <Image
+                  src="/img/qrcode_ic.png"
+                  alt=""
+                  width="300px"
+                  height="300px"
+                  className={styles.MrgnRgt30}
+                />
+                <Image
+                  src="/img/qrcode_ic.png"
+                  alt=""
+                  width="300px"
+                  height="300px"
+                />
+              </div>
+              <div>
+                <button className={styles.Dawnldnapabtn}>
+                  Download The NAPA App
+                </button>
+              </div>
             </div>
 
             {/* <p className={styles.description}>

@@ -7,6 +7,13 @@
   color: $white;
   padding: 0.5555rem;
   .userContainer {
+    .avatar {
+      img {
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+      }
+    }
     @include flex-row-center;
     .userInfo {
       @include flex-column-start;
@@ -31,12 +38,6 @@
 
   @media (min-width: 2560px) {
     .userContainer {
-      .avatar {
-        img {
-          width: 3rem;
-          height: 3rem;
-        }
-      }
       .userInfo {
         .userNameContainer {
           .userName {

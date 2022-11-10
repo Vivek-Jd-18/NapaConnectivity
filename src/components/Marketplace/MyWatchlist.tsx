@@ -440,7 +440,7 @@ export default function MintedTabList() {
                         </div>
                     </div>
                     {/* sixBox */}
-                    {/* <div className={styles.MainListListInn}>
+                    <div className={styles.MainListListInn}>
                         <div className={`${styles.RowLabel} ${styles.RowOne}`}>
                             <Image src="/img/mywatchlist_tbl_img01.png" alt="" width={72} height={72} />
                             <div className={styles.RspnsvListtext}>
@@ -517,7 +517,7 @@ export default function MintedTabList() {
                                 </li>
                             </ul>
                         </div>
-                    </div> */}
+                    </div>
                     {/* seven box */}
                 </div>
             </div>

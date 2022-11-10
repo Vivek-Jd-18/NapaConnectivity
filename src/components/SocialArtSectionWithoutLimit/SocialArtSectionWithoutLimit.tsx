@@ -2,9 +2,9 @@ import { MouseIcon } from '../../components/assets';
 import Container from '../../Layout/Container/Container';
 import { scrollToNextSection } from '../../utils/home';
 import type { NextPage } from 'next';
-import HighlightButton from '../HighlightButton/HighlightButton';
 import styles from './SocialArtSectionWithoutLimit.module.scss';
 import Image from 'next/image';
+import AnimateButton from '../AnimateButton/AnimateButton';
 // you are using the footer for the bottom nav options when you should be importing a NavBarSection.tsx  //
 
 const SocialArtSectionWithoutLimit: NextPage = () => {
@@ -13,6 +13,12 @@ const SocialArtSectionWithoutLimit: NextPage = () => {
       className={styles.backgroundImage}
       id="social-art-section-without-limit"
     >
+      <div className="video_play_bx">
+        <video data-autoPlay muted loop className="video_bg_hmpg">
+          <source src="https://napa-website.s3.ap-southeast-1.amazonaws.com/coming_soon.mp4" />
+        </video>
+      </div>
+
       {/* <Steper steps={1} top={0} /> */}
       <Container className={`${styles.socialContainer} asinnerContainer`}>
         <div className={styles.socialContainerBody}>
@@ -27,7 +33,7 @@ const SocialArtSectionWithoutLimit: NextPage = () => {
               {/* <strong>Blockchain Inspired Web3 Social Media Has Arrived</strong> */}
               {/* Welcome to the NAPA Society experience, we are the face of crypto social media in the web3 revolution! Join our society and turn your social media into social art, mint your social art in our social media app and earn NAPA tokens, buy and sell NFTs in the largest marketplace in the world */}
             </h6>
-            <HighlightButton title="NAPA Society" link="/home" />
+            <AnimateButton title="Get Started" link="/trending" />
           </div>
         </div>
         <div className={styles.mousePointer}>

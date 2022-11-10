@@ -11,9 +11,9 @@ export default function ContactUsSc() {
   const [name, setName] = useState('');
   const [namesec, setNamesec] = useState('');
   const options = [
-    { value: 'admin', label: 'admin' },
-    { value: 'tecnical', label: 'tecnical' },
-    { value: 'finance', label: 'finance' },
+    { value: 'Legal', label: 'Legal' },
+    { value: 'Marketing', label: 'Marketing' },
+    { value: 'Finance', label: 'Finance' },
   ];
   return (
     <>
@@ -56,7 +56,7 @@ export default function ContactUsSc() {
                             options={options}
                             // menuIsOpen={true}
                             className="select_pernt"
-                            placeholder="Rating"
+                            placeholder="Please select which department you wish to contact"
                             classNamePrefix="cntrslct"
                         />
                     </div>
@@ -73,12 +73,12 @@ export default function ContactUsSc() {
               <div className={styles.RightContact}>
                 <p>Contact us for more information on our platform.</p>
                 <span>Email</span>
-                <h5>info@napasociety.io</h5>
+                <h5><a href="mailto:info@napasociety.io">info@napasociety.io</a></h5>
                 <div className={styles.SocialLinks}>
-                  <Link href="https://twitter.com/NapaSociety"><a><Image src="/img/twitter_icon.png" alt="" width={24} height={24} /></a></Link>
-                  <Link href="https://discord.gg/pV2vxbkqpb"><a><Image src="/img/discord_icon.png" alt="" width={24} height={24} /></a></Link>
-                  <Link href="https://github.com/NAPA-Society"><a><Image src="/img/github_icon.png" alt="" width={24} height={24} /></a></Link>
-                  <Link href="https://medium.com/@Napa_Society"><a className={styles.lastIcon}><Image src="/img/medium_icon.png" alt="" width={24} height={24} /></a></Link>
+                  <Link href="https://twitter.com/NapaSociety"><a target="_blank"><Image src="/img/twitter_icon.png" alt="" width={24} height={24} /></a></Link>
+                  <Link href="https://discord.gg/pV2vxbkqpb"><a target="_blank"><Image src="/img/discord_icon.png" alt="" width={24} height={24} /></a></Link>
+                  <Link href="https://github.com/NAPA-Society"><a target="_blank"><Image src="/img/github_icon.png" alt="" width={24} height={24} /></a></Link>
+                  <Link href="https://medium.com/@Napa_Society"><a target="_blank" className={styles.lastIcon}><Image src="/img/medium_icon.png" alt="" width={24} height={24} /></a></Link>
                 </div>
               </div>
             </div>

@@ -13,7 +13,7 @@ export default function CreateNewNFTSc() {
       <div className={styles.StaylinkFrst}>
           <Link href="/marketplace"><a> <Image src="/img/arrow_icon.svg" alt="" width="18px" height="12px"/>Marketplace</a></Link>
         </div>
-          <h1 className={styles.settings}>Create New SFTs</h1>
+          <h1 className={styles.settings}>Create New SNFT</h1>
         <div>
           <CreateNewNFT />
         </div>

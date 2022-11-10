@@ -1,9 +1,8 @@
 @import '../../../styles/abstracts/mixins.module';
 @import '../../../styles/abstracts/variable.module';
 
-
 .backgroundImage {
-  background-image: url('/assets/images/marketplace-background-mobile.png');
+  background-image: url('/assets/images/npg.png');
   background-size: cover;
   position: relative;
   min-height: 100vh;
@@ -151,13 +150,13 @@
     }
     .nft {
       @include font-3xl-neuropolitical-normal;
-     
+
       padding-top: 6.5rem;
     }
   }
 
   @media (min-width: 768px) {
-    background-image: url('/assets/images/marketplace-background-tablet.png');
+    background-image: url('/assets/images/npg.png');
     .nft {
       text-align: left;
       padding-top: 5rem;
@@ -192,10 +191,10 @@
         }
       }
     }
-    
+
     ul.NftMarketplaceSection_tab__wy7PM button {
       font-size: 18px;
-  }
+    }
   }
   @media (min-width: 1024px) {
     padding-top: 2rem;
@@ -220,39 +219,43 @@
       }
     }
   }
- 
+
   @media (max-width: 1024px) {
     div#nft-marketplace {
       padding-top: 70px;
-  }
-  .description {
-    @include font-base-avenir-regular;
-    max-width: 530px;
-    margin-bottom: 20px;
-  }
-  .tabsContainer {
-    .tabsInnerContainer {
-      .tab {
-        margin-bottom: 20px;
+    }
+    .description {
+      @include font-base-avenir-regular;
+      max-width: 530px;
+      margin-bottom: 20px;
+    }
+    .tabsContainer {
+      .tabsInnerContainer {
+        .tab {
+          margin-bottom: 20px;
+        }
       }
     }
+    .Footer_footerIconItem__5eJ33 {
+      width: 62px;
+    }
+    #nft-marketplace .slick-list {
+      margin-top: 30px;
+    }
   }
-  .Footer_footerIconItem__5eJ33 {
-    width: 62px;
-}
-#nft-marketplace .slick-list {
-  margin-top: 30px;
-}
-
-}
-@media (max-width: 767px) {
-  .tabsContainer {
-    margin-bottom:1.5rem;
+  @media only screen and (max-width: 736px) {
+    .nft {
+      padding-top: 3rem;
+    }
   }
-}
+  @media (max-width: 767px) {
+    .tabsContainer {
+      margin-bottom: 1.5rem;
+    }
+  }
 
   @media (min-width: 1280px) {
-    background-image: url('/assets/images/marketplace-background-nolines.png');
+    background-image: url('/assets/images/npg.png');
     .nft {
       padding-top: 2.3rem;
       max-width: 100%;
@@ -279,7 +282,6 @@
         }
       }
     }
-
   }
   @media (min-width: 1536px) {
     .nft {
@@ -287,15 +289,15 @@
       max-width: 100%;
       @include font-6xl-neuropolitical-normal;
     }
-   
+
     .description {
       padding-top: 1rem;
       @include font-md-avenir-regular;
       max-width: 530px;
-
     }
     .tabsContainer {
-      padding-top: 2rem;margin-bottom: 0;
+      padding-top: 2rem;
+      margin-bottom: 0;
     }
     .nftContainer {
       .projectCardContainer {

@@ -13,16 +13,17 @@ export default function ValuatorSc() {
       
         <Container className={`${styles.settingsContainer} asinnerContainer`}>
           <div className={styles.ValuaterMain}>
-            <h1 className={styles.settings}>NAPA Valuator</h1>
+            <h1 className={styles.settings}>DAVE</h1>
                 <Link href="#">
                   <a data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                    How to use the NAPA Valuator?
+                    How to use DAVE? <strong>(Digital Asset Valuation Expert) </strong>
                   </a>
                 </Link>
           </div>
           <div className="collapse" id="collapseExample">
             <div className="valuatercmmnt">
             <div className='dflt_spcebtwn'>
+              
               <h1><span>1.</span> Select the NFT you want to evaluate.</h1>
               <Link href="#">
                 <a data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">

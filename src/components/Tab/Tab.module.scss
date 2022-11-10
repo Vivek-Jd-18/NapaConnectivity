@@ -10,14 +10,25 @@
   cursor: pointer;
   border: none;
   white-space: nowrap;
+  transition: all 0.3s ease-out;
+  &:hover {
+    border-bottom-width: 4rem;
+    &::after {
+      content: '';
+      border-bottom: 1px solid $white;
+      width: 4rem;
+      display: block;
+      padding-top: 0.5rem;
+    }
+  }
 }
 
 .active {
-  border-bottom-width: 1rem;
+  border-bottom-width: 4rem;
   &::after {
     content: '';
     border-bottom: 1px solid $white;
-    width: 2rem;
+    width: 8rem;
     display: block;
     padding-top: 0.5rem;
   }

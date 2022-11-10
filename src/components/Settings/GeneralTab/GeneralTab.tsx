@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 import styles from '../Settings.module.scss';
@@ -9,6 +9,7 @@ import useProfile from '../../../hooks/useProfile';
 
 import {
   AccountNapaLogoIcon,
+  AvatarIcon,
   DoneIcon,
   ErrorIcon,
   FacebookBlueIcon,
@@ -23,6 +24,8 @@ import Timezone from '../../TimezoneSelect/TimezoneSelect';
 import { currencies, languages } from '../../../constants/settings.constants';
 import { ToastDescription, ToastTitle } from '../../../typing/toast';
 import Image from 'next/image';
+import Tippy from '@tippyjs/react';
+import { FadeLoader } from 'react-spinners';
 
 const GeneralTab: NextPage = () => {
   const [name, setName] = useState('');
@@ -32,17 +35,29 @@ const GeneralTab: NextPage = () => {
   const [selectedTimezone, setSelectedTimezone] = useState<any>('');
   const { account } = useWebThree();
   const { push } = useRouter();
-  const { createUserProfile, profileDetails, updateUserProfile, profileId } =
-    useProfile();
+  const {
+    createUserProfile,
+    profileDetails,
+    updateUserProfile,
+    profileId,
+    loading,
+  } = useProfile();
+  const [file, setFile] = useState(null);
+  const [preview, setPreview] = useState(null);
+  const inputRef = useRef(null);
+  const [loader, setLoader] = useState(true);
 
   useEffect(() => {
+    setTimeout(() => {
+      setLoader(false);
+    }, 1000);
     if (profileDetails) {
       setName(profileDetails.profileName);
       setBio(profileDetails.bio || '');
       setSelectedTimezone(profileDetails.timezone || '');
       setCurrency(profileDetails.primaryCurrency);
       setLanguage(profileDetails.language || 'English');
-      setPreview(`data:image;base64,${profileDetails?.avatar}`);
+      setPreview(profileDetails?.avatar as any);
     }
   }, [profileDetails]);
 
@@ -78,7 +93,7 @@ const GeneralTab: NextPage = () => {
         language: language || 'English',
         timezone: selectedTimezone.value,
         napaSocialMediaAccount: '',
-        avatar: preview.split(',')[1],
+        avatar: preview,
       };
       // @ts-ignore
       await createUserProfile(user);
@@ -90,7 +105,7 @@ const GeneralTab: NextPage = () => {
           time: 'Now',
         })
       );
-      push('/home');
+      push('/trending');
     } catch (error) {
       toast.error(
         CustomToastWithLink({
@@ -101,7 +116,16 @@ const GeneralTab: NextPage = () => {
         })
       );
     }
-  }, [name, bio, currency, language, selectedTimezone, account, profileId]);
+  }, [
+    name,
+    bio,
+    currency,
+    language,
+    selectedTimezone,
+    account,
+    profileId,
+    preview,
+  ]);
 
   const updateUserProfileHandler = useCallback(async () => {
     try {
@@ -134,7 +158,7 @@ const GeneralTab: NextPage = () => {
         primaryCurrency: currency,
         language: language || 'English',
         timezone: selectedTimezone.value || selectedTimezone,
-        avatar: preview.split(',')[1],
+        avatar: preview,
         napaSocialMediaAccount: '',
       };
       await updateUserProfile(user, profileId || account);
@@ -165,17 +189,61 @@ const GeneralTab: NextPage = () => {
     profileDetails,
     profileId,
     account,
+    preview,
   ]);
-  ////////
-  const [selectedFile, setSelectedFile] = useState();
-  const [preview, setPreview] = useState('');
 
-  // create a preview as a side effect, whenever selected file is changed
-  useEffect(() => {
-    if (!selectedFile) {
+  const handleDragOver = (ev: any) => {
+    ev.preventDefault();
+    ev.stopPropagation();
+    ev.dataTransfer.dropEffect = 'copy';
+  };
+
+  const handleDropBanner = (ev: any) => {
+    ev.preventDefault();
+    ev.stopPropagation();
+    handleDrop(ev.dataTransfer.files[0]);
+  };
+
+  const handleClick = () => {
+    // @ts-ignore
+    inputRef.current.click();
+  };
+
+  const handleChange = (ev: any) => {
+    handleOnChange(ev.target.files[0]);
+    // @ts-ignore
+    inputRef.current.value = null;
+  };
+
+  const handleOnChange = useCallback((file: any) => {
+    if (!file) {
       return;
     }
-
+    const allowedFiles = ['image/jpg', 'image/png', 'image/jpeg'];
+    const fileSize = file.size;
+    if (!allowedFiles.includes(file?.type)) {
+      toast.error(
+        CustomToastWithLink({
+          icon: ErrorIcon,
+          title: 'Invalid Format',
+          description: 'Please upload an image in jpg, png or jpeg format',
+          time: 'Now',
+        })
+      );
+      return;
+    }
+    if (fileSize > 1024 * 1024) {
+      toast.error(
+        CustomToastWithLink({
+          icon: ErrorIcon,
+          title: 'Invalid File Size',
+          description: "File size can't exceed 1 MB",
+          time: 'Now',
+        })
+      );
+      return;
+    }
+    setFile(file);
     const reader = new FileReader();
 
     reader.addEventListener(
@@ -187,167 +255,221 @@ const GeneralTab: NextPage = () => {
       false
     );
 
-    if (selectedFile) {
-      reader.readAsDataURL(selectedFile);
+    if (file) {
+      reader.readAsDataURL(file);
     }
-  }, [selectedFile]);
+  }, []);
 
-  const onSelectFile = (e: any) => {
-    if (!e.target.files || e.target.files.length === 0) {
-      setSelectedFile(undefined);
-      return;
-    }
-
-    // I've kept this example simple by using the first image instead of multiple
-    setSelectedFile(e.target.files[0]);
+  const handleDrop = (file: any) => {
+    handleOnChange(file);
   };
 
-  const handleAvatarRemove = () => {
-    setSelectedFile(undefined);
-    setPreview('');
+  const handleRemove = () => {
+    setFile(null);
+    setPreview(null);
   };
-
-  console.log('preview', preview);
 
   return (
-    <div className={`row col-12 ${styles.leftSideContainer}`}>
-      <div className={styles.Avtar}>
-        <div className={styles.AvtarBox}>
-          <div className={styles.AvarCircle} />
-          <input type="file" onChange={onSelectFile} />
-          {preview && <img src={preview} alt="avatar" />}
+    <>
+      {loading || loader ? (
+        <div className={styles.loaderContainer}>
+          <FadeLoader color="#ffffff" />
         </div>
-        <div className={styles.AvtarAction}>
-          <div className={styles.ChangeBtn}>
-            Change
-            <input type="file" onChange={onSelectFile} />
-          </div>
-          <button className={styles.RemoveBtn} onClick={handleAvatarRemove}>
-            Remove
-          </button>
-        </div>
-      </div>
-      <div className={`col-xl-6 padng_none`}>
-        <div className={styles.formContainer}>
-          <Input
-            value={name}
-            type="text"
-            placeholder="Profile Name"
-            label="Profile Name"
-            onChange={(e) => setName(e.target.value)}
+      ) : (
+        <div className={`row col-12 ${styles.leftSideContainer}`}>
+          <input
+            hidden
+            type="file"
+            aria-label="add files"
+            className={styles.input}
+            ref={inputRef}
+            onChange={handleChange}
           />
-          <div className={styles.textArea}>
-            <span>Bio</span>
-            <textarea value={bio} onChange={(e) => setBio(e.target.value)} />
-          </div>
-          <Timezone value={selectedTimezone} onChange={setSelectedTimezone} />
-          <DropDownComponent
-            title="Currency"
-            options={currencies}
-            dropDownValue={currency}
-            onChange={(e) => setCurrency(e.target.value)}
-          />
-          <DropDownComponent
-            title="Language"
-            options={languages}
-            dropDownValue={language}
-            onChange={(e) => {
-              setLanguage(e.target.value);
-            }}
-          />
-          <button
-            className={styles.saveChanges}
-            onClick={() => {
-              if (!account) {
-                toast.error(
-                  CustomToastWithLink({
-                    icon: WalletNeedsToConnected,
-                    title: ToastTitle.WALLET_NEEDS_TO_CONNECTED,
-                    description: ToastDescription.WALLET_NEEDS_TO_CONNECTED,
-                    time: 'Now',
-                  })
-                );
-                return;
-              }
-              if (profileDetails) {
-                updateUserProfileHandler();
-                return;
-              }
-              createUserProfileHandler();
-            }}
-          >
-            Save changes
-          </button>
-        </div>
-      </div>
-      <div className={`col-xl-6 ${styles.rightSideContainer}`}>
-        <div
-          className={styles.firstChild}
-          data-bs-toggle="collapse"
-          data-bs-target="#collapseExample"
-          aria-expanded="false"
-          aria-controls="collapseExample"
-        >
-          <h1 className={styles.napa}>NAPA Social Art</h1>
-          <SocialMediaButton
-            className={styles.accountBtn}
-            title="Your Account"
-            textColor="#16E6EF"
-            icon={AccountNapaLogoIcon}
-          />
-        </div>
-        <div className="collapse" id="collapseExample">
-          <div className={styles.SocialNapaForm}>
-            <div className={styles.HadFormNapa}>
-              <h5>Connect NAPA Social Art Account</h5>
-              <button
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseExample"
-                aria-expanded="false"
-                aria-controls="collapseExample"
+          <div className={styles.uploadImageConatiner}>
+            {!file && !preview ? (
+              <>
+                <Tippy
+                  className="toolTipContainer"
+                  placement="bottom"
+                  content={
+                    <div>
+                      <p>Supported format: jpg or png.</p>
+                      <p>Maximum size: 1MB</p>
+                    </div>
+                  }
+                >
+                  <div
+                    className={styles.banner}
+                    onDragOver={(e) => handleDragOver(e)}
+                    onDrop={(e) => handleDropBanner(e)}
+                    onClick={() => handleClick()}
+                  >
+                    <Image
+                      src={AvatarIcon}
+                      width={32}
+                      height={32}
+                      alt="avatar"
+                    />
+                  </div>
+                </Tippy>
+              </>
+            ) : (
+              preview && (
+                <img src={preview} className={styles.preview} alt="avatar" />
+              )
+            )}
+            <div className={styles.uploadBtnContainer}>
+              <Tippy
+                placement="bottom"
+                className="toolTipContainer"
+                content={
+                  <div>
+                    <p>Supported format: jpg or png.</p>
+                    <p>Maximum size: 1MB</p>
+                  </div>
+                }
               >
-                <Image
-                  src="/img/exit_icon_form.svg"
-                  alt=""
-                  width={24}
-                  height={24}
+                <span
+                  className={styles.changeBtn}
+                  onClick={() => handleClick()}
+                >
+                  {preview ? 'Change' : 'Browse'}
+                </span>
+              </Tippy>
+              <span className={styles.removeBtn} onClick={() => handleRemove()}>
+                {preview ? 'Remove' : ''}
+              </span>
+            </div>
+          </div>
+          <div className={`col-xl-6 padng_none`}>
+            <div className={styles.formContainer}>
+              <Input
+                value={name}
+                type="text"
+                placeholder="Profile Name"
+                label="Profile Name"
+                onChange={(e) => setName(e.target.value)}
+              />
+              <div className={styles.textArea}>
+                <span>Bio</span>
+                <textarea
+                  value={bio}
+                  onChange={(e) => setBio(e.target.value)}
                 />
+              </div>
+              <Timezone
+                value={selectedTimezone}
+                onChange={setSelectedTimezone}
+              />
+              <DropDownComponent
+                title="Currency"
+                options={currencies}
+                dropDownValue={currency}
+                onChange={(e) => setCurrency(e.target.value)}
+              />
+              <DropDownComponent
+                title="Language"
+                options={languages}
+                dropDownValue={language}
+                onChange={(e) => {
+                  setLanguage(e.target.value);
+                }}
+              />
+              <button
+                className={styles.saveChanges}
+                onClick={() => {
+                  if (!account) {
+                    toast.error(
+                      CustomToastWithLink({
+                        icon: WalletNeedsToConnected,
+                        title: ToastTitle.WALLET_NEEDS_TO_CONNECTED,
+                        description: ToastDescription.WALLET_NEEDS_TO_CONNECTED,
+                        time: 'Now',
+                      })
+                    );
+                    return;
+                  }
+                  if (profileDetails) {
+                    updateUserProfileHandler();
+                    return;
+                  }
+                  createUserProfileHandler();
+                }}
+              >
+                Save changes
               </button>
             </div>
-            <Input
-              value={'dwight.holland@gmail.com'}
-              type="text"
-              placeholder="Username"
-              label="Username"
-              onChange={(e) => setName(e.target.value)}
-            />
-            <Input
-              value={'. . . . . . . .'}
-              type="text"
-              placeholder="Username"
-              label="Password"
-              onChange={(e) => setName(e.target.value)}
-            />
-            <button className={styles.LogInButton}>Log In</button>
+          </div>
+          <div className={`col-xl-6 ${styles.rightSideContainer}`}>
+            <div
+              className={styles.firstChild}
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseExample"
+              aria-expanded="false"
+              aria-controls="collapseExample"
+            >
+              <h1 className={styles.napa}>NAPA Social Art</h1>
+              <SocialMediaButton
+                className={styles.accountBtn}
+                title="Your Account"
+                textColor="#16E6EF"
+                icon={AccountNapaLogoIcon}
+              />
+            </div>
+            <div className="collapse" id="collapseExample">
+              <div className={styles.SocialNapaForm}>
+                <div className={styles.HadFormNapa}>
+                  <h5>Connect NAPA Social Art Account</h5>
+                  <button
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseExample"
+                    aria-expanded="false"
+                    aria-controls="collapseExample"
+                  >
+                    <Image
+                      src="/img/exit_icon_form.svg"
+                      alt=""
+                      width={24}
+                      height={24}
+                    />
+                  </button>
+                </div>
+                <Input
+                  value={'dwight.holland@gmail.com'}
+                  type="text"
+                  placeholder="Username"
+                  label="Username"
+                  onChange={(e) => setName(e.target.value)}
+                />
+                <Input
+                  value={'. . . . . . . .'}
+                  type="text"
+                  placeholder="Username"
+                  label="Password"
+                  onChange={(e) => setName(e.target.value)}
+                />
+                <button className={styles.LogInButton}>Log In</button>
+              </div>
+            </div>
+            <div className={styles.secondChild}>
+              <h1 className={styles.social}>Social Connections</h1>
+              <SocialMediaButton
+                className={styles.twitterBtn}
+                title="Twitter"
+                textColor="#1D9BF0"
+                icon={TwitterBlueIcon}
+              />
+              <SocialMediaButton
+                className={styles.facebookBtn}
+                title="Facebook"
+                icon={FacebookBlueIcon}
+                textColor="#1877F2"
+              />
+            </div>
           </div>
         </div>
-        <div className={styles.secondChild}>
-          <h1 className={styles.social}>Social Connections</h1>
-          <SocialMediaButton
-            className={styles.twitterBtn}
-            title="Twitter"
-            textColor="#1D9BF0"
-            icon={TwitterBlueIcon}
-          />
-          <SocialMediaButton
-            className={styles.facebookBtn}
-            title="Facebook"
-            icon={FacebookBlueIcon}
-            textColor="#1877F2"
-          />
-        </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 };
 

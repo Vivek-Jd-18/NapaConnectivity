@@ -12,6 +12,7 @@ type SocialMediaReviewProps = {
   date: string;
   username: string;
   onChatClicked: () => void;
+  articlesTags: string;
 };
 
 const SocialMediaReview: NextPage<SocialMediaReviewProps> = ({
@@ -21,6 +22,7 @@ const SocialMediaReview: NextPage<SocialMediaReviewProps> = ({
   date,
   username,
   onChatClicked,
+  articlesTags,
 }) => {
   const [open, setOpen] = useState(false);
   return (
@@ -42,7 +44,13 @@ const SocialMediaReview: NextPage<SocialMediaReviewProps> = ({
       </div>
       <div className={styles.userContainer}>
         <div className={styles.avatar}>
-          <Image src={icon} width={40} height={40} alt="avatar" />
+          <Image
+            src={icon}
+            className={styles.avatarImg}
+            width={40}
+            height={40}
+            alt="avatar"
+          />
         </div>
         <div className={styles.userInfo}>
           <span className={styles.userName}>{username}</span>
@@ -103,28 +111,36 @@ const SocialMediaReview: NextPage<SocialMediaReviewProps> = ({
       </div>
       <div className={styles.SmallContent}>
         <p>
-          {!open &&
-            articleBody.substring(0, 400) +
-              (articleBody.length > 400 ? '...' : '')}
+          {!open && (
+            <div
+              className={styles.description}
+              dangerouslySetInnerHTML={{
+                __html:
+                  articleBody.substring(0, 400) +
+                  (articleBody.length > 400 ? '...' : ''),
+              }}
+            ></div>
+          )}
         </p>
       </div>
       {open && (
         <div className={styles.allPeragraphMain}>
-          {articleBody}
+          <div
+            className={styles.description}
+            dangerouslySetInnerHTML={{
+              __html: articleBody,
+            }}
+          ></div>
           <div className={styles.ulPerent}>
             <ul>
-              <li>
-                <p>NFT</p>
-              </li>
-              <li>
-                <p>Tokens</p>
-              </li>
-              <li>
-                <p>Blockchain</p>
-              </li>
-              <li>
-                <p>Crypto</p>
-              </li>
+              {articlesTags &&
+                articlesTags?.split(',').map((tag, index) => {
+                  return (
+                    <li key={`article-tag-${index}`}>
+                      <p>{tag}</p>
+                    </li>
+                  );
+                })}
             </ul>
           </div>
         </div>

@@ -9,7 +9,7 @@ const NotFound: NextPage = () => {
     <>
       <Head>
         <title>404</title>
-        <meta name="description" content="NAPA Developmeent Environment" />
+        <meta name="description" content="NAPA Staging Environment" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="not-found-container">

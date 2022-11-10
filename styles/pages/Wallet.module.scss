@@ -2,7 +2,7 @@
 @import '../abstracts/mixins.module';
 
 .backgroundImage {
-  background-image: url('/assets/images/wallet_bg.png');
+  background-image: url('/assets/images/wallet_bg.webp');
   background-size: cover;
   position: relative;
   height: 100vh;
@@ -41,8 +41,9 @@
       @include font-xs-avenir-regular;
       color: $gray;
 
-      .termsPrivacyText {
+      .termsPrivacyText a{
         color: $white;
+        text-decoration: none;
       }
     }
     .btnContainer {

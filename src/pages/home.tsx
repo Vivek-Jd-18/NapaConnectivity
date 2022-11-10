@@ -27,7 +27,7 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>NAPA Society</title>
+        <title>NAPA Society | Home</title>
         <meta name="description" content="NAPA Developmeent Environment" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -43,7 +43,7 @@ const Home: NextPage = () => {
         </div>
       </section> */}
       
-      <div className="hm_sc">
+      <div className="hm_sc hm_sc_nplng">
         {/* <ReactFullpage
           navigation
           scrollingSpeed={1000} 

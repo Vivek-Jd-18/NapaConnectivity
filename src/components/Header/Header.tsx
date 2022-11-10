@@ -14,13 +14,13 @@ import WalletPopup from '../WalletPopup/WalletPopup';
 import { NapaLogo, NapaLogoWhite } from '../Svg';
 import {
   BurgerMenuIcon,
+  ProfileIcon,
   SearchIcon,
   WalletBlueIcon,
   WalletIconWhite,
 } from '../../components/assets';
-
-// Please import define the logo and hamburger menu//
-// Decouple the search icon with the container //
+import Button from '../Button/Button';
+import MobileSideBar from '../MobileSideBar/MobileSideBar';
 
 type HeaderProps = {
   openMenu: () => void;
@@ -38,6 +38,7 @@ const Header: NextPage<HeaderProps> = ({
   const { push } = useRouter();
   const [popupShow, setPopupShow] = useState(false);
   const [show, setShow] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
   const { walletEth, account, walletBnb, walletNapa, getAccounts } =
     useWebThree();
 
@@ -48,25 +49,17 @@ const Header: NextPage<HeaderProps> = ({
     }
   }, [show]);
 
-  const handleScroll = () => {
-    const header = document.querySelector<HTMLElement>('.innerContainer');
-    if (header) {
-      if (window.scrollY > 74) {
-        header.style.backgroundColor = 'rgb(0,0,0,0.4)';
-        header.style.paddingBottom = '1rem';
-        header.style.transition = '0.8s ease';
-      } else {
-        header.style.backgroundColor = `rgb(0,0,0,${
-          (window.scrollY / 150) * 0.4
-        })`;
-        header.style.paddingBottom = '0';
-        header.style.transition = '0.8s ease';
-      }
+  const handleResize = () => {
+    if (window.innerWidth <= 1024) {
+      return setIsMobile(true);
     }
+    setIsMobile(false);
   };
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   const { profileDetails } = useProfile();
@@ -76,47 +69,6 @@ const Header: NextPage<HeaderProps> = ({
       type: 'delayed',
       duration: 200,
       animTimingFunction: Vivus.EASE_OUT,
-    });
-  }, []);
-
-  // scroll effect
-  const body = document.body;
-  // const triggerMenu = document.querySelector(".page-header .trigger-menu");
-  // const nav = document.querySelector(".page-header nav");
-  // const menu = document.querySelector(".page-header .menu");
-  // const lottieWrapper = document.querySelector(".lottie-wrapper");
-  // const lottiePlayer = document.querySelector("lottie-player");
-
-  window.addEventListener('scroll', () => {});
-
-  useEffect(() => {
-    const element = document.getElementById('scrollElement');
-    const scrollUp = 'scroll-up';
-    const scrollDown = 'scroll-down';
-    let lastScroll = 10;
-
-    element?.addEventListener('scroll', () => {
-      const currentScroll = element.scrollTop;
-      if (currentScroll <= 0) {
-        body.classList.remove(scrollUp);
-        return;
-      }
-
-      if (currentScroll > lastScroll && !body.classList.contains(scrollDown)) {
-        // down
-        body.classList.remove(scrollUp);
-        body.classList.add(scrollDown);
-        // lottiePlayer.play();
-      } else if (
-        currentScroll < lastScroll &&
-        body.classList.contains(scrollDown)
-      ) {
-        // up
-        body.classList.remove(scrollDown);
-        body.classList.add(scrollUp);
-        // lottiePlayer.stop();
-      }
-      lastScroll = currentScroll;
     });
   }, []);
 
@@ -140,10 +92,38 @@ const Header: NextPage<HeaderProps> = ({
             <NapaLogoWhite className={styles.napaLogoWhite} />
           </div>
         </div>
-        <div className="d-flex align-items-center">
+        <div className="d-flex align-items-center had_right_btns">
           <div className={styles.search} onClick={() => setShowSearch(true)}>
             <Image width={36} height={36} src={SearchIcon} alt="search" />
           </div>
+          {account && (
+            <>
+              <Button
+                // text="My Profile"
+                text=""
+                outlined
+                icon={ProfileIcon}
+                onClick={() => {
+                  push('/settings');
+                  setIsMenu(false);
+                }}
+              />
+              {/* <Button
+                text="Wallet"
+                icon={WalletIconTwo}
+                onClick={() => {
+                  toast.error(
+                    CustomToastWithLink({
+                      icon: WalletConnectedIcon,
+                      title: ToastTitle.WALLET_IS_ALREADY_CONNECTED,
+                      description: ToastDescription.WALLET_IS_ALREADY_CONNECTED,
+                      time: 'Now',
+                    })
+                  );
+                }}
+              /> */}
+            </>
+          )}
           <div className={styles.wallet}>
             <div
               onClick={() => {
@@ -177,7 +157,13 @@ const Header: NextPage<HeaderProps> = ({
           </div>
         </div>
       </Container>
-      {isMenu && (
+      {isMenu && isMobile ? (
+        <MobileSideBar
+          isMenu={isMenu}
+          onClick={() => setIsMenu(false)}
+          account={account}
+        />
+      ) : (
         <Sidebar
           isMenu={isMenu}
           onClick={() => setIsMenu(false)}

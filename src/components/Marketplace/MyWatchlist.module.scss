@@ -21,7 +21,7 @@
     .MainListList {
       position: relative;
       overflow-y: auto;
-      height: 294px;
+      height: 370px;
     }
   }
   .MainListHead {
@@ -163,130 +163,134 @@
     color: #DB243A !important;
   }
 }
-// @media screen and (max-width: 1280px) {
-//   .MainListBox {
-//     .MainListHead {
-//       display: none;
-//     }
-//     .MainListListInn {
-//       position: relative;
-//       flex-wrap: wrap;
-//       padding: 40px;
-//       .RowLabel {
-//         justify-content: flex-start;
-//         flex-basis: 25%;
-//         margin-top: 36px;
-//         .RspnsvIcnSpn {
-//           display: flex;
-//           align-items: center;
-//           >span {
-//             margin-right: 8px !important;
-//           }
-//         }
-//         .RspnsvListtext {
-//           .TxtH3 {
-//             h3 {
-//               margin-bottom: 4px;
-//             }
-//           }
-//         }
-//       }
-//       .RowOne {
-//         flex-basis: 100% !important;
-//         margin-top: 0px;
-//         >span {
-//           margin-right: 26px !important ;
-//         }
-//       }
-//       .RowSix {
-//         display: none;
-//       }
-//       .RspnsvEarn {
-//         display: block;
-//       }
-//       .Rspnsvh4 {
-//         display: block;
-//         h4 {
-//           @include font-md-avenir-regular;
-//           font-size: 14px;
-//           line-height: 140%;
-//           color: #91A5A6;
-//           margin-bottom: 0;
-//         }
-//       }
-//       .RowTwo , .RowThree, .RowFour, .RowFive{
-//         flex-direction: column;
-//         justify-content: flex-start;
-//         align-items: flex-start;
-//       }
-//       .RowSeven {
-//         button {
-//           position: absolute;
-//           top: 66px;
-//           right: 0;
-//         }
-//         margin-top: 0;
-//       }
-//       .RspnsvEarn {
-//         >span {
-//           margin-right: 8px !important; 
-//         }
-//         color: #16E6EF;
-//       }
-//     }
-//     .DefSpan {
-//       font-size: 14px;
-//       line-height: 140%;
-//       color: #91A5A6;
-//       @include font-md-avenir-regular;
-//       margin-left: 12px;
-//     }
-//   }
-//   .MainListList {
-//     margin-top: 20px;
+@media screen and (max-width: 1280px) {
+  .MainListBox {
+    .MainListHead {
+      display: none;
+    }
+    .MainListListInn {
+      position: relative;
+      flex-wrap: wrap;
+      padding: 40px;
+      .RowLabel {
+        justify-content: flex-start;
+        flex-basis: 25%;
+        margin-top: 36px;
+        .RspnsvIcnSpn {
+          display: flex;
+          align-items: center;
+          >span {
+            margin-right: 8px !important;
+          }
+        }
+        .RspnsvListtext {
+          .TxtH3 {
+            h3 {
+              margin-bottom: 4px;
+            }
+          }
+        }
+      }
+      .RowOne {
+        flex-basis: 100% !important;
+        margin-top: 0px;
+        >span {
+          margin-right: 26px !important ;
+        }
+      }
+      .RowSix {
+        display: none;
+      }
+      .RspnsvEarn {
+        display: block;
+      }
+      .Rspnsvh4 {
+        display: block;
+        h4 {
+          @include font-md-avenir-regular;
+          font-size: 14px;
+          line-height: 140%;
+          color: #91A5A6;
+          margin-bottom: 0;
+        }
+      }
+      .RowTwo , .RowThree, .RowFour, .RowFive{
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+      }
+      .RowSeven {
+        button {
+          position: absolute;
+          top: 66px;
+          right: 0;
+        }
+        margin-top: 0;
+      }
+      .RspnsvEarn {
+        >span {
+          margin-right: 8px !important;
+         img {
+          display: none !important;
+          margin-right: 0px !important;
+         }
+        }
+        color: #16E6EF;
+      }
+    }
+    .DefSpan {
+      font-size: 14px;
+      line-height: 140%;
+      color: #91A5A6;
+      @include font-md-avenir-regular;
+      margin-left: 12px;
+    }
+  }
+  .MainListList {
+    margin-top: 20px;
     
-//   }
-// }
+  }
+}
 
 
-// @media screen and (max-width: 736px) {
-//   .MainListList {
-//     margin: 0 -40px;
-//     padding: 0 20px;
-//   }
-//   .MainListListInn {
-//     padding: 32px 20px 26px 20px !important;
-//     .RowLabel {
-//       justify-content: flex-start;
-//       flex-basis: 50% !important;
-//       margin-top: 26px !important; 
-//         h6 {
-//           font-size: 16px !important;
-//         }
-//     }
-//     .RowOne {
-//       >span {
-//         margin-right: 20px !important ;
-//       }
-//       margin-top: 0 !important;
-//     }
-//     .RowSeven {
-//       margin-top: 0 !important;
-//     }
-//   }
-//   .RspnsvListtext {
-//     .TxtH3 {
-//       h3 {
-//         font-size: 16px;
-//       }
-//     }
-//   }
-//   .Rspnsvh4 {
-//     h4 {
-//       font-size: 12px !important;
-//     }
-//   }
-// }
+@media screen and (max-width: 736px) {
+  .MainListList {
+    margin: 0 -40px;
+    padding: 0 20px;
+  }
+  .MainListListInn {
+    padding: 32px 20px 26px 20px !important;
+    .RowLabel {
+      justify-content: flex-start;
+      flex-basis: 50% !important;
+      margin-top: 26px !important; 
+        h6 {
+          font-size: 16px !important;
+        }
+    }
+    .RowOne {
+      >span {
+        margin-right: 20px !important ;
+      }
+      margin-top: 0 !important;
+    }
+    .RowSeven {
+      margin-top: 0 !important;
+    }
+  }
+  .RspnsvListtext {
+    .TxtH3 {
+      h3 {
+        font-size: 16px;
+      }
+    }
+  }
+  .Rspnsvh4 {
+    h4 {
+      font-size: 12px !important;
+    }
+  }
+}
 .myWachtUpcontnt{
   padding-bottom: 37px;
   ul{

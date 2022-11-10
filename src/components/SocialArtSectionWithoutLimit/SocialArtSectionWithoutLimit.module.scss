@@ -21,6 +21,7 @@
   flex-direction: column;
   .socialContainer {
     height: 100%;
+    z-index: 2;
   }
   .socialContainerBody {
     height: 100%;
@@ -68,6 +69,7 @@
   .innerSocialContainer {
     width: 75%;
     padding-top: 2.3rem;
+    padding-left: 7rem;
     @include flex-column-start;
   }
   .withoutLimits {
@@ -85,6 +87,7 @@
   .innerSocialContainerRightSide {
     width: 324px;
     margin-top: -104px;
+    margin-right: 7rem;
     @include flex-column-start;
     text-align: left;
     .description {
@@ -98,12 +101,9 @@
       }
     }
   }
-  
 
-    
-  
   .HighlightButton_joinSociety__Wa4y_ {
-      margin-top: 1rem;
+    margin-top: 1rem;
   }
 
   .joinSocietyBtn {
@@ -120,6 +120,15 @@
     display: none;
     img {
       cursor: pointer;
+    }
+  }
+
+  @media only screen and (max-width: 1440px) {
+    .innerSocialContainer {
+      padding-left: 0;
+    }
+    .innerSocialContainerRightSide {
+      margin-right: 0rem;
     }
   }
 
@@ -158,10 +167,10 @@
   //   .withoutLimits {
   //     @include font-4xl-neuropolitical-normal;
   //   }
-    
+
   // }
   @media only screen and (max-width: 1024px) {
-    background-image: url('/assets/images/socialart-background-tablet.png'); r 
+    // background-image: url('/assets/images/socialart-background-tablet.png'); r
     .socialContainer {
       @include flex-center-column;
       .socialContainerBody {
@@ -187,7 +196,6 @@
       .innerSocialContainerRightSide {
         width: 100%;
         padding-top: 1.438rem;
-        
       }
     }
     // .mousePointer {
@@ -206,8 +214,7 @@
       width: 100%;
     }
     .innerSocialContainerRightSide {
- 
-      .description{
+      .description {
         font-size: 1.5rem;
         @media (max-width: 600px) {
           font-size: 1.2rem;
@@ -215,9 +222,9 @@
       }
     }
   }
-  
-  @media only screen and (max-width: 768px) { 
-    background-image: url('/assets/images/socialart-background-mobile.png');
+
+  @media only screen and (max-width: 768px) {
+    // background-image: url('/assets/images/socialart-background-mobile.png');
     .socialContainer {
       .innerSocialContainer {
         .socialArt {
@@ -237,7 +244,7 @@
     }
   }
   @media only screen and (max-width: 576px) {
-    background-image: url('/assets/images/socialart-background-mobile.png');
+    // background-image: url('/assets/images/socialart-background-mobile.png');
     .socialContainer {
       .innerSocialContainer {
         // .socialArt {
@@ -252,13 +259,12 @@
           @include font-base-avenir-regular;
 
           font-weight: 100;
-
         }
       }
     }
   }
   @media only screen and (max-width: 440px) {
-    background-image: url('/assets/images/socialart-background-mobile.png');
+    // background-image: url('/assets/images/socialart-background-mobile.png');
     .socialContainer {
       .innerSocialContainer {
         // .socialArt {
@@ -273,12 +279,10 @@
           font-size: 1.2rem;
 
           font-weight: 100;
-
         }
       }
     }
   }
 }
 @media screen and (max-width: 736px) {
-  
 }

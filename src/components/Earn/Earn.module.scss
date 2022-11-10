@@ -22,6 +22,12 @@
     }
   }
 }
+@media screen and (max-width: 1024px) {
+  .tabsContainer {
+    height: calc(100vh - 359.59px);
+    overflow-y: scroll;
+  }
+}
 .tabsContainer {
   padding-top: 15px;
   @media screen and (max-width: 991px) {
@@ -342,10 +348,10 @@
           font-size: 18px;
           line-height: 110%;
           text-align: right;
-          color: #16E6EF;
+          color: #16e6ef;
           transition: all 0.2s ease-out;
           &:hover {
-            color: #12B7B2;
+            color: #12b7b2;
           }
         }
       }

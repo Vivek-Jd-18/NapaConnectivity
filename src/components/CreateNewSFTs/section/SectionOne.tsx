@@ -44,9 +44,9 @@ export default function SectionOne() {
                     <div className={styles.thrBtnPrnt}>
                         <Link  href="/" ><a className={styles.linkPernt}>Edit</a></Link>
                         <Link href="/sell-nft-page-sc" ><a className={styles.linkPernt}>Sell</a></Link>
-                        {/* <Link  href="/" ><a className={styles.linkPernt}>Cancel</a></Link>
+                        <Link  href="/" ><a className={styles.linkPernt}>Cancel</a></Link>
                         <Link  href="/" ><a className={styles.linkPernt}>Low Price</a></Link>
-                        <Link  href="/" ><a className={styles.linkPernt}>Buy Now for 0.24 NAPA</a></Link> */}
+                        <Link  href="/" ><a className={styles.linkPernt}>Buy Now for 0.24 NAPA</a></Link>
                         <div className={`${styles.RowLabel} ${styles.RowSeven}`}>
                             <div className={styles.butnPernt}>
                                 <button role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -60,7 +60,7 @@ export default function SectionOne() {
                                     </li>
                                     <li>
                                         <a className="dropdown-item" href="#">
-                                            Add to Valuator
+                                            Add to DAVE
                                         </a>
                                     </li>
                                     <li>

@@ -107,7 +107,17 @@ export default function CreateNewPoolFour() {
                         </div>  
                         <div className={styles.btnAndimg}>
                             <button>Contribute</button>
-                            <button className={styles.rightDotBtn}><Image src='/img/more_icon.svg' alt="" width={24} height={24} /></button>
+                            <button role="button" data-bs-toggle="dropdown" aria-expanded="true" className={styles.rightDotBtn}>
+                                <Image src="/img/dotet_ic.png" alt="" width={24} height={24} />
+                            </button>
+                            <ul className="dropdown-menu dropdown-menu-end drpdwn_list drpdwn_list_empty">
+                                <li>
+                                    <a>aaaaa</a>
+                                </li>
+                                <li>
+                                    <a>bbbbbb</a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                     </div>

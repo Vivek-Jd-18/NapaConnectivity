@@ -11,13 +11,13 @@ export default function CreateNewSwappingTwo() {
 
     const optionsthree = [
         { value: '16  :  00', label: '16  :  00' },
-        { value: '16  :  00', label: '16  :  00' },
-        { value: '16  :  00', label: '16  :  00' },
+        { value: '17  :  00', label: '17  :  00' },
+        { value: '18  :  00', label: '18  :  00' },
       ];
       const optionsfor = [
         { value: '50', label: '50' },
-        { value: '50', label: '50' },
-        { value: '50', label: '50' },
+        { value: '60', label: '60' },
+        { value: '70', label: '70' },
       ];
   return (
     <>

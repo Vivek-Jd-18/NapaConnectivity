@@ -42,11 +42,11 @@ const TABS = [
 
 const TAB_TITLES = {
   [NapaLoungeTab.TIPS_AND_TUTORIALS]: 'Whats Trending',
-  [NapaLoungeTab.CO_BATCHING_POOLS]: 'Co Batching Pools',
-  [NapaLoungeTab.UPCOMING_NFT_PROJECTS]: 'NFT Projects',
+  [NapaLoungeTab.CO_BATCHING_POOLS]: 'Co-Batching Pools',
+  [NapaLoungeTab.UPCOMING_NFT_PROJECTS]: 'Top Ranked Projects',
   [NapaLoungeTab.EVENTS]: 'Events',
-  [NapaLoungeTab.ACTIVE_MINTED_POSTS]: 'Active SNFTs',
-  [NapaLoungeTab.EARNED_NAPA_TOKENS]: 'Earned NAPA Tokens',
+  [NapaLoungeTab.ACTIVE_MINTED_POSTS]: 'My Active SNFTs',
+  [NapaLoungeTab.EARNED_NAPA_TOKENS]: 'My Earned NAPA Tokens',
 };
 
 const NapaLounge: NextPage = () => {
@@ -80,7 +80,7 @@ const NapaLounge: NextPage = () => {
       return 'More Pools';
     }
     if (tabs === NapaLoungeTab.UPCOMING_NFT_PROJECTS) {
-      return 'Marketplace';
+      return 'More Projects';
     }
     if (tabs === NapaLoungeTab.EVENTS) {
       return 'NAPA Events';
@@ -103,7 +103,7 @@ const NapaLounge: NextPage = () => {
     } else if (tabs === NapaLoungeTab.ACTIVE_MINTED_POSTS) {
       return 'socialart';
     } else if (tabs === NapaLoungeTab.UPCOMING_NFT_PROJECTS) {
-      return 'marketplace';
+      return 'top-nft';
     }
 
     return '';
@@ -135,7 +135,7 @@ const NapaLounge: NextPage = () => {
       <Container
         className={`${styles.napaLoungeContainer} asinnerContainer asinnerContainerv2`}
       >
-        <h1>
+        <h1 className={styles.Napa_scty_h1}>
           <span className={styles.napa}>NAPA</span>
           <span className={styles.lounge}> Society</span>
         </h1>
