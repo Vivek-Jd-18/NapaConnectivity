@@ -2,8 +2,6 @@
 @import '../../../styles/abstracts/variable.module';
 
 .backgroundImage {
-  // background-image: url('/assets/images/tdb.webp');
-  // background-size: cover;
   position: relative;
   height: 100vh;
   @media (max-width: 1313px) {
@@ -92,20 +90,18 @@
       .rightSideContainer {
         padding-left: 3.4rem;
         padding-top: 10rem;
-        // mask-image: linear-gradient(
-        //   to bottom,
-        //   transparent,
-        //   black 70%,
-        //   black 80%,
-        //   black 100%
-        // );
-        // -webkit-mask-image: linear-gradient(
-        //   to bottom,
-        //   transparent,
-        //   black 60%,
-        //   black 100%,
-        //   black 100%
-        // );
+      }
+    }
+  }
+
+  @media (max-width: 1356px) {
+    .trendingContainer {
+      .rightSideContainer {
+        padding-left: 3.4rem;
+        padding-top: 7rem;
+      }
+      .trendingBodyContainer {
+        @include flex-between;
       }
     }
   }
