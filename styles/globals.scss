@@ -380,17 +380,15 @@ html .NapaLounge_backgroundImage___NtsM {
   // }
 }
 body.scroll-down header.page-header {
-  transform: translateY(-100%);
   transition: 0.4s;
 }
 body.scroll-up header.page-header {
-  transform: transformY(0) !important;
   transition: 0.4s;
 }
 body.scroll-down header.page-header .asinnerContainer {
-  transform: translateY(-100%);
   transition: 0.4s;
   z-index: 1 !important;
+  background-color: black;
 }
 .video_play_bx {
   position: absolute;
@@ -412,8 +410,8 @@ body.scroll-down header.page-header .asinnerContainer {
   display: block;
 }
 body.scroll-up header.page-header .asinnerContainer {
-  transform: transformY(0) !important;
   transition: 0.4s;
+  background-color: rgba(0, 0, 0, 0.9);
 }
 @media (max-width: 376px) {
   .TipsAndTutorialsCard_cardContainer__aXUt3 {
