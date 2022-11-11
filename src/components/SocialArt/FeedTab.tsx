@@ -119,6 +119,7 @@ export default function FeedTab() {
     window.addEventListener('resize', handleModalPosition);
   }, []);
 
+  //@ts-ignore
   const handleActionClick = () => {
     if (!account) {
       toast.error(
