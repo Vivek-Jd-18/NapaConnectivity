@@ -20,7 +20,9 @@ type WalletComponentProps = {
 };
 
 const WalletComponent: NextPage<WalletComponentProps> = ({ account }) => {
-  const { push } = useRouter();
+  const { push, query } = useRouter();
+  console.log('query', query);
+
   const { connectWallet, getAccounts } = useWebThree();
   const [show, setShow] = useState(true);
   const { getUserProfileDetails } = useProfile();
@@ -48,6 +50,10 @@ const WalletComponent: NextPage<WalletComponentProps> = ({ account }) => {
         const profileDetails = await getUserProfileDetails(response);
         // @ts-ignore
         if (response && profileDetails) {
+          if (query) {
+            push(`/${query.redirectTo}`);
+            return;
+          }
           push('/trending');
         } else if (response) {
           push('/settings');
@@ -87,7 +93,9 @@ const WalletComponent: NextPage<WalletComponentProps> = ({ account }) => {
                   <Link href="/terms-conditions">Terms of Service</Link>
                 </span>
                 &nbsp;and our{' '}
-                <span className={styles.termsPrivacyText}><Link href="/privacy-policy">Privacy Policy.</Link></span>
+                <span className={styles.termsPrivacyText}>
+                  <Link href="/privacy-policy">Privacy Policy.</Link>
+                </span>
               </span>
               <div className={`${styles.btnContainer} flex-column`}>
                 {walletButtonList.map(({ borderColor, text, icon }, index) => {
