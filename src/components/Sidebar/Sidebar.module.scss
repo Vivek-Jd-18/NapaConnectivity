@@ -13,7 +13,8 @@
   backdrop-filter: blur(50px);
   overflow-x: hidden;
   z-index: 9999;
-  transition: 0.8s;
+  transition: 1.3s;
+  mask-origin: 0.8s;
   .overlayContentContainer {
     height: 100%;
     .overlayContent {
