@@ -22,6 +22,9 @@ const Index: NextPage = () => {
         <title>NAPA Society Staging Enviornment</title>
         <meta name="description" content="NAPA Staging Environment" />
         <link rel="icon" href="/favicon.ico" />
+        <script type="text/javascript"
+  src="https://app.termly.io/embed.min.js" data-auto-block="on" data-website-uuid="e3fcac01-30e6-4cca-b927-3fd22eee51fe"
+  ></script>
       </Head>
       <div className="hm_sc">
         <ReactFullpage
