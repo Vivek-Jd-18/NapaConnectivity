@@ -62,8 +62,8 @@ export default function FeedTab() {
       toast.error(
         CustomToastWithLink({
           icon: ErrorIcon,
-          title: 'Invalid Format',
-          description: 'Please upload an video in mp4, webm format',
+          title: 'Invalid File Type',
+          description: 'Please upload a video in mp4 or webm format',
           time: 'Now',
         })
       );
@@ -74,7 +74,7 @@ export default function FeedTab() {
         CustomToastWithLink({
           icon: ErrorIcon,
           title: 'Invalid File Size',
-          description: "File size can't exceed 450 MB",
+          description: "File size can't exceed 100 MB",
           time: 'Now',
         })
       );
@@ -201,7 +201,7 @@ export default function FeedTab() {
                       content={
                         <div>
                           <p>Supported format: mp4 or webm.</p>
-                          <p>Maximum size: 450MB</p>
+                          <p>Maximum size: 100MB</p>
                         </div>
                       }
                     >
@@ -209,7 +209,7 @@ export default function FeedTab() {
                     </Tippy>
                   </p>
                   <span className={styles.recomendedText}>
-                    Recommended size 450 MB
+                    File size limit 100 MB
                   </span>
                 </div>
               ) : (
@@ -217,14 +217,14 @@ export default function FeedTab() {
                   <input
                     type={'text'}
                     className={styles.videoInput}
-                    placeholder="Enter name video.."
+                    placeholder="Title your post"
                     value={videoName}
                     onChange={(e) => setVideoName(e.target.value)}
                   />
                   <input
                     type={'text'}
                     className={styles.caption}
-                    placeholder="Write a short caption.."
+                    placeholder="Write a short caption..."
                     value={caption}
                     onChange={(e) => setCaption(e.target.value)}
                   />
@@ -247,7 +247,7 @@ export default function FeedTab() {
                         width="24px"
                         height="24px"
                       />
-                      <span>Upload New</span>
+                      <span>Replace</span>
                     </div>
                     <div className={styles.publishBtn}>
                       <Image
@@ -289,7 +289,7 @@ export default function FeedTab() {
               </Link>
               <div className={styles.UserRightTxt}>
                 <h4>10:22:12</h4>
-                <p>Live Post Remaining</p>
+                <p>Live Post Time Remaining</p>
               </div>
             </div>
             <div className={styles.MdlImage}>
