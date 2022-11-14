@@ -56,36 +56,16 @@ const Footer: NextPage<FooterProps> = ({ footerIconShow }) => {
 
             <ul className={styles.footerMobileIconsContainer}>
               <li className={styles.footerMobileIconItem}>
-                <Image
-                  src={TwitterMobileIcon}
-                  alt="twitter"
-                  width={18}
-                  height={18}
-                />
+              <Link href="https://twitter.com/NapaSociety"><a target="_blank"><Image src={TwitterMobileIcon} alt="Twitter" width={18} height={18} /></a></Link>
               </li>
               <li className={styles.footerMobileIconItem}>
-                <Image
-                  src={DiscordMobileIcon}
-                  alt="discord"
-                  width={18}
-                  height={18}
-                />
+              <Link href="https://discord.gg/pV2vxbkqpb"><a target="_blank"><Image src={DiscordMobileIcon} alt="Discord" width={18} height={18} /></a></Link>
               </li>
               <li className={styles.footerMobileIconItem}>
-                <Image
-                  src={GithubMobileIcon}
-                  alt="github"
-                  width={18}
-                  height={18}
-                />
+              <Link href="https://github.com/NAPA-Society"><a target="_blank"><Image src={GithubMobileIcon} alt="Github" width={18} height={18} /></a></Link>  
               </li>
               <li className={styles.footerMobileIconItem}>
-                <Image
-                  src={MediumMobileIcon}
-                  alt="medium"
-                  width={18}
-                  height={18}
-                />
+              <Link href="https://medium.com/@Napa_Society"><a target="_blank"><Image src={MediumMobileIcon} alt="Medium" width={18} height={18} /></a></Link>  
               </li>
             </ul>
             <ul className={styles.footerIconsContainer}>

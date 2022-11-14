@@ -37,6 +37,7 @@ const TrendingSection: NextPage<TrendingSectionProps> = ({ socket }) => {
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
   const [trendingList, setTrendingList] = useState([]);
+  const [openIndex, setOpenIndex] = useState<null | number>(null);
   const { account } = useWebThree();
   const { profileDetails } = useProfile();
 
@@ -109,7 +110,7 @@ const TrendingSection: NextPage<TrendingSectionProps> = ({ socket }) => {
       socket.removeEventListener('message', () => {});
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [openIndex]);
 
   const fetchTrending = useCallback(async () => {
     try {
@@ -212,7 +213,7 @@ const TrendingSection: NextPage<TrendingSectionProps> = ({ socket }) => {
         }}
       >
         <Image
-          src={'/assets/images/tdb.webp'}
+          src="/assets/images/tdb.webp"
           alt="Trending"
           layout="fill"
           objectFit="cover"
@@ -264,12 +265,15 @@ const TrendingSection: NextPage<TrendingSectionProps> = ({ socket }) => {
                         return (
                           <SocialMediaReview
                             key={`social-media-${index}`}
+                            currentIndex={index}
                             description={articleTitle}
                             articleBody={articleBody}
                             date={createdAt}
                             icon={
                               userProfilePic ? userProfilePic : HowardAvatar
                             }
+                            openIndex={openIndex}
+                            setOpenIndex={setOpenIndex}
                             username={author}
                             onChatClicked={() => setChatPerson(articleTitle)}
                             articlesTags={articleTags}
