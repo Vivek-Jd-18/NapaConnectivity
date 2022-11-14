@@ -126,7 +126,7 @@ div#nft-marketplace .slick-current {
   height: 100vh;
 }
 .not-found-container {
-  background-color: $black;
+  background-color: black;
   height: 100vh;
   @include flex-column-center;
   @include align-center;
