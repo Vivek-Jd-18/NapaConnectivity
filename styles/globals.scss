@@ -386,9 +386,15 @@ body.scroll-up header.page-header {
   transition: 0.4s;
 }
 body.scroll-down header.page-header .asinnerContainer {
+  transition: 0.2s;
+  z-index: 1 !important;
+  background-color: black;
+}
+// Landing page Header
+body.scroll-down-landing header.page-header .asinnerContainer {
   transition: 0.4s;
   z-index: 1 !important;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0,0,0,0.7);
 }
 .video_play_bx {
   position: absolute;

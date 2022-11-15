@@ -39,9 +39,6 @@ function MyApp({ Component, pageProps }: AppProps) {
     AOS.init();
   }, []);
 
-  useEffect(() => {
-    document.body.classList.add('scroll-up');
-  }, []);
 
   const handleScroll = (element: any) => {
     if (element.id != 'scrollElement') return;
@@ -77,17 +74,19 @@ function MyApp({ Component, pageProps }: AppProps) {
             <Loader />
           ) : (
             <div className="main-container">
-              {pathname !== '/404' && pathname !== '/wallet' && pathname !== '/' && (
-                <>
-                  <Header
-                    openMenu={openMenu}
-                    setIsMenu={setIsMenu}
-                    isMenu={isMenu}
-                    setShowSearch={setShowSearch}
-                  />
-                  {showSearch && <Search setShowSearch={setShowSearch} />}
-                </>
-              )}
+              {pathname !== '/404' &&
+                pathname !== '/wallet' &&
+                pathname !== '/' && (
+                  <>
+                    <Header
+                      openMenu={openMenu}
+                      setIsMenu={setIsMenu}
+                      isMenu={isMenu}
+                      setShowSearch={setShowSearch}
+                    />
+                    {showSearch && <Search setShowSearch={setShowSearch} />}
+                  </>
+                )}
               <div onScrollCapture={(e) => handleScroll(e.target)}>
                 <Component {...pageProps} />
               </div>

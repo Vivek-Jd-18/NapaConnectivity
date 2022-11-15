@@ -114,6 +114,7 @@
     font-family: 'Avenir';
     font-style: normal;
     font-weight: 400;
+    text-align: start;
     font-size: 15px;
     line-height: 120%;
     color: #ffffff;
@@ -121,6 +122,8 @@
   }
   .ulPerent {
     margin-top: 30px;
+    display: flex;
+    justify-content: flex-start;
     ul {
       padding: 0;
       margin: 0;
@@ -154,6 +157,7 @@
   p {
     margin-bottom: 0;
     font-size: 14px;
+    text-align: start;
   }
 }
 @media screen and (max-width: 736px) {

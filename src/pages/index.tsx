@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
+
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import bootstrap CSS
 import ReactFullpage from '@fullpage/react-fullpage';
 import SocialArtSectionWithoutLimit from '../components/SocialArtSectionWithoutLimit/SocialArtSectionWithoutLimit';
@@ -26,15 +27,15 @@ const Index: NextPage = () => {
   const handleScroll = (isFirst: boolean) => {
     const body = document.body;
     const scrollUp = 'scroll-up';
-    const scrollDown = 'scroll-down';
+    const scrollDownLanding = 'scroll-down-landing';
 
-    if (!isFirst && !body.classList.contains(scrollDown)) {
+    if (!isFirst && !body.classList.contains(scrollDownLanding)) {
       // down
       body.classList.remove(scrollUp);
-      body.classList.add(scrollDown);
-    } else if (isFirst && body.classList.contains(scrollDown)) {
+      body.classList.add(scrollDownLanding);
+    } else if (isFirst && body.classList.contains(scrollDownLanding)) {
       // up
-      body.classList.remove(scrollDown);
+      body.classList.remove(scrollDownLanding);
       body.classList.add(scrollUp);
     }
   };
@@ -63,8 +64,8 @@ const Index: NextPage = () => {
         </>
         <ReactFullpage
           navigation
-          onLeave={(_, origin) => {
-            handleScroll(origin.isFirst);
+          onLeave={(_, destination) => {
+            handleScroll(destination.isFirst);
           }}
           scrollingSpeed={1000} /* Options here */
           render={() => {
