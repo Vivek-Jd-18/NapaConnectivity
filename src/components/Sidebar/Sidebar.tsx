@@ -181,12 +181,12 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu }) => {
               <div
                 className={`${styles.newlink}`}
                 onClick={() => {
-                  push('/tutorials');
+                  push('/payouts');
                   onClick();
                 }}
               >
-                <a className={`${pathname === '/tutorials' && styles.active}`}>
-                  Tips and Tutorials
+                <a className={`${pathname === '/payouts' && styles.active}`}>
+                  NAPA Payouts
                 </a>
               </div>
             </div>
