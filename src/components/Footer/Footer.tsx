@@ -44,7 +44,7 @@ const Footer: NextPage<FooterProps> = ({ footerIconShow }) => {
                   <li>Marketplace</li>
                 </Link>
                 <Link href={'/earn'}>
-                  <li>NAPA Earn</li>
+                  <li>Earn</li>
                 </Link>
                 <Link href={'/payouts'}>
                 <li>Payouts</li>
@@ -96,13 +96,13 @@ const Footer: NextPage<FooterProps> = ({ footerIconShow }) => {
                 <li>Social Art</li>
               </Link>
               <Link href={'/marketplace'}>
-                <li>NFT Marketplace</li>
+                <li>Marketplace</li>
               </Link>
               {/* <li>NAPA Earn</li> */}
               {/* <li>Leaderboards</li> */}
               {/* <li>Lauchpad</li> */}
               <Link href={'/help-center'}>
-                <li>Help Center</li>
+                <li>Help</li>
               </Link>
             </ul>
           </div>
@@ -119,13 +119,13 @@ const Footer: NextPage<FooterProps> = ({ footerIconShow }) => {
               <li>Social Art</li>
             </Link>
             <Link href={'/marketplace'}>
-              <li>NFT Marketplace</li>
+              <li>Marketplace</li>
             </Link>
             {/* <li>NAPA Earn</li> */}
             {/* <li>Leaderboards</li> */}
             {/* <li>Lauchpad</li> */}
             <Link href={'/support'}>
-              <li>Help Center</li>
+              <li>Help</li>
             </Link>
           </ul>
         </Container>
