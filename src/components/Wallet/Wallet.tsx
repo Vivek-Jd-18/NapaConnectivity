@@ -51,10 +51,9 @@ const WalletComponent: NextPage<WalletComponentProps> = ({ account }) => {
         // @ts-ignore
         if (response && profileDetails) {
           if (query) {
-            push(`/${query.redirectTo}`);
+            push('/trending');
             return;
           }
-          push('/trending');
         } else if (response) {
           push('/settings');
         }
