@@ -103,8 +103,19 @@
   }
   .newPostContainer {
     position: absolute;
-    right: 0rem;
-    top: -2.5rem;
+    left: 0rem;
+    top: -4.2rem;
+    width: 62%;
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: 14px;
+    @media (max-width: 600px) {
+      justify-content: start;
+      position: static;
+    }
+     @media (max-width : 1200px) {
+      width: 100%;
+    }
   }
 }
 .MainScrollBox {
