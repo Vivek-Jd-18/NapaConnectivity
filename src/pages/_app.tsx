@@ -65,6 +65,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <title>NAPA Society Staging Server</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content="NAPA Staging Environment" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
