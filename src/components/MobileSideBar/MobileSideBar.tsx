@@ -147,6 +147,19 @@ const MobileSideBar: NextPage<MobileSideBarProps> = ({ onClick, isMenu }) => {
                 </a>
               </div>
             </div>
+            <div>
+              <div
+                className={`${styles.newlink} `}
+                onClick={() => {
+                  push('/payouts');
+                  onClick();
+                }}
+              >
+                <a className={`${pathname === '/payouts' && styles.active}`}>
+                  NAPA Payouts
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>

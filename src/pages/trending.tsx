@@ -4,6 +4,7 @@ import Head from 'next/head';
 // import styles from '../../styles/pages/Home.module.scss';
 
 import { WEBSOCKET_URL } from '../constants/url';
+import styles from '../../styles/pages/Home.module.scss';
 
 import TrendingSection from '../components/TrendingSection/Trending';
 
@@ -28,10 +29,11 @@ const WhatsTrending: NextPage = () => {
         <meta name="description" content="NAPA Developmeent Environment" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      
-      <div className="hm_sc">
-        <TrendingSection socket={socket} />
-      </div>
+      <section className={styles.container}>
+        <div className={`${styles.child} earnpage hm_sc`} id="scrollElement">
+          <TrendingSection socket={socket} />
+        </div>
+      </section>
     </>
   );
 };

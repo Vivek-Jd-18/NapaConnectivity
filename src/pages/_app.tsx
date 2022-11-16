@@ -1,5 +1,5 @@
 import '../../styles/globals.scss';
-import type { AppProps } from 'next/app';
+import { AppProps } from 'next/app';
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import 'slick-carousel/slick/slick.css';
@@ -39,24 +39,21 @@ function MyApp({ Component, pageProps }: AppProps) {
     AOS.init();
   }, []);
 
+
   const handleScroll = (element: any) => {
+    if (element.id != 'scrollElement') return;
+
     const body = document.body;
     const scrollUp = 'scroll-up';
     const scrollDown = 'scroll-down';
     const currentScroll = element.scrollTop;
-    if (currentScroll <= 0) {
-      body.classList.remove(scrollUp);
-      return;
-    }
+    console.log('scroll' + currentScroll);
 
     if (currentScroll > lastScroll && !body.classList.contains(scrollDown)) {
       // down
       body.classList.remove(scrollUp);
       body.classList.add(scrollDown);
-    } else if (
-      currentScroll < lastScroll &&
-      body.classList.contains(scrollDown)
-    ) {
+    } else if (currentScroll < 10 && body.classList.contains(scrollDown)) {
       // up
       body.classList.remove(scrollDown);
       body.classList.add(scrollUp);
@@ -78,17 +75,19 @@ function MyApp({ Component, pageProps }: AppProps) {
             <Loader />
           ) : (
             <div className="main-container">
-              {pathname !== '/404' && pathname !== '/wallet' && (
-                <>
-                  <Header
-                    openMenu={openMenu}
-                    setIsMenu={setIsMenu}
-                    isMenu={isMenu}
-                    setShowSearch={setShowSearch}
-                  />
-                  {showSearch && <Search setShowSearch={setShowSearch} />}
-                </>
-              )}
+              {pathname !== '/404' &&
+                pathname !== '/wallet' &&
+                pathname !== '/' && (
+                  <>
+                    <Header
+                      openMenu={openMenu}
+                      setIsMenu={setIsMenu}
+                      isMenu={isMenu}
+                      setShowSearch={setShowSearch}
+                    />
+                    {showSearch && <Search setShowSearch={setShowSearch} />}
+                  </>
+                )}
               <div onScrollCapture={(e) => handleScroll(e.target)}>
                 <Component {...pageProps} />
               </div>

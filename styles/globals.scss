@@ -127,7 +127,7 @@ div#nft-marketplace .slick-current {
   height: 100vh;
 }
 .not-found-container {
-  background-color: $black;
+  background-color: black;
   height: 100vh;
   @include flex-column-center;
   @include align-center;
@@ -384,17 +384,21 @@ html .NapaLounge_backgroundImage___NtsM {
   // }
 }
 body.scroll-down header.page-header {
-  transform: translateY(-100%);
   transition: 0.4s;
 }
 body.scroll-up header.page-header {
-  transform: transformY(0) !important;
   transition: 0.4s;
 }
 body.scroll-down header.page-header .asinnerContainer {
-  transform: translateY(-100%);
+  transition: 0.2s;
+  z-index: 1 !important;
+  background-color: black;
+}
+// Landing page Header
+body.scroll-down-landing header.page-header .asinnerContainer {
   transition: 0.4s;
   z-index: 1 !important;
+  background-color: rgba(0,0,0,0.7);
 }
 .video_play_bx {
   position: absolute;
@@ -416,8 +420,8 @@ body.scroll-down header.page-header .asinnerContainer {
   display: block;
 }
 body.scroll-up header.page-header .asinnerContainer {
-  transform: transformY(0) !important;
   transition: 0.4s;
+  background-color: transparent;
 }
 @media (max-width: 376px) {
   .TipsAndTutorialsCard_cardContainer__aXUt3 {
@@ -427,7 +431,7 @@ body.scroll-up header.page-header .asinnerContainer {
 .asinnerContainer {
   padding-left: 7.9vw !important;
   padding-right: 7.9vw !important;
-  max-width: 1905px !important;
+  // max-width: 1905px !important;
   margin: 0 auto !important;
   width: 100% !important;
 }
@@ -1781,5 +1785,17 @@ input::-webkit-inner-spin-button {
   > span {
     margin-right: 8px !important;
     margin-bottom: 4px !important;
+  }
+}
+.toolTipContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  p {
+    color: $white;
+    text-align: center;
+    margin: 0;
+    @include font-sm-avenir-medium;
   }
 }
