@@ -54,7 +54,7 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu }) => {
                 </a>
               </div>
             </div>
-            <div className="trending_rsponce">
+            {/* <div className="trending_rsponce">
               <div
                 className={`${styles.newlink}`}
                 onClick={() => {
@@ -66,7 +66,7 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu }) => {
                   Trending
                 </a>
               </div>
-            </div>
+            </div> */}
             <div className="rspnsv_dis_none">
               <div
                 className={styles.link}
@@ -134,7 +134,7 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu }) => {
                 }}
               >
                 <a className={`${pathname === '/earn' && styles.active}`}>
-                  NAPA Earn
+                  Earn
                 </a>
               </div>
             </div>
@@ -155,15 +155,16 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu }) => {
               <div
                 className={`${styles.newlink}`}
                 onClick={() => {
-                  push('/events');
+                  push('/payouts');
                   onClick();
                 }}
               >
-                <a className={`${pathname === '/events' && styles.active}`}>
-                  Events
+                <a className={`${pathname === '/payouts' && styles.active}`}>
+                  Payouts
                 </a>
               </div>
             </div>
+           
             <div className="rspnsv_dis_none">
               <div
                 className={styles.link}
@@ -177,22 +178,23 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu }) => {
                 </a>
               </div>
             </div>
-            <div className="rspnsv_dis_none">
+            
+            {/* <div className="trending_rsponce">
               <div
-                className={`${styles.newlink}`}
+                className={styles.link}
                 onClick={() => {
-                  push('/payouts');
+                  push('/events');
                   onClick();
                 }}
               >
-                <a className={`${pathname === '/payouts' && styles.active}`}>
-                  NAPA Payouts
+                <a className={`${pathname === '/events' && styles.active}`}>
+                  Events
                 </a>
               </div>
-            </div>
-            <div className="trending_rsponce">
+            </div> */}
+             <div className="rspnsv_dis_none">
               <div
-                className={styles.link}
+                className={`${styles.newlink}`}
                 onClick={() => {
                   push('/events');
                   onClick();
@@ -216,6 +218,7 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu }) => {
                 </a>
               </div>
             </div>
+            
             <div className="rspnsv_dis_none">
               <div
                 className={styles.link}
