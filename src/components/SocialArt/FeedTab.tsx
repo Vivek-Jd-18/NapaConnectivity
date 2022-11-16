@@ -138,8 +138,10 @@ export default function FeedTab() {
 
   return (
     <div className={styles.MainListBox}>
-      <div onClick={handleActionClick} className={styles.newPostContainer}>
-        <HighlightButton title="Create New Post" />
+      <div className={styles.parent}>
+        <div onClick={handleActionClick} className={styles.newPostContainer}>
+          <HighlightButton title="Create New Post" />
+        </div>
       </div>
       <input
         hidden

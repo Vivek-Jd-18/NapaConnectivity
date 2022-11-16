@@ -101,21 +101,26 @@
     margin: 0 -7.9vw;
     display: none;
   }
-  .newPostContainer {
+  .parent {
     position: absolute;
     left: 0rem;
+    padding-bottom: 14px;
     top: -4.2rem;
     width: 62%;
     display: flex;
     justify-content: flex-end;
-    padding-bottom: 14px;
-    @media (max-width: 600px) {
+    z-index: 0;
+    @media (max-width: 1200px) {
+      width: 100%;
+    }
+    @media (max-width: 800px) {
       justify-content: start;
       position: static;
     }
-     @media (max-width : 1200px) {
-      width: 100%;
-    }
+    
+  }
+  .newPostContainer {
+    width: auto;
   }
 }
 .MainScrollBox {
