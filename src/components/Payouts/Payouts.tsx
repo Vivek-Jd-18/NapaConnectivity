@@ -1,22 +1,10 @@
-import axios from 'axios';
-import { useCallback, useEffect, useState } from 'react';
-import { toast } from 'react-toastify';
 import type { NextPage } from 'next';
-import styles from './Payouts.module.scss';
-import { API_URL } from '../../constants/url';
-import useProfile from '../../hooks/useProfile';
-import useWebThree from '../../hooks/useWebThree';
 import Container from '../../Layout/Container/Container';
+import styles from './Payouts.module.scss';
 
-import { ErrorIcon, HowardAvatar, WalletNeedsToConnected } from '../assets';
-import Tab from '../Tab/Tab';
-import SocialMediaReview from '../SocialMediaReview/SocialMediaReview';
-import ChatWindow from '../ChatWindow/ChatWindow';
-import { CustomToastWithLink } from '../CustomToast/CustomToast';
-import { ToastDescription, ToastTitle } from '../../typing/toast';
-import Footer from '../Footer/Footer';
 import Image from 'next/image';
 import Table from 'react-bootstrap/Table';
+import Footer from '../Footer/Footer';
 
 const header = [
   'Tiers',
@@ -190,37 +178,6 @@ const dummyEatherScanTransactions = [
 const Payouts: NextPage = () => {
   return (
     <>
-      <div
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: '50%',
-          transform: 'translateX(-50%)',
-          width: '100%',
-          height: '35vh',
-          zIndex: 5,
-          backgroundImage: 'url(/assets/images/payouts.svg)',
-          objectFit: 'cover',
-          backgroundRepeat: 'no-repeat',
-          backgroundAttachment: 'fixed',
-          backgroundPosition: 'center',
-        }}
-      ></div>
-      <div
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '35vh',
-          backdropFilter: 'blur(4px)',
-          zIndex: 10,
-
-          backgroundImage:
-            'linear-gradient(to bottom, rgba(10, 19, 19, 0) 0%, #0A1313 90%,  #0A1313 100%)',
-        }}
-      ></div>
-
       <div className={styles.backgroundImage} id="payouts">
         <Container className={`${styles.payoutsContainer} asinnerContainer`}>
           <div className={`row col-12 ${styles.payoutsBodyContainer} `}>
@@ -452,7 +409,7 @@ const Payouts: NextPage = () => {
                                   priority={true}
                                   width={10}
                                   height={10}
-                                />{' '}
+                                />
                                 {item.value}
                               </div>
                             </td>
@@ -465,7 +422,7 @@ const Payouts: NextPage = () => {
                                   priority={true}
                                   width={10}
                                   height={10}
-                                />{' '}
+                                />
                                 {item.txnFee}
                               </div>
                             </td>

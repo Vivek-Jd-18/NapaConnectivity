@@ -5,7 +5,7 @@
   // background-image: url('/assets/images/tdb.webp');
   background-size: cover;
   // background-color: #000;
-  padding-top: 6rem;
+  padding-top: 8rem;
   position: relative;
   height: 100vh;
   z-index: 10;
@@ -28,9 +28,9 @@
         @include flex-row-between;
         // background-color: teal;
         margin-bottom: 0.5rem;
-        height: "20vh" !important;
+        height: '20vh' !important;
         align-items: stretch;
-       
+
         width: 100%;
         // margin-top: 2rem;
         // .tabsInnerContainer {
@@ -66,14 +66,13 @@
     .payoutsMetaHuman {
       margin-left: 1.5rem;
       margin-right: 1.5rem;
-     
     }
     .payoutUserDetail {
       padding: 1.5rem;
     }
     .napaTokenPriceContainer {
-padding-left: 4px;
-padding-right: 4px;
+      padding-left: 4px;
+      padding-right: 4px;
     }
     .payoutsCharisImag {
       width: '100%';
@@ -85,7 +84,7 @@ padding-right: 4px;
       font-weight: 400;
       line-height: 110%;
       font-style: normal;
-      color: #91A5A6;
+      color: #91a5a6;
       font-size: 18px;
     }
     .payoutsSubText {
@@ -94,7 +93,7 @@ padding-right: 4px;
       line-height: 110%;
       font-style: normal;
       font-size: 18px;
-      color: #91A5A6;
+      color: #91a5a6;
     }
     .payoutsSubTextValue {
       font-family: $text-neuropolitical;
@@ -102,7 +101,7 @@ padding-right: 4px;
       line-height: 70.4px;
       font-style: normal;
       font-size: 64px;
-      color: #91A5A6;
+      color: #91a5a6;
     }
     .payoutsTableHead {
       font-family: $text-avenir;
@@ -110,18 +109,18 @@ padding-right: 4px;
       line-height: 19.6px;
       font-style: normal;
       font-size: 14px;
-      color: #91A5A6;
+      color: #91a5a6;
     }
     .payoutsTableRow {
       font-family: $text-avenir;
       font-weight: 500;
       line-height: 25.2px;
-font-style: normal;
+      font-style: normal;
       font-size: 18px;
       color: #ffffff;
     }
     .textColor {
-      color: #16E6EF;
+      color: #16e6ef;
     }
     .payouts {
       @include font-6xl-neuropolitical-normal;
@@ -163,34 +162,29 @@ font-style: normal;
     }
     .payoutsSubTextValue {
       font-size: 34px !important;
-      
     }
   }
   @media (max-width: 768px) {
     .napaTokenPriceContainer {
       padding-left: 1px !important;
       padding-right: 1px !important;
-          }
+    }
     .payoutsMetaHuman {
       margin-left: 0.75rem;
       margin-right: 0.75rem;
-     
     }
     .payoutUserDetail {
       padding: 0.75rem !important;
-  
     }
     .payoutsSubTextValue {
-    
       font-size: 24px !important;
-   
     }
     .payoutsText {
       font-family: $text-neuropolitical;
       font-weight: 400;
       line-height: 110%;
       font-style: normal;
-      color: #91A5A6;
+      color: #91a5a6;
       font-size: 14px !important;
     }
     .payoutsSubText {
@@ -199,7 +193,7 @@ font-style: normal;
       line-height: 110%;
       font-style: normal;
       font-size: 14px !important;
-      color: #91A5A6;
+      color: #91a5a6;
     }
     // .napaPayoutsText {
     //   font-size: 40px !important;
@@ -210,7 +204,7 @@ font-style: normal;
       line-height: 19.6px;
       font-style: normal;
       font-size: 10px !important;
-      color: #91A5A6;
+      color: #91a5a6;
     }
     .payoutsTableRow {
       font-family: $text-avenir;
@@ -220,19 +214,13 @@ font-style: normal;
       font-size: 12px !important;
       color: #ffffff;
     }
-    
-  
   }
   @media (max-width: 600px) {
-   
     .payoutsMetaHuman {
       margin-left: 0.75rem;
       margin-right: 0.75rem;
       height: 80px;
     }
-    
-    
-  
   }
   @media (min-width: 1280px) {
     .payoutsContainer {
@@ -261,9 +249,6 @@ font-style: normal;
         // );
       }
     }
-    
-   
-
   }
 
   @media (max-width: 1420px) {
@@ -276,7 +261,6 @@ font-style: normal;
     .payouts {
       @include font-5xl-neuropolitical-normal;
     }
-   
   }
   @media (max-width: 1280px) {
     .payoutsContainer {

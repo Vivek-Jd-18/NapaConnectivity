@@ -896,6 +896,50 @@ input::-webkit-inner-spin-button {
   background: url(/assets/images/sab.webp) no-repeat center top;
   background-size: cover;
 }
+.payouts_bg {
+  background-color: #0A1313;
+  height: '100vh';
+}
+.payouts_container {
+  width: calc(100vw - (100vw - 100%));
+  height: 100vh;
+  position: relative;
+  z-index: 3;
+}
+.payouts_container::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 35vh;
+  z-index: 1;
+  background-image: url(/assets/images/payouts.svg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: 100%;
+}
+
+.payouts_container::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 35vh;
+  backdrop-filter: blur(4px);
+  z-index: 2;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(10, 19, 19, 0) 0%,
+    #0a1313 90%,
+    #0a1313 100%
+  );
+}
+
 .help_sc_bg {
   background: url(/assets/images/tdb.webp) no-repeat center top;
   background-size: cover;
