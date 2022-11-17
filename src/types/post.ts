@@ -17,6 +17,8 @@ export type NewPost = {
   videoCaption: string;
   accountId: string;
   minted: string;
+  userName: string;
+  userImage: string;
 };
 
 export type Post = {
@@ -29,6 +31,8 @@ export type Post = {
   minted: string;
   createdAt: string;
   updatedAt: string;
+  userName: string;
+  userImage: string;
 };
 
 export type activePost = {
