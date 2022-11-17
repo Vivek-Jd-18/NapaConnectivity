@@ -547,6 +547,16 @@ body.scroll-up header.page-header .asinnerContainer {
 .datepickerBoxv2 {
   margin-right: 0 !important;
 }
+@media screen and (min-width: 1980px) {
+  .asinnerContainer {
+    padding-left: 16vw !important;
+    padding-right: 16vw !important;
+
+    margin: 0 auto !important;
+    width: 100% !important;
+  }
+
+}
 @media screen and (max-width: 991px) {
   .col-lg-6-rspnsv {
     padding-left: 54px !important;
