@@ -46,7 +46,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     const scrollUp = 'scroll-up';
     const scrollDown = 'scroll-down';
     const currentScroll = element.scrollTop;
-    console.log('scroll' + currentScroll);
+
 
     if (currentScroll > lastScroll && !body.classList.contains(scrollDown)) {
       // down
@@ -87,7 +87,11 @@ function MyApp({ Component, pageProps }: AppProps) {
                     {showSearch && <Search setShowSearch={setShowSearch} />}
                   </>
                 )}
-              <div onScrollCapture={(e) => handleScroll(e.target)}>
+              <div
+                id="el"
+                id="scrollElement"
+                onScrollCapture={(e) => handleScroll(e.target)}
+              >
                 <Component {...pageProps} />
               </div>
               <ToastContainer

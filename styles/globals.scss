@@ -394,8 +394,18 @@ body.scroll-down header.page-header .asinnerContainer {
   z-index: 1 !important;
   background-color: black;
 }
+body.scroll-down header.page-header .asinnerContainerPayout {
+  transition: 0.2s;
+  z-index: 1 !important;
+  background-color: black;
+}
 // Landing page Header
 body.scroll-down-landing header.page-header .asinnerContainer {
+  transition: 0.4s;
+  z-index: 1 !important;
+  background-color: rgba(0,0,0,0.7);
+}
+body.scroll-down-landing header.page-header .asinnerContainerPayout {
   transition: 0.4s;
   z-index: 1 !important;
   background-color: rgba(0,0,0,0.7);
@@ -423,6 +433,11 @@ body.scroll-up header.page-header .asinnerContainer {
   transition: 0.4s;
   background-color: transparent;
 }
+body.scroll-up header.page-header .asinnerContainerPayout {
+  transition: 0.4s;
+  background-color: transparent;
+}
+
 @media (max-width: 376px) {
   .TipsAndTutorialsCard_cardContainer__aXUt3 {
     min-height: 16vh !important;
@@ -438,17 +453,22 @@ body.scroll-up header.page-header .asinnerContainer {
 .asinnerContainerv2 {
   padding-right: 0 !important;
 }
+.asinnerContainerPayout {
+  padding-inline: 0 !important;
+}
 @media (max-width: 768px) {
   .asinnerContainer {
     padding-left: 40px !important;
     padding-right: 40px !important;
   }
+
 }
 @media (max-width: 736px) {
   .asinnerContainer {
     padding-left: 20px !important;
     padding-right: 20px !important;
   }
+
 }
 .fp-watermark {
   display: none !important;
@@ -546,6 +566,16 @@ body.scroll-up header.page-header .asinnerContainer {
 }
 .datepickerBoxv2 {
   margin-right: 0 !important;
+}
+@media screen and (min-width: 1980px) {
+  .asinnerContainer {
+    padding-left: 16vw !important;
+    padding-right: 16vw !important;
+
+    margin: 0 auto !important;
+    width: 100% !important;
+  }
+
 }
 @media screen and (max-width: 991px) {
   .col-lg-6-rspnsv {
@@ -904,6 +934,8 @@ input::-webkit-inner-spin-button {
 .payouts_container {
   width: calc(100vw - (100vw - 100%));
   height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
   position: relative;
   z-index: 3;
 }

@@ -5,6 +5,14 @@ import styles from './Payouts.module.scss';
 import Image from 'next/image';
 import Table from 'react-bootstrap/Table';
 import Footer from '../Footer/Footer';
+import { numberFormatter } from '@/utils/payout';
+
+const napaUserData = {
+  napaTokenPrice: '2.48250000',
+  totalUser: '328',
+  monthlyActiveUser: '87',
+  dailyActiveUser: '16',
+};
 
 const header = [
   'Tiers',
@@ -209,7 +217,7 @@ const Payouts: NextPage = () => {
                         <div
                           className={`text-white ${styles.payoutsSubTextValue}`}
                         >
-                          2.48250000
+                          {napaUserData.napaTokenPrice}
                         </div>
                       </div>
                     </div>
@@ -224,7 +232,7 @@ const Payouts: NextPage = () => {
                       <div
                         className={`text-white ${styles.payoutsSubTextValue} pt-2`}
                       >
-                        5,328,000
+                        {numberFormatter(napaUserData.totalUser, 1)}
                       </div>
                     </div>
                     <div
@@ -237,7 +245,7 @@ const Payouts: NextPage = () => {
                       <div
                         className={`text-white ${styles.payoutsSubTextValue} pt-2`}
                       >
-                        3,000,000
+                        {numberFormatter(napaUserData.monthlyActiveUser)}
                       </div>
                     </div>
                     <div
@@ -250,7 +258,7 @@ const Payouts: NextPage = () => {
                       <div
                         className={`text-white ${styles.payoutsSubTextValue} pt-2`}
                       >
-                        3,800,000
+                        {numberFormatter(napaUserData.dailyActiveUser)}
                       </div>
                     </div>
                   </div>
@@ -432,8 +440,9 @@ const Payouts: NextPage = () => {
                     </Table>
                   </div>
                 </div>
-                <Footer footerIconShow />
+                {/* <Footer footerIconShow /> */}
               </div>
+              <Footer footerIconShow />
             </div>
           </div>
         </Container>
