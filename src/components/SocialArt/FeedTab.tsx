@@ -13,6 +13,8 @@ import { useRouter } from 'next/router';
 import { FadeLoader } from 'react-spinners';
 import { createNewPost, getAllPosts } from '@/services/PostApi';
 import { activePost, NewPost, Post } from '@/types/post';
+import useProfile from '@/hooks/useProfile';
+import moment from 'moment';
 
 type FeedTabProps = {
   socket: WebSocket;
@@ -44,6 +46,8 @@ export default function FeedTab({ socket }: FeedTabProps) {
   const [loading, setLoading] = React.useState(false);
   const [getPostsLoading, setGetPostsLoading] = React.useState(false);
   const [posts, setPosts] = React.useState<Post[] | null>(null);
+
+  const { profileDetails } = useProfile();
 
   const handleDragOver = (ev: any) => {
     ev.preventDefault();
@@ -160,6 +164,17 @@ export default function FeedTab({ socket }: FeedTabProps) {
       );
       return push(`/wallet?redirectTo=${pathname.split('/')[1]}`);
     }
+    if (!profileDetails?.profileName) {
+      toast.error(
+        CustomToastWithLink({
+          icon: ErrorIcon,
+          title: ToastTitle.PROFILE_NEEDS_TO_BE_CREATED,
+          description: ToastDescription.PROFILE_NEEDS_TO_BE_CREATED,
+          time: 'Now',
+        })
+      );
+      return push(`/settings`);
+    }
     setOpen(true);
     setActive({
       postId: '',
@@ -198,6 +213,8 @@ export default function FeedTab({ socket }: FeedTabProps) {
       videoCaption: caption,
       accountId: account,
       minted: '',
+      userImage: profileDetails.avatar ? profileDetails.avatar : '',
+      userName: profileDetails.profileName,
     };
     setLoading(true);
     const { error, message } = await createNewPost(newPost);
@@ -407,20 +424,24 @@ export default function FeedTab({ socket }: FeedTabProps) {
                   >
                     <div className={styles.leftBox}>
                       <div className={styles.HadUserText}>
-                        <Link href="/">
-                          <div className={styles.HadUserImage}>
-                            <Image
-                              src="/img/user_had.png"
-                              alt=""
-                              width="40px"
-                              height="40px"
-                            />
-                            <div className={styles.UserNameTxt}>
-                              <h4>Catherine Patton</h4>
-                              <p>5 Aug 2022</p>
-                            </div>
+                        <div className={styles.HadUserImage}>
+                          <Image
+                            src={
+                              post.userImage
+                                ? post.userImage
+                                : '/assets/images/img_avatar.png'
+                            }
+                            alt=""
+                            width="40px"
+                            height="40px"
+                          />
+                          <div className={styles.UserNameTxt}>
+                            <h4>{post.userName}</h4>
+                            <p>
+                              {moment(post.createdAt).format('DD MMM YYYY')}
+                            </p>
                           </div>
-                        </Link>
+                        </div>
                         <div className={styles.UserRightTxt}>
                           <h4>10:22:12</h4>
                           <p>Live Post Time Remaining</p>
