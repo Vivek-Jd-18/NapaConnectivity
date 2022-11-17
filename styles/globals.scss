@@ -611,6 +611,7 @@ input::-webkit-inner-spin-button {
     margin-right: 48px;
     &:last-child {
       margin-right: 0;
+      z-index : 1;
     }
     .nav-link {
       position: relative;

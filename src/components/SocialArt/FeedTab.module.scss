@@ -14,12 +14,22 @@
     @include font-lg-neuropolitical-normal;
   }
   .caption {
-    margin: 1rem 0;
+    margin-top: 1rem;
     @include font-md-avenir-medium;
     background-color: transparent;
     outline: none;
     border: none;
     color: $gray;
+  }
+  .errormsg {
+    margin-top: 0.5rem;
+    color: red;
+    @include font-sm-neuropolitical-normal;
+  }
+  .loaderContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .actionContainer {
     display: flex;
@@ -101,21 +111,31 @@
     margin: 0 -7.9vw;
     display: none;
   }
-  .newPostContainer {
+  .parent {
     position: absolute;
     left: 0rem;
+    padding-bottom: 14px;
     top: -4.2rem;
     width: 62%;
     display: flex;
     justify-content: flex-end;
-    padding-bottom: 14px;
-    @media (max-width: 600px) {
+    z-index: 0;
+    @media (max-width: 1200px) {
+      width: 100%;
+    }
+    @media (max-width: 800px) {
       justify-content: start;
       position: static;
     }
-     @media (max-width : 1200px) {
-      width: 100%;
-    }
+  }
+  .newPostContainer {
+    width: auto;
+  }
+  .loadingContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 40vh;
   }
 }
 .MainScrollBox {
@@ -178,7 +198,7 @@
       > span {
         width: 100% !important;
         height: auto !important;
-        img {
+        video {
           object-fit: cover;
         }
       }

@@ -227,8 +227,8 @@ const Payouts: NextPage = () => {
                       className={`col-4 ${styles.payoutUserDetail} d-flex justify-content-between flex-column`}
                     >
                       <div className={`${styles.payoutsSubText}`}>
-                        Total Users
-                      </div>
+                        Total NAPA Users
+                        </div>
                       <div
                         className={`text-white ${styles.payoutsSubTextValue} pt-2`}
                       >
@@ -239,7 +239,7 @@ const Payouts: NextPage = () => {
                       className={`col-4 ${styles.payoutUserDetail} d-flex justify-content-between flex-column`}
                     >
                       <div className={`${styles.payoutsSubText}`}>
-                        Monthly Active User
+                        Monthly Active Users
                       </div>
 
                       <div
@@ -295,7 +295,7 @@ const Payouts: NextPage = () => {
                     Reward Tiers
                   </div>
                   <div className={`${styles.payoutsTableRow} text-white my-2`}>
-                    Token price will be tied the current price
+                    Award %value is a percentage of the current token price and payout amounts will fluctuate based on trading.
                   </div>
                   <div className={styles.tableContainer}>
                     <Table responsive>
