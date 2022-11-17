@@ -47,7 +47,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     const scrollUp = 'scroll-up';
     const scrollDown = 'scroll-down';
     const currentScroll = element.scrollTop;
-    console.log('scroll' + currentScroll);
+
 
     if (currentScroll > lastScroll && !body.classList.contains(scrollDown)) {
       // down

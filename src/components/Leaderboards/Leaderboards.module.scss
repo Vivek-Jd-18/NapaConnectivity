@@ -120,6 +120,7 @@
     width: 100%;
     margin-top: 51px;
     overflow-x: hidden;
+    // overflow-y: scroll;
     padding-top: 50px;
     .CardBoxFirst {
       flex-basis: 30%;
@@ -205,7 +206,7 @@
     margin-top: 2rem;
     @include flex-column;
     overflow-y: scroll;
-    height: calc(100vh - 430px);
+    // height: calc(100vh - 430px);
   }
 }
 @media screen and (max-width: 991px) {
