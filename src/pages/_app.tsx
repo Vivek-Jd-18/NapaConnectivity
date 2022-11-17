@@ -17,7 +17,6 @@ import { useRouter } from 'next/router';
 import { WebThreeContextProvider } from '../contexts/WebThreeContext';
 import { UserContextProvider } from '../contexts/UserContext';
 import 'tippy.js/dist/tippy.css';
-import { SOCIAL_ART_WEBSOCKET_URL, WEBSOCKET_URL } from '@/constants/url';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [isMenu, setIsMenu] = useState(false);
@@ -39,7 +38,6 @@ function MyApp({ Component, pageProps }: AppProps) {
     require('bootstrap/dist/js/bootstrap.bundle.min.js');
     AOS.init();
   }, []);
-
 
   const handleScroll = (element: any) => {
     if (element.id != 'scrollElement') return;
