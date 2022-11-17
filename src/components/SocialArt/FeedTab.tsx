@@ -14,7 +14,11 @@ import { FadeLoader } from 'react-spinners';
 import { createNewPost, getAllPosts } from '@/services/PostApi';
 import { activePost, NewPost, Post } from '@/types/post';
 
-export default function FeedTab() {
+type FeedTabProps = {
+  socket: WebSocket;
+};
+
+export default function FeedTab({ socket }: FeedTabProps) {
   const [active, setActive] = React.useState<activePost>({
     postId: '',
     type: '',
@@ -131,6 +135,18 @@ export default function FeedTab() {
     window.addEventListener('resize', handleModalPosition);
   }, []);
 
+  useEffect(() => {
+    socket.addEventListener(
+      'message',
+      (payload: { type: string; data: string }) => {
+        setPosts((prevPosts) => [
+          JSON.parse(payload.data).posts,
+          ...(prevPosts || []),
+        ]);
+      }
+    );
+  }, []);
+
   //@ts-ignore
   const handleActionClick = () => {
     if (!account) {
@@ -214,7 +230,7 @@ export default function FeedTab() {
     setGetPostsLoading(true);
     const { data }: any = await getAllPosts();
     setGetPostsLoading(false);
-    setPosts(data.data ?? []);
+    setPosts(data?.data ?? []);
   };
 
   useEffect(() => {
@@ -378,441 +394,464 @@ export default function FeedTab() {
             <FadeLoader color="#ffffff" />
           </div>
         ) : (
-          posts?.map((post: Post, index: number) => (
-            <div
-              key={`post-${index}`}
-              className={
-                active
-                  ? `${styles.MainTabBox} ${styles.active}`
-                  : `${styles.MainTabBox}`
-              }
-            >
-              <div className={styles.leftBox}>
-                <div className={styles.HadUserText}>
-                  <Link href="/">
-                    <div className={styles.HadUserImage}>
-                      <Image
-                        src="/img/user_had.png"
-                        alt=""
-                        width="40px"
-                        height="40px"
-                      />
-                      <div className={styles.UserNameTxt}>
-                        <h4>Catherine Patton</h4>
-                        <p>5 Aug 2022</p>
-                      </div>
-                    </div>
-                  </Link>
-                  <div className={styles.UserRightTxt}>
-                    <h4>10:22:12</h4>
-                    <p>Live Post Time Remaining</p>
-                  </div>
-                </div>
-                <div className={styles.MdlImage}>
-                  <video
-                    width={'100%'}
-                    height={'100%'}
-                    autoPlay
-                    controls
-                    src={post.videoFile as string}
+          <>
+            {posts?.length
+              ? posts?.map((post: Post, index: number) => (
+                  <div
+                    key={`post-${index}`}
+                    className={
+                      active
+                        ? `${styles.MainTabBox} ${styles.active}`
+                        : `${styles.MainTabBox}`
+                    }
                   >
-                    The “video” tag is not supported by your browser.
-                  </video>
-                  {/* <Image
+                    <div className={styles.leftBox}>
+                      <div className={styles.HadUserText}>
+                        <Link href="/">
+                          <div className={styles.HadUserImage}>
+                            <Image
+                              src="/img/user_had.png"
+                              alt=""
+                              width="40px"
+                              height="40px"
+                            />
+                            <div className={styles.UserNameTxt}>
+                              <h4>Catherine Patton</h4>
+                              <p>5 Aug 2022</p>
+                            </div>
+                          </div>
+                        </Link>
+                        <div className={styles.UserRightTxt}>
+                          <h4>10:22:12</h4>
+                          <p>Live Post Time Remaining</p>
+                        </div>
+                      </div>
+                      <div className={styles.MdlImage}>
+                        <video
+                          width={'100%'}
+                          height={'100%'}
+                          autoPlay
+                          controls
+                          src={post.videoFile as string}
+                        >
+                          The “video” tag is not supported by your browser.
+                        </video>
+                        {/* <Image
                       src="/img/user_post.png"
                       alt=""
                       width="720px"
                       height="320px"
                     /> */}
-                </div>
-                <div className={styles.BotomTxt}>
-                  <a href="#" className={styles.BotomLikes}>
-                    <Image
-                      src="/img/heart_icon.svg"
-                      alt=""
-                      width="24px"
-                      height="24px"
-                    />
-                    <span>
-                      496 <b>likes</b>
-                    </span>
-                  </a>
-                  <button
-                    className={
-                      active.postId === post.postId && active.type === 'comment'
-                        ? `${styles.BotomLikes} ${styles.active}`
-                        : `${styles.BotomLikes}`
-                    }
-                    onClick={() =>
-                      handleClickOne({ postId: post.postId, type: 'comment' })
-                    }
-                  >
-                    <Image
-                      src="/img/feedback_icon_icon.svg"
-                      alt=""
-                      width="24px"
-                      height="24px"
-                    />
-                    <span>
-                      16 <b>comments</b>
-                    </span>
-                  </button>
-                  <a href="#" className={styles.BotomLikes}>
-                    <Image
-                      src="/img/reward_icon.svg"
-                      alt=""
-                      width="24px"
-                      height="24px"
-                    />
-                    <span>
-                      12 <b>awards</b>
-                    </span>
-                  </a>
-                  <button
-                    className={
-                      active.postId === post.postId && active.type === 'mint'
-                        ? `${styles.BotomLikes} ${styles.active}`
-                        : `${styles.BotomLikes}`
-                    }
-                    onClick={() =>
-                      handleClickOne({ postId: post.postId, type: 'mint' })
-                    }
-                  >
-                    <Image
-                      src="/img/mint_icon.svg"
-                      alt=""
-                      width="24px"
-                      height="24px"
-                    />
-                    <span>Mint</span>
-                  </button>
-                  <a href="#" className={styles.BotomLikes}>
-                    <Image
-                      src="/img/share_icon.svg"
-                      alt=""
-                      width="24px"
-                      height="24px"
-                    />
-                    <span>
-                      <b>Share</b>
-                    </span>
-                  </a>
-                </div>
-              </div>
-              {active.postId === post.postId && active.type === 'comment' && (
-                <div
-                  className={
-                    active.postId === post.postId && active.type === 'comment'
-                      ? `${styles.rightBox} ${styles.active}`
-                      : `${styles.rightBox}`
-                  }
-                >
-                  <button
-                    className={styles.ExitButton}
-                    onClick={() =>
-                      handleClickOne({
-                        postId: '',
-                        type: '',
-                      })
-                    }
-                  >
-                    <Image
-                      src="/img/exit_icon.svg"
-                      alt=""
-                      width="24px"
-                      height="24px"
-                    />
-                  </button>
-                  <h1>16 comments</h1>
-                  <div className={styles.ForShadow}>
-                    <div className={styles.UserComment}>
-                      <div className={styles.FisrtComBox}>
-                        <div className={styles.HadComment}>
-                          <a href="#" className={styles.leftIcontxt}>
-                            <Image
-                              src="/img/comment01.png"
-                              alt=""
-                              width="28px"
-                              height="28px"
-                            />
-                            <h4>Marta Thornton</h4>
-                          </a>
-                          <p>1 hour</p>
-                        </div>
-                        <div className={styles.btmcomment}>
-                          <p>
-                            However venture pursuit he am mr cordial. Forming
-                            musical am hearing studied be luckily.
-                          </p>
-                          <div className={styles.LikeReplyTxt}>
-                            <a href="#">Like</a>
-                            <a href="#">Reply</a>
-                          </div>
-                        </div>
                       </div>
-                      <div className={styles.FisrtComBox}>
-                        <div className={styles.HadComment}>
-                          <a href="#" className={styles.leftIcontxt}>
-                            <Image
-                              src="/img/comment02.svg"
-                              alt=""
-                              width="28px"
-                              height="28px"
-                            />
-                            <h4>Dorothy Mccoy</h4>
-                          </a>
-                          <p>4 hour</p>
-                        </div>
-                        <div className={styles.btmcomment}>
-                          <p>Change wholly say why eldest period.</p>
-                          <div className={styles.LikeReplyTxt}>
-                            <a href="#">Like</a>
-                            <a href="#">Reply</a>
-                          </div>
-                        </div>
-                      </div>
-                      <div className={styles.FisrtComBox}>
-                        <div className={styles.HadComment}>
-                          <a href="#" className={styles.leftIcontxt}>
-                            <Image
-                              src="/img/comment03.svg"
-                              alt=""
-                              width="28px"
-                              height="28px"
-                            />
-                            <h4>Howard Copeland</h4>
-                          </a>
-                          <p>1 hour</p>
-                        </div>
-                        <div className={styles.btmcomment}>
-                          <p>
-                            Unfeeling agreeable suffering it on smallness
-                            newspaper be. So come must time no as. Do on
-                            unpleasing.{' '}
-                          </p>
-                          <div className={styles.LikeReplyTxt}>
-                            <a href="#">Like</a>
-                            <a href="#">Reply</a>
-                          </div>
-                        </div>
-                      </div>
-                      <div className={styles.FisrtComBox}>
-                        <div className={styles.HadComment}>
-                          <a href="#" className={styles.leftIcontxt}>
-                            <Image
-                              src="/img/comment03.svg"
-                              alt=""
-                              width="28px"
-                              height="28px"
-                            />
-                            <h4>Howard Copeland</h4>
-                          </a>
-                          <p>1 hour</p>
-                        </div>
-                        <div className={styles.btmcomment}>
-                          <p>
-                            Unfeeling agreeable suffering it on smallness
-                            newspaper be. So come must time no as. Do on
-                            unpleasing.{' '}
-                          </p>
-                          <div className={styles.LikeReplyTxt}>
-                            <a href="#">Like</a>
-                            <a href="#">Reply</a>
-                          </div>
-                        </div>
-                      </div>
-                      <div className={styles.FisrtComBox}>
-                        <div className={styles.HadComment}>
-                          <a href="#" className={styles.leftIcontxt}>
-                            <Image
-                              src="/img/comment03.svg"
-                              alt=""
-                              width="28px"
-                              height="28px"
-                            />
-                            <h4>Howard Copeland</h4>
-                          </a>
-                          <p>1 hour</p>
-                        </div>
-                        <div className={styles.btmcomment}>
-                          <p>
-                            Unfeeling agreeable suffering it on smallness
-                            newspaper be. So come must time no as. Do on
-                            unpleasing.{' '}
-                          </p>
-                          <div className={styles.LikeReplyTxt}>
-                            <a href="#">Like</a>
-                            <a href="#">Reply</a>
-                          </div>
-                        </div>
+                      <div className={styles.BotomTxt}>
+                        <a href="#" className={styles.BotomLikes}>
+                          <Image
+                            src="/img/heart_icon.svg"
+                            alt=""
+                            width="24px"
+                            height="24px"
+                          />
+                          <span>
+                            496 <b>likes</b>
+                          </span>
+                        </a>
+                        <button
+                          className={
+                            active.postId === post.postId &&
+                            active.type === 'comment'
+                              ? `${styles.BotomLikes} ${styles.active}`
+                              : `${styles.BotomLikes}`
+                          }
+                          onClick={() =>
+                            handleClickOne({
+                              postId: post.postId,
+                              type: 'comment',
+                            })
+                          }
+                        >
+                          <Image
+                            src="/img/feedback_icon_icon.svg"
+                            alt=""
+                            width="24px"
+                            height="24px"
+                          />
+                          <span>
+                            16 <b>comments</b>
+                          </span>
+                        </button>
+                        <a href="#" className={styles.BotomLikes}>
+                          <Image
+                            src="/img/reward_icon.svg"
+                            alt=""
+                            width="24px"
+                            height="24px"
+                          />
+                          <span>
+                            12 <b>awards</b>
+                          </span>
+                        </a>
+                        <button
+                          className={
+                            active.postId === post.postId &&
+                            active.type === 'mint'
+                              ? `${styles.BotomLikes} ${styles.active}`
+                              : `${styles.BotomLikes}`
+                          }
+                          onClick={() =>
+                            handleClickOne({
+                              postId: post.postId,
+                              type: 'mint',
+                            })
+                          }
+                        >
+                          <Image
+                            src="/img/mint_icon.svg"
+                            alt=""
+                            width="24px"
+                            height="24px"
+                          />
+                          <span>Mint</span>
+                        </button>
+                        <a href="#" className={styles.BotomLikes}>
+                          <Image
+                            src="/img/share_icon.svg"
+                            alt=""
+                            width="24px"
+                            height="24px"
+                          />
+                          <span>
+                            <b>Share</b>
+                          </span>
+                        </a>
                       </div>
                     </div>
-                  </div>
+                    {active.postId === post.postId &&
+                      active.type === 'comment' && (
+                        <div
+                          className={
+                            active.postId === post.postId &&
+                            active.type === 'comment'
+                              ? `${styles.rightBox} ${styles.active}`
+                              : `${styles.rightBox}`
+                          }
+                        >
+                          <button
+                            className={styles.ExitButton}
+                            onClick={() =>
+                              handleClickOne({
+                                postId: '',
+                                type: '',
+                              })
+                            }
+                          >
+                            <Image
+                              src="/img/exit_icon.svg"
+                              alt=""
+                              width="24px"
+                              height="24px"
+                            />
+                          </button>
+                          <h1>16 comments</h1>
+                          <div className={styles.ForShadow}>
+                            <div className={styles.UserComment}>
+                              <div className={styles.FisrtComBox}>
+                                <div className={styles.HadComment}>
+                                  <a href="#" className={styles.leftIcontxt}>
+                                    <Image
+                                      src="/img/comment01.png"
+                                      alt=""
+                                      width="28px"
+                                      height="28px"
+                                    />
+                                    <h4>Marta Thornton</h4>
+                                  </a>
+                                  <p>1 hour</p>
+                                </div>
+                                <div className={styles.btmcomment}>
+                                  <p>
+                                    However venture pursuit he am mr cordial.
+                                    Forming musical am hearing studied be
+                                    luckily.
+                                  </p>
+                                  <div className={styles.LikeReplyTxt}>
+                                    <a href="#">Like</a>
+                                    <a href="#">Reply</a>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className={styles.FisrtComBox}>
+                                <div className={styles.HadComment}>
+                                  <a href="#" className={styles.leftIcontxt}>
+                                    <Image
+                                      src="/img/comment02.svg"
+                                      alt=""
+                                      width="28px"
+                                      height="28px"
+                                    />
+                                    <h4>Dorothy Mccoy</h4>
+                                  </a>
+                                  <p>4 hour</p>
+                                </div>
+                                <div className={styles.btmcomment}>
+                                  <p>Change wholly say why eldest period.</p>
+                                  <div className={styles.LikeReplyTxt}>
+                                    <a href="#">Like</a>
+                                    <a href="#">Reply</a>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className={styles.FisrtComBox}>
+                                <div className={styles.HadComment}>
+                                  <a href="#" className={styles.leftIcontxt}>
+                                    <Image
+                                      src="/img/comment03.svg"
+                                      alt=""
+                                      width="28px"
+                                      height="28px"
+                                    />
+                                    <h4>Howard Copeland</h4>
+                                  </a>
+                                  <p>1 hour</p>
+                                </div>
+                                <div className={styles.btmcomment}>
+                                  <p>
+                                    Unfeeling agreeable suffering it on
+                                    smallness newspaper be. So come must time no
+                                    as. Do on unpleasing.{' '}
+                                  </p>
+                                  <div className={styles.LikeReplyTxt}>
+                                    <a href="#">Like</a>
+                                    <a href="#">Reply</a>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className={styles.FisrtComBox}>
+                                <div className={styles.HadComment}>
+                                  <a href="#" className={styles.leftIcontxt}>
+                                    <Image
+                                      src="/img/comment03.svg"
+                                      alt=""
+                                      width="28px"
+                                      height="28px"
+                                    />
+                                    <h4>Howard Copeland</h4>
+                                  </a>
+                                  <p>1 hour</p>
+                                </div>
+                                <div className={styles.btmcomment}>
+                                  <p>
+                                    Unfeeling agreeable suffering it on
+                                    smallness newspaper be. So come must time no
+                                    as. Do on unpleasing.{' '}
+                                  </p>
+                                  <div className={styles.LikeReplyTxt}>
+                                    <a href="#">Like</a>
+                                    <a href="#">Reply</a>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className={styles.FisrtComBox}>
+                                <div className={styles.HadComment}>
+                                  <a href="#" className={styles.leftIcontxt}>
+                                    <Image
+                                      src="/img/comment03.svg"
+                                      alt=""
+                                      width="28px"
+                                      height="28px"
+                                    />
+                                    <h4>Howard Copeland</h4>
+                                  </a>
+                                  <p>1 hour</p>
+                                </div>
+                                <div className={styles.btmcomment}>
+                                  <p>
+                                    Unfeeling agreeable suffering it on
+                                    smallness newspaper be. So come must time no
+                                    as. Do on unpleasing.{' '}
+                                  </p>
+                                  <div className={styles.LikeReplyTxt}>
+                                    <a href="#">Like</a>
+                                    <a href="#">Reply</a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
 
-                  <div className={styles.BtmCommentBtn}>
-                    <input type="text" placeholder="Write a comment.." />
-                    <button>Send</button>
-                  </div>
-                </div>
-              )}
-              {active.postId === post.postId && active.type === 'mint' && (
-                <div
-                  className={
-                    active.postId === post.postId && active.type === 'mint'
-                      ? `${styles.rightBox} ${styles.active}`
-                      : `${styles.rightBox}`
-                  }
-                >
-                  <button
-                    className={styles.ExitButton}
-                    onClick={() =>
-                      handleClickOne({
-                        postId: '',
-                        type: '',
-                      })
-                    }
-                  >
-                    <Image
-                      src="/img/exit_icon.svg"
-                      alt=""
-                      width="24px"
-                      height="24px"
-                    />
-                  </button>
-                  <h1>16 comments</h1>
-                  <div className={styles.ForShadow}>
-                    <div className={styles.UserComment}>
-                      <div className={styles.FisrtComBox}>
-                        <div className={styles.HadComment}>
-                          <a href="#" className={styles.leftIcontxt}>
-                            <Image
-                              src="/img/comment01.png"
-                              alt=""
-                              width="28px"
-                              height="28px"
+                          <div className={styles.BtmCommentBtn}>
+                            <input
+                              type="text"
+                              placeholder="Write a comment.."
                             />
-                            <h4>Marta Thornton</h4>
-                          </a>
-                          <p>1 hour</p>
-                        </div>
-                        <div className={styles.btmcomment}>
-                          <p>
-                            However venture pursuit he am mr cordial. Forming
-                            musical am hearing studied be luckily.
-                          </p>
-                          <div className={styles.LikeReplyTxt}>
-                            <a href="#">Like</a>
-                            <a href="#">Reply</a>
+                            <button>Send</button>
                           </div>
                         </div>
-                      </div>
-                      <div className={styles.FisrtComBox}>
-                        <div className={styles.HadComment}>
-                          <a href="#" className={styles.leftIcontxt}>
-                            <Image
-                              src="/img/comment02.svg"
-                              alt=""
-                              width="28px"
-                              height="28px"
-                            />
-                            <h4>Dorothy Mccoy</h4>
-                          </a>
-                          <p>4 hour</p>
-                        </div>
-                        <div className={styles.btmcomment}>
-                          <p>Change wholly say why eldest period.</p>
-                          <div className={styles.LikeReplyTxt}>
-                            <a href="#">Like</a>
-                            <a href="#">Reply</a>
+                      )}
+                    {active.postId === post.postId && active.type === 'mint' && (
+                      <div
+                        className={
+                          active.postId === post.postId &&
+                          active.type === 'mint'
+                            ? `${styles.rightBox} ${styles.active}`
+                            : `${styles.rightBox}`
+                        }
+                      >
+                        <button
+                          className={styles.ExitButton}
+                          onClick={() =>
+                            handleClickOne({
+                              postId: '',
+                              type: '',
+                            })
+                          }
+                        >
+                          <Image
+                            src="/img/exit_icon.svg"
+                            alt=""
+                            width="24px"
+                            height="24px"
+                          />
+                        </button>
+                        <h1>16 comments</h1>
+                        <div className={styles.ForShadow}>
+                          <div className={styles.UserComment}>
+                            <div className={styles.FisrtComBox}>
+                              <div className={styles.HadComment}>
+                                <a href="#" className={styles.leftIcontxt}>
+                                  <Image
+                                    src="/img/comment01.png"
+                                    alt=""
+                                    width="28px"
+                                    height="28px"
+                                  />
+                                  <h4>Marta Thornton</h4>
+                                </a>
+                                <p>1 hour</p>
+                              </div>
+                              <div className={styles.btmcomment}>
+                                <p>
+                                  However venture pursuit he am mr cordial.
+                                  Forming musical am hearing studied be luckily.
+                                </p>
+                                <div className={styles.LikeReplyTxt}>
+                                  <a href="#">Like</a>
+                                  <a href="#">Reply</a>
+                                </div>
+                              </div>
+                            </div>
+                            <div className={styles.FisrtComBox}>
+                              <div className={styles.HadComment}>
+                                <a href="#" className={styles.leftIcontxt}>
+                                  <Image
+                                    src="/img/comment02.svg"
+                                    alt=""
+                                    width="28px"
+                                    height="28px"
+                                  />
+                                  <h4>Dorothy Mccoy</h4>
+                                </a>
+                                <p>4 hour</p>
+                              </div>
+                              <div className={styles.btmcomment}>
+                                <p>Change wholly say why eldest period.</p>
+                                <div className={styles.LikeReplyTxt}>
+                                  <a href="#">Like</a>
+                                  <a href="#">Reply</a>
+                                </div>
+                              </div>
+                            </div>
+                            <div className={styles.FisrtComBox}>
+                              <div className={styles.HadComment}>
+                                <a href="#" className={styles.leftIcontxt}>
+                                  <Image
+                                    src="/img/comment03.svg"
+                                    alt=""
+                                    width="28px"
+                                    height="28px"
+                                  />
+                                  <h4>Howard Copeland</h4>
+                                </a>
+                                <p>1 hour</p>
+                              </div>
+                              <div className={styles.btmcomment}>
+                                <p>
+                                  Unfeeling agreeable suffering it on smallness
+                                  newspaper be. So come must time no as. Do on
+                                  unpleasing.{' '}
+                                </p>
+                                <div className={styles.LikeReplyTxt}>
+                                  <a href="#">Like</a>
+                                  <a href="#">Reply</a>
+                                </div>
+                              </div>
+                            </div>
+                            <div className={styles.FisrtComBox}>
+                              <div className={styles.HadComment}>
+                                <a href="#" className={styles.leftIcontxt}>
+                                  <Image
+                                    src="/img/comment03.svg"
+                                    alt=""
+                                    width="28px"
+                                    height="28px"
+                                  />
+                                  <h4>Howard Copeland</h4>
+                                </a>
+                                <p>1 hour</p>
+                              </div>
+                              <div className={styles.btmcomment}>
+                                <p>
+                                  Unfeeling agreeable suffering it on smallness
+                                  newspaper be. So come must time no as. Do on
+                                  unpleasing.{' '}
+                                </p>
+                                <div className={styles.LikeReplyTxt}>
+                                  <a href="#">Like</a>
+                                  <a href="#">Reply</a>
+                                </div>
+                              </div>
+                            </div>
+                            <div className={styles.FisrtComBox}>
+                              <div className={styles.HadComment}>
+                                <a href="#" className={styles.leftIcontxt}>
+                                  <Image
+                                    src="/img/comment03.svg"
+                                    alt=""
+                                    width="28px"
+                                    height="28px"
+                                  />
+                                  <h4>Howard Copeland</h4>
+                                </a>
+                                <p>1 hour</p>
+                              </div>
+                              <div className={styles.btmcomment}>
+                                <p>
+                                  Unfeeling agreeable suffering it on smallness
+                                  newspaper be. So come must time no as. Do on
+                                  unpleasing.{' '}
+                                </p>
+                                <div className={styles.LikeReplyTxt}>
+                                  <a href="#">Like</a>
+                                  <a href="#">Reply</a>
+                                </div>
+                              </div>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      <div className={styles.FisrtComBox}>
-                        <div className={styles.HadComment}>
-                          <a href="#" className={styles.leftIcontxt}>
-                            <Image
-                              src="/img/comment03.svg"
-                              alt=""
-                              width="28px"
-                              height="28px"
-                            />
-                            <h4>Howard Copeland</h4>
-                          </a>
-                          <p>1 hour</p>
-                        </div>
-                        <div className={styles.btmcomment}>
-                          <p>
-                            Unfeeling agreeable suffering it on smallness
-                            newspaper be. So come must time no as. Do on
-                            unpleasing.{' '}
-                          </p>
-                          <div className={styles.LikeReplyTxt}>
-                            <a href="#">Like</a>
-                            <a href="#">Reply</a>
-                          </div>
-                        </div>
-                      </div>
-                      <div className={styles.FisrtComBox}>
-                        <div className={styles.HadComment}>
-                          <a href="#" className={styles.leftIcontxt}>
-                            <Image
-                              src="/img/comment03.svg"
-                              alt=""
-                              width="28px"
-                              height="28px"
-                            />
-                            <h4>Howard Copeland</h4>
-                          </a>
-                          <p>1 hour</p>
-                        </div>
-                        <div className={styles.btmcomment}>
-                          <p>
-                            Unfeeling agreeable suffering it on smallness
-                            newspaper be. So come must time no as. Do on
-                            unpleasing.{' '}
-                          </p>
-                          <div className={styles.LikeReplyTxt}>
-                            <a href="#">Like</a>
-                            <a href="#">Reply</a>
-                          </div>
-                        </div>
-                      </div>
-                      <div className={styles.FisrtComBox}>
-                        <div className={styles.HadComment}>
-                          <a href="#" className={styles.leftIcontxt}>
-                            <Image
-                              src="/img/comment03.svg"
-                              alt=""
-                              width="28px"
-                              height="28px"
-                            />
-                            <h4>Howard Copeland</h4>
-                          </a>
-                          <p>1 hour</p>
-                        </div>
-                        <div className={styles.btmcomment}>
-                          <p>
-                            Unfeeling agreeable suffering it on smallness
-                            newspaper be. So come must time no as. Do on
-                            unpleasing.{' '}
-                          </p>
-                          <div className={styles.LikeReplyTxt}>
-                            <a href="#">Like</a>
-                            <a href="#">Reply</a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
 
-                  <div className={styles.BtmCommentBtn}>
-                    <input type="text" placeholder="Write a comment.." />
-                    <button>Send</button>
+                        <div className={styles.BtmCommentBtn}>
+                          <input type="text" placeholder="Write a comment.." />
+                          <button>Send</button>
+                        </div>
+                      </div>
+                    )}
                   </div>
-                </div>
-              )}
-            </div>
-          ))
+                ))
+              : !open && (
+                  <div className={styles.NotFoundMessageContainer}>
+                    <p>Posts not found</p>
+                  </div>
+                )}
+          </>
         )}
       </div>
     </div>
