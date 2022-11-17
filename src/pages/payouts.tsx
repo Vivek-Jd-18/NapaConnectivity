@@ -7,7 +7,7 @@ const PayoutsDetail: NextPage = () => {
   return (
     <>
       <Head>
-        <title>NAPA Society | Trending</title>
+        <title>NAPA Society | Payouts</title>
         <meta name="description" content="NAPA Developmeent Environment" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
