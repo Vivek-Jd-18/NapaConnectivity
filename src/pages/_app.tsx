@@ -87,7 +87,11 @@ function MyApp({ Component, pageProps }: AppProps) {
                     {showSearch && <Search setShowSearch={setShowSearch} />}
                   </>
                 )}
-              <div onScrollCapture={(e) => handleScroll(e.target)}>
+              <div
+                id="el"
+                id="scrollElement"
+                onScrollCapture={(e) => handleScroll(e.target)}
+              >
                 <Component {...pageProps} />
               </div>
               <ToastContainer

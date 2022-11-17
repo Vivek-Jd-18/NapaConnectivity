@@ -209,7 +209,13 @@ const Footer: NextPage<FooterProps> = ({ footerIconShow }) => {
         </Container>
       </div>
       <div className={styles.footerBottomContainer}>
-        <Container className="asinnerContainer">
+        <Container
+          className={`${
+            router.pathname != '/payouts'
+              ? 'asinnerContainer'
+              : 'asinnerContainerPayout'
+          }`}
+        >
           <div className={styles.footerContainer}>
             <p className={styles.footerBottomText}>
               ©2022 NAPA Society Limited
