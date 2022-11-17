@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-
+import styles from '../../styles/pages/Home.module.scss';
 import Payouts from '../components/Payouts/Payouts';
 
 const PayoutsDetail: NextPage = () => {
@@ -12,7 +12,7 @@ const PayoutsDetail: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <section className="payouts_container ProgressBar" id="scrollElement">
+      <section className={`${styles.child} earnpage hm_sc`} id="scrollElement">
         <Payouts />
       </section>
     </>
