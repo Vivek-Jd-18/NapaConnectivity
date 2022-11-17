@@ -146,6 +146,18 @@
   padding: 0 7.9vw;
   overflow-y: auto;
   height: 900px;
+
+  .NotFoundMessageContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+
+    p {
+      @include font-md-neuropolitical-normal;
+      color: $gray;
+    }
+  }
 }
 .MainTabBox {
   margin: 0 -7.9vw;
