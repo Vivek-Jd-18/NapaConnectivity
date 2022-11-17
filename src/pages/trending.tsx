@@ -30,7 +30,7 @@ const WhatsTrending: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <section className={styles.container}>
-        <div className={`${styles.child} earnpage hm_sc`} id="scrollElement">
+        <div className={`${styles.child} earnpage earnbg`} id="scrollElement">
           <TrendingSection socket={socket} />
         </div>
       </section>

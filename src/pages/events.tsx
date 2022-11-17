@@ -13,7 +13,7 @@ const Events: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <section className={styles.container} id="earn-container">
-        <div className={`${styles.child} earnpage`} id="scrollElement">
+        <div className={`${styles.child} earnpage earnbg`} id="scrollElement">
           <EventsList />
         </div>
       </section>

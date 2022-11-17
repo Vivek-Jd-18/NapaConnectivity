@@ -12,7 +12,7 @@ const PayoutsDetail: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <section className={`${styles.child} earnpage hm_sc`} id="scrollElement">
+      <section className={`${styles.child} earnpage earnbg`} id="scrollElement">
         <Payouts />
       </section>
     </>

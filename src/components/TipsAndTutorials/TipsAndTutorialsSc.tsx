@@ -27,6 +27,7 @@ export default function TipsAndTutorialsSc() {
   };
   return (
     <>
+    
       <div className={`${styles.container} `}>
         <div className="bottom_overly_pernt">
           <Container className={`${styles.settingsContainer} asinnerContainer`}>
