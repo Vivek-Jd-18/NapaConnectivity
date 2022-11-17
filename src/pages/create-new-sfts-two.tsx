@@ -1,17 +1,9 @@
 import Head from 'next/head';
 import styles from '../../styles/pages/Home.module.scss';
 import type { NextPage } from 'next';
-import { WEBSOCKET_URL } from '../constants/url';
-import { useEffect } from 'react';
 import CreateNewNFTScTow from '@/components/CreateNewSFTs/CreateNewNFTScTow';
 
 const CreateNeSFTsTwo: NextPage = () => {
-  const socket = new WebSocket(WEBSOCKET_URL);
-  useEffect(() => {
-    socket.addEventListener('open', () => {
-      console.log('connected from client');
-    });
-  }, []);
 
   return (
     <>

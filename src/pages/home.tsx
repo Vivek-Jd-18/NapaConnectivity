@@ -1,9 +1,7 @@
 import type { NextPage } from 'next';
-import { useEffect } from 'react';
 import Head from 'next/head';
 // import styles from '../../styles/pages/Home.module.scss';
 
-import { WEBSOCKET_URL } from '../constants/url';
 
 // import TrendingSection from '../components/TrendingSection/Trending';
 // import LeaderboardSection from '../components/LeaderboardSection/LeaderboardSection';
@@ -11,12 +9,6 @@ import NapaLounge from '../components/NapaLounge/NapaLounge';
 // import ReactFullpage from '@fullpage/react-fullpage';
 
 const Home: NextPage = () => {
-  const socket = new WebSocket(WEBSOCKET_URL);
-  useEffect(() => {
-    socket.addEventListener('open', () => {
-      console.log('connected from client');
-    });
-  }, []);
   useEffect(() => {
     document.body.classList.add('home_page');
     return () => {

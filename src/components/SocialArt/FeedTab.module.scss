@@ -14,12 +14,22 @@
     @include font-lg-neuropolitical-normal;
   }
   .caption {
-    margin: 1rem 0;
+    margin-top: 1rem;
     @include font-md-avenir-medium;
     background-color: transparent;
     outline: none;
     border: none;
     color: $gray;
+  }
+  .errormsg {
+    margin-top: 0.5rem;
+    color: red;
+    @include font-sm-neuropolitical-normal;
+  }
+  .loaderContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .actionContainer {
     display: flex;
@@ -117,10 +127,15 @@
       justify-content: start;
       position: static;
     }
-    
   }
   .newPostContainer {
     width: auto;
+  }
+  .loadingContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 40vh;
   }
 }
 .MainScrollBox {
@@ -183,7 +198,7 @@
       > span {
         width: 100% !important;
         height: auto !important;
-        img {
+        video {
           object-fit: cover;
         }
       }
