@@ -1,15 +1,23 @@
 import Container from '../../Layout/Container/Container';
 import Footer from '../Footer/Footer';
 import styles from './SocialArt.module.scss';
-import React from 'react';
+import React, { useEffect } from 'react';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import FeedTab from './FeedTab';
 import MintedPostsTab from './MintedPostsTab';
 import MintedTabInBox from './MintedTabInBox';
 import MintedTabList from './MintedTabList';
+import { SOCIAL_ART_WEBSOCKET_URL } from '@/constants/url';
 
 export default function SocialArtSc() {
+  const socialArtSocket = new WebSocket(SOCIAL_ART_WEBSOCKET_URL);
+
+  useEffect(() => {
+    socialArtSocket.addEventListener('open', () => {
+      console.log('connected from social art socket client');
+    });
+  }, []);
 
   return (
     <div className={`${styles.container}`}>

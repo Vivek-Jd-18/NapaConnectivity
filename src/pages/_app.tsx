@@ -39,7 +39,6 @@ function MyApp({ Component, pageProps }: AppProps) {
     AOS.init();
   }, []);
 
-
   const handleScroll = (element: any) => {
     if (element.id != 'scrollElement') return;
 

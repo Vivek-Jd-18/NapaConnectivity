@@ -1,17 +1,9 @@
 import Head from 'next/head';
 import styles from '../../styles/pages/Home.module.scss';
 import type { NextPage } from 'next';
-import { WEBSOCKET_URL } from '../constants/url';
-import { useEffect } from 'react';
 import CreateNewSwappingSc from '@/components/CreateNewSwapping/CreateNewSwappingSc';
 
 const CreateNewSwapping: NextPage = () => {
-  const socket = new WebSocket(WEBSOCKET_URL);
-  useEffect(() => {
-    socket.addEventListener('open', () => {
-      console.log('connected from client');
-    });
-  }, []);
 
   return (
     <>
