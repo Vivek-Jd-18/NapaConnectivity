@@ -12,11 +12,9 @@ const PayoutsDetail: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="payouts_bg">
-        <section className="payouts_container">
-          <Payouts />
-        </section>
-      </div>
+      <section className="payouts_container ProgressBar" id="scrollElement">
+        <Payouts />
+      </section>
     </>
   );
 };

@@ -34,7 +34,7 @@ const Header: NextPage<HeaderProps> = ({
   setIsMenu,
   setShowSearch,
 }) => {
-  const { push ,pathname } = useRouter();
+  const { push, pathname } = useRouter();
   const [popupShow, setPopupShow] = useState(false);
   const [show, setShow] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
@@ -69,13 +69,12 @@ const Header: NextPage<HeaderProps> = ({
       duration: 200,
       animTimingFunction: Vivus.EASE_OUT,
     });
-    
   }, []);
   useEffect(() => {
-document.body.classList.add('scroll-up');
+    document.body.classList.add('scroll-up');
     document.body.classList.remove('scroll-down-landing');
     document.body.classList.remove('scroll-down');
-  },[pathname])
+  }, [pathname]);
 
   return (
     <header className="page-header">
