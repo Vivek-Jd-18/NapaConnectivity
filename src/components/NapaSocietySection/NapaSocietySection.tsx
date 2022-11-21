@@ -132,7 +132,11 @@ const NapaSociety: NextPage = () => {
                     </li>
                   </ul>
                 </div>
-                <HighlightButton title="Get Updates" link="/trending" />
+                <HighlightButton
+                  title="Get Updates"
+                  link="/trending"
+                  arrow={true}
+                />
               </div>
             ) : slider === 2 ? (
               <div>
@@ -191,7 +195,11 @@ const NapaSociety: NextPage = () => {
                     </li>
                   </ul>
                 </div>
-                <HighlightButton title="Who is Leading" link="/leaderboards" />
+                <HighlightButton
+                  title="Who is Leading"
+                  link="/leaderboards"
+                  arrow={true}
+                />
               </div>
             ) : (
               <div>
@@ -233,7 +241,11 @@ const NapaSociety: NextPage = () => {
                     </li>
                   </ul>
                 </div>
-                <HighlightButton title="More Events" link="/events" />
+                <HighlightButton
+                  title="More Events"
+                  link="/events"
+                  arrow={true}
+                />
               </div>
             )}
           </div>

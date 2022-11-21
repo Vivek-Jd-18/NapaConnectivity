@@ -216,7 +216,11 @@ const SocialArtSection: NextPage = () => {
                 <br></br>Pick and choose your audience and share your social art
                 with millions of members in the NAPA Society community!
               </p>
-              <HighlightButton title="NAPA Social Art" link="/socialart" />
+              <HighlightButton
+                title="NAPA Social Art"
+                link="/socialart"
+                arrow={true}
+              />
               <div className={styles.socialImages}>
                 <Image
                   src="/img/qrcode_ic.png"
