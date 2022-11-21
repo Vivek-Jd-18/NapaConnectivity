@@ -228,7 +228,7 @@ const Payouts: NextPage = () => {
                     >
                       <div className={`${styles.payoutsSubText}`}>
                         Total NAPA Users
-                        </div>
+                      </div>
                       <div
                         className={`text-white ${styles.payoutsSubTextValue} pt-2`}
                       >
@@ -245,7 +245,7 @@ const Payouts: NextPage = () => {
                       <div
                         className={`text-white ${styles.payoutsSubTextValue} pt-2`}
                       >
-                        {numberFormatter(napaUserData.monthlyActiveUser)}
+                        {numberFormatter(napaUserData.monthlyActiveUser, 1)}
                       </div>
                     </div>
                     <div
@@ -258,7 +258,7 @@ const Payouts: NextPage = () => {
                       <div
                         className={`text-white ${styles.payoutsSubTextValue} pt-2`}
                       >
-                        {numberFormatter(napaUserData.dailyActiveUser)}
+                        {numberFormatter(napaUserData.dailyActiveUser, 1)}
                       </div>
                     </div>
                   </div>
@@ -295,7 +295,8 @@ const Payouts: NextPage = () => {
                     Reward Tiers
                   </div>
                   <div className={`${styles.payoutsTableRow} text-white my-2`}>
-                    Award %value is a percentage of the current token price and payout amounts will fluctuate based on trading.
+                    Award %value is a percentage of the current token price and
+                    payout amounts will fluctuate based on trading.
                   </div>
                   <div className={styles.tableContainer}>
                     <Table responsive>

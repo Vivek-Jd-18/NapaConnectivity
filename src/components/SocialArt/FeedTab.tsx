@@ -1,20 +1,19 @@
+import useProfile from '@/hooks/useProfile';
+import useWebThree from '@/hooks/useWebThree';
+import { createNewPost, getAllPosts } from '@/services/PostApi';
+import { activePost, NewPost, Post } from '@/types/post';
+import { ToastDescription, ToastTitle } from '@/typing/toast';
+import Tippy from '@tippyjs/react';
+import moment from 'moment';
 import Image from 'next/image';
-import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React, { useCallback, useEffect, useRef } from 'react';
+import { FadeLoader } from 'react-spinners';
 import { toast } from 'react-toastify';
 import { DoneIcon, ErrorIcon, WalletNeedsToConnected } from '../assets';
 import { CustomToastWithLink } from '../CustomToast/CustomToast';
 import HighlightButton from '../HighlightButton/HighlightButton';
 import styles from './FeedTab.module.scss';
-import Tippy from '@tippyjs/react';
-import useWebThree from '@/hooks/useWebThree';
-import { ToastDescription, ToastTitle } from '@/typing/toast';
-import { useRouter } from 'next/router';
-import { FadeLoader } from 'react-spinners';
-import { createNewPost, getAllPosts } from '@/services/PostApi';
-import { activePost, NewPost, Post } from '@/types/post';
-import useProfile from '@/hooks/useProfile';
-import moment from 'moment';
 
 type FeedTabProps = {
   socket: WebSocket;
