@@ -45,6 +45,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
   const [loading, setLoading] = React.useState(false);
   const [getPostsLoading, setGetPostsLoading] = React.useState(false);
   const [posts, setPosts] = React.useState<Post[] | null>(null);
+  const [counter, setCounter] = React.useState(60);
 
   const { profileDetails } = useProfile();
 
@@ -59,6 +60,13 @@ export default function FeedTab({ socket }: FeedTabProps) {
     ev.stopPropagation();
     handleDrop(ev.dataTransfer.files[0]);
   };
+  React.useEffect(() => {
+    let timer: any;
+    if (!getPostsLoading) {
+      timer = counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
+    }
+    return () => clearInterval(timer);
+  }, [counter, getPostsLoading]);
 
   const handleClick = () => {
     // @ts-ignore
@@ -441,6 +449,13 @@ export default function FeedTab({ socket }: FeedTabProps) {
                             </p>
                           </div>
                         </div>
+                        {counter > 0 && (
+                          <div className={`${styles.messageContainer}`}>
+                            Congratulations your post is now live to earn
+                            rewards for 12 hours! 👏
+                          </div>
+                        )}
+
                         <div className={styles.UserRightTxt}>
                           <h4>10:22:12</h4>
                           <p>Live Post Time Remaining</p>
