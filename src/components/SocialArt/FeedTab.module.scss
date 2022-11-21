@@ -6,6 +6,12 @@
   flex-direction: column;
   padding-left: 2rem;
   align-self: flex-start;
+  .messageContainer {
+    width: 500px;
+    max-height: 30px;
+    overflow: auto;
+    white-space: nowrap;
+  }
   .videoInput {
     background-color: transparent;
     outline: none;
