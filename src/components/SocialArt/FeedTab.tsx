@@ -261,6 +261,23 @@ export default function FeedTab({ socket }: FeedTabProps) {
     handleGetPosts();
   }, []);
 
+  useEffect(() => {
+    document.addEventListener(
+      'play',
+      (e) => {
+        var videos = document.getElementsByTagName('video');
+        if (videos?.length) {
+          for (var i = 0, len = videos.length; i < len; i++) {
+            if (videos[i] != e.target) {
+              videos[i]?.pause();
+            }
+          }
+        }
+      },
+      true
+    );
+  }, []);
+
   return (
     <div className={styles.MainListBox}>
       <div className={styles.parent}>
