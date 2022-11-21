@@ -24,9 +24,9 @@ export default function CreateNewNFT() {
         { value: 'Bring Me the Open Space', label: 'Bring Me the Open Space' },
       ];
       const optionsone = [
-        { value: 'Napa NAPA', label: <div className='cstm_napa_slct'><Image src="/img/napa_ic.svg" alt="" width="24px" height="24px" />Napa NAPA</div> },
-        { value: 'Napa NAPA', label: <div className='cstm_napa_slct'><Image src="/img/napa_ic.svg" alt="" width="24px" height="24px" />Napa NAPA</div> },
-        { value: 'Napa NAPA', label: <div className='cstm_napa_slct'><Image src="/img/napa_ic.svg" alt="" width="24px" height="24px" />Napa NAPA</div> },
+        { value: 'Napa NAPA', label: <div className='cstm_napa_slct'><Image src="/img/napa_ic.svg" alt="" width="24px" height="24px" />Ethereum</div> },
+        // { value: 'Napa NAPA', label: <div className='cstm_napa_slct'><Image src="/img/napa_ic.svg" alt="" width="24px" height="24px" />Napa NAPA</div> },
+        // { value: 'Napa NAPA', label: <div className='cstm_napa_slct'><Image src="/img/napa_ic.svg" alt="" width="24px" height="24px" />Napa NAPA</div> },
       ];
   return (
     <>
@@ -39,20 +39,20 @@ export default function CreateNewNFT() {
                             <Input
                                 value={name}
                                 type="text"
-                                placeholder="Illusions of Darkness"
-                                label="Name"
+                                placeholder=""
+                                label="SNFT Title"
                                 onChange={(e) => setName(e.target.value)}
                             />
                         </div>
                         <div className={styles.TextArea}>
-                            <p>Description</p> 
+                            <p>SNFT Description</p> 
                             <textarea></textarea>
                         </div>
                         <div className={styles.FrstInput}>
                             <Input
                                 value={name}
                                 type="text"
-                                placeholder="https://yoursite.io/item/ illusions-of-darkness"
+                                placeholder="https://yoursite.io/item/"
                                 label="External link"
                                 onChange={(e) => setName(e.target.value)}
                             />
@@ -65,7 +65,7 @@ export default function CreateNewNFT() {
                                         options={optionsthree}
                                         // menuIsOpen={true}
                                         className="select_pernt"
-                                        placeholder="Bring Me the Open Space "
+                                        // placeholder="Bring Me the Open Space "
                                         classNamePrefix="cntrslct"
                                     />
                                 </div>
@@ -143,7 +143,7 @@ export default function CreateNewNFT() {
                                 </button>
                             </div>
                         </div>
-                        <div className={styles.PropertiesNft}>
+                        {/* <div className={styles.PropertiesNft}>
                             <h5 className={styles.DefultNfth4}>Supply</h5>
                             <p className={styles.DefultPNft}>The number of items that can be minted. No gas cost to you!</p>
                             <div className={styles.FrstInput}>
@@ -154,8 +154,8 @@ export default function CreateNewNFT() {
                                     label="Number"
                                     onChange={(e) => setName(e.target.value)}
                                 />
-                            </div>
-                        </div>
+                            </div> */}
+                        {/* </div> */}
                         <div className={styles.PropertiesNft}>
                             <h5 className={styles.DefultNfth4}>Blockchain</h5>
                             <div className={styles.BottmDateExprstio}>
@@ -166,7 +166,7 @@ export default function CreateNewNFT() {
                                             options={optionsone}
                                             // menuIsOpen={true}
                                             className="select_pernt"
-                                            placeholder="Napa NAPA"
+                                            placeholder="Ethereum"
                                             classNamePrefix="cntrslct"
                                         />
                                     </div>
@@ -174,7 +174,7 @@ export default function CreateNewNFT() {
                             </div>
                         </div>
                         <div className={styles.DefltBtn}>
-                            <Link href="/create-new-sfts-two"><a>Create</a></Link>
+                            <Link href="/snft-details"><a>Create</a></Link>
                         </div>
                     </div>
                 </div>
@@ -182,8 +182,8 @@ export default function CreateNewNFT() {
             </div>
             <div className={styles.RightNftMain}>
                 <div className={styles.RightVideoNft}>
-                    <h5 className={styles.DefultNfth4}>Image, Video, Audio, or 3D Model</h5>
-                    <p>File types supported: JPG, PNG, GIF, SVG, MP4, WEBM, MP3, WAV, OGG, GLB.</p>
+                    <h5 className={styles.DefultNfth4}>Vidoe or Image</h5>
+                    <p>File types supported: JPG, PNG, GIF, SVG, MP4, WEBM</p>
                     <div className={styles.RightVideo}>
                             <Image src="/img/upload_icon.png" alt="" width={51} height={32} />
                             <h4>Drag and drop an file, or <span>Browse</span></h4>
