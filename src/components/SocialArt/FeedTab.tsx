@@ -21,6 +21,11 @@ type FeedTabProps = {
 };
 
 export default function FeedTab({ socket }: FeedTabProps) {
+
+
+  const router = useRouter();
+  const { postId } = router.query;
+
   const [active, setActive] = React.useState<activePost>({
     postId: '',
     type: '',
@@ -69,6 +74,14 @@ export default function FeedTab({ socket }: FeedTabProps) {
     }
     return () => clearInterval(timer);
   }, [counter, getPostsLoading]);
+
+  React.useEffect(() => {
+    if (postId && !getPostsLoading) {
+      document
+        .getElementById(postId)
+        ?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }, [getPostsLoading, postId]);
 
   const handleClick = () => {
     // @ts-ignore
@@ -251,8 +264,6 @@ export default function FeedTab({ socket }: FeedTabProps) {
       })
     );
   };
-  console.log('posts>>>>>>>', posts);
-
   const handleGetPosts = async () => {
     setGetPostsLoading(true);
     const { data }: any = await getAllPosts();
@@ -442,6 +453,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
             {posts?.length
               ? posts?.map((post: Post, index: number) => (
                   <div
+                    id={post?.postId}
                     key={`post-${index}`}
                     className={
                       active
@@ -570,9 +582,9 @@ export default function FeedTab({ socket }: FeedTabProps) {
                         </button>
                         <RWebShare
                           data={{
-                            text: 'Like humans, flamingos make friends for life',
-                            url: 'https://on.natgeo.com/2zHaNup',
-                            title: 'Flamingos',
+                            text: 'NAPA Society | Social Art',
+                            url: `https://staging.napasociety.io/socialart/?postId=${post?.postId}`,
+                            // title: 'Flamingos',
                           }}
                           onClick={() => console.log('shared successfully!')}
                         >
