@@ -24,7 +24,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
 
 
   const router = useRouter();
-  const { postId } = router.query;
+  const { postId }: any = router.query;
 
   const [active, setActive] = React.useState<activePost>({
     postId: '',
