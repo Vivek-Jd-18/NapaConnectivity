@@ -15,12 +15,18 @@ import { DoneIcon, ErrorIcon, WalletNeedsToConnected } from '../assets';
 import { CustomToastWithLink } from '../CustomToast/CustomToast';
 import HighlightButton from '../HighlightButton/HighlightButton';
 import styles from './FeedTab.module.scss';
+import { RWebShare } from 'react-web-share';
 
 type FeedTabProps = {
   socket: WebSocket;
 };
 
 export default function FeedTab({ socket }: FeedTabProps) {
+
+
+  const router = useRouter();
+  const { postId }: any = router.query;
+
   const [active, setActive] = React.useState<activePost>({
     postId: '',
     type: '',
@@ -69,6 +75,14 @@ export default function FeedTab({ socket }: FeedTabProps) {
     }
     return () => clearInterval(timer);
   }, [counter, getPostsLoading]);
+
+  React.useEffect(() => {
+    if (postId && !getPostsLoading) {
+      document
+        .getElementById(postId)
+        ?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }, [getPostsLoading, postId]);
 
   const handleClick = () => {
     // @ts-ignore
@@ -272,7 +286,6 @@ export default function FeedTab({ socket }: FeedTabProps) {
       })
     );
   };
-
   const handleGetPosts = async () => {
     const cachedPosts = await getCachedData();
     if (!cachedPosts) addDataToCache();
@@ -502,6 +515,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
             {posts?.length
               ? posts?.map((post: Post, index: number) => (
                   <div
+                    id={post?.postId}
                     key={`post-${index}`}
                     className={
                       active
@@ -530,8 +544,9 @@ export default function FeedTab({ socket }: FeedTabProps) {
                           </div>
                         </div>
                         {counter > 0 && (
-                          <div className={`${styles.messageContainer}`}>
-                            Congratulations! Your post is now live for 12 hours! 
+                          <div className={styles.messageContainer}>
+                            Congratulations! Your post is now live for 12 hours!
+                            👏
                           </div>
                         )}
 
@@ -544,7 +559,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
                         <video
                           width={'100%'}
                           height="300"
-                          preload='auto'
+                          preload="auto"
                           autoPlay
                           controls
                           src={post.videoFile as string}
@@ -628,17 +643,26 @@ export default function FeedTab({ socket }: FeedTabProps) {
                           />
                           <span>Mint</span>
                         </button>
-                        <a href="#" className={styles.BotomLikes}>
-                          <Image
-                            src="/img/share_icon.svg"
-                            alt=""
-                            width="24px"
-                            height="24px"
-                          />
-                          <span>
-                            <b>Share</b>
-                          </span>
-                        </a>
+                        <RWebShare
+                          data={{
+                            text: 'NAPA Society | Social Art',
+                            url: `https://staging.napasociety.io/socialart/?postId=${post?.postId}`,
+                            // title: 'Flamingos',
+                          }}
+                          onClick={() => console.log('shared successfully!')}
+                        >
+                          <button className={styles.BotomLikes}>
+                            <Image
+                              src="/img/share_icon.svg"
+                              alt=""
+                              width="24px"
+                              height="24px"
+                            />
+                            <span>
+                              <b>Share</b>
+                            </span>
+                          </button>
+                        </RWebShare>
                       </div>
                     </div>
                     {active.postId === post.postId &&
