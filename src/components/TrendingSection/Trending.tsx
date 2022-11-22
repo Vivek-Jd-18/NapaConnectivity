@@ -1,22 +1,21 @@
 import axios from 'axios';
-import type { NextPage } from 'next';
 import { useCallback, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
+import type { NextPage } from 'next';
+import styles from './Trending.module.scss';
 import { API_URL } from '../../constants/url';
 import useProfile from '../../hooks/useProfile';
 import useWebThree from '../../hooks/useWebThree';
 import Container from '../../Layout/Container/Container';
-import styles from './Trending.module.scss';
 
-import Image from 'next/image';
-import { ToastDescription, ToastTitle } from '../../typing/toast';
 import { ErrorIcon, HowardAvatar, WalletNeedsToConnected } from '../assets';
+import Tab from '../Tab/Tab';
+import SocialMediaReview from '../SocialMediaReview/SocialMediaReview';
 import ChatWindow from '../ChatWindow/ChatWindow';
 import { CustomToastWithLink } from '../CustomToast/CustomToast';
+import { ToastDescription, ToastTitle } from '../../typing/toast';
 import Footer from '../Footer/Footer';
-import SocialMediaReview from '../SocialMediaReview/SocialMediaReview';
-import Tab from '../Tab/Tab';
-
+import Image from 'next/image';
 
 const trendingTabList = [
   {

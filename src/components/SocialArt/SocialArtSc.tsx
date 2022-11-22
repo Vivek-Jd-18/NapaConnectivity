@@ -22,14 +22,7 @@ export default function SocialArtSc() {
           id="uncontrolled-tab-example"
           className="default_tab mb-30"
         >
-          <Tab
-            eventKey="home"
-            style={{
-              height: '370px',
-              overflowY: 'auto',
-            }}
-            title="NAPA Society Posts"
-          >
+          <Tab eventKey="home" title="NAPA Society Posts">
             <FeedTab socket={socialArtSocket} />
           </Tab>
           <Tab eventKey="profile" title="My Active SNFTs">
