@@ -531,7 +531,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
                         </div>
                         {counter > 0 && (
                           <div className={`${styles.messageContainer}`}>
-                            Congratulations! Your post is now live for 12 hours! 
+                            Congratulations! Your post is now live for 12 hours!
                           </div>
                         )}
 
@@ -544,7 +544,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
                         <video
                           width={'100%'}
                           height="300"
-                          preload='auto'
+                          preload="auto"
                           autoPlay
                           controls
                           src={post.videoFile as string}
@@ -639,6 +639,10 @@ export default function FeedTab({ socket }: FeedTabProps) {
                             <b>Share</b>
                           </span>
                         </a>
+                      </div>
+                      <div className={styles.videoInfoContainer}>
+                        <h3>{post.videoTitle}</h3>
+                        <p>{post.videoCaption}</p>
                       </div>
                     </div>
                     {active.postId === post.postId &&
