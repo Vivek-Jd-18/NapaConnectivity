@@ -14,6 +14,7 @@ import { DoneIcon, ErrorIcon, WalletNeedsToConnected } from '../assets';
 import { CustomToastWithLink } from '../CustomToast/CustomToast';
 import HighlightButton from '../HighlightButton/HighlightButton';
 import styles from './FeedTab.module.scss';
+import { RWebShare } from 'react-web-share';
 
 type FeedTabProps = {
   socket: WebSocket;
@@ -250,6 +251,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
       })
     );
   };
+  console.log('posts>>>>>>>', posts);
 
   const handleGetPosts = async () => {
     setGetPostsLoading(true);
@@ -468,8 +470,9 @@ export default function FeedTab({ socket }: FeedTabProps) {
                           </div>
                         </div>
                         {counter > 0 && (
-                          <div className={`${styles.messageContainer}`}>
-                            Congratulations! Your post is now live for 12 hours! 👏
+                          <div className={styles.messageContainer}>
+                            Congratulations! Your post is now live for 12 hours!
+                            👏
                           </div>
                         )}
 
@@ -482,7 +485,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
                         <video
                           width={'100%'}
                           height="300"
-                          preload='auto'
+                          preload="auto"
                           autoPlay
                           controls
                           src={post.videoFile as string}
@@ -565,17 +568,26 @@ export default function FeedTab({ socket }: FeedTabProps) {
                           />
                           <span>Mint</span>
                         </button>
-                        <a href="#" className={styles.BotomLikes}>
-                          <Image
-                            src="/img/share_icon.svg"
-                            alt=""
-                            width="24px"
-                            height="24px"
-                          />
-                          <span>
-                            <b>Share</b>
-                          </span>
-                        </a>
+                        <RWebShare
+                          data={{
+                            text: 'Like humans, flamingos make friends for life',
+                            url: 'https://on.natgeo.com/2zHaNup',
+                            title: 'Flamingos',
+                          }}
+                          onClick={() => console.log('shared successfully!')}
+                        >
+                          <button className={styles.BotomLikes}>
+                            <Image
+                              src="/img/share_icon.svg"
+                              alt=""
+                              width="24px"
+                              height="24px"
+                            />
+                            <span>
+                              <b>Share</b>
+                            </span>
+                          </button>
+                        </RWebShare>
                       </div>
                     </div>
                     {active.postId === post.postId &&
