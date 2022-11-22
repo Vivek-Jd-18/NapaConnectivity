@@ -1,3 +1,4 @@
+import { SOCIAL_ART_API_URL } from '@/constants/url';
 import useProfile from '@/hooks/useProfile';
 import useWebThree from '@/hooks/useWebThree';
 import { createNewPost, getAllPosts } from '@/services/PostApi';
@@ -146,14 +147,35 @@ export default function FeedTab({ socket }: FeedTabProps) {
     window.addEventListener('resize', handleModalPosition);
   }, []);
 
+  const putCacheData = async (latestPost: Post) => {
+    const cacheStorage = await caches.open('posts');
+    const previousdata = await getCachedData();
+    if (previousdata && previousdata?.data?.length >= 5)
+      previousdata?.data.pop();
+    previousdata?.data?.unshift(latestPost);
+    const previousdataResponse = new Response(JSON.stringify(previousdata));
+    await cacheStorage.put(
+      `${SOCIAL_ART_API_URL}/user/social/video/list?offset=0`,
+      previousdataResponse
+    );
+    await getCachedData();
+  };
+
   useEffect(() => {
     socket.addEventListener(
       'message',
       (payload: { type: string; data: string }) => {
-        setPosts((prevPosts) => [
-          JSON.parse(payload.data).posts,
-          ...(prevPosts || []),
-        ]);
+        if (posts?.length && posts?.length > 0) {
+          console.log('if block');
+          setPosts((prevPosts) => [
+            JSON.parse(payload.data).posts,
+            ...(prevPosts || []),
+          ]);
+        } else {
+          console.log('else block');
+          setPosts([JSON.parse(payload.data).posts]);
+        }
+        putCacheData(JSON.parse(payload.data).posts);
       }
     );
   }, []);
@@ -251,15 +273,55 @@ export default function FeedTab({ socket }: FeedTabProps) {
   };
 
   const handleGetPosts = async () => {
-    setGetPostsLoading(true);
-    const { data }: any = await getAllPosts();
-    setGetPostsLoading(false);
-    setPosts(data?.data ?? []);
+    const cachedPosts = await getCachedData();
+    if (!cachedPosts) addDataToCache();
+  };
+
+  const handleGetMorePosts = async () => {
+    const { data }: any = await getAllPosts(posts?.length || 0);
+    setPosts((prevPosts) => [...(prevPosts || []), ...(data?.data || [])]);
   };
 
   useEffect(() => {
     handleGetPosts();
   }, []);
+
+  useEffect(() => {
+    if (posts?.length && posts?.length >= 5) {
+      handleGetMorePosts();
+    }
+  }, [posts?.length]);
+
+  const getCachedData = async () => {
+    const cacheStorage = await caches.open('posts');
+    const cachedResponse = await cacheStorage.match(
+      `${SOCIAL_ART_API_URL}/user/social/video/list?offset=0`
+    );
+    if (!cachedResponse && !posts) {
+      return false;
+    }
+    const cachedResponseJson = await cachedResponse?.json();
+    if (cachedResponseJson.data && !posts) {
+      setPosts(cachedResponseJson.data);
+    }
+    return cachedResponseJson;
+  };
+
+  const addDataToCache = async () => {
+    setGetPostsLoading(true);
+    caches.open('posts').then((cache) => {
+      cache
+        .add(`${SOCIAL_ART_API_URL}/user/social/video/list?offset=0`)
+        .then(async () => {
+          await getCachedData();
+          setGetPostsLoading(false);
+        })
+        .catch((err) => {
+          console.log(err);
+          setGetPostsLoading(false);
+        });
+    });
+  };
 
   useEffect(() => {
     document.addEventListener(
@@ -481,10 +543,11 @@ export default function FeedTab({ socket }: FeedTabProps) {
                       <div className={styles.MdlImage}>
                         <video
                           width={'100%'}
-                          height={'100%'}
+                          height={320}
                           autoPlay
                           controls
                           src={post.videoFile as string}
+                          style={{ objectFit: 'contain' }}
                         >
                           The “video” tag is not supported by your browser.
                         </video>
