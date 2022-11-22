@@ -480,10 +480,10 @@ export default function FeedTab({ socket }: FeedTabProps) {
                       </div>
                       <div className={styles.MdlImage}>
                         <video
-                          width={'100%'}
-                          height={'100%'}
+                          width="680"
+                          height="300"
                           autoPlay
-                          controls
+                          // controls
                           src={post.videoFile as string}
                         >
                           The “video” tag is not supported by your browser.
