@@ -256,7 +256,6 @@ export default function FeedTab({ socket }: FeedTabProps) {
   const handleGetPosts = async () => {
     setGetPostsLoading(true);
     const { data }: any = await getAllPosts();
-    console.log('get data api', data?.data);
     setPosts(data?.data || []);
     setGetPostsLoading(false);
   };
