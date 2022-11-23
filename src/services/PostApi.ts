@@ -24,22 +24,22 @@ export const createNewPost = async (post: NewPost) => {
   }
 };
 
-export const getAllPosts = async (offset: number) => {
-    try {
-      const p = await axios.get<{}, AxiosResponse<GetPostsResponse>>(
-        `${SOCIAL_ART_API_URL}/user/social/video/list?offset=${offset}`
-      );
-      return {
-        data: p.data,
-        message: '',
-        error: false,
-      };
-    } catch (error) {
-      return {
-        data: null,
-        error: true,
-        message: error?.response?.data?.message,
-      };
-    }
-  };
+export const getAllPosts = async () => {
+  try {
+    const p = await axios.get<{}, AxiosResponse<GetPostsResponse>>(
+      `${SOCIAL_ART_API_URL}/user/social/video/list`
+    );
+    return {
+      data: p.data,
+      message: '',
+      error: false,
+    };
+  } catch (error) {
+    return {
+      data: null,
+      error: true,
+      message: error?.response?.data?.message,
+    };
+  }
+};
   

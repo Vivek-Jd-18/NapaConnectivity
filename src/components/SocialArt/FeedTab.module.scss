@@ -259,6 +259,15 @@
         }
       }
     }
+    .videoInfoContainer {
+      padding: 1rem 0;
+      h3 {
+        @include font-lg-neuropolitical-normal;
+      }
+      p {
+        @include font-sm-avenir-regular;
+      }
+    }
   }
   .ForShadow {
     position: relative;
@@ -466,7 +475,6 @@
   }
 }
 @media screen and (min-width: 1980px) {
-
   .rightBox {
     padding: 10px 40px 30px 40px !important;
     display: none;
