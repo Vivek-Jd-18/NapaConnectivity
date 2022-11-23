@@ -13,7 +13,7 @@ const SocialArt: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <section className={styles.container} id="earn-container">
-        <div className={`${styles.child} earnpage sclart_bg`} id="scrollElement">
+        <div className={`${styles.child} earnpage earnbg`} id="scrollElement">
           <SocialArtSc />
         </div>
       </section>
