@@ -4,7 +4,6 @@ import type { NextPage } from 'next';
 import FAQSc from '@/components/Faq/FAQSc';
 
 const FAQ: NextPage = () => {
-
   return (
     <>
       <Head>
@@ -13,7 +12,10 @@ const FAQ: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <section className={styles.container} id="earn-container">
-        <div className={`${styles.child} earnpage contact_sc_bg faq_sc_hgt`}>
+        <div
+          className={`${styles.child} earnpage contact_sc_bg faq_sc_hgt`}
+          id="scrollElement"
+        >
           <FAQSc />
         </div>
       </section>
