@@ -3,6 +3,13 @@
 
 .backgroundImage {
   position: relative;
+  hr {
+    border: 0px solid $gray;
+    margin-bottom: 5rem;
+    @media screen and (max-width: 1200px) {
+      margin-bottom: 2.5rem;
+    }
+  }
   height: 100vh;
   @media (max-width: 1313px) {
     height: auto;

@@ -204,7 +204,8 @@ export default function FAQSc() {
           </div>
         </div>
       </Container>
-      <div className={styles.footerContainer}>
+      <div>
+        <hr />
         <Footer footerIconShow={false} />
       </div>
     </div>

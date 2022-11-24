@@ -7,7 +7,7 @@
     border: 0px solid $gray;
     margin-bottom: 5rem;
     @media screen and (max-width: 1200px) {
-      margin-bottom: 0rem;
+      margin-bottom: 2.5rem;
     }
   }
   .settingsContainer {
@@ -34,25 +34,25 @@
     }
   }
 }
-.CreateProject{
+.CreateProject {
   .CustomGridContainer {
     display: grid;
     grid-gap: 120px;
     grid-template-columns: repeat(2, minmax(0px, 1fr));
   }
-  h4{
+  h4 {
     @include font-xl-neuropolitical-normal;
     font-weight: 400;
     font-size: 24px;
     line-height: 110%;
-    color: #FFFFFF;
+    color: #ffffff;
     text-align: left;
     margin-bottom: 24px;
   }
-  
-  .CreateGrner{
+
+  .CreateGrner {
     // margin-top: 42px;
-  
+
     .FrstInput input {
       width: 100%;
       background: transparent;
@@ -60,7 +60,7 @@
       outline: none;
       box-shadow: none;
       margin-bottom: 35px;
-      border-bottom: 2px solid #FFFFFF;
+      border-bottom: 2px solid #ffffff;
       padding: 16px 12px 0 20px !important;
     }
     .FrstInput {
@@ -73,13 +73,13 @@
         background: transparent;
         border: none;
       }
-      >div {
+      > div {
         margin: 0 !important;
       }
     }
-    .FrstInput{
+    .FrstInput {
       position: relative;
-      .Btnone{
+      .Btnone {
         position: absolute;
         top: 25px;
         right: 18px;
@@ -87,7 +87,7 @@
         border: none;
       }
     }
-    
+
     .FrstInput input {
       @include font-xs-avenir-regular;
       font-style: normal;
@@ -108,7 +108,7 @@
       font-weight: 400;
       font-size: 14px;
       line-height: 140%;
-      color: #91A5A6;
+      color: #91a5a6;
     }
   }
   // .CreateGrner button, .CreateGrner a{
@@ -129,13 +129,13 @@
   //     color: #fff;
   //   }
   // }
-  .linkPrnt{
-      a{
-        @include font-xl-neuropolitical-normal;
+  .linkPrnt {
+    a {
+      @include font-xl-neuropolitical-normal;
       font-weight: 400;
       font-size: 24px;
       line-height: 110%;
-      color: #16E6EF;
+      color: #16e6ef;
       align-items: flex-start;
       display: flex;
       background: none;
@@ -145,17 +145,17 @@
       text-decoration: none;
       max-width: 102px;
       margin-top: 20px;
-      &:hover{
+      &:hover {
         color: #fff;
       }
     }
   }
-  .CreateGrner h5{
+  .CreateGrner h5 {
     @include font-xl-neuropolitical-normal;
     font-weight: 400;
     font-size: 24px;
     line-height: 110%;
-    color: #FFFFFF;
+    color: #ffffff;
     text-align: left;
     margin-bottom: 24px;
     margin-top: 52px;
@@ -168,7 +168,7 @@
       font-weight: 500;
       font-size: 18px;
       line-height: 140%;
-      color: #FFFFFF;
+      color: #ffffff;
       box-shadow: none;
       border: none;
       outline: none;
@@ -178,9 +178,9 @@
       text-align: left;
       transition: all 0.3s ease-out;
       &:hover {
-        color: #16E6EF;
+        color: #16e6ef;
       }
-      >span {
+      > span {
         margin-right: 12px !important;
       }
     }
@@ -191,17 +191,17 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 140%;
-    color: #91A5A6;
+    color: #91a5a6;
     margin-bottom: 14px;
     text-align: left;
     padding-left: 20px;
   }
-  .TextArea textarea{
+  .TextArea textarea {
     background: transparent;
     border: none;
     box-shadow: none;
     outline: none;
-    border: 2px solid #FFFFFF;
+    border: 2px solid #ffffff;
     width: 100%;
     min-height: 120px;
     padding: 12px;
@@ -209,24 +209,18 @@
     margin-bottom: 35px;
   }
 }
-.CreateGrnerSecand{
+.CreateGrnerSecand {
   // margin-top: 78px !important;
 }
-.FrstInputThrdaj{
-  p{
+.FrstInputThrdaj {
+  p {
     font-family: 'Avenir';
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 140%;
-    color: #91A5A6;
+    color: #91a5a6;
     margin: 0 0 5px 20px;
     text-align: start;
   }
 }
-
-
-
-
-
-
