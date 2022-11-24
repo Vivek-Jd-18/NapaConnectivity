@@ -443,7 +443,10 @@ const Payouts: NextPage = () => {
                 </div>
                 {/* <Footer footerIconShow /> */}
               </div>
-              <Footer footerIconShow />
+              <div>
+                <hr />
+                <Footer footerIconShow={false} />
+              </div>
             </div>
           </div>
         </Container>

@@ -7,7 +7,7 @@
     border: 0px solid $gray;
     margin-bottom: 5rem;
     @media screen and (max-width: 1200px) {
-      margin-bottom: 0rem;
+      margin-bottom: 2.5rem;
     }
   }
   .settingsContainer {
@@ -35,10 +35,10 @@
     }
   }
 }
-.ourlyPerntAj{
+.ourlyPerntAj {
   position: relative;
-  &::before{
-    content: "";
+  &::before {
+    content: '';
     position: absolute;
     left: 0;
     right: 0;
@@ -49,116 +49,116 @@
     width: 100%;
   }
 }
-.pdingTop{
+.pdingTop {
   padding-top: 132px;
 }
-.LncpadDtlUpCont{
+.LncpadDtlUpCont {
   display: flex;
 }
-.rightContnt{
+.rightContnt {
   margin-left: 60px;
   flex-basis: 75%;
   margin-top: -17px;
-  h1{
+  h1 {
     font-family: 'Neuropolitical';
     font-style: normal;
     font-weight: 400;
     font-size: 76px;
     line-height: 110%;
-    color: #FFFFFF;
+    color: #ffffff;
     text-align: start;
     max-width: 775px;
     margin: 0 0 22px 0;
   }
-  p{
+  p {
     font-family: 'Avenir';
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
     line-height: 140%;
-    color: #FFFFFF;
+    color: #ffffff;
     text-align: start;
     max-width: 600px;
     margin: 0 0 35px 0;
   }
 }
-.flxBlleinnr{
+.flxBlleinnr {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.upCont{
+.upCont {
   display: flex;
   align-items: center;
-  p{
+  p {
     font-family: 'Avenir';
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 140%;
-    color: #FFFFFF;
+    color: #ffffff;
     margin: 0 0 0 10px;
   }
 }
-.MianPentBasisBox{
+.MianPentBasisBox {
   padding: 53px 0;
   width: 100%;
   display: flex;
   align-items: center;
 }
-.CurrentBitBoxInrr{
+.CurrentBitBoxInrr {
   flex-basis: 15%;
-  p{
+  p {
     font-family: 'Avenir';
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
     line-height: 140%;
-    color: #FFFFFF;
+    color: #ffffff;
     margin: 0 0 5px 0;
     text-align: start;
   }
-  h3{
+  h3 {
     font-family: 'Neuropolitical';
     font-style: normal;
     font-weight: 400;
     font-size: 32px;
     line-height: 110%;
-    color: #FFFFFF;
+    color: #ffffff;
     margin: 0 0 0 0;
   }
-  .imgAdnHH{
+  .imgAdnHH {
     display: flex;
     align-items: center;
-    >span{
+    > span {
       margin-right: 16px !important;
     }
   }
 }
-.onlyImgBox{
+.onlyImgBox {
   flex-basis: 25%;
-  >span{
+  > span {
     width: 100% !important;
   }
 }
-.progsContnt{
+.progsContnt {
   flex-basis: 25%;
-  .LinkPrnt{
+  .LinkPrnt {
     font-family: 'Neuropolitical';
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
     line-height: 110%;
-    color: #16E6EF;
+    color: #16e6ef;
     text-align: start;
     margin: 9px 0 0 0;
   }
 }
-.AllLinkFlex{
+.AllLinkFlex {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  button{
+  button {
     background: transparent;
     border: none;
     margin-right: 24px;
@@ -169,7 +169,7 @@
       bottom: 5px;
     }
   }
-  a{
+  a {
     margin-right: 24px;
     position: relative;
     bottom: 0;
@@ -177,7 +177,7 @@
     &:hover {
       bottom: 5px;
     }
-    &:last-child{
+    &:last-child {
       margin-right: 0;
     }
   }
@@ -194,19 +194,19 @@
     }
   }
 }
-.progsContntUp{
+.progsContntUp {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 9px;
-  h6{
+  h6 {
     font-family: 'Avenir';
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
     line-height: 110%;
     text-align: right;
-    color: #FFFFFF;
+    color: #ffffff;
     margin: 0;
   }
 }

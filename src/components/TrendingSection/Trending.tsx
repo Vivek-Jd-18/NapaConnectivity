@@ -294,7 +294,10 @@ const TrendingSection: NextPage<TrendingSectionProps> = ({ socket }) => {
             </div>
           </div>
         </Container>
-        <Footer footerIconShow />
+        <div>
+          <hr />
+          <Footer footerIconShow />
+        </div>
       </div>
     </>
   );
