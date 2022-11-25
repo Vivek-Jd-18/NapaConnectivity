@@ -34,7 +34,6 @@ const ChatWindow: NextPage<ChatWindowProps> = ({
         {messages &&
           messages.length > 0 &&
           messages.map(({ message, timetoken }: any, index: number) => {
-            console.log('message', message);
             return (
               <ChatListItemCard
                 key={`chat-${index}`}

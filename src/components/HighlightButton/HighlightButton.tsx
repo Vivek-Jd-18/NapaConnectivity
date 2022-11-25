@@ -15,7 +15,6 @@ const HighlightButton: NextPage<HighlightButtonProps> = ({
   link,
   arrow,
 }) => {
-  console.log(title);
   return (
     <div className={styles.joinSociety}>
       <a className={styles.joinSocietyBtn} href={link}>
