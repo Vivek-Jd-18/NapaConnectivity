@@ -1,13 +1,16 @@
-import { CreateNewPostResponse, GetPostsResponse, NewPost } from '@/types/post';
+import { CreateNewPostResponse, GetPostsResponse } from '@/types/post';
 import axios, { AxiosResponse } from 'axios';
 import { SOCIAL_ART_API_URL } from '@/constants/url';
 
-export const createNewPost = async (post: NewPost) => {
+export const createNewPost = async (post: any) => {
   try {
     const p = await axios.post<{}, AxiosResponse<CreateNewPostResponse>>(
       `${SOCIAL_ART_API_URL}/user/social/video/new`,
+      post,
       {
-        postedVideos: post,
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
       }
     );
     return {
@@ -42,4 +45,3 @@ export const getAllPosts = async () => {
     };
   }
 };
-  
