@@ -121,8 +121,6 @@
       @include font-6xl-neuropolitical-normal;
       text-align: left;
       color: $white;
-
-      // padding-top: 10px;
       span {
         color: transparent;
         -webkit-text-stroke: 2px white;
@@ -245,7 +243,6 @@
       }
     }
   }
-
   @media (max-width: 1420px) {
     .payoutsContainer {
       .rightSideContainer {
@@ -268,7 +265,6 @@
       }
     }
   }
-
   @media (max-width: 1200px) {
     .payoutsContainer {
       .rightSideContainer {
@@ -318,7 +314,6 @@
     }
   }
 }
-
 @media (max-width: 1200px) {
   .payoutsContainer {
     .rightSideContainer {
@@ -370,6 +365,9 @@
     .rightSideContainer {
       padding-top: 12rem;
     }
+    .payouts {
+      padding-top: 8rem;
+    }
   }
   .backgroundImage {
     padding-top: 2rem !important;
@@ -391,7 +389,6 @@
     .payoutsBodyContainer {
       .payouts {
         @include font-8xl-neuropolitical-normal;
-        padding-top: 13rem;
       }
     }
     .rightSideContainer {
