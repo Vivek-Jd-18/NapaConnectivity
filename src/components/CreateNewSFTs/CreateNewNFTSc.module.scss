@@ -7,7 +7,7 @@
     border: 0px solid $gray;
     margin-bottom: 5rem;
     @media screen and (max-width: 1200px) {
-      margin-bottom: 0rem;
+      margin-bottom: 2.5rem;
     }
   }
   .settingsContainer {
@@ -35,10 +35,10 @@
     }
   }
 }
-.ourlyPerntAj{
+.ourlyPerntAj {
   position: relative;
-  &::before{
-    content: "";
+  &::before {
+    content: '';
     position: absolute;
     left: 0;
     right: 0;
@@ -49,62 +49,65 @@
     width: 100%;
   }
 }
-.StaylinkFrst{
+.StaylinkFrst {
   padding-top: 108px !important;
   display: flex;
   text-align: start;
-  a{
+  a {
     font-size: 14px;
     line-height: 140%;
-    color: #FFFFFF;
+    color: #ffffff;
     text-decoration: none;
     display: flex;
     align-items: center;
     cursor: pointer;
     transition: all 0.2s ease-out;
     &:hover {
-      color: #16E6EF;
-      >span {
-        img {filter: invert(1%) sepia(162%) saturate(1057%) hue-rotate(143deg) brightness(100%) contrast(85%)}
+      color: #16e6ef;
+      > span {
+        img {
+          filter: invert(1%) sepia(162%) saturate(1057%) hue-rotate(143deg)
+            brightness(100%) contrast(85%);
+        }
       }
     }
-    >span {
+    > span {
       margin-right: 7px !important;
     }
   }
 }
-.threeLinkMain{
+.threeLinkMain {
   padding-top: 24px;
   padding-bottom: 40px;
-  ul{
+  ul {
     display: flex;
     align-items: center;
     justify-content: flex-start;
     padding: 0;
-    li{
+    li {
       list-style: none;
       font-family: 'Neuropolitical';
       font-style: normal;
       font-weight: 400;
       font-size: 14px;
       line-height: 110%;
-      color: #91A5A6;
+      color: #91a5a6;
       border-bottom: 4px solid rgba(145, 165, 166, 0.1);
       margin-right: 4px;
       width: 33.33%;
       text-align: start;
       padding-bottom: 14px;
-      &:last-child{
+      &:last-child {
         margin-right: 0;
       }
-      a{
+      a {
         text-decoration: none;
-        color: #91A5A6;
+        color: #91a5a6;
       }
     }
     .active {
-      border-bottom: 4px solid #16E6EF;
-      a{
+      border-bottom: 4px solid #16e6ef;
+      a {
         color: #ffffff;
       }
     }

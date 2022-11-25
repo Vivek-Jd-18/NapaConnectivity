@@ -7,7 +7,7 @@
     border: 0px solid $gray;
     margin-bottom: 5rem;
     @media screen and (max-width: 1200px) {
-      margin-bottom: 0rem;
+      margin-bottom: 2.5rem;
     }
   }
   .settingsContainer {
@@ -35,14 +35,13 @@
   }
 }
 
-
 .DefultPoolh5 {
   font-family: 'Neuropolitical';
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
   line-height: 110%;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-bottom: 24px;
   text-align: left;
 }
@@ -67,46 +66,46 @@
   }
 }
 
-
- .ContinueBtn {
-    display: flex;
+.ContinueBtn {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 52px;
+  button,
+  a {
+    font-family: 'Neuropolitical';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 110%;
+    color: #16e6ef;
+    background: transparent;
+    box-shadow: none;
+    outline: none;
+    border: none;
+    text-align: start;
     align-items: flex-start;
-    margin-top: 52px;
-    button, a {
-      font-family: 'Neuropolitical';
-      font-style: normal;
-      font-weight: 400;
-      font-size: 24px;
-      line-height: 110%;
-      color: #16E6EF;
-      background: transparent;
-      box-shadow: none;
-      outline: none;
-      border: none;
-      text-align: start;
-      align-items: flex-start;
-      transition: all 0.2s ease-out;
-      text-decoration: none;
-      &:hover {
-        color: #fff;
-      }
+    transition: all 0.2s ease-out;
+    text-decoration: none;
+    &:hover {
+      color: #fff;
     }
   }
+}
 
 .QuantityNftBx {
   margin-top: 55px;
 }
-  .SwappingPTag {
-    text-align: start;
-    padding-left: 20px;
-    margin-bottom: 5px;
-    font-family: 'Avenir';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 140%;
-    color: #91A5A6;
-  }
-  .SwappingDatePtag {
-    padding-left: 0px;
-  }
+.SwappingPTag {
+  text-align: start;
+  padding-left: 20px;
+  margin-bottom: 5px;
+  font-family: 'Avenir';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 140%;
+  color: #91a5a6;
+}
+.SwappingDatePtag {
+  padding-left: 0px;
+}

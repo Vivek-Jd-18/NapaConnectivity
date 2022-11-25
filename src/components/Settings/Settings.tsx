@@ -13,7 +13,7 @@ const SettingsComponent: NextPage = () => {
 
   return (
     <div className={styles.container}>
-      <Container className={styles.settingsContainer}>
+      <Container className={`${styles.settingsContainer} asinnerContainer`}>
         <h1 className={styles.settings}>Settings</h1>
         <div className={styles.tabsContainer}>
           <div className={styles.tabsInnerContainer}>

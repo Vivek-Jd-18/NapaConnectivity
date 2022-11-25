@@ -4,7 +4,6 @@ import type { NextPage } from 'next';
 import ProjectsSc from '@/components/Projects/ProjectsSc';
 
 const Projects: NextPage = () => {
-
   return (
     <>
       <Head>
@@ -13,8 +12,10 @@ const Projects: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <section className={styles.container} id="earn-container">
-        <div className={`${styles.child} earnpage launchpad_datals_bg`} id="scrollElement">
-          {/* <CreateNewSwappingFourSc /> */}
+        <div
+          className={`${styles.child} earnpage launchpad_datals_bg`}
+          id="scrollElement"
+        >
           <ProjectsSc />
         </div>
       </section>

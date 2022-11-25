@@ -24,7 +24,7 @@ export type NewPost = {
 export type Post = {
   postId: string;
   videoTitle: string;
-  videoFile: string | ArrayBuffer | null;
+  videoURL: string;
   videoType: string;
   videoCaption: string;
   accountId: string;

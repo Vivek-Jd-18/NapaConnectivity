@@ -2,6 +2,13 @@
 @import '../../../styles/abstracts/variable.module';
 
 .backgroundImage {
+  hr {
+    border: 0px solid $gray;
+    margin-bottom: 5rem;
+    @media screen and (max-width: 1200px) {
+      margin-bottom: 2.5rem;
+    }
+  }
   background-size: cover;
   padding-top: 8rem;
   position: relative;
@@ -242,6 +249,16 @@
         //   black 100%,
         //   black 100%
         // );
+      }
+    }
+  }
+
+  @media (min-width: 1500px) {
+    .payoutsContainer {
+      .payoutsBodyContainer {
+        .payouts {
+          padding-top: 3rem;
+        }
       }
     }
   }

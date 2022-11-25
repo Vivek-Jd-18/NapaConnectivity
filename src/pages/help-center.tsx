@@ -4,7 +4,6 @@ import type { NextPage } from 'next';
 import HelpCenterSc from '@/components/HelpCenter/HelpCenterSc';
 
 const HelpCenter: NextPage = () => {
-
   return (
     <>
       <Head>
@@ -13,7 +12,10 @@ const HelpCenter: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <section className={styles.container} id="earn-container">
-        <div className={`${styles.child} earnpage help_sc_bg`}>
+        <div
+          className={`${styles.child} earnpage help_sc_bg`}
+          id="scrollElement"
+        >
           <HelpCenterSc />
         </div>
       </section>

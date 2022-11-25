@@ -1,7 +1,7 @@
 import useProfile from '@/hooks/useProfile';
 import useWebThree from '@/hooks/useWebThree';
 import { createNewPost, getAllPosts } from '@/services/PostApi';
-import { activePost, NewPost, Post } from '@/types/post';
+import { activePost, Post } from '@/types/post';
 import { ToastDescription, ToastTitle } from '@/typing/toast';
 import Tippy from '@tippyjs/react';
 import moment from 'moment';
@@ -216,18 +216,21 @@ export default function FeedTab({ socket }: FeedTabProps) {
     if (!videoTitle || !caption) {
       return;
     }
-    const newPost: NewPost = {
-      videoTitle,
-      videoFile: videoPreview ? videoPreview : '',
-      videoType: file?.type || '',
-      videoCaption: caption,
-      accountId: account,
-      minted: '',
-      userImage: profileDetails.avatar ? profileDetails.avatar : '',
-      userName: profileDetails.profileName,
-    };
+    const formData = new FormData();
+    formData.append('videoTitle', videoTitle);
+    //@ts-ignore
+    formData.append('videoFile', file);
+    formData.append('videoType', file?.type || '');
+    formData.append('videoCaption', caption);
+    formData.append('accountId', account);
+    formData.append('minted', '');
+    formData.append(
+      'userImage',
+      profileDetails.avatar ? profileDetails.avatar : ''
+    );
+    formData.append('userName', profileDetails.profileName);
     setLoading(true);
-    const { error, message } = await createNewPost(newPost);
+    const { error, message } = await createNewPost(formData);
     if (error) {
       setLoading(false);
       toast.error(
@@ -490,7 +493,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
                             preload="auto"
                             autoPlay
                             controls
-                            src={post.videoFile as string}
+                            src={post.videoURL as string}
                             style={{ objectFit: 'contain' }}
                           >
                             The “video” tag is not supported by your browser.
