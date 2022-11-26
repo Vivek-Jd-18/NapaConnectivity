@@ -250,7 +250,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
       CustomToastWithLink({
         icon: DoneIcon,
         title: 'Success',
-        description: 'Post Created Successfully',
+        description: 'Post Was Created Successfully',
         time: 'Now',
       })
     );
@@ -489,7 +489,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
                         <div className={styles.MdlImage}>
                           <video
                             width={'100%'}
-                            height="300"
+                            height="400"
                             preload="auto"
                             autoPlay
                             controls

@@ -40,7 +40,7 @@
       cursor: pointer;
       span {
         @include font-sm-avenir-regular;
-        padding-left: 0.5rem;
+        padding-left: 1.5rem;
       }
     }
     .publishBtn {
@@ -290,7 +290,7 @@
   .rightBox {
     position: relative;
     flex-basis: 37.1%;
-    padding: 10px 40px 30px 50px;
+    padding: 10px 40px 30px 90px;
     transition: all 0.2s ease-out;
     opacity: 0;
     pointer-events: none;
@@ -312,8 +312,8 @@
       position: absolute;
       left: 0;
       right: 0;
-      top: calc(50% - 30px);
-      // top: -2rem;
+      // top: calc(50% - 30px);
+      top: 15rem;
       background: #142728 !important;
       border: 1px solid rgb(145 165 166 / 8%);
       outline: none !important;
@@ -346,6 +346,7 @@
         align-items: flex-start;
         flex-direction: column;
         margin-top: 23px;
+        width:100% ;
         .HadComment {
           display: flex;
           align-items: center;
