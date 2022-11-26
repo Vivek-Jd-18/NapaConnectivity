@@ -1,8 +1,7 @@
-import { SOCIAL_ART_API_URL } from '@/constants/url';
 import useProfile from '@/hooks/useProfile';
 import useWebThree from '@/hooks/useWebThree';
 import { createNewPost, getAllPosts } from '@/services/PostApi';
-import { activePost, NewPost, Post } from '@/types/post';
+import { activePost, Post } from '@/types/post';
 import { ToastDescription, ToastTitle } from '@/typing/toast';
 import Tippy from '@tippyjs/react';
 import moment from 'moment';
@@ -18,9 +17,10 @@ import HighlightButton from '../HighlightButton/HighlightButton';
 import styles from './FeedTab.module.scss';
 import { RWebShare } from 'react-web-share';
 // import { textToEmoji } from '@/utils/socialArt';
-import { socialArtMessagesTriggers } from '@/constants/socialArt.constants';
+// import { socialArtMessagesTriggers } from '@/constants/socialArt.constants';
 import { WEB_STAGING_SOCIALART_URL } from '@/constants/url';
-import Footer from '../Footer/Footer';
+// import Footer from '../Footer/Footer';
+// import lodash from 'lodash';
 
 type FeedTabProps = {
   socket: WebSocket;
@@ -186,38 +186,19 @@ export default function FeedTab({ socket }: FeedTabProps) {
     window.addEventListener('resize', handleModalPosition);
   }, []);
 
-  const putCacheData = async (latestPost: Post) => {
-    const cacheStorage = await caches.open('posts');
-    const previousdata = await getCachedData();
-    if (previousdata && previousdata?.data?.length >= 5)
-      previousdata?.data.pop();
-    previousdata?.data?.unshift(latestPost);
-    const previousdataResponse = new Response(JSON.stringify(previousdata));
-    await cacheStorage.put(
-      `${SOCIAL_ART_API_URL}/user/social/video/list?offset=0`,
-      previousdataResponse
-    );
-    await getCachedData();
-  };
-
   useEffect(() => {
     socket.addEventListener(
       'message',
       (payload: { type: string; data: string }) => {
         if (posts?.length && posts?.length > 0) {
-          console.log('if block');
-          setPosts((prevPosts) => [
-            JSON.parse(payload.data).posts,
-            ...(prevPosts || []),
-          ]);
+          setPosts([JSON.parse(payload.data).posts, ...posts]);
         } else {
-          console.log('else block');
           setPosts([JSON.parse(payload.data).posts]);
         }
-        putCacheData(JSON.parse(payload.data).posts);
       }
     );
-  }, []);
+  }, [posts]);
+
   //@ts-ignore
   const handleActionClick = () => {
     if (!account) {
@@ -273,18 +254,21 @@ export default function FeedTab({ socket }: FeedTabProps) {
     if (!videoTitle || !caption) {
       return;
     }
-    const newPost: NewPost = {
-      videoTitle,
-      videoFile: videoPreview ? videoPreview : '',
-      videoType: file?.type || '',
-      videoCaption: caption,
-      accountId: account,
-      minted: '',
-      userImage: profileDetails.avatar ? profileDetails.avatar : '',
-      userName: profileDetails.profileName,
-    };
+    const formData = new FormData();
+    formData.append('videoTitle', videoTitle);
+    //@ts-ignore
+    formData.append('videoFile', file);
+    formData.append('videoType', file?.type || '');
+    formData.append('videoCaption', caption);
+    formData.append('accountId', account);
+    formData.append('minted', '');
+    formData.append(
+      'userImage',
+      profileDetails.avatar ? profileDetails.avatar : ''
+    );
+    formData.append('userName', profileDetails.profileName);
     setLoading(true);
-    const { error, message } = await createNewPost(newPost);
+    const { error, message } = await createNewPost(formData);
     if (error) {
       setLoading(false);
       toast.error(
@@ -304,62 +288,22 @@ export default function FeedTab({ socket }: FeedTabProps) {
       CustomToastWithLink({
         icon: DoneIcon,
         title: 'Success',
-        description: 'Post Created Successfully',
+        description: 'Post Was Created Successfully',
         time: 'Now',
       })
     );
   };
 
   const handleGetPosts = async () => {
-    const cachedPosts = await getCachedData();
-    if (!cachedPosts) addDataToCache();
-  };
-
-  const handleGetMorePosts = async () => {
-    const { data }: any = await getAllPosts(posts?.length || 0);
-    setPosts((prevPosts) => [...(prevPosts || []), ...(data?.data || [])]);
+    setGetPostsLoading(true);
+    const { data }: any = await getAllPosts();
+    setPosts(data?.data || []);
+    setGetPostsLoading(false);
   };
 
   useEffect(() => {
     handleGetPosts();
   }, []);
-
-  useEffect(() => {
-    if (posts?.length && posts?.length >= 5) {
-      handleGetMorePosts();
-    }
-  }, [posts?.length]);
-
-  const getCachedData = async () => {
-    const cacheStorage = await caches.open('posts');
-    const cachedResponse = await cacheStorage.match(
-      `${SOCIAL_ART_API_URL}/user/social/video/list?offset=0`
-    );
-    if (!cachedResponse && !posts) {
-      return false;
-    }
-    const cachedResponseJson = await cachedResponse?.json();
-    if (cachedResponseJson.data && !posts) {
-      setPosts(cachedResponseJson.data);
-    }
-    return cachedResponseJson;
-  };
-
-  const addDataToCache = async () => {
-    setGetPostsLoading(true);
-    caches.open('posts').then((cache) => {
-      cache
-        .add(`${SOCIAL_ART_API_URL}/user/social/video/list?offset=0`)
-        .then(async () => {
-          await getCachedData();
-          setGetPostsLoading(false);
-        })
-        .catch((err) => {
-          console.log(err);
-          setGetPostsLoading(false);
-        });
-    });
-  };
 
   useEffect(() => {
     document.addEventListener(
@@ -573,15 +517,12 @@ export default function FeedTab({ socket }: FeedTabProps) {
                               </p>
                             </div>
                           </div>
-                          {/* <div
-                            id="hide_title"
-                            className={styles.messageContainer}
-                            dangerouslySetInnerHTML={{
-                              __html: textToEmoji(
-                                socialArtMessagesTriggers[3]?.message
-                              ),
-                            }}
-                          ></div> */}
+                          { 0 && (
+                            <div className={`${styles.messageContainer}`}>
+                              Congratulations! Your post is now live for 12
+                              hours!
+                            </div>
+                          )}
 
                           <div className={styles.UserRightTxt}>
                             <h4>10:22:12</h4>
@@ -591,11 +532,11 @@ export default function FeedTab({ socket }: FeedTabProps) {
                         <div className={styles.MdlImage}>
                           <video
                             width={'100%'}
-                            height="300"
+                            height="400"
                             preload="auto"
                             autoPlay
                             controls
-                            src={post.videoFile as string}
+                            src={post.videoURL as string}
                             style={{ objectFit: 'contain' }}
                           >
                             The “video” tag is not supported by your browser.

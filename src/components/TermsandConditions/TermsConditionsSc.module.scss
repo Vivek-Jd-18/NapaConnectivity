@@ -1,13 +1,19 @@
 @import '../../../styles/abstracts/mixins.module';
 @import '../../../styles/abstracts/variable.module';
 
-
 .MainContact {
   min-height: 85vh;
   padding-top: 112px;
 }
 .WidthFull {
   width: 100%;
+  hr {
+    border: 0px solid $gray;
+    margin-bottom: 5rem;
+    @media screen and (max-width: 1200px) {
+      margin-bottom: 2.5rem;
+    }
+  }
 }
 .MainTextHelp h1 {
   font-family: 'Neuropolitical';
@@ -16,7 +22,7 @@
   font-size: 74px;
   line-height: 110%;
   text-align: start;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-bottom: 60px;
 }
 @media screen and (max-width: 736px) {
@@ -29,65 +35,64 @@
     margin-bottom: 24px;
   }
 }
-.TreamSec{
+.TreamSec {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  h4{
+  h4 {
     font-family: 'Neuropolitical';
     font-weight: 400;
     font-size: 32px;
     line-height: 110%;
-    color: #91A5A6;
+    color: #91a5a6;
     margin-bottom: 30px;
   }
-  span{
+  span {
     color: #fff !important;
   }
-  .TreamHedr{
-    margin-top: 30px
+  .TreamHedr {
+    margin-top: 30px;
   }
-  .TreamPadig{
-    padding-left: 15px
+  .TreamPadig {
+    padding-left: 15px;
   }
-  p{
+  p {
     @include font-xs-avenir-regular;
     font-weight: 400;
     font-size: 18px;
     line-height: 140%;
-    color: #91A5A6;
+    color: #91a5a6;
     max-width: 840px;
     text-align: left;
     margin-bottom: 15px;
   }
 }
 @media screen and (max-width: 1200px) {
-  .TreamSec{
+  .TreamSec {
     text-align: left;
   }
 }
 @media screen and (max-width: 736px) {
-  .TreamSec{
-    h4{
+  .TreamSec {
+    h4 {
       font-weight: 400;
       font-size: 18px;
       line-height: 110%;
       margin-bottom: 21px;
     }
-    .TreamHedr{
-      margin-top: 20px
+    .TreamHedr {
+      margin-top: 20px;
     }
-    .TreamPadig{
-      padding-left: 15px
+    .TreamPadig {
+      padding-left: 15px;
     }
-    p{
+    p {
       font-weight: 400;
       font-size: 16px;
       line-height: 140%;
       max-width: 100%;
       text-align: left;
       margin-bottom: 15px;
-      
     }
   }
 }

@@ -6,9 +6,6 @@
   hr {
     border: 0px solid $gray;
     margin-bottom: 5rem;
-    @media screen and (max-width: 1200px) {
-      margin-bottom: 0rem;
-    }
   }
   .settingsContainer {
     height: 100%;

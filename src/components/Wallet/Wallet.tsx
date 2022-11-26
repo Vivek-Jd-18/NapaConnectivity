@@ -21,7 +21,6 @@ type WalletComponentProps = {
 
 const WalletComponent: NextPage<WalletComponentProps> = ({ account }) => {
   const { push, query } = useRouter();
-  console.log('query', query);
 
   const { connectWallet, getAccounts } = useWebThree();
   const [show, setShow] = useState(true);

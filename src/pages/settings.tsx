@@ -11,7 +11,7 @@ const Settings: NextPage = () => {
         <meta name="description" content="NAPA Staging Environment" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className={styles.settingsContainer}>
+      <div className={styles.settingsContainer} id="scrollElement">
         <SettingsComponent />
       </div>
     </>

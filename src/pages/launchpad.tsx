@@ -4,7 +4,6 @@ import type { NextPage } from 'next';
 import LaunchPadSc from '@/components/Launchpad/LaunchPadSc';
 
 const Launchpad: NextPage = () => {
-
   return (
     <>
       <Head>
@@ -14,7 +13,6 @@ const Launchpad: NextPage = () => {
       </Head>
       <section className={styles.container} id="earn-container">
         <div className={`${styles.child} earnpage`} id="scrollElement">
-          {/* <CreateNewSwappingFourSc /> */}
           <LaunchPadSc />
         </div>
       </section>

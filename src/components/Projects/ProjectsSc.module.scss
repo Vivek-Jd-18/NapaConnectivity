@@ -7,7 +7,7 @@
     border: 0px solid $gray;
     margin-bottom: 5rem;
     @media screen and (max-width: 1200px) {
-      margin-bottom: 0rem;
+      margin-bottom: 2.5rem;
     }
   }
   .settingsContainer {
@@ -35,10 +35,10 @@
     }
   }
 }
-.ourlyPerntAj{
+.ourlyPerntAj {
   position: relative;
-  &::before{
-    content: "";
+  &::before {
+    content: '';
     position: absolute;
     left: 0;
     right: 0;
@@ -51,58 +51,58 @@
   }
 }
 
-.pdingTop{
+.pdingTop {
   padding-top: 132px;
 }
-.LncpadDtlUpCont{
+.LncpadDtlUpCont {
   display: flex;
 }
-.rightContnt{
+.rightContnt {
   margin-left: 60px;
   flex-basis: 75%;
   margin-top: -17px;
-  h1{
+  h1 {
     font-family: 'Neuropolitical';
     font-style: normal;
     font-weight: 400;
     font-size: 76px;
     line-height: 110%;
-    color: #FFFFFF;
+    color: #ffffff;
     text-align: start;
     max-width: 775px;
     margin: 0 0 22px 0;
   }
-  p{
+  p {
     font-family: 'Avenir';
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
     line-height: 140%;
-    color: #FFFFFF;
+    color: #ffffff;
     text-align: start;
     max-width: 600px;
     margin: 0 0 35px 0;
   }
 }
-.flxBlleinnr{
+.flxBlleinnr {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.upCont{
+.upCont {
   display: flex;
   align-items: center;
-  p{
+  p {
     font-family: 'Avenir';
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 140%;
-    color: #FFFFFF;
+    color: #ffffff;
     margin: 0 0 0 10px;
   }
 }
-.MianPentBasisBox{
+.MianPentBasisBox {
   padding: 40px 0;
   width: 100%;
   display: flex;
@@ -110,60 +110,60 @@
   border-bottom: 1px solid #91a5a626;
   margin-bottom: 34px;
 }
-.CurrentBitBoxInrr{
+.CurrentBitBoxInrr {
   flex-basis: 20%;
-  p{
+  p {
     font-family: 'Avenir';
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
     line-height: 140%;
-    color: #FFFFFF;
+    color: #ffffff;
     margin: 0 0 5px 0;
     text-align: start;
   }
-  h3{
+  h3 {
     font-family: 'Avenir';
     font-style: normal;
     font-weight: 400;
     font-size: 32px;
     line-height: 110%;
-    color: #FFFFFF;
+    color: #ffffff;
     margin: 0 0 0 0;
   }
-  .imgAdnHH{
+  .imgAdnHH {
     display: flex;
     align-items: center;
-    >span{
+    > span {
       margin-right: 16px !important;
     }
   }
 }
-.onlyImgBox{
+.onlyImgBox {
   flex-basis: 25%;
-  >span{
+  > span {
     width: 100% !important;
     object-fit: cover;
   }
 }
-.progsContnt{
+.progsContnt {
   flex-basis: 25%;
-  .LinkPrnt{
+  .LinkPrnt {
     font-family: 'Neuropolitical';
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
     line-height: 110%;
-    color: #16E6EF;
+    color: #16e6ef;
     text-align: start;
     margin: 9px 0 0 0;
   }
 }
-.AllLinkFlex{
+.AllLinkFlex {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  button{
+  button {
     background: transparent;
     border: none;
     margin-right: 24px;
@@ -174,7 +174,7 @@
       bottom: 5px;
     }
   }
-  a{
+  a {
     margin-right: 24px;
     position: relative;
     bottom: 0;
@@ -182,7 +182,7 @@
     &:hover {
       bottom: 5px;
     }
-    &:last-child{
+    &:last-child {
       margin-right: 0;
     }
   }
@@ -199,49 +199,53 @@
     }
   }
 }
-.progsContntUp{
+.progsContntUp {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 9px;
-  h6{
+  h6 {
     font-family: 'Avenir';
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
     line-height: 110%;
     text-align: right;
-    color: #FFFFFF;
+    color: #ffffff;
     margin: 0;
   }
 }
 
-
-.StaylinkFrst{
+.StaylinkFrst {
   padding-top: 0px !important;
   padding-bottom: 20px !important;
   display: flex;
   text-align: start;
-  a{
+  a {
     font-weight: 500;
     font-size: 16px;
     line-height: 140%;
-    color: #FFFFFF;
+    color: #ffffff;
     text-decoration: none;
     display: flex;
     align-items: center;
     cursor: pointer;
     transition: all 0.2s ease-out;
     &:hover {
-      color: #16E6EF;
-      >span {
-        img {filter: invert(1%) sepia(162%) saturate(1057%) hue-rotate(143deg) brightness(100%) contrast(85%)}
+      color: #16e6ef;
+      > span {
+        img {
+          filter: invert(1%) sepia(162%) saturate(1057%) hue-rotate(143deg)
+            brightness(100%) contrast(85%);
+        }
       }
     }
-    >span {
+    > span {
       margin-right: 7px !important;
     }
-    @media screen and (max-width:736px) {margin-bottom: 5px !important;}
+    @media screen and (max-width: 736px) {
+      margin-bottom: 5px !important;
+    }
   }
 }
 
@@ -252,20 +256,20 @@
 }
 
 @media screen and (max-width: 1280px) {
-  .LncpadDtlUpCont{
+  .LncpadDtlUpCont {
     flex-direction: column;
   }
-  .rightContnt{
+  .rightContnt {
     margin-left: 0;
     flex-basis: 100%;
     h1 {
       max-width: 100%;
     }
   }
-  .onlyImgBox{
+  .onlyImgBox {
     flex-basis: 100%;
     order: 3;
-    >span {
+    > span {
       margin-top: 12px !important;
     }
   }
@@ -280,19 +284,19 @@
   //     margin-right: 14px;
   //   }
   // }
-  .CurrentBitBoxInrr{
-    p{
+  .CurrentBitBoxInrr {
+    p {
       font-size: 16px;
       line-height: 140%;
       margin: 0 0 5px 0;
     }
-    h3{
+    h3 {
       font-weight: 400;
       font-size: 22px;
       line-height: 110%;
     }
-    .imgAdnHH{
-      >span{
+    .imgAdnHH {
+      > span {
         margin-right: 10px !important;
       }
     }
@@ -300,10 +304,10 @@
 }
 
 @media screen and (max-width: 736px) {
-  .pdingTop{
+  .pdingTop {
     padding-top: 100px;
   }
-  .rightContnt{
+  .rightContnt {
     h1 {
       font-size: 32px;
       margin: 0 0 12px 0;
@@ -313,14 +317,14 @@
       font-size: 16px;
     }
   }
-    .SocialLinks {
+  .SocialLinks {
     margin-right: 18px;
   }
-  .AllLinkFlex{
-    button{
+  .AllLinkFlex {
+    button {
       margin-right: 12px;
     }
-    a{
+    a {
       margin-right: 12px;
     }
   }
@@ -330,11 +334,11 @@
       font-size: 14px;
     }
   }
-  .MianPentBasisBox{
+  .MianPentBasisBox {
     padding: 30px 0;
     flex-direction: column;
   }
-  .CurrentBitBoxInrr{
+  .CurrentBitBoxInrr {
     margin-bottom: 12px;
   }
 }

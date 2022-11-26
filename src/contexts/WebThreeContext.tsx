@@ -78,7 +78,6 @@ export const WebThreeContextProvider = (props: {
       // @ts-ignore
       setWalletBnb(bnbBalance);
     } catch (error) {
-      console.log('error', error);
       if (isMobile || isTablet) {
         toast.error(
           CustomToastWithLink({

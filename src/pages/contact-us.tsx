@@ -13,7 +13,7 @@ const ContactUs: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <section className={styles.container} id="earn-container">
-        <div className={`${styles.child} earnpage contact_sc_bg`}>
+        <div className={`${styles.child} earnpage contact_sc_bg`} id="scrollElement">
           <ContactUsSc />
         </div>
       </section>
