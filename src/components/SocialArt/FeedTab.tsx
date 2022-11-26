@@ -517,12 +517,12 @@ export default function FeedTab({ socket }: FeedTabProps) {
                               </p>
                             </div>
                           </div>
-                          { 0 && (
+                          {/* {counter > 0 && (
                             <div className={`${styles.messageContainer}`}>
                               Congratulations! Your post is now live for 12
                               hours!
                             </div>
-                          )}
+                          )} */}
 
                           <div className={styles.UserRightTxt}>
                             <h4>10:22:12</h4>
