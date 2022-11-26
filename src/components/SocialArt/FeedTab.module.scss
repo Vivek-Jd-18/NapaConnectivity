@@ -141,10 +141,10 @@
 .MainScrollBox {
   text-align: left;
   color: #fff;
-  margin: 0 -7.9vw;
-  padding: 0 7.9vw;
+  // margin: 0 -7.9vw;
+  // padding: 0 7.9vw;
   overflow-y: auto;
-  height: 900px;
+  height: calc(100vh - 280px);
 
   .NotFoundMessageContainer {
     display: flex;
@@ -159,8 +159,8 @@
   }
 }
 .MainTabBox {
-  margin: 0 -7.9vw;
-  padding: 0 7.9vw;
+  // margin: 0 -7.9vw;
+  // padding: 0 7.9vw;
   background: transparent;
   transition: all 0.2s ease-out;
   display: flex;
@@ -500,9 +500,9 @@
 }
 @media screen and (max-width: 768px) {
   .MainScrollBox {
-    margin: 0 -40px;
-    padding: 0 0px;
-    height: 900px;
+    // margin: 0 -40px;
+    padding: 0;
+    // height: 900px;
   }
   .MainTabBox {
     margin: 0px;
@@ -529,7 +529,7 @@
 }
 @media screen and (max-width: 736px) {
   .MainScrollBox {
-    height: 625px;
+    // height: 625px;
   }
   .MainTabBox {
     .leftBox {

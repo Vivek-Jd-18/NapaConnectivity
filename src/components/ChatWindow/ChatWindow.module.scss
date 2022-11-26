@@ -28,7 +28,7 @@
 }
 @media screen and (min-width: 1356px) {
   .chatWindowContainer {
-    height: 300px;
+    height: calc(100vh - 400px);
   }
 }
 .chatInputContainer {
