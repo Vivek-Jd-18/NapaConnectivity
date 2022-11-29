@@ -536,7 +536,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
                     <video
                       // style={{ objectFit: 'fill' }}
                       width={'100%'}
-                      height={'100%'}
+                      height={'auto'}
                       autoPlay
                       controls
                       src={videoPreview as string}
