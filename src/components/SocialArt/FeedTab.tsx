@@ -177,6 +177,14 @@ export default function FeedTab({ socket }: FeedTabProps) {
   }, []);
 
   useEffect(() => {
+    if (!getPostsLoading) {
+      document
+        .getElementById(postId)
+        ?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }, [postId, getPostsLoading]);
+
+  useEffect(() => {
     socket.addEventListener(
       'message',
       (payload: { type: string; data: string }) => {
@@ -615,7 +623,8 @@ export default function FeedTab({ socket }: FeedTabProps) {
                           <RWebShare
                             data={{
                               text: 'NAPA Society | Social Art',
-                              url: `${WEB_STAGING_SOCIALART_URL}/?postId=${post?.postId}`,
+                                url: `${WEB_STAGING_SOCIALART_URL}/?postId=${post?.postId}`,
+                         
                             }}
                             onClick={() => console.log('shared successfully!')}
                           >
