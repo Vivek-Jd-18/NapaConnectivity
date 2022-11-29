@@ -80,7 +80,7 @@
 }
 .dragAndDropText {
   @include font-md-avenir-medium;
-  margin-top: 2rem;
+  margin-top: 0.7rem;
   margin-bottom: 0.5rem;
   color: $white;
   @media (max-width: 576px) {
@@ -461,10 +461,109 @@
         }
       }
     }
+    .mintPostContainer {
+      padding: 1rem 0;
+      position: relative;
+      left: 5rem;
+      .mintDetails {
+        margin: 1rem 0;
+        overflow: scroll;
+        height: 32rem;
+        .descriptionContainer {
+          margin-top: -0.4rem;
+          p {
+            color: $gray;
+            @include font-xs-avenir-regular;
+            padding-left: 1rem;
+          }
+          .description {
+            width: 100%;
+            resize: none;
+            background-color: transparent;
+            border: 1px solid $white !important;
+            color: $white;
+            @include font-md-avenir-medium;
+            padding: 1rem;
+            outline: none;
+          }
+        }
+        .tagContainer {
+          margin-bottom: 1.5rem;
+          .headline {
+            color: $gray;
+            @include font-xs-avenir-regular;
+            padding-left: 1rem;
+            text-align: left;
+            width: 100%;
+            margin-bottom: 1rem;
+            display: inline-block;
+          }
+          .tagDescription {
+            color: $gray;
+            text-align: left;
+            display: inline-block;
+            margin-left: 1rem;
+            @include font-sm-avenir-regular;
+            margin-bottom: 1rem;
+            width: 100%;
+          }
+          .remainingTag {
+            color: $gray;
+            text-align: left;
+            display: inline-block;
+            margin-left: 1rem;
+            @include font-sm-avenir-regular;
+            margin-top: 1rem;
+            width: 100%;
+          }
+        }
+      }
+      .actionContainer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 1rem;
+        .cancelBtn {
+          color: $gray;
+          cursor: pointer;
+          @include font-sm-avenir-regular;
+          &:hover {
+            color: $white;
+          }
+        }
+        .mintBtn {
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+          color: $links;
+          span {
+            @include font-sm-avenir-regular;
+            padding-left: 0.5rem;
+          }
+          &:hover {
+            color: $hover-links;
+          }
+        }
+      }
+      .errmsg {
+        padding-left: 1rem;
+        margin-top: 0.5rem;
+        color: red;
+        @include font-sm-neuropolitical-normal;
+      }
+      .loaderContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
   }
 }
 
 @media screen and (max-width: 1200px) {
+  .mintPostContainer {
+    left: 0 !important;
+  }
   .commentsContainer {
     left: 0rem !important;
   }
@@ -479,6 +578,7 @@
     height: auto;
     flex-direction: column;
     .leftBox {
+      padding-bottom: 0;
       padding-right: 0 !important;
       flex-basis: 100%;
     }

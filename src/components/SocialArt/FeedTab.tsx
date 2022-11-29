@@ -15,6 +15,14 @@ import { CustomToastWithLink } from '../CustomToast/CustomToast';
 import HighlightButton from '../HighlightButton/HighlightButton';
 import styles from './FeedTab.module.scss';
 import lodash from 'lodash';
+import Input from '../Input/Input';
+import DropDownComponent from '../Dropdown/Dropdown';
+import {
+  countries,
+  genre,
+  snftCollection,
+} from '@/constants/social-art.constants';
+import ReactTags from 'react-tag-autocomplete';
 
 type FeedTabProps = {
   socket: WebSocket;
@@ -47,8 +55,62 @@ export default function FeedTab({ socket }: FeedTabProps) {
   const [getPostsLoading, setGetPostsLoading] = React.useState(false);
   const [posts, setPosts] = React.useState<Post[] | null>(null);
   const [counter, setCounter] = React.useState(60);
+  const [mintDetails, setMintDetails] = React.useState({
+    title: 'Bring Me the Open Space',
+    collection: 'NAPA Society Collection',
+    description: '',
+    location: countries[0]?.name,
+    tagged_people: '',
+    genre: 'Virtual Worlds',
+    tags: '',
+  });
+  const [mintDetailsErrors, setMintDetailsErrors] = React.useState({
+    title: '',
+    collection: '',
+    description: '',
+  });
 
   const { profileDetails } = useProfile();
+  const people = useRef();
+  const tag = useRef();
+  const [peopleTags, setPeopleTags] = React.useState([]);
+  const [tags, setTags] = React.useState([]);
+
+  const onPeopleDelete = useCallback(
+    (tagIndex: number) => {
+      setPeopleTags(peopleTags.filter((_, i) => i !== tagIndex));
+    },
+    [peopleTags]
+  );
+
+  const onDelete = useCallback(
+    (tagIndex: number) => {
+      setTags(tags.filter((_, i) => i !== tagIndex));
+    },
+    [tags]
+  );
+
+  const onAddition = useCallback(
+    (newTag: any) => {
+      if (tags.length === 10) {
+        return;
+      }
+      // @ts-ignore
+      setTags([...tags, newTag]);
+    },
+    [tags]
+  );
+
+  const onPeopleAddition = useCallback(
+    (newTag: any) => {
+      if (peopleTags.length === 10) {
+        return;
+      }
+      // @ts-ignore
+      setPeopleTags([...peopleTags, newTag]);
+    },
+    [peopleTags]
+  );
 
   const handleDragOver = (ev: any) => {
     ev.preventDefault();
@@ -284,6 +346,81 @@ export default function FeedTab({ socket }: FeedTabProps) {
     );
   }, []);
 
+  const handleMintPostCancel = () => {
+    handleClickOne({
+      postId: '',
+      type: '',
+    });
+    setMintDetailsErrors({
+      title: '',
+      collection: '',
+      description: '',
+    });
+    setMintDetails({
+      title: 'Bring Me the Open Space',
+      collection: 'NAPA Society Collection',
+      description: '',
+      location: countries[0]?.name,
+      tagged_people: '',
+      genre: 'Virtual Worlds',
+      tags: '',
+    });
+    setTags([]);
+    setPeopleTags([]);
+  };
+
+  const handleMintPost = () => {
+    setMintDetailsErrors({
+      title: '',
+      collection: '',
+      description: '',
+    });
+    const newTags = tags.map((tag: any) => tag?.name).toLocaleString();
+    const newPeopleTags = peopleTags
+      .map((tag: any) => tag?.name)
+      .toLocaleString();
+    if (mintDetails.title == '') {
+      setMintDetailsErrors((prev) => {
+        return {
+          ...prev,
+          title: 'Title is required.',
+        };
+      });
+    }
+    if (mintDetails.description == '') {
+      setMintDetailsErrors((prev) => {
+        return {
+          ...prev,
+          description: 'Description is required.',
+        };
+      });
+    }
+    if (mintDetails.collection == '') {
+      setMintDetailsErrors((prev) => {
+        return {
+          ...prev,
+          collection: 'Collection is required.',
+        };
+      });
+    }
+    if (
+      !mintDetails.title ||
+      !mintDetails.description ||
+      !mintDetails.collection
+    )
+      return;
+    const mintedPost = {
+      title: mintDetails.title,
+      collection: mintDetails.collection,
+      description: mintDetails.description,
+      location: mintDetails.location,
+      tagged_people: newPeopleTags.length ? newPeopleTags : '',
+      genre: mintDetails.genre,
+      tags: newTags.length ? newTags : '',
+    };
+    console.log('mintedPost', mintedPost);
+  };
+
   return (
     <div className={styles.MainListBox}>
       <div className={styles.parent}>
@@ -480,8 +617,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
                           </div>
                           {counter > 0 && (
                             <div className={`${styles.messageContainer}`}>
-                              Your post is now live for 12
-                              hours!
+                              Your post is now live for 12 hours!
                             </div>
                           )}
 
@@ -559,18 +695,20 @@ export default function FeedTab({ socket }: FeedTabProps) {
                             </span>
                           </a>
                           <button
+                            style={{ zIndex: 1 }}
                             className={
                               active.postId === post.postId &&
                               active.type === 'mint'
                                 ? `${styles.BotomLikes} ${styles.active}`
                                 : `${styles.BotomLikes}`
                             }
-                            // onClick={() =>
-                            //   handleClickOne({
-                            //     postId: post.postId,
-                            //     type: 'mint',
-                            //   })
-                            // }
+                            onClick={() => {
+                              handleClickOne({
+                                postId: post.postId,
+                                type: 'mint',
+                              });
+                              setOpen(false);
+                            }}
                           >
                             <Image
                               src="/img/mint_icon.svg"
@@ -803,139 +941,161 @@ export default function FeedTab({ socket }: FeedTabProps) {
                               height="24px"
                             />
                           </button>
-                          <h1>16 comments</h1>
-                          <div className={styles.ForShadow}>
-                            <div className={styles.UserComment}>
-                              <div className={styles.FisrtComBox}>
-                                <div className={styles.HadComment}>
-                                  <a href="#" className={styles.leftIcontxt}>
-                                    <Image
-                                      src="/img/comment01.png"
-                                      alt=""
-                                      width="28px"
-                                      height="28px"
-                                    />
-                                    <h4>Marta Thornton</h4>
-                                  </a>
-                                  <p>1 hour</p>
-                                </div>
-                                <div className={styles.btmcomment}>
-                                  <p>
-                                    However venture pursuit he am mr cordial.
-                                    Forming musical am hearing studied be
-                                    luckily.
+                          <div className={styles.mintPostContainer}>
+                            <h1>Minting a Post</h1>
+                            <div className={styles.mintDetails}>
+                              <Input
+                                type="text"
+                                placeholder="SNFT Title"
+                                label="SNFT Title"
+                                value={mintDetails.title}
+                                onChange={(e) =>
+                                  !loading &&
+                                  setMintDetails((prev) => {
+                                    return {
+                                      ...prev,
+                                      title: e.target.value,
+                                    };
+                                  })
+                                }
+                              />
+                              {!mintDetails.title &&
+                                mintDetailsErrors.title && (
+                                  <p className={styles.errmsg}>
+                                    {mintDetailsErrors.title}
                                   </p>
-                                  <div className={styles.LikeReplyTxt}>
-                                    <a href="#">Like</a>
-                                    <a href="#">Reply</a>
-                                  </div>
+                                )}
+                              <div style={{ padding: '1rem 0' }}>
+                                <DropDownComponent
+                                  disabled={loading}
+                                  title="SNFT Collection"
+                                  options={snftCollection}
+                                  dropDownValue={mintDetails.collection}
+                                  onChange={(e) =>
+                                    setMintDetails((prev) => {
+                                      return {
+                                        ...prev,
+                                        collection: e.target.value,
+                                      };
+                                    })
+                                  }
+                                />
+                                <div style={{ marginTop: '-1rem' }}>
+                                  {mintDetails.collection ==
+                                    'Take Ownership' && (
+                                    <p className={styles.errmsg}>
+                                      NAPA Mint Fee Required For this Option
+                                    </p>
+                                  )}
                                 </div>
                               </div>
-                              <div className={styles.FisrtComBox}>
-                                <div className={styles.HadComment}>
-                                  <a href="#" className={styles.leftIcontxt}>
-                                    <Image
-                                      src="/img/comment02.svg"
-                                      alt=""
-                                      width="28px"
-                                      height="28px"
-                                    />
-                                    <h4>Dorothy Mccoy</h4>
-                                  </a>
-                                  <p>4 hour</p>
-                                </div>
-                                <div className={styles.btmcomment}>
-                                  <p>Change wholly say why eldest period.</p>
-                                  <div className={styles.LikeReplyTxt}>
-                                    <a href="#">Like</a>
-                                    <a href="#">Reply</a>
-                                  </div>
-                                </div>
+                              <div className={styles.descriptionContainer}>
+                                <p>SNFT Description</p>
+                                <textarea
+                                  disabled={loading}
+                                  className={styles.description}
+                                  value={mintDetails.description}
+                                  onChange={(e) =>
+                                    setMintDetails((prev) => {
+                                      return {
+                                        ...prev,
+                                        description: e.target.value,
+                                      };
+                                    })
+                                  }
+                                ></textarea>
                               </div>
-                              <div className={styles.FisrtComBox}>
-                                <div className={styles.HadComment}>
-                                  <a href="#" className={styles.leftIcontxt}>
-                                    <Image
-                                      src="/img/comment03.svg"
-                                      alt=""
-                                      width="28px"
-                                      height="28px"
-                                    />
-                                    <h4>Howard Copeland</h4>
-                                  </a>
-                                  <p>1 hour</p>
-                                </div>
-                                <div className={styles.btmcomment}>
-                                  <p>
-                                    Unfeeling agreeable suffering it on
-                                    smallness newspaper be. So come must time no
-                                    as. Do on unpleasing.{' '}
+                              {!mintDetails.description &&
+                                mintDetailsErrors.description && (
+                                  <p className={styles.errmsg}>
+                                    {mintDetailsErrors.description}
                                   </p>
-                                  <div className={styles.LikeReplyTxt}>
-                                    <a href="#">Like</a>
-                                    <a href="#">Reply</a>
-                                  </div>
-                                </div>
+                                )}
+                              <div style={{ padding: '0.5rem 0' }}>
+                                <DropDownComponent
+                                  disabled={loading}
+                                  title="Location"
+                                  options={countries}
+                                  dropDownValue={mintDetails.location || ''}
+                                  onChange={(e) =>
+                                    setMintDetails((prev) => {
+                                      return {
+                                        ...prev,
+                                        location: e.target.value,
+                                      };
+                                    })
+                                  }
+                                />
                               </div>
-                              <div className={styles.FisrtComBox}>
-                                <div className={styles.HadComment}>
-                                  <a href="#" className={styles.leftIcontxt}>
-                                    <Image
-                                      src="/img/comment03.svg"
-                                      alt=""
-                                      width="28px"
-                                      height="28px"
-                                    />
-                                    <h4>Howard Copeland</h4>
-                                  </a>
-                                  <p>1 hour</p>
-                                </div>
-                                <div className={styles.btmcomment}>
-                                  <p>
-                                    Unfeeling agreeable suffering it on
-                                    smallness newspaper be. So come must time no
-                                    as. Do on unpleasing.{' '}
-                                  </p>
-                                  <div className={styles.LikeReplyTxt}>
-                                    <a href="#">Like</a>
-                                    <a href="#">Reply</a>
-                                  </div>
-                                </div>
+                              <div className={styles.tagContainer}>
+                                <span className={styles.headline}>
+                                  Tag People
+                                </span>
+                                <ReactTags
+                                  allowNew
+                                  // @ts-ignore
+                                  ref={people}
+                                  tags={peopleTags}
+                                  onDelete={onPeopleDelete}
+                                  onAddition={onPeopleAddition}
+                                  placeholderText=""
+                                />
                               </div>
-                              <div className={styles.FisrtComBox}>
-                                <div className={styles.HadComment}>
-                                  <a href="#" className={styles.leftIcontxt}>
-                                    <Image
-                                      src="/img/comment03.svg"
-                                      alt=""
-                                      width="28px"
-                                      height="28px"
-                                    />
-                                    <h4>Howard Copeland</h4>
-                                  </a>
-                                  <p>1 hour</p>
-                                </div>
-                                <div className={styles.btmcomment}>
-                                  <p>
-                                    Unfeeling agreeable suffering it on
-                                    smallness newspaper be. So come must time no
-                                    as. Do on unpleasing.{' '}
-                                  </p>
-                                  <div className={styles.LikeReplyTxt}>
-                                    <a href="#">Like</a>
-                                    <a href="#">Reply</a>
-                                  </div>
-                                </div>
+                              <div style={{ padding: '0.5rem 0' }}>
+                                <DropDownComponent
+                                  disabled={loading}
+                                  title="Genre"
+                                  options={genre}
+                                  dropDownValue={mintDetails.collection}
+                                  onChange={(e) =>
+                                    setMintDetails((prev) => {
+                                      return {
+                                        ...prev,
+                                        genre: e.target.value,
+                                      };
+                                    })
+                                  }
+                                />
+                              </div>
+                              <div className={styles.tagContainer}>
+                                <span className={styles.headline}>Tags</span>
+                                <ReactTags
+                                  allowNew
+                                  // @ts-ignore
+                                  ref={tag}
+                                  tags={tags}
+                                  onDelete={onDelete}
+                                  onAddition={onAddition}
+                                  placeholderText=""
+                                />
                               </div>
                             </div>
-                          </div>
-
-                          <div className={styles.BtmCommentBtn}>
-                            <input
-                              type="text"
-                              placeholder="Write a comment.."
-                            />
-                            <button>Send</button>
+                            {loading ? (
+                              <div className={styles.loaderContainer}>
+                                <FadeLoader color="#ffffff" />
+                              </div>
+                            ) : (
+                              <div className={styles.actionContainer}>
+                                <span
+                                  onClick={handleMintPostCancel}
+                                  className={styles.cancelBtn}
+                                >
+                                  Cancel
+                                </span>
+                                <div
+                                  onClick={handleMintPost}
+                                  className={styles.mintBtn}
+                                >
+                                  <Image
+                                    src={DoneIcon}
+                                    width={24}
+                                    height={24}
+                                    alt="avatar"
+                                  />
+                                  <span>Mint</span>
+                                </div>
+                              </div>
+                            )}
                           </div>
                         </div>
                       )}

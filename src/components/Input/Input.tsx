@@ -7,6 +7,7 @@ type InputProps = {
   label: string;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  disabled?: boolean;
 };
 
 const Input: NextPage<InputProps> = ({
@@ -15,6 +16,7 @@ const Input: NextPage<InputProps> = ({
   label,
   value,
   onChange,
+  disabled,
 }) => {
   return (
     <div className={`${styles.inputField} form-floating mb-3`}>
@@ -24,6 +26,7 @@ const Input: NextPage<InputProps> = ({
         placeholder={placeholder}
         value={value}
         onChange={onChange}
+        disabled={disabled}
       />
       <label>{label}</label>
     </div>

@@ -8,6 +8,7 @@ type DropDownComponentProps = {
   title?: string;
   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
   dropDownValue: string;
+  disabled?: boolean;
 };
 
 const DropDownComponent: NextPage<DropDownComponentProps> = ({
@@ -15,6 +16,7 @@ const DropDownComponent: NextPage<DropDownComponentProps> = ({
   title,
   onChange,
   dropDownValue,
+  disabled,
 }) => {
   return (
     <div className={`form-floating ${styles.dropdownContainer}`}>
@@ -24,6 +26,7 @@ const DropDownComponent: NextPage<DropDownComponentProps> = ({
         aria-label="Floating label select example"
         value={dropDownValue}
         onChange={onChange}
+        disabled={disabled}
       >
         {options.map(({ value, name }, index) => {
           return (
