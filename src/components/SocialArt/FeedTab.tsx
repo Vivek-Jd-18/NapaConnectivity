@@ -36,7 +36,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
 
   const textTimerRef = useRef<any>(null);
   const textTimeRef = useRef<any>(null);
-  const titleRef = useRef(false);
+  //   const titleRef = useRef(false);
   const handleClickOne = (activeObj: activePost) => {
     setActive(activeObj);
   };
@@ -80,7 +80,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
       textTimerRef.current = setInterval(() => {
         if (
           (new Date().getTime() - textTimeRef.current.getTime()) / 1000 >=
-          10
+          60
         ) {
           clearInterval(textTimerRef.current);
           let textDiv = document.getElementById('hide_title');
@@ -623,8 +623,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
                           <RWebShare
                             data={{
                               text: 'NAPA Society | Social Art',
-                                url: `${WEB_STAGING_SOCIALART_URL}/?postId=${post?.postId}`,
-                         
+                              url: `${WEB_STAGING_SOCIALART_URL}/?postId=${post?.postId}`,
                             }}
                             onClick={() => console.log('shared successfully!')}
                           >
