@@ -988,13 +988,14 @@ export default function FeedTab({ socket }: FeedTabProps) {
                       )}
                     </div>
                   ))
-              : !open && (
-                  <div className={styles.NotFoundMessageContainer}>
-                    <p>Getting things ready!</p>
-                  </div>
-                )}
-          </>
-        )}
+                : !open && (
+                    <div className={styles.NotFoundMessageContainer}>
+                      <p>Getting things ready!</p>
+                    </div>
+                  )}
+            </>
+          )}
+        </div>
       </div>
     </>
   );
