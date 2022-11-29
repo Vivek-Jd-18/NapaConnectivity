@@ -11,9 +11,21 @@ const snftCollection = [
 
 const genre = [
   {
-    name: 'Virtual Worlds',
-    value: 'Virtual Worlds',
+    name: 'Please Select Genre',
+    value: 'Please Select Genre',
   },
+  {
+    name: 'Party Scene',
+    value: 'Party Scene',
+  },
+  {
+    name: 'Sport Event',
+    value: 'Sport Event',
+  },
+  {
+    name: 'Family Time',
+    value: 'Family Time',
+  }
 ];
 
 const countries = [

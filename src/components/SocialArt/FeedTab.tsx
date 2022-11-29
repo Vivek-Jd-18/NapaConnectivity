@@ -61,7 +61,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
     description: '',
     location: countries[0]?.name,
     tagged_people: '',
-    genre: 'Virtual Worlds',
+    genre: 'Select Genre',
     tags: '',
   });
   const [mintDetailsErrors, setMintDetailsErrors] = React.useState({
@@ -943,7 +943,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
                             />
                           </button>
                           <div className={styles.mintPostContainer}>
-                            <h1>Minting a Post</h1>
+                            <h1>Mint SNFT</h1>
                             <div className={styles.mintDetails}>
                               <Input
                                 type="text"
