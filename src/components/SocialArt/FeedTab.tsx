@@ -16,8 +16,8 @@ import { CustomToastWithLink } from '../CustomToast/CustomToast';
 import HighlightButton from '../HighlightButton/HighlightButton';
 import styles from './FeedTab.module.scss';
 import { RWebShare } from 'react-web-share';
-// import { textToEmoji } from '@/utils/socialArt';
-// import { socialArtMessagesTriggers } from '@/constants/socialArt.constants';
+import { textToEmoji } from '@/utils/socialArt';
+import { socialArtMessagesTriggers } from '@/constants/socialArt.constants';
 import { WEB_STAGING_SOCIALART_URL } from '@/constants/url';
 // import Footer from '../Footer/Footer';
 // import lodash from 'lodash';
@@ -517,12 +517,15 @@ export default function FeedTab({ socket }: FeedTabProps) {
                               </p>
                             </div>
                           </div>
-                          {/* {counter > 0 && (
-                            <div className={`${styles.messageContainer}`}>
-                              Congratulations! Your post is now live for 12
-                              hours!
-                            </div>
-                          )} */}
+                          <div
+                            id="hide_title"
+                            className={styles.messageContainer}
+                            dangerouslySetInnerHTML={{
+                              __html: textToEmoji(
+                                socialArtMessagesTriggers[3]?.message
+                              ),
+                            }}
+                          ></div>
 
                           <div className={styles.UserRightTxt}>
                             <h4>10:22:12</h4>
