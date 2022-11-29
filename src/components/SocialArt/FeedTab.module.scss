@@ -4,27 +4,34 @@
 .previewVideoContainer {
   display: flex;
   flex-direction: column;
-  padding-left: 2rem;
-  align-self: flex-start;
-  .videoInput {
-    background-color: transparent;
-    outline: none;
-    border: none;
-    color: $gray;
-    @include font-lg-neuropolitical-normal;
-  }
-  .caption {
-    margin-top: 1rem;
-    @include font-md-avenir-medium;
-    background-color: transparent;
-    outline: none;
-    border: none;
-    color: $gray;
-  }
-  .errormsg {
-    margin-top: 0.5rem;
-    color: red;
-    @include font-sm-neuropolitical-normal;
+  height: 650px;
+  padding: 1rem;
+  position: relative;
+  left: 5rem;
+  justify-content: space-between;
+  .inputContainer {
+    display: flex;
+    flex-direction: column;
+    .videoInput {
+      background-color: transparent;
+      outline: none;
+      border: none;
+      color: $gray;
+      @include font-lg-neuropolitical-normal;
+    }
+    .caption {
+      margin-top: 1rem;
+      @include font-md-avenir-medium;
+      background-color: transparent;
+      outline: none;
+      border: none;
+      color: $gray;
+    }
+    .errormsg {
+      margin-top: 0.5rem;
+      color: red;
+      @include font-sm-neuropolitical-normal;
+    }
   }
   .loaderContainer {
     display: flex;
@@ -32,6 +39,7 @@
     align-items: center;
   }
   .actionContainer {
+    padding-bottom: 1.5rem;
     display: flex;
     justify-content: space-between;
     .uploadNew {
@@ -56,16 +64,19 @@
   }
   .videoPreview {
     width: 100%;
-    height: 275px;
+    height: 440px;
     margin: 1rem 0;
   }
 }
 .banner {
+  height: 650px;
+  position: relative;
+  left: 5rem;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 10rem 0;
+  // padding: 10rem 0;
 }
 .dragAndDropText {
   @include font-md-avenir-medium;
@@ -139,6 +150,7 @@
   }
 }
 .MainScrollBox {
+  position: relative;
   text-align: left;
   color: #fff;
   // overflow-y: auto;
@@ -165,6 +177,7 @@
   background: transparent;
   transition: all 0.2s ease-out;
   display: flex;
+  height: 650px;
   &.active {
     background: rgba(145, 165, 166, 0.03);
   }
@@ -218,6 +231,7 @@
           object-fit: cover;
         }
       }
+      padding: 0 2rem;
     }
     .BotomTxt {
       display: flex;
@@ -291,7 +305,7 @@
   .rightBox {
     position: relative;
     flex-basis: 37.1%;
-    padding: 10px 40px 30px 90px;
+    padding: 10px 40px 30px 16px;
     transition: all 0.2s ease-out;
     opacity: 0;
     pointer-events: none;
@@ -313,8 +327,9 @@
       position: absolute;
       left: 0;
       right: 0;
+      z-index: 1;
       // top: calc(50% - 30px);
-      top: 15rem;
+      top: 20rem;
       background: #142728 !important;
       border: 1px solid rgb(145 165 166 / 8%);
       outline: none !important;
@@ -338,16 +353,21 @@
       color: #ffffff;
       margin-bottom: 8px;
     }
+    .commentsContainer {
+      padding: 1rem 0;
+      position: relative;
+      left: 5rem;
+    }
     .UserComment {
       position: relative;
       overflow-y: auto;
-      height: 352px;
+      height: 500px;
       .FisrtComBox {
         display: flex;
         align-items: flex-start;
         flex-direction: column;
         margin-top: 23px;
-        width:100% ;
+        width: 100%;
         .HadComment {
           display: flex;
           align-items: center;
@@ -445,7 +465,18 @@
 }
 
 @media screen and (max-width: 1200px) {
+  .commentsContainer {
+    left: 0rem !important;
+  }
+  .banner {
+    left: 0;
+  }
+  .previewVideoContainer {
+    left: 0;
+  }
   .MainTabBox {
+    // margin: 0;
+    height: auto;
     flex-direction: column;
     .leftBox {
       padding-right: 0 !important;
@@ -474,30 +505,6 @@
   }
   .BtmCommentBtn {
     margin-bottom: 16px;
-  }
-}
-@media screen and (min-width: 1980px) {
-  .rightBox {
-    padding: 10px 40px 30px 40px !important;
-    display: none;
-    flex-basis: 100%;
-    &.active {
-      display: block;
-    }
-    &::before {
-      position: inherit !important;
-    }
-    .ExitButton {
-      left: inherit !important;
-      // right: 0 !important;
-      right: 65px !important;
-      top: 0px !important;
-      background: transparent !important;
-      border: none !important;
-      height: 54px !important;
-      width: 54px !important;
-      // margin-right: 2rem !important;
-    }
   }
 }
 @media screen and (max-width: 768px) {
