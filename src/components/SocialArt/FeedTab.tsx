@@ -480,7 +480,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
                           </div>
                           {counter > 0 && (
                             <div className={`${styles.messageContainer}`}>
-                              Congratulations! Your post is now live for 12
+                              Your post is now live for 12
                               hours!
                             </div>
                           )}
