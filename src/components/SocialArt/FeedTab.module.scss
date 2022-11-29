@@ -153,10 +153,11 @@
   position: relative;
   text-align: left;
   color: #fff;
-  // margin: 0 -7.9vw;
-  // padding: 0 7.9vw;
+  // overflow-y: auto;
+  margin: 0 -7.9vw;
+  padding: 0 7.9vw;
   overflow-y: auto;
-  height: calc(100vh - 280px);
+  height: 900px;
 
   .NotFoundMessageContainer {
     display: flex;
@@ -171,8 +172,8 @@
   }
 }
 .MainTabBox {
-  // margin: 0 -7.9vw;
-  // padding: 0 7.9vw;
+  margin: 0 -7.9vw;
+  padding: 0 7.9vw;
   background: transparent;
   transition: all 0.2s ease-out;
   display: flex;
@@ -200,14 +201,6 @@
         img {
           border-radius: 50%;
         }
-      }
-      .messageContainer {
-        @include font-md-avenir-regular;
-        width: 500px;
-        max-height: 30px;
-        overflow: auto;
-        white-space: nowrap;
-        text-align: center;
       }
       .UserRightTxt {
         text-align: right;
@@ -516,9 +509,9 @@
 }
 @media screen and (max-width: 768px) {
   .MainScrollBox {
-    // margin: 0 -40px;
-    padding: 0;
-    // height: 900px;
+    margin: 0 -40px;
+    padding: 0 0px;
+    height: 900px;
   }
   .MainTabBox {
     margin: 0px;
@@ -526,15 +519,6 @@
     .leftBox {
       .HadUserText {
         padding: 0 40px;
-        .messageContainer {
-          @include font-xs-avenir-regular;
-          width: 500px;
-          max-height: 30px;
-          overflow: auto;
-          white-space: nowrap;
-          margin-inline: 1rem !important;
-          text-align: center;
-        }
       }
       .BotomTxt {
         padding: 0 40px;
@@ -554,7 +538,7 @@
 }
 @media screen and (max-width: 736px) {
   .MainScrollBox {
-    // height: 625px;
+    height: 625px;
   }
   .MainTabBox {
     .leftBox {
