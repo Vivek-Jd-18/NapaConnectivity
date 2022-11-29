@@ -534,6 +534,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
                   </div>
                   <div className={styles.videoPreview}>
                     <video
+                      style={{ objectFit: 'fill' }}
                       width={'100%'}
                       height={'100%'}
                       autoPlay
