@@ -17,7 +17,8 @@ const genre = [
 ];
 
 const countries = [
-  { name: 'Afghanistan', code: 'AF' },
+  // { name: 'Afghanistan', code: 'AF' },
+  { name: 'Please Select Location', code: 'PSC'},
   { name: 'Åland Islands', code: 'AX' },
   { name: 'Albania', code: 'AL' },
   { name: 'Algeria', code: 'DZ' },
@@ -61,7 +62,7 @@ const countries = [
   { name: 'Central African Republic', code: 'CF' },
   { name: 'Chad', code: 'TD' },
   { name: 'Chile', code: 'CL' },
-  { name: 'China', code: 'CN' },
+  // { name: 'China', code: 'CN' },
   { name: 'Christmas Island', code: 'CX' },
   { name: 'Cocos (Keeling) Islands', code: 'CC' },
   { name: 'Colombia', code: 'CO' },
@@ -182,7 +183,7 @@ const countries = [
   { name: 'Northern Mariana Islands', code: 'MP' },
   { name: 'Norway', code: 'NO' },
   { name: 'Oman', code: 'OM' },
-  { name: 'Pakistan', code: 'PK' },
+  // { name: 'Pakistan', code: 'PK' },
   { name: 'Palau', code: 'PW' },
   { name: 'Palestinian Territory, Occupied', code: 'PS' },
   { name: 'Panama', code: 'PA' },

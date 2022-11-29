@@ -742,15 +742,9 @@
     "json-parse-even-better-errors" "^2.3.1"
 
 "@npmcli/promise-spawn@*", "@npmcli/promise-spawn@^3.0.0":
-<<<<<<< HEAD
   "integrity" "sha512-s9SgS+p3a9Eohe68cSI3fi+hpcZUmXq5P7w0kMlAsWVtR7XbK3ptkZqKT2cK1zLDObJ3sR+8P59sJE0w/KTL1g=="
   "resolved" "https://registry.npmjs.org/@npmcli/promise-spawn/-/promise-spawn-3.0.0.tgz"
   "version" "3.0.0"
-=======
-  version "3.0.0"
-  resolved "https://registry.npmjs.org/@npmcli/promise-spawn/-/promise-spawn-3.0.0.tgz"
-  integrity sha512-s9SgS+p3a9Eohe68cSI3fi+hpcZUmXq5P7w0kMlAsWVtR7XbK3ptkZqKT2cK1zLDObJ3sR+8P59sJE0w/KTL1g==
->>>>>>> parent of a456a55 (Merge remote-tracking branch 'origin/pages/socialart' into development)
   dependencies:
     "infer-owner" "^1.0.4"
 
@@ -996,6 +990,13 @@
   "integrity" "sha512-ZiqdencANDZy6sWOWJ54LDvebuXFEhDlHtXU9FFipQR2BcYU2QJxZhvJPW6YK7cocibUiNn+YvDTbt1HtCIBVA=="
   "resolved" "https://registry.npmjs.org/@types/react-slick/-/react-slick-0.23.10.tgz"
   "version" "0.23.10"
+  dependencies:
+    "@types/react" "*"
+
+"@types/react-tag-autocomplete@^6.3.0":
+  "integrity" "sha512-WxAVFlcotjeQKh1UDEjAQwP4dCOtKFrCnSHODhSmBZqDFbjNhhw9QwtZ9wSfKkJ4z2mu5kgC8OD96hNUYtjZ1Q=="
+  "resolved" "https://registry.npmjs.org/@types/react-tag-autocomplete/-/react-tag-autocomplete-6.3.0.tgz"
+  "version" "6.3.0"
   dependencies:
     "@types/react" "*"
 
@@ -3876,28 +3877,13 @@
     "jsonfile" "^4.0.0"
     "universalify" "^0.1.0"
 
-<<<<<<< HEAD
 "fs-minipass@*", "fs-minipass@^2.0.0", "fs-minipass@^2.1.0":
   "integrity" "sha512-V/JgOLFCS+R6Vcq0slCuaeWEdNC3ouDlJMNIsacH2VtALiu9mV4LPrHc5cDl8k5aw6J8jwgWWpiTo5RYhmIzvg=="
   "resolved" "https://registry.npmjs.org/fs-minipass/-/fs-minipass-2.1.0.tgz"
   "version" "2.1.0"
-=======
-fs-minipass@*, fs-minipass@^2.0.0, fs-minipass@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.npmjs.org/fs-minipass/-/fs-minipass-2.1.0.tgz"
-  integrity sha512-V/JgOLFCS+R6Vcq0slCuaeWEdNC3ouDlJMNIsacH2VtALiu9mV4LPrHc5cDl8k5aw6J8jwgWWpiTo5RYhmIzvg==
-  dependencies:
-    minipass "^3.0.0"
-
-fs-minipass@^1.2.7:
-  version "1.2.7"
-  resolved "https://registry.npmjs.org/fs-minipass/-/fs-minipass-1.2.7.tgz"
-  integrity sha512-GWSSJGFy4e9GUeCcbIkED+bgAoFyj7XF1mV8rma3QW4NIqX9Kyx79N/PF61H5udOV3aY1IaMLs6pGbH71nlCTA==
->>>>>>> parent of a456a55 (Merge remote-tracking branch 'origin/pages/socialart' into development)
   dependencies:
     "minipass" "^3.0.0"
 
-<<<<<<< HEAD
 "fs-minipass@^1.2.7":
   "integrity" "sha512-GWSSJGFy4e9GUeCcbIkED+bgAoFyj7XF1mV8rma3QW4NIqX9Kyx79N/PF61H5udOV3aY1IaMLs6pGbH71nlCTA=="
   "resolved" "https://registry.npmjs.org/fs-minipass/-/fs-minipass-1.2.7.tgz"
@@ -3909,12 +3895,6 @@ fs-minipass@^1.2.7:
   "integrity" "sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw=="
   "resolved" "https://registry.npmjs.org/fs.realpath/-/fs.realpath-1.0.0.tgz"
   "version" "1.0.0"
-=======
-fs.realpath@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.npmjs.org/fs.realpath/-/fs.realpath-1.0.0.tgz"
-  integrity sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==
->>>>>>> parent of a456a55 (Merge remote-tracking branch 'origin/pages/socialart' into development)
 
 "fullpage.js@^4.0.11":
   "integrity" "sha512-2YWG9mIfUqAPz8eFPHsSq/rMWT5xv+2C6dxQ6bljj1m31MgvhWNU3r+sa5+Ds35QThyrL3uo9RUPCxolp3SjuQ=="
@@ -5441,7 +5421,6 @@ fs.realpath@^1.0.0:
   "resolved" "https://registry.npmjs.org/mimic-fn/-/mimic-fn-1.2.0.tgz"
   "version" "1.2.0"
 
-<<<<<<< HEAD
 "mimic-response@^1.0.0":
   "integrity" "sha512-j5EctnkH7amfV/q5Hgmoal1g2QHFJRraOtmx0JpIqkxhBhI/lJSl1nMpQ45hVarwNETOoWEimndZ4QK0RHxuxQ=="
   "resolved" "https://registry.npmjs.org/mimic-response/-/mimic-response-1.0.1.tgz"
@@ -5456,23 +5435,9 @@ fs.realpath@^1.0.0:
   "integrity" "sha512-9Wy1B3m3f66bPPmU5hdA4DR4PB2OfDU/+GS3yAB7IQozE3tqXaVv2zOjgla7MEGSRv95+ILmOuvhLkOK6wJtCQ=="
   "resolved" "https://registry.npmjs.org/min-document/-/min-document-2.19.0.tgz"
   "version" "2.19.0"
-=======
-minimatch@*, minimatch@^5.0.1, minimatch@^5.1.0:
-  version "5.1.0"
-  resolved "https://registry.npmjs.org/minimatch/-/minimatch-5.1.0.tgz"
-  integrity sha512-9TPBGGak4nHfGZsPBohm9AWg6NoT7QTCehS3BIJABslyZbzxfV78QM2Y6+i741OPZIafFAaiiEMh5OyIrJPgtg==
-  dependencies:
-    brace-expansion "^2.0.1"
-
-minimatch@^3.0.4, minimatch@^3.1.1, minimatch@^3.1.2:
-  version "3.1.2"
-  resolved "https://registry.npmjs.org/minimatch/-/minimatch-3.1.2.tgz"
-  integrity sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==
->>>>>>> parent of a456a55 (Merge remote-tracking branch 'origin/pages/socialart' into development)
   dependencies:
     "dom-walk" "^0.1.0"
 
-<<<<<<< HEAD
 "minimalistic-assert@^1.0.0", "minimalistic-assert@^1.0.1":
   "integrity" "sha512-UtJcAD4yEaGtjPezWuO9wC4nwUnVH/8/Im3yEHQP4b67cXlD/Qr9hdITCU1xDbSEXg2XKNaP8jsReV7vQd00/A=="
   "resolved" "https://registry.npmjs.org/minimalistic-assert/-/minimalistic-assert-1.0.1.tgz"
@@ -5494,17 +5459,6 @@ minimatch@^3.0.4, minimatch@^3.1.1, minimatch@^3.1.2:
   "integrity" "sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw=="
   "resolved" "https://registry.npmjs.org/minimatch/-/minimatch-3.1.2.tgz"
   "version" "3.1.2"
-=======
-minimist@^1.1.0, minimist@^1.2.0, minimist@^1.2.3, minimist@^1.2.6:
-  version "1.2.7"
-  resolved "https://registry.npmjs.org/minimist/-/minimist-1.2.7.tgz"
-  integrity sha512-bzfL1YUZsP41gmu/qjrEk0Q6i2ix/cVeAhbCbqH9u3zYutS1cLg00qhrD0M2MVdCcx4Sc0UpP2eBWo9rotpq6g==
-
-minipass-collect@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.npmjs.org/minipass-collect/-/minipass-collect-1.0.2.tgz"
-  integrity sha512-6T6lH0H8OG9kITm/Jm6tdooIbogG9e0tLgpY6mphXSm/A9u8Nq1ryBG+Qspiub9LjWlBPsPS3tWQ/Botq4FdxA==
->>>>>>> parent of a456a55 (Merge remote-tracking branch 'origin/pages/socialart' into development)
   dependencies:
     "brace-expansion" "^1.1.7"
 
@@ -6876,6 +6830,11 @@ minipass-collect@^1.0.2:
   "resolved" "https://registry.npmjs.org/react-spinners/-/react-spinners-0.13.6.tgz"
   "version" "0.13.6"
 
+"react-tag-autocomplete@^6.3.0":
+  "integrity" "sha512-MUBVUFh5eOqshUm5NM20qp7zXk8TzSiKO4GoktlFzBLIOLs356npaMKtL02bm0nFV2f1zInUrXn1fq6+i5YX0w=="
+  "resolved" "https://registry.npmjs.org/react-tag-autocomplete/-/react-tag-autocomplete-6.3.0.tgz"
+  "version" "6.3.0"
+
 "react-timezone-select@^1.3.2":
   "integrity" "sha512-GRPErdi/dV8TGW4oWpRAs1BWFjNADtYFFataqIk3ZQwQPlc3vqXyZj5r0mU89joP+0H8hDkahIt0Mci47VK9Cg=="
   "resolved" "https://registry.npmjs.org/react-timezone-select/-/react-timezone-select-1.3.2.tgz"
@@ -6902,22 +6861,10 @@ minipass-collect@^1.0.2:
     "loose-envify" "^1.4.0"
     "prop-types" "^15.6.2"
 
-<<<<<<< HEAD
-"react-web-share@^2.0.2":
-  "integrity" "sha512-bGm1TJc6xtC0MhAnYFsrzT4En7l2oAdLTgCK7nk7b4xGTg3L5gOldiPrmYQ8a/dEXNydgekvOj/tfjduIlIRVA=="
-  "resolved" "https://registry.npmjs.org/react-web-share/-/react-web-share-2.0.2.tgz"
-  "version" "2.0.2"
-
 "react@^18.2.0":
   "integrity" "sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ=="
   "resolved" "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   "version" "18.2.0"
-=======
-react@16.4.2:
-  version "16.4.2"
-  resolved "https://registry.npmjs.org/react/-/react-16.4.2.tgz"
-  integrity sha512-dMv7YrbxO4y2aqnvA7f/ik9ibeLSHQJTI6TrYAenPSaQ6OXfb+Oti+oJiy8WBxgRzlKatYqtCjphTgDSCEiWFg==
->>>>>>> parent of a456a55 (Merge remote-tracking branch 'origin/pages/socialart' into development)
   dependencies:
     "loose-envify" "^1.1.0"
 

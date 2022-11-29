@@ -56,7 +56,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
   const [posts, setPosts] = React.useState<Post[] | null>(null);
   const [counter, setCounter] = React.useState(60);
   const [mintDetails, setMintDetails] = React.useState({
-    title: 'Bring Me the Open Space',
+    title: '',
     collection: 'NAPA Society Collection',
     description: '',
     location: countries[0]?.name,
