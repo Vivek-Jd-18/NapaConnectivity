@@ -29,9 +29,6 @@ type FeedTabProps = {
 export default function FeedTab({ socket }: FeedTabProps) {
   const router = useRouter();
   const { postId }: any = router.query;
-
-  console.log(postId);
-
   const [active, setActive] = React.useState<activePost>({
     postId: '',
     type: '',
@@ -78,12 +75,6 @@ export default function FeedTab({ socket }: FeedTabProps) {
   };
 
   useEffect(() => {
-    console.log('useeffect called again>>>>', {
-      getPostsLoading,
-      textTimeRef: textTimeRef.current,
-      titleRef: titleRef.current,
-      res: !getPostsLoading && !textTimeRef.current && titleRef.current,
-    });
     if (!getPostsLoading && !textTimeRef.current) {
       textTimeRef.current = new Date();
       textTimerRef.current = setInterval(() => {
@@ -91,7 +82,6 @@ export default function FeedTab({ socket }: FeedTabProps) {
           (new Date().getTime() - textTimeRef.current.getTime()) / 1000 >=
           10
         ) {
-          console.log('HIDE TEXT NOW >>');
           clearInterval(textTimerRef.current);
           let textDiv = document.getElementById('hide_title');
           if (!textDiv) return;
