@@ -70,7 +70,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
     description: '',
   });
 
-  const { profileDetails } = useProfile();
+  const { profileDetails, profileId } = useProfile();
   const people = useRef();
   const tag = useRef();
   const [peopleTags, setPeopleTags] = React.useState([]);
@@ -285,6 +285,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
     formData.append('videoType', file?.type || '');
     formData.append('videoCaption', caption);
     formData.append('accountId', account);
+    formData.append('profileId', profileId);
     formData.append('minted', '');
     formData.append(
       'userImage',

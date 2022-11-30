@@ -28,6 +28,7 @@ export type Post = {
   videoType: string;
   videoCaption: string;
   accountId: string;
+  profileId: string;
   minted: string;
   createdAt: string;
   updatedAt: string;
