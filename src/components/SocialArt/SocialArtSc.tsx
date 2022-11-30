@@ -49,7 +49,6 @@ export default function SocialArtSc() {
         </Tabs>
       </Container>
       <div>
-        <hr />
         <Footer footerIconShow={false} />
       </div>
     </div>

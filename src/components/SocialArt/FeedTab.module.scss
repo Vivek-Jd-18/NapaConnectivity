@@ -4,6 +4,10 @@
 .previewVideoContainer {
   display: flex;
   flex-direction: column;
+  // padding-left: 2rem;
+  // align-self: flex-start;
+  // // height: 650px;
+  // padding: 1rem;
   height: 650px;
   padding: 1rem 0;
   position: relative;
@@ -12,13 +16,14 @@
   .inputContainer {
     display: flex;
     flex-direction: column;
-    .videoInput {
-      background-color: transparent;
-      outline: none;
-      border: none;
-      color: $gray;
-      @include font-lg-neuropolitical-normal;
-    }
+  .videoInput {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    color: $gray;
+    
+    @include font-lg-neuropolitical-normal;
+  }
     .caption {
       margin-top: 1rem;
       @include font-md-avenir-medium;
@@ -33,6 +38,7 @@
       @include font-sm-neuropolitical-normal;
     }
   }
+ 
   .loaderContainer {
     display: flex;
     justify-content: center;
@@ -64,8 +70,10 @@
   }
   .videoPreview {
     width: 100%;
-    height: 440px;
+    // height: 400px;
     margin: 1rem 0;
+    // margin-top: 5rem;
+    // background-color: #16e6ef;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -163,7 +171,8 @@
   margin: 0 -7.9vw;
   padding: 0 7.9vw;
   overflow-y: auto;
-  height: 900px;
+  // height: 900px;
+  height: calc(100vh - 300px);
 
   .NotFoundMessageContainer {
     display: flex;
@@ -207,6 +216,17 @@
         img {
           border-radius: 50%;
         }
+      }
+      .messageContainer {
+        @include font-md-avenir-regular;
+        width: 500px;
+        max-height: 30px;
+        overflow: auto;
+        white-space: nowrap;
+        text-align: center;
+        margin-left: 2rem;
+
+      
       }
       .UserRightTxt {
         text-align: right;
@@ -312,6 +332,7 @@
   .rightBox {
     position: relative;
     flex-basis: 37.1%;
+    max-width: 37.1%;
     padding: 10px 40px 30px 16px;
     transition: all 0.2s ease-out;
     opacity: 0;
@@ -626,6 +647,15 @@
     .leftBox {
       .HadUserText {
         padding: 0 40px;
+        .messageContainer {
+          @include font-md-avenir-regular;
+          width: 500px;
+          max-height: 30px;
+          overflow: auto;
+          white-space: nowrap;
+          text-align: center;
+  
+        }
       }
       .BotomTxt {
         padding: 0 40px;
