@@ -5,6 +5,7 @@ import {
 } from '@/constants/social-art.constants';
 import { socialArtMessagesTriggers } from '@/constants/socialArt.constants';
 import { WEB_STAGING_SOCIALART_URL } from '@/constants/url';
+import { ToastDescription, ToastTitle } from '@/typing/toast';
 import useProfile from '@/hooks/useProfile';
 import useWebThree from '@/hooks/useWebThree';
 import { createNewPost, getAllPosts } from '@/services/PostApi';
@@ -19,7 +20,7 @@ import { FadeLoader } from 'react-spinners';
 import ReactTags from 'react-tag-autocomplete';
 import { toast } from 'react-toastify';
 import { RWebShare } from 'react-web-share';
-import { DoneIcon, ErrorIcon } from '../assets';
+import { DoneIcon, ErrorIcon, WalletNeedsToConnected } from '../assets';
 import { CustomToastWithLink } from '../CustomToast/CustomToast';
 import DropDownComponent from '../Dropdown/Dropdown';
 import HighlightButton from '../HighlightButton/HighlightButton';
