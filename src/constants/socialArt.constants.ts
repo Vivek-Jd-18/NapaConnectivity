@@ -2,12 +2,12 @@ export const socialArtMessagesTriggers = [
   {
     trigger: 'User mints new post',
     message:
-      'Congratulations your post is now live to earn rewards for the next 12 hours! :clapping_hands: ',
+      'Congratulations, your post is now live to earn rewards! :clapping_hands: ',
   },
   {
     trigger: 'user receives x amount of awards for their post',
     message:
-      'Whoa whoa your post is almost viral, you are now tier X, good luck from NAPA :fire: Your post is only XX awards away from unlocking the next rewards tier',
+      'Whoa whoa your post is almost viral, you are now tier X',
   },
   {
     trigger: 'Post receives Award/Gets Shared by influencer account',
@@ -17,7 +17,7 @@ export const socialArtMessagesTriggers = [
   {
     trigger: 'Post receives more awards than your posts normally receive',
     message:
-      'This one was a hit! Sell on NAPA :fireworks:',
+      'This one was a hit! Sell it on NAPA :fireworks:',
   },
   {
     trigger: 'Users posts their first video',

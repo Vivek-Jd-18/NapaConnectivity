@@ -573,6 +573,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
                         width={'100%'}
                         height={'auto'}
                         autoPlay
+                        preload={'auto'}
                         controls
                         src={videoPreview as string}
                       >
