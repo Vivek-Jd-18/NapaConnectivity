@@ -13,6 +13,9 @@
   position: relative;
   left: 5rem;
   justify-content: space-between;
+  .inputContainer {
+    display: flex;
+    flex-direction: column;
   .videoInput {
     background-color: transparent;
     outline: none;
@@ -34,6 +37,7 @@
       color: red;
       @include font-sm-neuropolitical-normal;
     }
+  }
  
   .loaderContainer {
     display: flex;

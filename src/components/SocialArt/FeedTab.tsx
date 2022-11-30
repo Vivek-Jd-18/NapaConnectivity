@@ -9,7 +9,6 @@ import useProfile from '@/hooks/useProfile';
 import useWebThree from '@/hooks/useWebThree';
 import { createNewPost, getAllPosts } from '@/services/PostApi';
 import { activePost, Post } from '@/types/post';
-import { ToastDescription, ToastTitle } from '@/typing/toast';
 import { textToEmoji } from '@/utils/socialArt';
 import Tippy from '@tippyjs/react';
 import moment from 'moment';
@@ -20,7 +19,7 @@ import { FadeLoader } from 'react-spinners';
 import ReactTags from 'react-tag-autocomplete';
 import { toast } from 'react-toastify';
 import { RWebShare } from 'react-web-share';
-import { DoneIcon, ErrorIcon, WalletNeedsToConnected } from '../assets';
+import { DoneIcon, ErrorIcon } from '../assets';
 import { CustomToastWithLink } from '../CustomToast/CustomToast';
 import DropDownComponent from '../Dropdown/Dropdown';
 import HighlightButton from '../HighlightButton/HighlightButton';
@@ -540,41 +539,45 @@ export default function FeedTab({ socket }: FeedTabProps) {
                 </div>
               ) : (
                 <div className={styles.previewVideoContainer}>
-                  <input
-                    disabled={loading}
-                    type={'text'}
-                    className={styles.videoInput}
-                    placeholder="Title your post"
-                    value={videoTitle}
-                    onChange={(e) => setVideoTitle(e.target.value)}
-                  />
-                  {!videoTitle && postError.title && (
-                    <span className={styles.errormsg}>{postError.title}</span>
-                  )}
-                  <input
-                    disabled={loading}
-                    type={'text'}
-                    className={styles.caption}
-                    placeholder="Write a short caption..."
-                    value={caption}
-                    onChange={(e) => setCaption(e.target.value)}
-                  />
+                  <div className={styles.inputContainer}>
+                    <input
+                      disabled={loading}
+                      type={'text'}
+                      className={styles.videoInput}
+                      placeholder="Title your post"
+                      value={videoTitle}
+                      onChange={(e) => setVideoTitle(e.target.value)}
+                    />
+                    {!videoTitle && postError.title && (
+                      <span className={styles.errormsg}>{postError.title}</span>
+                    )}
+                    <input
+                      disabled={loading}
+                      type={'text'}
+                      className={styles.caption}
+                      placeholder="Write a short caption..."
+                      value={caption}
+                      onChange={(e) => setCaption(e.target.value)}
+                    />
 
-                  {!caption && postError.caption && (
-                    <span className={styles.errormsg}>{postError.caption}</span>
-                  )}
+                    {!caption && postError.caption && (
+                      <span className={styles.errormsg}>
+                        {postError.caption}
+                      </span>
+                    )}
 
-                  <div className={styles.videoPreview}>
-                    <video
-                      // style={{ objectFit: 'fill' }}
-                      width={'100%'}
-                      height={'auto'}
-                      autoPlay
-                      controls
-                      src={videoPreview as string}
-                    >
-                      The “video” tag is not supported by your browser.
-                    </video>
+                    <div className={styles.videoPreview}>
+                      <video
+                        // style={{ objectFit: 'fill' }}
+                        width={'100%'}
+                        height={'auto'}
+                        autoPlay
+                        controls
+                        src={videoPreview as string}
+                      >
+                        The “video” tag is not supported by your browser.
+                      </video>
+                    </div>
                   </div>
 
                   {loading ? (
