@@ -6,7 +6,7 @@ import Image from 'next/image';
 export default function Cardlist() {
   return (
     <div className={styles.CardlistPrntBx}>
-        <Link href="#" className={styles.CardlistPrntBxLink}>
+        <Link href="events-details" className={styles.CardlistPrntBxLink}>
             <a className={`${styles.CardlistABx} hovereffect`}>
                 <Image src='/img/event_list_img_01.png' width={282} height={372} alt="" className='evmtimg'/>
                 <div className={styles.CardBxTopconten}>

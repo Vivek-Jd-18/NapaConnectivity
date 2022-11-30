@@ -14,7 +14,7 @@ export default function EventsDetailsSc() {
         <div className={`${styles.container} `}>
           <Container className={`${styles.settingsContainer} asinnerContainer`}>
             <div className={styles.linkpernt}>
-              <Link href="#">
+              <Link href="events">
                 <a>
                   <Image src="/img/arrow_icon.svg" alt="" width="18px" height="12px" /> 
                   Events 
