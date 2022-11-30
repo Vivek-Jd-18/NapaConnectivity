@@ -661,7 +661,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
 
                   <div className={styles.UserRightTxt}>
                     <h4>10:22:12</h4>
-                    <p>Live Post Time Remaining</p>
+                    <p>Live Post!</p>
                   </div>
                 </div>
                 <div className={styles.MdlImage}>
