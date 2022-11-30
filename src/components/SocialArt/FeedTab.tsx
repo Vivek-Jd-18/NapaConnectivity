@@ -1,6 +1,6 @@
 import useProfile from '@/hooks/useProfile';
 import useWebThree from '@/hooks/useWebThree';
-import { createNewPost, getAllPosts } from '@/services/PostApi';
+import { createNewPost, getAllPosts, updatePost } from '@/services/PostApi';
 import { activePost, Post } from '@/types/post';
 import { ToastDescription, ToastTitle } from '@/typing/toast';
 import Tippy from '@tippyjs/react';
@@ -23,6 +23,7 @@ import {
   snftCollection,
 } from '@/constants/social-art.constants';
 import ReactTags from 'react-tag-autocomplete';
+import { createNewMint } from '@/services/MintApi';
 
 type FeedTabProps = {
   socket: WebSocket;
@@ -70,7 +71,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
     description: '',
   });
 
-  const { profileDetails } = useProfile();
+  const { profileDetails, profileId } = useProfile();
   const people = useRef();
   const tag = useRef();
   const [peopleTags, setPeopleTags] = React.useState([]);
@@ -285,6 +286,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
     formData.append('videoType', file?.type || '');
     formData.append('videoCaption', caption);
     formData.append('accountId', account);
+    formData.append('profileId', profileId);
     formData.append('minted', '');
     formData.append(
       'userImage',
@@ -357,7 +359,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
       description: '',
     });
     setMintDetails({
-      title: 'Bring Me the Open Space',
+      title: '',
       collection: 'NAPA Society Collection',
       description: '',
       location: countries[0]?.name,
@@ -369,7 +371,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
     setPeopleTags([]);
   };
 
-  const handleMintPost = () => {
+  const handleMintPost = async (post: any) => {
     setMintDetailsErrors({
       title: '',
       collection: '',
@@ -410,15 +412,60 @@ export default function FeedTab({ socket }: FeedTabProps) {
     )
       return;
     const mintedPost = {
+      postId: post.postId,
+      videoType: post.videoType,
+      accountId: post.accountId,
+      profileId: post.profileId,
       title: mintDetails.title,
-      collection: mintDetails.collection,
-      description: mintDetails.description,
+      network: '',
+      status: '',
+      SNFTTitle: mintDetails.title,
+      SNFTCollection: mintDetails.collection,
+      SNFTDescription: mintDetails.description,
       location: mintDetails.location,
-      tagged_people: newPeopleTags.length ? newPeopleTags : '',
+      taggedPeople: newPeopleTags.length ? newPeopleTags : '',
       genre: mintDetails.genre,
       tags: newTags.length ? newTags : '',
+      live: '',
+      payoutApproved: '',
+      SNFTAddress: '',
+      networkTxId: '',
+      owner: post.userName,
+      gasFees: '',
     };
-    console.log('mintedPost', mintedPost);
+    setLoading(true);
+    //@ts-ignore
+    const { error, message } = await createNewMint(mintedPost);
+    await updatePost(post.postId, 'true');
+    const temp = lodash.uniqBy(posts, 'postId').map((post: Post) => post);
+    const isFound = temp.findIndex((p) => p.postId == post.postId);
+    if (isFound != -1) {
+      //@ts-ignore
+      temp[isFound].minted = 'true';
+    }
+    setPosts(temp);
+    if (error) {
+      setLoading(false);
+      toast.error(
+        CustomToastWithLink({
+          icon: ErrorIcon,
+          title: 'Error',
+          description: message,
+          time: 'Now',
+        })
+      );
+      return;
+    }
+    setLoading(false);
+    handleMintPostCancel();
+    toast.success(
+      CustomToastWithLink({
+        icon: DoneIcon,
+        title: 'Success',
+        description: 'Mint Was Created Successfully',
+        time: 'Now',
+      })
+    );
   };
 
   return (
@@ -695,30 +742,44 @@ export default function FeedTab({ socket }: FeedTabProps) {
                               12 <b>awards</b>
                             </span>
                           </a>
-                          <button
-                            style={{ zIndex: 1 }}
-                            className={
-                              active.postId === post.postId &&
-                              active.type === 'mint'
-                                ? `${styles.BotomLikes} ${styles.active}`
-                                : `${styles.BotomLikes}`
-                            }
-                            onClick={() => {
-                              handleClickOne({
-                                postId: post.postId,
-                                type: 'mint',
-                              });
-                              setOpen(false);
-                            }}
-                          >
-                            <Image
-                              src="/img/mint_icon.svg"
-                              alt=""
-                              width="24px"
-                              height="24px"
-                            />
-                            <span>Mint</span>
-                          </button>
+                          {console.log(
+                            account == post.accountId &&
+                              profileId == post.profileId
+                          )}
+                          {account == post.accountId &&
+                            profileId == post.profileId && (
+                              <button
+                                style={{ zIndex: 1 }}
+                                className={
+                                  active.postId === post.postId &&
+                                  active.type === 'mint'
+                                    ? `${styles.BotomLikes} ${styles.active}`
+                                    : `${styles.BotomLikes}`
+                                }
+                                onClick={() => {
+                                  if (post.minted == 'true') {
+                                    return;
+                                  }
+                                  handleClickOne({
+                                    postId: post.postId,
+                                    type: 'mint',
+                                  });
+                                  setOpen(false);
+                                }}
+                              >
+                                <Image
+                                  src="/img/mint_icon.svg"
+                                  alt=""
+                                  width="24px"
+                                  height="24px"
+                                />
+                                <span>
+                                  {post.minted == 'true'
+                                    ? 'Minted Post'
+                                    : 'Mint'}
+                                </span>
+                              </button>
+                            )}
                           <a href="#" className={styles.BotomLikes}>
                             <Image
                               src="/img/share_icon.svg"
@@ -1084,7 +1145,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
                                   Cancel
                                 </span>
                                 <div
-                                  onClick={handleMintPost}
+                                  onClick={() => handleMintPost(post)}
                                   className={styles.mintBtn}
                                 >
                                   <Image

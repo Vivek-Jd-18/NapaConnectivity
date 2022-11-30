@@ -27,6 +27,29 @@ export const createNewPost = async (post: any) => {
   }
 };
 
+export const updatePost = async (postId: string, minted: string) => {
+  try {
+    const p = await axios.patch<{}, AxiosResponse<CreateNewPostResponse>>(
+      `${SOCIAL_ART_API_URL}/user/social/video/update`,
+      {
+        postId,
+        minted,
+      }
+    );
+    return {
+      data: p.data,
+      message: '',
+      error: false,
+    };
+  } catch (error) {
+    return {
+      data: null,
+      error: true,
+      message: error?.response?.data?.message,
+    };
+  }
+};
+
 export const getAllPosts = async () => {
   try {
     const p = await axios.get<{}, AxiosResponse<GetPostsResponse>>(
