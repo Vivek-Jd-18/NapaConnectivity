@@ -199,28 +199,28 @@ export default function FeedTab({ socket }: FeedTabProps) {
 
   //@ts-ignore
   const handleActionClick = () => {
-    // if (!account) {
-    //   toast.error(
-    //     CustomToastWithLink({
-    //       icon: WalletNeedsToConnected,
-    //       title: ToastTitle.WALLET_NEEDS_TO_CONNECTED,
-    //       description: ToastDescription.WALLET_NEEDS_TO_CONNECTED,
-    //       time: 'Now',
-    //     })
-    //   );
-    //   return push(`/wallet?redirectTo=${pathname.split('/')[1]}`);
-    // }
-    // if (!profileDetails?.profileName) {
-    //   toast.error(
-    //     CustomToastWithLink({
-    //       icon: ErrorIcon,
-    //       title: ToastTitle.PROFILE_NEEDS_TO_BE_CREATED,
-    //       description: ToastDescription.PROFILE_NEEDS_TO_BE_CREATED,
-    //       time: 'Now',
-    //     })
-    //   );
-    //   return push(`/settings`);
-    // }
+    if (!account) {
+      toast.error(
+        CustomToastWithLink({
+          icon: WalletNeedsToConnected,
+          title: ToastTitle.WALLET_NEEDS_TO_CONNECTED,
+          description: ToastDescription.WALLET_NEEDS_TO_CONNECTED,
+          time: 'Now',
+        })
+      );
+      return push(`/wallet?redirectTo=${pathname.split('/')[1]}`);
+    }
+    if (!profileDetails?.profileName) {
+      toast.error(
+        CustomToastWithLink({
+          icon: ErrorIcon,
+          title: ToastTitle.PROFILE_NEEDS_TO_BE_CREATED,
+          description: ToastDescription.PROFILE_NEEDS_TO_BE_CREATED,
+          time: 'Now',
+        })
+      );
+      return push(`/settings`);
+    }
     setOpen(true);
     setActive({
       postId: '',
