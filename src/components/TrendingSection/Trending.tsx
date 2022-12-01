@@ -8,7 +8,7 @@ import useProfile from '../../hooks/useProfile';
 import useWebThree from '../../hooks/useWebThree';
 import Container from '../../Layout/Container/Container';
 
-import { ErrorIcon, HowardAvatar, WalletNeedsToConnected } from '../assets';
+import { ErrorIcon, WalletNeedsToConnected } from '../assets';
 import Tab from '../Tab/Tab';
 import SocialMediaReview from '../SocialMediaReview/SocialMediaReview';
 import ChatWindow from '../ChatWindow/ChatWindow';
