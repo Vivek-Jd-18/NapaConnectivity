@@ -1,31 +1,33 @@
-import {
-  countries,
-  genre,
-  snftCollection
-} from '@/constants/social-art.constants';
-import { socialArtMessagesTriggers } from '@/constants/socialArt.constants';
-import { WEB_STAGING_SOCIALART_URL } from '@/constants/url';
-import { ToastDescription, ToastTitle } from '@/typing/toast';
 import useProfile from '@/hooks/useProfile';
 import useWebThree from '@/hooks/useWebThree';
-import { createNewPost, getAllPosts } from '@/services/PostApi';
+import { createNewPost, getAllPosts, updatePost } from '@/services/PostApi';
 import { activePost, Post } from '@/types/post';
-import { textToEmoji } from '@/utils/socialArt';
+import { ToastDescription, ToastTitle } from '@/typing/toast';
 import Tippy from '@tippyjs/react';
 import moment from 'moment';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import React, { useCallback, useEffect, useRef } from 'react';
 import { FadeLoader } from 'react-spinners';
-import ReactTags from 'react-tag-autocomplete';
 import { toast } from 'react-toastify';
 import { RWebShare } from 'react-web-share';
 import { DoneIcon, ErrorIcon, WalletNeedsToConnected } from '../assets';
 import { CustomToastWithLink } from '../CustomToast/CustomToast';
-import DropDownComponent from '../Dropdown/Dropdown';
 import HighlightButton from '../HighlightButton/HighlightButton';
-import Input from '../Input/Input';
 import styles from './FeedTab.module.scss';
+import lodash from 'lodash';
+import Input from '../Input/Input';
+import DropDownComponent from '../Dropdown/Dropdown';
+import {
+  countries,
+  genre,
+  snftCollection,
+} from '@/constants/social-art.constants';
+import ReactTags from 'react-tag-autocomplete';
+import { createNewMint } from '@/services/MintApi';
+import { textToEmoji } from '@/utils/socialArt';
+import { socialArtMessagesTriggers } from '@/constants/socialArt.constants';
+import { WEB_STAGING_SOCIALART_URL } from '@/constants/url';
 
 type FeedTabProps = {
   socket: WebSocket;
@@ -63,7 +65,6 @@ export default function FeedTab({ socket }: FeedTabProps) {
   const [loading, setLoading] = React.useState(false);
   const [getPostsLoading, setGetPostsLoading] = React.useState(false);
   const [posts, setPosts] = React.useState<Post[] | null>(null);
-
   const [mintDetails, setMintDetails] = React.useState({
     title: '',
     collection: 'NAPA Society Collection',
@@ -391,7 +392,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
       description: '',
     });
     setMintDetails({
-      title: 'Bring Me the Open Space',
+      title: '',
       collection: 'NAPA Society Collection',
       description: '',
       location: countries[0]?.name,
@@ -403,7 +404,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
     setPeopleTags([]);
   };
 
-  const handleMintPost = () => {
+  const handleMintPost = async (post: any) => {
     setMintDetailsErrors({
       title: '',
       collection: '',
@@ -444,15 +445,60 @@ export default function FeedTab({ socket }: FeedTabProps) {
     )
       return;
     const mintedPost = {
+      postId: post.postId,
+      videoType: post.videoType,
+      accountId: post.accountId,
+      profileId: post.profileId,
       title: mintDetails.title,
-      collection: mintDetails.collection,
-      description: mintDetails.description,
+      network: '',
+      status: '',
+      SNFTTitle: mintDetails.title,
+      SNFTCollection: mintDetails.collection,
+      SNFTDescription: mintDetails.description,
       location: mintDetails.location,
-      tagged_people: newPeopleTags.length ? newPeopleTags : '',
+      taggedPeople: newPeopleTags.length ? newPeopleTags : '',
       genre: mintDetails.genre,
       tags: newTags.length ? newTags : '',
+      live: '',
+      payoutApproved: '',
+      SNFTAddress: '',
+      networkTxId: '',
+      owner: post.userName,
+      gasFees: '',
     };
-    console.log('mintedPost', mintedPost);
+    setLoading(true);
+    //@ts-ignore
+    const { error, message } = await createNewMint(mintedPost);
+    await updatePost(post.postId, 'true');
+    const temp = lodash.uniqBy(posts, 'postId').map((post: Post) => post);
+    const isFound = temp.findIndex((p) => p.postId == post.postId);
+    if (isFound != -1) {
+      //@ts-ignore
+      temp[isFound].minted = 'true';
+    }
+    setPosts(temp);
+    if (error) {
+      setLoading(false);
+      toast.error(
+        CustomToastWithLink({
+          icon: ErrorIcon,
+          title: 'Error',
+          description: message,
+          time: 'Now',
+        })
+      );
+      return;
+    }
+    setLoading(false);
+    handleMintPostCancel();
+    toast.success(
+      CustomToastWithLink({
+        icon: DoneIcon,
+        title: 'Success',
+        description: 'Mint Was Created Successfully',
+        time: 'Now',
+      })
+    );
   };
 
   return (
@@ -480,7 +526,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
             }
             style={{
               position: modalPosition ? 'relative' : 'absolute',
-              width: '100%',
+              width: modalPosition ? 'auto' : '100%',
               zIndex: 0,
             }}
           >
@@ -560,28 +606,24 @@ export default function FeedTab({ socket }: FeedTabProps) {
                       value={caption}
                       onChange={(e) => setCaption(e.target.value)}
                     />
-
                     {!caption && postError.caption && (
                       <span className={styles.errormsg}>
                         {postError.caption}
                       </span>
                     )}
-
-                    <div className={styles.videoPreview}>
-                      <video
-                        // style={{ objectFit: 'fill' }}
-                        width={'100%'}
-                        height={'auto'}
-                        autoPlay
-                        preload={'auto'}
-                        controls
-                        src={videoPreview as string}
-                      >
-                        The “video” tag is not supported by your browser.
-                      </video>
-                    </div>
                   </div>
-
+                  <div className={styles.videoPreview}>
+                    <video
+                      // style={{ objectFit: 'fill' }}
+                      width={'100%'}
+                      height={'auto'}
+                      autoPlay
+                      controls
+                      src={videoPreview as string}
+                    >
+                      The “video” tag is not supported by your browser.
+                    </video>
+                  </div>
                   {loading ? (
                     <div className={styles.loaderContainer}>
                       <FadeLoader color="#ffffff" />
@@ -616,514 +658,557 @@ export default function FeedTab({ socket }: FeedTabProps) {
             </div>
           </div>
         )}
-
         {getPostsLoading ? (
           <div className={styles.loadingContainer}>
             <FadeLoader color="#ffffff" />
           </div>
-        ) : posts?.length ? (
-          posts?.map((post: Post, index: number) => (
-            <div
-              id={post?.postId}
-              key={`post-${index}`}
-              className={
-                active
-                  ? `${styles.MainTabBox} ${styles.active}`
-                  : `${styles.MainTabBox}`
-              }
-            >
-              <div className={styles.leftBox}>
-                <div className={styles.HadUserText}>
-                  <div className={styles.HadUserImage}>
-                    <Image
-                      src={
-                        post.userImage
-                          ? post.userImage
-                          : '/assets/images/img_avatar.png'
+        ) : (
+          <>
+            {posts?.length
+              ? lodash
+                  .uniqBy(posts, 'postId')
+                  .map((post: Post, index: number) => (
+                    <div
+                      key={`post-${index}`}
+                      className={
+                        active
+                          ? `${styles.MainTabBox} ${styles.active}`
+                          : `${styles.MainTabBox}`
                       }
-                      alt=""
-                      width="40px"
-                      height="40px"
-                    />
-                    <div className={styles.UserNameTxt}>
-                      <h4>{post.userName}</h4>
-                      <p>{moment(post.createdAt).format('DD MMM YYYY')}</p>
-                    </div>
-                  </div>
-                  <div
-                    id="hide_title"
-                    className={styles.messageContainer}
-                    dangerouslySetInnerHTML={{
-                      __html: textToEmoji(
-                        socialArtMessagesTriggers[3]?.message
-                      ),
-                    }}
-                  ></div>
-
-                  <div className={styles.UserRightTxt}>
-                    <h4>10:22:12</h4>
-                    <p>Live Post!</p>
-                  </div>
-                </div>
-                <div className={styles.MdlImage}>
-                  <video
-                    width={'100%'}
-                    height="400"
-                    preload="auto"
-                    autoPlay
-                    controls
-                    src={post.videoURL as string}
-                    style={{ objectFit: 'contain' }}
-                  >
-                    The “video” tag is not supported by your browser.
-                  </video>
-                  {/* <Image
+                    >
+                      <div className={styles.leftBox}>
+                        <div className={styles.HadUserText}>
+                          <div className={styles.HadUserImage}>
+                            <Image
+                              src={
+                                post.userImage
+                                  ? post.userImage
+                                  : '/assets/images/img_avatar.png'
+                              }
+                              alt=""
+                              width="40px"
+                              height="40px"
+                            />
+                            <div className={styles.UserNameTxt}>
+                              <h4>{post.userName}</h4>
+                              <p>
+                                {moment(post.createdAt).format('DD MMM YYYY')}
+                              </p>
+                            </div>
+                          </div>
+                          <div
+                            id="hide_title"
+                            className={styles.messageContainer}
+                            dangerouslySetInnerHTML={{
+                              __html: textToEmoji(
+                                socialArtMessagesTriggers[3]?.message
+                              ),
+                            }}
+                          ></div>
+                          <div className={styles.UserRightTxt}>
+                            <h4>10:22:12</h4>
+                            <p>Live Post!</p>
+                          </div>
+                        </div>
+                        <div className={styles.MdlImage}>
+                          <video
+                            width={'100%'}
+                            height="400"
+                            preload="auto"
+                            autoPlay
+                            controls
+                            src={post.videoURL as string}
+                            style={{ objectFit: 'contain' }}
+                          >
+                            The “video” tag is not supported by your browser.
+                          </video>
+                          {/* <Image
                       src="/img/user_post.png"
                       alt=""
                       width="720px"
                       height="320px"
                     /> */}
-                </div>
-                <div className={styles.BotomTxt}>
-                  <a href="#" className={styles.BotomLikes}>
-                    <Image
-                      src="/img/heart_icon.svg"
-                      alt=""
-                      width="24px"
-                      height="24px"
-                    />
-                    <span>
-                      496 <b>likes</b>
-                    </span>
-                  </a>
-                  <button
-                    style={{ zIndex: 1 }}
-                    className={
-                      active.postId === post.postId && active.type === 'comment'
-                        ? `${styles.BotomLikes} ${styles.active}`
-                        : `${styles.BotomLikes}`
-                    }
-                    onClick={() => {
-                      handleClickOne({
-                        postId: post.postId,
-                        type: 'comment',
-                      });
-                      setOpen(false);
-                    }}
-                  >
-                    <Image
-                      src="/img/feedback_icon_icon.svg"
-                      alt=""
-                      width="24px"
-                      height="24px"
-                    />
-                    <span>
-                      16 <b>comments</b>
-                    </span>
-                  </button>
-                  <a href="#" className={styles.BotomLikes}>
-                    <Image
-                      src="/img/reward_icon.svg"
-                      alt=""
-                      width="24px"
-                      height="24px"
-                    />
-                    <span>
-                      12 <b>awards</b>
-                    </span>
-                  </a>
-                  <button
-                    style={{ zIndex: 1 }}
-                    className={
-                      active.postId === post.postId && active.type === 'mint'
-                        ? `${styles.BotomLikes} ${styles.active}`
-                        : `${styles.BotomLikes}`
-                    }
-                    onClick={() => {
-                      handleClickOne({
-                        postId: post.postId,
-                        type: 'mint',
-                      });
-                      setOpen(false);
-                    }}
-                  >
-                    <Image
-                      src="/img/mint_icon.svg"
-                      alt=""
-                      width="24px"
-                      height="24px"
-                    />
-                    <span>Mint</span>
-                  </button>
-                  <RWebShare
-                    data={{
-                      text: 'NAPA Society | Social Art',
-                      url: `${WEB_STAGING_SOCIALART_URL}/?postId=${post?.postId}`,
-                    }}
-                    onClick={() => console.log('shared successfully!')}
-                  >
-                    <button className={styles.BotomLikes}>
-                      <Image
-                        src="/img/share_icon.svg"
-                        alt=""
-                        width="24px"
-                        height="24px"
-                      />
-                      <span>
-                        <b>Share</b>
-                      </span>
-                    </button>
-                  </RWebShare>
-                </div>
-                <div className={styles.videoInfoContainer}>
-                  <h3>{post.videoTitle}</h3>
-                  <p>{post.videoCaption}</p>
-                </div>
-              </div>
-              {active.postId === post.postId && active.type === 'comment' && (
-                <div
-                  className={
-                    active.postId === post.postId && active.type === 'comment'
-                      ? `${styles.rightBox} ${styles.active}`
-                      : `${styles.rightBox}`
-                  }
-                >
-                  <button
-                    className={styles.ExitButton}
-                    onClick={() =>
-                      handleClickOne({
-                        postId: '',
-                        type: '',
-                      })
-                    }
-                  >
-                    <Image
-                      src="/img/exit_icon.svg"
-                      alt=""
-                      width="24px"
-                      height="24px"
-                    />
-                  </button>
-                  <div className={styles.commentsContainer}>
-                    <h1>16 comments</h1>
-                    <div className={styles.ForShadow}>
-                      <div className={styles.UserComment}>
-                        <div className={styles.FisrtComBox}>
-                          <div className={styles.HadComment}>
-                            <a href="#" className={styles.leftIcontxt}>
-                              <Image
-                                src="/img/comment01.png"
-                                alt=""
-                                width="28px"
-                                height="28px"
-                              />
-                              <h4>Marta Thornton</h4>
-                            </a>
-                            <p>1 hour</p>
-                          </div>
-                          <div className={styles.btmcomment}>
-                            <p>
-                              However venture pursuit he am mr cordial. Forming
-                              musical am hearing studied be luckily.
-                            </p>
-                            <div className={styles.LikeReplyTxt}>
-                              <a href="#">Like</a>
-                              <a href="#">Reply</a>
-                            </div>
-                          </div>
                         </div>
-                        <div className={styles.FisrtComBox}>
-                          <div className={styles.HadComment}>
-                            <a href="#" className={styles.leftIcontxt}>
+                        <div className={styles.BotomTxt}>
+                          <a href="#" className={styles.BotomLikes}>
+                            <Image
+                              src="/img/heart_icon.svg"
+                              alt=""
+                              width="24px"
+                              height="24px"
+                            />
+                            <span>
+                              496 <b>likes</b>
+                            </span>
+                          </a>
+                          <button
+                            style={{ zIndex: 1 }}
+                            className={
+                              active.postId === post.postId &&
+                              active.type === 'comment'
+                                ? `${styles.BotomLikes} ${styles.active}`
+                                : `${styles.BotomLikes}`
+                            }
+                            onClick={() => {
+                              handleClickOne({
+                                postId: post.postId,
+                                type: 'comment',
+                              });
+                              setOpen(false);
+                            }}
+                          >
+                            <Image
+                              src="/img/feedback_icon_icon.svg"
+                              alt=""
+                              width="24px"
+                              height="24px"
+                            />
+                            <span>
+                              16 <b>comments</b>
+                            </span>
+                          </button>
+                          <a href="#" className={styles.BotomLikes}>
+                            <Image
+                              src="/img/reward_icon.svg"
+                              alt=""
+                              width="24px"
+                              height="24px"
+                            />
+                            <span>
+                              12 <b>awards</b>
+                            </span>
+                          </a>
+                          {account == post.accountId &&
+                            profileId == post.profileId && (
+                              <button
+                                style={{ zIndex: 1 }}
+                                className={
+                                  active.postId === post.postId &&
+                                  active.type === 'mint'
+                                    ? `${styles.BotomLikes} ${styles.active}`
+                                    : `${styles.BotomLikes}`
+                                }
+                                onClick={() => {
+                                  if (post.minted == 'true') {
+                                    return;
+                                  }
+                                  handleClickOne({
+                                    postId: post.postId,
+                                    type: 'mint',
+                                  });
+                                  setOpen(false);
+                                }}
+                              >
+                                <Image
+                                  src="/img/mint_icon.svg"
+                                  alt=""
+                                  width="24px"
+                                  height="24px"
+                                />
+                                <span>
+                                  {post.minted == 'true'
+                                    ? 'Minted Post'
+                                    : 'Mint'}
+                                </span>
+                              </button>
+                            )}
+                          <RWebShare
+                            data={{
+                              text: 'NAPA Society | Social Art',
+                              url: `${WEB_STAGING_SOCIALART_URL}/?postId=${post?.postId}`,
+                            }}
+                            onClick={() => console.log('shared successfully!')}
+                          >
+                            <button className={styles.BotomLikes}>
                               <Image
-                                src="/img/comment02.svg"
+                                src="/img/share_icon.svg"
                                 alt=""
-                                width="28px"
-                                height="28px"
+                                width="24px"
+                                height="24px"
                               />
-                              <h4>Dorothy Mccoy</h4>
-                            </a>
-                            <p>4 hour</p>
-                          </div>
-                          <div className={styles.btmcomment}>
-                            <p>Change wholly say why eldest period.</p>
-                            <div className={styles.LikeReplyTxt}>
-                              <a href="#">Like</a>
-                              <a href="#">Reply</a>
-                            </div>
-                          </div>
+                              <span>
+                                <b>Share</b>
+                              </span>
+                            </button>
+                          </RWebShare>
                         </div>
-                        <div className={styles.FisrtComBox}>
-                          <div className={styles.HadComment}>
-                            <a href="#" className={styles.leftIcontxt}>
-                              <Image
-                                src="/img/comment03.svg"
-                                alt=""
-                                width="28px"
-                                height="28px"
-                              />
-                              <h4>Howard Copeland</h4>
-                            </a>
-                            <p>1 hour</p>
-                          </div>
-                          <div className={styles.btmcomment}>
-                            <p>
-                              Unfeeling agreeable suffering it on smallness
-                              newspaper be. So come must time no as. Do on
-                              unpleasing.{' '}
-                            </p>
-                            <div className={styles.LikeReplyTxt}>
-                              <a href="#">Like</a>
-                              <a href="#">Reply</a>
-                            </div>
-                          </div>
-                        </div>
-                        <div className={styles.FisrtComBox}>
-                          <div className={styles.HadComment}>
-                            <a href="#" className={styles.leftIcontxt}>
-                              <Image
-                                src="/img/comment03.svg"
-                                alt=""
-                                width="28px"
-                                height="28px"
-                              />
-                              <h4>Howard Copeland</h4>
-                            </a>
-                            <p>1 hour</p>
-                          </div>
-                          <div className={styles.btmcomment}>
-                            <p>
-                              Unfeeling agreeable suffering it on smallness
-                              newspaper be. So come must time no as. Do on
-                              unpleasing.{' '}
-                            </p>
-                            <div className={styles.LikeReplyTxt}>
-                              <a href="#">Like</a>
-                              <a href="#">Reply</a>
-                            </div>
-                          </div>
-                        </div>
-                        <div className={styles.FisrtComBox}>
-                          <div className={styles.HadComment}>
-                            <a href="#" className={styles.leftIcontxt}>
-                              <Image
-                                src="/img/comment03.svg"
-                                alt=""
-                                width="28px"
-                                height="28px"
-                              />
-                              <h4>Howard Copeland</h4>
-                            </a>
-                            <p>1 hour</p>
-                          </div>
-                          <div className={styles.btmcomment}>
-                            <p>
-                              Unfeeling agreeable suffering it on smallness
-                              newspaper be. So come must time no as. Do on
-                              unpleasing.{' '}
-                            </p>
-                            <div className={styles.LikeReplyTxt}>
-                              <a href="#">Like</a>
-                              <a href="#">Reply</a>
-                            </div>
-                          </div>
+                        <div className={styles.videoInfoContainer}>
+                          <h3>{post.videoTitle}</h3>
+                          <p>{post.videoCaption}</p>
                         </div>
                       </div>
-                    </div>
+                      {active.postId === post.postId &&
+                        active.type === 'comment' && (
+                          <div
+                            className={
+                              active.postId === post.postId &&
+                              active.type === 'comment'
+                                ? `${styles.rightBox} ${styles.active}`
+                                : `${styles.rightBox}`
+                            }
+                          >
+                            <button
+                              className={styles.ExitButton}
+                              onClick={() =>
+                                handleClickOne({
+                                  postId: '',
+                                  type: '',
+                                })
+                              }
+                            >
+                              <Image
+                                src="/img/exit_icon.svg"
+                                alt=""
+                                width="24px"
+                                height="24px"
+                              />
+                            </button>
+                            <div className={styles.commentsContainer}>
+                              <h1>16 comments</h1>
+                              <div className={styles.ForShadow}>
+                                <div className={styles.UserComment}>
+                                  <div className={styles.FisrtComBox}>
+                                    <div className={styles.HadComment}>
+                                      <a
+                                        href="#"
+                                        className={styles.leftIcontxt}
+                                      >
+                                        <Image
+                                          src="/img/comment01.png"
+                                          alt=""
+                                          width="28px"
+                                          height="28px"
+                                        />
+                                        <h4>Marta Thornton</h4>
+                                      </a>
+                                      <p>1 hour</p>
+                                    </div>
+                                    <div className={styles.btmcomment}>
+                                      <p>
+                                        However venture pursuit he am mr
+                                        cordial. Forming musical am hearing
+                                        studied be luckily.
+                                      </p>
+                                      <div className={styles.LikeReplyTxt}>
+                                        <a href="#">Like</a>
+                                        <a href="#">Reply</a>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div className={styles.FisrtComBox}>
+                                    <div className={styles.HadComment}>
+                                      <a
+                                        href="#"
+                                        className={styles.leftIcontxt}
+                                      >
+                                        <Image
+                                          src="/img/comment02.svg"
+                                          alt=""
+                                          width="28px"
+                                          height="28px"
+                                        />
+                                        <h4>Dorothy Mccoy</h4>
+                                      </a>
+                                      <p>4 hour</p>
+                                    </div>
+                                    <div className={styles.btmcomment}>
+                                      <p>
+                                        Change wholly say why eldest period.
+                                      </p>
+                                      <div className={styles.LikeReplyTxt}>
+                                        <a href="#">Like</a>
+                                        <a href="#">Reply</a>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div className={styles.FisrtComBox}>
+                                    <div className={styles.HadComment}>
+                                      <a
+                                        href="#"
+                                        className={styles.leftIcontxt}
+                                      >
+                                        <Image
+                                          src="/img/comment03.svg"
+                                          alt=""
+                                          width="28px"
+                                          height="28px"
+                                        />
+                                        <h4>Howard Copeland</h4>
+                                      </a>
+                                      <p>1 hour</p>
+                                    </div>
+                                    <div className={styles.btmcomment}>
+                                      <p>
+                                        Unfeeling agreeable suffering it on
+                                        smallness newspaper be. So come must
+                                        time no as. Do on unpleasing.{' '}
+                                      </p>
+                                      <div className={styles.LikeReplyTxt}>
+                                        <a href="#">Like</a>
+                                        <a href="#">Reply</a>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div className={styles.FisrtComBox}>
+                                    <div className={styles.HadComment}>
+                                      <a
+                                        href="#"
+                                        className={styles.leftIcontxt}
+                                      >
+                                        <Image
+                                          src="/img/comment03.svg"
+                                          alt=""
+                                          width="28px"
+                                          height="28px"
+                                        />
+                                        <h4>Howard Copeland</h4>
+                                      </a>
+                                      <p>1 hour</p>
+                                    </div>
+                                    <div className={styles.btmcomment}>
+                                      <p>
+                                        Unfeeling agreeable suffering it on
+                                        smallness newspaper be. So come must
+                                        time no as. Do on unpleasing.{' '}
+                                      </p>
+                                      <div className={styles.LikeReplyTxt}>
+                                        <a href="#">Like</a>
+                                        <a href="#">Reply</a>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div className={styles.FisrtComBox}>
+                                    <div className={styles.HadComment}>
+                                      <a
+                                        href="#"
+                                        className={styles.leftIcontxt}
+                                      >
+                                        <Image
+                                          src="/img/comment03.svg"
+                                          alt=""
+                                          width="28px"
+                                          height="28px"
+                                        />
+                                        <h4>Howard Copeland</h4>
+                                      </a>
+                                      <p>1 hour</p>
+                                    </div>
+                                    <div className={styles.btmcomment}>
+                                      <p>
+                                        Unfeeling agreeable suffering it on
+                                        smallness newspaper be. So come must
+                                        time no as. Do on unpleasing.{' '}
+                                      </p>
+                                      <div className={styles.LikeReplyTxt}>
+                                        <a href="#">Like</a>
+                                        <a href="#">Reply</a>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
 
-                    <div className={styles.BtmCommentBtn}>
-                      <input type="text" placeholder="Write a comment.." />
-                      <button>Send</button>
-                    </div>
-                  </div>
-                </div>
-              )}
-              {active.postId === post.postId && active.type === 'mint' && (
-                <div
-                  className={
-                    active.postId === post.postId && active.type === 'mint'
-                      ? `${styles.rightBox} ${styles.active}`
-                      : `${styles.rightBox}`
-                  }
-                >
-                  <button
-                    className={styles.ExitButton}
-                    onClick={() =>
-                      handleClickOne({
-                        postId: '',
-                        type: '',
-                      })
-                    }
-                  >
-                    <Image
-                      src="/img/exit_icon.svg"
-                      alt=""
-                      width="24px"
-                      height="24px"
-                    />
-                  </button>
-                  <div className={styles.mintPostContainer}>
-                    <h1>Mint SNFT</h1>
-                    <div className={styles.mintDetails}>
-                      <Input
-                        type="text"
-                        placeholder="SNFT Title"
-                        label="SNFT Title"
-                        value={mintDetails.title}
-                        onChange={(e) =>
-                          !loading &&
-                          setMintDetails((prev) => {
-                            return {
-                              ...prev,
-                              title: e.target.value,
-                            };
-                          })
-                        }
-                      />
-                      {!mintDetails.title && mintDetailsErrors.title && (
-                        <p className={styles.errmsg}>
-                          {mintDetailsErrors.title}
-                        </p>
-                      )}
-                      <div style={{ padding: '1rem 0' }}>
-                        <DropDownComponent
-                          disabled={loading}
-                          title="SNFT Collection"
-                          options={snftCollection}
-                          dropDownValue={mintDetails.collection}
-                          onChange={(e) =>
-                            setMintDetails((prev) => {
-                              return {
-                                ...prev,
-                                collection: e.target.value,
-                              };
-                            })
-                          }
-                        />
-                        <div style={{ marginTop: '-1rem' }}>
-                          {mintDetails.collection == 'Take Ownership' && (
-                            <p className={styles.errmsg}>
-                              NAPA Mint Fee Required For this Option
-                            </p>
-                          )}
-                        </div>
-                      </div>
-                      <div className={styles.descriptionContainer}>
-                        <p>SNFT Description</p>
-                        <textarea
-                          disabled={loading}
-                          className={styles.description}
-                          value={mintDetails.description}
-                          onChange={(e) =>
-                            setMintDetails((prev) => {
-                              return {
-                                ...prev,
-                                description: e.target.value,
-                              };
-                            })
-                          }
-                        ></textarea>
-                      </div>
-                      {!mintDetails.description &&
-                        mintDetailsErrors.description && (
-                          <p className={styles.errmsg}>
-                            {mintDetailsErrors.description}
-                          </p>
+                              <div className={styles.BtmCommentBtn}>
+                                <input
+                                  type="text"
+                                  placeholder="Write a comment.."
+                                />
+                                <button>Send</button>
+                              </div>
+                            </div>
+                          </div>
                         )}
-                      <div style={{ padding: '0.5rem 0' }}>
-                        <DropDownComponent
-                          disabled={loading}
-                          title="Location"
-                          options={countries}
-                          dropDownValue={mintDetails.location || ''}
-                          onChange={(e) =>
-                            setMintDetails((prev) => {
-                              return {
-                                ...prev,
-                                location: e.target.value,
-                              };
-                            })
-                          }
-                        />
-                      </div>
-                      <div className={styles.tagContainer}>
-                        <span className={styles.headline}>Tag People</span>
-                        <ReactTags
-                          allowNew
-                          // @ts-ignore
-                          ref={people}
-                          tags={peopleTags}
-                          onDelete={onPeopleDelete}
-                          onAddition={onPeopleAddition}
-                          placeholderText=""
-                        />
-                      </div>
-                      <div style={{ padding: '0.5rem 0' }}>
-                        <DropDownComponent
-                          disabled={loading}
-                          title="Genre"
-                          options={genre}
-                          dropDownValue={mintDetails.collection}
-                          onChange={(e) =>
-                            setMintDetails((prev) => {
-                              return {
-                                ...prev,
-                                genre: e.target.value,
-                              };
-                            })
-                          }
-                        />
-                      </div>
-                      <div className={styles.tagContainer}>
-                        <span className={styles.headline}>Tags</span>
-                        <ReactTags
-                          allowNew
-                          // @ts-ignore
-                          ref={tag}
-                          tags={tags}
-                          onDelete={onDelete}
-                          onAddition={onAddition}
-                          placeholderText=""
-                        />
-                      </div>
-                    </div>
-                    {loading ? (
-                      <div className={styles.loaderContainer}>
-                        <FadeLoader color="#ffffff" />
-                      </div>
-                    ) : (
-                      <div className={styles.actionContainer}>
-                        <span
-                          onClick={handleMintPostCancel}
-                          className={styles.cancelBtn}
-                        >
-                          Cancel
-                        </span>
+                      {active.postId === post.postId && active.type === 'mint' && (
                         <div
-                          onClick={handleMintPost}
-                          className={styles.mintBtn}
+                          className={
+                            active.postId === post.postId &&
+                            active.type === 'mint'
+                              ? `${styles.rightBox} ${styles.active}`
+                              : `${styles.rightBox}`
+                          }
                         >
-                          <Image
-                            src={DoneIcon}
-                            width={24}
-                            height={24}
-                            alt="avatar"
-                          />
-                          <span>Mint</span>
+                          <button
+                            className={styles.ExitButton}
+                            onClick={() =>
+                              handleClickOne({
+                                postId: '',
+                                type: '',
+                              })
+                            }
+                          >
+                            <Image
+                              src="/img/exit_icon.svg"
+                              alt=""
+                              width="24px"
+                              height="24px"
+                            />
+                          </button>
+                          <div className={styles.mintPostContainer}>
+                            <h1>Minting a Post</h1>
+                            <div className={styles.mintDetails}>
+                              <Input
+                                type="text"
+                                placeholder="SNFT Title"
+                                label="SNFT Title"
+                                value={mintDetails.title}
+                                onChange={(e) =>
+                                  !loading &&
+                                  setMintDetails((prev) => {
+                                    return {
+                                      ...prev,
+                                      title: e.target.value,
+                                    };
+                                  })
+                                }
+                              />
+                              {!mintDetails.title &&
+                                mintDetailsErrors.title && (
+                                  <p className={styles.errmsg}>
+                                    {mintDetailsErrors.title}
+                                  </p>
+                                )}
+                              <div style={{ padding: '1rem 0' }}>
+                                <DropDownComponent
+                                  disabled={loading}
+                                  title="SNFT Collection"
+                                  options={snftCollection}
+                                  dropDownValue={mintDetails.collection}
+                                  onChange={(e) =>
+                                    setMintDetails((prev) => {
+                                      return {
+                                        ...prev,
+                                        collection: e.target.value,
+                                      };
+                                    })
+                                  }
+                                />
+                                <div style={{ marginTop: '-1rem' }}>
+                                  {mintDetails.collection ==
+                                    'Take Ownership' && (
+                                    <p className={styles.errmsg}>
+                                      NAPA Mint Fee Required For this Option
+                                    </p>
+                                  )}
+                                </div>
+                              </div>
+                              <div className={styles.descriptionContainer}>
+                                <p>SNFT Description</p>
+                                <textarea
+                                  disabled={loading}
+                                  className={styles.description}
+                                  value={mintDetails.description}
+                                  onChange={(e) =>
+                                    setMintDetails((prev) => {
+                                      return {
+                                        ...prev,
+                                        description: e.target.value,
+                                      };
+                                    })
+                                  }
+                                ></textarea>
+                              </div>
+                              {!mintDetails.description &&
+                                mintDetailsErrors.description && (
+                                  <p className={styles.errmsg}>
+                                    {mintDetailsErrors.description}
+                                  </p>
+                                )}
+                              <div style={{ padding: '0.5rem 0' }}>
+                                <DropDownComponent
+                                  disabled={loading}
+                                  title="Location"
+                                  options={countries}
+                                  dropDownValue={mintDetails.location || ''}
+                                  onChange={(e) =>
+                                    setMintDetails((prev) => {
+                                      return {
+                                        ...prev,
+                                        location: e.target.value,
+                                      };
+                                    })
+                                  }
+                                />
+                              </div>
+                              <div className={styles.tagContainer}>
+                                <span className={styles.headline}>
+                                  Tag People
+                                </span>
+                                <ReactTags
+                                  allowNew
+                                  // @ts-ignore
+                                  ref={people}
+                                  tags={peopleTags}
+                                  onDelete={onPeopleDelete}
+                                  onAddition={onPeopleAddition}
+                                  placeholderText=""
+                                />
+                              </div>
+                              <div style={{ padding: '0.5rem 0' }}>
+                                <DropDownComponent
+                                  disabled={loading}
+                                  title="Genre"
+                                  options={genre}
+                                  dropDownValue={mintDetails.collection}
+                                  onChange={(e) =>
+                                    setMintDetails((prev) => {
+                                      return {
+                                        ...prev,
+                                        genre: e.target.value,
+                                      };
+                                    })
+                                  }
+                                />
+                              </div>
+                              <div className={styles.tagContainer}>
+                                <span className={styles.headline}>Tags</span>
+                                <ReactTags
+                                  allowNew
+                                  // @ts-ignore
+                                  ref={tag}
+                                  tags={tags}
+                                  onDelete={onDelete}
+                                  onAddition={onAddition}
+                                  placeholderText=""
+                                />
+                              </div>
+                            </div>
+                            {loading ? (
+                              <div className={styles.loaderContainer}>
+                                <FadeLoader color="#ffffff" />
+                              </div>
+                            ) : (
+                              <div className={styles.actionContainer}>
+                                <span
+                                  onClick={handleMintPostCancel}
+                                  className={styles.cancelBtn}
+                                >
+                                  Cancel
+                                </span>
+                                <div
+                                  onClick={() => handleMintPost(post)}
+                                  className={styles.mintBtn}
+                                >
+                                  <Image
+                                    src={DoneIcon}
+                                    width={24}
+                                    height={24}
+                                    alt="avatar"
+                                  />
+                                  <span>Mint</span>
+                                </div>
+                              </div>
+                            )}
+                          </div>
                         </div>
-                      </div>
-                    )}
+                      )}
+                    </div>
+                  ))
+              : !open && (
+                  <div className={styles.NotFoundMessageContainer}>
+                    <p>Getting things ready!</p>
                   </div>
-                </div>
-              )}
-            </div>
-          ))
-        ) : (
-          !open && (
-            <div className={styles.NotFoundMessageContainer}>
-              <p>Getting things ready!</p>
-            </div>
-          )
+                )}
+          </>
         )}
       </div>
     </div>
