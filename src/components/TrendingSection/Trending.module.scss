@@ -55,7 +55,7 @@
       @include font-6xl-neuropolitical-normal;
       text-align: left;
       color: $white;
-      padding-top: 4.4rem;
+      padding-top: 8.4rem;
       span {
         color: transparent;
         -webkit-text-stroke: 2px white;
@@ -99,7 +99,7 @@
       }
       .rightSideContainer {
         padding-left: 3.4rem;
-        padding-top: 4rem;
+        padding-top: 7rem;
       }
     }
   }
@@ -160,7 +160,7 @@
       .rightSideContainer:before {
         position: absolute;
         width: 100%;
-        height: 44px;
+        height: 40px;
         top: 0;
         z-index: 2;
         color: #fff;
