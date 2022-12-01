@@ -1,274 +1,107 @@
-import React from 'react'
+import React, { useEffect } from 'react';
 import styles from './MintedTabInBox.module.scss';
 import 'bootstrap-daterangepicker/daterangepicker.css';
 import Image from 'next/image';
 import 'rc-slider/assets/index.css';
+import { getAllMintedPosts } from '@/services/MintApi';
+import { MintPost } from '@/types/mint';
+import { FadeLoader } from 'react-spinners';
+import useProfile from '@/hooks/useProfile';
+import moment from 'moment';
 
 export default function MintedTabInBox() {
-  return (
-    <div className={styles.MintedScrollMiddle}>
-        <div className={styles.MintedMiiddle}>
-            {/* <Frst_box */}
-            <div className={styles.LeftMiddle}>          
-                <div className={styles.DarknesBox}>
-                    <div className={styles.DarkimgBox}>
-                        <Image src="/img/darknes_ic.svg" alt="" width={105} height={105} />
-                        <div className={styles.DarinHedh}>                     
-                            <h3 className={styles.DariH}>Illusions of Darkness</h3>
-                            <h6><span>Etherscan Address:</span> 0x8eb2df7137fb74...6e884</h6>
-                            <div className={styles.DarinImgpspan}>
-                                <Image src="/img/napa_icon_darknes.svg" alt="" width={24} height={24} />
-                                <h2>12.35 NAPA<span>Earned</span></h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.DarkiBoxmiddata}>
-                        <div className={styles.DarkiBxFrst}>
-                            <div className={styles.DarkiBxhpdata}>
-                                <p>Date Minted</p>
-                                <h3>12 Mar 2022</h3>
-                            </div>
-                            <div className={styles.DarkiBxhpdata}>
-                                <p>Live Start Date</p>
-                                <h3>4 Aug 2022 </h3>
-                            </div>
-                        </div>
-                        <div className={styles.DarkiBxSecond}>
-                            <div className={styles.DarkiBxhpdata}>
-                                <p>Live End Date</p>
-                                <h3>17 Aug 2022 </h3>
-                            </div>
-                            <div className={styles.DarkiBxhpdata}>
-                                <p>Current Rewards Tier</p>
-                                <h3>0.24 NAPA</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.DarkiBoxbtnlst}>
-                        <button className={styles.DarkiBlubtn}>Redeem Tokens</button>
-                        <button className={styles.DarkiDarbtn}>Submit to Marketplace</button>
-                    </div>
-                </div>
-            </div>
-            {/* <Second_box */}
-            <div className={styles.RightMiiddle}>
-                <div className={styles.DarknesBox}>
-                    <div className={styles.DarkimgBox}>
-                        <Image src="/img/darknes_ic_02.png" alt="" width={105} height={105} />
-                        <div className={styles.DarinHedh}>                     
-                            <h3 className={styles.DariH}>We Came As Aliens</h3>
-                            <h6><span>Etherscan Address:</span> L97hUtYRfb6g50Ik...88y64</h6>
-                            <div className={styles.DarinImgpspan}>
-                                <Image src="/img/napa_icon_darknes.svg" alt="" width={24} height={24} />
-                                <h2>8.21 NAPA<span>Earned</span></h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.DarkiBoxmiddata}>
-                        <div className={styles.DarkiBxFrst}>
-                            <div className={styles.DarkiBxhpdata}>
-                                <p>Date Minted</p>
-                                <h3>8 Mar 2022</h3>
-                            </div>
-                            <div className={styles.DarkiBxhpdata}>
-                                <p>Live Start Date</p>
-                                <h3>1 Aug 2022 </h3>
-                            </div>
-                        </div>
-                        <div className={styles.DarkiBxSecond}>
-                            <div className={styles.DarkiBxhpdata}>
-                                <p>Live End Date</p>
-                                <h3>12 Aug 2022 </h3>
-                            </div>
-                            <div className={styles.DarkiBxhpdata}>
-                                <p>Current Rewards Tier</p>
-                                <h3>0.32 NAPA</h3>
-                            </div>
-                        </div>
-                        
-                    </div>
-                    <div className={styles.DarkiBoxbtnlst}>
-                        <button className={styles.DarkiBlubtn}>Redeem Tokens</button>
-                        <button className={styles.DarkiDarbtn}>Submit to Marketplace</button>
-                    </div>
-                </div>
-            </div>
+  const [loading, setLoading] = React.useState(false);
+  const [mintPosts, setMintPosts] = React.useState<MintPost[] | null>(null);
+  const { profileId } = useProfile();
 
-            {/* <Thied_box */}
-            <div className={styles.LeftMiddle}>          
-                <div className={styles.DarknesBox}>
-                    <div className={styles.DarkimgBox}>
-                        <Image src="/img/darknes_ic_03.svg" alt="" width={105} height={105} />
-                        <div className={styles.DarinHedh}>                     
-                            <h3 className={styles.DariH}>Of Aliens & Men</h3>
-                            <h6><span>Etherscan Address:</span> s853jYgR530Ja52J...er736k</h6>
-                            <div className={styles.DarinImgpspan}>
-                                <Image src="/img/napa_icon_darknes.svg" alt="" width={24} height={24} />
-                                <h2>10.33 NAPA<span>Earned</span></h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.DarkiBoxmiddata}>
-                        <div className={styles.DarkiBxFrst}>
-                            <div className={styles.DarkiBxhpdata}>
-                                <p>Date Minted</p>
-                                <h3>24 Apr 2022</h3>
-                            </div>
-                            <div className={styles.DarkiBxhpdata}>
-                                <p>Live Start Date</p>
-                                <h3>19 Aug 2022 </h3>
-                            </div>
-                        </div>   
-                        <div className={styles.DarkiBxSecond}>
-                            <div className={styles.DarkiBxhpdata}>
-                                <p>Live End Date</p>
-                                <h3>24 Aug 2022 </h3>
-                            </div>
-                            <div className={styles.DarkiBxhpdata}>
-                                <p>Current Rewards Tier</p>
-                                <h3>0.95 NAPA</h3>
-                            </div>
-                        </div>                        
-                    </div>
-                    <div className={styles.DarkiBoxbtnlst}>
-                        <button className={styles.DarkiBlubtn}>Redeem Tokens</button>
-                        <button className={styles.DarkiDarbtn}>Submit to Marketplace</button>
-                    </div>
-                </div>
-            </div>
-            {/* Four_box */}
-            <div className={styles.RightMiiddle}>
-                <div className={styles.DarknesBox}>
-                    <div className={styles.DarkimgBox}>
-                        <Image src="/img/darknes_ic_04.png" alt="" width={105} height={105} />
-                        <div className={styles.DarinHedh}>                     
-                            <h3 className={styles.DariH}>The Magic Galaxies</h3>
-                            <h6><span>Etherscan Address:</span> 9k8g36d8skjYgR93...ks728</h6>
-                            <div className={styles.DarinImgpspan}>
-                                <Image src="/img/napa_icon_darknes.svg" alt="" width={24} height={24} />
-                                <h2>6.02 NAPA<span>Earned</span></h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.DarkiBoxmiddata}>
-                        <div className={styles.DarkiBxFrst}>
-                            <div className={styles.DarkiBxhpdata}>
-                                <p>Date Minted</p>
-                                <h3>9 Apr 2022</h3>
-                            </div>
-                            <div className={styles.DarkiBxhpdata}>
-                                <p>Live Start Date</p>
-                                <h3>2 Aug 2022</h3>
-                            </div>
-                        </div>
-                        <div className={styles.DarkiBxSecond}>
-                            <div className={`${styles.DarkiBxhpdata} ${styles.DarkiBxhpdataSec}`}>
-                                <p>Live End Date</p>
-                                <h3>29 Aug 2022</h3>
-                            </div>
-                            <div className={styles.DarkiBxhpdata}>
-                                <p>Current Rewards Tier</p>
-                                <h3>0.48 NAPA</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.DarkiBoxbtnlst}>
-                        <button className={styles.DarkiBlubtn}>Redeem Tokens</button>
-                        <button className={styles.DarkiDarbtn}>Submit to Marketplace</button>
-                    </div>
-                </div>
-            </div>
+  const handleGetMintPosts = async () => {
+    setLoading(true);
+    const { data }: any = await getAllMintedPosts();
+    setMintPosts(data?.data || []);
+    setLoading(false);
+  };
 
+  useEffect(() => {
+    handleGetMintPosts();
+  }, []);
 
-            {/* <Five_box */}
-            <div className={styles.LeftMiddle}>          
-                <div className={styles.DarknesBox}>
-                    <div className={styles.DarkimgBox}>
-                        <Image src="/img/darknes_ic.svg" alt="" width={105} height={105} />
-                        <div className={styles.DarinHedh}>                     
-                            <h3 className={styles.DariH}>Illusions of Darkness</h3>
-                            <h6><span>Etherscan Address:</span> 0x8eb2df7137fb74...6e884</h6>
-                            <div className={styles.DarinImgpspan}>
-                                <Image src="/img/napa_icon_darknes.svg" alt="" width={24} height={24} />
-                                <h2>12.35 NAPA<span>Earned</span></h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.DarkiBoxmiddata}>
-                        <div className={styles.DarkiBxFrst}>
-                            <div className={styles.DarkiBxhpdata}>
-                                <p>Date Minted</p>
-                                <h3>12 Mar 2022</h3>
-                            </div>
-                            <div className={styles.DarkiBxhpdata}>
-                                <p>Live Start Date</p>
-                                <h3>4 Aug 2022 </h3>
-                            </div>
-                        </div>
-                        <div className={styles.DarkiBxSecond}>
-                            <div className={styles.DarkiBxhpdata}>
-                                <p>Live End Date</p>
-                                <h3>17 Aug 2022 </h3>
-                            </div>
-                            <div className={styles.DarkiBxhpdata}>
-                                <p>Current Rewards Tier</p>
-                                <h3>0.24 NAPA</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.DarkiBoxbtnlst}>
-                        <button className={styles.DarkiBlubtn}>Redeem Tokens</button>
-                        <button className={styles.DarkiDarbtn}>Submit to Marketplace</button>
-                    </div>
-                </div>
-            </div>
+  const getEndDate = (timestamp: any) => {
+    let date = new Date(timestamp);
+    date.setTime(date.getTime() + 12 * 60 * 60 * 1000);
+    return moment(date).format('D MMM YYYY');
+  };
 
-            {/* Six_box */}
-            <div className={styles.RightMiiddle}>
-                <div className={styles.DarknesBox}>
-                    <div className={styles.DarkimgBox}>
-                        <Image src="/img/darknes_ic_02.png" alt="" width={105} height={105} />
-                        <div className={styles.DarinHedh}>                     
-                            <h3 className={styles.DariH}>We Came As Aliens</h3>
-                            <h6><span>Etherscan Address:</span> L97hUtYRfb6g50Ik...88y64</h6>
-                            <div className={styles.DarinImgpspan}>
-                                <Image src="/img/napa_icon_darknes.svg" alt="" width={24} height={24} />
-                                <h2>8.21 NAPA<span>Earned</span></h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={styles.DarkiBoxmiddata}>
-                        <div className={styles.DarkiBxFrst}>
-                            <div className={styles.DarkiBxhpdata}>
-                                <p>Date Minted</p>
-                                <h3>8 Mar 2022</h3>
-                            </div>
-                            <div className={styles.DarkiBxhpdata}>
-                                <p>Live Start Date</p>
-                                <h3>1 Aug 2022 </h3>
-                            </div>
-                        </div>
-                        <div className={styles.DarkiBxSecond}>
-                            <div className={styles.DarkiBxhpdata}>
-                                <p>Live End Date</p>
-                                <h3>12 Aug 2022 </h3>
-                            </div>
-                            <div className={styles.DarkiBxhpdata}>
-                                <p>Current Rewards Tier</p>
-                                <h3>0.32 NAPA</h3>
-                            </div>
-                        </div>
-                        
-                    </div>
-                    <div className={styles.DarkiBoxbtnlst}>
-                        <button className={styles.DarkiBlubtn}>Redeem Tokens</button>
-                        <button className={styles.DarkiDarbtn}>Submit to Marketplace</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+  return loading ? (
+    <div className={styles.loadingContainer}>
+      <FadeLoader color="#ffffff" />
     </div>
-    
-
-  )
+  ) : mintPosts?.length ? (
+    <div className={styles.MintedScrollMiddle}>
+      <div className={styles.MintedMiiddle}>
+        {mintPosts.map((post, index) => {
+          return (
+            <div key={`post ${index}`} className={styles.LeftMiddle}>
+              <div className={styles.DarknesBox}>
+                <div className={styles.DarkimgBox}>
+                  <Image
+                    src="/img/darknes_ic.svg"
+                    alt=""
+                    width={105}
+                    height={105}
+                  />
+                  <div className={styles.DarinHedh}>
+                    <h3 className={styles.DariH}>{post.SNFTTitle}</h3>
+                    <h6>
+                      <span>Etherscan Address:</span> 0x8eb2df7137fb74...6e884
+                    </h6>
+                    <div className={styles.DarinImgpspan}>
+                      <Image
+                        src="/img/napa_icon_darknes.svg"
+                        alt=""
+                        width={24}
+                        height={24}
+                      />
+                      <h2>
+                        12.35 NAPA<span>Earned</span>
+                      </h2>
+                    </div>
+                  </div>
+                </div>
+                <div className={styles.DarkiBoxmiddata}>
+                  <div className={styles.DarkiBxFrst}>
+                    <div className={styles.DarkiBxhpdata}>
+                      <p>Date Minted</p>
+                      <h3>{moment(post.timeMinted).format('D MMM YYYY')}</h3>
+                    </div>
+                    <div className={styles.DarkiBxhpdata}>
+                      <p>Live Start Date</p>
+                      <h3>{moment(post.timeMinted).format('D MMM YYYY')}</h3>
+                    </div>
+                  </div>
+                  <div className={styles.DarkiBxSecond}>
+                    <div className={styles.DarkiBxhpdata}>
+                      <p>Live End Date</p>
+                      <h3>{getEndDate(post.timeMinted)}</h3>
+                    </div>
+                    <div className={styles.DarkiBxhpdata}>
+                      <p>Current Rewards Tier</p>
+                      <h3>0.24 NAPA</h3>
+                    </div>
+                  </div>
+                </div>
+                <div className={styles.DarkiBoxbtnlst}>
+                  <button className={styles.DarkiBlubtn}>Redeem Tokens</button>
+                  <button className={styles.DarkiDarbtn}>
+                    Submit to Marketplace
+                  </button>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  ) : (
+    <h3 className={styles.noPostFound}>No post found</h3>
+  );
 }
