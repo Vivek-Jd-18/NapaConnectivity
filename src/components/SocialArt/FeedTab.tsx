@@ -10,6 +10,7 @@ import { useRouter } from 'next/router';
 import React, { useCallback, useEffect, useRef } from 'react';
 import { FadeLoader } from 'react-spinners';
 import { toast } from 'react-toastify';
+import { RWebShare } from 'react-web-share';
 import { DoneIcon, ErrorIcon, WalletNeedsToConnected } from '../assets';
 import { CustomToastWithLink } from '../CustomToast/CustomToast';
 import HighlightButton from '../HighlightButton/HighlightButton';
@@ -24,16 +25,25 @@ import {
 } from '@/constants/social-art.constants';
 import ReactTags from 'react-tag-autocomplete';
 import { createNewMint } from '@/services/MintApi';
+import { textToEmoji } from '@/utils/socialArt';
+import { socialArtMessagesTriggers } from '@/constants/socialArt.constants';
+import { WEB_STAGING_SOCIALART_URL } from '@/constants/url';
 
 type FeedTabProps = {
   socket: WebSocket;
 };
 
 export default function FeedTab({ socket }: FeedTabProps) {
+  const router = useRouter();
+  const { postId }: any = router.query;
   const [active, setActive] = React.useState<activePost>({
     postId: '',
     type: '',
   });
+
+  const textTimerRef = useRef<any>(null);
+  const textTimeRef = useRef<any>(null);
+  //   const titleRef = useRef(false);
   const handleClickOne = (activeObj: activePost) => {
     setActive(activeObj);
   };
@@ -55,14 +65,13 @@ export default function FeedTab({ socket }: FeedTabProps) {
   const [loading, setLoading] = React.useState(false);
   const [getPostsLoading, setGetPostsLoading] = React.useState(false);
   const [posts, setPosts] = React.useState<Post[] | null>(null);
-  const [counter, setCounter] = React.useState(60);
   const [mintDetails, setMintDetails] = React.useState({
     title: '',
     collection: 'NAPA Society Collection',
     description: '',
     location: countries[0]?.name,
     tagged_people: '',
-    genre: 'Virtual Worlds',
+    genre: 'Select Genre',
     tags: '',
   });
   const [mintDetailsErrors, setMintDetailsErrors] = React.useState({
@@ -125,13 +134,29 @@ export default function FeedTab({ socket }: FeedTabProps) {
     handleDrop(ev.dataTransfer.files[0]);
   };
 
-  React.useEffect(() => {
-    let timer: any;
-    if (!getPostsLoading) {
-      timer = counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
+  useEffect(() => {
+    if (!getPostsLoading && !textTimeRef.current) {
+      textTimeRef.current = new Date();
+      textTimerRef.current = setInterval(() => {
+        if (
+          (new Date().getTime() - textTimeRef.current.getTime()) / 1000 >=
+          60
+        ) {
+          clearInterval(textTimerRef.current);
+          let textDiv = document.getElementById('hide_title');
+          if (!textDiv) return;
+          textDiv.style.visibility = 'hidden';
+        }
+      }, 1000);
     }
-    return () => clearInterval(timer);
-  }, [counter, getPostsLoading]);
+    return () => {
+      clearInterval(textTimerRef.current);
+      textTimeRef.current = null;
+      let textDiv = document.getElementById('hide_title');
+      if (!textDiv) return;
+      textDiv.style.visibility = 'visible';
+    };
+  }, [textTimeRef.current, textTimerRef.current, getPostsLoading]);
 
   const handleClick = () => {
     // @ts-ignore
@@ -210,6 +235,14 @@ export default function FeedTab({ socket }: FeedTabProps) {
     handleModalPosition();
     window.addEventListener('resize', handleModalPosition);
   }, []);
+
+  useEffect(() => {
+    if (!getPostsLoading) {
+      document
+        .getElementById(postId)
+        ?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }, [postId, getPostsLoading]);
 
   useEffect(() => {
     socket.addEventListener(
@@ -663,15 +696,18 @@ export default function FeedTab({ socket }: FeedTabProps) {
                               </p>
                             </div>
                           </div>
-                          {counter > 0 && (
-                            <div className={`${styles.messageContainer}`}>
-                              Your post is now live for 12 hours!
-                            </div>
-                          )}
-
+                          <div
+                            id="hide_title"
+                            className={styles.messageContainer}
+                            dangerouslySetInnerHTML={{
+                              __html: textToEmoji(
+                                socialArtMessagesTriggers[3]?.message
+                              ),
+                            }}
+                          ></div>
                           <div className={styles.UserRightTxt}>
                             <h4>10:22:12</h4>
-                            <p>Live Post Time Remaining</p>
+                            <p>Live Post!</p>
                           </div>
                         </div>
                         <div className={styles.MdlImage}>
@@ -742,10 +778,6 @@ export default function FeedTab({ socket }: FeedTabProps) {
                               12 <b>awards</b>
                             </span>
                           </a>
-                          {console.log(
-                            account == post.accountId &&
-                              profileId == post.profileId
-                          )}
                           {account == post.accountId &&
                             profileId == post.profileId && (
                               <button
@@ -780,17 +812,25 @@ export default function FeedTab({ socket }: FeedTabProps) {
                                 </span>
                               </button>
                             )}
-                          <a href="#" className={styles.BotomLikes}>
-                            <Image
-                              src="/img/share_icon.svg"
-                              alt=""
-                              width="24px"
-                              height="24px"
-                            />
-                            <span>
-                              <b>Share</b>
-                            </span>
-                          </a>
+                          <RWebShare
+                            data={{
+                              text: 'NAPA Society | Social Art',
+                              url: `${WEB_STAGING_SOCIALART_URL}/?postId=${post?.postId}`,
+                            }}
+                            onClick={() => console.log('shared successfully!')}
+                          >
+                            <button className={styles.BotomLikes}>
+                              <Image
+                                src="/img/share_icon.svg"
+                                alt=""
+                                width="24px"
+                                height="24px"
+                              />
+                              <span>
+                                <b>Share</b>
+                              </span>
+                            </button>
+                          </RWebShare>
                         </div>
                         <div className={styles.videoInfoContainer}>
                           <h3>{post.videoTitle}</h3>

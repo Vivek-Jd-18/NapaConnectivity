@@ -41,7 +41,7 @@ export default function SupportSc() {
                       <Input
                           value={name}
                           type="text"
-                          placeholder="John Ridley"
+                          placeholder="Enter Name"
                           label="Name"
                           onChange={(e) => setName(e.target.value)}
                       />
@@ -50,7 +50,7 @@ export default function SupportSc() {
                       <Input
                           value={namesec}
                           type="text"
-                          placeholder="john.ridley@gmail.com"
+                          placeholder="Enter E-mail"
                           label="Email"
                           onChange={(e) => setNamesec(e.target.value)}
                       />
