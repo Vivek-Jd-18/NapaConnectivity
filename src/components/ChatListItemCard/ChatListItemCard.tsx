@@ -26,7 +26,7 @@ const ChatListItemCard: NextPage<any, ChatListItemCardProps> = ({
       <div className={styles.userContainer}>
         <div className={styles.avatar}>
           <Image
-            src={avatar ? `${avatar}` : HowardAvatar}
+            src={avatar ? `${avatar}` : "/assets/images/img_avatar.png"}
             width={32}
             height={32}
             alt="avatar"

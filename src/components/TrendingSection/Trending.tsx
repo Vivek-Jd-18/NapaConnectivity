@@ -231,7 +231,7 @@ const TrendingSection: NextPage<TrendingSectionProps> = ({ socket }) => {
               <div className={styles.tabsContainer}>
                 <div className={styles.tabsInnerContainer}>
                   <ul className={styles.tab}>
-                    {trendingTabList.map(({ title, value }, index) => (
+                    {trendingTabList.map(({ title, value }, index) => ( 
                       <Tab
                         key={index}
                         setTab={setTab}
@@ -270,7 +270,7 @@ const TrendingSection: NextPage<TrendingSectionProps> = ({ socket }) => {
                             articleBody={articleBody}
                             date={createdAt}
                             icon={
-                              userProfilePic ? userProfilePic : HowardAvatar
+                              userProfilePic ? userProfilePic : "/assets/images/img_avatar.png"
                             }
                             openIndex={openIndex}
                             setOpenIndex={setOpenIndex}
