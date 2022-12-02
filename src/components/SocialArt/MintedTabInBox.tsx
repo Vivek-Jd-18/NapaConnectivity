@@ -6,13 +6,11 @@ import 'rc-slider/assets/index.css';
 import { getAllMintedPosts } from '@/services/MintApi';
 import { MintPost } from '@/types/mint';
 import { FadeLoader } from 'react-spinners';
-import useProfile from '@/hooks/useProfile';
 import moment from 'moment';
 
 export default function MintedTabInBox() {
   const [loading, setLoading] = React.useState(false);
   const [mintPosts, setMintPosts] = React.useState<MintPost[] | null>(null);
-  const { profileId } = useProfile();
 
   const handleGetMintPosts = async () => {
     setLoading(true);
