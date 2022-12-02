@@ -24,12 +24,16 @@ a {
   display: flex;
   position: relative;
   padding: 20px;
-  height: 120px;
+  max-width: 590px;
   border: 2px solid $white;
   overflow-y: auto;
+  height: 85px;
   font-size: 1em;
   line-height: 1.2;
   cursor: text;
+  @media screen and (max-width: 1024px) {
+    max-width: 862px;
+  }
 }
 
 .react-tags.is-focused {
