@@ -8,7 +8,11 @@ import { MintPost } from '@/types/mint';
 import { FadeLoader } from 'react-spinners';
 import moment from 'moment';
 
-export default function MintedTabInBox() {
+type MintedTabInBoxProps = {
+  socket: WebSocket;
+};
+
+export default function MintedTabInBox({ socket }: MintedTabInBoxProps) {
   const [loading, setLoading] = React.useState(false);
   const [mintPosts, setMintPosts] = React.useState<MintPost[] | null>(null);
 
@@ -19,14 +23,45 @@ export default function MintedTabInBox() {
     setLoading(false);
   };
 
+  const handleNewMint = (post: any) => {
+    setMintPosts((prevState) => {
+      if (prevState) {
+        const data = [post, ...prevState];
+        const filteredPost = data.filter(
+          (v, i, a) => a.findIndex((v2) => v2?.postId === v?.postId) === i
+        );
+        return [...filteredPost];
+      } else {
+        let data = [];
+        // @ts-ignore
+        data.push(post);
+        return [...data];
+      }
+    });
+  };
+
   useEffect(() => {
     handleGetMintPosts();
   }, []);
 
+  useEffect(() => {
+    // @ts-ignore
+    socket.addEventListener('message', ({ data }) => {
+      const response = JSON.parse(data);
+      if (response?.event === 'mints') {
+        handleNewMint(response?.posts);
+      }
+    });
+    return () => {
+      socket.removeEventListener('message', () => {});
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const getEndDate = (timestamp: any) => {
-    let date = new Date(timestamp);
-    date.setTime(date.getTime() + 12 * 60 * 60 * 1000);
-    return moment(date).format('D MMM YYYY');
+    const date = new Date(timestamp).getTime();
+    const endTime = new Date(date + 12 * 3600 * 1000);
+    return moment(endTime).utc().format('h:mm:ss a');
   };
 
   return loading ? (
@@ -41,12 +76,7 @@ export default function MintedTabInBox() {
             <div key={`post ${index}`} className={styles.LeftMiddle}>
               <div className={styles.DarknesBox}>
                 <div className={styles.DarkimgBox}>
-                  <Image
-                    src="/img/darknes_ic.svg"
-                    alt=""
-                    width={105}
-                    height={105}
-                  />
+                  <Image src={post.thumbnail} alt="" width={105} height={105} />
                   <div className={styles.DarinHedh}>
                     <h3 className={styles.DariH}>{post.SNFTTitle}</h3>
                     <h6>
@@ -72,13 +102,15 @@ export default function MintedTabInBox() {
                       <h3>{moment(post.timeMinted).format('D MMM YYYY')}</h3>
                     </div>
                     <div className={styles.DarkiBxhpdata}>
-                      <p>Live Start Date</p>
-                      <h3>{moment(post.timeMinted).format('D MMM YYYY')}</h3>
+                      <p>Live Start Time</p>
+                      <h3>
+                        {moment(post.timeMinted).utc().format('h:mm:ss a')}
+                      </h3>
                     </div>
                   </div>
                   <div className={styles.DarkiBxSecond}>
                     <div className={styles.DarkiBxhpdata}>
-                      <p>Live End Date</p>
+                      <p>Live End Time</p>
                       <h3>{getEndDate(post.timeMinted)}</h3>
                     </div>
                     <div className={styles.DarkiBxhpdata}>

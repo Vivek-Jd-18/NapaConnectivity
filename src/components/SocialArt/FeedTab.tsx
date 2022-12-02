@@ -43,17 +43,20 @@ export default function FeedTab({ socket }: FeedTabProps) {
 
   const textTimerRef = useRef<any>(null);
   const textTimeRef = useRef<any>(null);
-  //   const titleRef = useRef(false);
   const handleClickOne = (activeObj: activePost) => {
     setActive(activeObj);
   };
   const [open, setOpen] = React.useState(false);
   const inputRef = useRef(null);
+  const thumbnailRef = useRef(null);
   const [file, setFile] = React.useState<File | null>(null);
   const [videoTitle, setVideoTitle] = React.useState('');
   const [caption, setCaption] = React.useState('');
   const [modalPosition, setModalPosition] = React.useState(false);
   const [videoPreview, setVideoPreview] = React.useState<
+    string | ArrayBuffer | null
+  >('');
+  const [thumbnailPreview, setThumbnailPreview] = React.useState<
     string | ArrayBuffer | null
   >('');
   const { account }: { account: string } = useWebThree();
@@ -78,6 +81,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
     title: '',
     collection: '',
     description: '',
+    thumbnail: '',
   });
 
   const { profileDetails, profileId } = useProfile();
@@ -158,14 +162,60 @@ export default function FeedTab({ socket }: FeedTabProps) {
     };
   }, [textTimeRef.current, textTimerRef.current, getPostsLoading]);
 
-  const handleClick = () => {
+  const handleClick = (ref: any) => {
     // @ts-ignore
-    inputRef.current.click();
+    ref.current.click();
   };
 
   const handleChange = (ev: any) => {
     handleOnChange(ev.target.files[0]);
     ev.target.value = '';
+  };
+
+  const handleThumbnailChange = (ev: any) => {
+    const file = ev.target.files[0];
+    ev.target.value = '';
+    if (!file) {
+      return;
+    }
+
+    const allowedFiles = ['image/png', 'image/jpg', 'image/jpeg'];
+    const fileSize = file.size;
+    if (!allowedFiles.includes(file?.type)) {
+      toast.error(
+        CustomToastWithLink({
+          icon: ErrorIcon,
+          title: 'Invalid File Type',
+          description: 'Please upload a jpg or png file',
+          time: 'Now',
+        })
+      );
+      return;
+    }
+    if (fileSize > 1024 * 1024 * 5) {
+      toast.error(
+        CustomToastWithLink({
+          icon: ErrorIcon,
+          title: 'Invalid File Size',
+          description: "File size can't exceed 5 MB",
+          time: 'Now',
+        })
+      );
+      return;
+    }
+    const reader: FileReader = new FileReader();
+
+    reader.addEventListener(
+      'load',
+      () => {
+        setThumbnailPreview(reader?.result || '');
+      },
+      false
+    );
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
   };
 
   const handleOnChange = useCallback((file: any) => {
@@ -244,18 +294,36 @@ export default function FeedTab({ socket }: FeedTabProps) {
     }
   }, [postId, getPostsLoading]);
 
-  useEffect(() => {
-    socket.addEventListener(
-      'message',
-      (payload: { type: string; data: string }) => {
-        if (posts?.length && posts?.length > 0) {
-          setPosts([JSON.parse(payload.data).posts, ...posts]);
-        } else {
-          setPosts([JSON.parse(payload.data).posts]);
-        }
+  const handleNewPost = (post: any) => {
+    //@ts-ignore
+    setPosts((prevState) => {
+      if (prevState) {
+        const data = [post, ...prevState];
+        const filteredPost = data.filter(
+          (v, i, a) => a.findIndex((v2) => v2?.postId === v?.postId) === i
+        );
+        return [...filteredPost];
+      } else {
+        let data = [];
+        // @ts-ignore
+        data.push(post);
+        return [...data];
       }
-    );
-  }, [posts]);
+    });
+  };
+
+  useEffect(() => {
+    // @ts-ignore
+    socket.addEventListener('message', ({ data }) => {
+      const response = JSON.parse(data);
+      if (response?.event === 'posts') {
+        handleNewPost(response?.posts);
+      }
+    });
+    return () => {
+      socket.removeEventListener('message', () => {});
+    };
+  }, []);
 
   //@ts-ignore
   const handleActionClick = () => {
@@ -390,6 +458,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
       title: '',
       collection: '',
       description: '',
+      thumbnail: '',
     });
     setMintDetails({
       title: '',
@@ -397,11 +466,12 @@ export default function FeedTab({ socket }: FeedTabProps) {
       description: '',
       location: countries[0]?.name,
       tagged_people: '',
-      genre: 'Virtual Worlds',
+      genre: 'Select Genre',
       tags: '',
     });
     setTags([]);
     setPeopleTags([]);
+    setThumbnailPreview(null);
   };
 
   const handleMintPost = async (post: any) => {
@@ -409,6 +479,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
       title: '',
       collection: '',
       description: '',
+      thumbnail: '',
     });
     const newTags = tags.map((tag: any) => tag?.name).toLocaleString();
     const newPeopleTags = peopleTags
@@ -438,10 +509,19 @@ export default function FeedTab({ socket }: FeedTabProps) {
         };
       });
     }
+    if (!thumbnailPreview) {
+      setMintDetailsErrors((prev) => {
+        return {
+          ...prev,
+          thumbnail: 'Thumbnail is required',
+        };
+      });
+    }
     if (
       !mintDetails.title ||
       !mintDetails.description ||
-      !mintDetails.collection
+      !mintDetails.collection ||
+      !thumbnailPreview
     )
       return;
     const mintedPost = {
@@ -465,6 +545,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
       networkTxId: '',
       owner: post.userName,
       gasFees: '',
+      thumbnail: thumbnailPreview,
     };
     setLoading(true);
     //@ts-ignore
@@ -495,7 +576,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
       CustomToastWithLink({
         icon: DoneIcon,
         title: 'Success',
-        description: 'Mint Was Created Successfully',
+        description: 'Your Post is Now Minted and Live for 12 hours',
         time: 'Now',
       })
     );
@@ -577,7 +658,9 @@ export default function FeedTab({ socket }: FeedTabProps) {
                         </div>
                       }
                     >
-                      <span onClick={handleClick}>&nbsp; Browse</span>
+                      <span onClick={() => handleClick(inputRef)}>
+                        &nbsp; Browse
+                      </span>
                     </Tippy>
                   </p>
                   <span className={styles.recomendedText}>
@@ -783,8 +866,9 @@ export default function FeedTab({ socket }: FeedTabProps) {
                               <button
                                 style={{ zIndex: 1 }}
                                 className={
-                                  active.postId === post.postId &&
-                                  active.type === 'mint'
+                                  (active.postId === post.postId &&
+                                    active.type === 'mint') ||
+                                  post.minted == 'true'
                                     ? `${styles.BotomLikes} ${styles.active}`
                                     : `${styles.BotomLikes}`
                                 }
@@ -1018,189 +1102,233 @@ export default function FeedTab({ socket }: FeedTabProps) {
                             </div>
                           </div>
                         )}
-                      {active.postId === post.postId && active.type === 'mint' && (
-                        <div
-                          className={
-                            active.postId === post.postId &&
-                            active.type === 'mint'
-                              ? `${styles.rightBox} ${styles.active}`
-                              : `${styles.rightBox}`
-                          }
-                        >
-                          <button
-                            className={styles.ExitButton}
-                            onClick={() =>
-                              handleClickOne({
-                                postId: '',
-                                type: '',
-                              })
+                      {active.postId === post.postId &&
+                        active.type === 'mint' && (
+                          <div
+                            className={
+                              active.postId === post.postId &&
+                              active.type === 'mint'
+                                ? `${styles.rightBox} ${styles.active}`
+                                : `${styles.rightBox}`
                             }
                           >
-                            <Image
-                              src="/img/exit_icon.svg"
-                              alt=""
-                              width="24px"
-                              height="24px"
-                            />
-                          </button>
-                          <div className={styles.mintPostContainer}>
-                            <h1>Mint Your SNFT</h1>
-                            <div className={styles.mintDetails}>
-                              <Input
-                                type="text"
-                                placeholder="SNFT Title"
-                                label="SNFT Title"
-                                value={mintDetails.title}
-                                onChange={(e) =>
-                                  !loading &&
-                                  setMintDetails((prev) => {
-                                    return {
-                                      ...prev,
-                                      title: e.target.value,
-                                    };
-                                  })
-                                }
+                            <button
+                              className={styles.ExitButton}
+                              onClick={handleMintPostCancel}
+                            >
+                              <Image
+                                src="/img/exit_icon.svg"
+                                alt=""
+                                width="24px"
+                                height="24px"
                               />
-                              {!mintDetails.title &&
-                                mintDetailsErrors.title && (
-                                  <p className={styles.errmsg}>
-                                    {mintDetailsErrors.title}
-                                  </p>
-                                )}
-                              <div style={{ padding: '1rem 0' }}>
-                                <DropDownComponent
-                                  disabled={loading}
-                                  title="SNFT Collection"
-                                  options={snftCollection}
-                                  dropDownValue={mintDetails.collection}
+                            </button>
+                            <div className={styles.mintPostContainer}>
+                              <h1>Mint Your SNFT</h1>
+                              <div className={styles.mintDetails}>
+                                <Input
+                                  type="text"
+                                  placeholder="SNFT Title"
+                                  label="SNFT Title"
+                                  value={mintDetails.title}
                                   onChange={(e) =>
+                                    !loading &&
                                     setMintDetails((prev) => {
                                       return {
                                         ...prev,
-                                        collection: e.target.value,
+                                        title: e.target.value,
                                       };
                                     })
                                   }
                                 />
-                                <div style={{ marginTop: '-1rem' }}>
-                                  {mintDetails.collection ==
-                                    'Take Ownership' && (
+                                {!mintDetails.title &&
+                                  mintDetailsErrors.title && (
                                     <p className={styles.errmsg}>
-                                      NAPA Mint Fee Required For this Option
+                                      {mintDetailsErrors.title}
                                     </p>
+                                  )}
+                                <div style={{ padding: '1rem 0' }}>
+                                  <DropDownComponent
+                                    disabled={loading}
+                                    title="SNFT Collection"
+                                    options={snftCollection}
+                                    dropDownValue={mintDetails.collection}
+                                    onChange={(e) =>
+                                      setMintDetails((prev) => {
+                                        return {
+                                          ...prev,
+                                          collection: e.target.value,
+                                        };
+                                      })
+                                    }
+                                  />
+                                  <div style={{ marginTop: '-1rem' }}>
+                                    {mintDetails.collection ==
+                                      'Take Ownership' && (
+                                      <p className={styles.errmsg}>
+                                        NAPA Mint Fee Required For this Option
+                                      </p>
+                                    )}
+                                  </div>
+                                </div>
+                                <div className={styles.descriptionContainer}>
+                                  <p>SNFT Description</p>
+                                  <textarea
+                                    disabled={loading}
+                                    className={styles.description}
+                                    value={mintDetails.description}
+                                    onChange={(e) =>
+                                      setMintDetails((prev) => {
+                                        return {
+                                          ...prev,
+                                          description: e.target.value,
+                                        };
+                                      })
+                                    }
+                                  ></textarea>
+                                </div>
+                                {!mintDetails.description &&
+                                  mintDetailsErrors.description && (
+                                    <p className={styles.errmsg}>
+                                      {mintDetailsErrors.description}
+                                    </p>
+                                  )}
+                                <div style={{ padding: '0.5rem 0' }}>
+                                  <DropDownComponent
+                                    disabled={loading}
+                                    title="Location"
+                                    options={countries}
+                                    dropDownValue={mintDetails.location || ''}
+                                    onChange={(e) =>
+                                      setMintDetails((prev) => {
+                                        return {
+                                          ...prev,
+                                          location: e.target.value,
+                                        };
+                                      })
+                                    }
+                                  />
+                                </div>
+                                <div className={styles.tagContainer}>
+                                  <span className={styles.headline}>
+                                    Tag People
+                                  </span>
+                                  <ReactTags
+                                    allowNew
+                                    // @ts-ignore
+                                    ref={people}
+                                    tags={peopleTags}
+                                    onDelete={onPeopleDelete}
+                                    onAddition={onPeopleAddition}
+                                    placeholderText=""
+                                  />
+                                </div>
+                                <div style={{ padding: '0.5rem 0' }}>
+                                  <DropDownComponent
+                                    disabled={loading}
+                                    title="Genre"
+                                    options={genre}
+                                    dropDownValue={mintDetails.genre}
+                                    onChange={(e) =>
+                                      setMintDetails((prev) => {
+                                        return {
+                                          ...prev,
+                                          genre: e.target.value,
+                                        };
+                                      })
+                                    }
+                                  />
+                                </div>
+                                <div className={styles.tagContainer}>
+                                  <span className={styles.headline}>Tags</span>
+                                  <ReactTags
+                                    allowNew
+                                    // @ts-ignore
+                                    ref={tag}
+                                    tags={tags}
+                                    onDelete={onDelete}
+                                    onAddition={onAddition}
+                                    placeholderText=""
+                                  />
+                                </div>
+                                <div className={styles.thumbnailContainer}>
+                                  <input
+                                    hidden
+                                    type="file"
+                                    aria-label="add files"
+                                    ref={thumbnailRef}
+                                    onChange={handleThumbnailChange}
+                                  />
+                                  <div>
+                                    <Tippy
+                                      className="toolTipContainer"
+                                      placement="bottom"
+                                      content={
+                                        <div>
+                                          <p>
+                                            Supported format: png, jpeg, jpg
+                                          </p>
+                                          <p>Maximum size: 5MB</p>
+                                        </div>
+                                      }
+                                    >
+                                      <p
+                                        onClick={() =>
+                                          handleClick(thumbnailRef)
+                                        }
+                                      >
+                                        {thumbnailPreview
+                                          ? 'Replace'
+                                          : 'Upload Thumbnail'}
+                                      </p>
+                                    </Tippy>
+                                    {!thumbnailPreview &&
+                                      mintDetailsErrors.thumbnail && (
+                                        <span className={styles.errmsg}>
+                                          {mintDetailsErrors.thumbnail}
+                                        </span>
+                                      )}
+                                  </div>
+                                  {thumbnailPreview && (
+                                    <Image
+                                      //@ts-ignore
+                                      src={thumbnailPreview}
+                                      width={'120px'}
+                                      height={'100%'}
+                                      alt="thumbnail"
+                                    />
                                   )}
                                 </div>
                               </div>
-                              <div className={styles.descriptionContainer}>
-                                <p>SNFT Description</p>
-                                <textarea
-                                  disabled={loading}
-                                  className={styles.description}
-                                  value={mintDetails.description}
-                                  onChange={(e) =>
-                                    setMintDetails((prev) => {
-                                      return {
-                                        ...prev,
-                                        description: e.target.value,
-                                      };
-                                    })
-                                  }
-                                ></textarea>
-                              </div>
-                              {!mintDetails.description &&
-                                mintDetailsErrors.description && (
-                                  <p className={styles.errmsg}>
-                                    {mintDetailsErrors.description}
-                                  </p>
-                                )}
-                              <div style={{ padding: '0.5rem 0' }}>
-                                <DropDownComponent
-                                  disabled={loading}
-                                  title="Location"
-                                  options={countries}
-                                  dropDownValue={mintDetails.location || ''}
-                                  onChange={(e) =>
-                                    setMintDetails((prev) => {
-                                      return {
-                                        ...prev,
-                                        location: e.target.value,
-                                      };
-                                    })
-                                  }
-                                />
-                              </div>
-                              <div className={styles.tagContainer}>
-                                <span className={styles.headline}>
-                                  Tag People
-                                </span>
-                                <ReactTags
-                                  allowNew
-                                  // @ts-ignore
-                                  ref={people}
-                                  tags={peopleTags}
-                                  onDelete={onPeopleDelete}
-                                  onAddition={onPeopleAddition}
-                                  placeholderText=""
-                                />
-                              </div>
-                              <div style={{ padding: '0.5rem 0' }}>
-                                <DropDownComponent
-                                  disabled={loading}
-                                  title="Genre"
-                                  options={genre}
-                                  dropDownValue={mintDetails.collection}
-                                  onChange={(e) =>
-                                    setMintDetails((prev) => {
-                                      return {
-                                        ...prev,
-                                        genre: e.target.value,
-                                      };
-                                    })
-                                  }
-                                />
-                              </div>
-                              <div className={styles.tagContainer}>
-                                <span className={styles.headline}>Tags</span>
-                                <ReactTags
-                                  allowNew
-                                  // @ts-ignore
-                                  ref={tag}
-                                  tags={tags}
-                                  onDelete={onDelete}
-                                  onAddition={onAddition}
-                                  placeholderText=""
-                                />
-                              </div>
-                            </div>
-                            {loading ? (
-                              <div className={styles.loaderContainer}>
-                                <FadeLoader color="#ffffff" />
-                              </div>
-                            ) : (
-                              <div className={styles.actionContainer}>
-                                <span
-                                  onClick={handleMintPostCancel}
-                                  className={styles.cancelBtn}
-                                >
-                                  Cancel
-                                </span>
-                                <div
-                                  onClick={() => handleMintPost(post)}
-                                  className={styles.mintBtn}
-                                >
-                                  <Image
-                                    src={DoneIcon}
-                                    width={24}
-                                    height={24}
-                                    alt="avatar"
-                                  />
-                                  <span>Mint</span>
+                              {loading ? (
+                                <div className={styles.loaderContainer}>
+                                  <FadeLoader color="#ffffff" />
                                 </div>
-                              </div>
-                            )}
+                              ) : (
+                                <div className={styles.actionContainer}>
+                                  <span
+                                    onClick={handleMintPostCancel}
+                                    className={styles.cancelBtn}
+                                  >
+                                    Cancel
+                                  </span>
+                                  <div
+                                    onClick={() => handleMintPost(post)}
+                                    className={styles.mintBtn}
+                                  >
+                                    <Image
+                                      src={DoneIcon}
+                                      width={24}
+                                      height={24}
+                                      alt="avatar"
+                                    />
+                                    <span>Mint</span>
+                                  </div>
+                                </div>
+                              )}
+                            </div>
                           </div>
-                        </div>
-                      )}
+                        )}
                     </div>
                   ))
               : !open && (
