@@ -3,7 +3,6 @@ import React from 'react';
 import moment from 'moment';
 import Image from 'next/image';
 
-import { HowardAvatar } from '../assets';
 import styles from './ChatListItemCard.module.scss';
 
 type ChatListItemCardProps = {
@@ -26,7 +25,7 @@ const ChatListItemCard: NextPage<any, ChatListItemCardProps> = ({
       <div className={styles.userContainer}>
         <div className={styles.avatar}>
           <Image
-            src={avatar ? `${avatar}` : HowardAvatar}
+            src={avatar ? `${avatar}` : "/assets/images/img_avatar.png"}
             width={32}
             height={32}
             alt="avatar"

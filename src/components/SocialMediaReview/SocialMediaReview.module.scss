@@ -5,6 +5,7 @@
   padding-bottom: 2rem;
   @include flex-column-start;
   color: $white;
+
   .review {
     @include font-md-neuropolitical-normal;
     text-align: left;
@@ -109,7 +110,19 @@
 
 .allPeragraphMain {
   margin-top: 15px;
+  text-align: left;
   &:first-child {
+  }
+  a {
+    color: #16e6ef;
+  }
+  img{
+    width: 100%;
+  }
+  ul {
+    li {
+      text-align: left;
+    }
   }
   p {
     font-family: 'Avenir';
@@ -117,9 +130,13 @@
     font-weight: 400;
     text-align: start;
     font-size: 15px;
+    text-align: left;
     line-height: 120%;
     color: #ffffff;
     max-width: 719px;
+    a {
+      color: #16e6ef;
+    }
   }
   .ulPerent {
     margin-top: 30px;
@@ -155,10 +172,17 @@
   }
 }
 .SmallContent {
+  text-align: left;
+  a {
+    color: #16e6ef;
+  }
   p {
     margin-bottom: 0;
     font-size: 14px;
     text-align: start;
+    a{
+     color: #16e6ef;
+    }
   }
 }
 @media screen and (max-width: 736px) {

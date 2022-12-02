@@ -8,7 +8,7 @@ import useProfile from '../../hooks/useProfile';
 import useWebThree from '../../hooks/useWebThree';
 import Container from '../../Layout/Container/Container';
 
-import { ErrorIcon, HowardAvatar, WalletNeedsToConnected } from '../assets';
+import { ErrorIcon, WalletNeedsToConnected } from '../assets';
 import Tab from '../Tab/Tab';
 import SocialMediaReview from '../SocialMediaReview/SocialMediaReview';
 import ChatWindow from '../ChatWindow/ChatWindow';
@@ -231,7 +231,7 @@ const TrendingSection: NextPage<TrendingSectionProps> = ({ socket }) => {
               <div className={styles.tabsContainer}>
                 <div className={styles.tabsInnerContainer}>
                   <ul className={styles.tab}>
-                    {trendingTabList.map(({ title, value }, index) => (
+                    {trendingTabList.map(({ title, value }, index) => ( 
                       <Tab
                         key={index}
                         setTab={setTab}
@@ -270,7 +270,7 @@ const TrendingSection: NextPage<TrendingSectionProps> = ({ socket }) => {
                             articleBody={articleBody}
                             date={createdAt}
                             icon={
-                              userProfilePic ? userProfilePic : HowardAvatar
+                              userProfilePic ? userProfilePic : "/assets/images/img_avatar.png"
                             }
                             openIndex={openIndex}
                             setOpenIndex={setOpenIndex}

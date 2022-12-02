@@ -9,6 +9,9 @@
     @media screen and (max-width: 1200px) {
       margin-bottom: 2.5rem;
     }
+    @media (min-width : 1440px) {
+      display: none;
+    }
   }
   height: 100vh;
   @media (max-width: 1313px) {
@@ -52,7 +55,7 @@
       @include font-6xl-neuropolitical-normal;
       text-align: left;
       color: $white;
-      padding-top: 140px;
+      padding-top: 8.4rem;
       span {
         color: transparent;
         -webkit-text-stroke: 2px white;
@@ -96,7 +99,7 @@
       }
       .rightSideContainer {
         padding-left: 3.4rem;
-        padding-top: 10rem;
+        padding-top: 7rem;
       }
     }
   }
@@ -157,7 +160,7 @@
       .rightSideContainer:before {
         position: absolute;
         width: 100%;
-        height: 44px;
+        height: 40px;
         top: 0;
         z-index: 2;
         color: #fff;
