@@ -34,7 +34,7 @@ export default function SocialArtSc() {
                 role="tabpanel"
                 aria-labelledby="nav-home-tab"
               >
-                <MintedTabInBox />
+                <MintedTabInBox socket={socialArtSocket} />
               </div>
               <div
                 className="tab-pane fade"

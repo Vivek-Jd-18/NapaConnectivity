@@ -19,7 +19,7 @@ export type GetMintPostsResponse = {
 };
 
 export type MintPost = {
-  id: string,
+  id: string;
   postId: string;
   mintId: string;
   videoType: string;
@@ -30,10 +30,10 @@ export type MintPost = {
   SNFTTitle: string;
   SNFTCollection: string;
   SNFTDescription: string;
-  location:string;
+  location: string;
   taggedPeople: string;
   genre: string;
-  tags:string;
+  tags: string;
   live: string;
   payoutApproved: string;
   SNFTAddress: string;
@@ -43,6 +43,7 @@ export type MintPost = {
   timeMinted: string;
   createdAt: string;
   updatedAt: string;
+  thumbnail: string;
 };
 
 export type NewMint = {
@@ -65,4 +66,5 @@ export type NewMint = {
   networkTxId: string;
   owner: string;
   gasFees: string;
+  thumbnail: string;
 };

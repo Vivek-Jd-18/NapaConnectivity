@@ -582,6 +582,24 @@
         justify-content: center;
         align-items: center;
       }
+      .thumbnailContainer {
+        position: relative;
+        display: flex;
+        align-items: center;
+        height: 120px;
+        margin-bottom: 1rem;
+        p {
+          padding-left: 1rem;
+          margin: 0;
+          cursor: pointer;
+          color: $light-blue;
+          margin-right: 1.5rem;
+          @include font-sm-neuropolitical-normal;
+          &:hover {
+            color: $hover-links;
+          }
+        }
+      }
     }
   }
 }
