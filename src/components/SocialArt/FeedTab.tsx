@@ -1044,7 +1044,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
                             />
                           </button>
                           <div className={styles.mintPostContainer}>
-                            <h1>Minting a Post</h1>
+                            <h1>Mint Your SNFT</h1>
                             <div className={styles.mintDetails}>
                               <Input
                                 type="text"
