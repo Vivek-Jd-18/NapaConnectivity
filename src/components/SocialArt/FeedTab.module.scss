@@ -172,6 +172,7 @@
   margin-bottom: -22px;
   overflow-y: auto;
   height: 900px;
+  height: calc(100vh - 300px);
 
   .NotFoundMessageContainer {
     display: flex;

@@ -44,7 +44,10 @@ export default function FeedTab({ socket }: FeedTabProps) {
   const textTimerRef = useRef<any>(null);
   const textTimeRef = useRef<any>(null);
   const handleClickOne = (activeObj: activePost) => {
-    setActive(activeObj);
+    setActive(activeObj)
+    window.innerWidth > 1024 ?
+    activeObj.e?.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"}) :
+    null
   };
   const [open, setOpen] = React.useState(false);
   const inputRef = useRef(null);
@@ -832,10 +835,11 @@ export default function FeedTab({ socket }: FeedTabProps) {
                                 ? `${styles.BotomLikes} ${styles.active}`
                                 : `${styles.BotomLikes}`
                             }
-                            onClick={() => {
+                            onClick={(e) => {
                               handleClickOne({
                                 postId: post.postId,
                                 type: 'comment',
+                                e : e.target
                               });
                               setOpen(false);
                             }}
@@ -872,13 +876,14 @@ export default function FeedTab({ socket }: FeedTabProps) {
                                     ? `${styles.BotomLikes} ${styles.active}`
                                     : `${styles.BotomLikes}`
                                 }
-                                onClick={() => {
+                                onClick={(e) => {
                                   if (post.minted == 'true') {
                                     return;
                                   }
                                   handleClickOne({
                                     postId: post.postId,
                                     type: 'mint',
+                                    e : e.target
                                   });
                                   setOpen(false);
                                 }}
