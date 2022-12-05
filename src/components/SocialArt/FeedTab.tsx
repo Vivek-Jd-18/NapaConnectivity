@@ -1279,7 +1279,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
                                       >
                                         {thumbnailPreview
                                           ? 'Replace'
-                                          : 'Upload Thumbnail'}
+                                          : 'Upload SNFT Cover'}
                                       </p>
                                     </Tippy>
                                     {!thumbnailPreview &&
