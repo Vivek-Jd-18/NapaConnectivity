@@ -39,5 +39,5 @@ export type Post = {
 export type activePost = {
   postId: string;
   type: string;
-  index: number;
+  index: number | null;
 };

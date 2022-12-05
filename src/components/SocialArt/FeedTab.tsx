@@ -45,11 +45,15 @@ export default function FeedTab({ socket }: FeedTabProps) {
   const textTimerRef = useRef<any>(null);
   const textTimeRef = useRef<any>(null);
   const handleClickOne = (activeObj: activePost) => {
-    const val = document.getElementById(`mybox${activeObj.index}`)
-    setActive(activeObj)
-    window.innerWidth > 1024 ?
-    val?.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"}) :
-    null
+    const val = document.getElementById(`mybox${activeObj.index}`);
+    setActive(activeObj);
+    window.innerWidth > 1024
+      ? val?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'end',
+          inline: 'nearest',
+        })
+      : null;
   };
   const [open, setOpen] = React.useState(false);
   const inputRef = useRef(null);
@@ -358,7 +362,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
     setActive({
       postId: '',
       type: '',
-      e: '',
+      index: null,
     });
   };
 
@@ -840,11 +844,11 @@ export default function FeedTab({ socket }: FeedTabProps) {
                                 ? `${styles.BotomLikes} ${styles.active}`
                                 : `${styles.BotomLikes}`
                             }
-                            onClick={(e) => {
+                            onClick={() => {
                               handleClickOne({
                                 postId: post.postId,
                                 type: 'comment',
-                                index
+                                index,
                               });
                               setOpen(false);
                             }}
@@ -881,14 +885,14 @@ export default function FeedTab({ socket }: FeedTabProps) {
                                     ? `${styles.BotomLikes} ${styles.active}`
                                     : `${styles.BotomLikes}`
                                 }
-                                onClick={(e) => {
+                                onClick={() => {
                                   if (post.minted == 'true') {
                                     return;
                                   }
                                   handleClickOne({
                                     postId: post.postId,
                                     type: 'mint',
-                                    index
+                                    index,
                                   });
                                   setOpen(false);
                                 }}
