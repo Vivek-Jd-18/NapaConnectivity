@@ -39,6 +39,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
   const [active, setActive] = React.useState<activePost>({
     postId: '',
     type: '',
+    index: null,
   });
 
   const textTimerRef = useRef<any>(null);
@@ -357,6 +358,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
     setActive({
       postId: '',
       type: '',
+      e: '',
     });
   };
 
@@ -457,6 +459,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
     handleClickOne({
       postId: '',
       type: '',
+      index: null,
     });
     setMintDetailsErrors({
       title: '',
@@ -841,7 +844,6 @@ export default function FeedTab({ socket }: FeedTabProps) {
                               handleClickOne({
                                 postId: post.postId,
                                 type: 'comment',
-                                e : e.target,
                                 index
                               });
                               setOpen(false);
@@ -886,7 +888,6 @@ export default function FeedTab({ socket }: FeedTabProps) {
                                   handleClickOne({
                                     postId: post.postId,
                                     type: 'mint',
-                                    e : e.target,
                                     index
                                   });
                                   setOpen(false);
@@ -946,6 +947,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
                                 handleClickOne({
                                   postId: '',
                                   type: '',
+                                  index: null,
                                 })
                               }
                             >
