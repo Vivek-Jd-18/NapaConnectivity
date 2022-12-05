@@ -44,9 +44,10 @@ export default function FeedTab({ socket }: FeedTabProps) {
   const textTimerRef = useRef<any>(null);
   const textTimeRef = useRef<any>(null);
   const handleClickOne = (activeObj: activePost) => {
+    const val = document.getElementById(`mybox${activeObj.index}`)
     setActive(activeObj)
     window.innerWidth > 1024 ?
-    activeObj.e?.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"}) :
+    val?.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"}) :
     null
   };
   const [open, setOpen] = React.useState(false);
@@ -756,6 +757,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
                   .map((post: Post, index: number) => (
                     <div
                       key={`post-${index}`}
+                      id={`mybox${index}`}
                       className={
                         active
                           ? `${styles.MainTabBox} ${styles.active}`
@@ -839,7 +841,8 @@ export default function FeedTab({ socket }: FeedTabProps) {
                               handleClickOne({
                                 postId: post.postId,
                                 type: 'comment',
-                                e : e.target
+                                e : e.target,
+                                index
                               });
                               setOpen(false);
                             }}
@@ -883,7 +886,8 @@ export default function FeedTab({ socket }: FeedTabProps) {
                                   handleClickOne({
                                     postId: post.postId,
                                     type: 'mint',
-                                    e : e.target
+                                    e : e.target,
+                                    index
                                   });
                                   setOpen(false);
                                 }}
