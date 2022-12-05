@@ -39,4 +39,5 @@ export type Post = {
 export type activePost = {
   postId: string;
   type: string;
+  e: any;
 };
