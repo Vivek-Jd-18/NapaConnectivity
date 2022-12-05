@@ -19,7 +19,7 @@ export default function MintedTabList() {
                 Live End Date
             </div>
             <div className={`${styles.HeadLabel} ${styles.LabelFive}`}>
-                Current Rewards Tier
+                Current Tier
             </div>
             <div className={`${styles.HeadLabel} ${styles.LabelSix}`}>
                 Earned <Image src="/img/tbl_sort.png" alt="" width={16} height={16} />

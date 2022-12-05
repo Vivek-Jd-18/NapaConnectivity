@@ -114,7 +114,7 @@ export default function MintedTabInBox({ socket }: MintedTabInBoxProps) {
                       <h3>{getEndDate(post.timeMinted)}</h3>
                     </div>
                     <div className={styles.DarkiBxhpdata}>
-                      <p>Current Rewards Tier</p>
+                      <p>Current Tier</p>
                       <h3>0.24 NAPA</h3>
                     </div>
                   </div>

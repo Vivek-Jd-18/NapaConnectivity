@@ -20,8 +20,8 @@ const dates = [
     date: '17 Aug 2022',
   },
   {
-    title: 'Current Rewards Tier',
-    date: '0.24 NAPA',
+    title: 'Current Tier',
+    date: 'Tier 1',
   },
 ];
 
