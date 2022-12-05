@@ -35,6 +35,7 @@
     "react": "^18.2.0",
     "react-bootstrap": "^2.5.0",
     "react-bootstrap-daterangepicker": "^8.0.0",
+    "react-comments-section": "^2.0.10",
     "react-device-detect": "^2.2.2",
     "react-dom": "^18.2.0",
     "react-drag-drop-files": "^2.3.7",
