@@ -299,6 +299,9 @@
     }
     .videoInfoContainer {
       padding: 1rem 0;
+      @media (max-width : 768px) {
+         padding-left: 30px;
+      }
       h3 {
         @include font-lg-neuropolitical-normal;
       }
