@@ -55,7 +55,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
         })
       : null;
   };
-  
+
   const [open, setOpen] = React.useState(false);
   const inputRef = useRef(null);
   const thumbnailRef = useRef(null);
@@ -290,32 +290,35 @@ export default function FeedTab({ socket }: FeedTabProps) {
       setModalPosition(false);
     }
   };
-  
-  useEffect( () => {
+
+  useEffect(() => {
     window.addEventListener('load', videoScroll);
-    window.addEventListener('wheel', videoScroll)
-  },[]) 
+    window.addEventListener('wheel', videoScroll);
+  }, []);
 
   function videoScroll() {
-
-    if ( document.querySelectorAll('video[autoplay]').length > 0) {
+    if (document.querySelectorAll('video[autoplay]').length > 0) {
       var windowHeight = window.innerHeight,
-          videoEl = document.querySelectorAll('video[autoplay]');
-  
+        videoEl = document.querySelectorAll('video[autoplay]');
+
       for (var i = 0; i < videoEl.length; i++) {
-  
         var thisVideoEl = videoEl[i],
-            videoHeight = thisVideoEl.clientHeight,
-            videoClientRect = thisVideoEl.getBoundingClientRect().top;
-        if (videoClientRect <= ( (windowHeight) - (videoHeight*.5) ) && videoClientRect >= ( 0 - ( videoHeight*.5 ) ) ) {
+          videoHeight = thisVideoEl?.clientHeight,
+          videoClientRect = thisVideoEl?.getBoundingClientRect().top;
+        if (
+          //@ts-ignore
+          videoClientRect <= windowHeight - videoHeight * 0.5 &&
+          //@ts-ignore
+          videoClientRect >= 0 - videoHeight * 0.5
+        ) {
+          //@ts-ignore
           thisVideoEl.play();
         } else {
+          //@ts-ignore
           thisVideoEl.pause();
         }
-  
       }
     }
-  
   }
 
   useEffect(() => {
@@ -620,7 +623,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
       })
     );
   };
-  
+
   return (
     <div className={styles.MainListBox}>
       <div className={styles.parent}>
@@ -839,6 +842,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
                             height="400"
                             preload="auto"
                             autoPlay
+                            muted
                             loop
                             controls
                             src={post.videoURL as string}
