@@ -28,6 +28,12 @@ import { createNewMint } from '@/services/MintApi';
 import { textToEmoji } from '@/utils/socialArt';
 import { socialArtMessagesTriggers } from '@/constants/socialArt.constants';
 import { WEB_STAGING_SOCIALART_URL } from '@/constants/url';
+import { CommentResponse } from '@/types/comment';
+import {
+  createNewComment,
+  getAllComments,
+  likeComment,
+} from '@/services/CommentApi';
 
 type FeedTabProps = {
   socket: WebSocket;
@@ -95,10 +101,18 @@ export default function FeedTab({ socket }: FeedTabProps) {
   });
 
   const { profileDetails, profileId } = useProfile();
+
   const people = useRef();
   const tag = useRef();
   const [peopleTags, setPeopleTags] = React.useState([]);
   const [tags, setTags] = React.useState([]);
+  const [commentText, setCommentText] = React.useState('');
+  const [postComments, setPostComments] = React.useState<
+    CommentResponse[] | null
+  >(null);
+  const [getCommentsLoading, setGetCommentsLoading] = React.useState(false);
+  const [newCommentLoading, setNewCommentLoading] = React.useState(false);
+  const [likeCommentLoading, setLikeCommentLoading] = React.useState(false);
 
   const onPeopleDelete = useCallback(
     (tagIndex: number) => {
@@ -624,6 +638,193 @@ export default function FeedTab({ socket }: FeedTabProps) {
     );
   };
 
+  //@ts-ignore
+  const handleCreateComment = async (postId: string) => {
+    if (!account) {
+      toast.error(
+        CustomToastWithLink({
+          icon: WalletNeedsToConnected,
+          title: ToastTitle.WALLET_NEEDS_TO_CONNECTED,
+          description: ToastDescription.WALLET_NEEDS_TO_CONNECTED,
+          time: 'Now',
+        })
+      );
+      return push(`/wallet?redirectTo=${pathname.split('/')[1]}`);
+    }
+    if (!profileDetails?.profileName) {
+      toast.error(
+        CustomToastWithLink({
+          icon: ErrorIcon,
+          title: ToastTitle.PROFILE_NEEDS_TO_BE_CREATED,
+          description: ToastDescription.PROFILE_NEEDS_TO_BE_CREATED,
+          time: 'Now',
+        })
+      );
+      return push(`/settings`);
+    }
+    const comment = {
+      commentText,
+      postId,
+      userId: profileId,
+      userName: profileDetails?.profileName,
+      userImage: profileDetails.avatar,
+      replies: '',
+      likedByUsers: '',
+      isReply: 'false',
+    };
+    setNewCommentLoading(true);
+    //@ts-ignore
+    const { error, message } = await createNewComment(comment);
+    if (error) {
+      setNewCommentLoading(false);
+      toast.error(
+        CustomToastWithLink({
+          icon: ErrorIcon,
+          title: 'Error',
+          description: message,
+          time: 'Now',
+        })
+      );
+      return;
+    }
+    setCommentText('');
+    setNewCommentLoading(false);
+  };
+
+  const handleNewComment = (comment: any) => {
+    setPostComments((prevState) => {
+      if (prevState) {
+        const data = [...prevState, comment];
+        const filteredPost = data.filter(
+          (v, i, a) =>
+            a.findIndex(
+              //@ts-ignore
+              (v2) => v2?.commentId === v?.commentId
+            ) === i
+        );
+        return [...filteredPost];
+      } else {
+        let data = [];
+        // @ts-ignore
+        data.push(post);
+        return [...data];
+      }
+    });
+  };
+
+  useEffect(() => {
+    // @ts-ignore
+    socket.addEventListener('message', ({ data }) => {
+      const response = JSON.parse(data);
+      if (response?.event === 'comments') {
+        handleNewComment(response?.comments);
+      }
+    });
+    return () => {
+      socket.removeEventListener('message', () => {});
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    // @ts-ignore
+    socket.addEventListener('message', ({ data }) => {
+      const response = JSON.parse(data);
+      if (response?.event === 'likeComment') {
+        setPostComments(response?.comments);
+      }
+    });
+    return () => {
+      socket.removeEventListener('message', () => {});
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const handleGetPostComments = async (postId: string) => {
+    setGetCommentsLoading(true);
+    const { data }: any = await getAllComments(postId);
+    setPostComments(data?.data || []);
+    setGetCommentsLoading(false);
+  };
+
+  //@ts-ignore
+  const handleLikeComment = async (
+    commentId: string,
+    postId: string,
+    likedByUsers: string
+  ) => {
+    let updatedLikesJson;
+    if (likedByUsers) {
+      const likes = likedByUsers;
+      const updatedLikes = likes.split(',');
+      const temp = [...updatedLikes];
+      if (updatedLikes.includes(profileId)) {
+        const index = temp.findIndex((id) => id == profileId);
+        if (index > -1) {
+          temp.splice(index, 1);
+        }
+      } else {
+        temp.push(profileId);
+      }
+      updatedLikesJson = temp.toLocaleString();
+    } else {
+      updatedLikesJson = profileId;
+    }
+
+    if (!account) {
+      toast.error(
+        CustomToastWithLink({
+          icon: WalletNeedsToConnected,
+          title: ToastTitle.WALLET_NEEDS_TO_CONNECTED,
+          description: ToastDescription.WALLET_NEEDS_TO_CONNECTED,
+          time: 'Now',
+        })
+      );
+      return push(`/wallet?redirectTo=${pathname.split('/')[1]}`);
+    }
+    if (!profileDetails?.profileName) {
+      toast.error(
+        CustomToastWithLink({
+          icon: ErrorIcon,
+          title: ToastTitle.PROFILE_NEEDS_TO_BE_CREATED,
+          description: ToastDescription.PROFILE_NEEDS_TO_BE_CREATED,
+          time: 'Now',
+        })
+      );
+      return push(`/settings`);
+    }
+    setLikeCommentLoading(true);
+    //@ts-ignore
+    const { error, message } = await likeComment(
+      commentId,
+      postId,
+      updatedLikesJson
+    );
+    if (error) {
+      setNewCommentLoading(false);
+      toast.error(
+        CustomToastWithLink({
+          icon: ErrorIcon,
+          title: 'Error',
+          description: message,
+          time: 'Now',
+        })
+      );
+      return;
+    }
+    setLikeCommentLoading(false);
+  };
+
+  //@ts-ignore
+  const getLikeByCommentId = (likedByUsers: string) => {
+    let likes = 0;
+    if (likedByUsers) {
+      const likesCount = likedByUsers.split(',');
+      likes = likesCount.length;
+    }
+    return likes;
+  };
+
   return (
     <div className={styles.MainListBox}>
       <div className={styles.parent}>
@@ -884,6 +1085,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
                                 index,
                               });
                               setOpen(false);
+                              handleGetPostComments(post.postId);
                             }}
                           >
                             <Image
@@ -980,13 +1182,14 @@ export default function FeedTab({ socket }: FeedTabProps) {
                           >
                             <button
                               className={styles.ExitButton}
-                              onClick={() =>
+                              onClick={() => {
                                 handleClickOne({
                                   postId: '',
                                   type: '',
                                   index: null,
-                                })
-                              }
+                                });
+                                setCommentText('');
+                              }}
                             >
                               <Image
                                 src="/img/exit_icon.svg"
@@ -996,157 +1199,125 @@ export default function FeedTab({ socket }: FeedTabProps) {
                               />
                             </button>
                             <div className={styles.commentsContainer}>
-                              <h1>16 comments</h1>
-                              <div className={styles.ForShadow}>
-                                <div className={styles.UserComment}>
-                                  <div className={styles.FisrtComBox}>
-                                    <div className={styles.HadComment}>
-                                      <a
-                                        href="#"
-                                        className={styles.leftIcontxt}
-                                      >
-                                        <Image
-                                          src="/img/comment01.png"
-                                          alt=""
-                                          width="28px"
-                                          height="28px"
-                                        />
-                                        <h4>Marta Thornton</h4>
-                                      </a>
-                                      <p>1 hour</p>
-                                    </div>
-                                    <div className={styles.btmcomment}>
-                                      <p>
-                                        However venture pursuit he am mr
-                                        cordial. Forming musical am hearing
-                                        studied be luckily.
-                                      </p>
-                                      <div className={styles.LikeReplyTxt}>
-                                        <a href="#">Like</a>
-                                        <a href="#">Reply</a>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div className={styles.FisrtComBox}>
-                                    <div className={styles.HadComment}>
-                                      <a
-                                        href="#"
-                                        className={styles.leftIcontxt}
-                                      >
-                                        <Image
-                                          src="/img/comment02.svg"
-                                          alt=""
-                                          width="28px"
-                                          height="28px"
-                                        />
-                                        <h4>Dorothy Mccoy</h4>
-                                      </a>
-                                      <p>4 hour</p>
-                                    </div>
-                                    <div className={styles.btmcomment}>
-                                      <p>
-                                        Change wholly say why eldest period.
-                                      </p>
-                                      <div className={styles.LikeReplyTxt}>
-                                        <a href="#">Like</a>
-                                        <a href="#">Reply</a>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div className={styles.FisrtComBox}>
-                                    <div className={styles.HadComment}>
-                                      <a
-                                        href="#"
-                                        className={styles.leftIcontxt}
-                                      >
-                                        <Image
-                                          src="/img/comment03.svg"
-                                          alt=""
-                                          width="28px"
-                                          height="28px"
-                                        />
-                                        <h4>Howard Copeland</h4>
-                                      </a>
-                                      <p>1 hour</p>
-                                    </div>
-                                    <div className={styles.btmcomment}>
-                                      <p>
-                                        Unfeeling agreeable suffering it on
-                                        smallness newspaper be. So come must
-                                        time no as. Do on unpleasing.{' '}
-                                      </p>
-                                      <div className={styles.LikeReplyTxt}>
-                                        <a href="#">Like</a>
-                                        <a href="#">Reply</a>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div className={styles.FisrtComBox}>
-                                    <div className={styles.HadComment}>
-                                      <a
-                                        href="#"
-                                        className={styles.leftIcontxt}
-                                      >
-                                        <Image
-                                          src="/img/comment03.svg"
-                                          alt=""
-                                          width="28px"
-                                          height="28px"
-                                        />
-                                        <h4>Howard Copeland</h4>
-                                      </a>
-                                      <p>1 hour</p>
-                                    </div>
-                                    <div className={styles.btmcomment}>
-                                      <p>
-                                        Unfeeling agreeable suffering it on
-                                        smallness newspaper be. So come must
-                                        time no as. Do on unpleasing.{' '}
-                                      </p>
-                                      <div className={styles.LikeReplyTxt}>
-                                        <a href="#">Like</a>
-                                        <a href="#">Reply</a>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div className={styles.FisrtComBox}>
-                                    <div className={styles.HadComment}>
-                                      <a
-                                        href="#"
-                                        className={styles.leftIcontxt}
-                                      >
-                                        <Image
-                                          src="/img/comment03.svg"
-                                          alt=""
-                                          width="28px"
-                                          height="28px"
-                                        />
-                                        <h4>Howard Copeland</h4>
-                                      </a>
-                                      <p>1 hour</p>
-                                    </div>
-                                    <div className={styles.btmcomment}>
-                                      <p>
-                                        Unfeeling agreeable suffering it on
-                                        smallness newspaper be. So come must
-                                        time no as. Do on unpleasing.{' '}
-                                      </p>
-                                      <div className={styles.LikeReplyTxt}>
-                                        <a href="#">Like</a>
-                                        <a href="#">Reply</a>
-                                      </div>
-                                    </div>
-                                  </div>
+                              {getCommentsLoading ? (
+                                <div className={styles.commentsloaderContainer}>
+                                  <FadeLoader color="#ffffff" />
                                 </div>
-                              </div>
-
-                              <div className={styles.BtmCommentBtn}>
-                                <input
-                                  type="text"
-                                  placeholder="Write a comment.."
-                                />
-                                <button>Send</button>
-                              </div>
+                              ) : (
+                                <>
+                                  <h1>
+                                    {postComments?.length
+                                      ? `${postComments?.length} `
+                                      : null}
+                                    comments
+                                  </h1>
+                                  <div className={styles.ForShadow}>
+                                    <div className={styles.UserComment}>
+                                      {postComments?.length &&
+                                      postComments?.length > 0 ? (
+                                        postComments?.map((comment, index) => {
+                                          return (
+                                            <div
+                                              key={`comment ${index}`}
+                                              className={styles.FisrtComBox}
+                                            >
+                                              <div
+                                                className={styles.HadComment}
+                                              >
+                                                <a
+                                                  href="#"
+                                                  className={styles.leftIcontxt}
+                                                >
+                                                  <Image
+                                                    src={`${
+                                                      comment?.userImage
+                                                        ? comment.userImage
+                                                        : '/img/comment02.svg'
+                                                    }`}
+                                                    alt=""
+                                                    width="28px"
+                                                    height="28px"
+                                                  />
+                                                  <h4>{comment?.userName}</h4>
+                                                </a>
+                                                <p>
+                                                  {moment(comment?.createdAt)
+                                                    .startOf('hour')
+                                                    .fromNow()}
+                                                </p>
+                                              </div>
+                                              <div
+                                                className={styles.btmcomment}
+                                              >
+                                                <p>{comment?.commentText}</p>
+                                                <div
+                                                  className={
+                                                    styles.LikeReplyTxt
+                                                  }
+                                                >
+                                                  <a
+                                                    onClick={() =>
+                                                      !likeCommentLoading &&
+                                                      handleLikeComment(
+                                                        comment?.commentId,
+                                                        comment?.postId,
+                                                        comment?.likedByUsers
+                                                      )
+                                                    }
+                                                  >
+                                                    {`${
+                                                      getLikeByCommentId(
+                                                        comment?.likedByUsers
+                                                      ) > 0
+                                                        ? getLikeByCommentId(
+                                                            comment?.likedByUsers
+                                                          )
+                                                        : ''
+                                                    }` +
+                                                      `${
+                                                        getLikeByCommentId(
+                                                          comment?.likedByUsers
+                                                        ) > 1
+                                                          ? ' Likes'
+                                                          : ' Like'
+                                                      }`}
+                                                  </a>
+                                                  <a>Reply</a>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          );
+                                        })
+                                      ) : (
+                                        <div className={styles.commentNotFound}>
+                                          <p>No comments yet</p>
+                                        </div>
+                                      )}
+                                    </div>
+                                  </div>
+                                  <div className={styles.BtmCommentBtn}>
+                                    <input
+                                      type="text"
+                                      placeholder="Write a comment.."
+                                      value={commentText}
+                                      onChange={(e) =>
+                                        setCommentText(e.target.value)
+                                      }
+                                      disabled={newCommentLoading}
+                                    />
+                                    <button
+                                      disabled={
+                                        !commentText || newCommentLoading
+                                      }
+                                      onClick={() =>
+                                        handleCreateComment(post.postId)
+                                      }
+                                    >
+                                      Send
+                                    </button>
+                                  </div>
+                                </>
+                              )}
                             </div>
                           </div>
                         )}

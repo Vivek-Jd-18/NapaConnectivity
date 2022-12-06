@@ -82,6 +82,22 @@
     }
   }
 }
+.commentsloaderContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  @media screen and (max-width: 768px) {
+    .commentsloaderContainer {
+      height: 330px;
+    }
+  }
+  @media screen and (max-width: 736px) {
+    .commentsloaderContainer {
+      height: 352px;
+    }
+  }
+}
 .banner {
   height: 650px;
   position: relative;
@@ -299,8 +315,8 @@
     }
     .videoInfoContainer {
       padding: 1rem 0;
-      @media (max-width : 768px) {
-         padding-left: 30px;
+      @media (max-width: 768px) {
+        padding-left: 30px;
       }
       h3 {
         @include font-lg-neuropolitical-normal;
@@ -435,6 +451,7 @@
           }
           .LikeReplyTxt {
             a {
+              cursor: pointer;
               text-decoration: none;
               font-size: 12px;
               line-height: 140%;
@@ -450,6 +467,12 @@
             }
           }
         }
+      }
+      .commentNotFound {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
       }
     }
     .BtmCommentBtn {
