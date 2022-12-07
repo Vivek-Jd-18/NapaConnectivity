@@ -10,6 +10,12 @@ export type GetPostsResponse = {
   responseTime: string;
 };
 
+export type GetLikePostResponse = {
+  data: string;
+  code: number;
+  responseTime: string;
+};
+
 export type NewPost = {
   videoTitle: string;
   videoFile: string | ArrayBuffer | null;
@@ -34,6 +40,8 @@ export type Post = {
   updatedAt: string;
   userName: string;
   userImage: string;
+  likedByUsers: string | null;
+  commentByUsers: string | null;
 };
 
 export type activePost = {
