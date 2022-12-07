@@ -438,11 +438,14 @@
             @include font-md-avenir-regular;
             margin-bottom: 0;
           }
+          img {
+            border-radius: 50%;
+          }
         }
         .btmcomment {
           padding-left: 40px;
           p {
-            font-size: 12px !important;
+            font-size: 15px !important;
             line-height: 140% !important;
             color: #ffffff;
             margin-top: 6px;
@@ -486,7 +489,7 @@
         box-shadow: none;
         outline: none;
         @include font-md-avenir-regular;
-        font-size: 14px;
+        font-size: 16px;
         line-height: 140%;
         color: #fff;
         width: 85%;

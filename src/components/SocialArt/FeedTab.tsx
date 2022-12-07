@@ -1,6 +1,6 @@
 import useProfile from '@/hooks/useProfile';
 import useWebThree from '@/hooks/useWebThree';
-import { createNewPost, getAllPosts, updatePost } from '@/services/PostApi';
+import { createNewPost, getAllPosts, likePost } from '@/services/PostApi';
 import { activePost, Post } from '@/types/post';
 import { ToastDescription, ToastTitle } from '@/typing/toast';
 import Tippy from '@tippyjs/react';
@@ -311,28 +311,30 @@ export default function FeedTab({ socket }: FeedTabProps) {
   }, []);
 
   function videoScroll() {
-    if (document.querySelectorAll('video[autoplay]').length > 0) {
-      var windowHeight = window.innerHeight,
-        videoEl = document.querySelectorAll('video[autoplay]');
+    setTimeout(() => {
+      if (document.querySelectorAll('video[autoplay]').length > 0) {
+        var windowHeight = window.innerHeight,
+          videoEl = document.querySelectorAll('video[autoplay]');
 
-      for (var i = 0; i < videoEl.length; i++) {
-        var thisVideoEl = videoEl[i],
-          videoHeight = thisVideoEl?.clientHeight,
-          videoClientRect = thisVideoEl?.getBoundingClientRect().top;
-        if (
-          //@ts-ignore
-          videoClientRect <= windowHeight - videoHeight * 0.5 &&
-          //@ts-ignore
-          videoClientRect >= 0 - videoHeight * 0.5
-        ) {
-          //@ts-ignore
-          thisVideoEl.play();
-        } else {
-          //@ts-ignore
-          thisVideoEl.pause();
+        for (var i = 0; i < videoEl.length; i++) {
+          var thisVideoEl = videoEl[i],
+            videoHeight = thisVideoEl?.clientHeight,
+            videoClientRect = thisVideoEl?.getBoundingClientRect().top;
+          if (
+            //@ts-ignore
+            videoClientRect <= windowHeight - videoHeight * 0.5 &&
+            //@ts-ignore
+            videoClientRect >= 0 - videoHeight * 0.5
+          ) {
+            //@ts-ignore
+            thisVideoEl.play();
+          } else {
+            //@ts-ignore
+            thisVideoEl.pause();
+          }
         }
       }
-    }
+    }, 2000);
   }
 
   useEffect(() => {
@@ -606,7 +608,6 @@ export default function FeedTab({ socket }: FeedTabProps) {
     setLoading(true);
     //@ts-ignore
     const { error, message } = await createNewMint(mintedPost);
-    await updatePost(post.postId, 'true');
     const temp = lodash.uniqBy(posts, 'postId').map((post: Post) => post);
     const isFound = temp.findIndex((p) => p.postId == post.postId);
     if (isFound != -1) {
@@ -824,6 +825,117 @@ export default function FeedTab({ socket }: FeedTabProps) {
     }
     return likes;
   };
+
+  const showPostLikeCount = (likedByUsers: string | null) => {
+    const likes = likedByUsers ? likedByUsers.split(',') : [];
+    return likes.length > 0 ? likes.length : '';
+  };
+
+  const showPostCommentCount = (commentByUsers: string | null) => {
+    const comments = commentByUsers ? commentByUsers.split(',') : [];
+    return comments.length > 0 ? comments.length : '';
+  };
+
+  const handleLikePost = async (
+    userId: string,
+    postId: string,
+    likedByUsers: string | null
+  ) => {
+    let existResults = likedByUsers ? likedByUsers.split(',') : [];
+    if (existResults.includes(profileId)) {
+      existResults = existResults.filter((id) => profileId != id);
+    } else {
+      existResults.push(profileId);
+    }
+    const temp = posts ? [...posts] : [];
+    const postIndex = temp.findIndex((p) => p.postId == postId);
+    if (postIndex > -1) {
+      //@ts-ignore
+      temp[postIndex].likedByUsers = String(existResults);
+      setPosts(temp);
+    }
+    await likePost(userId, postId);
+  };
+
+  const handleNewPostLikeCount = (likes: string, postId: string) => {
+    const temp = posts ? [...posts] : [];
+    const postIndex = temp.findIndex((p) => p.postId == postId);
+    if (postIndex > -1) {
+      //@ts-ignore
+      temp[postIndex].likedByUsers = likes;
+      setPosts(temp);
+    }
+  };
+
+  useEffect(() => {
+    // @ts-ignore
+    socket.addEventListener('message', ({ data }) => {
+      const response = JSON.parse(data);
+      if (response?.event === 'post-likes-count') {
+        handleNewPostLikeCount(response?.likes, response?.postId);
+      }
+    });
+    return () => {
+      socket.removeEventListener('message', () => {});
+    };
+  }, []);
+
+  const handleNewPostCommentCount = (
+    commentByUsers: string,
+    postId: string
+  ) => {
+    setPosts((prev) => {
+      const temp = prev ? [...prev] : [];
+      if (prev) {
+        const postIndex = temp.findIndex((p) => p.postId == postId);
+        if (postIndex > -1) {
+          //@ts-ignore
+          temp[postIndex].commentByUsers = commentByUsers;
+        }
+      }
+      return temp;
+    });
+  };
+
+  useEffect(() => {
+    // @ts-ignore
+    socket.addEventListener('message', ({ data }) => {
+      const response = JSON.parse(data);
+      if (response?.event === 'post-comments-count') {
+        handleNewPostCommentCount(response?.comments, response?.postId);
+      }
+    });
+    return () => {
+      socket.removeEventListener('message', () => {});
+    };
+  }, []);
+
+  const handleGetUpdatedPost = (postId: string) => {
+    setPosts((prev) => {
+      const temp = prev ? [...prev] : [];
+      if (prev) {
+        const postIndex = temp.findIndex((p) => p.postId == postId);
+        if (postIndex > -1) {
+          //@ts-ignore
+          temp[postIndex].minted = 'true';
+        }
+      }
+      return temp;
+    });
+  };
+
+  useEffect(() => {
+    // @ts-ignore
+    socket.addEventListener('message', ({ data }) => {
+      const response = JSON.parse(data);
+      if (response?.event === 'updated-post') {
+        handleGetUpdatedPost(response?.postId);
+      }
+    });
+    return () => {
+      socket.removeEventListener('message', () => {});
+    };
+  }, []);
 
   return (
     <div className={styles.MainListBox}>
@@ -1059,15 +1171,27 @@ export default function FeedTab({ socket }: FeedTabProps) {
                     /> */}
                         </div>
                         <div className={styles.BotomTxt}>
-                          <a href="#" className={styles.BotomLikes}>
+                          <a
+                            href="javascript:void(0);"
+                            className={styles.BotomLikes}
+                          >
                             <Image
                               src="/img/heart_icon.svg"
                               alt=""
                               width="24px"
                               height="24px"
                             />
-                            <span>
-                              496 <b>likes</b>
+                            <span
+                              onClick={() =>
+                                handleLikePost(
+                                  post.profileId,
+                                  post.postId,
+                                  post.likedByUsers
+                                )
+                              }
+                            >
+                              {showPostLikeCount(post.likedByUsers)}
+                              <b> likes</b>
                             </span>
                           </a>
                           <button
@@ -1095,7 +1219,8 @@ export default function FeedTab({ socket }: FeedTabProps) {
                               height="24px"
                             />
                             <span>
-                              16 <b>comments</b>
+                              {showPostCommentCount(post.commentByUsers)}
+                              <b> comments</b>
                             </span>
                           </button>
                           <a href="#" className={styles.BotomLikes}>
@@ -1109,42 +1234,41 @@ export default function FeedTab({ socket }: FeedTabProps) {
                               12 <b>awards</b>
                             </span>
                           </a>
-                          {account == post.accountId &&
-                            profileId == post.profileId && (
-                              <button
-                                style={{ zIndex: 1 }}
-                                className={
-                                  (active.postId === post.postId &&
-                                    active.type === 'mint') ||
-                                  post.minted == 'true'
-                                    ? `${styles.BotomLikes} ${styles.active}`
-                                    : `${styles.BotomLikes}`
+                          {((account == post.accountId &&
+                            profileId == post.profileId) ||
+                            post.minted == 'true') && (
+                            <button
+                              style={{ zIndex: 1 }}
+                              className={
+                                (active.postId === post.postId &&
+                                  active.type === 'mint') ||
+                                post.minted == 'true'
+                                  ? `${styles.BotomLikes} ${styles.active}`
+                                  : `${styles.BotomLikes}`
+                              }
+                              onClick={() => {
+                                if (post.minted == 'true') {
+                                  return;
                                 }
-                                onClick={() => {
-                                  if (post.minted == 'true') {
-                                    return;
-                                  }
-                                  handleClickOne({
-                                    postId: post.postId,
-                                    type: 'mint',
-                                    index,
-                                  });
-                                  setOpen(false);
-                                }}
-                              >
-                                <Image
-                                  src="/img/mint_icon.svg"
-                                  alt=""
-                                  width="24px"
-                                  height="24px"
-                                />
-                                <span>
-                                  {post.minted == 'true'
-                                    ? 'Minted Post'
-                                    : 'Mint'}
-                                </span>
-                              </button>
-                            )}
+                                handleClickOne({
+                                  postId: post.postId,
+                                  type: 'mint',
+                                  index,
+                                });
+                                setOpen(false);
+                              }}
+                            >
+                              <Image
+                                src="/img/mint_icon.svg"
+                                alt=""
+                                width="24px"
+                                height="24px"
+                              />
+                              <span>
+                                {post.minted == 'true' ? 'Minted Post' : 'Mint'}
+                              </span>
+                            </button>
+                          )}
                           <RWebShare
                             data={{
                               text: 'NAPA Society | Social Art',
@@ -1206,9 +1330,8 @@ export default function FeedTab({ socket }: FeedTabProps) {
                               ) : (
                                 <>
                                   <h1>
-                                    {postComments?.length
-                                      ? `${postComments?.length} `
-                                      : null}
+                                    {showPostCommentCount(post.commentByUsers) +
+                                      ' '}
                                     comments
                                   </h1>
                                   <div className={styles.ForShadow}>
@@ -1304,6 +1427,15 @@ export default function FeedTab({ socket }: FeedTabProps) {
                                         setCommentText(e.target.value)
                                       }
                                       disabled={newCommentLoading}
+                                      onKeyDown={(e) => {
+                                        if (
+                                          commentText &&
+                                          !newCommentLoading &&
+                                          e.key == 'Enter'
+                                        ) {
+                                          handleCreateComment(post.postId);
+                                        }
+                                      }}
                                     />
                                     <button
                                       disabled={

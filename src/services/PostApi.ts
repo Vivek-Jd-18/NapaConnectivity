@@ -1,4 +1,8 @@
-import { CreateNewPostResponse, GetPostsResponse } from '@/types/post';
+import {
+  CreateNewPostResponse,
+  GetLikePostResponse,
+  GetPostsResponse,
+} from '@/types/post';
 import axios, { AxiosResponse } from 'axios';
 import { SOCIAL_ART_API_URL } from '@/constants/url';
 
@@ -27,14 +31,10 @@ export const createNewPost = async (post: any) => {
   }
 };
 
-export const updatePost = async (postId: string, minted: string) => {
+export const getAllPosts = async () => {
   try {
-    const p = await axios.patch<{}, AxiosResponse<CreateNewPostResponse>>(
-      `${SOCIAL_ART_API_URL}/user/social/video/update`,
-      {
-        postId,
-        minted,
-      }
+    const p = await axios.get<{}, AxiosResponse<GetPostsResponse>>(
+      `${SOCIAL_ART_API_URL}/user/social/video/list`
     );
     return {
       data: p.data,
@@ -50,10 +50,14 @@ export const updatePost = async (postId: string, minted: string) => {
   }
 };
 
-export const getAllPosts = async () => {
+export const likePost = async (userId: string, postId: string) => {
   try {
-    const p = await axios.get<{}, AxiosResponse<GetPostsResponse>>(
-      `${SOCIAL_ART_API_URL}/user/social/video/list`
+    const p = await axios.post<{}, AxiosResponse<GetLikePostResponse>>(
+      `${SOCIAL_ART_API_URL}/user/social/video/like`,
+      {
+        userId,
+        postId,
+      }
     );
     return {
       data: p.data,
