@@ -1,5 +1,6 @@
 import {
   CreateNewPostResponse,
+  GetAwardPostResponse,
   GetLikePostResponse,
   GetPostsResponse,
 } from '@/types/post';
@@ -54,6 +55,29 @@ export const likePost = async (userId: string, postId: string) => {
   try {
     const p = await axios.post<{}, AxiosResponse<GetLikePostResponse>>(
       `${SOCIAL_ART_API_URL}/user/social/video/like`,
+      {
+        userId,
+        postId,
+      }
+    );
+    return {
+      data: p.data,
+      message: '',
+      error: false,
+    };
+  } catch (error) {
+    return {
+      data: null,
+      error: true,
+      message: error?.response?.data?.message,
+    };
+  }
+};
+
+export const awardPost = async (userId: string, postId: string) => {
+  try {
+    const p = await axios.post<{}, AxiosResponse<GetAwardPostResponse>>(
+      `${SOCIAL_ART_API_URL}/user/social/video/award`,
       {
         userId,
         postId,

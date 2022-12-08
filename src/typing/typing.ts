@@ -24,4 +24,7 @@ export type ProfileDetails = {
   createdAt: string;
   updatedAt: string;
   avatar: string;
+  awardsEarned: number;
+  awardsGiven: number;
+  netAwardsAvailable: number;
 };
