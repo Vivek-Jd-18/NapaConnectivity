@@ -16,6 +16,12 @@ export type GetLikePostResponse = {
   responseTime: string;
 };
 
+export type GetAwardPostResponse = {
+  data: string;
+  code: number;
+  responseTime: string;
+};
+
 export type NewPost = {
   videoTitle: string;
   videoFile: string | ArrayBuffer | null;
@@ -42,6 +48,7 @@ export type Post = {
   userImage: string;
   likedByUsers: string | null;
   commentByUsers: string | null;
+  awardsByUsers: string;
 };
 
 export type activePost = {

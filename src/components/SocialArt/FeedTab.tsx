@@ -1,6 +1,11 @@
 import useProfile from '@/hooks/useProfile';
 import useWebThree from '@/hooks/useWebThree';
-import { createNewPost, getAllPosts, likePost } from '@/services/PostApi';
+import {
+  awardPost,
+  createNewPost,
+  getAllPosts,
+  likePost,
+} from '@/services/PostApi';
 import { activePost, Post } from '@/types/post';
 import { ToastDescription, ToastTitle } from '@/typing/toast';
 import Tippy from '@tippyjs/react';
@@ -99,8 +104,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
     description: '',
     thumbnail: '',
   });
-
-  const { profileDetails, profileId } = useProfile();
+  const { profileDetails, profileId, getUserProfileDetails } = useProfile();
 
   const people = useRef();
   const tag = useRef();
@@ -441,6 +445,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
     formData.append('videoTitle', videoTitle);
     //@ts-ignore
     formData.append('videoFile', file);
+    formData.append('awardsByUsers', '');
     formData.append('videoType', file?.type || '');
     formData.append('videoCaption', caption);
     formData.append('accountId', account);
@@ -628,6 +633,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
       return;
     }
     setLoading(false);
+    getUserProfileDetails(profileDetails.profileId);
     handleMintPostCancel();
     toast.success(
       CustomToastWithLink({
@@ -836,6 +842,11 @@ export default function FeedTab({ socket }: FeedTabProps) {
     return comments.length > 0 ? comments.length : '';
   };
 
+  const showPostAwardsCount = (awardsByUsers: string | null) => {
+    const awards = awardsByUsers ? awardsByUsers.split(',') : [];
+    return awards.length > 0 ? awards.length : '';
+  };
+
   const handleLikePost = async (
     userId: string,
     postId: string,
@@ -936,6 +947,93 @@ export default function FeedTab({ socket }: FeedTabProps) {
       socket.removeEventListener('message', () => {});
     };
   }, []);
+
+  const handleGetUpdatedAwards = (postId: string, rewards: string) => {
+    setPosts((prev) => {
+      const temp = prev ? [...prev] : [];
+      if (prev) {
+        const postIndex = temp.findIndex((p) => p.postId == postId);
+        if (postIndex > -1) {
+          //@ts-ignore
+          temp[postIndex].awardsByUsers = rewards;
+        }
+      }
+      return temp;
+    });
+  };
+
+  useEffect(() => {
+    // @ts-ignore
+    socket.addEventListener('message', ({ data }) => {
+      const response = JSON.parse(data);
+      if (response?.event === 'post-award-count') {
+        handleGetUpdatedAwards(response?.postId, response?.awards);
+      }
+    });
+    return () => {
+      socket.removeEventListener('message', () => {});
+    };
+  }, []);
+
+  //@ts-ignore
+  const handlePostAward = async (post: Post) => {
+    if (!account) {
+      toast.error(
+        CustomToastWithLink({
+          icon: WalletNeedsToConnected,
+          title: ToastTitle.WALLET_NEEDS_TO_CONNECTED,
+          description: ToastDescription.WALLET_NEEDS_TO_CONNECTED,
+          time: 'Now',
+        })
+      );
+      return push(`/wallet?redirectTo=${pathname.split('/')[1]}`);
+    }
+    if (!profileDetails?.profileName) {
+      toast.error(
+        CustomToastWithLink({
+          icon: ErrorIcon,
+          title: ToastTitle.PROFILE_NEEDS_TO_BE_CREATED,
+          description: ToastDescription.PROFILE_NEEDS_TO_BE_CREATED,
+          time: 'Now',
+        })
+      );
+      return push(`/settings`);
+    }
+    let existResults = post.awardsByUsers ? post.awardsByUsers.split(',') : [];
+    if (existResults.includes(profileId)) {
+      return toast.error(
+        CustomToastWithLink({
+          icon: ErrorIcon,
+          title: 'Already rewarded',
+          description: 'You have already given reward to this video!',
+          time: 'Now',
+        })
+      );
+    }
+    if (profileId == post.profileId) {
+      return toast.error(
+        CustomToastWithLink({
+          icon: ErrorIcon,
+          title: 'Reward error',
+          description: 'You can not give reward to your video.',
+          time: 'Now',
+        })
+      );
+    }
+    if (profileDetails.awardsEarned > 0) {
+      await awardPost(profileId, post.postId);
+      getUserProfileDetails(profileId);
+    } else {
+      toast.error(
+        CustomToastWithLink({
+          icon: ErrorIcon,
+          title: 'No rewards',
+          description: 'oops! you are not able to give rewards now.',
+          time: 'Now',
+        })
+      );
+    }
+  };
 
   return (
     <div className={styles.MainListBox}>
@@ -1223,7 +1321,11 @@ export default function FeedTab({ socket }: FeedTabProps) {
                               <b> comments</b>
                             </span>
                           </button>
-                          <a href="#" className={styles.BotomLikes}>
+                          <a
+                            href="javascript:void(0);"
+                            className={styles.BotomLikes}
+                            onClick={() => handlePostAward(post)}
+                          >
                             <Image
                               src="/img/reward_icon.svg"
                               alt=""
@@ -1231,7 +1333,8 @@ export default function FeedTab({ socket }: FeedTabProps) {
                               height="24px"
                             />
                             <span>
-                              12 <b>awards</b>
+                              {showPostAwardsCount(post.awardsByUsers)}
+                              <b> awards</b>
                             </span>
                           </a>
                           {((account == post.accountId &&
