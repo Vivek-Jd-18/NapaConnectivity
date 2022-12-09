@@ -28,7 +28,7 @@ export default function FeedTab() {
                                     className=""
                                 />
                             </div>
-                            <div className={styles.leftContMian}>
+                            {/* <div className={styles.leftContMian}>
                                 <div className={styles.ImgperntLeftCont}>
                                    <div className={styles.SpaceBtwnBx}>
                                         <h2>Dark Hopeless</h2>
@@ -218,7 +218,7 @@ export default function FeedTab() {
                                         <h3>Project</h3>
                                     </div>
                                     {/* <div className={styles.rspsivTow}> */}
-                                        <div className={styles.marginPernt}>
+                                        {/* <div className={styles.marginPernt}>
                                             <p>Network</p>
                                             <h6>OpenSea</h6>
                                         </div>
@@ -234,10 +234,10 @@ export default function FeedTab() {
                                                 />
                                                 <h6>3.1</h6>
                                             </div>
-                                        </div>
+                                        </div> */}
                                     {/* </div> */}
                                     {/* <div className={styles.rspsivTow}> */}
-                                        <div className={`${styles.marginPernt} ${styles.rsomrGin} adddadadada`}>
+                                        {/* <div className={`${styles.marginPernt} ${styles.rsomrGin} adddadadada`}>
                                             <p>Utility Score</p>
                                             <div className={styles.flexDiv}>
                                                 <Image
@@ -249,19 +249,19 @@ export default function FeedTab() {
                                                 />
                                                 <h6>4.2</h6>
                                             </div>
-                                        </div>
-                                        <div className={`${styles.marginPernt} ${styles.rsomrleft} adddadadada`}>
+                                        </div> */}
+                                        {/* <div className={`${styles.marginPernt} ${styles.rsomrleft} adddadadada`}>
                                             <p>Project Extras</p>
                                             <h6 className={styles.bordrBttm}>View</h6>
                                         </div>
                                     {/* </div> */}
-                                </div>
-                                <div className={styles.Projectbox}>
+                                {/* </div> */}
+                                {/* <div className={styles.Projectbox}>
                                     <div className={styles.flexBsis02}>
                                          <h3 className={styles.nftText}>NFT</h3>
-                                    </div>
+                                    </div> */}
                                     {/* <div className={styles.rspsivTow}> */}
-                                        <div className={styles.marginPernt}>
+                                        {/* <div className={styles.marginPernt}>
                                             <p>Ranking</p>
                                             <div className={styles.flexDiv}>
                                                 <Image
@@ -277,10 +277,10 @@ export default function FeedTab() {
                                         <div className={styles.marginPernt}>
                                             <p>Price Change</p>
                                             <h6>20%</h6>
-                                        </div>
+                                        </div> */}
                                     {/* </div> */}
                                     {/* <div className={styles.rspsivTow}> */}
-                                        <div className={`${styles.marginPernt} ${styles.rsomrGin} adddadadada`}>
+                                        {/* <div className={`${styles.marginPernt} ${styles.rsomrGin} adddadadada`}>
                                             <p>Actual Value</p>
                                             <div className={styles.flexDiv}>
                                                 <Image
@@ -292,8 +292,8 @@ export default function FeedTab() {
                                                 />
                                                 <h6>0.24</h6>
                                             </div>
-                                        </div>
-                                        <div className={`${styles.marginPernt} ${styles.rsomrleft} adddadadada`}>
+                                        </div> */}
+                                        {/* <div className={`${styles.marginPernt} ${styles.rsomrleft} adddadadada`}>
                                             <p>Projected Value</p>
                                             <div className={styles.flexDiv}>
                                                 <Image
@@ -305,19 +305,19 @@ export default function FeedTab() {
                                                 />
                                                 <h6>0.48</h6>
                                             </div>
-                                        </div>
+                                        </div> */}
                                     {/* </div> */}
-                                </div>
-                            </div>
-                            <div className={styles.butndblck}>
+                                {/* </div> */}
+                            {/* </div>  */}
+                            {/* <div className={styles.butndblck}>
                                 <div className={styles.butonPernt}>
                                     <button>Download PDF</button>
-                                </div>
-                            </div>
+                                </div> */}
+                            {/* </div>
                         </div>
-                    </div>
-                </div>
-                <div className={styles.CustomGrid}>
+                    </div> */}
+                {/* </div> */}
+                {/* <div className={styles.CustomGrid}>
                     <div className={styles.bgPernt}>
                         <div className={styles.flexImgpernt}>
                             <div className={styles.Imgpernt}>
@@ -328,8 +328,8 @@ export default function FeedTab() {
                                     alt=""
                                     className=""
                                 />
-                            </div>
-                            <div className={styles.leftContMian}>
+                            </div> */}
+                            {/* <div className={styles.leftContMian}>
                                 <div className={styles.ImgperntLeftCont}>
                                     <div className={styles.SpaceBtwnBx}>
                                         <h2>Vecna Drive Me</h2>
@@ -519,7 +519,7 @@ export default function FeedTab() {
                                         <h3>Project</h3>
                                     </div>
                                     {/* <div className={styles.rspsivTow}> */}
-                                        <div className={styles.marginPernt}>
+                                        {/* <div className={styles.marginPernt}>
                                             <p>Network</p>
                                             <h6>OpenSea</h6>
                                         </div>
@@ -538,7 +538,7 @@ export default function FeedTab() {
                                         </div>
                                     {/* </div> */}
                                     {/* <div className={styles.rspsivTow}> */}
-                                        <div className={`${styles.marginPernt} ${styles.rsomrGin} adddadadada`}>
+                                        {/* <div className={`${styles.marginPernt} ${styles.rsomrGin} adddadadada`}>
                                             <p>Utility Score</p>
                                             <div className={styles.flexDiv}>
                                                 <Image
@@ -556,13 +556,13 @@ export default function FeedTab() {
                                             <h6 className={styles.bordrBttm}>View</h6>
                                         </div>
                                     {/* </div> */}
-                                </div>
+                                {/* </div>
                                 <div className={styles.Projectbox}>
                                     <div className={styles.flexBsis02}>
                                          <h3 className={styles.nftText}>NFT</h3>
-                                    </div>
+                                    </div> */}
                                     {/* <div className={styles.rspsivTow}> */}
-                                        <div className={styles.marginPernt}>
+                                        {/* <div className={styles.marginPernt}>
                                             <p>Ranking</p>
                                             <div className={styles.flexDiv}>
                                                 <Image
@@ -578,10 +578,10 @@ export default function FeedTab() {
                                         <div className={styles.marginPernt}>
                                             <p>Price Change</p>
                                             <h6>20%</h6>
-                                        </div>
+                                        </div> */}
                                     {/* </div> */}
                                     {/* <div className={styles.rspsivTow}> */}
-                                        <div className={`${styles.marginPernt} ${styles.rsomrGin} adddadadada`}>
+                                        {/* <div className={`${styles.marginPernt} ${styles.rsomrGin} adddadadada`}>
                                             <p>Actual Value</p>
                                             <div className={styles.flexDiv}>
                                                 <Image
@@ -593,8 +593,8 @@ export default function FeedTab() {
                                                 />
                                                 <h6>0.24</h6>
                                             </div>
-                                        </div>
-                                        <div className={`${styles.marginPernt} ${styles.rsomrleft} adddadadada`}>
+                                        </div> */}
+                                        {/* <div className={`${styles.marginPernt} ${styles.rsomrleft} adddadadada`}>
                                             <p>Projected Value</p>
                                             <div className={styles.flexDiv}>
                                                 <Image
@@ -606,9 +606,9 @@ export default function FeedTab() {
                                                 />
                                                 <h6>0.48</h6>
                                             </div>
-                                        </div>
+                                        </div> */}
                                     {/* </div> */}
-                                </div>
+                                {/* </div>
                             </div>
                             <div className={styles.butndblck}>
                                 <div className={styles.butonPernt}>
@@ -616,9 +616,9 @@ export default function FeedTab() {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div className={styles.CustomGrid}>
+                    </div> 
+                </div> */}
+                {/* <div className={styles.CustomGrid}>
                     <div className={styles.bgPernt}>
                         <div className={styles.flexImgpernt}>
                             <div className={styles.Imgpernt}>
@@ -629,11 +629,11 @@ export default function FeedTab() {
                                     alt=""
                                     className=""
                                 />
-                            </div>
+                            </div>  */}
                             <div className={styles.leftContMian}>
                                 <div className={styles.ImgperntLeftCont}>
                                     <div className={styles.SpaceBtwnBx}>
-                                    <h2>Of Aliens & Men</h2>
+                                    <h2>NFT or SNFT Name or Title</h2>
                                         <button role="button" data-bs-toggle="dropdown" aria-expanded="true">
                                             <Image src="/img/dotet_ic.png" alt="" width={24} height={24} />
                                         </button>
@@ -642,7 +642,7 @@ export default function FeedTab() {
                                                <a>Remove</a>
                                             </li>
                                             <li>
-                                                <a>Re-Run Valuation</a>
+                                                <a>Run Valuation</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -654,13 +654,13 @@ export default function FeedTab() {
                                             alt=""
                                             className=""
                                         />
-                                        <p>Dorothy Mccoy</p>
+                                        <p>Current Owner</p>
                                     </div>
                                 </div>
                                 <div className={styles.diplyBlock}>
                                     <div className={styles.flexPernt}>
                                         <div className={styles.currentBit}>
-                                            <h5>Current Bid</h5>
+                                            <h5>Current Price</h5>
                                             <div className={styles.txtimgFlex}>
                                                 <Image
                                                     src="/img/etherium_ic.svg"
@@ -687,7 +687,7 @@ export default function FeedTab() {
                                         </div>
                                     </div>
                                     <div className={styles.lastpp}>
-                                        <p>Now indulgence dissimilar for his thoroughly has terminated. Agreement offending commanded my an.</p>
+                                        <p>Short Projet Description</p>
                                     </div>
                                 </div>
                             </div>
@@ -695,7 +695,7 @@ export default function FeedTab() {
                         <div className={styles.diplyNone}>
                             <div className={styles.flexPernt}>
                                 <div className={styles.currentBit}>
-                                    <h5>Current Bid</h5>
+                                    <h5>Current Price</h5>
                                     <div className={styles.txtimgFlex}>
                                         <Image
                                             src="/img/napa_ic.svg"
@@ -782,7 +782,7 @@ export default function FeedTab() {
                                 alt=""
                                 className=""
                             />
-                            <p>Abilities or he perfectly pretended so strangers be exquisite. Oh to another chamber pleased imagine do in.</p>
+                            <p>Full Project Description</p>
                         </div>
                         <div className={styles.downContentmain}>
                             <div className={styles.innrFirst}>
@@ -795,7 +795,7 @@ export default function FeedTab() {
                                         className=""
                                     />
                                     <div className={styles.onlyText}>
-                                        <h6>Howard Copeland</h6>
+                                        <h6>Project Owner</h6>
                                         <div className={styles.starImg}>
                                             <Image
                                                 src="/img/star_icon.svg"
@@ -804,7 +804,7 @@ export default function FeedTab() {
                                                 alt=""
                                                 className=""
                                             />
-                                            <p>4.6  /  425 projects</p>
+                                            <p>4.6  /  425 projects (Owner Ranking)</p>
                                         </div>
                                     </div>
                                 </div>
@@ -817,12 +817,12 @@ export default function FeedTab() {
                             <div className={styles.ProjectAndnftbox}>
                                 <div className={styles.Projectbox}>
                                     <div className={styles.flexBsis02}>
-                                        <h3>Project</h3>
+                                        <h3>Project or Collection</h3>
                                     </div>
                                     {/* <div className={styles.rspsivTow}> */}
                                         <div className={styles.marginPernt}>
                                             <p>Network</p>
-                                            <h6>OpenSea</h6>
+                                            <h6>Ethereum</h6>
                                         </div>
                                         <div className={styles.marginPernt}>
                                             <p>Popularity Score</p>
@@ -860,7 +860,7 @@ export default function FeedTab() {
                                 </div>
                                 <div className={styles.Projectbox}>
                                     <div className={styles.flexBsis02}>
-                                         <h3 className={styles.nftText}>NFT</h3>
+                                         <h3 className={styles.nftText}>Type (NFT or SNFT)</h3>
                                     </div>
                                     {/* <div className={styles.rspsivTow}> */}
                                         <div className={styles.marginPernt}>

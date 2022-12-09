@@ -25,10 +25,10 @@ const CoBatchingPoolsPool: NextPage<CoBatchingPoolsCardProps> = () => {
             </button>
             <ul className="dropdown-menu dropdown-menu-end drpdwn_list drpdwn_list_empty">
                 <li>
-                    <a>aaaaa</a>
+                    <a>Update Pool</a>
                 </li>
                 <li>
-                    <a>bbbbbb</a>
+                    <a>Close Pool</a>
                 </li>
             </ul>
         </div>
