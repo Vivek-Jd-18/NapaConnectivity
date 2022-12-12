@@ -104,7 +104,9 @@ export default function MintedPostsTab(props: any) {
               aria-controls="nav-home"
               aria-selected="true"
             >
-              <Image src="/img/grid4_icon.svg" alt="" width={24} height={24} />
+              <Image src="/img/grid4_icon.svg" alt="" width={24} height={24} 
+              onClick={() => props.getval(true)}
+              />
             </button>
             <button
               className={`${styles.ListBtn} nav-link active`}
@@ -116,7 +118,9 @@ export default function MintedPostsTab(props: any) {
               aria-controls="nav-profile"
               aria-selected="false"
             >
-              <Image src="/img/rows_icon.svg" alt="" width={24} height={24} />
+              <Image src="/img/rows_icon.svg" alt="" width={24} height={24} 
+              onClick={() => props.getval(false)}
+              />
             </button>
           </div>
         </div>
