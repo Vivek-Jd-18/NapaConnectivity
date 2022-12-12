@@ -8,12 +8,12 @@ export type CommentResponse = {
   commentId: string;
   commentText: string;
   postId: string;
-  userId: string;
-  userName: string;
-  userImage: string;
-  replies: string;
+  profileId: string;
+  profileName: string;
+  avatar: string;
+  replies: CommentResponse[];
   likedByUsers: string;
-  isReply: string;
+  parentCommentId: string;
   createdAt: string;
   updatedAt: string;
 };
@@ -27,10 +27,6 @@ export type GetCommentsResponse = {
 export type NewComment = {
   commentText: string;
   postId: string;
-  userId: string;
-  userName: string;
-  userImage: string;
-  replies: string;
-  likedByUsers: string;
-  isReply: string;
+  profileId: string;
+  parentCommentId: string;
 };

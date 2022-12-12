@@ -94,6 +94,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
   const [loading, setLoading] = React.useState(false);
   const [getPostsLoading, setGetPostsLoading] = React.useState(false);
   const [posts, setPosts] = React.useState<Post[] | null>(null);
+  const [parentCommentId, setParentCommentId] = React.useState("")
   const [mintDetails, setMintDetails] = React.useState({
     title: '',
     collection: 'NAPA Society Collection',
@@ -122,8 +123,8 @@ export default function FeedTab({ socket }: FeedTabProps) {
   const [getCommentsLoading, setGetCommentsLoading] = React.useState(false);
   const [newCommentLoading, setNewCommentLoading] = React.useState(false);
   const [likeCommentLoading, setLikeCommentLoading] = React.useState(false);
-  const [ReplyUserName, setReplyUserName] = React.useState('');
-  const [ReplyBoxShow, setReplyBoxShow] = React.useState(false);
+  const [replyUserName, setReplyUserName] = React.useState('');
+  const [replyBoxShow, setReplyBoxShow] = React.useState(false);
   // const [ReplyComment, setReplyComment] = React.useState(true);
   const onPeopleDelete = useCallback(
     (tagIndex: number) => {
@@ -679,12 +680,8 @@ export default function FeedTab({ socket }: FeedTabProps) {
     const comment = {
       commentText,
       postId,
-      userId: profileId,
-      userName: profileDetails?.profileName,
-      userImage: profileDetails.avatar,
-      replies: '',
-      likedByUsers: '',
-      isReply: 'false',
+      profileId,
+      parentCommentId: parentCommentId,
     };
     setNewCommentLoading(true);
     const { error, message } = await createNewComment(comment);
@@ -1033,9 +1030,10 @@ export default function FeedTab({ socket }: FeedTabProps) {
     }
   };
 
-  const handleReplyComment = (UserName: string) => {
+  const handleReplyComment = (userName: string, id: string) => {
     setReplyBoxShow(true);
-    setReplyUserName(UserName);
+    setReplyUserName(userName);
+    setParentCommentId(id)
   };
 
   const currentUtcOffset: number = moment().utcOffset();
@@ -1461,15 +1459,15 @@ export default function FeedTab({ socket }: FeedTabProps) {
                                                 >
                                                   <Image
                                                     src={`${
-                                                      comment?.userImage
-                                                        ? comment.userImage
+                                                      comment?.avatar
+                                                        ? comment.avatar
                                                         : '/img/comment02.svg'
                                                     }`}
                                                     alt=""
                                                     width="28px"
                                                     height="28px"
                                                   />
-                                                  <h4>{comment?.userName}</h4>
+                                                  <h4>{comment?.profileName}</h4>
                                                 </a>
                                                 <p>
                                                   {moment(comment?.createdAt)
@@ -1516,7 +1514,8 @@ export default function FeedTab({ socket }: FeedTabProps) {
                                                   <a
                                                     onClick={() =>
                                                       handleReplyComment(
-                                                        comment.userName
+                                                        comment.profileName,
+                                                        comment?.commentId
                                                       )
                                                     }
                                                   >
@@ -1525,7 +1524,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
                                                   <a
                                                     onClick={() =>
                                                       console.log(
-                                                        comment.userId
+                                                        comment.profileId
                                                       )
                                                     }
                                                   >
@@ -1542,10 +1541,10 @@ export default function FeedTab({ socket }: FeedTabProps) {
                                         </div>
                                       )}
                                     </div>
-                                    {ReplyBoxShow && (
+                                    {replyBoxShow && (
                                       <div className={styles.replyBox}>
                                         <div className={styles.replyUserName}>
-                                          <p>{`Response to the user @${ReplyUserName}`}</p>
+                                          <p>{`Response to the user @${replyUserName}`}</p>
                                         </div>
                                         <div>
                                           <Image
