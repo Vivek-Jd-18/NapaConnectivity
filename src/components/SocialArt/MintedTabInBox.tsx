@@ -94,7 +94,7 @@ export default function MintedTabInBox({ socket }: MintedTabInBoxProps) {
                       </h2>
                     </div>
                   </div>
-                </div>
+                </div>post
                 <div className={styles.DarkiBoxmiddata}>
                   <div className={styles.DarkiBxFrst}>
                     <div className={styles.DarkiBxhpdata}>
