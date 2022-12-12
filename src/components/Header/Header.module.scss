@@ -56,8 +56,6 @@
 }
 @media screen and (min-width: 280px) {
   .innerContainer {
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
     .burgerMenuIcon {
       width: 1.5rem;
     }
@@ -88,8 +86,6 @@
 
 @media screen and (min-width: 320px) {
   .innerContainer {
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
     .burgerMenuIcon {
       width: 1.5rem;
     }
@@ -97,8 +93,6 @@
 }
 @media screen and (min-width: 375px) {
   .innerContainer {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
     .burgerMenuIcon {
       width: 2rem;
     }
@@ -106,37 +100,22 @@
 }
 @media screen and (min-width: 600px) {
   .innerContainer {
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
     .burgerMenuIcon {
       width: 2rem;
     }
     .walletIcon {
       width: 2rem;
     }
-
-    padding-top: 1rem;
-    .burgerMenuIcon {
-      width: 2rem;
-    }
   }
 }
 @media screen and (min-width: 768px) {
   .innerContainer {
-    padding-top: 1rem;
-
     .svgWrapper {
       margin-left: -5rem;
     }
     .svgWrapper {
       margin-left: -5rem;
     }
-  }
-}
-@media screen and (min-width: 1024px) {
-  .innerContainer {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
   }
 }
 @media (max-width: 1024px) {
@@ -160,25 +139,16 @@
 }
 @media screen and (min-width: 1280px) {
   .innerContainer {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
     .burgerMenuIcon {
       width: auto;
     }
     .walletIcon {
       width: 2.25rem;
     }
-
-    padding-top: 1rem;
-    .burgerMenuIcon {
-      width: auto;
-    }
   }
 }
 @media screen and (min-width: 1536px) {
   .innerContainer {
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
     .burgerMenuIcon {
       width: 4rem;
     }
