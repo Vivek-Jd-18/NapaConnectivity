@@ -20,8 +20,7 @@ type WalletComponentProps = {
 };
 
 const WalletComponent: NextPage<WalletComponentProps> = ({ account }) => {
-  const { push, query } = useRouter();
-
+  const { push, query ,back } = useRouter();
   const { connectWallet, getAccounts } = useWebThree();
   const [show, setShow] = useState(true);
   const { getUserProfileDetails } = useProfile();
@@ -50,7 +49,7 @@ const WalletComponent: NextPage<WalletComponentProps> = ({ account }) => {
         // @ts-ignore
         if (response && profileDetails) {
           if (query) {
-            push('/trending');
+            back()
             return;
           }
         } else if (response) {

@@ -16,7 +16,12 @@ import React, { useCallback, useEffect, useRef } from 'react';
 import { FadeLoader } from 'react-spinners';
 import { toast } from 'react-toastify';
 import { RWebShare } from 'react-web-share';
-import { DoneIcon, ErrorIcon, WalletNeedsToConnected } from '../assets';
+import {
+  DoneIcon,
+  ErrorIcon,
+  ReplyExit,
+  WalletNeedsToConnected,
+} from '../assets';
 import { CustomToastWithLink } from '../CustomToast/CustomToast';
 import HighlightButton from '../HighlightButton/HighlightButton';
 import styles from './FeedTab.module.scss';
@@ -117,7 +122,9 @@ export default function FeedTab({ socket }: FeedTabProps) {
   const [getCommentsLoading, setGetCommentsLoading] = React.useState(false);
   const [newCommentLoading, setNewCommentLoading] = React.useState(false);
   const [likeCommentLoading, setLikeCommentLoading] = React.useState(false);
-
+  const [ReplyUserName, setReplyUserName] = React.useState('');
+  const [ReplyBoxShow, setReplyBoxShow] = React.useState(false);
+  const [ReplyComment, setReplyComment] = React.useState(true);
   const onPeopleDelete = useCallback(
     (tagIndex: number) => {
       setPeopleTags(peopleTags.filter((_, i) => i !== tagIndex));
@@ -540,7 +547,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
   const handleMintPost = async (post: any) => {
     setMintDetailsErrors({
       title: '',
-      collection: '',
+      collection: ', { utc }',
       description: '',
       thumbnail: '',
     });
@@ -680,7 +687,6 @@ export default function FeedTab({ socket }: FeedTabProps) {
       isReply: 'false',
     };
     setNewCommentLoading(true);
-    //@ts-ignore
     const { error, message } = await createNewComment(comment);
     if (error) {
       setNewCommentLoading(false);
@@ -720,7 +726,6 @@ export default function FeedTab({ socket }: FeedTabProps) {
   };
 
   useEffect(() => {
-    // @ts-ignore
     socket.addEventListener('message', ({ data }) => {
       const response = JSON.parse(data);
       if (response?.event === 'comments') {
@@ -734,7 +739,6 @@ export default function FeedTab({ socket }: FeedTabProps) {
   }, []);
 
   useEffect(() => {
-    // @ts-ignore
     socket.addEventListener('message', ({ data }) => {
       const response = JSON.parse(data);
       if (response?.event === 'likeComment') {
@@ -754,7 +758,6 @@ export default function FeedTab({ socket }: FeedTabProps) {
     setGetCommentsLoading(false);
   };
 
-  //@ts-ignore
   const handleLikeComment = async (
     commentId: string,
     postId: string,
@@ -801,7 +804,6 @@ export default function FeedTab({ socket }: FeedTabProps) {
       return push(`/settings`);
     }
     setLikeCommentLoading(true);
-    //@ts-ignore
     const { error, message } = await likeComment(
       commentId,
       postId,
@@ -820,9 +822,9 @@ export default function FeedTab({ socket }: FeedTabProps) {
       return;
     }
     setLikeCommentLoading(false);
+    return;
   };
 
-  //@ts-ignore
   const getLikeByCommentId = (likedByUsers: string) => {
     let likes = 0;
     if (likedByUsers) {
@@ -879,7 +881,6 @@ export default function FeedTab({ socket }: FeedTabProps) {
   };
 
   useEffect(() => {
-    // @ts-ignore
     socket.addEventListener('message', ({ data }) => {
       const response = JSON.parse(data);
       if (response?.event === 'post-likes-count') {
@@ -909,7 +910,6 @@ export default function FeedTab({ socket }: FeedTabProps) {
   };
 
   useEffect(() => {
-    // @ts-ignore
     socket.addEventListener('message', ({ data }) => {
       const response = JSON.parse(data);
       if (response?.event === 'post-comments-count') {
@@ -936,7 +936,6 @@ export default function FeedTab({ socket }: FeedTabProps) {
   };
 
   useEffect(() => {
-    // @ts-ignore
     socket.addEventListener('message', ({ data }) => {
       const response = JSON.parse(data);
       if (response?.event === 'updated-post') {
@@ -963,7 +962,6 @@ export default function FeedTab({ socket }: FeedTabProps) {
   };
 
   useEffect(() => {
-    // @ts-ignore
     socket.addEventListener('message', ({ data }) => {
       const response = JSON.parse(data);
       if (response?.event === 'post-award-count') {
@@ -975,7 +973,6 @@ export default function FeedTab({ socket }: FeedTabProps) {
     };
   }, []);
 
-  //@ts-ignore
   const handlePostAward = async (post: Post) => {
     if (!account) {
       toast.error(
@@ -1023,8 +1020,9 @@ export default function FeedTab({ socket }: FeedTabProps) {
     if (profileDetails.awardsEarned > 0) {
       await awardPost(profileId, post.postId);
       getUserProfileDetails(profileId);
+      return;
     } else {
-      toast.error(
+      return toast.error(
         CustomToastWithLink({
           icon: ErrorIcon,
           title: 'No rewards',
@@ -1035,6 +1033,13 @@ export default function FeedTab({ socket }: FeedTabProps) {
     }
   };
 
+  const handleReplyComment = (UserName: string) => {
+    setReplyBoxShow(true);
+    setReplyUserName(UserName);
+  };
+
+  const currentUtcOffset: number = moment().utcOffset();
+  console.log('currentUtcOffset', currentUtcOffset);
   return (
     <div className={styles.MainListBox}>
       <div className={styles.parent}>
@@ -1150,7 +1155,6 @@ export default function FeedTab({ socket }: FeedTabProps) {
                   </div>
                   <div className={styles.videoPreview}>
                     <video
-                      // style={{ objectFit: 'fill' }}
                       width={'100%'}
                       height={'auto'}
                       autoPlay
@@ -1416,6 +1420,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
                                   index: null,
                                 });
                                 setCommentText('');
+                                setReplyBoxShow(false);
                               }}
                             >
                               <Image
@@ -1468,7 +1473,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
                                                 </a>
                                                 <p>
                                                   {moment(comment?.createdAt)
-                                                    .startOf('hour')
+                                                    .startOf('seconds')
                                                     .fromNow()}
                                                 </p>
                                               </div>
@@ -1508,7 +1513,24 @@ export default function FeedTab({ socket }: FeedTabProps) {
                                                           : ' Like'
                                                       }`}
                                                   </a>
-                                                  <a>Reply</a>
+                                                  <a
+                                                    onClick={() =>
+                                                      handleReplyComment(
+                                                        comment.userName
+                                                      )
+                                                    }
+                                                  >
+                                                    Reply
+                                                  </a>
+                                                  <a
+                                                    onClick={() =>
+                                                      console.log(
+                                                        comment.userId
+                                                      )
+                                                    }
+                                                  >
+                                                    Report
+                                                  </a>
                                                 </div>
                                               </div>
                                             </div>
@@ -1520,6 +1542,23 @@ export default function FeedTab({ socket }: FeedTabProps) {
                                         </div>
                                       )}
                                     </div>
+                                    {ReplyBoxShow && (
+                                      <div className={styles.replyBox}>
+                                        <div className={styles.replyUserName}>
+                                          <p>{`Response to the user @${ReplyUserName}`}</p>
+                                        </div>
+                                        <div>
+                                          <Image
+                                            onClick={() =>
+                                              setReplyBoxShow(false)
+                                            }
+                                            src={ReplyExit}
+                                            width={10}
+                                            height={10}
+                                          />
+                                        </div>
+                                      </div>
+                                    )}
                                   </div>
                                   <div className={styles.BtmCommentBtn}>
                                     <input
