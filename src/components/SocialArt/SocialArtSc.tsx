@@ -13,7 +13,7 @@ import { SOCIAL_ART_WEBSOCKET_URL } from '@/constants/url';
 export default function SocialArtSc() {
   const socialArtSocket = new WebSocket(SOCIAL_ART_WEBSOCKET_URL);
   const [view, setView] = React.useState(true);
-  const handlelistView = (val) => {
+  const handlelistView = (val: boolean) => {
     setView(val);
   };
   return (
