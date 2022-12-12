@@ -344,6 +344,25 @@
       );
       z-index: 1;
     }
+    .replyBox{
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      z-index: 11111;
+      right: 0;
+      width: 100%;
+      background-color: #1D3031;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      .replyUserName{
+        p{
+          font-size: 12px;
+          margin: 0;
+          color: #91A5A6;
+        }}
+    }
   }
   .rightBox {
     position: relative;

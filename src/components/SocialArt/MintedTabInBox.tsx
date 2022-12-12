@@ -61,7 +61,7 @@ export default function MintedTabInBox({ socket }: MintedTabInBoxProps) {
   const getEndDate = (timestamp: any) => {
     const date = new Date(timestamp).getTime();
     const endTime = new Date(date + 12 * 3600 * 1000);
-    return moment(endTime).utc().format('h:mm:ss a');
+    return moment(endTime).format('h:mm:ss a');
   };
 
   return loading ? (
@@ -103,9 +103,7 @@ export default function MintedTabInBox({ socket }: MintedTabInBoxProps) {
                     </div>
                     <div className={styles.DarkiBxhpdata}>
                       <p>Live Start Time</p>
-                      <h3>
-                        {moment(post.timeMinted).utc().format('h:mm:ss a')}
-                      </h3>
+                      <h3>{moment(post.timeMinted).format('h:mm:ss a')}</h3>
                     </div>
                   </div>
                   <div className={styles.DarkiBxSecond}>
