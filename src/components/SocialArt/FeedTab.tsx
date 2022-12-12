@@ -124,7 +124,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
   const [likeCommentLoading, setLikeCommentLoading] = React.useState(false);
   const [ReplyUserName, setReplyUserName] = React.useState('');
   const [ReplyBoxShow, setReplyBoxShow] = React.useState(false);
-  const [ReplyComment, setReplyComment] = React.useState(true);
+  // const [ReplyComment, setReplyComment] = React.useState(true);
   const onPeopleDelete = useCallback(
     (tagIndex: number) => {
       setPeopleTags(peopleTags.filter((_, i) => i !== tagIndex));
