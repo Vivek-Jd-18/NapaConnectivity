@@ -10,6 +10,7 @@ export type MintResponse = {
   SNFTAddress: string;
   networkTxId: string;
   owner: string;
+  status: string;
 };
 
 export type GetMintPostsResponse = {

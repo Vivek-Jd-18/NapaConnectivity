@@ -3,10 +3,15 @@ import styles from './MintedTabInBox.module.scss';
 import 'bootstrap-daterangepicker/daterangepicker.css';
 import Image from 'next/image';
 import 'rc-slider/assets/index.css';
-import { getAllMintedPosts } from '@/services/MintApi';
+import { getAllMintedPosts, updatePostMint } from '@/services/MintApi';
 import { MintPost } from '@/types/mint';
 import { FadeLoader } from 'react-spinners';
 import moment from 'moment';
+import useProfile from '@/hooks/useProfile';
+import { toast } from 'react-toastify';
+import { CustomToastWithLink } from '../CustomToast/CustomToast';
+import { ErrorIcon } from '../assets';
+import { useRouter } from 'next/router';
 
 type MintedTabInBoxProps = {
   socket: WebSocket;
@@ -15,6 +20,8 @@ type MintedTabInBoxProps = {
 export default function MintedTabInBox({ socket }: MintedTabInBoxProps) {
   const [loading, setLoading] = React.useState(false);
   const [mintPosts, setMintPosts] = React.useState<MintPost[] | null>(null);
+  const { push } = useRouter();
+  const { profileDetails } = useProfile();
 
   const handleGetMintPosts = async () => {
     setLoading(true);
@@ -63,6 +70,26 @@ export default function MintedTabInBox({ socket }: MintedTabInBoxProps) {
     const endTime = new Date(date + 12 * 3600 * 1000);
     return moment(endTime).format('h:mm:ss a');
   };
+
+  const handleMintPostUpdate = async (data: any) => {
+    setLoading(true);
+    const { message, error } = await updatePostMint(data);
+    setLoading(false);
+    push('/sell-nft')
+    if (error) {
+        setLoading(false);
+        toast.error(
+          CustomToastWithLink({
+            icon: ErrorIcon,
+            title: 'Error',
+            description: message,
+            time: 'Now',
+          })
+        );
+        return;
+    }
+    setLoading(false);
+  }
 
   return loading ? (
     <div className={styles.loadingContainer}>
@@ -113,13 +140,13 @@ export default function MintedTabInBox({ socket }: MintedTabInBoxProps) {
                     </div>
                     <div className={styles.DarkiBxhpdata}>
                       <p>Current Tier</p>
-                      <h3>0.24 NAPA</h3>
+                      <h3>0.24 NAPA</h3> 
                     </div>
                   </div>
                 </div>
                 <div className={styles.DarkiBoxbtnlst}>
                   <button className={styles.DarkiBlubtn}>Redeem Tokens</button>
-                  <button className={styles.DarkiDarbtn}>
+                  <button onClick={() => handleMintPostUpdate({mintId:post.mintId, postId: post.postId, profileId: profileDetails?.profileId, marketplace_listed: "true"})} className={`${styles.DarkiDarbtn} ${post.status === "0" && styles.disabledSubmitMarketBtn}`} disabled={post.status === "0"}>
                     Submit to Marketplace
                   </button>
                 </div>

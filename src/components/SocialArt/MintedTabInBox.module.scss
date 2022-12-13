@@ -183,6 +183,11 @@
       color: #102324;
     }
   }
+  .disabledSubmitMarketBtn {
+    color: gray;
+    border-color: gray;
+    pointer-events: none;
+  }
 }
 
 @media screen and (max-width: 1400px) {

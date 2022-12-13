@@ -44,3 +44,44 @@ export const getAllMintedPosts = async () => {
     };
   }
 };
+
+export const updatePostMint = async ({ postId, profileId, mintId, martketplace_listed }: {postId: string,profileId: string, mintId: string, martketplace_listed: string  }) => {
+  try {
+    const p = await axios.post<{}, AxiosResponse<''>>(`${SOCIAL_ART_API_URL}/user/social/mint/update/status/${mintId}`, {
+      profileId,
+      postId,
+      martketplace_listed
+    });
+    return {
+      data: p.data,
+      message: '',
+      error: false,
+    };
+  } catch (error) {
+    return {
+      data: null,
+      error: true,
+      message: error?.response?.data?.message,
+    };
+  }
+}
+
+export const updateMintPostStatus = async (mintId: string, status: string) => {
+  try {
+    const p = await axios.post<{}, AxiosResponse<''>>(`${SOCIAL_ART_API_URL}/user/social/mint/update/status/${mintId}`, {
+      mintId,
+      status
+    });
+    return {
+      data: p.data,
+      message: '',
+      error: false,
+    };
+  } catch (error) {
+    return {
+      data: null,
+      error: true,
+      message: error?.response?.data?.message,
+    };
+  }
+}

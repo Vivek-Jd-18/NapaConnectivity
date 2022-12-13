@@ -140,6 +140,13 @@
         padding: 0;
         margin-right: 24px;
       }
+      .disabled {
+        pointer-events: none;
+        color: gray;
+        img {
+          opacity: 0.4;
+        }
+      }
     }
     .RowTwo,
     .RowThree,
