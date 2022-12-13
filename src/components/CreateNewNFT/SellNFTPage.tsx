@@ -83,7 +83,7 @@ export default function SellNFTPage() {
                             <div className={`${styles.switchpool} switchpool`}>
                                 <div className="form-check form-switch">
                                     <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
-                                    <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Sell as a Bundle</label>
+                                    <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Creator Fees</label>
                                 </div>
                             </div>
                             <div className={`${styles.switchpool} switchpool`}>
@@ -108,7 +108,7 @@ export default function SellNFTPage() {
                             </div>
                         </div>
                         <div className={`${styles.typePrnt} `}>
-                            <Link href="/"><a className={styles.linkPrnt}>Complete Selling</a></Link>
+                            <Link href="/"><a className={styles.linkPrnt}>Complete Listing</a></Link>
                         </div>
                     </div>
                 </div>

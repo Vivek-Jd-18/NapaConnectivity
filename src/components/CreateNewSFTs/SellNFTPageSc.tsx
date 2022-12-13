@@ -11,7 +11,7 @@ export default function SellNFTPageSc() {
     <div className={`${styles.container}`}>
       <Container className={`${styles.settingsContainer} asinnerContainer`}>
       <div className={styles.StaylinkFrst}>
-          <Link href="/create-new-nft-two"><a> <Image src="/img/arrow_icon.svg" alt="" width="18px" height="12px"/>Illusions of Darkness</a></Link>
+          <Link href="/create-new-nft-two"><a> <Image src="/img/arrow_icon.svg" alt="" width="18px" height="12px"/>Marketplace</a></Link>
         </div>
           <h1 className={styles.settings}>Sell NFT</h1>
         <div>
