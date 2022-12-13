@@ -1047,8 +1047,8 @@ export default function FeedTab({ socket }: FeedTabProps) {
       return toast.error(
         CustomToastWithLink({
           icon: ErrorIcon,
-          title: 'Already rewarded',
-          description: 'You have already given reward to this video!',
+          title: 'Already Awarded',
+          description: 'You have already given award to this post!',
           time: 'Now',
         })
       );
@@ -1057,8 +1057,8 @@ export default function FeedTab({ socket }: FeedTabProps) {
       return toast.error(
         CustomToastWithLink({
           icon: ErrorIcon,
-          title: 'Reward error',
-          description: 'You can not give reward to your video.',
+          title: 'Award Error',
+          description: 'Sorry but you cannot award your own post',
           time: 'Now',
         })
       );
@@ -1419,7 +1419,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
                                 height="24px"
                               />
                               <span>
-                                {post.minted == 'true' ? 'Minted Post' : 'Mint'}
+                                {post.minted == 'true' ? 'minted post' : 'mint'}
                               </span>
                             </button>
                           )}
@@ -1438,7 +1438,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
                                 height="24px"
                               />
                               <span>
-                                <b>Share</b>
+                                <b>share</b>
                               </span>
                             </button>
                           </RWebShare>

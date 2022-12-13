@@ -1,6 +1,14 @@
 @import '../../../styles/abstracts/mixins.module';
 @import '../../../styles/abstracts/variable.module';
 
+.loadingContainer,
+.noPostFound {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 650px;
+}
+
 .MainListBox {
   text-align: left;
   color: #fff;
@@ -8,7 +16,7 @@
   .MainListShdo {
     position: relative;
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       left: 0;
       top: 0;
@@ -34,7 +42,7 @@
       font-size: 14px;
       line-height: 140%;
       text-align: right;
-      color: #91A5A6;
+      color: #91a5a6;
       display: flex;
       align-items: center;
       justify-content: flex-end;
@@ -50,7 +58,10 @@
     .LabelSeven {
       flex-basis: 7%;
     }
-    .LabelTwo, .LabelThree, .LabelFour, .LabelSix {
+    .LabelTwo,
+    .LabelThree,
+    .LabelFour,
+    .LabelSix {
       flex-basis: 13%;
     }
   }
@@ -70,7 +81,7 @@
         @include font-md-avenir-medium;
         font-size: 18px;
         line-height: 140%;
-        color: #FFFFFF;
+        color: #ffffff;
         display: flex;
         align-items: center;
         margin-bottom: 0;
@@ -84,7 +95,7 @@
             @include font-md-avenir-medium;
             font-size: 18px;
             line-height: 140%;
-            color: #FFFFFF;
+            color: #ffffff;
             display: flex;
             align-items: center;
             min-width: 164px;
@@ -95,11 +106,11 @@
       .RspnsvIcnSpn {
         display: flex;
         align-items: center;
-        >span {
+        > span {
           margin-right: 8px !important;
         }
         .BlueH6 {
-          color: #16E6EF;
+          color: #16e6ef;
           font-size: 18px;
           line-height: 140%;
           @include font-md-avenir-medium;
@@ -110,15 +121,15 @@
     .RowOne {
       flex-basis: 23%;
       justify-content: flex-start;
-      >span {
+      > span {
         margin-right: 30px !important ;
         min-width: 76px;
       }
     }
     .RowFive {
       flex-basis: 18%;
-      >span {
-        margin-right: 8px !important; 
+      > span {
+        margin-right: 8px !important;
       }
     }
     .RowSeven {
@@ -130,14 +141,17 @@
         margin-right: 24px;
       }
     }
-    .RowTwo, .RowThree, .RowFour, .RowSix {
+    .RowTwo,
+    .RowThree,
+    .RowFour,
+    .RowSix {
       flex-basis: 13%;
     }
     .RowSix {
-      >span {
-        margin-right: 8px !important; 
+      > span {
+        margin-right: 8px !important;
       }
-      color: #16E6EF;
+      color: #16e6ef;
     }
     .RspnsvEarn {
       display: none;
@@ -149,7 +163,7 @@
 }
 @media screen and (max-width: 1280px) {
   .MainListBox {
-    margin-bottom: -20px ;
+    margin-bottom: -20px;
     .MainListHead {
       display: none;
     }
@@ -164,7 +178,7 @@
         .RspnsvIcnSpn {
           display: flex;
           align-items: center;
-          >span {
+          > span {
             margin-right: 8px !important;
           }
         }
@@ -179,7 +193,7 @@
       .RowOne {
         flex-basis: 100% !important;
         margin-top: 0px;
-        >span {
+        > span {
           margin-right: 26px !important ;
         }
       }
@@ -195,11 +209,14 @@
           @include font-md-avenir-regular;
           font-size: 14px;
           line-height: 140%;
-          color: #91A5A6;
+          color: #91a5a6;
           margin-bottom: 0;
         }
       }
-      .RowTwo , .RowThree, .RowFour, .RowFive{
+      .RowTwo,
+      .RowThree,
+      .RowFour,
+      .RowFive {
         flex-direction: column;
         justify-content: flex-start;
         align-items: flex-start;
@@ -213,26 +230,24 @@
         margin-top: 0;
       }
       .RspnsvEarn {
-        >span {
-          margin-right: 8px !important; 
+        > span {
+          margin-right: 8px !important;
         }
-        color: #16E6EF;
+        color: #16e6ef;
       }
     }
     .DefSpan {
       font-size: 14px;
       line-height: 140%;
-      color: #91A5A6;
+      color: #91a5a6;
       @include font-md-avenir-regular;
       margin-left: 12px;
     }
   }
   .MainListList {
     margin-top: 20px;
-    
   }
 }
-
 
 @media screen and (max-width: 736px) {
   .MainListList {
@@ -244,13 +259,13 @@
     .RowLabel {
       justify-content: flex-start;
       flex-basis: 50% !important;
-      margin-top: 26px !important; 
-        h6 {
-          font-size: 16px !important;
-        }
+      margin-top: 26px !important;
+      h6 {
+        font-size: 16px !important;
+      }
     }
     .RowOne {
-      >span {
+      > span {
         margin-right: 20px !important ;
       }
       margin-top: 0 !important;
