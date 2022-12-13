@@ -12,7 +12,10 @@ import { SOCIAL_ART_WEBSOCKET_URL } from '@/constants/url';
 
 export default function SocialArtSc() {
   const socialArtSocket = new WebSocket(SOCIAL_ART_WEBSOCKET_URL);
-
+  const [view, setView] = React.useState(true);
+  const handlelistView = (val: boolean) => {
+    setView(val);
+  };
   return (
     <div className={`${styles.container}`}>
       <Container className={`${styles.settingsContainer} asinnerContainer`}>
@@ -26,24 +29,27 @@ export default function SocialArtSc() {
             <FeedTab socket={socialArtSocket} />
           </Tab>
           <Tab eventKey="profile" title="My Active SNFTs">
-            <MintedPostsTab />
+            <MintedPostsTab getval={handlelistView} />
             <div className="tab-content" id="nav-tabContent">
-              <div
-                className="tab-pane fade show active"
-                id="nav-home"
-                role="tabpanel"
-                aria-labelledby="nav-home-tab"
-              >
-                <MintedTabInBox socket={socialArtSocket} />
-              </div>
-              <div
-                className="tab-pane fade"
-                id="nav-profile"
-                role="tabpanel"
-                aria-labelledby="nav-profile-tab"
-              >
-                <MintedTabList />
-              </div>
+              {view ? (
+                <div
+                  className="tab-pane fade show active"
+                  id="nav-home"
+                  role="tabpanel"
+                  aria-labelledby="nav-home-tab"
+                >
+                  <MintedTabInBox socket={socialArtSocket} />
+                </div>
+              ) : (
+                <div
+                  className="tab-pane fade show active"
+                  id="nav-profile"
+                  role="tabpanel"
+                  aria-labelledby="nav-profile-tab"
+                >
+                  <MintedTabList />
+                </div>
+              )}
             </div>
           </Tab>
         </Tabs>
