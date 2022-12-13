@@ -75,21 +75,21 @@ export default function MintedTabInBox({ socket }: MintedTabInBoxProps) {
     setLoading(true);
     const { message, error } = await updatePostMint(data);
     setLoading(false);
-    push('/sell-nft')
+    push('/sell-nft');
     if (error) {
-        setLoading(false);
-        toast.error(
-          CustomToastWithLink({
-            icon: ErrorIcon,
-            title: 'Error',
-            description: message,
-            time: 'Now',
-          })
-        );
-        return;
+      setLoading(false);
+      toast.error(
+        CustomToastWithLink({
+          icon: ErrorIcon,
+          title: 'Error',
+          description: message,
+          time: 'Now',
+        })
+      );
+      return;
     }
     setLoading(false);
-  }
+  };
 
   return loading ? (
     <div className={styles.loadingContainer}>
@@ -121,7 +121,7 @@ export default function MintedTabInBox({ socket }: MintedTabInBoxProps) {
                       </h2>
                     </div>
                   </div>
-                </div>post
+                </div>
                 <div className={styles.DarkiBoxmiddata}>
                   <div className={styles.DarkiBxFrst}>
                     <div className={styles.DarkiBxhpdata}>
@@ -140,13 +140,26 @@ export default function MintedTabInBox({ socket }: MintedTabInBoxProps) {
                     </div>
                     <div className={styles.DarkiBxhpdata}>
                       <p>Current Tier</p>
-                      <h3>0.24 NAPA</h3> 
+                      <h3>0.24 NAPA</h3>
                     </div>
                   </div>
                 </div>
                 <div className={styles.DarkiBoxbtnlst}>
                   <button className={styles.DarkiBlubtn}>Redeem Tokens</button>
-                  <button onClick={() => handleMintPostUpdate({mintId:post.mintId, postId: post.postId, profileId: profileDetails?.profileId, marketplace_listed: "true"})} className={`${styles.DarkiDarbtn} ${post.status === "0" && styles.disabledSubmitMarketBtn}`} disabled={post.status === "0"}>
+                  <button
+                    onClick={() =>
+                      handleMintPostUpdate({
+                        mintId: post.mintId,
+                        postId: post.postId,
+                        profileId: profileDetails?.profileId,
+                        marketplace_listed: 'true',
+                      })
+                    }
+                    className={`${styles.DarkiDarbtn} ${
+                      post.status === '0' && styles.disabledSubmitMarketBtn
+                    }`}
+                    disabled={post.status === '0'}
+                  >
                     Submit to Marketplace
                   </button>
                 </div>

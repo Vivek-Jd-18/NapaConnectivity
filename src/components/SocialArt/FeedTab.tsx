@@ -1486,22 +1486,6 @@ export default function FeedTab({ socket }: FeedTabProps) {
                               </span>
                             </a>
                           )}
-                          <a
-                            href="javascript:void(0);"
-                            className={styles.BotomLikes}
-                            onClick={() => handlePostAward(post)}
-                          >
-                            <Image
-                              src="/img/reward_icon.svg"
-                              alt=""
-                              width="24px"
-                              height="24px"
-                            />
-                            <span>
-                              {showPostAwardsCount(post.awardsByUsers)}
-                              <b> awards</b>
-                            </span>
-                          </a>
                           {((account == post.accountId &&
                             profileId == post.profileId) ||
                             post.minted == 'true') && (
