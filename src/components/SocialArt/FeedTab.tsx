@@ -126,7 +126,6 @@ export default function FeedTab({ socket }: FeedTabProps) {
   const [likeCommentLoading, setLikeCommentLoading] = React.useState(false);
   const [replyUserName, setReplyUserName] = React.useState('');
   const [replyBoxShow, setReplyBoxShow] = React.useState(false);
-  // const [ReplyComment, setReplyComment] = React.useState(true);
   const onPeopleDelete = useCallback(
     (tagIndex: number) => {
       setPeopleTags(peopleTags.filter((_, i) => i !== tagIndex));
@@ -459,12 +458,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
     formData.append('videoCaption', caption);
     formData.append('accountId', account);
     formData.append('profileId', profileId);
-    formData.append('minted', '');
-    formData.append(
-      'userImage',
-      profileDetails.avatar ? profileDetails.avatar : ''
-    );
-    formData.append('userName', profileDetails.profileName);
+    formData.append('minted', 'false');
     setLoading(true);
     const { error, message } = await createNewPost(formData);
     if (error) {
