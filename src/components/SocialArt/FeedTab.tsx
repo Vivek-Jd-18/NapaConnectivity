@@ -45,6 +45,7 @@ import {
   likeComment,
 } from '@/services/CommentApi';
 import { createReport } from '@/services/ReportApi';
+import MyTimer from '../LiverTimer/Mytimer';
 
 type FeedTabProps = {
   socket: WebSocket;
@@ -694,6 +695,8 @@ export default function FeedTab({ socket }: FeedTabProps) {
     }
     setCommentText('');
     setNewCommentLoading(false);
+    // setReplyUserName('');
+    // setParentCommentId('');
   };
 
   const handleCreateReport = async (commentId: string, message: string) => {
@@ -751,24 +754,47 @@ export default function FeedTab({ socket }: FeedTabProps) {
   };
 
   const handleNewComment = (comment: any) => {
-    setPostComments((prevState) => {
-      if (prevState) {
-        const data = [...prevState, comment];
-        const filteredPost = data.filter(
-          (v, i, a) =>
-            a.findIndex(
-              //@ts-ignore
-              (v2) => v2?.commentId === v?.commentId
-            ) === i
+    if (comment.parentCommentId) {
+      setPostComments((prev) => {
+        const temp = prev ? prev : [];
+        const commentIndex = temp.findIndex(
+          (c) => c.commentId == comment.parentCommentId
         );
-        return [...filteredPost];
-      } else {
-        let data = [];
-        // @ts-ignore
-        data.push(post);
-        return [...data];
-      }
-    });
+        if (commentIndex > -1) {
+          //@ts-ignore
+          if (temp[commentIndex].replies.length) {
+            //@ts-ignore
+            temp[commentIndex].replies = [
+              //@ts-ignore
+              ...temp[commentIndex].replies,
+              comment,
+            ];
+          } else {
+            temp[comment.parentCommentId]?.replies.push(comment);
+          }
+        }
+        return temp;
+      });
+    } else {
+      setPostComments((prevState) => {
+        if (prevState) {
+          const data = [...prevState, comment];
+          const filteredPost = data.filter(
+            (v, i, a) =>
+              a.findIndex(
+                //@ts-ignore
+                (v2) => v2?.commentId === v?.commentId
+              ) === i
+          );
+          return [...filteredPost];
+        } else {
+          let data = [];
+          // @ts-ignore
+          data.push(post);
+          return [...data];
+        }
+      });
+    }
   };
 
   useEffect(() => {
@@ -784,11 +810,56 @@ export default function FeedTab({ socket }: FeedTabProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const handleUpdatedCommentLikes = (
+    comment: any,
+    parentCommentId: string,
+    commentId: string
+  ) => {
+    console.log('comment', comment);
+
+    setPostComments((prev) => {
+      const temp = prev ? prev : [];
+
+      if (parentCommentId) {
+        const commentIndex = temp.findIndex(
+          (c) =>
+            c.parentCommentId == parentCommentId && c.commentId == commentId
+        );
+        if (commentIndex > -1) {
+          //@ts-ignore
+          temp[commentIndex] = comment;
+          // //@ts-ignore
+          // if (temp[commentIndex].likedByUsers) {
+          //   //@ts-ignore
+          //   temp[commentIndex].likedByUsers = [
+          //     //@ts-ignore
+          //     ...temp[commentIndex].likedByUsers,
+          //     comment,
+          //   ];
+          // } else {
+          //   //@ts-ignore
+          //   temp[commentIndex].likedByUsers.push(temp[commentIndex].replies);
+          // }
+        }
+      } else {
+        const commentIndex = temp.findIndex((c) => c.commentId == commentId);
+        if (commentIndex > -1) {
+          temp[commentIndex] = comment;
+        }
+      }
+      return temp;
+    });
+  };
+
   useEffect(() => {
     socket.addEventListener('message', ({ data }) => {
       const response = JSON.parse(data);
       if (response?.event === 'likeComment') {
-        setPostComments(response?.comments);
+        handleUpdatedCommentLikes(
+          response?.comments,
+          response?.parentCommentId,
+          response?.commentId
+        );
       }
     });
     return () => {
@@ -805,6 +876,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
   };
 
   const handleLikeComment = async (
+    parentCommentId: string,
     commentId: string,
     postId: string,
     likedByUsers: string
@@ -851,6 +923,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
     }
     setLikeCommentLoading(true);
     const { error, message } = await likeComment(
+      parentCommentId,
       commentId,
       postId,
       updatedLikesJson
@@ -1294,7 +1367,14 @@ export default function FeedTab({ socket }: FeedTabProps) {
                             }}
                           ></div>
                           <div className={styles.UserRightTxt}>
-                            <h4>10:22:12</h4>
+                            <MyTimer
+                              // @ts-ignore
+                              expiryTimestamp={new Date(
+                                post.mintedTimeStamp
+                              ).setHours(
+                                new Date(post.mintedTimeStamp).getHours() + 12
+                              )}
+                            />
                             <p>Live Post!</p>
                           </div>
                         </div>
@@ -1372,6 +1452,40 @@ export default function FeedTab({ socket }: FeedTabProps) {
                               <b> comments</b>
                             </span>
                           </button>
+                          {post.minted == 'true' ? (
+                            <a
+                              href="javascript:void(0);"
+                              className={`${styles.BotomLikes} ${styles.disableBtn}`}
+                            >
+                              <Image
+                                src="/img/reward_icon.svg"
+                                alt=""
+                                width="24px"
+                                height="24px"
+                              />
+                              <span>
+                                {showPostAwardsCount(post.awardsByUsers)}
+                                <b> awards</b>
+                              </span>
+                            </a>
+                          ) : (
+                            <a
+                              href="javascript:void(0);"
+                              className={styles.BotomLikes}
+                              onClick={() => handlePostAward(post)}
+                            >
+                              <Image
+                                src="/img/reward_icon.svg"
+                                alt=""
+                                width="24px"
+                                height="24px"
+                              />
+                              <span>
+                                {showPostAwardsCount(post.awardsByUsers)}
+                                <b> awards</b>
+                              </span>
+                            </a>
+                          )}
                           <a
                             href="javascript:void(0);"
                             className={styles.BotomLikes}
@@ -1468,6 +1582,8 @@ export default function FeedTab({ socket }: FeedTabProps) {
                                 });
                                 setCommentText('');
                                 setReplyBoxShow(false);
+                                setReplyUserName('');
+                                setParentCommentId('');
                               }}
                             >
                               <Image
@@ -1495,96 +1611,218 @@ export default function FeedTab({ socket }: FeedTabProps) {
                                       postComments?.length > 0 ? (
                                         postComments?.map((comment, index) => {
                                           return (
-                                            <div
-                                              key={`comment ${index}`}
-                                              className={styles.FisrtComBox}
-                                            >
+                                            <>
                                               <div
-                                                className={styles.HadComment}
+                                                key={`comment ${index}`}
+                                                className={styles.FisrtComBox}
                                               >
-                                                <a
-                                                  href="#"
-                                                  className={styles.leftIcontxt}
-                                                >
-                                                  <Image
-                                                    src={`${
-                                                      comment?.avatar
-                                                        ? comment.avatar
-                                                        : '/img/comment02.svg'
-                                                    }`}
-                                                    alt=""
-                                                    width="28px"
-                                                    height="28px"
-                                                  />
-                                                  <h4>
-                                                    {comment?.profileName}
-                                                  </h4>
-                                                </a>
-                                                <p>
-                                                  {moment(comment?.createdAt)
-                                                    .startOf('seconds')
-                                                    .fromNow()}
-                                                </p>
-                                              </div>
-                                              <div
-                                                className={styles.btmcomment}
-                                              >
-                                                <p>{comment?.commentText}</p>
                                                 <div
-                                                  className={
-                                                    styles.LikeReplyTxt
-                                                  }
+                                                  className={styles.HadComment}
                                                 >
                                                   <a
-                                                    onClick={() =>
-                                                      !likeCommentLoading &&
-                                                      handleLikeComment(
-                                                        comment?.commentId,
-                                                        comment?.postId,
-                                                        comment?.likedByUsers
-                                                      )
+                                                    href="#"
+                                                    className={
+                                                      styles.leftIcontxt
                                                     }
                                                   >
-                                                    {`${
-                                                      getLikeByCommentId(
-                                                        comment?.likedByUsers
-                                                      ) > 0
-                                                        ? getLikeByCommentId(
-                                                            comment?.likedByUsers
-                                                          )
-                                                        : ''
-                                                    }` +
-                                                      `${
+                                                    <Image
+                                                      src={`${
+                                                        comment?.avatar
+                                                          ? comment.avatar
+                                                          : '/img/comment02.svg'
+                                                      }`}
+                                                      alt=""
+                                                      width="28px"
+                                                      height="28px"
+                                                    />
+                                                    <h4>
+                                                      {comment?.profileName}
+                                                    </h4>
+                                                  </a>
+                                                  <p>
+                                                    {moment(comment?.createdAt)
+                                                      .startOf('seconds')
+                                                      .fromNow()}
+                                                  </p>
+                                                </div>
+                                                <div
+                                                  className={styles.btmcomment}
+                                                >
+                                                  <p>{comment?.commentText}</p>
+                                                  <div
+                                                    className={
+                                                      styles.LikeReplyTxt
+                                                    }
+                                                  >
+                                                    <a
+                                                      onClick={() =>
+                                                        !likeCommentLoading &&
+                                                        handleLikeComment(
+                                                          '',
+                                                          comment?.commentId,
+                                                          comment?.postId,
+                                                          comment?.likedByUsers
+                                                        )
+                                                      }
+                                                    >
+                                                      {`${
                                                         getLikeByCommentId(
                                                           comment?.likedByUsers
-                                                        ) > 1
-                                                          ? ' Likes'
-                                                          : ' Like'
-                                                      }`}
-                                                  </a>
-                                                  <a
-                                                    onClick={() =>
-                                                      handleReplyComment(
-                                                        comment.profileName,
-                                                        comment?.commentId
-                                                      )
-                                                    }
-                                                  >
-                                                    Reply
-                                                  </a>
-                                                  <a
-                                                    onClick={() =>
-                                                      handleCreateReport(
-                                                        comment.commentId,
-                                                        comment.commentText
-                                                      )
-                                                    }
-                                                  >
-                                                    Report
-                                                  </a>
+                                                        ) > 0
+                                                          ? getLikeByCommentId(
+                                                              comment?.likedByUsers
+                                                            )
+                                                          : ''
+                                                      }` +
+                                                        `${
+                                                          getLikeByCommentId(
+                                                            comment?.likedByUsers
+                                                          ) > 1
+                                                            ? ' Likes'
+                                                            : ' Like'
+                                                        }`}
+                                                    </a>
+                                                    <a
+                                                      onClick={() =>
+                                                        handleReplyComment(
+                                                          comment?.profileName,
+                                                          comment?.commentId
+                                                        )
+                                                      }
+                                                    >
+                                                      {comment?.replies
+                                                        ?.length > 0 &&
+                                                        comment?.replies
+                                                          ?.length}
+                                                      {comment?.replies
+                                                        ?.length > 1
+                                                        ? ' Replies'
+                                                        : 'Reply'}
+                                                    </a>
+                                                    <a
+                                                      onClick={() =>
+                                                        handleCreateReport(
+                                                          comment?.commentId,
+                                                          comment?.commentText
+                                                        )
+                                                      }
+                                                    >
+                                                      Report
+                                                    </a>
+                                                  </div>
                                                 </div>
                                               </div>
-                                            </div>
+                                              {replyBoxShow &&
+                                                comment.commentId ==
+                                                  parentCommentId &&
+                                                comment.replies &&
+                                                comment.replies.map((c) => {
+                                                  return (
+                                                    <div
+                                                      style={{
+                                                        paddingLeft: '2.5rem',
+                                                      }}
+                                                      key={`c ${index}`}
+                                                      className={
+                                                        styles.FisrtComBox
+                                                      }
+                                                    >
+                                                      <div
+                                                        className={
+                                                          styles.HadComment
+                                                        }
+                                                      >
+                                                        <a
+                                                          href="#"
+                                                          className={
+                                                            styles.leftIcontxt
+                                                          }
+                                                        >
+                                                          <Image
+                                                            src={`${
+                                                              c?.avatar
+                                                                ? c.avatar
+                                                                : '/img/comment02.svg'
+                                                            }`}
+                                                            alt=""
+                                                            width="28px"
+                                                            height="28px"
+                                                          />
+                                                          <h4>
+                                                            {c?.profileName}
+                                                          </h4>
+                                                        </a>
+                                                        <p>
+                                                          {moment(c?.createdAt)
+                                                            .startOf('seconds')
+                                                            .fromNow()}
+                                                        </p>
+                                                      </div>
+                                                      <div
+                                                        className={
+                                                          styles.btmcomment
+                                                        }
+                                                      >
+                                                        <p>{c?.commentText}</p>
+                                                        <div
+                                                          className={
+                                                            styles.LikeReplyTxt
+                                                          }
+                                                        >
+                                                          <a
+                                                            onClick={() =>
+                                                              !likeCommentLoading &&
+                                                              handleLikeComment(
+                                                                c.parentCommentId,
+                                                                c?.commentId,
+                                                                c?.postId,
+                                                                c?.likedByUsers
+                                                              )
+                                                            }
+                                                          >
+                                                            {`${
+                                                              getLikeByCommentId(
+                                                                c?.likedByUsers
+                                                              ) > 0
+                                                                ? getLikeByCommentId(
+                                                                    c?.likedByUsers
+                                                                  )
+                                                                : ''
+                                                            }` +
+                                                              `${
+                                                                getLikeByCommentId(
+                                                                  c?.likedByUsers
+                                                                ) > 1
+                                                                  ? ' Likes'
+                                                                  : ' Like'
+                                                              }`}
+                                                          </a>
+                                                          <a
+                                                            onClick={() =>
+                                                              handleReplyComment(
+                                                                c?.profileName,
+                                                                c?.parentCommentId
+                                                              )
+                                                            }
+                                                          >
+                                                            Reply
+                                                          </a>
+                                                          <a
+                                                            onClick={() =>
+                                                              handleCreateReport(
+                                                                c?.commentId,
+                                                                c?.commentText
+                                                              )
+                                                            }
+                                                          >
+                                                            Report
+                                                          </a>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  );
+                                                })}
+                                            </>
                                           );
                                         })
                                       ) : (
@@ -1600,9 +1838,11 @@ export default function FeedTab({ socket }: FeedTabProps) {
                                         </div>
                                         <div>
                                           <Image
-                                            onClick={() =>
-                                              setReplyBoxShow(false)
-                                            }
+                                            onClick={() => {
+                                              setReplyBoxShow(false);
+                                              setReplyUserName('');
+                                              setParentCommentId('');
+                                            }}
                                             src={ReplyExit}
                                             width={10}
                                             height={10}

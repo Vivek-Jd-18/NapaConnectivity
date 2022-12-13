@@ -49,6 +49,7 @@ export type Post = {
   likedByUsers: string | null;
   commentByUser: string | null;
   awardsByUsers: string;
+  mintedTimeStamp: string;
 };
 
 export type activePost = {
