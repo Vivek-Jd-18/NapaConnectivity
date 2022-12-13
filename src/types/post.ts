@@ -44,10 +44,10 @@ export type Post = {
   minted: string;
   createdAt: string;
   updatedAt: string;
-  userName: string;
-  userImage: string;
+  profileName: string;
+  avatar: string;
   likedByUsers: string | null;
-  commentByUsers: string | null;
+  commentByUser: string | null;
   awardsByUsers: string;
 };
 

@@ -51,12 +51,12 @@ export const getAllPosts = async () => {
   }
 };
 
-export const likePost = async (userId: string, postId: string) => {
+export const likePost = async (profileId: string, postId: string) => {
   try {
     const p = await axios.post<{}, AxiosResponse<GetLikePostResponse>>(
       `${SOCIAL_ART_API_URL}/user/social/video/like`,
       {
-        userId,
+        profileId,
         postId,
       }
     );
@@ -74,12 +74,12 @@ export const likePost = async (userId: string, postId: string) => {
   }
 };
 
-export const awardPost = async (userId: string, postId: string) => {
+export const awardPost = async (profileId: string, postId: string) => {
   try {
     const p = await axios.post<{}, AxiosResponse<GetAwardPostResponse>>(
       `${SOCIAL_ART_API_URL}/user/social/video/award`,
       {
-        userId,
+        profileId,
         postId,
       }
     );

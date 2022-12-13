@@ -896,7 +896,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
   };
 
   const handleLikePost = async (
-    userId: string,
+    profileId: string,
     postId: string,
     likedByUsers: string | null
   ) => {
@@ -913,7 +913,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
       temp[postIndex].likedByUsers = String(existResults);
       setPosts(temp);
     }
-    await likePost(userId, postId);
+    await likePost(profileId, postId);
   };
 
   const handleNewPostLikeCount = (likes: string, postId: string) => {
@@ -948,7 +948,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
         const postIndex = temp.findIndex((p) => p.postId == postId);
         if (postIndex > -1) {
           //@ts-ignore
-          temp[postIndex].commentByUsers = commentByUsers;
+          temp[postIndex].commentByUser = commentByUsers;
         }
       }
       return temp;
@@ -1269,8 +1269,8 @@ export default function FeedTab({ socket }: FeedTabProps) {
                           <div className={styles.HadUserImage}>
                             <Image
                               src={
-                                post.userImage
-                                  ? post.userImage
+                                post.avatar
+                                  ? post.avatar
                                   : '/assets/images/img_avatar.png'
                               }
                               alt=""
@@ -1278,7 +1278,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
                               height="40px"
                             />
                             <div className={styles.UserNameTxt}>
-                              <h4>{post.userName}</h4>
+                              <h4>{post.profileName}</h4>
                               <p>
                                 {moment(post.createdAt).format('DD MMM YYYY')}
                               </p>
@@ -1368,7 +1368,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
                               height="24px"
                             />
                             <span>
-                              {showPostCommentCount(post.commentByUsers)}
+                              {showPostCommentCount(post.commentByUser)}
                               <b> comments</b>
                             </span>
                           </button>
@@ -1485,7 +1485,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
                               ) : (
                                 <>
                                   <h1>
-                                    {showPostCommentCount(post.commentByUsers) +
+                                    {showPostCommentCount(post.commentByUser) +
                                       ' '}
                                     comments
                                   </h1>
