@@ -597,7 +597,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
       profileId: post.profileId,
       title: mintDetails.title,
       network: '',
-      status: '',
+      status: '0',
       SNFTTitle: mintDetails.title,
       SNFTCollection: mintDetails.collection,
       SNFTDescription: mintDetails.description,

@@ -1,14 +1,21 @@
 import React, { useEffect } from 'react';
 import styles from './MintedTabList.module.scss';
 import Image from 'next/image';
-import { getAllMintedPosts } from '@/services/MintApi';
+import { getAllMintedPosts, updatePostMint } from '@/services/MintApi';
 import { MintPost } from '@/types/mint';
 import { FadeLoader } from 'react-spinners';
 import moment from 'moment';
+import { useRouter } from 'next/router';
+import { toast } from 'react-toastify';
+import { CustomToastWithLink } from '../CustomToast/CustomToast';
+import { ErrorIcon } from '../assets';
+import useProfile from '@/hooks/useProfile';
 
 export default function MintedTabList() {
   const [loading, setLoading] = React.useState(false);
   const [mintPosts, setMintPosts] = React.useState<MintPost[] | null>(null);
+  const { push } = useRouter();
+  const { profileDetails } = useProfile();
 
   const handleGetMintPosts = async () => {
     setLoading(true);
@@ -26,6 +33,26 @@ export default function MintedTabList() {
     const endTime = new Date(date + 12 * 3600 * 1000);
     return moment(endTime).format('h:mm:ss a');
   };
+
+  const handleMintPostUpdate = async (data: any) => {
+    setLoading(true);
+    const { message, error } = await updatePostMint(data);
+    setLoading(false);
+    push('/sell-nft')
+    if (error) {
+        setLoading(false);
+        toast.error(
+          CustomToastWithLink({
+            icon: ErrorIcon,
+            title: 'Error',
+            description: message,
+            time: 'Now',
+          })
+        );
+        return;
+    }
+    setLoading(false);
+  }
 
   return (
     <div className={styles.MainListBox}>
@@ -154,7 +181,7 @@ export default function MintedTabList() {
                           </a>
                         </li>
                         <li>
-                          <a className="dropdown-item" href="#">
+                          <a className={`${post.status === "0" && styles.disabled} dropdown-item`} href="#" onClick={() => handleMintPostUpdate({mintId:post.mintId, postId: post.postId, profileId: profileDetails?.profileId, marketplace_listed: "true"})}>
                             <Image
                               src="/img/send_icon.png"
                               alt=""
