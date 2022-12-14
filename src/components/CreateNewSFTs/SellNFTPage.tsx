@@ -33,7 +33,7 @@ export default function SellNFTPage() {
                             </div>
                         </div>
                         <div className={styles.typePrnt}>
-                            <h1 className={styles.DefHed}>Price</h1>
+                            <h1 className={styles.DefHed}>Price & Collection</h1>
                             <div className={styles.MixInputPool}>
                                 <div className="selectprntnft">
                                     <p>Collection</p>
