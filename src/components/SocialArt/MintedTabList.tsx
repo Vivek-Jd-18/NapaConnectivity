@@ -228,7 +228,7 @@ export default function MintedTabList() {
                               width={20}
                               height={20}
                             />
-                            Submit to NFT Marketplace
+                            Submit to Marketplace
                           </a>
                           <a
                             className={`dropdown-item`}

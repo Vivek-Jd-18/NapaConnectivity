@@ -595,7 +595,7 @@ export default function WatchlistRanking() {
                                 <li>
                                     <a className="dropdown-item" href="#">
                                         <Image src="/img/send_icon.png" alt="" width={20} height={20} />
-                                        Submit to NFT Marketplace    
+                                        Submit to Marketplace    
                                     </a>
                                 </li>
                             </ul>
