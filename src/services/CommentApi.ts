@@ -46,7 +46,6 @@ export const getAllComments = async (postId: string) => {
 };
 
 export const likeComment = async (
-  parentCommentId: string,
   commentId: string,
   postId: string,
   likedByUsers: string
@@ -55,7 +54,6 @@ export const likeComment = async (
     const p = await axios.patch<{}, AxiosResponse<GetCommentsResponse>>(
       `${SOCIAL_ART_API_URL}/user/social/comment/${postId}/like`,
       {
-        parentCommentId,
         commentId,
         likedByUsers,
       }

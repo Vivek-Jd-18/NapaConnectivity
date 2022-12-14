@@ -622,6 +622,10 @@ export default function FeedTab({ socket }: FeedTabProps) {
     if (isFound != -1) {
       //@ts-ignore
       temp[isFound].minted = 'true';
+      //@ts-ignore
+      temp[isFound].mintedTimeStamp = moment(new Date()).format(
+        'DD-MMM-YYYY HH:mm:ss'
+      );
     }
     setPosts(temp);
     if (error) {
@@ -765,9 +769,9 @@ export default function FeedTab({ socket }: FeedTabProps) {
           if (temp[commentIndex].replies.length) {
             //@ts-ignore
             temp[commentIndex].replies = [
+              comment,
               //@ts-ignore
               ...temp[commentIndex].replies,
-              comment,
             ];
           } else {
             temp[comment.parentCommentId]?.replies.push(comment);
@@ -778,7 +782,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
     } else {
       setPostComments((prevState) => {
         if (prevState) {
-          const data = [...prevState, comment];
+          const data = [comment, ...prevState];
           const filteredPost = data.filter(
             (v, i, a) =>
               a.findIndex(
@@ -810,56 +814,15 @@ export default function FeedTab({ socket }: FeedTabProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleUpdatedCommentLikes = (
-    comment: any,
-    parentCommentId: string,
-    commentId: string
-  ) => {
-    console.log('comment', comment);
-
-    setPostComments((prev) => {
-      const temp = prev ? prev : [];
-
-      if (parentCommentId) {
-        const commentIndex = temp.findIndex(
-          (c) =>
-            c.parentCommentId == parentCommentId && c.commentId == commentId
-        );
-        if (commentIndex > -1) {
-          //@ts-ignore
-          temp[commentIndex] = comment;
-          // //@ts-ignore
-          // if (temp[commentIndex].likedByUsers) {
-          //   //@ts-ignore
-          //   temp[commentIndex].likedByUsers = [
-          //     //@ts-ignore
-          //     ...temp[commentIndex].likedByUsers,
-          //     comment,
-          //   ];
-          // } else {
-          //   //@ts-ignore
-          //   temp[commentIndex].likedByUsers.push(temp[commentIndex].replies);
-          // }
-        }
-      } else {
-        const commentIndex = temp.findIndex((c) => c.commentId == commentId);
-        if (commentIndex > -1) {
-          temp[commentIndex] = comment;
-        }
-      }
-      return temp;
-    });
+  const handleUpdatedCommentLikes = (comment: any) => {
+    setPostComments(comment);
   };
 
   useEffect(() => {
     socket.addEventListener('message', ({ data }) => {
       const response = JSON.parse(data);
       if (response?.event === 'likeComment') {
-        handleUpdatedCommentLikes(
-          response?.comments,
-          response?.parentCommentId,
-          response?.commentId
-        );
+        handleUpdatedCommentLikes(response?.comments);
       }
     });
     return () => {
@@ -876,7 +839,6 @@ export default function FeedTab({ socket }: FeedTabProps) {
   };
 
   const handleLikeComment = async (
-    parentCommentId: string,
     commentId: string,
     postId: string,
     likedByUsers: string
@@ -923,7 +885,6 @@ export default function FeedTab({ socket }: FeedTabProps) {
     }
     setLikeCommentLoading(true);
     const { error, message } = await likeComment(
-      parentCommentId,
       commentId,
       postId,
       updatedLikesJson
@@ -1040,14 +1001,16 @@ export default function FeedTab({ socket }: FeedTabProps) {
     };
   }, []);
 
-  const handleGetUpdatedPost = (postId: string) => {
+  const handleGetUpdatedPost = (post: Post, postId: string) => {
+    console.log('post', post);
+
     setPosts((prev) => {
       const temp = prev ? [...prev] : [];
       if (prev) {
         const postIndex = temp.findIndex((p) => p.postId == postId);
         if (postIndex > -1) {
           //@ts-ignore
-          temp[postIndex].minted = 'true';
+          temp[postIndex] = post;
         }
       }
       return temp;
@@ -1058,7 +1021,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
     socket.addEventListener('message', ({ data }) => {
       const response = JSON.parse(data);
       if (response?.event === 'updated-post') {
-        handleGetUpdatedPost(response?.postId);
+        handleGetUpdatedPost(response?.post, response?.postId);
       }
     });
     return () => {
@@ -1642,7 +1605,6 @@ export default function FeedTab({ socket }: FeedTabProps) {
                                                       onClick={() =>
                                                         !likeCommentLoading &&
                                                         handleLikeComment(
-                                                          '',
                                                           comment?.commentId,
                                                           comment?.postId,
                                                           comment?.likedByUsers
@@ -1681,7 +1643,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
                                                       {comment?.replies
                                                         ?.length > 1
                                                         ? ' Replies'
-                                                        : 'Reply'}
+                                                        : ' Reply'}
                                                     </a>
                                                     <a
                                                       onClick={() =>
@@ -1757,7 +1719,6 @@ export default function FeedTab({ socket }: FeedTabProps) {
                                                             onClick={() =>
                                                               !likeCommentLoading &&
                                                               handleLikeComment(
-                                                                c.parentCommentId,
                                                                 c?.commentId,
                                                                 c?.postId,
                                                                 c?.likedByUsers
