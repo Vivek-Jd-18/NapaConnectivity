@@ -91,6 +91,29 @@ export default function MintedTabInBox({ socket }: MintedTabInBoxProps) {
     setLoading(false);
   };
 
+
+  const Status = (statusVal: string) => {
+    if (statusVal == '0') {
+      return 'Live Post';
+    }
+    if (statusVal == '1') {
+      return 'Sent for Review';
+    }
+    if (statusVal == '2') {
+      return 'In Progress';
+    }
+    if (statusVal == '3') {
+      return 'Pending Further Review';
+    }
+    if (statusVal == '4') {
+      return 'Approved'
+    }
+    if(statusVal == '5'){
+      return 'Declined'
+    }
+    return;
+  };
+
   return loading ? (
     <div className={styles.loadingContainer}>
       <FadeLoader color="#ffffff" />
@@ -142,6 +165,10 @@ export default function MintedTabInBox({ socket }: MintedTabInBoxProps) {
                       <p>Current Tier</p>
                       <h3>0.24 NAPA</h3>
                     </div>
+                    <div className={styles.DarkiBxhpdata}>
+                      <p>Status</p>
+                      <h3>{Status(post.status)}</h3>
+                    </div>
                   </div>
                 </div>
                 <div className={styles.DarkiBoxbtnlst}>
@@ -162,6 +189,7 @@ export default function MintedTabInBox({ socket }: MintedTabInBoxProps) {
                   >
                     Submit to Marketplace
                   </button>
+                  <button className={styles.DarkiDarbtn}>Ask Dave</button>
                 </div>
               </div>
             </div>

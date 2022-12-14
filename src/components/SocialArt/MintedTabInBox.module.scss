@@ -118,8 +118,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
-  max-width: 490px;
+  width: 560px;
   margin-top: 29px;
   .DarkiBxFrst {
     display: flex;
@@ -146,7 +145,7 @@
     h3 {
       margin-bottom: 0;
       @include font-md-avenir-medium;
-      font-size: 14px;
+      font-size: 13px;
       line-height: 140%;
       color: #ffffff;
     }
@@ -165,6 +164,9 @@
     line-height: 140%;
     text-align: center;
     transition: all 0.2s ease-out;
+    @media (max-width : 1600px) {
+      font-size: 13px;
+    }
   }
   .DarkiBlubtn {
     background: #16e6ef;
@@ -177,6 +179,7 @@
   }
   .DarkiDarbtn {
     color: #16e6ef;
+    margin-right: 12px;
     background: transparent;
     &:hover {
       background: #16e6ef;
@@ -205,6 +208,9 @@
       font-size: 16px;
     }
   }
+  .DarkiBoxmiddata{
+    width: 600px;
+  }
 }
 @media screen and (max-width: 736px) {
   .DarinHedh {
@@ -227,7 +233,6 @@
   .DarkiBoxbtnlst {
     flex-direction: column;
     .DarkiBlubtn {
-      margin-right: 0;
       margin-bottom: 12px;
     }
   }

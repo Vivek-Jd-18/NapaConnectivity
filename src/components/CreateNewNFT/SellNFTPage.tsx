@@ -97,12 +97,14 @@ export default function SellNFTPage() {
               </div>
               <div className={styles.typePrnt}>
                 <h1 className={styles.DefHed}>Duration</h1>
+                <div className={styles.Sections}>
                 <Select
                   options={Dayoptions}
                   className={`select_pernt select_pernt_v2 ${styles.options}`}
                   placeholder="Select Duration"
                   classNamePrefix="cntrslct"
-                />
+                  />
+                  </div>
               </div>
               <div className={`${styles.typePrnt} typePrntaj`}>
                 <h1 className={styles.DefHed}>Other Options</h1>

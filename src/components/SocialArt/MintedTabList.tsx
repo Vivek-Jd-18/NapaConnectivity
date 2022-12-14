@@ -38,22 +38,42 @@ export default function MintedTabList() {
     setLoading(true);
     const { message, error } = await updatePostMint(data);
     setLoading(false);
-    push('/sell-nft')
+    push('/sell-nft');
     if (error) {
-        setLoading(false);
-        toast.error(
-          CustomToastWithLink({
-            icon: ErrorIcon,
-            title: 'Error',
-            description: message,
-            time: 'Now',
-          })
-        );
-        return;
+      setLoading(false);
+      toast.error(
+        CustomToastWithLink({
+          icon: ErrorIcon,
+          title: 'Error',
+          description: message,
+          time: 'Now',
+        })
+      );
+      return;
     }
     setLoading(false);
-  }
-
+  };
+  const Status = (statusVal: string) => {
+    if (statusVal == '0') {
+      return 'Live Post';
+    }
+    if (statusVal == '1') {
+      return 'Sent for Review';
+    }
+    if (statusVal == '2') {
+      return 'In Progress';
+    }
+    if (statusVal == '3') {
+      return 'Pending Further Review';
+    }
+    if (statusVal == '4') {
+      return 'Approved'
+    }
+    if(statusVal == '5'){
+      return 'Declined'
+    }
+    return;
+  };
   return (
     <div className={styles.MainListBox}>
       <div className={styles.MainListHead}>
@@ -67,6 +87,7 @@ export default function MintedTabList() {
         <div className={`${styles.HeadLabel} ${styles.LabelFour}`}>
           Live End Date
         </div>
+        <div className={`${styles.HeadLabel} ${styles.LabelSix}`}>Status</div>
         <div className={`${styles.HeadLabel} ${styles.LabelFive}`}>
           Current Tier
         </div>
@@ -127,6 +148,12 @@ export default function MintedTabList() {
                       </div>
                       <h6>{getEndDate(post.timeMinted)}</h6>
                     </div>
+                    <div className={`${styles.RowLabel} ${styles.RowFour}`}>
+                      <div className={styles.Rspnsvh4}>
+                        <h4>Status</h4>
+                      </div>
+                      <h6>{Status(post.status)}</h6>
+                    </div>
                     <div className={`${styles.RowLabel} ${styles.RowFive}`}>
                       <div className={styles.Rspnsvh4}>
                         <h4>Current Tier</h4>
@@ -181,7 +208,20 @@ export default function MintedTabList() {
                           </a>
                         </li>
                         <li>
-                          <a className={`${post.status === "0" && styles.disabled} dropdown-item`} href="#" onClick={() => handleMintPostUpdate({mintId:post.mintId, postId: post.postId, profileId: profileDetails?.profileId, marketplace_listed: "true"})}>
+                          <a
+                            className={`${
+                              post.status === '0' && styles.disabled
+                            } dropdown-item`}
+                            href="#"
+                            onClick={() =>
+                              handleMintPostUpdate({
+                                mintId: post.mintId,
+                                postId: post.postId,
+                                profileId: profileDetails?.profileId,
+                                marketplace_listed: 'true',
+                              })
+                            }
+                          >
                             <Image
                               src="/img/send_icon.png"
                               alt=""
@@ -189,6 +229,26 @@ export default function MintedTabList() {
                               height={20}
                             />
                             Submit to NFT Marketplace
+                          </a>
+                          <a
+                            className={`dropdown-item`}
+                            href="#"
+                            onClick={() =>
+                              handleMintPostUpdate({
+                                mintId: post.mintId,
+                                postId: post.postId,
+                                profileId: profileDetails?.profileId,
+                                marketplace_listed: 'true',
+                              })
+                            }
+                          >
+                            <Image
+                              src="/img/send_icon.png"
+                              alt=""
+                              width={20}
+                              height={20}
+                            />
+                            Ask Dave
                           </a>
                         </li>
                       </ul>
