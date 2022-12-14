@@ -1336,15 +1336,19 @@ export default function FeedTab({ socket }: FeedTabProps) {
                             }}
                           ></div>
                           <div className={styles.UserRightTxt}>
-                            <MyTimer
-                              // @ts-ignore
-                              expiryTimestamp={new Date(
-                                post.mintedTimeStamp
-                              ).setHours(
-                                new Date(post.mintedTimeStamp).getHours() + 12
-                              )}
-                            />
-                            <p>Live Post!</p>
+                            {post.minted == 'true' ? (
+                              <MyTimer
+                                // @ts-ignore
+                                expiryTimestamp={new Date(
+                                  post.mintedTimeStamp
+                                ).setHours(
+                                  new Date(post.mintedTimeStamp).getHours() + 12
+                                )}
+                                postId={post.postId}
+                              />
+                            ) : (
+                              'Not minted yet'
+                            )}
                           </div>
                         </div>
                         <div className={styles.MdlImage}>

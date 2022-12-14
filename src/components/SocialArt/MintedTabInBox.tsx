@@ -65,6 +65,31 @@ export default function MintedTabInBox({ socket }: MintedTabInBoxProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const handleMintPostStatusUpdate = (mintId: string, mint: MintPost) => {
+    setMintPosts((prevState) => {
+      const temp = prevState ? prevState : [];
+      const index = temp.findIndex((m) => m.mintId == mintId);
+      if (index > -1) {
+        temp[index] = mint;
+      }
+      return temp;
+    });
+  };
+
+  useEffect(() => {
+    // @ts-ignore
+    socket.addEventListener('message', ({ data }) => {
+      const response = JSON.parse(data);
+      if (response?.event === 'mint-post-status-update') {
+        handleMintPostStatusUpdate(response?.mintId, response?.mint);
+      }
+    });
+    return () => {
+      socket.removeEventListener('message', () => {});
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const getEndDate = (timestamp: any) => {
     const date = new Date(timestamp).getTime();
     const endTime = new Date(date + 12 * 3600 * 1000);
@@ -91,7 +116,6 @@ export default function MintedTabInBox({ socket }: MintedTabInBoxProps) {
     setLoading(false);
   };
 
-
   const Status = (statusVal: string) => {
     if (statusVal == '0') {
       return 'Live Post';
@@ -106,10 +130,10 @@ export default function MintedTabInBox({ socket }: MintedTabInBoxProps) {
       return 'Pending Further Review';
     }
     if (statusVal == '4') {
-      return 'Approved'
+      return 'Approved';
     }
-    if(statusVal == '5'){
-      return 'Declined'
+    if (statusVal == '5') {
+      return 'Declined';
     }
     return;
   };

@@ -45,13 +45,26 @@ export const getAllMintedPosts = async () => {
   }
 };
 
-export const updatePostMint = async ({ postId, profileId, mintId, martketplace_listed }: {postId: string,profileId: string, mintId: string, martketplace_listed: string  }) => {
+export const updatePostMint = async ({
+  postId,
+  profileId,
+  mintId,
+  marketplace_listed,
+}: {
+  postId: string;
+  profileId: string;
+  mintId: string;
+  marketplace_listed: string;
+}) => {
   try {
-    const p = await axios.post<{}, AxiosResponse<''>>(`${SOCIAL_ART_API_URL}/user/social/mint/update/status/${mintId}`, {
-      profileId,
-      postId,
-      martketplace_listed
-    });
+    const p = await axios.post<{}, AxiosResponse<''>>(
+      `${SOCIAL_ART_API_URL}/user/social/mint/update/${mintId}`,
+      {
+        profileId,
+        postId,
+        marketplace_listed,
+      }
+    );
     return {
       data: p.data,
       message: '',
@@ -64,14 +77,17 @@ export const updatePostMint = async ({ postId, profileId, mintId, martketplace_l
       message: error?.response?.data?.message,
     };
   }
-}
+};
 
-export const updateMintPostStatus = async (mintId: string, status: string) => {
+export const updateMintPostStatus = async (postId: string, status: string) => {
   try {
-    const p = await axios.post<{}, AxiosResponse<''>>(`${SOCIAL_ART_API_URL}/user/social/mint/update/status/${mintId}`, {
-      mintId,
-      status
-    });
+    const p = await axios.post<{}, AxiosResponse<''>>(
+      `${SOCIAL_ART_API_URL}/user/social/mint/update/status/${postId}`,
+      {
+        postId,
+        status,
+      }
+    );
     return {
       data: p.data,
       message: '',
@@ -84,4 +100,4 @@ export const updateMintPostStatus = async (mintId: string, status: string) => {
       message: error?.response?.data?.message,
     };
   }
-}
+};
