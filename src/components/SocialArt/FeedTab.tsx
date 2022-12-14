@@ -934,7 +934,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
     postId: string,
     likedByUsers: string | null
   ) => {
-    let existResults = likedByUsers ? likedByUsers.split(',') : [];
+    let existResults = likedByUsers ? likedByUsers?.split(',') : [];
     if (existResults.includes(profileId)) {
       existResults = existResults.filter((id) => profileId != id);
     } else {
@@ -1123,6 +1123,12 @@ export default function FeedTab({ socket }: FeedTabProps) {
 
   const currentUtcOffset: number = moment().utcOffset();
   console.log('currentUtcOffset', currentUtcOffset);
+
+  const isYouLiked = (likedByUsers: string | null) => {
+    const users = likedByUsers ? likedByUsers?.split(',') : [];
+    return users.includes(profileId) ? true : false;
+  };
+
   return (
     <div className={styles.MainListBox}>
       <div className={styles.parent}>
@@ -1365,7 +1371,18 @@ export default function FeedTab({ socket }: FeedTabProps) {
                         <div className={styles.BotomTxt}>
                           <a
                             href="javascript:void(0);"
-                            className={styles.BotomLikes}
+                            className={
+                              isYouLiked(post.likedByUsers)
+                                ? `${styles.BotomLikes} ${styles.active}`
+                                : `${styles.BotomLikes}`
+                            }
+                            onClick={() =>
+                              handleLikePost(
+                                profileId,
+                                post.postId,
+                                post.likedByUsers
+                              )
+                            }
                           >
                             <Image
                               src="/img/heart_icon.svg"
@@ -1373,15 +1390,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
                               width="24px"
                               height="24px"
                             />
-                            <span
-                              onClick={() =>
-                                handleLikePost(
-                                  post.profileId,
-                                  post.postId,
-                                  post.likedByUsers
-                                )
-                              }
-                            >
+                            <span>
                               {showPostLikeCount(post.likedByUsers)}
                               <b> likes</b>
                             </span>
