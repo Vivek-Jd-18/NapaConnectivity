@@ -794,7 +794,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
         } else {
           let data = [];
           // @ts-ignore
-          data.push(post);
+          data.push(comment);
           return [...data];
         }
       });
