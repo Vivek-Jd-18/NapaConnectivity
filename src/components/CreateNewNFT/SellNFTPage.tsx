@@ -42,7 +42,6 @@ export default function SellNFTPage() {
 
   return (
     <>
-<<<<<<< Updated upstream
       <div className={styles.SellNFTPage}>
         <div className={styles.CustomGridContainer}>
           <div className={styles.CustomGrid}>
@@ -71,7 +70,7 @@ export default function SellNFTPage() {
                 </div>
               </div>
               <div className={styles.typePrnt}>
-                <h1 className={styles.DefHed}>Price</h1>
+                <h1 className={styles.DefHed}>Price & Collection</h1>
                 <div className={styles.MixInputPool}>
                   <div
                     className={`${styles.SelectPrntNftSell} selectprntnft selectprntnftssell`}
@@ -94,110 +93,18 @@ export default function SellNFTPage() {
                       onChange={(e) => setName(e.target.value)}
                     />
                   </div>
-=======
-        <div className={styles.SellNFTPage}>
-            <div className={styles.CustomGridContainer}>
-                <div className={styles.CustomGrid}>
-                    <div className={styles.TypeSidCont}>
-                        <div className={styles.typePrnt}>
-                            <h1 className={styles.DefHed}>Type</h1>
-                            <div className={styles.dublBtn}>
-                                <button className={styles.Active}><Image src="/img/dollar_icon.svg" alt="" width={20} height={20} /> Fixed Price</button>
-                                <button><Image src="/img/time_icon.svg" alt="" width={20} height={20} />Time Auction</button>
-                            </div>
-                        </div>
-                        <div className={styles.typePrnt}>
-                            <h1 className={styles.DefHed}>Price & Collection</h1>
-                            <div className={styles.MixInputPool}>
-                                <div className={`${styles.SelectPrntNftSell} selectprntnft selectprntnftssell`}>
-                                    <p className={styles.ClctionTxt}>Collection</p>
-                                    <Select
-                                        options={optionsone}
-                                        // menuIsOpen={true}
-                                        className="select_pernt select_pernt_v2"
-                                        placeholder="Bring Me the Open Space "
-                                        classNamePrefix="cntrslct"
-                                    />
-                                </div>
-                                <div className={`${styles.FrstInput} frstinputsell`}>
-                                    <Input
-                                        value={name}
-                                        type="text"
-                                        placeholder="0.48"
-                                        label="Amount"
-                                        onChange={(e) => setName(e.target.value)}
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                        <div className={styles.typePrnt}>
-                            <h1 className={styles.DefHed}>Duration</h1>
-                            <div className="datepickerBox datepickerBoxpool">
-                                <DateRangePicker
-                                    initialSettings={{
-                                    singleDatePicker: true,
-                                    showDropdowns: true,
-                                    maxYear: parseInt(moment().format('YYYY'), 10),
-                                    opens: 'left',
-                                    }}
-                                >
-                                    <input
-                                    type="text"
-                                    className="form-control"
-                                    placeholder="End Date"
-                                    />
-                                </DateRangePicker>
-                                <div className="datepiker_img_bx">
-                                    <img src='/img/calendar_icon.png' alt='' />
-                                </div>
-                            </div>
-                        </div>
-                        <div className={`${styles.typePrnt} typePrntaj`}>
-                            <h1 className={styles.DefHed}>Other Options</h1>
-                            <div className={`${styles.switchpool} switchpool`}>
-                                <div className="form-check form-switch">
-                                    <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
-                                    <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Creator Fees</label>
-                                </div>
-                            </div>
-                            <div className={`${styles.switchpool} switchpool`}>
-                                <div className="form-check form-switch">
-                                    <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
-                                    <div className={styles.flexBox}>
-                                        <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Reserve for specific buyer</label>
-                                        <p>This item can be purchased as soon as it{"'"}s listed</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className={`${styles.typePrnt} `}>
-                            <h1 className={styles.DefHed}>Fees</h1>
-                            <div className={styles.flexFees}>
-                                <p>Service</p>
-                                <h6>2.5%</h6>
-                            </div>
-                            <div className={styles.flexFees}>
-                                <p>Creator</p>
-                                <h6>0%</h6>
-                            </div>
-                        </div>
-                        <div className={`${styles.typePrnt} `}>
-                            <Link href="/"><a className={styles.linkPrnt}>Complete Listing</a></Link>
-                        </div>
-                    </div>
->>>>>>> Stashed changes
                 </div>
               </div>
               <div className={styles.typePrnt}>
                 <h1 className={styles.DefHed}>Duration</h1>
                 <div className={styles.Sections}>
-                <Select
-                  options={Dayoptions}
-                  className={`select_pernt select_pernt_v2 ${styles.options}`}
-                  placeholder="Select Duration"
-                  classNamePrefix="cntrslct"
+                  <Select
+                    options={Dayoptions}
+                    className={`select_pernt select_pernt_v2 ${styles.options}`}
+                    placeholder="Select Duration"
+                    classNamePrefix="cntrslct"
                   />
-                  </div>
+                </div>
               </div>
               <div className={`${styles.typePrnt} typePrntaj`}>
                 <h1 className={styles.DefHed}>Other Options</h1>
