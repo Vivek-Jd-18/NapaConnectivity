@@ -65,7 +65,7 @@ export default function SellNFTPage() {
                       width={20}
                       height={20}
                     />
-                    Time Auction
+                    Time Based Auction
                   </button>
                 </div>
               </div>
@@ -96,7 +96,7 @@ export default function SellNFTPage() {
                 </div>
               </div>
               <div className={styles.typePrnt}>
-                <h1 className={styles.DefHed}>Duration</h1>
+                <h1 className={styles.DefHed}>Duration (Days)</h1>
                 <div className={styles.Sections}>
                   <Select
                     options={Dayoptions}
@@ -149,16 +149,16 @@ export default function SellNFTPage() {
               <div className={`${styles.typePrnt} `}>
                 <h1 className={styles.DefHed}>Fees</h1>
                 <div className={styles.flexFees}>
-                  <p>Service</p>
-                  <h6>2.5%</h6>
+                  <p>Transaction Fee</p>
+                  <h6>(insert fees)</h6>
                 </div>
                 <div className={styles.flexFees}>
-                  <p>Creator</p>
-                  <h6>0%</h6>
+                  <p>Creator Fee</p>
+                  <h6> (set when collection is created)</h6>
                 </div>
               </div>
               <div className={`${styles.typePrnt} `}>
-                <Link href="/">
+                <Link href="/marketplacenot m">
                   <a className={styles.linkPrnt}>Complete Listing</a>
                 </Link>
               </div>
