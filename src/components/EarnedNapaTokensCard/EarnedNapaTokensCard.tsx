@@ -41,7 +41,7 @@ const EarnedNapaTokensCard: NextPage<ActiveMintedPostsCardProps> = () => {
       <h3 className={styles.subtitle}>Amount Locked</h3>
       <div className={styles.amountContainer}>
         <Image src="/img/napa_icon_card.png" alt="" width={56} height={56} />
-        <span className={styles.amount}>12.35 </span>
+        <span className={styles.amount}>(tokens earned TD)</span>
         <span className={styles.napa}>NAPA</span>
       </div>
       <div className={styles.lockDurationContainer}>

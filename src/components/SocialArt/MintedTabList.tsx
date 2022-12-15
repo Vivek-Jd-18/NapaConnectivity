@@ -203,7 +203,7 @@ export default function MintedTabList({
                                 width={20}
                                 height={20}
                               />
-                              Ask Dave
+                              Ask DAVE
                             </a>
                           </li>
                         </ul>

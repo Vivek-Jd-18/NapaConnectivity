@@ -82,7 +82,7 @@ export default function MintedTabInBox({
                       </div>
                       <div className={styles.DarkiBxhpdata}>
                         <p>Current Tier</p>
-                        <h3>0.24 NAPA</h3>
+                        <h3>(tiers 1 -10)</h3>
                       </div>
                       <div className={styles.DarkiBxhpdata}>
                         <p>Status</p>
@@ -110,7 +110,7 @@ export default function MintedTabInBox({
                     >
                       Submit to Marketplace
                     </button>
-                    <button className={styles.DarkiDarbtn}>Ask Dave</button>
+                    <button className={styles.DarkiDarbtn}>Ask DAVE</button>
                   </div>
                   <div className={styles.timer}>
                     <MyTimer
