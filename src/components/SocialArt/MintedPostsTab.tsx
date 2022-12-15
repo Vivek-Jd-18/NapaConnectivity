@@ -56,7 +56,7 @@ export default function MintedPostsTab(props: any) {
               <div className={styles.RangeSlider}>
                 <TooltipSlider
                   range
-                  min={0}
+                  min={1}
                   max={10}
                   defaultValue={[3, 8]}
                   tipFormatter={(value: number) => `${value}`}
@@ -104,8 +104,12 @@ export default function MintedPostsTab(props: any) {
               aria-controls="nav-home"
               aria-selected="true"
             >
-              <Image src="/img/grid4_icon.svg" alt="" width={24} height={24} 
-              onClick={() => props.getval(true)}
+              <Image
+                src="/img/grid4_icon.svg"
+                alt=""
+                width={24}
+                height={24}
+                onClick={() => props.getval(true)}
               />
             </button>
             <button
@@ -118,8 +122,12 @@ export default function MintedPostsTab(props: any) {
               aria-controls="nav-profile"
               aria-selected="false"
             >
-              <Image src="/img/rows_icon.svg" alt="" width={24} height={24} 
-              onClick={() => props.getval(false)}
+              <Image
+                src="/img/rows_icon.svg"
+                alt=""
+                width={24}
+                height={24}
+                onClick={() => props.getval(false)}
               />
             </button>
           </div>
@@ -175,7 +183,7 @@ export default function MintedPostsTab(props: any) {
           <div className={styles.RangeSlider}>
             <TooltipSlider
               range
-              min={0}
+              min={1}
               max={10}
               defaultValue={[3, 8]}
               tipFormatter={(value: any) => `${value}`}

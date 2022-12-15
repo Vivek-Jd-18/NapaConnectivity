@@ -59,8 +59,24 @@
 }
 .DarknesBox {
   background: rgba(145, 165, 166, 0.1);
+  position: relative;
   width: 100%;
   padding: 32px;
+  .timer {
+    display: inline-block;
+    position: absolute;
+    margin-right: 32px;
+    top: 0;
+    margin-top: 32px;
+    right: 0;
+    h4 {
+      font-size: 13px;
+      margin: 0;
+    }
+    p {
+      font-size: 13px;
+    }
+  }
   .DarkimgBox {
     display: flex;
     align-items: center;
@@ -117,7 +133,6 @@
 .DarkiBoxmiddata {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   width: 560px;
   margin-top: 29px;
   .DarkiBxFrst {
@@ -164,7 +179,7 @@
     line-height: 140%;
     text-align: center;
     transition: all 0.2s ease-out;
-    @media (max-width : 1600px) {
+    @media (max-width: 1600px) {
       font-size: 13px;
     }
   }
@@ -202,13 +217,17 @@
 @media screen and (max-width: 1280px) {
   .DarknesBox {
     padding: 18px;
+    .timer {
+      margin-top: 18px;
+      margin-right: 18px;
+    }
   }
   .DarkiBoxbtnlst {
     button {
       font-size: 16px;
     }
   }
-  .DarkiBoxmiddata{
+  .DarkiBoxmiddata {
     width: 600px;
   }
 }

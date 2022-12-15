@@ -244,6 +244,11 @@
       }
       .UserRightTxt {
         text-align: right;
+        .notLive {
+          color: $links;
+          @include font-md-avenir-medium;
+          font-size: 14px;
+        }
       }
       .UserNameTxt {
         margin-left: 10px;
@@ -723,11 +728,12 @@
         padding: 0 40px;
         .messageContainer {
           @include font-md-avenir-regular;
-          width: 500px;
+          width: auto;
           max-height: 30px;
           overflow: auto;
           white-space: nowrap;
           text-align: center;
+          margin-left: 0rem;
         }
       }
       .BotomTxt {
@@ -770,6 +776,17 @@
     .rightBox {
       .UserComment {
         height: 352px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 450px) {
+  .MainTabBox {
+    .leftBox {
+      .HadUserText {
+        .messageContainer {
+          width: 160px;
+        }
       }
     }
   }
