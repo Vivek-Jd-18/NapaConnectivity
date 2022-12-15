@@ -29,7 +29,7 @@ export default function SellNFTPage() {
                             <h1 className={styles.DefHed}>Type</h1>
                             <div className={styles.dublBtn}>
                                 <button className={styles.Active}><Image src="/img/dollar_icon.svg" alt="" width={20} height={20} /> Fixed Price</button>
-                                <button><Image src="/img/time_icon.svg" alt="" width={20} height={20} />Time Auction</button>
+                                <button><Image src="/img/time_icon.svg" alt="" width={20} height={20} />Time Based Auction</button>
                             </div>
                         </div>
                         <div className={styles.typePrnt}>

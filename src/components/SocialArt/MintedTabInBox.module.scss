@@ -59,8 +59,24 @@
 }
 .DarknesBox {
   background: rgba(145, 165, 166, 0.1);
+  position:  relative;
   width: 100%;
   padding: 32px;
+  .timer{
+    display: inline-block;
+    position: absolute;
+    margin-right: 32px;
+    top: 0;
+    margin-top: 32px;
+    right: 0;
+    h4{
+      font-size: 13px;
+      margin: 0;
+    }
+    p{
+      font-size: 13px;
+    }
+  }
   .DarkimgBox {
     display: flex;
     align-items: center;
@@ -202,6 +218,10 @@
 @media screen and (max-width: 1280px) {
   .DarknesBox {
     padding: 18px;
+    .timer{
+      margin-top: 18px;
+      margin-right: 18px;
+    }
   }
   .DarkiBoxbtnlst {
     button {

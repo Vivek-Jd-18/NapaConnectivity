@@ -10,6 +10,7 @@ import { toast } from 'react-toastify';
 import { CustomToastWithLink } from '../CustomToast/CustomToast';
 import { ErrorIcon } from '../assets';
 import useProfile from '@/hooks/useProfile';
+import MyTimer from '../LiverTimer/Mytimer';
 
 export default function MintedTabList() {
   const [loading, setLoading] = React.useState(false);
@@ -79,6 +80,9 @@ export default function MintedTabList() {
       <div className={styles.MainListHead}>
         <div className={`${styles.HeadLabel} ${styles.LabelOne}`}>Name</div>
         <div className={`${styles.HeadLabel} ${styles.LabelTwo}`}>
+          Live Time Remaining
+        </div>
+        <div className={`${styles.HeadLabel} ${styles.LabelTwo}`}>
           Date Minted
         </div>
         <div className={`${styles.HeadLabel} ${styles.LabelThree}`}>
@@ -129,6 +133,17 @@ export default function MintedTabList() {
                           <span className={styles.DefSpan}>Earned</span>
                         </div>
                       </div>
+                    </div>
+                    <div className={`${styles.RowLabel} ${styles.RowThree}`}>
+                      <div className={styles.Rspnsvh4}>
+                        <h4>Live Post Remaining</h4>
+                      </div>
+                      <MyTimer
+                       // @ts-ignore
+                      expiryTimestamp={new Date(post.timeMinted).setHours(
+                        new Date(post.timeMinted).getHours() + 12
+                      )}
+                    />
                     </div>
                     <div className={`${styles.RowLabel} ${styles.RowTwo}`}>
                       <div className={styles.Rspnsvh4}>
@@ -228,19 +243,10 @@ export default function MintedTabList() {
                               width={20}
                               height={20}
                             />
-                            Submit to NFT Marketplace
+                            Submit to Marketplace
                           </a>
                           <a
                             className={`dropdown-item`}
-                            href="#"
-                            onClick={() =>
-                              handleMintPostUpdate({
-                                mintId: post.mintId,
-                                postId: post.postId,
-                                profileId: profileDetails?.profileId,
-                                marketplace_listed: 'true',
-                              })
-                            }
                           >
                             <Image
                               src="/img/send_icon.png"
