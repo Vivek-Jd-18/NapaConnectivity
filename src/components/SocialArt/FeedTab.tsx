@@ -1428,7 +1428,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
                               <b> comments</b>
                             </span>
                           </button>
-                          {post.minted == 'true' ? (
+                          {post.minted == 'false' ? (
                             <a
                               href="javascript:void(0);"
                               className={`${styles.BotomLikes} ${styles.disableBtn}`}
