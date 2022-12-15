@@ -41,7 +41,7 @@ const ActiveMintedPostsCard: NextPage<ActiveMintedPostsCardProps> = () => {
           <h1 className={styles.title}>Illusions of Darkness</h1>
           <div className={styles.innerRightSideContainer}>
             <Image src="/img/napa_icon_card.png" alt="" width={24} height={24} />
-            <span className={styles.subtitle}>12.35 NAPA <span>Earned</span></span>
+            <span className={styles.subtitle}>(total tokens earned TD) <span>Earned</span></span>
           </div>
         </div>
       </div>

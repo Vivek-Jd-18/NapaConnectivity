@@ -164,7 +164,7 @@ export default function MintedTabInBox({ socket }: MintedTabInBoxProps) {
                         height={24}
                       />
                       <h2>
-                        12.35 NAPA<span>Earned</span>
+                        (total tokens earned TD)<span>Earned</span>
                       </h2>
                     </div>
                   </div>
@@ -213,7 +213,7 @@ export default function MintedTabInBox({ socket }: MintedTabInBoxProps) {
                   >
                     Submit to Marketplace
                   </button>
-                  <button className={styles.DarkiDarbtn}>Ask Dave</button>
+                  <button className={styles.DarkiDarbtn}>Ask DAVE</button>
                 </div>
               </div>
             </div>

@@ -1347,7 +1347,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
                                 postId={post.postId}
                               />
                             ) : (
-                              'Not Live'
+                              'Not Minted'
                             )}
                           </div>
                         </div>
