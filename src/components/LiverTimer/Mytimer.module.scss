@@ -1,0 +1,26 @@
+@import '../../../styles/abstracts/variable.module';
+@import '../../../styles/abstracts/mixins.module';
+
+.timerContainer {
+  h4,
+  p {
+    @include font-md-avenir-medium;
+    font-size: 14px;
+  }
+}
+
+.now {
+  color: #34df0e !important;
+}
+
+.sixHoursLeft {
+  color: #eadd12 !important;
+}
+
+.oneHourLeft {
+  color: #f64d12 !important;
+}
+
+.timerEnded {
+  color: $links !important;
+}
