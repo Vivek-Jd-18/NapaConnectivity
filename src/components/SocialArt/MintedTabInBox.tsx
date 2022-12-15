@@ -34,7 +34,7 @@ export default function MintedTabInBox({
     <div className={styles.MintedScrollMiddle}>
       <div className={styles.MintedMiiddle}>
         {mintPosts
-          .filter((p) => p.profileId == profileDetails.profileId)
+          .filter((p) => p?.profileId == profileDetails?.profileId)
           .map((post, index) => {
             return (
               <div key={`post ${index}`} className={styles.LeftMiddle}>

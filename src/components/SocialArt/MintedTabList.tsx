@@ -22,7 +22,7 @@ export default function MintedTabList({
   Status,
   handleMintPostUpdate,
 }: MintedTabListProps) {
-  const { profileDetails, profileId } = useProfile();
+  const { profileDetails } = useProfile();
 
   return (
     <div className={styles.MainListBox}>
@@ -58,7 +58,7 @@ export default function MintedTabList({
           ) : mintPosts?.length ? (
             <div className={`${styles.RowLabel} ${styles.RowTwo}`}>
               {mintPosts
-                .filter((p) => p.profileId == profileId)
+                .filter((p) => p?.profileId == profileDetails?.profileId)
                 .map((post, index) => {
                   return (
                     <div className={styles.MainListListInn} key={index}>
