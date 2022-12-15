@@ -96,3 +96,25 @@ export const awardPost = async (profileId: string, postId: string) => {
     };
   }
 };
+
+export const sendPostNotification = async (postId: string) => {
+  try {
+    const p = await axios.post<{}, AxiosResponse<''>>(
+      `${SOCIAL_ART_API_URL}/user/social/video/notification`,
+      {
+        postId,
+      }
+    );
+    return {
+      data: p.data,
+      message: '',
+      error: false,
+    };
+  } catch (error) {
+    return {
+      data: null,
+      error: true,
+      message: error?.response?.data?.message,
+    };
+  }
+};
