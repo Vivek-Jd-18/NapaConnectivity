@@ -2,6 +2,7 @@
 @import '../../../styles/abstracts/mixins.module';
 
 .timerContainer {
+  text-align: right;
   h4,
   p {
     @include font-md-avenir-medium;
