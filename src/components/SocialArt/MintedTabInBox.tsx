@@ -12,6 +12,7 @@ import { toast } from 'react-toastify';
 import { CustomToastWithLink } from '../CustomToast/CustomToast';
 import { ErrorIcon } from '../assets';
 import { useRouter } from 'next/router';
+import MyTimer from '../LiverTimer/Mytimer';
 
 type MintedTabInBoxProps = {
   socket: WebSocket;
@@ -214,6 +215,14 @@ export default function MintedTabInBox({ socket }: MintedTabInBoxProps) {
                     Submit to Marketplace
                   </button>
                   <button className={styles.DarkiDarbtn}>Ask Dave</button>
+                  </div>
+                  <div className={styles.timer}>
+                    <MyTimer
+                     // @ts-ignore
+                      expiryTimestamp={new Date(post.timeMinted).setHours(
+                        new Date(post.timeMinted).getHours() + 12
+                      )}
+                    />
                 </div>
               </div>
             </div>
