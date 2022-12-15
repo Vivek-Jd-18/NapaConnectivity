@@ -4,7 +4,6 @@ import Image from 'next/image';
 import { MintPost } from '@/types/mint';
 import { FadeLoader } from 'react-spinners';
 import moment from 'moment';
-import useProfile from '@/hooks/useProfile';
 import MyTimer from '../LiverTimer/Mytimer';
 
 type MintedTabListProps = {
@@ -13,6 +12,7 @@ type MintedTabListProps = {
   getEndDate: CallableFunction;
   Status: CallableFunction;
   handleMintPostUpdate: CallableFunction;
+  profileId: string;
 };
 
 export default function MintedTabList({
@@ -21,9 +21,8 @@ export default function MintedTabList({
   getEndDate,
   Status,
   handleMintPostUpdate,
+  profileId,
 }: MintedTabListProps) {
-  const { profileDetails } = useProfile();
-
   return (
     <div className={styles.MainListBox}>
       <div className={styles.MainListHead}>
@@ -58,7 +57,7 @@ export default function MintedTabList({
           ) : mintPosts?.length ? (
             <div className={`${styles.RowLabel} ${styles.RowTwo}`}>
               {mintPosts
-                .filter((p) => p?.profileId == profileDetails?.profileId)
+                .filter((p) => p?.profileId == profileId)
                 .map((post, index) => {
                   return (
                     <div className={styles.MainListListInn} key={index}>
@@ -183,7 +182,7 @@ export default function MintedTabList({
                                 handleMintPostUpdate({
                                   mintId: post.mintId,
                                   postId: post.postId,
-                                  profileId: profileDetails?.profileId,
+                                  profileId: profileId,
                                   marketplace_listed: 'true',
                                 })
                               }

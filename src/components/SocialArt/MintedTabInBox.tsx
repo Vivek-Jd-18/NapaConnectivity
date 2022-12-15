@@ -5,7 +5,6 @@ import Image from 'next/image';
 import 'rc-slider/assets/index.css';
 import { FadeLoader } from 'react-spinners';
 import moment from 'moment';
-import useProfile from '@/hooks/useProfile';
 import MyTimer from '../LiverTimer/Mytimer';
 import { MintPost } from '@/types/mint';
 
@@ -15,6 +14,7 @@ type MintedTabInBoxProps = {
   getEndDate: CallableFunction;
   Status: CallableFunction;
   handleMintPostUpdate: CallableFunction;
+  profileId: string;
 };
 
 export default function MintedTabInBox({
@@ -23,9 +23,9 @@ export default function MintedTabInBox({
   Status,
   getEndDate,
   handleMintPostUpdate,
+  profileId,
 }: MintedTabInBoxProps) {
-  const { profileDetails } = useProfile();
-
+  console.log('posted', mintPosts);
   return loading ? (
     <div className={styles.loadingContainer}>
       <FadeLoader color="#ffffff" />
@@ -34,7 +34,7 @@ export default function MintedTabInBox({
     <div className={styles.MintedScrollMiddle}>
       <div className={styles.MintedMiiddle}>
         {mintPosts
-          .filter((p) => p?.profileId == profileDetails?.profileId)
+          .filter((p) => p?.profileId === profileId)
           .map((post, index) => {
             return (
               <div key={`post ${index}`} className={styles.LeftMiddle}>
@@ -99,7 +99,7 @@ export default function MintedTabInBox({
                         handleMintPostUpdate({
                           mintId: post.mintId,
                           postId: post.postId,
-                          profileId: profileDetails?.profileId,
+                          profileId: profileId,
                           marketplace_listed: 'true',
                         })
                       }

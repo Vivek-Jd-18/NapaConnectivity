@@ -16,9 +16,11 @@ import moment from 'moment';
 import { toast } from 'react-toastify';
 import { CustomToastWithLink } from '../CustomToast/CustomToast';
 import { ErrorIcon } from '../assets';
+import useProfile from '@/hooks/useProfile';
 
 export default function SocialArtSc() {
   const socialArtSocket = new WebSocket(SOCIAL_ART_WEBSOCKET_URL);
+  const { profileId } = useProfile();
   const [view, setView] = React.useState(true);
   const handlelistView = (val: boolean) => {
     setView(val);
@@ -157,6 +159,7 @@ export default function SocialArtSc() {
                     getEndDate={getEndDate}
                     Status={Status}
                     handleMintPostUpdate={handleMintPostUpdate}
+                    profileId={profileId}
                   />
                 </div>
               ) : (
@@ -168,6 +171,7 @@ export default function SocialArtSc() {
                 >
                   <MintedTabList
                     loading={loading}
+                    profileId={profileId}
                     mintPosts={mintPosts}
                     getEndDate={getEndDate}
                     Status={Status}
