@@ -780,3 +780,14 @@
     }
   }
 }
+@media screen and (max-width: 450px) {
+  .MainTabBox {
+    .leftBox {
+      .HadUserText {
+        .messageContainer {
+          width: 160px;
+        }
+      }
+    }
+  }
+}

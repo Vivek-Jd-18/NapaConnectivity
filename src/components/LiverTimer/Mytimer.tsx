@@ -5,13 +5,13 @@ import styles from './Mytimer.module.scss';
 
 type MyTimerProps = {
   expiryTimestamp: Date;
-  postId: string;
+  postId?: string;
 };
 
 function MyTimer({ expiryTimestamp, postId }: MyTimerProps) {
   const { seconds, minutes, hours, isRunning } = useTimer({
     expiryTimestamp,
-    onExpire: async () => await updateMintPostStatus(postId, '1'),
+    onExpire: async () => postId && (await updateMintPostStatus(postId, '1')),
   });
 
   return (
