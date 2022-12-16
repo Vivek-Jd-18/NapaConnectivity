@@ -1129,6 +1129,23 @@ export default function FeedTab({ socket }: FeedTabProps) {
     return users.includes(profileId) ? true : false;
   };
 
+  const isTimerExpired = (timestamp: any) => {
+    const postTime = moment(timestamp).add(12, 'hours').format();
+    const countDownTime = new Date(postTime).getTime();
+    const duration = countDownTime - new Date().getTime();
+    if (duration < 0) {
+      toast.error(
+        CustomToastWithLink({
+          icon: ErrorIcon,
+          title: 'Post Time Expired',
+          description: 'You can not give awards to expired posts',
+          time: 'Now',
+        })
+      );
+    }
+    return duration < 0 ? true : false;
+  };
+
   return (
     <div className={styles.MainListBox}>
       <div className={styles.parent}>
@@ -1448,7 +1465,11 @@ export default function FeedTab({ socket }: FeedTabProps) {
                             <a
                               href="javascript:void(0);"
                               className={styles.BotomLikes}
-                              onClick={() => handlePostAward(post)}
+                              onClick={() => {
+                                if (!isTimerExpired(post.mintedTimeStamp)) {
+                                  handlePostAward(post);
+                                }
+                              }}
                             >
                               <Image
                                 src="/img/reward_icon.svg"
