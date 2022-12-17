@@ -28,7 +28,7 @@ export default function EarnPage() {
   return (
     <div className={`${styles.container}`}>
       <Container className={`${styles.settingsContainer} asinnerContainer`}>
-        <h1 className={styles.settings}>NAPA Earn</h1>
+        <h1 className={styles.settings}>Staking</h1>
         <div className={styles.tabsContainer}>
           <div className="row align-items-center">
             <div className="col-lg-6 col-lg-6-rspnsv">

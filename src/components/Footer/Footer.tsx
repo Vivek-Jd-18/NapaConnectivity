@@ -50,7 +50,7 @@ const Footer: NextPage<FooterProps> = ({ footerIconShow }) => {
                 <li>Marketplace</li>
               </Link>
               <Link href={'/earn'}>
-                <li>Earn</li>
+                <li>Staking</li>
               </Link>
               <Link href={'/payouts'}>
                 <li>Payouts</li>

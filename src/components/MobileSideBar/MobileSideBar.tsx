@@ -76,7 +76,7 @@ const MobileSideBar: NextPage<MobileSideBarProps> = ({ onClick, isMenu }) => {
                 }}
               >
                 <a className={`${pathname === '/earn' && styles.active}`}>
-                  NAPA Earn
+                  NAPA Staking
                 </a>
               </div>
             </div>

@@ -134,7 +134,7 @@ const Sidebar: NextPage<SidebarProps> = ({ onClick, isMenu }) => {
                 }}
               >
                 <a className={`${pathname === '/earn' && styles.active}`}>
-                  Earn
+                  Staking
                 </a>
               </div>
             </div>
