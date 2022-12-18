@@ -80,7 +80,7 @@ export default function CoBetchingPools() {
                         </div>  
                     </div>                      
                 </div>
-                <div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">dscfavfc</div>
+                <div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">No Active Pools</div>
             </div>
        
     </>
