@@ -72,11 +72,11 @@ export default function CoBetchingPools() {
                     <div className={styles.GridprntAbOvrliy}>
                         <div className={styles.GridprntAb}>
                             <div className={styles.GridprntAbPaading}><CoBatchingPoolsPool /></div>
-                            <div className={styles.GridprntAbPaading}><CoBatchingPoolTwo /></div>
+                            {/* <div className={styles.GridprntAbPaading}><CoBatchingPoolTwo /></div>
                             <div className={styles.GridprntAbPaading}><CoBatchingPoolThree /></div>                        
                             <div className={styles.GridprntAbPaading}><CoBatchingPoolFour /></div>
                             <div className={styles.GridprntAbPaading}><CoBatchingPoolsPool /></div>
-                            <div className={styles.GridprntAbPaading}><CoBatchingPoolTwo /></div>
+                            <div className={styles.GridprntAbPaading}><CoBatchingPoolTwo /></div> */}
                         </div>  
                     </div>                      
                 </div>
