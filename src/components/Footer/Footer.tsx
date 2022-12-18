@@ -218,7 +218,7 @@ const Footer: NextPage<FooterProps> = ({ footerIconShow }) => {
         >
           <div className={styles.footerContainer}>
             <p className={styles.footerBottomText}>
-              ©2022 NAPA Society Limited
+              ©2022 NAPA Society Inc.
             </p>
 
             <div>
