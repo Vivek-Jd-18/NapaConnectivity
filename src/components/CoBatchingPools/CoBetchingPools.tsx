@@ -6,9 +6,9 @@ import 'bootstrap/dist/css/bootstrap.css';
 import moment from 'moment';
 import styles from './CoBetchingPools.module.scss';
 import CoBatchingPoolsPool from '../CoBatchingPool/CoBatchingPool';
-import CoBatchingPoolTwo from '../CoBatchingPoolTwo/CoBatchingPoolTwo';
-import CoBatchingPoolThree from '../CoBatchingPoolThree/CoBatchingPoolThree';
-import CoBatchingPoolFour from '../CoBatchingPoolFour/CoBatchingPoolFour';
+// import CoBatchingPoolTwo from '../CoBatchingPoolTwo/CoBatchingPoolTwo';
+// import CoBatchingPoolThree from '../CoBatchingPoolThree/CoBatchingPoolThree';
+// import CoBatchingPoolFour from '../CoBatchingPoolFour/CoBatchingPoolFour';
 import Link from 'next/link';
 
 export default function CoBetchingPools() {
