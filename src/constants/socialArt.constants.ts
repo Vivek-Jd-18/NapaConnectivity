@@ -17,7 +17,7 @@ export const socialArtMessagesTriggers = [
   {
     trigger: 'Post receives more awards than your posts normally receive',
     message:
-      'This one was a hit! Sell it on NAPA :fireworks:',
+      'This post was a hit! Sell it on NAPA :fireworks:',
   },
   {
     trigger: 'Users posts their first video',
