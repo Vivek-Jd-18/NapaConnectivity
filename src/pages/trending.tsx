@@ -7,6 +7,9 @@ import { WEBSOCKET_URL } from '../constants/url';
 import styles from '../../styles/pages/Home.module.scss';
 
 import TrendingSection from '../components/TrendingSection/Trending';
+import ReactGA from 'react-ga';
+const TRACKING_ID = "G-QDKH4LLBNW"; // OUR_TRACKING_ID
+ReactGA.initialize(TRACKING_ID);
 
 const WhatsTrending: NextPage = () => {
   const socket = new WebSocket(WEBSOCKET_URL);

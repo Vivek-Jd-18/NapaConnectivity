@@ -2,6 +2,9 @@ import Head from 'next/head';
 import styles from '../../styles/pages/Home.module.scss';
 import type { NextPage } from 'next';
 import SocialArtSc from '@/components/SocialArt/SocialArtSc';
+import ReactGA from 'react-ga';
+const TRACKING_ID = "G-QDKH4LLBNW"; // OUR_TRACKING_ID
+ReactGA.initialize(TRACKING_ID);
 
 const SocialArt: NextPage = () => {
 
