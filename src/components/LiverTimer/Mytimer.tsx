@@ -4,12 +4,13 @@ import { useTimer } from 'react-timer-hook';
 import styles from './Mytimer.module.scss';
 
 type MyTimerProps = {
-  expiryTimestamp: Date;
+  expiryTimestamp: number;
   postId?: string;
 };
 
 function MyTimer({ expiryTimestamp, postId }: MyTimerProps) {
-  const { seconds, minutes, hours, isRunning } = useTimer({
+  const { days, seconds, minutes, hours, isRunning } = useTimer({
+    //@ts-ignore
     expiryTimestamp,
     onExpire: async () => postId && (await updateMintPostStatus(postId, '1')),
   });
@@ -20,20 +21,38 @@ function MyTimer({ expiryTimestamp, postId }: MyTimerProps) {
         <div className={styles.timerContainer}>
           <h4
             className={`${
-              hours > 6
+              hours >= 6
                 ? styles.now
-                : hours < 6 && hours > 1
+                : hours < 6 && hours >= 1
                 ? styles.sixHoursLeft
                 : styles.oneHourLeft
             }`}
           >
-            <span>{hours}</span>:<span>{minutes}</span>:<span>{seconds}</span>
+            <span>
+              {days < 10 && 0}
+              {days}
+            </span>
+            :
+            <span>
+              {hours < 10 && 0}
+              {hours}
+            </span>
+            :
+            <span>
+              {minutes < 10 && 0}
+              {minutes}
+            </span>
+            :
+            <span>
+              {seconds < 10 && 0}
+              {seconds}
+            </span>
           </h4>
           <p
             className={`${
-              hours > 6
+              hours >= 6
                 ? styles.now
-                : hours < 6 && hours > 1
+                : hours < 6 && hours >= 1
                 ? styles.sixHoursLeft
                 : styles.oneHourLeft
             }`}
@@ -43,7 +62,7 @@ function MyTimer({ expiryTimestamp, postId }: MyTimerProps) {
         </div>
       ) : (
         <>
-          <p>Live Time Expired</p>
+          <p className={styles.timerEnded}>Live Time Expired</p>
         </>
       )}
     </>
