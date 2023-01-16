@@ -5,9 +5,12 @@
   width: 100%;
   hr {
     border: 0px solid $gray;
-    margin-bottom: 5rem;
+    margin-bottom: 3.5rem;
     @media screen and (max-width: 1200px) {
       margin-bottom: 2.5rem;
+    }
+    @media screen and (max-width: 736px) {
+      margin-bottom: 1.5rem;
     }
   }
   .settingsContainer {
@@ -298,9 +301,9 @@
   }
   .TableRowMain {
     position: relative;
-    margin-bottom: 30px;
+    // margin-bottom: 30px;
     overflow-y: auto;
-    height: 170px;
+    max-height: 340px;
 
     .TableRow {
       display: flex;
@@ -368,7 +371,7 @@
       display: none !important;
     }
     .TableRowMain {
-      height: 550px;
+      max-height: 550px;
       .TableRow {
         flex-wrap: wrap;
         padding: 30px 40px 10px 40px;
@@ -488,7 +491,7 @@
       display: none !important;
     }
     .TableRowMain {
-      height: 810px;
+      max-height: 810px;
       .TableRow {
         flex-wrap: wrap;
         padding: 30px 40px 0px 40px;
