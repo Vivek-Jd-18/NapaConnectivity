@@ -539,6 +539,9 @@ export default function FeedTab({ socket }: FeedTabProps) {
     setTags([]);
     setPeopleTags([]);
     setThumbnailPreview(null);
+    setReplyBoxShow(false);
+    setReplyUserName('');
+    setParentCommentId('');
   };
 
   const handleMintPost = async (post: any) => {
@@ -1435,6 +1438,9 @@ export default function FeedTab({ socket }: FeedTabProps) {
                                 index,
                               });
                               setOpen(false);
+                              setReplyBoxShow(false);
+                              setReplyUserName('');
+                              setParentCommentId('');
                               handleGetPostComments(post.postId);
                             }}
                           >
