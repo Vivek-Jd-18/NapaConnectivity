@@ -766,7 +766,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
         );
         if (commentIndex > -1) {
           //@ts-ignore
-          if (temp[commentIndex].replies.length) {
+          if (temp[commentIndex]?.replies?.length) {
             //@ts-ignore
             temp[commentIndex].replies = [
               comment,
@@ -774,7 +774,9 @@ export default function FeedTab({ socket }: FeedTabProps) {
               ...temp[commentIndex].replies,
             ];
           } else {
-            temp[commentIndex]?.replies.push(comment);
+            //@ts-ignore
+            temp[commentIndex].replies = [{ ...comment }];
+            console.log(comment);
           }
         }
         return temp;
