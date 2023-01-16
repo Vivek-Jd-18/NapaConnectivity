@@ -774,7 +774,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
               ...temp[commentIndex].replies,
             ];
           } else {
-            temp[comment.parentCommentId]?.replies.push(comment);
+            temp[commentIndex]?.replies.push(comment);
           }
         }
         return temp;
@@ -1241,6 +1241,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
                       placeholder="Title your post"
                       value={videoTitle}
                       onChange={(e) => setVideoTitle(e.target.value)}
+                      maxLength={50}
                     />
                     {!videoTitle && postError.title && (
                       <span className={styles.errormsg}>{postError.title}</span>
@@ -1252,6 +1253,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
                       placeholder="Write a short caption..."
                       value={caption}
                       onChange={(e) => setCaption(e.target.value)}
+                      maxLength={256}
                     />
                     {!caption && postError.caption && (
                       <span className={styles.errormsg}>
@@ -1610,7 +1612,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
                                                       src={`${
                                                         comment?.avatar
                                                           ? comment.avatar
-                                                          : '/img/comment02.svg'
+                                                          : '/assets/images/img_avatar.png'
                                                       }`}
                                                       alt=""
                                                       width="28px"
@@ -1722,7 +1724,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
                                                             src={`${
                                                               c?.avatar
                                                                 ? c.avatar
-                                                                : '/img/comment02.svg'
+                                                                : '/assets/images/img_avatar.png'
                                                             }`}
                                                             alt=""
                                                             width="28px"
