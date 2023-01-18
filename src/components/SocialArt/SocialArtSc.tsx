@@ -94,7 +94,7 @@ export default function SocialArtSc() {
     setLoading(true);
     const { message, error } = await updatePostMint(data);
     setLoading(false);
-    push('/sell-nft');
+    push(`/list-item?id=${data.mintId}`);
     if (error) {
       setLoading(false);
       toast.error(

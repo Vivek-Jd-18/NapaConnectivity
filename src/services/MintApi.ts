@@ -45,6 +45,25 @@ export const getAllMintedPosts = async () => {
   }
 };
 
+export const getMintedPost = async (id: string) => {
+  try {
+    const p = await axios.get<{}, AxiosResponse<GetMintPostsResponse>>(
+      `${SOCIAL_ART_API_URL}/user/social/mint/details?id=${id}`
+    );
+    return {
+      data: p.data,
+      message: '',
+      error: false,
+    };
+  } catch (error) {
+    return {
+      data: null,
+      error: true,
+      message: error?.response?.data?.message,
+    };
+  }
+};
+
 export const updatePostMint = async ({
   postId,
   profileId,

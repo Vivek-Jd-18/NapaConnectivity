@@ -130,7 +130,7 @@ export default function MintedTabList({
                             width={17}
                             height={13}
                           />
-                          <h6>20.01</h6>
+                          <h6>(tiers 1-10)</h6>
                         </div>
                       </div>
                       <div className={`${styles.RowLabel} ${styles.RowSix}`}>

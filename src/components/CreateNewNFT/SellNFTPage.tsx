@@ -1,44 +1,105 @@
-import React, { useState } from 'react';
+import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import styles from './SellNFTPage.module.scss';
 import Input from '../Input/Input';
 import Select from 'react-select';
 import Image from 'next/image';
 import 'bootstrap-daterangepicker/daterangepicker.css';
-import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { Dayoptions } from '@/constants/sell-nft.constants';
+import { MintPost } from '@/types/mint';
+import { FadeLoader } from 'react-spinners';
+import { toast } from 'react-toastify';
+import { DoneIcon, ErrorIcon } from '../assets';
+import { CustomToastWithLink } from '../CustomToast/CustomToast';
+import { createNewSnft } from '@/services/MarketplaceApi';
 
-export default function SellNFTPage() {
+type SellNFTPageProps = {
+  mintDetails: MintPost | null;
+  loading: boolean;
+};
+
+export default function SellNFTPage({
+  mintDetails,
+  loading,
+}: SellNFTPageProps) {
   const optionsone = [
     {
-      value: 'Napa NAPA',
+      value: 'Napa NAPA 1',
       label: (
         <div className="cstm_napa_slct">
           <Image src="/img/napa_ic.svg" alt="" width="20px" height="20px" />
-          Napa NAPA
+          Napa NAPA 1
         </div>
       ),
     },
     {
-      value: 'Napa NAPA',
+      value: 'Napa NAPA 2',
       label: (
         <div className="cstm_napa_slct">
           <Image src="/img/napa_ic.svg" alt="" width="20px" height="20px" />
-          Napa NAPA
+          Napa NAPA 2
         </div>
       ),
     },
     {
-      value: 'Napa NAPA',
+      value: 'Napa NAPA 3',
       label: (
         <div className="cstm_napa_slct">
           <Image src="/img/napa_ic.svg" alt="" width="20px" height="20px" />
-          Napa NAPA
+          Napa NAPA 3
         </div>
       ),
     },
   ];
-  const [name, setName] = useState('');
+  const { push } = useRouter();
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [collection, setCollection] = React.useState('');
+  const [amount, setAmount] = React.useState('');
+  const [duration, setDuration] = React.useState('');
+  const [type, setType] = React.useState('Fixed Price');
+
+  const handleCreateSnft = async () => {
+    setIsLoading(true);
+    const newSnft = {
+      collection,
+      type,
+      amount,
+      duration,
+      mintId: mintDetails?.mintId ? mintDetails?.mintId : '',
+      postId: mintDetails?.postId ? mintDetails?.postId : '',
+      thumbnail: mintDetails?.thumbnail ? mintDetails?.thumbnail : '',
+      videoURL: mintDetails?.videoURL ? mintDetails.videoURL : '',
+      profileId: mintDetails?.profileId ? mintDetails?.profileId : '',
+    };
+    const { error, message }: any = await createNewSnft(newSnft);
+    if (error) {
+      setIsLoading(false);
+      toast.error(
+        CustomToastWithLink({
+          icon: ErrorIcon,
+          title: 'Error',
+          description: message,
+          time: 'Now',
+        })
+      );
+      return;
+    }
+    setIsLoading(false);
+    setCollection('');
+    setAmount('');
+    setDuration('');
+    setType('Fixed Price');
+    toast.success(
+      CustomToastWithLink({
+        icon: DoneIcon,
+        title: 'Success',
+        description: 'Nft Was Created Successfully',
+        time: 'Now',
+      })
+    );
+    push('marketplace');
+  };
 
   return (
     <>
@@ -49,7 +110,10 @@ export default function SellNFTPage() {
               <div className={styles.typePrnt}>
                 <h1 className={styles.DefHed}>Type</h1>
                 <div className={styles.dublBtn}>
-                  <button className={styles.Active}>
+                  <button
+                    onClick={() => setType('Fixed Price')}
+                    className={`${type == 'Fixed Price' && styles.Active}`}
+                  >
                     <Image
                       src="/img/dollar_icon.svg"
                       alt=""
@@ -58,7 +122,12 @@ export default function SellNFTPage() {
                     />{' '}
                     Fixed Price
                   </button>
-                  <button>
+                  <button
+                    onClick={() => setType('Time Based Auction')}
+                    className={`${
+                      type == 'Time Based Auction' && styles.Active
+                    }`}
+                  >
                     <Image
                       src="/img/time_icon.svg"
                       alt=""
@@ -82,15 +151,19 @@ export default function SellNFTPage() {
                       className="select_pernt select_pernt_v2"
                       placeholder="Bring Me the Open Space "
                       classNamePrefix="cntrslct"
+                      onChange={(selectedOption) =>
+                        //@ts-ignore
+                        setCollection(selectedOption.value)
+                      }
                     />
                   </div>
                   <div className={`${styles.FrstInput} frstinputsell`}>
                     <Input
-                      value={name}
-                      type="text"
+                      value={amount}
+                      type="number"
                       placeholder="0.48"
                       label="Amount"
-                      onChange={(e) => setName(e.target.value)}
+                      onChange={(e) => setAmount(e.target.value)}
                     />
                   </div>
                 </div>
@@ -103,6 +176,10 @@ export default function SellNFTPage() {
                     className={`select_pernt select_pernt_v2 ${styles.options}`}
                     placeholder="Select Duration"
                     classNamePrefix="cntrslct"
+                    onChange={(selectedOption) =>
+                      //@ts-ignore
+                      setDuration(selectedOption.value)
+                    }
                   />
                 </div>
               </div>
@@ -158,22 +235,46 @@ export default function SellNFTPage() {
                 </div>
               </div>
               <div className={`${styles.typePrnt} `}>
-                <Link href="/marketplacenot m">
-                  <a className={styles.linkPrnt}>Complete Listing</a>
-                </Link>
+                {isLoading ? (
+                  <FadeLoader color="#ffffff" />
+                ) : (
+                  <a onClick={handleCreateSnft} className={styles.linkPrnt}>
+                    Complete Listing
+                  </a>
+                )}
               </div>
             </div>
           </div>
           <div className={styles.CustomGrid}>
             <div className={`${styles.typePrnt} `}>
               <h1 className={styles.DefHed}>Preview</h1>
+
               <div className={styles.imgPernt}>
-                <Image
-                  src="/img/preview_img.png"
-                  alt=""
-                  width={540}
-                  height={540}
-                />
+                {loading ? (
+                  <div className={styles.loadingContainer}>
+                    <FadeLoader color="#ffffff" />
+                  </div>
+                ) : (
+                  // <Image
+                  //   src={`${
+                  //     mintDetails?.thumbnail ? mintDetails?.thumbnail : ''
+                  //   }`}
+                  //   alt=""
+                  //   width={540}
+                  //   height={540}
+                  // />
+                  <video
+                    width={'100%'}
+                    height={'auto'}
+                    autoPlay
+                    controls
+                    muted
+                    loop
+                    src={mintDetails?.videoURL as string}
+                  >
+                    The “video” tag is not supported by your browser.
+                  </video>
+                )}
               </div>
             </div>
           </div>

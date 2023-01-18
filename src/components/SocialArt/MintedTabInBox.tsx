@@ -82,7 +82,7 @@ export default function MintedTabInBox({
                       </div>
                       <div className={styles.DarkiBxhpdata}>
                         <p>Current Tier</p>
-                        <h3>(tiers 1 -10)</h3>
+                        <h3>(tiers 1-10)</h3>
                       </div>
                       <div className={styles.DarkiBxhpdata}>
                         <p>Status</p>

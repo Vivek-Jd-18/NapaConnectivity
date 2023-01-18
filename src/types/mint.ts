@@ -42,6 +42,7 @@ export type MintPost = {
   owner: string;
   gasFees: string;
   timeMinted: string;
+  videoURL?: string;
   createdAt: string;
   updatedAt: string;
   thumbnail: string;
