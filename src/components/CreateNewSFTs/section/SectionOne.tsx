@@ -6,9 +6,13 @@ import { SnftResponse } from '@/types/marketplace';
 
 type SectionOneProps = {
   snftDetails: SnftResponse | null;
+  profileId: string | null;
 };
 
-export default function SectionOne({ snftDetails }: SectionOneProps) {
+export default function SectionOne({
+  snftDetails,
+  profileId,
+}: SectionOneProps) {
   return (
     <div className={styles.SectionOne}>
       <div className={styles.CustomGridContainer}>
@@ -69,9 +73,11 @@ export default function SectionOne({ snftDetails }: SectionOneProps) {
                         </div>
                     </div> */}
             <div className={styles.thrBtnPrnt}>
-              <Link href="/">
-                <a className={styles.linkPernt}>Edit</a>
-              </Link>
+              {profileId == snftDetails?.profileId && (
+                <Link href="/">
+                  <a className={styles.linkPernt}>Edit</a>
+                </Link>
+              )}
               <Link href="/sell-nft-page-sc">
                 <a className={styles.linkPernt}>Sell</a>
               </Link>
@@ -79,11 +85,15 @@ export default function SectionOne({ snftDetails }: SectionOneProps) {
                 <a className={styles.linkPernt}>Cancel</a>
               </Link>
               <Link href="/">
-                <a className={styles.linkPernt}>Low Price</a>
+                <a className={styles.linkPernt}>Submit Offer</a>
               </Link>
-              <Link href="/">
-                <a className={styles.linkPernt}>Buy Now for 0.24 NAPA</a>
-              </Link>
+              {profileId != snftDetails?.profileId && (
+                <Link href="/">
+                  <a className={styles.linkPernt}>
+                    Buy Now for {snftDetails?.amount} NAPA
+                  </a>
+                </Link>
+              )}
               <div className={`${styles.RowLabel} ${styles.RowSeven}`}>
                 <div className={styles.butnPernt}>
                   <button

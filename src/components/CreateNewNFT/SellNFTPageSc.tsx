@@ -8,6 +8,8 @@ import SellNFTPage from './SellNFTPage';
 import { getMintedPost } from '@/services/MintApi';
 import { MintPost } from '@/types/mint';
 import { useRouter } from 'next/router';
+import { SnftResponse } from '@/types/marketplace';
+import { getSnft } from '@/services/MarketplaceApi';
 
 export default function SellNFTPageSc() {
   const [loading, setLoading] = React.useState(false);
@@ -25,8 +27,22 @@ export default function SellNFTPageSc() {
   useEffect(() => {
     if (router.query.id) {
       handleGetMintPost(router.query.id as string);
+      handleGetSnft();
     }
   }, [router]);
+
+  const [snftDetails, setSnftDetails] = React.useState<SnftResponse | null>(
+    null
+  );
+
+  const handleGetSnft = async () => {
+    const { data, error }: any = await getSnft(router?.query?.id as string);
+    if (error) {
+      setLoading(false);
+      return;
+    }
+    setSnftDetails(data?.data || null);
+  };
 
   return (
     <div className={`${styles.container}`}>
@@ -46,7 +62,11 @@ export default function SellNFTPageSc() {
         </div>
         <h1 className={styles.settings}>List Assets</h1>
         <div>
-          <SellNFTPage mintDetails={mintPost} loading={loading} />
+          <SellNFTPage
+            mintDetails={mintPost}
+            loading={loading}
+            snftDetails={snftDetails}
+          />
         </div>
       </Container>
       <div>

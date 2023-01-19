@@ -92,21 +92,21 @@ export default function SocialArtSc() {
 
   const handleMintPostUpdate = async (data: any) => {
     setLoading(true);
-    const { message, error } = await updatePostMint(data);
+    // const { message, error } = await updatePostMint(data);
     setLoading(false);
     push(`/list-item?id=${data.mintId}`);
-    if (error) {
-      setLoading(false);
-      toast.error(
-        CustomToastWithLink({
-          icon: ErrorIcon,
-          title: 'Error',
-          description: message,
-          time: 'Now',
-        })
-      );
-      return;
-    }
+    // if (error) {
+    //   setLoading(false);
+    //   toast.error(
+    //     CustomToastWithLink({
+    //       icon: ErrorIcon,
+    //       title: 'Error',
+    //       description: message,
+    //       time: 'Now',
+    //     })
+    //   );
+    //   return;
+    // }
     setLoading(false);
   };
 

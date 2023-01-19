@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import styles from './SellNFTPage.module.scss';
 import Input from '../Input/Input';
@@ -13,15 +13,18 @@ import { toast } from 'react-toastify';
 import { DoneIcon, ErrorIcon } from '../assets';
 import { CustomToastWithLink } from '../CustomToast/CustomToast';
 import { createNewSnft } from '@/services/MarketplaceApi';
+import { SnftResponse } from '@/types/marketplace';
 
 type SellNFTPageProps = {
   mintDetails: MintPost | null;
   loading: boolean;
+  snftDetails: SnftResponse | null;
 };
 
 export default function SellNFTPage({
   mintDetails,
   loading,
+  snftDetails,
 }: SellNFTPageProps) {
   const optionsone = [
     {
@@ -54,23 +57,66 @@ export default function SellNFTPage({
   ];
   const { push } = useRouter();
   const [isLoading, setIsLoading] = React.useState(false);
-  const [collection, setCollection] = React.useState('');
+  const [collection, setCollection] = React.useState<any>();
   const [amount, setAmount] = React.useState('');
-  const [duration, setDuration] = React.useState('');
+  const [duration, setDuration] = React.useState<any>();
   const [type, setType] = React.useState('Fixed Price');
 
+  useEffect(() => {
+    if (snftDetails) {
+      const collectionIndex = optionsone.findIndex(
+        (option) => snftDetails.collection == option.value
+      );
+
+      if (collectionIndex > -1) {
+        setCollection({ ...optionsone[collectionIndex] });
+      } else {
+        setCollection(null);
+      }
+      const durationIndex = Dayoptions.findIndex(
+        (option) => snftDetails.duration == option.value
+      );
+      if (durationIndex > -1) {
+        setDuration({ ...Dayoptions[durationIndex] });
+      } else {
+        setDuration(null);
+      }
+      if (snftDetails.amount) {
+        setAmount(snftDetails.amount);
+      } else {
+        setAmount('');
+      }
+      if (snftDetails.type) {
+        setType(snftDetails.type);
+      } else {
+        setType('Fixed Price');
+      }
+    }
+  }, [snftDetails]);
+
   const handleCreateSnft = async () => {
+    if (mintDetails?.marketplace_listed == 'true') {
+      toast.error(
+        CustomToastWithLink({
+          icon: ErrorIcon,
+          title: 'Error',
+          description: 'Already listed to marketplace',
+          time: 'Now',
+        })
+      );
+      return;
+    }
     setIsLoading(true);
     const newSnft = {
-      collection,
+      collection: collection?.value ?? '',
       type,
       amount,
-      duration,
-      mintId: mintDetails?.mintId ? mintDetails?.mintId : '',
-      postId: mintDetails?.postId ? mintDetails?.postId : '',
-      thumbnail: mintDetails?.thumbnail ? mintDetails?.thumbnail : '',
-      videoURL: mintDetails?.videoURL ? mintDetails.videoURL : '',
-      profileId: mintDetails?.profileId ? mintDetails?.profileId : '',
+      duration: duration?.value ?? '',
+      mintId: mintDetails?.mintId ?? '',
+      postId: mintDetails?.postId ?? '',
+      thumbnail: mintDetails?.thumbnail ?? '',
+      videoURL: mintDetails?.videoURL ?? '',
+      profileId: mintDetails?.profileId ?? '',
     };
     const { error, message }: any = await createNewSnft(newSnft);
     if (error) {
@@ -86,9 +132,9 @@ export default function SellNFTPage({
       return;
     }
     setIsLoading(false);
-    setCollection('');
+    setCollection(null);
     setAmount('');
-    setDuration('');
+    setDuration(null);
     setType('Fixed Price');
     toast.success(
       CustomToastWithLink({
@@ -149,12 +195,13 @@ export default function SellNFTPage({
                       options={optionsone}
                       // menuIsOpen={true}
                       className="select_pernt select_pernt_v2"
-                      placeholder="Bring Me the Open Space "
+                      placeholder="Bring Me the Open Space"
                       classNamePrefix="cntrslct"
                       onChange={(selectedOption) =>
                         //@ts-ignore
-                        setCollection(selectedOption.value)
+                        setCollection(selectedOption)
                       }
+                      value={collection}
                     />
                   </div>
                   <div className={`${styles.FrstInput} frstinputsell`}>
@@ -178,8 +225,9 @@ export default function SellNFTPage({
                     classNamePrefix="cntrslct"
                     onChange={(selectedOption) =>
                       //@ts-ignore
-                      setDuration(selectedOption.value)
+                      setDuration(selectedOption)
                     }
+                    value={duration}
                   />
                 </div>
               </div>

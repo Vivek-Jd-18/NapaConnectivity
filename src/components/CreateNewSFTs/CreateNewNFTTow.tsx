@@ -14,6 +14,7 @@ import { toast } from 'react-toastify';
 import { CustomToastWithLink } from '../CustomToast/CustomToast';
 import { ErrorIcon } from '../assets';
 import { FadeLoader } from 'react-spinners';
+import useProfile from '@/hooks/useProfile';
 
 export default function CreateNewNFTTow() {
   const router = useRouter();
@@ -21,6 +22,7 @@ export default function CreateNewNFTTow() {
     null
   );
   const [loading, setLoading] = React.useState(false);
+  const { profileId } = useProfile();
 
   useEffect(() => {
     handleGetSnft();
@@ -56,7 +58,7 @@ export default function CreateNewNFTTow() {
           </div>
         ) : (
           <>
-            <SectionOne snftDetails={snftDetails} />
+            <SectionOne snftDetails={snftDetails} profileId={profileId}/>
             <SectionTow />
             <SectionThreeTbl />
             <SectionFourTbl />

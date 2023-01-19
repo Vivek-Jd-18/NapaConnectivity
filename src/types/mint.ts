@@ -46,6 +46,7 @@ export type MintPost = {
   createdAt: string;
   updatedAt: string;
   thumbnail: string;
+  marketplace_listed?: string;
 };
 
 export type NewMint = {
