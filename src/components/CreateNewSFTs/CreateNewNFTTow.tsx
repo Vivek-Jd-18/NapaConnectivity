@@ -59,7 +59,7 @@ export default function CreateNewNFTTow() {
         ) : (
           <>
             <SectionOne snftDetails={snftDetails} profileId={profileId}/>
-            <SectionTow />
+            <SectionTow snftDetails={snftDetails}/>
             <SectionThreeTbl />
             <SectionFourTbl />
             <SectionFiveSlider />

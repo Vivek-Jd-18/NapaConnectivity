@@ -26,7 +26,7 @@ export default function SectionOne({
             /> */}
             <video
               width={'100%'}
-              height={'100%'}
+              height={'540px'}
               autoPlay
               controls
               muted
@@ -38,10 +38,7 @@ export default function SectionOne({
         <div className={styles.CustomGrid}>
           <div className={styles.ScOneLeftCont}>
             <h1>{snftDetails?.collection}</h1>
-            <p>
-              Abilities or he perfectly pretended so strangers be exquisite. Oh
-              to another chamber pleased imagine do in.
-            </p>
+            <p>{snftDetails?.SNFTDescription}</p>
             <div className={styles.imgAndperaFlex}>
               <Image
                 src={`${snftDetails?.userImage ? snftDetails?.userImage : ''}`}
@@ -78,15 +75,14 @@ export default function SectionOne({
                   <a className={styles.linkPernt}>Edit</a>
                 </Link>
               )}
-              <Link href="/sell-nft-page-sc">
-                <a className={styles.linkPernt}>Sell</a>
-              </Link>
               <Link href="/">
                 <a className={styles.linkPernt}>Cancel</a>
               </Link>
-              <Link href="/">
-                <a className={styles.linkPernt}>Submit Offer</a>
-              </Link>
+              {profileId != snftDetails?.profileId && (
+                <Link href="/">
+                  <a className={styles.linkPernt}>Submit Offer</a>
+                </Link>
+              )}
               {profileId != snftDetails?.profileId && (
                 <Link href="/">
                   <a className={styles.linkPernt}>

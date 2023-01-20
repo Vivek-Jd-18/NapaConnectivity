@@ -11,11 +11,11 @@ import MintedTabList from './MintedTabList';
 import { SOCIAL_ART_WEBSOCKET_URL } from '@/constants/url';
 import { MintPost } from '@/types/mint';
 import { useRouter } from 'next/router';
-import { getAllMintedPosts, updatePostMint } from '@/services/MintApi';
+import { getAllMintedPosts } from '@/services/MintApi';
 import moment from 'moment';
-import { toast } from 'react-toastify';
-import { CustomToastWithLink } from '../CustomToast/CustomToast';
-import { ErrorIcon } from '../assets';
+// import { toast } from 'react-toastify';
+// import { CustomToastWithLink } from '../CustomToast/CustomToast';
+// import { ErrorIcon } from '../assets';
 import useProfile from '@/hooks/useProfile';
 
 export default function SocialArtSc() {

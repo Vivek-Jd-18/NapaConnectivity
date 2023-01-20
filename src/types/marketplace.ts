@@ -11,6 +11,7 @@ export type SnftResponse = {
   duration: string;
   mintId: string;
   postId: string;
+  SNFTDescription: string;
   profileId: string;
   type: string;
   createdAt: string;
@@ -33,8 +34,6 @@ export type NewSnft = {
   amount: string;
   duration: string;
   mintId: string;
-  postId: string;
   profileId: string;
-  thumbnail: string;
-  videoURL: string;
+  postId: string;
 };

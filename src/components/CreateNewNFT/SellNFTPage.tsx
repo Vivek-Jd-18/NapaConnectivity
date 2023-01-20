@@ -113,10 +113,8 @@ export default function SellNFTPage({
       amount,
       duration: duration?.value ?? '',
       mintId: mintDetails?.mintId ?? '',
-      postId: mintDetails?.postId ?? '',
-      thumbnail: mintDetails?.thumbnail ?? '',
-      videoURL: mintDetails?.videoURL ?? '',
       profileId: mintDetails?.profileId ?? '',
+      postId: mintDetails?.postId ?? '',
     };
     const { error, message }: any = await createNewSnft(newSnft);
     if (error) {
@@ -313,7 +311,7 @@ export default function SellNFTPage({
                   // />
                   <video
                     width={'100%'}
-                    height={'auto'}
+                    height={'540px'}
                     autoPlay
                     controls
                     muted
