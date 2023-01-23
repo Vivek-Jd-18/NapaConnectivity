@@ -47,6 +47,7 @@ export type MintPost = {
   updatedAt: string;
   thumbnail: string;
   marketplace_listed?: string;
+  snftId?: string;
 };
 
 export type NewMint = {

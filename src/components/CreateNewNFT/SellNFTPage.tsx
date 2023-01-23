@@ -12,7 +12,7 @@ import { FadeLoader } from 'react-spinners';
 import { toast } from 'react-toastify';
 import { DoneIcon, ErrorIcon } from '../assets';
 import { CustomToastWithLink } from '../CustomToast/CustomToast';
-import { createNewSnft } from '@/services/MarketplaceApi';
+import { createNewSnft, updateSnft } from '@/services/MarketplaceApi';
 import { SnftResponse } from '@/types/marketplace';
 
 type SellNFTPageProps = {
@@ -26,6 +26,7 @@ export default function SellNFTPage({
   loading,
   snftDetails,
 }: SellNFTPageProps) {
+  
   const optionsone = [
     {
       value: 'Napa NAPA 1',
@@ -142,7 +143,45 @@ export default function SellNFTPage({
         time: 'Now',
       })
     );
-    push('marketplace');
+    push('/marketplace');
+  };
+
+  const handleUpdateSnft = async () => {
+    setIsLoading(true);
+    const updatedSnft = {
+      collection: collection?.value ?? '',
+      type,
+      amount,
+      duration: duration?.value ?? '',
+      mintId: mintDetails?.mintId ?? '',
+    };
+    const { error, message }: any = await updateSnft(updatedSnft);
+    if (error) {
+      setIsLoading(false);
+      toast.error(
+        CustomToastWithLink({
+          icon: ErrorIcon,
+          title: 'Error',
+          description: message,
+          time: 'Now',
+        })
+      );
+      return;
+    }
+    setIsLoading(false);
+    setCollection(null);
+    setAmount('');
+    setDuration(null);
+    setType('Fixed Price');
+    toast.success(
+      CustomToastWithLink({
+        icon: DoneIcon,
+        title: 'Success',
+        description: 'Nft Was Updated Successfully',
+        time: 'Now',
+      })
+    );
+    push('/marketplace');
   };
 
   return (
@@ -283,6 +322,10 @@ export default function SellNFTPage({
               <div className={`${styles.typePrnt} `}>
                 {isLoading ? (
                   <FadeLoader color="#ffffff" />
+                ) : mintDetails?.marketplace_listed == 'true' ? (
+                  <a onClick={handleUpdateSnft} className={styles.linkPrnt}>
+                    Update Listing
+                  </a>
                 ) : (
                   <a onClick={handleCreateSnft} className={styles.linkPrnt}>
                     Complete Listing

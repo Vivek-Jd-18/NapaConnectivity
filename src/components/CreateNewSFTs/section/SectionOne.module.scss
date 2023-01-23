@@ -26,6 +26,12 @@
   display: grid;
   grid-gap: 120px;
   grid-template-columns: repeat(2, minmax(0px, 1fr));
+  .loadingContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 3rem;
+  }
 }
 .imgPerntScone{
   >span{

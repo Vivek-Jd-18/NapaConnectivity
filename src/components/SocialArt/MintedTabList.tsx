@@ -5,6 +5,7 @@ import { MintPost } from '@/types/mint';
 import { FadeLoader } from 'react-spinners';
 import moment from 'moment';
 import MyTimer from '../LiverTimer/Mytimer';
+import { useRouter } from 'next/router';
 
 type MintedTabListProps = {
   loading: boolean;
@@ -23,6 +24,7 @@ export default function MintedTabList({
   handleMintPostUpdate,
   profileId,
 }: MintedTabListProps) {
+  const { push } = useRouter();
   return (
     <div className={styles.MainListBox}>
       <div className={styles.MainListHead}>
@@ -173,28 +175,48 @@ export default function MintedTabList({
                             </a>
                           </li>
                           <li>
-                            <a
-                              className={`${
-                                post.status === '0' && styles.disabled
-                              } dropdown-item`}
-                              href="#"
-                              onClick={() =>
-                                handleMintPostUpdate({
-                                  mintId: post.mintId,
-                                  postId: post.postId,
-                                  profileId: profileId,
-                                  marketplace_listed: 'true',
-                                })
-                              }
-                            >
-                              <Image
-                                src="/img/send_icon.png"
-                                alt=""
-                                width={20}
-                                height={20}
-                              />
-                              Submit to Marketplace
-                            </a>
+                            {post.marketplace_listed == 'true' ? (
+                              <a
+                                className={`${
+                                  post.status === '0' && styles.disabled
+                                } dropdown-item`}
+                                href="#"
+                                onClick={() =>
+                                  push(`snft-details?id=${post.snftId}`)
+                                }
+                              >
+                                <Image
+                                  src="/img/send_icon.png"
+                                  alt=""
+                                  width={20}
+                                  height={20}
+                                />
+                                Already Listed
+                              </a>
+                            ) : (
+                              <a
+                                className={`${
+                                  post.status === '0' && styles.disabled
+                                } dropdown-item`}
+                                href="#"
+                                onClick={() =>
+                                  handleMintPostUpdate({
+                                    mintId: post.mintId,
+                                    postId: post.postId,
+                                    profileId: profileId,
+                                    marketplace_listed: 'true',
+                                  })
+                                }
+                              >
+                                <Image
+                                  src="/img/send_icon.png"
+                                  alt=""
+                                  width={20}
+                                  height={20}
+                                />
+                                Submit to Marketplace
+                              </a>
+                            )}
                             <a className={`dropdown-item`}>
                               <Image
                                 src="/img/send_icon.png"

@@ -4,6 +4,12 @@ export type CreateNewSnftResponse = {
   responseTime: string;
 };
 
+export type DeleteSnftResponse = {
+  message: string;
+  code: number;
+  responseTime: string;
+};
+
 export type SnftResponse = {
   snftId: string;
   collection: string;
@@ -12,6 +18,7 @@ export type SnftResponse = {
   mintId: string;
   postId: string;
   SNFTDescription: string;
+  marketplace_listed?: string;
   profileId: string;
   type: string;
   createdAt: string;
@@ -33,7 +40,7 @@ export type NewSnft = {
   type: string;
   amount: string;
   duration: string;
-  mintId: string;
-  profileId: string;
-  postId: string;
+  mintId?: string;
+  profileId?: string;
+  postId?: string;
 };

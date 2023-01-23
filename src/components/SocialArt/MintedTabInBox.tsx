@@ -7,6 +7,7 @@ import { FadeLoader } from 'react-spinners';
 import moment from 'moment';
 import MyTimer from '../LiverTimer/Mytimer';
 import { MintPost } from '@/types/mint';
+import { useRouter } from 'next/router';
 
 type MintedTabInBoxProps = {
   loading: boolean;
@@ -25,7 +26,7 @@ export default function MintedTabInBox({
   handleMintPostUpdate,
   profileId,
 }: MintedTabInBoxProps) {
-  console.log('posted', mintPosts);
+  const { push } = useRouter();
   return loading ? (
     <div className={styles.loadingContainer}>
       <FadeLoader color="#ffffff" />
@@ -94,22 +95,33 @@ export default function MintedTabInBox({
                     <button className={styles.DarkiBlubtn}>
                       Redeem Tokens
                     </button>
-                    <button
-                      onClick={() =>
-                        handleMintPostUpdate({
-                          mintId: post.mintId,
-                          postId: post.postId,
-                          profileId: profileId,
-                          marketplace_listed: 'true',
-                        })
-                      }
-                      className={`${styles.DarkiDarbtn} ${
-                        post.status === '0' && styles.disabledSubmitMarketBtn
-                      }`}
-                      disabled={post.status === '0'}
-                    >
-                      Submit to Marketplace
-                    </button>
+                    {post.marketplace_listed == 'true' ? (
+                      <button
+                        onClick={() => push(`snft-details?id=${post.snftId}`)}
+                        className={`${styles.DarkiDarbtn} ${
+                          post.status === '0' && styles.disabledSubmitMarketBtn
+                        }`}
+                      >
+                        Already Listed
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() =>
+                          handleMintPostUpdate({
+                            mintId: post.mintId,
+                            postId: post.postId,
+                            profileId: profileId,
+                            marketplace_listed: 'true',
+                          })
+                        }
+                        className={`${styles.DarkiDarbtn} ${
+                          post.status === '0' && styles.disabledSubmitMarketBtn
+                        }`}
+                        disabled={post.status === '0'}
+                      >
+                        Submit to Marketplace
+                      </button>
+                    )}
                     <button className={styles.DarkiDarbtn}>Ask DAVE</button>
                   </div>
                   <div className={styles.timer}>

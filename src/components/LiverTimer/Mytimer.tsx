@@ -9,7 +9,7 @@ type MyTimerProps = {
 };
 
 function MyTimer({ expiryTimestamp, postId }: MyTimerProps) {
-  const { days, seconds, minutes, hours, isRunning } = useTimer({
+  const { seconds, minutes, hours, isRunning } = useTimer({
     //@ts-ignore
     expiryTimestamp,
     onExpire: async () => postId && (await updateMintPostStatus(postId, '1')),
@@ -28,11 +28,6 @@ function MyTimer({ expiryTimestamp, postId }: MyTimerProps) {
                 : styles.oneHourLeft
             }`}
           >
-            <span>
-              {days < 10 && 0}
-              {days}
-            </span>
-            :
             <span>
               {hours < 10 && 0}
               {hours}
