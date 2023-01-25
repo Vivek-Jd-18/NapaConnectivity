@@ -5,7 +5,8 @@ import styles from './LiveStreamTab1.module.scss';
 const LiveStreamTab1 = () => {
   let streams = [
     {
-      title: 'Futuristic Fierce Radiant Cube Infinite Space of variations  Infinite Space of variations',
+      title:
+        'Futuristic Fierce Radiant Cube Infinite Space of variations  Infinite Space of variations',
       streamImg: '/assets/images/streamCard1.png',
       userName: 'Marta Thornton',
       status: 'Live',
@@ -13,7 +14,8 @@ const LiveStreamTab1 = () => {
       viewers: '5.7K viewers',
     },
     {
-      title: 'Futuristic Fierce Radiant Cube Infinite Space of variations  Infinite Space of variations',
+      title:
+        'Futuristic Fierce Radiant Cube Infinite Space of variations  Infinite Space of variations',
       userName: 'Catherine Patton',
       avatar: '/img/user_had.png',
       streamImg: '/assets/images/streamCard2.png',
@@ -21,7 +23,8 @@ const LiveStreamTab1 = () => {
       viewers: '4,7K viewers',
     },
     {
-      title: 'Futuristic Fierce Radiant Cube Infinite Space of variations  Infinite Space of variations',
+      title:
+        'Futuristic Fierce Radiant Cube Infinite Space of variations  Infinite Space of variations',
       streamImg: '/assets/images/streamCard1.png',
       userName: 'Marta Thornton',
       status: 'Live',
@@ -29,7 +32,8 @@ const LiveStreamTab1 = () => {
       viewers: '7K viewers',
     },
     {
-      title: 'Futuristic Fierce Radiant Cube Infinite Space of variations  Infinite Space of variations',
+      title:
+        'Futuristic Fierce Radiant Cube Infinite Space of variations  Infinite Space of variations',
       userName: 'Catherine Patton',
       avatar: '/img/user_had.png',
       streamImg: '/assets/images/streamCard2.png',
@@ -37,7 +41,8 @@ const LiveStreamTab1 = () => {
       viewers: '4K viewers',
     },
     {
-      title: 'Futuristic Fierce Radiant Cube Infinite Space of variations  Infinite Space of variations',
+      title:
+        'Futuristic Fierce Radiant Cube Infinite Space of variations  Infinite Space of variations',
       streamImg: '/assets/images/streamCard1.png',
       userName: 'Marta Thornton',
       status: 'Live',
@@ -45,7 +50,8 @@ const LiveStreamTab1 = () => {
       viewers: '0 viewers',
     },
     {
-      title: 'Futuristic Fierce Radiant Cube Infinite Space of variations  Infinite Space of variations',
+      title:
+        'Futuristic Fierce Radiant Cube Infinite Space of variations  Infinite Space of variations',
       userName: 'Catherine Patton',
       avatar: '/img/user_had.png',
       streamImg: '/assets/images/streamCard2.png',
@@ -53,7 +59,8 @@ const LiveStreamTab1 = () => {
       viewers: '4K viewers',
     },
     {
-      title: 'Futuristic Fierce Radiant Cube Infinite Space of variations  Infinite Space of variations',
+      title:
+        'Futuristic Fierce Radiant Cube Infinite Space of variations  Infinite Space of variations',
       streamImg: '/assets/images/streamCard1.png',
       userName: 'Marta Thornton',
       status: 'Live',
@@ -61,7 +68,8 @@ const LiveStreamTab1 = () => {
       viewers: '0 viewers',
     },
     {
-      title: 'Futuristic Fierce Radiant Cube Infinite Space of variations  Infinite Space of variations',
+      title:
+        'Futuristic Fierce Radiant Cube Infinite Space of variations  Infinite Space of variations',
       userName: 'Catherine Patton',
       avatar: '/img/user_had.png',
       streamImg: '/assets/images/streamCard2.png',
@@ -73,9 +81,9 @@ const LiveStreamTab1 = () => {
     <>
       <LiveStreamFilterTabs />
       <div className={styles.streamCardContainer}>
-        {streams.map((val) => {
+        {streams.map((val, index) => {
           return (
-            <div className={styles.streamCard}>
+            <div key={index} className={styles.streamCard}>
               <div className={styles.streamStatusContainer}>
                 <p className={styles.streamStatus}>{val.status}</p>
                 <p className={styles.streamViewers}>{val.viewers}</p>

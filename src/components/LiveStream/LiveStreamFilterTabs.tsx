@@ -16,9 +16,9 @@ const LiveStreamFilterTabs = () => {
   return (
     <>
       <div className={styles.btnContainer}>
-        {filterTabs.map((tab) => {
+        {filterTabs.map((tab,index) => {
             return(
-                <button className={`${styles.filterbtn} ${tab == activeFilterTab && styles.filterActive}`} onClick={() => setActiveFilterTab(tab)}>{tab}</button>
+                <button key={index} className={`${styles.filterbtn} ${tab == activeFilterTab && styles.filterActive}`} onClick={() => setActiveFilterTab(tab)}>{tab}</button>
              )
         })}
       </div>
