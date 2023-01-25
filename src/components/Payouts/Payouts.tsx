@@ -6,6 +6,9 @@ import Image from 'next/image';
 import Table from 'react-bootstrap/Table';
 import Footer from '../Footer/Footer';
 import { numberFormatter } from '@/utils/payout';
+import React, { useEffect } from 'react';
+import { getUsersCount } from '@/services/PayoutsApi';
+import { SOCIAL_ART_WEBSOCKET_URL } from '@/constants/url';
 
 const napaUserData = {
   napaTokenPrice: '2.48250000',
@@ -184,6 +187,32 @@ const dummyEatherScanTransactions = [
 ];
 
 const Payouts: NextPage = () => {
+  const [usersCount, setUsersCount] = React.useState<any>();
+  const socialArtSocket = new WebSocket(SOCIAL_ART_WEBSOCKET_URL);
+
+  const handleGetUsersCount = async () => {
+    const { data }: any = await getUsersCount();
+    setUsersCount(data?.data || null);
+  };
+
+  useEffect(() => {
+    handleGetUsersCount();
+  }, []);
+
+  useEffect(() => {
+    // @ts-ignore
+    socialArtSocket.addEventListener('message', ({ data }) => {
+      const response = JSON.parse(data);
+      if (response?.event === 'users-count') {
+        setUsersCount(response?.count);
+      }
+    });
+    return () => {
+      socialArtSocket.removeEventListener('message', () => {});
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <>
       <div className={styles.backgroundImage} id="payouts">
@@ -232,7 +261,7 @@ const Payouts: NextPage = () => {
                       <div
                         className={`text-white ${styles.payoutsSubTextValue} pt-2`}
                       >
-                        {numberFormatter(napaUserData.totalUser, 1)}
+                        {numberFormatter(usersCount?.totalUsers ?? '0', 1)}
                       </div>
                     </div>
                     <div
@@ -245,7 +274,10 @@ const Payouts: NextPage = () => {
                       <div
                         className={`text-white ${styles.payoutsSubTextValue} pt-2`}
                       >
-                        {numberFormatter(napaUserData.monthlyActiveUser, 1)}
+                        {numberFormatter(
+                          usersCount?.monthlyActiveUser ?? '0',
+                          1
+                        )}
                       </div>
                     </div>
                     <div
@@ -258,7 +290,10 @@ const Payouts: NextPage = () => {
                       <div
                         className={`text-white ${styles.payoutsSubTextValue} pt-2`}
                       >
-                        {numberFormatter(napaUserData.dailyActiveUser, 1)}
+                        {numberFormatter(
+                          usersCount?.weeklyActiveUser ?? '0',
+                          1
+                        )}
                       </div>
                     </div>
                   </div>

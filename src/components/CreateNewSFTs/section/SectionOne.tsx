@@ -119,7 +119,7 @@ export default function SectionOne({
                 {profileId == snftDetails?.profileId && (
                   <Link href="">
                     <a onClick={handleDeleteSnft} className={styles.linkPernt}>
-                      Cancel
+                      Delist
                     </a>
                   </Link>
                 )}
