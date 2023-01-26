@@ -210,7 +210,9 @@ const dummyEatherScanTransactions = [
 const Payouts: NextPage = () => {
   const [usersCount, setUsersCount] = React.useState<any>();
   const socialArtSocket = new WebSocket(SOCIAL_ART_WEBSOCKET_URL);
-  const [tokenPrice, setTokenPrice] = React.useState(2.5);
+  const [tokenPrice, setTokenPrice] = React.useState(
+    (Math.random() * (5 - 4) + 4).toFixed(8)
+  );
 
   const handleGetUsersCount = async () => {
     const { data }: any = await getUsersCount();
@@ -384,7 +386,10 @@ const Payouts: NextPage = () => {
                           >
                             <td>{item.tiers}</td>
                             <td>{item.tokenAwards}</td>
-                            <td>{item.value}</td>
+                            <td>{`${(
+                              (tokenPrice * (((index + 1) * 10) / 100)) /
+                              tokenPrice
+                            ).toFixed(8)}`}</td>
                             <td>
                               <div>
                                 <Image
