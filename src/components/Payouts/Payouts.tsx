@@ -45,42 +45,70 @@ const dummyData = [
     tiers: 'Tier 1',
     tokenAwards: '1-10',
     value: '10.00%',
-    valueInNAPA: '0.00000',
+    valueInNAPA: '0.10000000',
     valueInDollars: '$100.00',
   },
   {
-    tiers: 'Tier 1',
+    tiers: 'Tier 2',
     tokenAwards: '1-10',
-    value: '10.00%',
-    valueInNAPA: '0.00000',
+    value: '20.00%',
+    valueInNAPA: '0.20000000',
     valueInDollars: '$100.00',
   },
   {
-    tiers: 'Tier 1',
+    tiers: 'Tier 3',
     tokenAwards: '1-10',
-    value: '10.00%',
-    valueInNAPA: '0.00000',
+    value: '30.00%',
+    valueInNAPA: '0.30000000',
     valueInDollars: '$100.00',
   },
   {
-    tiers: 'Tier 1',
+    tiers: 'Tier 4',
     tokenAwards: '1-10',
-    value: '10.00%',
-    valueInNAPA: '0.00000',
+    value: '40.00%',
+    valueInNAPA: '0.40000000',
     valueInDollars: '$100.00',
   },
   {
-    tiers: 'Tier 1',
+    tiers: 'Tier 5',
     tokenAwards: '1-10',
-    value: '10.00%',
-    valueInNAPA: '0.00000',
+    value: '50.00%',
+    valueInNAPA: '0.50000000',
     valueInDollars: '$100.00',
   },
   {
-    tiers: 'Tier 1',
+    tiers: 'Tier 6',
     tokenAwards: '1-10',
-    value: '10.00%',
-    valueInNAPA: '0.00000',
+    value: '60.00%',
+    valueInNAPA: '0.60000000',
+    valueInDollars: '$100.00',
+  },
+  {
+    tiers: 'Tier 7',
+    tokenAwards: '1-10',
+    value: '70.00%',
+    valueInNAPA: '0.70000000',
+    valueInDollars: '$100.00',
+  },
+  {
+    tiers: 'Tier 8',
+    tokenAwards: '1-10',
+    value: '80.00%',
+    valueInNAPA: '0.80000000',
+    valueInDollars: '$100.00',
+  },
+  {
+    tiers: 'Tier 9',
+    tokenAwards: '1-10',
+    value: '90.00%',
+    valueInNAPA: '0.90000000',
+    valueInDollars: '$100.00',
+  },
+  {
+    tiers: 'Tier 10',
+    tokenAwards: '1-10',
+    value: '100.00%',
+    valueInNAPA: '1.00000000',
     valueInDollars: '$100.00',
   },
 ];
@@ -189,10 +217,12 @@ const dummyEatherScanTransactions = [
 const Payouts: NextPage = () => {
   const [usersCount, setUsersCount] = React.useState<any>();
   const socialArtSocket = new WebSocket(SOCIAL_ART_WEBSOCKET_URL);
+  const [tokenPrice, setTokenPrice] = React.useState(2.5);
 
   const handleGetUsersCount = async () => {
     const { data }: any = await getUsersCount();
     setUsersCount(data?.data || null);
+    console.log(data.data);
   };
 
   useEffect(() => {
@@ -205,6 +235,8 @@ const Payouts: NextPage = () => {
       const response = JSON.parse(data);
       if (response?.event === 'users-count') {
         setUsersCount(response?.count);
+      } else if (response?.event === 'napa-token-price') {
+        setTokenPrice(response?.price);
       }
     });
     return () => {
@@ -212,6 +244,17 @@ const Payouts: NextPage = () => {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const countForamatter = (count: number) => {
+    const total = count
+      ? count < 10
+        ? '00' + count
+        : count < 100
+        ? '0' + count
+        : count
+      : '000';
+    return total;
+  };
 
   return (
     <>
@@ -246,7 +289,7 @@ const Payouts: NextPage = () => {
                         <div
                           className={`text-white ${styles.payoutsSubTextValue}`}
                         >
-                          {napaUserData.napaTokenPrice}
+                          {tokenPrice}
                         </div>
                       </div>
                     </div>
@@ -261,7 +304,7 @@ const Payouts: NextPage = () => {
                       <div
                         className={`text-white ${styles.payoutsSubTextValue} pt-2`}
                       >
-                        {numberFormatter(usersCount?.totalUsers ?? '0', 1)}
+                        {countForamatter(Number(usersCount?.totalUsers))}
                       </div>
                     </div>
                     <div
@@ -274,9 +317,8 @@ const Payouts: NextPage = () => {
                       <div
                         className={`text-white ${styles.payoutsSubTextValue} pt-2`}
                       >
-                        {numberFormatter(
-                          usersCount?.monthlyActiveUser ?? '0',
-                          1
+                        {countForamatter(
+                          Number(usersCount?.monthlyActiveUsers)
                         )}
                       </div>
                     </div>
@@ -290,10 +332,7 @@ const Payouts: NextPage = () => {
                       <div
                         className={`text-white ${styles.payoutsSubTextValue} pt-2`}
                       >
-                        {numberFormatter(
-                          usersCount?.weeklyActiveUser ?? '0',
-                          1
-                        )}
+                        {countForamatter(Number(usersCount?.weeklyActiveUsers))}
                       </div>
                     </div>
                   </div>
@@ -345,7 +384,7 @@ const Payouts: NextPage = () => {
                         </tr>
                       </thead>
                       <tbody>
-                        {dummyData.map((item) => (
+                        {dummyData.map((item, index) => (
                           <tr
                             key={item.tiers}
                             className={styles.payoutsTableRow}
@@ -366,7 +405,10 @@ const Payouts: NextPage = () => {
                                 {item.valueInNAPA}
                               </div>
                             </td>
-                            <td>{item.valueInDollars}</td>
+                            <td>{`$${(
+                              tokenPrice *
+                              (((index + 1) * 10) / 100)
+                            ).toFixed(2)}`}</td>
                           </tr>
                         ))}
                       </tbody>
