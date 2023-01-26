@@ -211,7 +211,7 @@ const Payouts: NextPage = () => {
   const [usersCount, setUsersCount] = React.useState<any>();
   const socialArtSocket = new WebSocket(SOCIAL_ART_WEBSOCKET_URL);
   const [tokenPrice, setTokenPrice] = React.useState(
-    (Math.random() * (5 - 4) + 4).toFixed(8)
+    Number((Math.random() * (5 - 4) + 4).toFixed(8))
   );
 
   const handleGetUsersCount = async () => {
@@ -386,10 +386,8 @@ const Payouts: NextPage = () => {
                           >
                             <td>{item.tiers}</td>
                             <td>{item.tokenAwards}</td>
-                            <td>{`${
-                            (//@ts-ignore
+                            <td>{`${(
                               (tokenPrice * (((index + 1) * 10) / 100)) /
-                              //@ts-ignore
                               tokenPrice
                             ).toFixed(8)}`}</td>
                             <td>
@@ -406,13 +404,10 @@ const Payouts: NextPage = () => {
                               </div>
                             </td>
                             <td>
-                              {`$${
-                                (
-                                  //@ts-ignore
-                                  tokenPrice *
-                                  (((index + 1) * 10) / 100)
-                                ).toFixed(2)
-                              }`}
+                              {`$${(
+                                tokenPrice *
+                                (((index + 1) * 10) / 100)
+                              ).toFixed(2)}`}
                             </td>
                           </tr>
                         ))}
