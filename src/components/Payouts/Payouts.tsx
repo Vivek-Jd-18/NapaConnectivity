@@ -5,17 +5,10 @@ import styles from './Payouts.module.scss';
 import Image from 'next/image';
 import Table from 'react-bootstrap/Table';
 import Footer from '../Footer/Footer';
-import { numberFormatter } from '@/utils/payout';
+// import { numberFormatter } from '@/utils/payout';
 import React, { useEffect } from 'react';
 import { getUsersCount } from '@/services/PayoutsApi';
 import { SOCIAL_ART_WEBSOCKET_URL } from '@/constants/url';
-
-const napaUserData = {
-  napaTokenPrice: '2.48250000',
-  totalUser: '328',
-  monthlyActiveUser: '87',
-  dailyActiveUser: '16',
-};
 
 const header = [
   'Tiers',
