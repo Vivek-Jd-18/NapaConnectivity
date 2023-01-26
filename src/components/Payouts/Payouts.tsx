@@ -386,8 +386,10 @@ const Payouts: NextPage = () => {
                           >
                             <td>{item.tiers}</td>
                             <td>{item.tokenAwards}</td>
-                            <td>{`${(
+                            <td>{`${
+                            (//@ts-ignore
                               (tokenPrice * (((index + 1) * 10) / 100)) /
+                              //@ts-ignore
                               tokenPrice
                             ).toFixed(8)}`}</td>
                             <td>
@@ -403,10 +405,15 @@ const Payouts: NextPage = () => {
                                 {item.valueInNAPA}
                               </div>
                             </td>
-                            <td>{`$${(
-                              tokenPrice *
-                              (((index + 1) * 10) / 100)
-                            ).toFixed(2)}`}</td>
+                            <td>
+                              {`$${
+                                (
+                                  //@ts-ignore
+                                  tokenPrice *
+                                  (((index + 1) * 10) / 100)
+                                ).toFixed(2)
+                              }`}
+                            </td>
                           </tr>
                         ))}
                       </tbody>
