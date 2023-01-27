@@ -7,14 +7,15 @@ import Table from 'react-bootstrap/Table';
 import Footer from '../Footer/Footer';
 // import { numberFormatter } from '@/utils/payout';
 import React, { useEffect } from 'react';
-import { getUsersCount } from '@/services/PayoutsApi';
-import { SOCIAL_ART_WEBSOCKET_URL } from '@/constants/url';
+import { getTotalNapaUsersCount, getUsersCount } from '@/services/PayoutsApi';
+import { SOCIAL_ART_WEBSOCKET_URL, WEBSOCKET_URL } from '@/constants/url';
 
 const header = [
   'Tiers',
   'Token Awards',
   '% Value',
   'Value in NAPA Tokens',
+  'Tenths',
   'Value in USD',
 ];
 const headerViralTier = [
@@ -22,6 +23,8 @@ const headerViralTier = [
   'Reward Tiers',
   'Bonus',
   'Value in NAPA Tokens',
+  'Tenths',
+  'Value in USD',
 ];
 const headerEatherTransactions = [
   'Txn Hash',
@@ -109,38 +112,32 @@ const dummyViralTiers = [
   {
     viralCat: 'Lame',
     rewardTier: 'Tier 1 & 2',
-    bonus: '0.00%',
-    valueInNAPA: '0.00000',
+    bonus: 0.0,
+    valueInNAPA: '0.00000000',
   },
   {
-    viralCat: 'Lame',
-    rewardTier: 'Tier 1 & 2',
-    bonus: '0.00%',
-    valueInNAPA: '0.00000',
+    viralCat: 'Going Viral',
+    rewardTier: 'Tier 3 & 4',
+    bonus: 0.25,
+    valueInNAPA: '0.01562500',
   },
   {
-    viralCat: 'Lame',
-    rewardTier: 'Tier 1 & 2',
-    bonus: '0.00%',
-    valueInNAPA: '0.00000',
+    viralCat: 'Almost Viral',
+    rewardTier: 'Tier 5 & 6',
+    bonus: 0.5,
+    valueInNAPA: '0.03125000',
   },
   {
-    viralCat: 'Lame',
-    rewardTier: 'Tier 1 & 2',
-    bonus: '0.00%',
-    valueInNAPA: '0.00000',
+    viralCat: 'Semi Viral',
+    rewardTier: 'Tier 7 & 8',
+    bonus: 0.75,
+    valueInNAPA: '0.04687500',
   },
   {
-    viralCat: 'Lame',
-    rewardTier: 'Tier 1 & 2',
-    bonus: '0.00%',
-    valueInNAPA: '0.00000',
-  },
-  {
-    viralCat: 'Lame',
-    rewardTier: 'Tier 1 & 2',
-    bonus: '0.00%',
-    valueInNAPA: '0.00000',
+    viralCat: 'Viral',
+    rewardTier: 'Tier 9 & 10',
+    bonus: 1.0,
+    valueInNAPA: '0.06250000',
   },
 ];
 
@@ -209,7 +206,9 @@ const dummyEatherScanTransactions = [
 
 const Payouts: NextPage = () => {
   const [usersCount, setUsersCount] = React.useState<any>();
+  const [totalUsers, setTotalUsers] = React.useState('');
   const socialArtSocket = new WebSocket(SOCIAL_ART_WEBSOCKET_URL);
+  const socket = new WebSocket(WEBSOCKET_URL);
   const [tokenPrice, setTokenPrice] = React.useState(
     Number((Math.random() * (5 - 4) + 4).toFixed(8))
   );
@@ -220,8 +219,15 @@ const Payouts: NextPage = () => {
     console.log(data.data);
   };
 
+  const handleGetTotalNapaUsersCount = async () => {
+    const { data }: any = await getTotalNapaUsersCount();
+    setTotalUsers(data?.data?.totalUsers || null);
+    console.log(data.data);
+  };
+
   useEffect(() => {
     handleGetUsersCount();
+    handleGetTotalNapaUsersCount();
   }, []);
 
   useEffect(() => {
@@ -236,6 +242,20 @@ const Payouts: NextPage = () => {
     });
     return () => {
       socialArtSocket.removeEventListener('message', () => {});
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    // @ts-ignore
+    socket.addEventListener('message', ({ data }) => {
+      const response = JSON.parse(data);
+      if (response?.event === 'total-users') {
+        setTotalUsers(response?.totalUsers);
+      }
+    });
+    return () => {
+      socket.removeEventListener('message', () => {});
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -299,7 +319,7 @@ const Payouts: NextPage = () => {
                       <div
                         className={`text-white ${styles.payoutsSubTextValue} pt-2`}
                       >
-                        {countForamatter(Number(usersCount?.totalUsers))}
+                        {countForamatter(Number(totalUsers))}
                       </div>
                     </div>
                     <div
@@ -371,8 +391,8 @@ const Payouts: NextPage = () => {
                     <Table responsive>
                       <thead>
                         <tr>
-                          {header.map((item) => (
-                            <td key={item} className={styles.payoutsTableHead}>
+                          {header.map((item, index) => (
+                            <td key={index} className={styles.payoutsTableHead}>
                               {item}
                             </td>
                           ))}
@@ -380,10 +400,7 @@ const Payouts: NextPage = () => {
                       </thead>
                       <tbody>
                         {dummyData.map((item, index) => (
-                          <tr
-                            key={item.tiers}
-                            className={styles.payoutsTableRow}
-                          >
+                          <tr key={index} className={styles.payoutsTableRow}>
                             <td>{item.tiers}</td>
                             <td>{item.tokenAwards}</td>
                             <td>{`${(
@@ -402,6 +419,16 @@ const Payouts: NextPage = () => {
                                 />{' '}
                                 {item.valueInNAPA}
                               </div>
+                            </td>
+                            <td>
+                              {`${
+                                Number(
+                                  (
+                                    tokenPrice *
+                                    (((index + 1) * 10) / 100)
+                                  ).toFixed(2)
+                                ) / 1
+                              }`}
                             </td>
                             <td>
                               {`$${(
@@ -423,22 +450,19 @@ const Payouts: NextPage = () => {
                     <Table responsive>
                       <thead>
                         <tr>
-                          {headerViralTier.map((item) => (
-                            <td key={item} className={styles.payoutsTableHead}>
+                          {headerViralTier.map((item, index) => (
+                            <td key={index} className={styles.payoutsTableHead}>
                               {item}
                             </td>
                           ))}
                         </tr>
                       </thead>
                       <tbody>
-                        {dummyViralTiers.map((item) => (
-                          <tr
-                            key={item.viralCat}
-                            className={styles.payoutsTableRow}
-                          >
+                        {dummyViralTiers.map((item, index) => (
+                          <tr key={index} className={styles.payoutsTableRow}>
                             <td>{item.viralCat}</td>
                             <td>{item.rewardTier}</td>
-                            <td>{item.bonus}</td>
+                            <td>{`${item.bonus.toFixed(2)}%`}</td>
                             <td>
                               <div>
                                 <Image
@@ -451,6 +475,18 @@ const Payouts: NextPage = () => {
                                 />{' '}
                                 {item.valueInNAPA}
                               </div>
+                            </td>
+                            <td>
+                              {`${
+                                Number(
+                                  (tokenPrice * (item.bonus / 100)).toFixed(2)
+                                ) / 1
+                              }`}
+                            </td>
+                            <td>
+                              {`$${(tokenPrice * (item.bonus / 100)).toFixed(
+                                2
+                              )}`}
                             </td>
                           </tr>
                         ))}
@@ -466,8 +502,8 @@ const Payouts: NextPage = () => {
                     <Table responsive>
                       <thead>
                         <tr>
-                          {headerEatherTransactions.map((item) => (
-                            <td key={item} className={styles.payoutsTableHead}>
+                          {headerEatherTransactions.map((item, index) => (
+                            <td key={index} className={styles.payoutsTableHead}>
                               {item}
                             </td>
                           ))}
@@ -475,11 +511,8 @@ const Payouts: NextPage = () => {
                       </thead>
 
                       <tbody>
-                        {dummyEatherScanTransactions.map((item) => (
-                          <tr
-                            key={item.txnHash}
-                            className={styles.payoutsTableRow}
-                          >
+                        {dummyEatherScanTransactions.map((item, index) => (
+                          <tr key={index} className={styles.payoutsTableRow}>
                             <td className={styles.textColor}>{item.txnHash}</td>
                             <td>{item.method}</td>
                             <td className={styles.textColor}>{item.block}</td>

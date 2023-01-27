@@ -60,7 +60,7 @@ export default function SellNFTPageSc() {
             </a>
           </Link>
         </div>
-        <h1 className={styles.settings}>List Assets</h1>
+        <h1 className={styles.settings}>List Item</h1>
         <div>
           <SellNFTPage
             mintDetails={mintPost}

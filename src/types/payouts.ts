@@ -1,7 +1,6 @@
 export type UsersCountResponse = {
   weeklyCount: string;
   monthlyCount: string;
-  totalCount: string;
 };
 
 export type GetUsersCountResponse = {
@@ -10,8 +9,17 @@ export type GetUsersCountResponse = {
   responseTime: string;
 };
 
+export type TotalNapaUsersCountResponse = {
+  totalUsers: string;
+};
+
+export type GetTotalNapaUsersCountResponse = {
+  data: TotalNapaUsersCountResponse;
+  code: number;
+  responseTime: string;
+};
+
 export type UsersCount = {
   weeklyActiveUsers: string;
   monthlyActiveUsers: string;
-  totalUsers: string;
 };
