@@ -12,19 +12,19 @@ import { SOCIAL_ART_WEBSOCKET_URL, WEBSOCKET_URL } from '@/constants/url';
 
 const header = [
   'Tiers',
-  'Token Awards',
+  'Token Awards Received',
   '% Value',
   'Value in NAPA Tokens',
-  'Tenths',
+  // 'Tenths',
   'Value in USD',
 ];
 const headerViralTier = [
   'Viral Categories',
-  'Reward Tiers',
+  'Reward Tiers Cap',
   'Bonus',
   'Value in NAPA Tokens',
-  'Tenths',
-  'Value in USD',
+  // 'Tenths',
+  // 'Value in USD',
 ];
 const headerEatherTransactions = [
   'Txn Hash',
@@ -111,32 +111,32 @@ const dummyData = [
 const dummyViralTiers = [
   {
     viralCat: 'Lame',
-    rewardTier: 'Tier 1 & 2',
-    bonus: 0.0,
+    rewardTier: ' 1 & 2',
+    bonus: 20,
     valueInNAPA: '0.00000000',
   },
   {
     viralCat: 'Going Viral',
-    rewardTier: 'Tier 3 & 4',
-    bonus: 0.25,
+    rewardTier: ' 3 & 4',
+    bonus: 40,
     valueInNAPA: '0.01562500',
   },
   {
     viralCat: 'Almost Viral',
-    rewardTier: 'Tier 5 & 6',
-    bonus: 0.5,
+    rewardTier: ' 5 & 6',
+    bonus: 60,
     valueInNAPA: '0.03125000',
   },
   {
     viralCat: 'Semi Viral',
-    rewardTier: 'Tier 7 & 8',
-    bonus: 0.75,
+    rewardTier: ' 7 & 8',
+    bonus: 80,
     valueInNAPA: '0.04687500',
   },
   {
     viralCat: 'Viral',
-    rewardTier: 'Tier 9 & 10',
-    bonus: 1.0,
+    rewardTier: ' 9 & 10',
+    bonus: 100,
     valueInNAPA: '0.06250000',
   },
 ];
@@ -352,15 +352,15 @@ const Payouts: NextPage = () => {
                     </div>
                   </div>
                 </div>
-                <div
+                {/* <div
                   className={`col-xl-2 col-md-3 col-sm-5 border mx-2 ${styles.payoutsMetaHuman}`}
                   style={{ borderColor: '#91A5A6', opacity: 0.2 }}
-                >
-                  <div
+                > */}
+                {/* <div
                     className={`d-flex  p-2 justify-content-center ${styles.payoutsText} ${styles.payoutsCharisImag}`}
                   >
-                    Insert Chris
-                    {/* <Image
+                    Insert Chris */}
+                {/* <Image
                       src={'/assets/images/avatar-dummy.png'}
                       alt="Trending"
                       layout="fill"
@@ -372,8 +372,8 @@ const Payouts: NextPage = () => {
                       //   alignSelf: 'center',
                       // }}
                     /> */}
-                  </div>
-                </div>
+                {/* </div> */}
+                {/* </div> */}
               </div>
 
               <div
@@ -403,10 +403,7 @@ const Payouts: NextPage = () => {
                           <tr key={index} className={styles.payoutsTableRow}>
                             <td>{item.tiers}</td>
                             <td>{item.tokenAwards}</td>
-                            <td>{`${(
-                              (tokenPrice * (((index + 1) * 10) / 100)) /
-                              tokenPrice
-                            ).toFixed(8)}`}</td>
+                            <td>{item.value}</td>
                             <td>
                               <div>
                                 <Image
@@ -419,16 +416,6 @@ const Payouts: NextPage = () => {
                                 />{' '}
                                 {item.valueInNAPA}
                               </div>
-                            </td>
-                            <td>
-                              {`${
-                                Number(
-                                  (
-                                    tokenPrice *
-                                    (((index + 1) * 10) / 100)
-                                  ).toFixed(2)
-                                ) / 1
-                              }`}
                             </td>
                             <td>
                               {`$${(
@@ -472,21 +459,9 @@ const Payouts: NextPage = () => {
                                   priority={true}
                                   width={10}
                                   height={10}
-                                />{' '}
+                                />
                                 {item.valueInNAPA}
                               </div>
-                            </td>
-                            <td>
-                              {`${
-                                Number(
-                                  (tokenPrice * (item.bonus / 100)).toFixed(2)
-                                ) / 1
-                              }`}
-                            </td>
-                            <td>
-                              {`$${(tokenPrice * (item.bonus / 100)).toFixed(
-                                2
-                              )}`}
                             </td>
                           </tr>
                         ))}
