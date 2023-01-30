@@ -27,9 +27,9 @@ export default function MarketplaceSc() {
           className="default_tab mb-30 default_tab_wt_scroll"
         >
           <Tab eventKey="home" title="Trade NFTs">
-            <div className={`${styles.ourlyPerntAj}`}>
+            {/* <div className={`${styles.ourlyPerntAj}`}> */}
               <FeedTab />
-            </div>
+            {/* </div> */}
           </Tab>
           {/* <Tab eventKey="projects" title="Projects">
            <ProjectsMarketPlace />
@@ -49,9 +49,9 @@ export default function MarketplaceSc() {
               <CoBetchingPools />
             </Tab> */}
           <Tab eventKey="MyNFTs" title="My NFTs">
-            <div className={`${styles.ourlyPerntAj}`}>
+            {/* <div className={`${styles.ourlyPerntAj}`}> */}
               <MyNFTs />
-            </div>
+            {/* </div> */}
           </Tab>
           <Tab eventKey="MySFTs" title="My SNFTs">
             <MySFTs />

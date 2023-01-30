@@ -8,14 +8,14 @@
   .MainListShdo {
     position: relative;
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       left: 0;
       top: 0;
       right: 0;
       bottom: 0;
       pointer-events: none;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0) 30%, rgba(20, 39, 40, 0.89) 100%);
+      // background: linear-gradient(180deg, rgba(255, 255, 255, 0) 30%, rgba(20, 39, 40, 0.89) 100%);
       z-index: 1;
     }
     .MainListList {
@@ -34,7 +34,7 @@
       font-size: 14px;
       line-height: 140%;
       text-align: right;
-      color: #91A5A6;
+      color: #91a5a6;
       display: flex;
       align-items: center;
       justify-content: flex-end;
@@ -44,7 +44,12 @@
       justify-content: flex-start;
       padding-left: 20px;
     }
-    .LabelTwo, .LabelThree, .LabelFour, .LabelFive, .LabelSix, .LabelSeven {
+    .LabelTwo,
+    .LabelThree,
+    .LabelFour,
+    .LabelFive,
+    .LabelSix,
+    .LabelSeven {
       flex-basis: 13%;
     }
     .Labeleeight {
@@ -67,7 +72,7 @@
         @include font-md-avenir-medium;
         font-size: 18px;
         line-height: 140%;
-        color: #FFFFFF;
+        color: #ffffff;
         display: flex;
         align-items: center;
         margin-bottom: 0;
@@ -81,7 +86,7 @@
             @include font-md-avenir-medium;
             font-size: 18px;
             line-height: 140%;
-            color: #FFFFFF;
+            color: #ffffff;
             display: flex;
             align-items: center;
             min-width: 164px;
@@ -92,11 +97,11 @@
       .RspnsvIcnSpn {
         display: flex;
         align-items: center;
-        >span {
+        > span {
           margin-right: 8px !important;
         }
         .BlueH6 {
-          color: #16E6EF;
+          color: #16e6ef;
           font-size: 18px;
           line-height: 140%;
           @include font-md-avenir-medium;
@@ -107,15 +112,15 @@
     .RowOne {
       flex-basis: 20%;
       justify-content: flex-start;
-      >span {
+      > span {
         margin-right: 30px !important ;
         min-width: 76px;
       }
     }
     .RowFive {
       flex-basis: 13%;
-      >span {
-        margin-right: 8px !important; 
+      > span {
+        margin-right: 8px !important;
       }
     }
     .RowSeven {
@@ -127,14 +132,17 @@
         margin-right: 24px;
       }
     }
-    .RowTwo, .RowThree, .RowFour, .RowSix {
+    .RowTwo,
+    .RowThree,
+    .RowFour,
+    .RowSix {
       flex-basis: 13%;
     }
     .RowSix {
-      >span {
-        margin-right: 8px !important; 
+      > span {
+        margin-right: 8px !important;
       }
-      color: #16E6EF;
+      color: #16e6ef;
     }
     .RspnsvEarn {
       display: none;
@@ -145,8 +153,7 @@
   }
 }
 .RowLabel {
- 
-  .peraAj{
+  .peraAj {
     margin: 0;
     font-family: 'Avenir';
     font-style: normal;
@@ -154,13 +161,13 @@
     font-size: 12px;
     line-height: 140%;
     text-align: right;
-    color: #91A5A6;
+    color: #91a5a6;
   }
-  .colorPernt{
-    color: #16E6EF !important;
+  .colorPernt {
+    color: #16e6ef !important;
   }
-  .colorPerntRed{
-    color: #DB243A !important;
+  .colorPerntRed {
+    color: #db243a !important;
   }
 }
 @media screen and (max-width: 1280px) {
@@ -179,7 +186,7 @@
         .RspnsvIcnSpn {
           display: flex;
           align-items: center;
-          >span {
+          > span {
             margin-right: 8px !important;
           }
         }
@@ -194,7 +201,7 @@
       .RowOne {
         flex-basis: 100% !important;
         margin-top: 0px;
-        >span {
+        > span {
           margin-right: 26px !important ;
         }
       }
@@ -210,11 +217,14 @@
           @include font-md-avenir-regular;
           font-size: 14px;
           line-height: 140%;
-          color: #91A5A6;
+          color: #91a5a6;
           margin-bottom: 0;
         }
       }
-      .RowTwo , .RowThree, .RowFour, .RowFive{
+      .RowTwo,
+      .RowThree,
+      .RowFour,
+      .RowFive {
         flex-direction: column;
         justify-content: flex-start;
         align-items: flex-start;
@@ -228,30 +238,28 @@
         margin-top: 0;
       }
       .RspnsvEarn {
-        >span {
+        > span {
           margin-right: 8px !important;
-         img {
-          display: none !important;
-          margin-right: 0px !important;
-         }
+          img {
+            display: none !important;
+            margin-right: 0px !important;
+          }
         }
-        color: #16E6EF;
+        color: #16e6ef;
       }
     }
     .DefSpan {
       font-size: 14px;
       line-height: 140%;
-      color: #91A5A6;
+      color: #91a5a6;
       @include font-md-avenir-regular;
       margin-left: 12px;
     }
   }
   .MainListList {
     margin-top: 20px;
-    
   }
 }
-
 
 @media screen and (max-width: 736px) {
   .MainListList {
@@ -263,13 +271,13 @@
     .RowLabel {
       justify-content: flex-start;
       flex-basis: 50% !important;
-      margin-top: 26px !important; 
-        h6 {
-          font-size: 16px !important;
-        }
+      margin-top: 26px !important;
+      h6 {
+        font-size: 16px !important;
+      }
     }
     .RowOne {
-      >span {
+      > span {
         margin-right: 20px !important ;
       }
       margin-top: 0 !important;
@@ -291,9 +299,9 @@
     }
   }
 }
-.myWachtUpcontnt{
+.myWachtUpcontnt {
   padding-bottom: 37px;
-  ul{
+  ul {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -301,9 +309,9 @@
     background: rgba(145, 165, 166, 0.1);
     max-width: 360px;
     padding: 2px 2px;
-    li{
+    li {
       list-style: none;
-      button{
+      button {
         border: none;
         background: transparent;
         padding: 8px 15px;
@@ -313,14 +321,14 @@
         font-size: 18px;
         line-height: 140%;
         text-align: center;
-        color: #91A5A6;
-        &:hover{
+        color: #91a5a6;
+        &:hover {
           background: #102324;
-          color: #FFFFFF;
-          }
+          color: #ffffff;
+        }
       }
     }
-    .active{
+    .active {
       background: #102324;
     }
   }
