@@ -7,9 +7,16 @@ import styles from './NapaSocietySection.module.scss';
 import Container from '../../Layout/Container/Container';
 import HighlightButton from '../HighlightButton/HighlightButton';
 import { LeftWhiteArrowIcon, RightWhiteArrowIcon } from '../assets';
+import { MostViewedPosts } from '@/types/post';
+import { getMostLikedPosts } from '@/services/PostApi';
+import { FadeLoader } from 'react-spinners';
 
 const NapaSociety: NextPage = () => {
   const [slider, setSlider] = useState(1);
+  const [mostLikedPosts, setMostLikedPosts] = useState<
+    MostViewedPosts[] | null
+  >(null)
+  const [getLikedPostsLoading, setLikedPostsLoading] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(
@@ -36,6 +43,17 @@ const NapaSociety: NextPage = () => {
     }
     setSlider(slider - 1);
   };
+
+  const handleGetPosts = async () => {
+    setLikedPostsLoading(true);
+    const { data }: any = await getMostLikedPosts();
+    setMostLikedPosts(data?.data || []);
+    setLikedPostsLoading(false);
+  };
+
+  useEffect(() => {
+    handleGetPosts();
+  }, []);
 
   return (
     <div id="napa-society" className={styles.backgroundImage}>
@@ -145,54 +163,38 @@ const NapaSociety: NextPage = () => {
                 </h6>
                 <div className={styles.leaders_row}>
                   <ul>
-                    <li>
-                      <img src="assets/images/leaders1.jpg"></img>
-                      <div>
-                        <p>
-                          01
-                          <strong>
-                            <i>8716</i> <u>likes</u>
-                          </strong>
-                        </p>
-                        <h4>Dwight Holland</h4>
+                    {getLikedPostsLoading ? (
+                      <div className={styles.postNotFound}>
+                        <FadeLoader color="#ffffff" />
                       </div>
-                    </li>
-                    <li>
-                      <img src="assets/images/leaders2.jpg"></img>
-                      <div>
-                        <p>
-                          02
-                          <strong>
-                            <i>5369</i> <u>likes</u>
-                          </strong>
-                        </p>
-                        <h4>Catherine Patton</h4>
+                    ) : mostLikedPosts?.length ? (
+                      mostLikedPosts?.slice(0.3).map((post, index) => {
+                        return (
+                          <li key={post.postId}>
+                            <img
+                              src={`${
+                                post.thumbnail
+                                  ? post.thumbnail
+                                  : 'assets/images/leaders1.jpg'
+                              }`}
+                            ></img>
+                            <div>
+                              <p>
+                                0{index + 1}
+                                <strong>
+                                  <i>{post.likes}</i> <u>likes</u>
+                                </strong>
+                              </p>
+                              <h4>{post.userName}</h4>
+                            </div>
+                          </li>
+                        );
+                      })
+                    ) : (
+                      <div className={styles.postNotFound}>
+                        <h4>No post found</h4>
                       </div>
-                    </li>
-                    <li>
-                      <img src="assets/images/leaders3.jpg"></img>
-                      <div>
-                        <p>
-                          03
-                          <strong>
-                            <i>4672</i> <u>likes</u>
-                          </strong>
-                        </p>
-                        <h4>Marta Thornton</h4>
-                      </div>
-                    </li>
-                    <li>
-                      <img src="assets/images/leaders4.jpg"></img>
-                      <div>
-                        <p>
-                          04
-                          <strong>
-                            <i>4398</i> <u>likes</u>
-                          </strong>
-                        </p>
-                        <h4>Madeline Keller</h4>
-                      </div>
-                    </li>
+                    )}
                   </ul>
                 </div>
                 <HighlightButton

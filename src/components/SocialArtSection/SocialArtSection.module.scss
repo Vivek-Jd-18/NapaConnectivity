@@ -29,6 +29,13 @@
   .socialArtContainerBody {
     height: 92%;
     @include flex-row-between;
+    .noPost {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50%;
+      height: 100%;
+    }
   }
   .socialText {
     @include font-7xl-neuropolitical-normal;
@@ -86,6 +93,7 @@
     @include flex-row-between;
   }
   .carouselImage {
+    height: 70vh;
     width: 52%;
     left: 5px;
     position: absolute;
@@ -107,7 +115,8 @@
     }
     .image {
       width: 62%;
-      object-fit: cover;
+      object-fit: fill;
+      height: 100% !important;
     }
     :after {
       background: linear-gradient(
@@ -153,6 +162,7 @@
         height: 4.5rem;
         object-fit: contain;
         padding-bottom: 0.5rem;
+        border-radius: 50%;
       }
       .carouselBottomText {
         font-size: 1.5rem;

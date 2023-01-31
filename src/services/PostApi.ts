@@ -2,6 +2,7 @@ import {
   CreateNewPostResponse,
   GetAwardPostResponse,
   GetLikePostResponse,
+  GetMostViewedPostsResponse,
   GetPostsResponse,
 } from '@/types/post';
 import axios, { AxiosResponse } from 'axios';
@@ -104,6 +105,63 @@ export const sendPostNotification = async (postId: string) => {
       {
         postId,
       }
+    );
+    return {
+      data: p.data,
+      message: '',
+      error: false,
+    };
+  } catch (error) {
+    return {
+      data: null,
+      error: true,
+      message: error?.response?.data?.message,
+    };
+  }
+};
+
+export const getMostLikedPosts = async () => {
+  try {
+    const p = await axios.get<{}, AxiosResponse<GetMostViewedPostsResponse>>(
+      `${SOCIAL_ART_API_URL}/user/social/video/mostliked`
+    );
+    return {
+      data: p.data,
+      message: '',
+      error: false,
+    };
+  } catch (error) {
+    return {
+      data: null,
+      error: true,
+      message: error?.response?.data?.message,
+    };
+  }
+};
+
+export const getMostAwardsPosts = async () => {
+  try {
+    const p = await axios.get<{}, AxiosResponse<GetMostViewedPostsResponse>>(
+      `${SOCIAL_ART_API_URL}/user/social/video/mostawarded`
+    );
+    return {
+      data: p.data,
+      message: '',
+      error: false,
+    };
+  } catch (error) {
+    return {
+      data: null,
+      error: true,
+      message: error?.response?.data?.message,
+    };
+  }
+};
+
+export const getMostDiscussedPosts = async () => {
+  try {
+    const p = await axios.get<{}, AxiosResponse<GetMostViewedPostsResponse>>(
+      `${SOCIAL_ART_API_URL}/user/social/video/mostdiscussed`
     );
     return {
       data: p.data,

@@ -10,6 +10,12 @@ export type GetPostsResponse = {
   responseTime: string;
 };
 
+export type GetMostViewedPostsResponse = {
+  data: MostViewedPosts;
+  code: number;
+  responseTime: string;
+};
+
 export type GetLikePostResponse = {
   data: string;
   code: number;
@@ -50,6 +56,17 @@ export type Post = {
   commentByUser: string | null;
   awardsByUsers: string;
   mintedTimeStamp: string;
+};
+
+export type MostViewedPosts = {
+  postId: string;
+  awards?: number;
+  likes?: number;
+  comments?: number;
+  userName: string;
+  avatar: string;
+  mintId: string;
+  thumbnail: string;
 };
 
 export type activePost = {

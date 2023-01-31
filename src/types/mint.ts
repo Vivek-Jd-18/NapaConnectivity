@@ -19,6 +19,21 @@ export type GetMintPostsResponse = {
   responseTime: string;
 };
 
+export type GetRecentMintPostsResponse = {
+  data: RecentMintPost;
+  code: number;
+  responseTime: string;
+};
+
+export type RecentMintPost = {
+  postId: string;
+  mintId: string;
+  profileId: string;
+  thumbnail: string;
+  profileName: string;
+  avatar: string
+};
+
 export type MintPost = {
   id: string;
   postId: string;
