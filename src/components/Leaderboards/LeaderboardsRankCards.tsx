@@ -23,9 +23,9 @@ const LeaderboardsRankCards: NextPage<cardsData> = ({
       <div>
         <div className={styles.CardBoxFirst}>
           <div className={styles.Overlay}>
-            <Image
+            <img
+              className={styles.image}
               src={image}
-              objectFit="fill"
               alt=""
               width={320}
               height={398}
