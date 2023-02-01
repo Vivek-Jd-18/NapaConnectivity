@@ -413,8 +413,10 @@ const Payouts: NextPage = () => {
                                   priority={true}
                                   width={10}
                                   height={10}
-                                />{' '}
-                                {item.valueInNAPA}
+                                />
+                                <span style={{ marginLeft: '0.5rem' }}>
+                                  {item.valueInNAPA}
+                                </span>
                               </div>
                             </td>
                             <td>
@@ -460,7 +462,9 @@ const Payouts: NextPage = () => {
                                   width={10}
                                   height={10}
                                 />
-                                {item.valueInNAPA}
+                                <span style={{ marginLeft: '0.5rem' }}>
+                                  {item.valueInNAPA}
+                                </span>
                               </div>
                             </td>
                           </tr>
