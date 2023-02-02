@@ -62,7 +62,7 @@ const LeaderboardsSliderComponent: NextPage<any, SliderProps> =
 
     useEffect(() => {
       // @ts-ignore
-      slider.current.slickGoTo(dataLength <= 2 ? 0 : dataLength == 3 ? 1 : 0);
+      slider.current.slickGoTo(dataLength <= 2 ? 0 : 1);
       document
         .getElementById('sliderComponent')
         ?.addEventListener('wheel', scroll, true);
