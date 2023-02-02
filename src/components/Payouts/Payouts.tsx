@@ -434,7 +434,10 @@ const Payouts: NextPage = () => {
                   <div className={`${styles.payoutsText} text-white`}>
                     Viral Tiers
                   </div>
-                  <div className={styles.tableContainer}>
+                  <div
+                    style={{ maxWidth: '68vw' }}
+                    className={styles.tableContainer}
+                  >
                     <Table responsive>
                       <thead>
                         <tr>
