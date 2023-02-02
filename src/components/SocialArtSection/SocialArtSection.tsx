@@ -103,7 +103,7 @@ const SocialArtSection: NextPage = () => {
                   {mintedPosts &&
                     mintedPosts.slice(0, 5).map((_, index) => {
                       return (
-                        <span key={index} onClick={() => handleNextSection(index + 1)}>
+                        <span key={index} className={styles.circles} onClick={() => handleNextSection(index + 1)}>
                           <svg
                             width="32"
                             height="32"

@@ -55,6 +55,14 @@
       padding-right: 1rem;
       padding-top: 2.5rem;
     }
+  .btnContainer{
+    position: relative !important;
+    .btn{
+     position: absolute;
+     top: -0.5rem;
+     right: 0;
+    }
+  }
   }
   .description {
     color: $white;

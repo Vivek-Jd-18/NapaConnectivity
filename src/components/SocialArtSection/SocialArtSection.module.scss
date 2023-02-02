@@ -10,7 +10,9 @@
   font-family: Avenir;
   src: url('/assets/fonts/Avenir/Avenir-Regular.ttf');
 }
-
+.circles {
+  cursor: pointer;
+}
 .backgroundImage {
   background-image: url('/assets/images/npg2.webp');
   background-size: cover;
@@ -115,7 +117,7 @@
     }
     .image {
       width: 62%;
-      object-fit: fill;
+      object-fit: cover;
       height: 100% !important;
     }
     :after {
