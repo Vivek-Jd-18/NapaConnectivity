@@ -168,7 +168,7 @@ const NapaSociety: NextPage = () => {
                         <FadeLoader color="#ffffff" />
                       </div>
                     ) : mostLikedPosts?.length ? (
-                      mostLikedPosts?.slice(0.3).map((post, index) => {
+                      mostLikedPosts?.slice(0,4).map((post, index) => {
                         return (
                           <li key={post.postId}>
                             <img

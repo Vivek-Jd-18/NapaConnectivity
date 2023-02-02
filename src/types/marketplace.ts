@@ -18,6 +18,7 @@ export type SnftResponse = {
   mintId: string;
   postId: string;
   SNFTDescription: string;
+  SNFTTitle: string;
   marketplace_listed?: string;
   profileId: string;
   type: string;

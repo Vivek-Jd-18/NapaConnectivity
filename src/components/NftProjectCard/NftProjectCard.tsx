@@ -5,14 +5,20 @@ import { NapaIcon } from '../../components/assets';
 
 type Props = {
   backgroundImage?: string;
-  userName : string,
-  title : string,
-  currentBid : string,
-  ending: string,
-  avatar: string
+  userName: string;
+  title: string;
+  currentBid: string;
+  ending: string;
+  avatar: string;
 };
 
-const NftProjectCard: NextPage<Props> = ({ userName,title,currentBid,ending,avatar}) => {
+const NftProjectCard: NextPage<Props> = ({
+  userName,
+  title,
+  currentBid,
+  ending,
+  avatar,
+}) => {
   return (
     <div
       className={styles.cardContainer}
@@ -20,7 +26,7 @@ const NftProjectCard: NextPage<Props> = ({ userName,title,currentBid,ending,avat
     >
       <div className={styles.avatarContainer}>
         <Image
-          src={avatar}
+          src={avatar ? avatar : '/img/feed_small_img01.png'}
           alt="Avatar"
           className={styles.avatar}
           width={52}
@@ -35,7 +41,9 @@ const NftProjectCard: NextPage<Props> = ({ userName,title,currentBid,ending,avat
             <span className={styles.bit}>Current Bit</span>
             <div className={styles.bitContainerLeftSide}>
               <Image src={NapaIcon} alt="NapaIcon" width={26} height={26} />
-              <span className={styles.bitContainerLeftSideText}>{currentBid} NAPA</span>
+              <span className={styles.bitContainerLeftSideText}>
+                {currentBid} NAPA
+              </span>
             </div>
           </div>
           <div className={styles.bitContainer}>

@@ -1,6 +1,17 @@
 @import '../../../styles/abstracts/mixins.module';
 @import '../../../styles/abstracts/variable.module';
 
+.loaderContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30vh;
+  h3 {
+    @include font-md-neuropolitical-normal;
+    color: $gray;
+  }
+}
+
 .backgroundImage {
   background-image: url('/assets/images/npg.png');
   background-size: cover;
@@ -55,14 +66,14 @@
       padding-right: 1rem;
       padding-top: 2.5rem;
     }
-  .btnContainer{
-    position: relative !important;
-    .btn{
-     position: absolute;
-     top: -0.5rem;
-     right: 0;
+    .btnContainer {
+      position: relative !important;
+      .btn {
+        position: absolute;
+        top: -0.5rem;
+        right: 0;
+      }
     }
-  }
   }
   .description {
     color: $white;
