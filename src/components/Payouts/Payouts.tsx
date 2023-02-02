@@ -216,7 +216,6 @@ const Payouts: NextPage = () => {
   const handleGetUsersCount = async () => {
     const { data }: any = await getUsersCount();
     setUsersCount(data?.data || null);
-    console.log(data.data);
   };
 
   const handleGetTotalNapaUsersCount = async () => {

@@ -1369,6 +1369,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
                                   new Date(post.mintedTimeStamp).getHours() + 12
                                 )}
                                 postId={post.postId}
+                                isExpired={post.isExpired}
                               />
                             ) : (
                               <p className={styles.notLive}>Not Minted</p>
