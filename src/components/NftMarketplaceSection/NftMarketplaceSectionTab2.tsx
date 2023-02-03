@@ -9,13 +9,32 @@ import { CustomToastWithLink } from '../CustomToast/CustomToast';
 import { getAllSnfts } from '@/services/MarketplaceApi';
 import { FadeLoader } from 'react-spinners';
 import HighlightButton from '../HighlightButton/HighlightButton';
+import { SOCIAL_ART_WEBSOCKET_URL } from '@/constants/url';
 
 const NftMarketplaceSectionTab2 = () => {
+  const socialArtSocket = new WebSocket(SOCIAL_ART_WEBSOCKET_URL);
   const [snftsData, setSnftsData] = React.useState<SnftResponse[] | null>(null);
   const [loading, setLoading] = React.useState(false);
 
   useEffect(() => {
     handleGetSnfts();
+  }, []);
+
+  useEffect(() => {
+    // @ts-ignore
+    socialArtSocket.addEventListener('message', ({ data }) => {
+      const response = JSON.parse(data);
+      if (response?.event === 'recent-snfts') {
+        setSnftsData((prev) => {
+          // @ts-ignore
+          return [response?.snft, ...prev];
+        });
+      }
+    });
+    return () => {
+      socialArtSocket.removeEventListener('message', () => {});
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleGetSnfts = async () => {
@@ -53,7 +72,7 @@ const NftMarketplaceSectionTab2 = () => {
             />
           </div>
           <LeaderboardsSliderComponent dataLength={snftsData?.length}>
-            {snftsData?.map((val,index) => {
+            {snftsData?.map((val, index) => {
               return (
                 <div key={index} className={styles.projectCardContainer}>
                   <NftProjectCard

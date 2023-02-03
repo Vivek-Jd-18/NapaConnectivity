@@ -10,13 +10,22 @@ import { LeftWhiteArrowIcon, RightWhiteArrowIcon } from '../assets';
 import { MostViewedPosts } from '@/types/post';
 import { getMostLikedPosts } from '@/services/PostApi';
 import { FadeLoader } from 'react-spinners';
+import { getRecentTrendings } from '@/services/TrendingApi';
+import { RecentTrendings } from '@/types/trending';
+import { RecentEvents } from '@/types/event';
+import moment from 'moment';
+import { getRecentEvents } from '@/services/EventApi';
 
 const NapaSociety: NextPage = () => {
   const [slider, setSlider] = useState(1);
   const [mostLikedPosts, setMostLikedPosts] = useState<
     MostViewedPosts[] | null
-  >(null)
+  >(null);
+  const [trendings, setTrendings] = useState<RecentTrendings[] | null>(null);
+  const [events, setEvents] = useState<RecentEvents[] | null>(null);
   const [getLikedPostsLoading, setLikedPostsLoading] = useState(false);
+  const [trendingsLoading, setTrendingsLoading] = useState(false);
+  const [eventsLoading, setEventsLoading] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(
@@ -51,8 +60,24 @@ const NapaSociety: NextPage = () => {
     setLikedPostsLoading(false);
   };
 
+  const handleGetRecentTrendings = async () => {
+    setTrendingsLoading(true);
+    const { data }: any = await getRecentTrendings();
+    setTrendings(data?.data || []);
+    setTrendingsLoading(false);
+  };
+
+  const handleGetRecentEvents = async () => {
+    setEventsLoading(true);
+    const { data }: any = await getRecentEvents();
+    setEvents(data?.data || []);
+    setEventsLoading(false);
+  };
+
   useEffect(() => {
     handleGetPosts();
+    handleGetRecentTrendings();
+    handleGetRecentEvents();
   }, []);
 
   return (
@@ -118,36 +143,33 @@ const NapaSociety: NextPage = () => {
                 </h6>
                 <div className={styles.trend_row}>
                   <ul>
-                    <li>
-                      <img src="assets/images/trending1.jpg"></img>
-                      <div>
-                        <p>4 Aug 2022</p>
-                        <h4>Made last it seen went no just when of by.</h4>
+                    {trendingsLoading || trendings?.length == 0 ? (
+                      <div className={styles.postNotFound}>
+                        {trendingsLoading ? (
+                          <FadeLoader color="#ffffff" />
+                        ) : (
+                          <h4>No Tending Found</h4>
+                        )}
                       </div>
-                    </li>
-                    <li>
-                      <img src="assets/images/trending2.jpg"></img>
-                      <div>
-                        <p>1 Aug 2022</p>
-                        <h4>Weather however luckily enquire so certain do.</h4>
-                      </div>
-                    </li>
-                    <li>
-                      <img src="assets/images/trending3.jpg"></img>
-                      <div>
-                        <p>28 Jul 2022</p>
-                        <h4>Dearest affixed enquire on explain opinion he.</h4>
-                      </div>
-                    </li>
-                    <li>
-                      <img src="assets/images/trending4.jpg"></img>
-                      <div>
-                        <p>14 Jul 2022</p>
-                        <h4>
-                          Normally, an artist would add his social media links.
-                        </h4>
-                      </div>
-                    </li>
+                    ) : (
+                      trendings?.slice(0, 4).map((trending, index) => {
+                        return (
+                          <li key={index}>
+                            <img
+                              src={
+                                trending.userProfilePic
+                                  ? trending.userProfilePic
+                                  : '/assets/images/img_avatar.png'
+                              }
+                            ></img>
+                            <div>
+                              <p>{moment(trending.updatedAt).format('ll')}</p>
+                              <h4>{trending.articleTitle}</h4>
+                            </div>
+                          </li>
+                        );
+                      })
+                    )}
                   </ul>
                 </div>
                 <HighlightButton
@@ -168,7 +190,7 @@ const NapaSociety: NextPage = () => {
                         <FadeLoader color="#ffffff" />
                       </div>
                     ) : mostLikedPosts?.length ? (
-                      mostLikedPosts?.slice(0,4).map((post, index) => {
+                      mostLikedPosts?.slice(0, 4).map((post, index) => {
                         return (
                           <li key={post.postId}>
                             <img
@@ -192,7 +214,7 @@ const NapaSociety: NextPage = () => {
                       })
                     ) : (
                       <div className={styles.postNotFound}>
-                        <h4>No post found</h4>
+                        <h4>No Post Found</h4>
                       </div>
                     )}
                   </ul>
@@ -210,37 +232,27 @@ const NapaSociety: NextPage = () => {
                 </h6>
                 <div className={styles.trend_row}>
                   <ul>
-                    <li>
-                      <img src="assets/images/events4.jpg"></img>
-                      <div>
-                        <p>Aug 29, 17:00</p>
-                        <h4>Annual Meeting of the NTF Community</h4>
+                    {eventsLoading || events?.length == 0 ? (
+                      <div className={styles.postNotFound}>
+                        {trendingsLoading ? (
+                          <FadeLoader color="#ffffff" />
+                        ) : (
+                          <h4>No Event Found</h4>
+                        )}
                       </div>
-                    </li>
-                    <li>
-                      <img src="assets/images/events3.jpg"></img>
-                      <div>
-                        <p>Aug 22, 12:30</p>
-                        <h4>A Lecture on NFT from Around the World</h4>
-                      </div>
-                    </li>
-                    <li>
-                      <img src="assets/images/events2.jpg"></img>
-                      <div>
-                        <p>Aug 3, 14:00</p>
-                        <h4>
-                          Now indulgence dissimilar for his thoroughly has
-                        </h4>
-                      </div>
-                    </li>
-
-                    <li>
-                      <img src="assets/images/events1.jpg"></img>
-                      <div>
-                        <p>Aug 13, 21:30</p>
-                        <h4>Change wholly say why eldest period</h4>
-                      </div>
-                    </li>
+                    ) : (
+                      events?.slice(0, 4).map((event, index) => {
+                        return (
+                          <li key={index}>
+                            <img src={event.eventImageBanner}></img>
+                            <div>
+                              <p>{moment(event.updatedAt).format('lll')}</p>
+                              <h4>{event.eventTitle}</h4>
+                            </div>
+                          </li>
+                        );
+                      })
+                    )}
                   </ul>
                 </div>
                 <HighlightButton

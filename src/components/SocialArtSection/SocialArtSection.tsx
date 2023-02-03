@@ -7,7 +7,7 @@ import styles from './SocialArtSection.module.scss';
 import Container from '../../Layout/Container/Container';
 import HighlightButton from '../HighlightButton/HighlightButton';
 import { scrollToNextSection } from '../../utils/home';
-import { Avatar, Carousel, MouseIcon } from '../../components/assets';
+import { Carousel, MouseIcon } from '../../components/assets';
 import { RecentMintPost } from '@/types/mint';
 import { getRecentMintedPosts } from '@/services/MintApi';
 import { FadeLoader } from 'react-spinners';
