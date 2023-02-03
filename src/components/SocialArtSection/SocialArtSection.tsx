@@ -86,7 +86,7 @@ const SocialArtSection: NextPage = () => {
                     src={`${
                       mintedPosts && mintedPosts[slider - 1]?.avatar
                         ? mintedPosts[slider - 1]?.avatar
-                        : Avatar
+                        :  '/assets/images/img_avatar.png'
                     }`}
                     alt=""
                     className={styles.avatar}

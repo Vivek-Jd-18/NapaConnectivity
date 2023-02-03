@@ -4,7 +4,7 @@ import styles from './NftProjectCard.module.scss';
 import { NapaIcon } from '../../components/assets';
 
 type Props = {
-  backgroundImage?: string;
+  backgroundImg?: string;
   userName: string;
   title: string;
   currentBid: string;
@@ -18,15 +18,16 @@ const NftProjectCard: NextPage<Props> = ({
   currentBid,
   ending,
   avatar,
+  backgroundImg,
 }) => {
   return (
     <div
       className={styles.cardContainer}
-      style={{ backgroundImage: `url(/assets/images/nftprojectcard.png)` }}
+      style={{ backgroundImage: backgroundImg ? `${`url(${backgroundImg})`}` : `url(/assets/images/nftprojectcard.png)`,backgroundSize : backgroundImg && 'cover' }}
     >
       <div className={styles.avatarContainer}>
         <Image
-          src={avatar ? avatar : '/img/feed_small_img01.png'}
+          src={avatar ? avatar : '/assets/images/img_avatar.png'}
           alt="Avatar"
           className={styles.avatar}
           width={52}

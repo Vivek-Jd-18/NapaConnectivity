@@ -1,13 +1,12 @@
 import type { NextPage } from 'next';
 import Container from '../../Layout/Container/Container';
 import Footer from '../Footer/Footer';
-import HighlightButton from '../HighlightButton/HighlightButton';
 import styles from './NftMarketplaceSection.module.scss';
 import NftMarketplaceSectionTabs from './NftMarketplaceSectionTabs';
 
 const NftMarketplaceSection: NextPage = ({}) => {
   return (
-    <div id="nft-marketplace" className={styles.backgroundImage}>
+    <div id="nft-marketplace"  className={styles.backgroundImage}>
       <Container className={`${styles.nftContainer} asinnerContainer`}>
         <h2 className={styles.nft}>Marketplace</h2>
         <p className={styles.description}>
@@ -15,13 +14,6 @@ const NftMarketplaceSection: NextPage = ({}) => {
           art SNFTs with your NAPA token rewards today!
         </p>
         <div className={styles.btnContainer}>
-          <div className={styles.btn}>
-            <HighlightButton
-              title="Explore All Projects"
-              link="/marketplace"
-              arrow={true}
-            />
-          </div>
           <NftMarketplaceSectionTabs />
         </div>
       </Container>

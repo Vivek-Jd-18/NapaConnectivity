@@ -95,16 +95,21 @@
     @include flex-row-between;
   }
   .carouselImage {
-    height: 70vh;
+    height: 78vh;
     width: 52%;
     left: 5px;
     position: absolute;
     bottom: 0;
+    top: 18%;
     display: flex;
     align-items: center;
     justify-content: center;
     @media screen and (min-width: 1537px) {
       left: -2%;
+
+    }
+    @media screen and (max-width: 1440px) {
+     height: 72vh;
     }
     @media screen and (max-width: 1200px) {
       left: 47px;

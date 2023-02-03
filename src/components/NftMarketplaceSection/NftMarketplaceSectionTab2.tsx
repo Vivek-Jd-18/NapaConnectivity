@@ -2,26 +2,17 @@ import NftProjectCard from '../NftProjectCard/NftProjectCard';
 import React, { useEffect } from 'react';
 import styles from './NftMarketplaceSection.module.scss';
 import LeaderboardsSliderComponent from '../Leaderboards/LeaderboardsSlider';
-import { Avatar, ErrorIcon } from '../../components/assets';
+import { ErrorIcon } from '../../components/assets';
 import { SnftResponse } from '@/types/marketplace';
 import { toast } from 'react-toastify';
 import { CustomToastWithLink } from '../CustomToast/CustomToast';
 import { getAllSnfts } from '@/services/MarketplaceApi';
 import { FadeLoader } from 'react-spinners';
+import HighlightButton from '../HighlightButton/HighlightButton';
 
 const NftMarketplaceSectionTab2 = () => {
   const [snftsData, setSnftsData] = React.useState<SnftResponse[] | null>(null);
   const [loading, setLoading] = React.useState(false);
-  const data = [
-    {
-      background: '',
-      userName: '@TomBradley',
-      title: 'Illusions of Darkness',
-      currentBid: '200',
-      ending: '10',
-      avatar: Avatar,
-    },
-  ];
 
   useEffect(() => {
     handleGetSnfts();
@@ -53,12 +44,20 @@ const NftMarketplaceSectionTab2 = () => {
         </div>
       ) : (
         <div id="sliderComponent">
-          <LeaderboardsSliderComponent dataLength={data.length}>
-            {snftsData?.map((val) => {
+          <div className={styles.btn}>
+            <HighlightButton
+              title="Explore All SNFTs"
+              link="/marketplace?redirect=SNFTs"
+              as="/marketplace"
+              arrow={true}
+            />
+          </div>
+          <LeaderboardsSliderComponent dataLength={snftsData?.length}>
+            {snftsData?.map((val,index) => {
               return (
-                <div key={1} className={styles.projectCardContainer}>
+                <div key={index} className={styles.projectCardContainer}>
                   <NftProjectCard
-                    backgroundImage={val.thumbnail}
+                    backgroundImg={val.thumbnail}
                     avatar={val.userImage}
                     ending={val.duration}
                     currentBid={val.amount}

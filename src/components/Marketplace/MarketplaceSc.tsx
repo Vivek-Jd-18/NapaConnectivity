@@ -14,9 +14,11 @@ import MyFavorites from './MyFavorites';
 import MyWatchlist from './MyWatchlist';
 import MySFTs from './MySFTs';
 import TradeSFTs from './TradeSFTs';
+import { useRouter } from 'next/router';
 // import ProjectsMarketPlace from './ProjectsMarketPlace';
 
 export default function MarketplaceSc() {
+  const {query} =  useRouter()
   return (
     <div className={`${styles.container}`}>
       <Container className={`${styles.settingsContainer} asinnerContainer`}>
@@ -26,7 +28,7 @@ export default function MarketplaceSc() {
           id="uncontrolled-tab-example"
           className="default_tab mb-30 default_tab_wt_scroll"
         >
-          <Tab eventKey="home" title="Trade NFTs">
+          <Tab eventKey={`${query.redirect ? query.redirect == 'NFTs' && 'home' : 'home' }`} title="Trade NFTs">
             {/* <div className={`${styles.ourlyPerntAj}`}> */}
               <FeedTab />
             {/* </div> */}
@@ -34,7 +36,7 @@ export default function MarketplaceSc() {
           {/* <Tab eventKey="projects" title="Projects">
            <ProjectsMarketPlace />
           </Tab> */}
-          <Tab eventKey="Trade SNFTs" title="Trade SNFTs">
+          <Tab eventKey={`${query.redirect && query.redirect == 'SNFTs' && 'home' }`} title="Trade SNFTs">
             <TradeSFTs />
           </Tab>
           {/* <Tab eventKey="profile" title="Valuator">
