@@ -1,6 +1,5 @@
 import React from 'react';
 import type { NextPage } from 'next';
-import Image from 'next/image';
 import styles from './LeaderboardsRankCards.module.scss';
 
 type cardsData = {
@@ -23,9 +22,9 @@ const LeaderboardsRankCards: NextPage<cardsData> = ({
       <div>
         <div className={styles.CardBoxFirst}>
           <div className={styles.Overlay}>
-            <Image
+            <img
+              className={styles.image}
               src={image}
-              objectFit="fill"
               alt=""
               width={320}
               height={398}

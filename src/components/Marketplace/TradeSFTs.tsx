@@ -62,7 +62,7 @@ export default function TradeSFTs(props: any) {
 
   const [snftsData, setSnftsData] = React.useState<SnftResponse[] | null>(null);
   const [loading, setLoading] = React.useState(false);
-  const { push } = useRouter()
+  const { push } = useRouter();
 
   useEffect(() => {
     handleGetSnfts();
@@ -427,50 +427,57 @@ export default function TradeSFTs(props: any) {
             {snftsData.map((snft, index) => {
               return (
                 <div key={index} className={styles.CustomGrid}>
-                  <div onClick={()=>push(`snft-details?id=${snft.snftId}`)} className={styles.TipsTulsOverlay}>
+                  <div
+                    onClick={() => push(`snft-details?id=${snft.snftId}`)}
+                    className={styles.TipsTulsOverlay}
+                  >
                     <div className={styles.boxinnrcont}>
                       {/* <Link href=""> */}
-                        <a href="" className={`${styles.apernt} hovereffect`}>
+                      <a href="" className={`${styles.apernt} hovereffect`}>
+                        <Image
+                          src={`${snft.thumbnail}`}
+                          height="372px"
+                          width="282px"
+                          alt=""
+                          className="evmtimg"
+                        />
+                        <div className={styles.upCont}>
                           <Image
-                            src={`${snft.thumbnail}`}
-                            height="372px"
-                            width="282px"
+                            src={`${
+                              snft.userImage
+                                ? snft.userImage
+                                : '/img/feed_small_img01.png'
+                            }`}
+                            height="40px"
+                            width="40px"
                             alt=""
-                            className="evmtimg"
+                            className=""
                           />
-                          <div className={styles.upCont}>
-                            <Image
-                              src={`${snft.userImage}`}
-                              height="40px"
-                              width="40px"
-                              alt=""
-                              className=""
-                            />
-                            <p>@{snft.userName}</p>
-                          </div>
-                          <div className={styles.downCont}>
-                            <h3>{snft.collection}</h3>
-                            <div className={styles.flexPernt}>
-                              <div className={styles.currentBit}>
-                                <h5>Current Bid</h5>
-                                <div className={styles.txtimgFlex}>
-                                  <Image
-                                    src="/img/etherium_ic.svg"
-                                    height="24px"
-                                    width="24px"
-                                    alt=""
-                                    className=""
-                                  />
-                                  <p>{snft.amount}</p>
-                                </div>
-                              </div>
-                              <div className={styles.endingIn}>
-                                <p>Ending In</p>
-                                <h3>{snft.duration}</h3>
+                          <p>@{snft.userName}</p>
+                        </div>
+                        <div className={styles.downCont}>
+                          <h3>{snft.collection}</h3>
+                          <div className={styles.flexPernt}>
+                            <div className={styles.currentBit}>
+                              <h5>Current Bid</h5>
+                              <div className={styles.txtimgFlex}>
+                                <Image
+                                  src="/img/etherium_ic.svg"
+                                  height="24px"
+                                  width="24px"
+                                  alt=""
+                                  className=""
+                                />
+                                <p>{snft.amount}</p>
                               </div>
                             </div>
+                            <div className={styles.endingIn}>
+                              <p>Ending In</p>
+                              <h3>{snft.duration}</h3>
+                            </div>
                           </div>
-                        </a>
+                        </div>
+                      </a>
                       {/* </Link> */}
                     </div>
                   </div>

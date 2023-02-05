@@ -216,7 +216,6 @@ const Payouts: NextPage = () => {
   const handleGetUsersCount = async () => {
     const { data }: any = await getUsersCount();
     setUsersCount(data?.data || null);
-    console.log(data.data);
   };
 
   const handleGetTotalNapaUsersCount = async () => {
@@ -413,8 +412,10 @@ const Payouts: NextPage = () => {
                                   priority={true}
                                   width={10}
                                   height={10}
-                                />{' '}
-                                {item.valueInNAPA}
+                                />
+                                <span style={{ marginLeft: '0.5rem' }}>
+                                  {item.valueInNAPA}
+                                </span>
                               </div>
                             </td>
                             <td>
@@ -433,7 +434,10 @@ const Payouts: NextPage = () => {
                   <div className={`${styles.payoutsText} text-white`}>
                     Viral Tiers
                   </div>
-                  <div className={styles.tableContainer}>
+                  <div
+                    style={{ maxWidth: '68vw' }}
+                    className={styles.tableContainer}
+                  >
                     <Table responsive>
                       <thead>
                         <tr>
@@ -460,7 +464,9 @@ const Payouts: NextPage = () => {
                                   width={10}
                                   height={10}
                                 />
-                                {item.valueInNAPA}
+                                <span style={{ marginLeft: '0.5rem' }}>
+                                  {item.valueInNAPA}
+                                </span>
                               </div>
                             </td>
                           </tr>

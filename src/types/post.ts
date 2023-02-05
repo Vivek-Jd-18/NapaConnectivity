@@ -56,6 +56,7 @@ export type Post = {
   commentByUser: string | null;
   awardsByUsers: string;
   mintedTimeStamp: string;
+  isExpired: string;
 };
 
 export type MostViewedPosts = {

@@ -8,6 +8,7 @@ import moment from 'moment';
 import MyTimer from '../LiverTimer/Mytimer';
 import { MintPost } from '@/types/mint';
 import { useRouter } from 'next/router';
+import { SOCIAL_ART_WEBSOCKET_URL } from '@/constants/url';
 
 type MintedTabInBoxProps = {
   loading: boolean;
@@ -26,6 +27,8 @@ export default function MintedTabInBox({
   handleMintPostUpdate,
   profileId,
 }: MintedTabInBoxProps) {
+  const socialArtSocket = new WebSocket(SOCIAL_ART_WEBSOCKET_URL);
+  const [tokenPrice, setTokenPrice] = React.useState(4.29650254);
   const { push } = useRouter();
   const [filteredMintedPosts, setFilteredMintedPosts] = React.useState<
     MintPost[]
@@ -37,6 +40,20 @@ export default function MintedTabInBox({
       setFilteredMintedPosts(temp);
     }
   }, [mintPosts, profileId]);
+
+  useEffect(() => {
+    // @ts-ignore
+    socialArtSocket.addEventListener('message', ({ data }) => {
+      const response = JSON.parse(data);
+      if (response?.event === 'napa-token-price') {
+        setTokenPrice(response?.price);
+      }
+    });
+    return () => {
+      socialArtSocket.removeEventListener('message', () => {});
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return loading ? (
     <div className={styles.loadingContainer}>
@@ -64,7 +81,10 @@ export default function MintedTabInBox({
                         height={24}
                       />
                       <h2>
-                        12.35 NAPA<span>Earned</span>
+                        {post.napaTokenEarned
+                          ? post.napaTokenEarned
+                          : tokenPrice}{' '}
+                        NAPA<span>Earned</span>
                       </h2>
                     </div>
                   </div>

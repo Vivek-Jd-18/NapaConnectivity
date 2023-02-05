@@ -6,6 +6,7 @@ import { FadeLoader } from 'react-spinners';
 import moment from 'moment';
 import MyTimer from '../LiverTimer/Mytimer';
 import { useRouter } from 'next/router';
+import { SOCIAL_ART_WEBSOCKET_URL } from '@/constants/url';
 
 type MintedTabListProps = {
   loading: boolean;
@@ -24,6 +25,8 @@ export default function MintedTabList({
   handleMintPostUpdate,
   profileId,
 }: MintedTabListProps) {
+  const socialArtSocket = new WebSocket(SOCIAL_ART_WEBSOCKET_URL);
+  const [tokenPrice, setTokenPrice] = React.useState(4.29650254);
   const { push } = useRouter();
   const [filteredMintedPosts, setFilteredMintedPosts] = React.useState<
     MintPost[]
@@ -35,6 +38,20 @@ export default function MintedTabList({
       setFilteredMintedPosts(temp);
     }
   }, [mintPosts, profileId]);
+
+  useEffect(() => {
+    // @ts-ignore
+    socialArtSocket.addEventListener('message', ({ data }) => {
+      const response = JSON.parse(data);
+      if (response?.event === 'napa-token-price') {
+        setTokenPrice(response?.price);
+      }
+    });
+    return () => {
+      socialArtSocket.removeEventListener('message', () => {});
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <div className={styles.MainListBox}>
       {filteredMintedPosts.length > 0 && (
@@ -92,7 +109,9 @@ export default function MintedTabList({
                             width={17}
                             height={13}
                           />
-                          12.35
+                          {post.napaTokenEarned
+                            ? post.napaTokenEarned
+                            : tokenPrice}
                           <span className={styles.DefSpan}>Earned</span>
                         </div>
                       </div>
@@ -157,7 +176,11 @@ export default function MintedTabList({
                           width={17}
                           height={13}
                         />
-                        <h3 className={styles.BlueH6}>12.35</h3>
+                        <h3 className={styles.BlueH6}>
+                          {post.napaTokenEarned
+                            ? post.napaTokenEarned
+                            : tokenPrice}
+                        </h3>
                       </div>
                     </div>
                     <div className={`${styles.RowLabel} ${styles.RowSeven}`}>

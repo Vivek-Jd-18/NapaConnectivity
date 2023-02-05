@@ -7,7 +7,7 @@ import styles from './SocialArtSection.module.scss';
 import Container from '../../Layout/Container/Container';
 import HighlightButton from '../HighlightButton/HighlightButton';
 import { scrollToNextSection } from '../../utils/home';
-import { Avatar, Carousel, MouseIcon } from '../../components/assets';
+import { Carousel, MouseIcon } from '../../components/assets';
 import { RecentMintPost } from '@/types/mint';
 import { getRecentMintedPosts } from '@/services/MintApi';
 import { FadeLoader } from 'react-spinners';
@@ -86,7 +86,7 @@ const SocialArtSection: NextPage = () => {
                     src={`${
                       mintedPosts && mintedPosts[slider - 1]?.avatar
                         ? mintedPosts[slider - 1]?.avatar
-                        : Avatar
+                        :  '/assets/images/img_avatar.png'
                     }`}
                     alt=""
                     className={styles.avatar}
@@ -103,7 +103,7 @@ const SocialArtSection: NextPage = () => {
                   {mintedPosts &&
                     mintedPosts.slice(0, 5).map((_, index) => {
                       return (
-                        <span key={index} onClick={() => handleNextSection(index + 1)}>
+                        <span key={index} className={styles.circles} onClick={() => handleNextSection(index + 1)}>
                           <svg
                             width="32"
                             height="32"

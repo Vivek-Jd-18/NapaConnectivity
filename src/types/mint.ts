@@ -27,7 +27,7 @@ export type GetRecentMintPostsResponse = {
 
 export type RecentMintPost = {
   postId: string;
-  mintId: string;
+  mintId: string; 
   profileId: string;
   thumbnail: string;
   profileName: string;
@@ -63,6 +63,7 @@ export type MintPost = {
   thumbnail: string;
   marketplace_listed?: string;
   snftId?: string;
+  napaTokenEarned?: string;
 };
 
 export type NewMint = {

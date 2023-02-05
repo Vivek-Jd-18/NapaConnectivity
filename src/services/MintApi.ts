@@ -99,13 +99,18 @@ export const updatePostMint = async ({
   }
 };
 
-export const updateMintPostStatus = async (postId: string, status: string) => {
+export const updateMintPostStatus = async (
+  postId: string,
+  status: string,
+  napaTokenEarned: string
+) => {
   try {
     const p = await axios.post<{}, AxiosResponse<''>>(
       `${SOCIAL_ART_API_URL}/user/social/mint/update/status/${postId}`,
       {
         postId,
         status,
+        napaTokenEarned,
       }
     );
     return {
