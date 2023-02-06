@@ -48,7 +48,7 @@ export default function SectionOne({
     );
     setLoading(false);
     router.push('/marketplace');
-  };
+  };  
   return (
     <div className={styles.SectionOne}>
       <div className={styles.CustomGridContainer}>
@@ -77,14 +77,15 @@ export default function SectionOne({
             <p>{snftDetails?.SNFTDescription}</p>
             <div className={styles.imgAndperaFlex}>
               <Image
-                src={`${snftDetails?.userImage ? snftDetails?.userImage : ''}`}
+                src={`${snftDetails?.userImage ? snftDetails?.userImage : '/assets/images/img_avatar.png'}`}
                 alt=""
                 width={40}
                 height={40}
+                style={{borderRadius : '50px'}}
               />
               <p>{snftDetails?.userName}</p>
             </div>
-            {/* <div className={styles.CurrentBitBox}>
+            <div className={styles.CurrentBitBox}>
                         <div className={styles.CurrentBitBoxInrr}>
                             <p>Current Bit</p>
                             <div className={styles.imgAdnHH}>
@@ -101,10 +102,10 @@ export default function SectionOne({
                         <div className={styles.CurrentBitBoxInrr}>
                             <p>Ending In</p>
                             <div className={styles.imgAdnHH}>
-                                <h3>4 h 32 min</h3>
+                                <h3>{snftDetails?.duration}</h3>
                             </div>
                         </div>
-                    </div> */}
+                    </div>
             {loading ? (
               <div className={styles.loadingContainer}>
                 <FadeLoader color="#ffffff" />
