@@ -27,7 +27,7 @@ export default function LeaderboardsTabs() {
           <Tab eventKey="Most Discussed" title="Most Discussed">
            <LeaderboardsTab3 />
           </Tab>
-          <Tab eventKey="Hot Sprint SFTs" title="Hot Sprint SFTs">
+          <Tab eventKey="Hot Sprint SFNTs" title="Hot Sprint SNFTs">
             <LeaderboardsTab4 />
           </Tab>
         </Tabs>
