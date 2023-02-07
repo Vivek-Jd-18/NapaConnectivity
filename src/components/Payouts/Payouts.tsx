@@ -81,7 +81,7 @@ const Payouts: NextPage = () => {
   const [tokenPrice, setTokenPrice] = React.useState(
     Number((Math.random() * (5 - 4) + 4).toFixed(8))
   );
-  let prevRewardsCap = 500000 * 0.005;
+  let prevRewardsCap = 9 * 0.005;
 
   const handleGetUsersCount = async () => {
     const { data }: any = await getUsersCount();
