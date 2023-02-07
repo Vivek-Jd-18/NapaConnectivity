@@ -110,31 +110,31 @@ const dummyData = [
 ];
 const dummyViralTiers = [
   {
-    viralCat: 'Lame',
+    viralCat: 'Step Your Game Up',
     rewardTier: '-',
     bonus: 20,
     valueInNAPA: '0.00000000',
   },
   {
-    viralCat: 'Going Viral',
+    viralCat: 'On Your Way to Stardom',
     rewardTier: '-',
     bonus: 40,
     valueInNAPA: '0.01562500',
   },
   {
-    viralCat: 'Almost Viral',
+    viralCat: 'This Post is Fire',
     rewardTier: '-',
     bonus: 60,
     valueInNAPA: '0.03125000',
   },
   {
-    viralCat: 'Semi Viral',
+    viralCat: 'Wait, Did You See That...',
     rewardTier: '-',
     bonus: 80,
     valueInNAPA: '0.04687500',
   },
   {
-    viralCat: 'Viral',
+    viralCat: 'NAPA Rockstar',
     rewardTier: '-',
     bonus: 100,
     valueInNAPA: '0.06250000',
