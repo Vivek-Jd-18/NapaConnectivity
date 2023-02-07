@@ -443,10 +443,11 @@ export default function TradeSFTs(props: any) {
                         />
                         <div className={styles.upCont}>
                           <Image
+                          style={{borderRadius : '50px'}}
                             src={`${
                               snft.userImage
                                 ? snft.userImage
-                                : '/img/feed_small_img01.png'
+                                : '/assets/images/img_avatar.png'
                             }`}
                             height="40px"
                             width="40px"

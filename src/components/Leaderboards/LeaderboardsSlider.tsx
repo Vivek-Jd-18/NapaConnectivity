@@ -18,7 +18,7 @@ const LeaderboardsSliderComponent: NextPage<any, SliderProps> =
       slidesToShow: 3,
       slidesToScroll: 1,
       infinite: dataLength > 3 ? true : false,
-      autoplay: false,
+      autoplay: true,
       centerPadding: '10px',
       cssEase: 'linear',
       responsive: [

@@ -1,13 +1,14 @@
 import type { NextPage } from 'next';
 import Container from '../../Layout/Container/Container';
 import styles from './Payouts.module.scss';
-
+import { Tooltip as ReactTooltip } from 'react-tooltip';
 import Image from 'next/image';
 import Table from 'react-bootstrap/Table';
 import Footer from '../Footer/Footer';
 // import { numberFormatter } from '@/utils/payout';
 import React, { useEffect } from 'react';
 import { getTotalNapaUsersCount, getUsersCount } from '@/services/PayoutsApi';
+import 'react-tooltip/dist/react-tooltip.css';
 import { SOCIAL_ART_WEBSOCKET_URL, WEBSOCKET_URL } from '@/constants/url';
 
 const header = [
@@ -142,56 +143,6 @@ const dummyViralTiers = [
 ];
 
 const dummyEatherScanTransactions = [
-  {
-    txnHash: '0xdb4f..4ba2',
-    method: 'Transfer',
-    block: '15921858',
-    age: '9 sec ago',
-    from: 'Endless Rays',
-    to: 'Wave Navigate',
-    value: '0.56',
-    txnFee: '0.02',
-  },
-  {
-    txnHash: '0xdb4f..4ba2',
-    method: 'Transfer',
-    block: '15921858',
-    age: '9 sec ago',
-    from: 'Endless Rays',
-    to: 'Wave Navigate',
-    value: '0.56',
-    txnFee: '0.02',
-  },
-  {
-    txnHash: '0xdb4f..4ba2',
-    method: 'Transfer',
-    block: '15921858',
-    age: '9 sec ago',
-    from: 'Endless Rays',
-    to: 'Wave Navigate',
-    value: '0.56',
-    txnFee: '0.02',
-  },
-  {
-    txnHash: '0xdb4f..4ba2',
-    method: 'Transfer',
-    block: '15921858',
-    age: '9 sec ago',
-    from: 'Endless Rays',
-    to: 'Wave Navigate',
-    value: '0.56',
-    txnFee: '0.02',
-  },
-  {
-    txnHash: '0xdb4f..4ba2',
-    method: 'Transfer',
-    block: '15921858',
-    age: '9 sec ago',
-    from: 'Endless Rays',
-    to: 'Wave Navigate',
-    value: '0.56',
-    txnFee: '0.02',
-  },
   {
     txnHash: '0xdb4f..4ba2',
     method: 'Transfer',
@@ -387,21 +338,60 @@ const Payouts: NextPage = () => {
                     payout amounts will fluctuate based on trading.
                   </div>
                   <div className={styles.tableContainer}>
-                    <Table responsive>
+                    <Table responsive style={{ tableLayout: 'fixed' }}>
                       <thead>
                         <tr>
                           {header.map((item, index) => (
-                            <td key={index} className={styles.payoutsTableHead}>
-                              {item}
-                            </td>
+                            <>
+                              {item == 'Token Awards Received' ? (
+                                <td
+                                  key={index}
+                                  className={styles.payoutsTableHead}
+                                  style={{ padding: '0.5rem 1rem' }}
+                                >
+                                  {item}
+                                  <img
+                                    src={'/assets/images/info_icon.png'}
+                                    alt="Trending"
+                                    style={{
+                                      marginLeft: '6px',
+                                      cursor: 'pointer',
+                                    }}
+                                    width={20}
+                                    height={20}
+                                    loading="eager"
+                                    id="tooltip"
+                                  />
+                                  <ReactTooltip
+                                    anchorId="tooltip"
+                                    place="top"
+                                    variant="dark"
+                                    style={{
+                                      width: '20rem',
+                                      lineBreak: 'normal',
+                                    }}
+                                    content="Your total number of awards received must meet or exceed to be in this tier after your live period. i.e tier 1 is 500 awards recieved, user must have 500 or more to be in tier 1, tier 2 is 550 awards recieved, then user must have recieved over 550 awards to be in tier 2"
+                                  />
+                                </td>
+                              ) : (
+                                <td
+                                  key={index}
+                                  className={styles.payoutsTableHead}
+                                >
+                                  {item}
+                                </td>
+                              )}
+                            </>
                           ))}
                         </tr>
                       </thead>
                       <tbody>
                         {dummyData.map((item, index) => (
                           <tr key={index} className={styles.payoutsTableRow}>
-                            <td>{item.tiers}</td>
-                            <td>{item.tokenAwards}</td>
+                            <td style={{width : '10px !important'}}>{item.tiers}</td>
+                            <td style={{ padding: '0.5rem 1rem' }}>
+                              {item.tokenAwards}
+                            </td>
                             <td>{item.value}</td>
                             <td>
                               <div>
@@ -477,7 +467,7 @@ const Payouts: NextPage = () => {
                 </div>
                 <div className=" my-4">
                   <div className={`${styles.payoutsText} text-white`}>
-                    Eatherscan Transactions
+                    Etherscan Transactions
                   </div>
                   <div className={styles.tableContainer}>
                     <Table responsive>
