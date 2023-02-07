@@ -135,7 +135,7 @@ const dummyViralTiers = [
     valueInNAPA: '0.04687500',
   },
   {
-    viralCat: 'NAPA Rockstar',
+    viralCat: 'NAPA Sensation',
     rewardTier: '-',
     bonus: 100,
     valueInNAPA: '0.06250000',
