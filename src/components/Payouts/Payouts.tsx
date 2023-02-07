@@ -1,31 +1,21 @@
 import type { NextPage } from 'next';
 import Container from '../../Layout/Container/Container';
 import styles from './Payouts.module.scss';
-import { Tooltip as ReactTooltip } from 'react-tooltip';
 import Image from 'next/image';
 import Table from 'react-bootstrap/Table';
 import Footer from '../Footer/Footer';
 // import { numberFormatter } from '@/utils/payout';
 import React, { useEffect } from 'react';
 import { getTotalNapaUsersCount, getUsersCount } from '@/services/PayoutsApi';
-import 'react-tooltip/dist/react-tooltip.css';
 import { SOCIAL_ART_WEBSOCKET_URL, WEBSOCKET_URL } from '@/constants/url';
+import Tippy from '@tippyjs/react';
 
-const header = [
-  'Tiers',
-  'Token Awards Received',
-  '% Value',
-  'Value in NAPA Tokens',
-  // 'Tenths',
-  'Value in USD',
-];
 const headerViralTier = [
   'Viral Categories',
   'Reward Tiers Cap',
-  'Bonus',
+  '% Value',
   'Value in NAPA Tokens',
-  // 'Tenths',
-  // 'Value in USD',
+  'Value in USD',
 ];
 const headerEatherTransactions = [
   'Txn Hash',
@@ -37,108 +27,36 @@ const headerEatherTransactions = [
   'Value',
   'Txn Fee',
 ];
-const dummyData = [
-  {
-    tiers: 'Tier 1',
-    tokenAwards: '-',
-    value: '10.00%',
-    valueInNAPA: '0.10000000',
-    valueInDollars: '$100.00',
-  },
-  {
-    tiers: 'Tier 2',
-    tokenAwards: '-',
-    value: '20.00%',
-    valueInNAPA: '0.20000000',
-    valueInDollars: '$100.00',
-  },
-  {
-    tiers: 'Tier 3',
-    tokenAwards: '-',
-    value: '30.00%',
-    valueInNAPA: '0.30000000',
-    valueInDollars: '$100.00',
-  },
-  {
-    tiers: 'Tier 4',
-    tokenAwards: '-',
-    value: '40.00%',
-    valueInNAPA: '0.40000000',
-    valueInDollars: '$100.00',
-  },
-  {
-    tiers: 'Tier 5',
-    tokenAwards: '-',
-    value: '50.00%',
-    valueInNAPA: '0.50000000',
-    valueInDollars: '$100.00',
-  },
-  {
-    tiers: 'Tier 6',
-    tokenAwards: '-',
-    value: '60.00%',
-    valueInNAPA: '0.60000000',
-    valueInDollars: '$100.00',
-  },
-  {
-    tiers: 'Tier 7',
-    tokenAwards: '-',
-    value: '70.00%',
-    valueInNAPA: '0.70000000',
-    valueInDollars: '$100.00',
-  },
-  {
-    tiers: 'Tier 8',
-    tokenAwards: '-',
-    value: '80.00%',
-    valueInNAPA: '0.80000000',
-    valueInDollars: '$100.00',
-  },
-  {
-    tiers: 'Tier 9',
-    tokenAwards: '-',
-    value: '90.00%',
-    valueInNAPA: '0.90000000',
-    valueInDollars: '$100.00',
-  },
-  {
-    tiers: 'Tier 10',
-    tokenAwards: '-',
-    value: '100.00%',
-    valueInNAPA: '1.00000000',
-    valueInDollars: '$100.00',
-  },
-];
 const dummyViralTiers = [
   {
     viralCat: 'Step Your Game Up',
     rewardTier: '-',
     bonus: 20,
-    valueInNAPA: '0.00000000',
+    valueInNAPA: 0.2,
   },
   {
     viralCat: 'On Your Way to Stardom',
     rewardTier: '-',
     bonus: 40,
-    valueInNAPA: '0.01562500',
+    valueInNAPA: 0.4,
   },
   {
     viralCat: 'This Post is Fire',
     rewardTier: '-',
     bonus: 60,
-    valueInNAPA: '0.03125000',
+    valueInNAPA: 0.6,
   },
   {
     viralCat: 'Wait, Did You See That...',
     rewardTier: '-',
     bonus: 80,
-    valueInNAPA: '0.04687500',
+    valueInNAPA: 0.8,
   },
   {
     viralCat: 'NAPA Sensation',
     rewardTier: '-',
     bonus: 100,
-    valueInNAPA: '0.06250000',
+    valueInNAPA: 1.0,
   },
 ];
 
@@ -163,16 +81,17 @@ const Payouts: NextPage = () => {
   const [tokenPrice, setTokenPrice] = React.useState(
     Number((Math.random() * (5 - 4) + 4).toFixed(8))
   );
+  let prevRewardsCap = 500000 * 0.005;
 
   const handleGetUsersCount = async () => {
     const { data }: any = await getUsersCount();
     setUsersCount(data?.data || null);
+    console.log(usersCount);
   };
 
   const handleGetTotalNapaUsersCount = async () => {
     const { data }: any = await getTotalNapaUsersCount();
     setTotalUsers(data?.data?.totalUsers || null);
-    console.log(data.data);
   };
 
   useEffect(() => {
@@ -272,34 +191,6 @@ const Payouts: NextPage = () => {
                         {countForamatter(Number(totalUsers))}
                       </div>
                     </div>
-                    <div
-                      className={`col-4 ${styles.payoutUserDetail} d-flex justify-content-between flex-column`}
-                    >
-                      <div className={`${styles.payoutsSubText}`}>
-                        Monthly Active Users
-                      </div>
-
-                      <div
-                        className={`text-white ${styles.payoutsSubTextValue} pt-2`}
-                      >
-                        {countForamatter(
-                          Number(usersCount?.monthlyActiveUsers)
-                        )}
-                      </div>
-                    </div>
-                    <div
-                      className={`col-4 ${styles.payoutUserDetail} d-flex justify-content-between flex-column`}
-                    >
-                      <div className={`${styles.payoutsSubText}`}>
-                        Daily Active Users
-                      </div>
-
-                      <div
-                        className={`text-white ${styles.payoutsSubTextValue} pt-2`}
-                      >
-                        {countForamatter(Number(usersCount?.weeklyActiveUsers))}
-                      </div>
-                    </div>
                   </div>
                 </div>
                 {/* <div
@@ -329,49 +220,55 @@ const Payouts: NextPage = () => {
               <div
                 className={`${styles.socialMediaReviewContainer} otherscroll`}
               >
-                <div>
+                <div className=" my-4">
                   <div className={`${styles.payoutsText} text-white`}>
-                    Reward Tiers
+                    Viral Tiers
                   </div>
                   <div className={`${styles.payoutsTableRow} text-white my-2`}>
                     Award %value is a percentage of the current token price and
                     payout amounts will fluctuate based on trading.
                   </div>
                   <div className={styles.tableContainer}>
-                    <Table responsive style={{ tableLayout: 'fixed' }}>
+                    <Table responsive>
                       <thead>
                         <tr>
-                          {header.map((item, index) => (
+                          {headerViralTier.map((item, index) => (
                             <>
-                              {item == 'Token Awards Received' ? (
+                              {item == 'Reward Tiers Cap' ? (
                                 <td
                                   key={index}
                                   className={styles.payoutsTableHead}
-                                  style={{ padding: '0.5rem 1rem' }}
                                 >
                                   {item}
-                                  <img
-                                    src={'/assets/images/info_icon.png'}
-                                    alt="Trending"
-                                    style={{
-                                      marginLeft: '6px',
-                                      cursor: 'pointer',
-                                    }}
-                                    width={20}
-                                    height={20}
-                                    loading="eager"
-                                    id="tooltip"
-                                  />
-                                  <ReactTooltip
-                                    anchorId="tooltip"
-                                    place="top"
-                                    variant="dark"
-                                    style={{
-                                      width: '20rem',
-                                      lineBreak: 'normal',
-                                    }}
-                                    content="Your total number of awards received must meet or exceed to be in this tier after your live period. i.e tier 1 is 500 awards recieved, user must have 500 or more to be in tier 1, tier 2 is 550 awards recieved, then user must have recieved over 550 awards to be in tier 2"
-                                  />
+                                  <Tippy
+                                    className="toolTipContainer"
+                                    placement="top"
+                                    content={
+                                      <div>
+                                        <p style={{ textAlign: 'left' }}>
+                                          Your total number of awards received
+                                          must meet or exceed to be in this tier
+                                          after your live period. i.e tier 1 is
+                                          500 awards recieved, user must have
+                                          500 or more to be in tier 1, tier 2 is
+                                          550 awards recieved, then user must
+                                          have recieved over 550 awards to be in
+                                          tier 2
+                                        </p>
+                                      </div>
+                                    }
+                                  >
+                                    <img
+                                      src={'/assets/images/info_icon.png'}
+                                      alt="Trending"
+                                      style={{
+                                        marginLeft: '6px',
+                                        cursor: 'pointer',
+                                      }}
+                                      width={20}
+                                      height={20}
+                                    />
+                                  </Tippy>
                                 </td>
                               ) : (
                                 <td
@@ -386,81 +283,37 @@ const Payouts: NextPage = () => {
                         </tr>
                       </thead>
                       <tbody>
-                        {dummyData.map((item, index) => (
-                          <tr key={index} className={styles.payoutsTableRow}>
-                            <td style={{width : '10px !important'}}>{item.tiers}</td>
-                            <td style={{ padding: '0.5rem 1rem' }}>
-                              {item.tokenAwards}
-                            </td>
-                            <td>{item.value}</td>
-                            <td>
-                              <div>
-                                <Image
-                                  src={'/assets/images/napa_white_icon.png'}
-                                  alt="Trending"
-                                  loading="eager"
-                                  priority={true}
-                                  width={10}
-                                  height={10}
-                                />
-                                <span style={{ marginLeft: '0.5rem' }}>
-                                  {item.valueInNAPA}
-                                </span>
-                              </div>
-                            </td>
-                            <td>
-                              {`$${(
-                                tokenPrice *
-                                (((index + 1) * 10) / 100)
-                              ).toFixed(2)}`}
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </Table>
-                  </div>
-                </div>
-                <div className=" my-4">
-                  <div className={`${styles.payoutsText} text-white`}>
-                    Viral Tiers
-                  </div>
-                  <div
-                    style={{ maxWidth: '68vw' }}
-                    className={styles.tableContainer}
-                  >
-                    <Table responsive>
-                      <thead>
-                        <tr>
-                          {headerViralTier.map((item, index) => (
-                            <td key={index} className={styles.payoutsTableHead}>
-                              {item}
-                            </td>
-                          ))}
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {dummyViralTiers.map((item, index) => (
-                          <tr key={index} className={styles.payoutsTableRow}>
-                            <td>{item.viralCat}</td>
-                            <td>{item.rewardTier}</td>
-                            <td>{`${item.bonus.toFixed(2)}%`}</td>
-                            <td>
-                              <div>
-                                <Image
-                                  src={'/assets/images/napa_white_icon.png'}
-                                  alt="Trending"
-                                  loading="eager"
-                                  priority={true}
-                                  width={10}
-                                  height={10}
-                                />
-                                <span style={{ marginLeft: '0.5rem' }}>
-                                  {item.valueInNAPA}
-                                </span>
-                              </div>
-                            </td>
-                          </tr>
-                        ))}
+                        {dummyViralTiers.map((item, index) => {
+                          prevRewardsCap =
+                            index == 0
+                              ? prevRewardsCap
+                              : prevRewardsCap * 0.05 + prevRewardsCap;
+                          return (
+                            <tr key={index} className={styles.payoutsTableRow}>
+                              <td>{item.viralCat}</td>
+                              <td>{(prevRewardsCap / 10).toFixed(8)}</td>
+                              <td>{`${item.bonus.toFixed(2)}%`}</td>
+                              <td>
+                                <div>
+                                  <Image
+                                    src={'/assets/images/napa_white_icon.png'}
+                                    alt="Trending"
+                                    loading="eager"
+                                    priority={true}
+                                    width={10}
+                                    height={10}
+                                  />
+                                  <span style={{ marginLeft: '0.5rem' }}>
+                                    {item.valueInNAPA.toFixed(8)}
+                                  </span>
+                                </div>
+                              </td>
+                              <td>
+                                {(tokenPrice * item.valueInNAPA).toFixed(8)}
+                              </td>
+                            </tr>
+                          );
+                        })}
                       </tbody>
                     </Table>
                   </div>
