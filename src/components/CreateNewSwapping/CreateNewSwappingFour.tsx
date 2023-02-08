@@ -38,7 +38,7 @@ export default function CreateNewSwappingFour() {
                                                 <h3>Futuristic Fierce Radiant Cube</h3>
                                                 <div className={styles.flexPernt}>
                                                     <div className={styles.currentBit}>
-                                                        <h5>Current Bit</h5>
+                                                        <h5>Current Bid</h5>
                                                         <div className={styles.txtimgFlex}>
                                                             <Image
                                                                 src="/img/napa_ic.svg"
@@ -85,7 +85,7 @@ export default function CreateNewSwappingFour() {
                                                 <h3>Illusions of Darkness</h3>
                                                 <div className={styles.flexPernt}>
                                                     <div className={styles.currentBit}>
-                                                        <h5>Current Bit</h5>
+                                                        <h5>Current Bid</h5>
                                                         <div className={styles.txtimgFlex}>
                                                             <Image
                                                                 src="/img/napa_ic.svg"

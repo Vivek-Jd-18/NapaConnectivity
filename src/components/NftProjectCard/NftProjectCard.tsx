@@ -23,7 +23,12 @@ const NftProjectCard: NextPage<Props> = ({
   return (
     <div
       className={styles.cardContainer}
-      style={{ backgroundImage: backgroundImg ? `${`url(${backgroundImg})`}` : `url(/assets/images/nftprojectcard.png)`,backgroundSize : backgroundImg && 'cover' }}
+      style={{
+        backgroundImage: backgroundImg
+          ? `${`url(${backgroundImg})`}`
+          : `url(/assets/images/nftprojectcard.png)`,
+        backgroundSize: backgroundImg && 'cover',
+      }}
     >
       <div className={styles.avatarContainer}>
         <Image
@@ -39,7 +44,7 @@ const NftProjectCard: NextPage<Props> = ({
         <span className={styles.title}>{title}</span>
         <div className={styles.description}>
           <div className={styles.bitContainer}>
-            <span className={styles.bit}>Current Bit</span>
+            <span className={styles.bit}>Current Bid</span>
             <div className={styles.bitContainerLeftSide}>
               <Image src={NapaIcon} alt="NapaIcon" width={26} height={26} />
               <span className={styles.bitContainerLeftSideText}>
