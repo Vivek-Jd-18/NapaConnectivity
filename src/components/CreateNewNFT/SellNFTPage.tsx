@@ -26,7 +26,6 @@ export default function SellNFTPage({
   loading,
   snftDetails,
 }: SellNFTPageProps) {
-  
   const optionsone = [
     {
       value: 'Napa NAPA 1',
@@ -62,6 +61,11 @@ export default function SellNFTPage({
   const [amount, setAmount] = React.useState('');
   const [duration, setDuration] = React.useState<any>();
   const [type, setType] = React.useState('Fixed Price');
+  const [errors, setErrors] = React.useState({
+    collection: '',
+    amount: '',
+    duration: '',
+  });
 
   useEffect(() => {
     if (snftDetails) {
@@ -107,6 +111,36 @@ export default function SellNFTPage({
       );
       return;
     }
+    setErrors({
+      collection: '',
+      amount: '',
+      duration: '',
+    });
+    if (!collection) {
+      setErrors((prev) => {
+        return {
+          ...prev,
+          collection: 'Collection is required',
+        };
+      });
+    }
+    if (!amount) {
+      setErrors((prev) => {
+        return {
+          ...prev,
+          amount: 'Amount is required',
+        };
+      });
+    }
+    if (!duration) {
+      setErrors((prev) => {
+        return {
+          ...prev,
+          duration: 'Duration is required',
+        };
+      });
+    }
+    if (!duration || !amount || !collection) return;
     setIsLoading(true);
     const newSnft = {
       collection: collection?.value ?? '',
@@ -147,6 +181,36 @@ export default function SellNFTPage({
   };
 
   const handleUpdateSnft = async () => {
+    setErrors({
+      collection: '',
+      amount: '',
+      duration: '',
+    });
+    if (!collection) {
+      setErrors((prev) => {
+        return {
+          ...prev,
+          collection: 'Collection is required',
+        };
+      });
+    }
+    if (!amount) {
+      setErrors((prev) => {
+        return {
+          ...prev,
+          amount: 'Amount is required',
+        };
+      });
+    }
+    if (!duration) {
+      setErrors((prev) => {
+        return {
+          ...prev,
+          duration: 'Duration is required',
+        };
+      });
+    }
+    if (!duration || !amount || !collection) return;
     setIsLoading(true);
     const updatedSnft = {
       collection: collection?.value ?? '',
@@ -225,6 +289,7 @@ export default function SellNFTPage({
                 <h1 className={styles.DefHed}>Price & Collection</h1>
                 <div className={styles.MixInputPool}>
                   <div
+                    style={{ position: 'relative' }}
                     className={`${styles.SelectPrntNftSell} selectprntnft selectprntnftssell`}
                   >
                     <p className={styles.ClctionTxt}>Collection</p>
@@ -240,8 +305,23 @@ export default function SellNFTPage({
                       }
                       value={collection}
                     />
+                    {!collection && errors.collection && (
+                      <span
+                        style={{
+                          position: 'absolute',
+                          bottom: '-2rem',
+                          left: '0rem',
+                        }}
+                        className={styles.errormsg}
+                      >
+                        {errors.collection}
+                      </span>
+                    )}
                   </div>
-                  <div className={`${styles.FrstInput} frstinputsell`}>
+                  <div
+                    style={{ position: 'relative' }}
+                    className={`${styles.FrstInput} frstinputsell`}
+                  >
                     <Input
                       value={amount}
                       type="number"
@@ -249,10 +329,23 @@ export default function SellNFTPage({
                       label="Amount"
                       onChange={(e) => setAmount(e.target.value)}
                     />
+                    {!amount && errors.amount && (
+                      <span
+                        className={styles.errormsg}
+                        style={{
+                          position: 'absolute',
+                          bottom: '1rem',
+                          left: '0rem',
+                          color: 'red',
+                        }}
+                      >
+                        {errors.amount}
+                      </span>
+                    )}
                   </div>
                 </div>
               </div>
-              <div className={styles.typePrnt}>
+              <div style={{ position: 'relative' }} className={styles.typePrnt}>
                 <h1 className={styles.DefHed}>Duration (Days)</h1>
                 <div className={styles.Sections}>
                   <Select
@@ -267,6 +360,18 @@ export default function SellNFTPage({
                     value={duration}
                   />
                 </div>
+                {!duration && errors.duration && (
+                  <span
+                    className={styles.errormsg}
+                    style={{
+                      position: 'absolute',
+                      bottom: '-2rem',
+                      left: '0rem',
+                    }}
+                  >
+                    {errors.duration}
+                  </span>
+                )}
               </div>
               <div className={`${styles.typePrnt} typePrntaj`}>
                 <h1 className={styles.DefHed}>Other Options</h1>
