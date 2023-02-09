@@ -1,6 +1,12 @@
 @import '../../../styles/abstracts/mixins.module';
 @import '../../../styles/abstracts/variable.module';
 
+.errormsg {
+  margin-top: 0.5rem;
+  color: red;
+  @include font-sm-neuropolitical-normal;
+}
+
 .container {
   width: 100%;
   hr {

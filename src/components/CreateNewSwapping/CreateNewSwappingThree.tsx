@@ -188,7 +188,7 @@ export default function CreateNewSwappingThree() {
                                                 <h3>Futuristic Fierce Radiant Cube</h3>
                                                 <div className={styles.flexPernt}>
                                                     <div className={styles.currentBit}>
-                                                        <h5>Current Bit</h5>
+                                                        <h5>Current Bid</h5>
                                                         <div className={styles.txtimgFlex}>
                                                             <Image
                                                                 src="/img/etherium_ic.svg"
@@ -241,7 +241,7 @@ export default function CreateNewSwappingThree() {
                                                 <h3>Expulsion from Paradise</h3>
                                                 <div className={styles.flexPernt}>
                                                     <div className={styles.currentBit}>
-                                                        <h5>Current Bit</h5>
+                                                        <h5>Current Bid</h5>
                                                         <div className={styles.txtimgFlex}>
                                                             <Image
                                                                 src="/img/napa_ic.svg"
@@ -297,7 +297,7 @@ export default function CreateNewSwappingThree() {
                                                 <h3>Illusions of Darkness</h3>
                                                 <div className={styles.flexPernt}>
                                                     <div className={styles.currentBit}>
-                                                        <h5>Current Bit</h5>
+                                                        <h5>Current Bid</h5>
                                                         <div className={styles.txtimgFlex}>
                                                             <Image
                                                                 src="/img/etherium_ic.svg"
@@ -351,7 +351,7 @@ export default function CreateNewSwappingThree() {
                                                 <h3>Raphael{"'"}s hallucination</h3>
                                                 <div className={styles.flexPernt}>
                                                     <div className={styles.currentBit}>
-                                                        <h5>Current Bit</h5>
+                                                        <h5>Current Bid</h5>
                                                         <div className={styles.txtimgFlex}>
                                                             <Image
                                                                 src="/img/napa_ic.svg"
@@ -405,7 +405,7 @@ export default function CreateNewSwappingThree() {
                                                 <h3>Mysterious Space  Squares</h3>
                                                 <div className={styles.flexPernt}>
                                                     <div className={styles.currentBit}>
-                                                        <h5>Current Bit</h5>
+                                                        <h5>Current Bid</h5>
                                                         <div className={styles.txtimgFlex}>
                                                             <Image
                                                                 src="/img/napa_ic.svg"
@@ -459,7 +459,7 @@ export default function CreateNewSwappingThree() {
                                                 <h3>That Which Falls Upwards</h3>
                                                 <div className={styles.flexPernt}>
                                                     <div className={styles.currentBit}>
-                                                        <h5>Current Bit</h5>
+                                                        <h5>Current Bid</h5>
                                                         <div className={styles.txtimgFlex}>
                                                             <Image
                                                                 src="/img/etherium_ic.svg"
@@ -513,7 +513,7 @@ export default function CreateNewSwappingThree() {
                                                 <h3>Infinite Space of variations</h3>
                                                 <div className={styles.flexPernt}>
                                                     <div className={styles.currentBit}>
-                                                        <h5>Current Bit</h5>
+                                                        <h5>Current Bid</h5>
                                                         <div className={styles.txtimgFlex}>
                                                             <Image
                                                                 src="/img/napa_ic.svg"
@@ -567,7 +567,7 @@ export default function CreateNewSwappingThree() {
                                                 <h3>Endless Rays of a Carefree Past</h3>
                                                 <div className={styles.flexPernt}>
                                                     <div className={styles.currentBit}>
-                                                        <h5>Current Bit</h5>
+                                                        <h5>Current Bid</h5>
                                                         <div className={styles.txtimgFlex}>
                                                             <Image
                                                                 src="/img/etherium_ic.svg"

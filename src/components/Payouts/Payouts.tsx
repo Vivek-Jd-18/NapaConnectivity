@@ -180,7 +180,7 @@ const Payouts: NextPage = () => {
                   </div>
                   <div className="col-12 mt-2 d-flex justify-content-between">
                     <div
-                      className={`col-4 ${styles.payoutUserDetail} d-flex justify-content-between flex-column`}
+                      className={`${styles.payoutUserDetail} d-flex justify-content-between flex-column`}
                     >
                       <div className={`${styles.payoutsSubText}`}>
                         Total NAPA Users
