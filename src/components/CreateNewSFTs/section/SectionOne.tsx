@@ -48,7 +48,7 @@ export default function SectionOne({
     );
     setLoading(false);
     router.push('/marketplace');
-  };  
+  };
   return (
     <div className={styles.SectionOne}>
       <div className={styles.CustomGridContainer}>
@@ -77,35 +77,39 @@ export default function SectionOne({
             <p>{snftDetails?.SNFTDescription}</p>
             <div className={styles.imgAndperaFlex}>
               <Image
-                src={`${snftDetails?.userImage ? snftDetails?.userImage : '/assets/images/img_avatar.png'}`}
+                src={`${
+                  snftDetails?.userImage
+                    ? snftDetails?.userImage
+                    : '/assets/images/img_avatar.png'
+                }`}
                 alt=""
                 width={40}
                 height={40}
-                style={{borderRadius : '50px'}}
+                style={{ borderRadius: '50px' }}
               />
               <p>{snftDetails?.userName}</p>
             </div>
             <div className={styles.CurrentBitBox}>
-                        <div className={styles.CurrentBitBoxInrr}>
-                            <p>Current Bid</p>
-                            <div className={styles.imgAdnHH}>
-                                <Image
-                                    src="/img/napa_ic.svg"
-                                    height="28px"
-                                    width="28px"
-                                    alt=""
-                                    className=""
-                                />
-                                <h3>0.24</h3>
-                            </div>
-                        </div>
-                        <div className={styles.CurrentBitBoxInrr}>
-                            <p>Ending In</p>
-                            <div className={styles.imgAdnHH}>
-                                <h3>{snftDetails?.duration}</h3>
-                            </div>
-                        </div>
-                    </div>
+              <div className={styles.CurrentBitBoxInrr}>
+                <p>Current Bid</p>
+                <div className={styles.imgAdnHH}>
+                  <Image
+                    src="/img/napa_ic.svg"
+                    height="28px"
+                    width="28px"
+                    alt=""
+                    className=""
+                  />
+                  <h3>{snftDetails?.amount}</h3>
+                </div>
+              </div>
+              <div className={styles.CurrentBitBoxInrr}>
+                <p>Ending In</p>
+                <div className={styles.imgAdnHH}>
+                  <h3>{snftDetails?.duration}</h3>
+                </div>
+              </div>
+            </div>
             {loading ? (
               <div className={styles.loadingContainer}>
                 <FadeLoader color="#ffffff" />
