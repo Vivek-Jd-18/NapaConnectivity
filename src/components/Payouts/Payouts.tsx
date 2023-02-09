@@ -222,10 +222,10 @@ const Payouts: NextPage = () => {
               >
                 <div className=" my-4">
                   <div className={`${styles.payoutsText} text-white`}>
-                    Viral Tiers
+                    NAPA Rewards Categories
                   </div>
                   <div className={`${styles.payoutsTableRow} text-white my-2`}>
-                    Award %value is a percentage of the current token price and
+                    Award "% Value" is a percentage of the current token price and
                     payout amounts will fluctuate based on trading.
                   </div>
                   <div className={styles.tableContainer}>
