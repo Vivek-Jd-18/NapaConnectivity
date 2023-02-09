@@ -246,14 +246,13 @@ const Payouts: NextPage = () => {
                                     content={
                                       <div>
                                         <p style={{ textAlign: 'left' }}>
-                                          Your total number of awards received
-                                          must meet or exceed to be in this tier
-                                          after your live period. i.e tier 1 is
-                                          500 awards recieved, user must have
-                                          500 or more to be in tier 1, tier 2 is
-                                          550 awards recieved, then user must
-                                          have recieved over 550 awards to be in
-                                          tier 2
+                                          The total number of awards received for your post during the live period
+                                          must meet or exceed this number to determine which category your post will be considered for NAPA token payout
+                                          after your live period has expired. 
+                                          
+                                          <br></br>
+                                          <br></br>
+                                          For example, if Step Your Game Up has a rewards cap of 5 for awards recieved for your post, then your post nust have recieved 5 awards or more to be in this category.
                                         </p>
                                       </div>
                                     }
