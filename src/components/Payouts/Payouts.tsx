@@ -225,7 +225,7 @@ const Payouts: NextPage = () => {
                     NAPA Rewards Categories
                   </div>
                   <div className={`${styles.payoutsTableRow} text-white my-2`}>
-                    Award "% Value" is a percentage of the current token price and
+                    Award % Value is a percentage of the current token price and
                     payout amounts will fluctuate based on trading.
                   </div>
                   <div className={styles.tableContainer}>
@@ -252,7 +252,7 @@ const Payouts: NextPage = () => {
                                           
                                           <br></br>
                                           <br></br>
-                                          For example, if "Step Your Game Up" has an rewards cap of 5 rewards recieved for your post, then your post nust have recieved 5 awards or more to be in this category.
+                                          For example, if Step Your Game Up has an rewards cap of 5 rewards recieved for your post, then your post nust have recieved 5 awards or more to be in this category.
                                         </p>
                                       </div>
                                     }
