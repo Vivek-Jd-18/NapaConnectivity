@@ -1,10 +1,10 @@
-import { SOCIAL_ART_API_URL } from '@/constants/url';
+import { SOCIAL_ART_API_URL } from '../constants/url';
 import {
   CreateNewMintResponse,
   GetMintPostsResponse,
   GetRecentMintPostsResponse,
   NewMint,
-} from '@/types/mint';
+} from '../types/mint';
 import axios, { AxiosResponse } from 'axios';
 
 export const createNewMint = async (mint: NewMint) => {

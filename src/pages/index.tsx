@@ -8,8 +8,8 @@ import SocialArtSectionWithoutLimit from '../components/SocialArtSectionWithoutL
 import NapaSociety from '../components/NapaSocietySection/NapaSocietySection';
 import SocialArtSection from '../components/SocialArtSection/SocialArtSection';
 import NftMarketplaceSection from '../components/NftMarketplaceSection/NftMarketplaceSection';
-import Header from '@/components/Header/Header';
-import Search from '@/components/Search/Search';
+import Header from '../components/Header/Header';
+import Search from '../components/Search/Search';
 
 const Index: NextPage = () => {
   const [isMenu, setIsMenu] = useState(false);

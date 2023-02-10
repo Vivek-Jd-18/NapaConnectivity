@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import styles from '../../styles/pages/Home.module.scss';
 import type { NextPage } from 'next';
-import CreateNewPoolScThree from '@/components/CreateNewPool/CreateNewPoolScThree';
+import CreateNewPoolScThree from '../components/CreateNewPool/CreateNewPoolScThree';
 
 const CreateNewPoolThree: NextPage = () => {
 

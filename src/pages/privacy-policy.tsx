@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import styles from '../../styles/pages/Home.module.scss';
 import type { NextPage } from 'next';
-import PrivacyPolicySc from '@/components/PrivacyPolicy/PrivacyPolicySc';
+import PrivacyPolicySc from '../components/PrivacyPolicy/PrivacyPolicySc';
 
 const PrivacyPolicy: NextPage = () => {
   return (

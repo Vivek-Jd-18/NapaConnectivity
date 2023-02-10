@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import styles from '../../styles/pages/Home.module.scss';
 import type { NextPage } from 'next';
-import CreateNewSwappingSc from '@/components/CreateNewSwapping/CreateNewSwappingSc';
+import CreateNewSwappingSc from '../components/CreateNewSwapping/CreateNewSwappingSc';
 
 const CreateNewSwapping: NextPage = () => {
 

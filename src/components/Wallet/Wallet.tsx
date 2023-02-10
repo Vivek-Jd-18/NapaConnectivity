@@ -11,8 +11,8 @@ import { CustomToastWithLink } from '../CustomToast/CustomToast';
 import { walletButtonList } from '../../constants/wallet.constants';
 import Image from 'next/image';
 import { ToastDescription, ToastTitle } from '../../typing/toast';
-import useProfile from '@/hooks/useProfile';
-import useWebThree from '@/hooks/useWebThree';
+import useProfile from '../../hooks/useProfile';
+import useWebThree from '../../hooks/useWebThree';
 import Link from 'next/link';
 
 type WalletComponentProps = {

@@ -1,10 +1,9 @@
 import Head from 'next/head';
 import styles from '../../styles/pages/Home.module.scss';
 import type { NextPage } from 'next';
-import CreateNewNFTScTow from '@/components/CreateNewNFT/CreateNewNFTScTow';
+import CreateNewNFTScTow from '../components/CreateNewNFT/CreateNewNFTScTow';
 
 const CreateNewPool: NextPage = () => {
-
   return (
     <>
       <Head>
@@ -13,7 +12,10 @@ const CreateNewPool: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <section className={styles.container} id="earn-container">
-        <div className={`${styles.child} earnpage crtnwnfttw`} id="scrollElement">
+        <div
+          className={`${styles.child} earnpage crtnwnfttw`}
+          id="scrollElement"
+        >
           <CreateNewNFTScTow />
         </div>
       </section>

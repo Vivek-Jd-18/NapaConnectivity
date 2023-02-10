@@ -7,14 +7,14 @@ import SectionTow from './section/SectionTow';
 import SectionThreeTbl from './section/SectionThreeTbl';
 import SectionFourTbl from './section/SectionFourTbl';
 import SectionFiveSlider from './section/SectionFiveSlider';
-import { SnftResponse } from '@/types/marketplace';
-import { getSnft } from '@/services/MarketplaceApi';
+import { SnftResponse } from '../../types/marketplace';
+import { getSnft } from '../../services/MarketplaceApi';
 import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
 import { CustomToastWithLink } from '../CustomToast/CustomToast';
 import { ErrorIcon } from '../assets';
 import { FadeLoader } from 'react-spinners';
-import useProfile from '@/hooks/useProfile';
+import useProfile from '../../hooks/useProfile';
 
 export default function CreateNewNFTTow() {
   const router = useRouter();

@@ -1,9 +1,9 @@
-import { SOCIAL_ART_API_URL } from '@/constants/url';
+import { SOCIAL_ART_API_URL } from '../constants/url';
 import {
   CreateNewCommentResponse,
   GetCommentsResponse,
   NewComment,
-} from '@/types/comment';
+} from '../types/comment';
 import axios, { AxiosResponse } from 'axios';
 
 export const createNewComment = async (comment: NewComment) => {

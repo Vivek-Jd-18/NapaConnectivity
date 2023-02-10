@@ -6,9 +6,8 @@ import 'rc-slider/assets/index.css';
 import { FadeLoader } from 'react-spinners';
 import moment from 'moment';
 import MyTimer from '../LiverTimer/Mytimer';
-import { MintPost } from '@/types/mint';
+import { MintPost } from '../../types/mint';
 import { useRouter } from 'next/router';
-import { SOCIAL_ART_WEBSOCKET_URL } from '@/constants/url';
 
 type MintedTabInBoxProps = {
   loading: boolean;
@@ -17,6 +16,7 @@ type MintedTabInBoxProps = {
   Status: CallableFunction;
   handleMintPostUpdate: CallableFunction;
   profileId: string;
+  socket: WebSocket;
 };
 
 export default function MintedTabInBox({
@@ -26,8 +26,8 @@ export default function MintedTabInBox({
   getEndDate,
   handleMintPostUpdate,
   profileId,
+  socket,
 }: MintedTabInBoxProps) {
-  const socialArtSocket = new WebSocket(SOCIAL_ART_WEBSOCKET_URL);
   const [tokenPrice, setTokenPrice] = React.useState(4.29650254);
   const { push } = useRouter();
   const [filteredMintedPosts, setFilteredMintedPosts] = React.useState<
@@ -43,14 +43,14 @@ export default function MintedTabInBox({
 
   useEffect(() => {
     // @ts-ignore
-    socialArtSocket.addEventListener('message', ({ data }) => {
+    socket.addEventListener('message', ({ data }) => {
       const response = JSON.parse(data);
       if (response?.event === 'napa-token-price') {
         setTokenPrice(response?.price);
       }
     });
     return () => {
-      socialArtSocket.removeEventListener('message', () => {});
+      socket.removeEventListener('message', () => {});
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -152,6 +152,7 @@ export default function MintedTabInBox({
                     expiryTimestamp={new Date(post.timeMinted).setHours(
                       new Date(post.timeMinted).getHours() + 12
                     )}
+                    socket={socket}
                   />
                 </div>
               </div>

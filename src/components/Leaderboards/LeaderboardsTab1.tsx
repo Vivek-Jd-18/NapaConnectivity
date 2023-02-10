@@ -3,10 +3,10 @@ import styles from './Leaderboards.module.scss';
 import LeaderboardsRankCards from './LeaderboardsRankCards';
 import LeaderboardsSliderComponent from './LeaderboardsSlider';
 import LeaderboardsRankList from './LeaderboardsRankList';
-import { MostViewedPosts } from '@/types/post';
-import { getMostAwardsPosts } from '@/services/PostApi';
+import { MostViewedPosts } from '../../types/post';
+import { getMostAwardsPosts } from '../../services/PostApi';
 import { FadeLoader } from 'react-spinners';
-import { SOCIAL_ART_WEBSOCKET_URL } from '@/constants/url';
+import { SOCIAL_ART_WEBSOCKET_URL } from '../../constants/url';
 
 const LeaderboardsTab1 = () => {
   const socialArtSocket = new WebSocket(SOCIAL_ART_WEBSOCKET_URL);

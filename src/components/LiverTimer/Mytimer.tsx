@@ -1,5 +1,4 @@
-import { SOCIAL_ART_WEBSOCKET_URL } from '@/constants/url';
-import { updateMintPostStatus } from '@/services/MintApi';
+import { updateMintPostStatus } from '../../services/MintApi';
 import React, { useEffect, useState } from 'react';
 import { useTimer } from 'react-timer-hook';
 import styles from './Mytimer.module.scss';
@@ -8,10 +7,10 @@ type MyTimerProps = {
   expiryTimestamp: number;
   postId?: string;
   isExpired?: string;
+  socket: WebSocket;
 };
 
-function MyTimer({ expiryTimestamp, postId, isExpired }: MyTimerProps) {
-  const socialArtSocket = new WebSocket(SOCIAL_ART_WEBSOCKET_URL);
+function MyTimer({ expiryTimestamp, postId, isExpired, socket }: MyTimerProps) {
   const [currentNapaPrice, setCurrentNapaPrice] = useState('');
   const { seconds, minutes, hours, isRunning } = useTimer({
     //@ts-ignore
@@ -24,14 +23,14 @@ function MyTimer({ expiryTimestamp, postId, isExpired }: MyTimerProps) {
 
   useEffect(() => {
     // @ts-ignore
-    socialArtSocket.addEventListener('message', ({ data }) => {
+    socket.addEventListener('message', ({ data }) => {
       const response = JSON.parse(data);
       if (response?.event === 'napa-token-price') {
         setCurrentNapaPrice(`${response?.price}`);
       }
     });
     return () => {
-      socialArtSocket.removeEventListener('message', () => {});
+      socket.removeEventListener('message', () => {});
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

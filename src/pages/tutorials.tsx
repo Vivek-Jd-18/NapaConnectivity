@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import styles from '../../styles/pages/Home.module.scss';
 import type { NextPage } from 'next';
-import TipsAndTutorialsSc from '@/components/TipsAndTutorials/TipsAndTutorialsSc';
+import TipsAndTutorialsSc from '../components/TipsAndTutorials/TipsAndTutorialsSc';
 
 const TipsAndTutorials: NextPage = () => {
 

@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import styles from '../../styles/pages/Home.module.scss';
 import type { NextPage } from 'next';
-import MarketplaceSc from '@/components/Marketplace/MarketplaceSc';
+import MarketplaceSc from '../components/Marketplace/MarketplaceSc';
 
 const Marketplace: NextPage = () => {
 

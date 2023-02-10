@@ -6,8 +6,11 @@ import Table from 'react-bootstrap/Table';
 import Footer from '../Footer/Footer';
 // import { numberFormatter } from '@/utils/payout';
 import React, { useEffect } from 'react';
-import { getTotalNapaUsersCount, getUsersCount } from '@/services/PayoutsApi';
-import { SOCIAL_ART_WEBSOCKET_URL, WEBSOCKET_URL } from '@/constants/url';
+import {
+  getTotalNapaUsersCount,
+  getUsersCount,
+} from '../../services/PayoutsApi';
+import { SOCIAL_ART_WEBSOCKET_URL, WEBSOCKET_URL } from '../../constants/url';
 import Tippy from '@tippyjs/react';
 
 const headerViralTier = [
@@ -154,12 +157,12 @@ const Payouts: NextPage = () => {
                 <div className="col-xl-9 col-md-9 col-sm-7">
                   <div className="">
                     <div className={`${styles.napaTokenPriceContainer}`}>
-                      <div className={`p-2 ${styles.payoutsText}`}>
+                      <div className={`pt-2 ${styles.payoutsText}`}>
                         NAPA Token Price
                       </div>
                       <div className="d-flex flex-row align-items-center">
                         <div
-                          className={` px-2 align-self-center ${styles.payoutsText}`}
+                          className={`align-self-center ${styles.payoutsText}`}
                         >
                           <Image
                             src={'/assets/images/napa_icon.png'}

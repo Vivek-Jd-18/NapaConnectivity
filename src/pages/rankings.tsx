@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import styles from '../../styles/pages/Home.module.scss';
 import type { NextPage } from 'next';
-import RankingsSc from '@/components/Rankings/RankingsSc';
+import RankingsSc from '../components/Rankings/RankingsSc';
 
 const Rankings: NextPage = () => {
 

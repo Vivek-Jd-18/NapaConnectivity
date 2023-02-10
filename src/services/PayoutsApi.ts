@@ -1,5 +1,8 @@
-import { SOCIAL_ART_API_URL } from '@/constants/url';
-import { GetTotalNapaUsersCountResponse, GetUsersCountResponse } from '@/types/payouts';
+import { SOCIAL_ART_API_URL } from '../constants/url';
+import {
+  GetTotalNapaUsersCountResponse,
+  GetUsersCountResponse,
+} from '../types/payouts';
 import axios, { AxiosResponse } from 'axios';
 
 export const getUsersCount = async () => {
@@ -23,9 +26,10 @@ export const getUsersCount = async () => {
 
 export const getTotalNapaUsersCount = async () => {
   try {
-    const p = await axios.get<{}, AxiosResponse<GetTotalNapaUsersCountResponse>>(
-      `${SOCIAL_ART_API_URL}/user/social/video/napausers/count`
-    );
+    const p = await axios.get<
+      {},
+      AxiosResponse<GetTotalNapaUsersCountResponse>
+    >(`${SOCIAL_ART_API_URL}/user/social/video/napausers/count`);
     return {
       data: p.data,
       message: '',

@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import styles from '../../styles/pages/Home.module.scss';
 import type { NextPage } from 'next';
-import SupportSc from '@/components/Support/SupportSc';
+import SupportSc from '../components/Support/SupportSc';
 
 const Support: NextPage = () => {
   return (

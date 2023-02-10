@@ -1,13 +1,12 @@
 import Head from 'next/head';
 import styles from '../../styles/pages/Home.module.scss';
 import type { NextPage } from 'next';
-import CoBatchingPoolsSc from '@/components/CoBatchingPools/CoBatchingPoolsSc';
+import CoBatchingPoolsSc from '../components/CoBatchingPools/CoBatchingPoolsSc';
 import ReactGA from 'react-ga';
-const TRACKING_ID = "G-QDKH4LLBNW"; // OUR_TRACKING_ID
+const TRACKING_ID = 'G-QDKH4LLBNW'; // OUR_TRACKING_ID
 ReactGA.initialize(TRACKING_ID);
 
 const CoBatchingPools: NextPage = () => {
-
   return (
     <>
       <Head>
@@ -16,7 +15,10 @@ const CoBatchingPools: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <section className={styles.container} id="earn-container">
-        <div className={`${styles.child} earnpage mrktplcbg`} id="scrollElement">
+        <div
+          className={`${styles.child} earnpage mrktplcbg`}
+          id="scrollElement"
+        >
           <CoBatchingPoolsSc />
         </div>
       </section>

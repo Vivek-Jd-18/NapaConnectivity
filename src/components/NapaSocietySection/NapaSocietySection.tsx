@@ -7,14 +7,14 @@ import styles from './NapaSocietySection.module.scss';
 import Container from '../../Layout/Container/Container';
 import HighlightButton from '../HighlightButton/HighlightButton';
 import { LeftWhiteArrowIcon, RightWhiteArrowIcon } from '../assets';
-import { MostViewedPosts } from '@/types/post';
-import { getMostLikedPosts } from '@/services/PostApi';
+import { MostViewedPosts } from '../../types/post';
+import { getMostLikedPosts } from '../../services/PostApi';
 import { FadeLoader } from 'react-spinners';
-import { getRecentTrendings } from '@/services/TrendingApi';
-import { RecentTrendings } from '@/types/trending';
-import { RecentEvents } from '@/types/event';
+import { getRecentTrendings } from '../../services/TrendingApi';
+import { RecentTrendings } from '../../types/trending';
+import { RecentEvents } from '../../types/event';
 import moment from 'moment';
-import { getRecentEvents } from '@/services/EventApi';
+import { getRecentEvents } from '../../services/EventApi';
 
 const NapaSociety: NextPage = () => {
   const [slider, setSlider] = useState(1);

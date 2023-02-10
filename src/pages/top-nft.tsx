@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import styles from '../../styles/pages/Home.module.scss';
 import type { NextPage } from 'next';
-import TopNFTsSc from '@/components/TopNFT/TopNFTsSc';
+import TopNFTsSc from '../components/TopNFT/TopNFTsSc';
 
 const TopNFT: NextPage = () => {
 

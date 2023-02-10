@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import styles from '../../styles/pages/Home.module.scss';
 import type { NextPage } from 'next';
-import ValuatorSc from '@/components/Valuator/ValuatorSc';
+import ValuatorSc from '../components/Valuator/ValuatorSc';
 
 const Valuator: NextPage = () => {
 

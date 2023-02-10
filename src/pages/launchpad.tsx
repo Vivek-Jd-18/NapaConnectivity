@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import styles from '../../styles/pages/Home.module.scss';
 import type { NextPage } from 'next';
-import LaunchPadSc from '@/components/Launchpad/LaunchPadSc';
+import LaunchPadSc from '../components/Launchpad/LaunchPadSc';
 
 const Launchpad: NextPage = () => {
   return (

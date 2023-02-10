@@ -8,8 +8,8 @@ import Container from '../../Layout/Container/Container';
 import HighlightButton from '../HighlightButton/HighlightButton';
 import { scrollToNextSection } from '../../utils/home';
 import { Carousel, MouseIcon } from '../../components/assets';
-import { RecentMintPost } from '@/types/mint';
-import { getRecentMintedPosts } from '@/services/MintApi';
+import { RecentMintPost } from '../../types/mint';
+import { getRecentMintedPosts } from '../../services/MintApi';
 import { FadeLoader } from 'react-spinners';
 
 //import image1 from .... (asset location in S3 bucket) ASSETS SHOULD BE IMPORTED AND DEFINED, DO NOT HARDCODE ASSETS PLEASE

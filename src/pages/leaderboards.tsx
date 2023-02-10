@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import styles from '../../styles/pages/Home.module.scss';
 import type { NextPage } from 'next';
-import LeaderboardsSc from '@/components/Leaderboards/LeaderboardsSc';
+import LeaderboardsSc from '../components/Leaderboards/LeaderboardsSc';
 
 const Leaderboards: NextPage = () => {
 

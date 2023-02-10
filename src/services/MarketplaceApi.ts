@@ -1,10 +1,10 @@
-import { SOCIAL_ART_API_URL } from '@/constants/url';
+import { SOCIAL_ART_API_URL } from '../constants/url';
 import {
   CreateNewSnftResponse,
   DeleteSnftResponse,
   GetSnftsResponse,
   NewSnft,
-} from '@/types/marketplace';
+} from '../types/marketplace';
 import axios, { AxiosResponse } from 'axios';
 
 export const createNewSnft = async (nft: NewSnft) => {

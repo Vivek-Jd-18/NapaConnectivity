@@ -1,13 +1,13 @@
-import useProfile from '@/hooks/useProfile';
-import useWebThree from '@/hooks/useWebThree';
+import useProfile from '../../hooks/useProfile';
+import useWebThree from '../../hooks/useWebThree';
 import {
   awardPost,
   createNewPost,
   getAllPosts,
   likePost,
-} from '@/services/PostApi';
-import { activePost, Post } from '@/types/post';
-import { ToastDescription, ToastTitle } from '@/typing/toast';
+} from '../../services/PostApi';
+import { activePost, Post } from '../../types/post';
+import { ToastDescription, ToastTitle } from '../../typing/toast';
 import Tippy from '@tippyjs/react';
 import moment from 'moment';
 import Image from 'next/image';
@@ -32,19 +32,19 @@ import {
   countries,
   genre,
   snftCollection,
-} from '@/constants/social-art.constants';
+} from '../../constants/social-art.constants';
 import ReactTags from 'react-tag-autocomplete';
-import { createNewMint } from '@/services/MintApi';
-import { textToEmoji } from '@/utils/socialArt';
-import { socialArtMessagesTriggers } from '@/constants/socialArt.constants';
-import { WEB_STAGING_SOCIALART_URL } from '@/constants/url';
-import { CommentResponse } from '@/types/comment';
+import { createNewMint } from '../../services/MintApi';
+import { textToEmoji } from '../../utils/socialArt';
+import { socialArtMessagesTriggers } from '../../constants/socialArt.constants';
+import { WEB_STAGING_SOCIALART_URL } from '../../constants/url';
+import { CommentResponse } from '../../types/comment';
 import {
   createNewComment,
   getAllComments,
   likeComment,
-} from '@/services/CommentApi';
-import { createReport } from '@/services/ReportApi';
+} from '../../services/CommentApi';
+import { createReport } from '../../services/ReportApi';
 import MyTimer from '../LiverTimer/Mytimer';
 
 type FeedTabProps = {
@@ -1370,6 +1370,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
                                 )}
                                 postId={post.postId}
                                 isExpired={post.isExpired}
+                                socket={socket}
                               />
                             ) : (
                               <p className={styles.notLive}>Not Minted</p>
@@ -1399,19 +1400,19 @@ export default function FeedTab({ socket }: FeedTabProps) {
                         </div>
                         <div className={styles.BotomTxt}>
                           <a
-                            href="javascript:void(0);"
                             className={
                               isYouLiked(post.likedByUsers)
                                 ? `${styles.BotomLikes} ${styles.active}`
                                 : `${styles.BotomLikes}`
                             }
-                            onClick={() =>
+                            onClick={(e) => {
+                              e.preventDefault();
                               handleLikePost(
                                 profileId,
                                 post.postId,
                                 post.likedByUsers
-                              )
-                            }
+                              );
+                            }}
                           >
                             <Image
                               src="/img/heart_icon.svg"
@@ -1458,8 +1459,10 @@ export default function FeedTab({ socket }: FeedTabProps) {
                           </button>
                           {post.minted == 'false' ? (
                             <a
-                              href="javascript:void(0);"
                               className={`${styles.BotomLikes} ${styles.disableBtn}`}
+                              onClick={(e) => {
+                                e.preventDefault();
+                              }}
                             >
                               <Image
                                 src="/img/reward_icon.svg"
@@ -1474,9 +1477,9 @@ export default function FeedTab({ socket }: FeedTabProps) {
                             </a>
                           ) : (
                             <a
-                              href="javascript:void(0);"
                               className={styles.BotomLikes}
-                              onClick={() => {
+                              onClick={(e) => {
+                                e.preventDefault();
                                 if (!isTimerExpired(post.mintedTimeStamp)) {
                                   handlePostAward(post);
                                 }

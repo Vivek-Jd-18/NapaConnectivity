@@ -8,15 +8,15 @@ import FeedTab from './FeedTab';
 import MintedPostsTab from './MintedPostsTab';
 import MintedTabInBox from './MintedTabInBox';
 import MintedTabList from './MintedTabList';
-import { SOCIAL_ART_WEBSOCKET_URL } from '@/constants/url';
-import { MintPost } from '@/types/mint';
+import { SOCIAL_ART_WEBSOCKET_URL } from '../../constants/url';
+import { MintPost } from '../../types/mint';
 import { useRouter } from 'next/router';
-import { getAllMintedPosts } from '@/services/MintApi';
+import { getAllMintedPosts } from '../../services/MintApi';
 import moment from 'moment';
 // import { toast } from 'react-toastify';
 // import { CustomToastWithLink } from '../CustomToast/CustomToast';
 // import { ErrorIcon } from '../assets';
-import useProfile from '@/hooks/useProfile';
+import useProfile from '../../hooks/useProfile';
 
 export default function SocialArtSc() {
   const socialArtSocket = new WebSocket(SOCIAL_ART_WEBSOCKET_URL);
@@ -160,6 +160,7 @@ export default function SocialArtSc() {
                     Status={Status}
                     handleMintPostUpdate={handleMintPostUpdate}
                     profileId={profileId}
+                    socket={socialArtSocket}
                   />
                 </div>
               ) : (
@@ -176,6 +177,7 @@ export default function SocialArtSc() {
                     getEndDate={getEndDate}
                     Status={Status}
                     handleMintPostUpdate={handleMintPostUpdate}
+                    socket={socialArtSocket}
                   />
                 </div>
               )}

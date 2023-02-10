@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import styles from '../../styles/pages/Home.module.scss';
 import type { NextPage } from 'next';
-import LiveStreamSc from '@/components/LiveStream/LiveStreamSc';
+import LiveStreamSc from '../components/LiveStream/LiveStreamSc';
 
 const Launchpad: NextPage = () => {
   return (

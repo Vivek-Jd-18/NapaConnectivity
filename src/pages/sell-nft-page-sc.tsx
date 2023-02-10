@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import type { NextPage } from 'next';
 
-import SellNFTPageSc from '@/components/CreateNewNFT/SellNFTPageSc';
+import SellNFTPageSc from '../components/CreateNewNFT/SellNFTPageSc';
 
 import styles from '../../styles/pages/Home.module.scss';
 

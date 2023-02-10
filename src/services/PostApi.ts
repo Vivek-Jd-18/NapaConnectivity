@@ -4,9 +4,9 @@ import {
   GetLikePostResponse,
   GetMostViewedPostsResponse,
   GetPostsResponse,
-} from '@/types/post';
+} from '../types/post';
 import axios, { AxiosResponse } from 'axios';
-import { SOCIAL_ART_API_URL } from '@/constants/url';
+import { SOCIAL_ART_API_URL } from '../constants/url';
 
 export const createNewPost = async (post: any) => {
   try {

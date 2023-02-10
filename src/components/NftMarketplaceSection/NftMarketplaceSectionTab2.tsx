@@ -3,13 +3,13 @@ import React, { useEffect } from 'react';
 import styles from './NftMarketplaceSection.module.scss';
 import LeaderboardsSliderComponent from '../Leaderboards/LeaderboardsSlider';
 import { ErrorIcon } from '../../components/assets';
-import { SnftResponse } from '@/types/marketplace';
+import { SnftResponse } from '../../types/marketplace';
 import { toast } from 'react-toastify';
 import { CustomToastWithLink } from '../CustomToast/CustomToast';
-import { getAllSnfts } from '@/services/MarketplaceApi';
+import { getAllSnfts } from '../../services/MarketplaceApi';
 import { FadeLoader } from 'react-spinners';
 import HighlightButton from '../HighlightButton/HighlightButton';
-import { SOCIAL_ART_WEBSOCKET_URL } from '@/constants/url';
+import { SOCIAL_ART_WEBSOCKET_URL } from '../../constants/url';
 
 const NftMarketplaceSectionTab2 = () => {
   const socialArtSocket = new WebSocket(SOCIAL_ART_WEBSOCKET_URL);

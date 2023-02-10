@@ -5,11 +5,11 @@ import React, { useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import SellNFTPage from './SellNFTPage';
-import { getMintedPost } from '@/services/MintApi';
-import { MintPost } from '@/types/mint';
+import { getMintedPost } from '../../services/MintApi';
+import { MintPost } from '../../types/mint';
 import { useRouter } from 'next/router';
-import { SnftResponse } from '@/types/marketplace';
-import { getSnft } from '@/services/MarketplaceApi';
+import { SnftResponse } from '../../types/marketplace';
+import { getSnft } from '../../services/MarketplaceApi';
 
 export default function SellNFTPageSc() {
   const [loading, setLoading] = React.useState(false);

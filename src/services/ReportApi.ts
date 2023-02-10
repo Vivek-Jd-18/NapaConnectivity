@@ -1,5 +1,5 @@
-import { SOCIAL_ART_API_URL } from '@/constants/url';
-import { CreateReportPayload, CreateReportResponse } from '@/types/report';
+import { SOCIAL_ART_API_URL } from '../constants/url';
+import { CreateReportPayload, CreateReportResponse } from '../types/report';
 import axios, { AxiosResponse } from 'axios';
 
 export const createReport = async (report: CreateReportPayload) => {

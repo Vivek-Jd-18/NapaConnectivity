@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import styles from '../../styles/pages/Home.module.scss';
 import type { NextPage } from 'next';
-import CreateProjectSc from '@/components/CreateProject/CreateProjectSc';
+import CreateProjectSc from '../components/CreateProject/CreateProjectSc';
 // import CreateNewNFTSc from '@/components/CreateNewNFT/CreateNewNFTSc';
 
 const CreateProject: NextPage = () => {

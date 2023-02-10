@@ -1,4 +1,4 @@
-import { SnftResponse } from '@/types/marketplace';
+import { SnftResponse } from '../../../types/marketplace';
 import moment from 'moment';
 import Image from 'next/image';
 import React from 'react';

@@ -1,5 +1,5 @@
-import { SOCIAL_ART_API_URL } from '@/constants/url';
-import { GetRecentTrendingsResponse } from '@/types/trending';
+import { SOCIAL_ART_API_URL } from '../constants/url';
+import { GetRecentTrendingsResponse } from '../types/trending';
 import axios, { AxiosResponse } from 'axios';
 
 export const getRecentTrendings = async () => {

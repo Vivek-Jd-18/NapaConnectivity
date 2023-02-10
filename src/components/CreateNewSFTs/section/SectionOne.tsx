@@ -2,12 +2,12 @@ import React from 'react';
 import styles from './SectionOne.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
-import { SnftResponse } from '@/types/marketplace';
-import { deleteSnft } from '@/services/MarketplaceApi';
+import { SnftResponse } from '../../../types/marketplace';
+import { deleteSnft } from '../../../services/MarketplaceApi';
 import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
-import { CustomToastWithLink } from '@/components/CustomToast/CustomToast';
-import { DoneIcon, ErrorIcon } from '@/components/assets';
+import { CustomToastWithLink } from '../../../components/CustomToast/CustomToast';
+import { DoneIcon, ErrorIcon } from '../../../components/assets';
 import { FadeLoader } from 'react-spinners';
 
 type SectionOneProps = {

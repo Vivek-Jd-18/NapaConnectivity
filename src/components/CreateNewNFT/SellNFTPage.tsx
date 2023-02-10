@@ -6,14 +6,14 @@ import Select from 'react-select';
 import Image from 'next/image';
 import 'bootstrap-daterangepicker/daterangepicker.css';
 import { useRouter } from 'next/router';
-import { Dayoptions } from '@/constants/sell-nft.constants';
-import { MintPost } from '@/types/mint';
+import { Dayoptions } from '../../constants/sell-nft.constants';
+import { MintPost } from '../../types/mint';
 import { FadeLoader } from 'react-spinners';
 import { toast } from 'react-toastify';
 import { DoneIcon, ErrorIcon } from '../assets';
 import { CustomToastWithLink } from '../CustomToast/CustomToast';
-import { createNewSnft, updateSnft } from '@/services/MarketplaceApi';
-import { SnftResponse } from '@/types/marketplace';
+import { createNewSnft, updateSnft } from '../../services/MarketplaceApi';
+import { SnftResponse } from '../../types/marketplace';
 
 type SellNFTPageProps = {
   mintDetails: MintPost | null;
