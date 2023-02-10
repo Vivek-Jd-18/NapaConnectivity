@@ -5,6 +5,10 @@ import providerOptions from '../utils/web3Configs/providerOptions';
 import marketAbi from "../utils/abis/market.json"
 import { Contract } from "web3-eth-contract"
 import { acceptOwnership, owner, buyNftToken, fulfill, requestVolumeData, setSale, setSaleFromWallet, transferOwnership, updateApiLink, withdrawLink, NFT, getLatestPrice, NapaToken, Usdt, api, napaTokenAmount, nftInfo, priceOfNFT, volume } from '../utils/callHelpers';
+import {
+    NAPA_WALLET, NapaMintFee, NapaToken, Usdt, UsdtMintFee, _exist, balanceOf, baseURI, blackList, ethFee, feeWallet, getApproved, isApprovedForAll, marketPlace, minters, name, owner, ownerOf, supportsInterface, symbol, tokenByIndex, tokenOfOwnerByIndex, tokenURI, totalSupply
+
+} from "../utils/callHelper2"
 import { marketPlaceContract, napaNftContract } from '../utils/contractObjects';
 import { MarketPlaceAddress, supportedChainHexMain, supportedChainHexTest } from '../utils/addressHelper';
 import { symbol } from '../utils/callHelper2';
@@ -168,9 +172,17 @@ export const Home = () => {
         // const accept10 = await volume(ctr);
         // console.log(await accept10.toString(), "volume");
 
-        // _NFTContract Function Check
-         
-    }   
+
+        // _NFTContract read Function Check
+
+        const ctr = await napaNftContract(_signer);
+        console.log(ctr, "napaNftContract conract");
+
+        const accept = await NAPA_WALLET(ctr);
+        console.log(await accept, "NFT name");
+
+
+    }
 
     return (
         <>
