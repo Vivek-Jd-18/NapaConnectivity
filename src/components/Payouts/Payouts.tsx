@@ -23,7 +23,7 @@ const headerEatherTransactions = [
   'Block',
   'Age',
   'From',
-  'to',
+  'To',
   'Value',
   'Txn Fee',
 ];
@@ -225,8 +225,8 @@ const Payouts: NextPage = () => {
                     NAPA Rewards Categories
                   </div>
                   <div className={`${styles.payoutsTableRow} text-white my-2`}>
-                   The reward % Value is a percentage of the current token price. The post rwards
-                    payout amounts will fluctuate based on trading activity.
+                    The reward % Value is a percentage of the current token price and
+                    payout amounts will fluctuate based on the NAPA token trading activity.
                   </div>
                   <div className={styles.tableContainer}>
                     <Table responsive>
