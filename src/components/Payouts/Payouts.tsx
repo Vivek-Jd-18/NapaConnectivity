@@ -26,7 +26,7 @@ const headerEatherTransactions = [
   'Block',
   'Age',
   'From',
-  'to',
+  'To',
   'Value',
   'Txn Fee',
 ];
@@ -225,11 +225,11 @@ const Payouts: NextPage = () => {
               >
                 <div className=" my-4">
                   <div className={`${styles.payoutsText} text-white`}>
-                    Viral Tiers
+                    NAPA Rewards Categories
                   </div>
                   <div className={`${styles.payoutsTableRow} text-white my-2`}>
-                    Award %value is a percentage of the current token price and
-                    payout amounts will fluctuate based on trading.
+                    The reward % Value is a percentage of the current token price and
+                    payout amounts will fluctuate based on the NAPA token trading activity.
                   </div>
                   <div className={styles.tableContainer}>
                     <Table responsive>
@@ -249,14 +249,13 @@ const Payouts: NextPage = () => {
                                     content={
                                       <div>
                                         <p style={{ textAlign: 'left' }}>
-                                          Your total number of awards received
-                                          must meet or exceed to be in this tier
-                                          after your live period. i.e tier 1 is
-                                          500 awards recieved, user must have
-                                          500 or more to be in tier 1, tier 2 is
-                                          550 awards recieved, then user must
-                                          have recieved over 550 awards to be in
-                                          tier 2
+                                          The total number of rewards received for your post during the live period
+                                          must meet or exceed this number to determine which category your post will be considered for NAPA token payout
+                                          after your live period has expired. 
+                                          
+                                          <br></br>
+                                          <br></br>
+                                          For example, if <strong>Step Your Game Up</strong> has an rewards cap of 5 rewards recieved for your post, then your post nust have recieved 5 awards or more to be in this category.
                                         </p>
                                       </div>
                                     }
