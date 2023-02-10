@@ -252,7 +252,7 @@ const Payouts: NextPage = () => {
                                           
                                           <br></br>
                                           <br></br>
-                                          For example, if Step Your Game Up has an rewards cap of 5 rewards recieved for your post, then your post nust have recieved 5 awards or more to be in this category.
+                                          For example, if <strong>Step Your Game Up</strong> has an rewards cap of 5 rewards recieved for your post, then your post nust have recieved 5 awards or more to be in this category.
                                         </p>
                                       </div>
                                     }
