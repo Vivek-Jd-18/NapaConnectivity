@@ -234,7 +234,7 @@ const NapaSociety: NextPage = () => {
                   <ul>
                     {eventsLoading || events?.length == 0 ? (
                       <div className={styles.postNotFound}>
-                        {trendingsLoading ? (
+                        {eventsLoading ? (
                           <FadeLoader color="#ffffff" />
                         ) : (
                           <h4>No Event Found</h4>

@@ -5,7 +5,10 @@ export type GetRecentEventsResponse = {
 };
 
 export type RecentEvents = {
+  eventId: string;
   eventTitle: string;
   eventImageBanner: string;
+  address: string;
+  city: string;
   updatedAt: string;
 };
