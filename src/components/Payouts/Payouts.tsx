@@ -246,13 +246,13 @@ const Payouts: NextPage = () => {
                                     content={
                                       <div>
                                         <p style={{ textAlign: 'left' }}>
-                                          The total number of awards received for your post during the live period
+                                          The total number of rewards received for your post during the live period
                                           must meet or exceed this number to determine which category your post will be considered for NAPA token payout
                                           after your live period has expired. 
                                           
                                           <br></br>
                                           <br></br>
-                                          For example, if Step Your Game Up has a rewards cap of 5 for awards recieved for your post, then your post nust have recieved 5 awards or more to be in this category.
+                                          For example, if "Step Your Game Up" has an rewards cap of 5 rewards recieved for your post, then your post nust have recieved 5 awards or more to be in this category.
                                         </p>
                                       </div>
                                     }
