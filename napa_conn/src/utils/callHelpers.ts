@@ -1,6 +1,9 @@
-export const owner = async (contract: any) => {
-    return await contract.owner();
-}
+/**
+    all the 'read' and 'write' functions of @contract @marketplace
+*/
+
+// WRITE FUNCTIONS
+
 //1 acceptOwnership
 export const acceptOwnership = async (contract: any) => {
     return await contract.acceptOwnership();
@@ -36,4 +39,57 @@ export const updateApiLink = async (contract: any, _api: string) => {
 //9 withdrawLink
 export const withdrawLink = async (contract: any) => {
     return await contract.withdrawLink();
+}
+
+
+// READ FUNCTIONS
+
+//1 withdrawLink
+export const NFT = async (contract: any) => {
+    return await contract.NFT();
+}
+
+//2 NapaToken
+export const NapaToken = async (contract: any) => {
+    return await contract.NapaToken();
+}
+
+//3 Usdt
+export const Usdt = async (contract: any) => {
+    return await contract.Usdt();
+}
+
+//4 api
+export const api = async (contract: any) => {
+    return await contract.api();
+}
+
+//5 getLatestPrice
+export const getLatestPrice = async (contract: any) => {
+    return await contract.getLatestPrice();
+}
+
+//6 napaTokenAmount
+export const napaTokenAmount = async (contract: any) => {
+    return await contract.napaTokenAmount();
+}
+
+//7 nftInfo
+export const nftInfo = async (contract: any, _nftId: number) => {
+    return await contract.nftInfo(_nftId);
+}
+
+//8 owner
+export const owner = async (contract: any) => {
+    return await contract.owner();
+}
+
+//9 priceOfNFT
+export const priceOfNFT = async (contract: any) => {
+    return await contract.priceOfNFT();
+}
+
+//10 volume
+export const volume = async (contract: any) => {
+    return await contract.volume();
 }

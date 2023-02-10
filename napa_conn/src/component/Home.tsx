@@ -4,9 +4,10 @@ import Web3Modal from "web3modal";
 import providerOptions from '../utils/web3Configs/providerOptions';
 import marketAbi from "../utils/abis/market.json"
 import { Contract } from "web3-eth-contract"
-import { acceptOwnership, owner, buyNftToken, fulfill, requestVolumeData, setSale, setSaleFromWallet, transferOwnership, updateApiLink, withdrawLink } from '../utils/callHelpers';
-import { marketPlaceContract } from '../utils/contractObjects';
+import { acceptOwnership, owner, buyNftToken, fulfill, requestVolumeData, setSale, setSaleFromWallet, transferOwnership, updateApiLink, withdrawLink, NFT, getLatestPrice, NapaToken, Usdt, api, napaTokenAmount, nftInfo, priceOfNFT, volume } from '../utils/callHelpers';
+import { marketPlaceContract, napaNftContract } from '../utils/contractObjects';
 import { MarketPlaceAddress, supportedChainHexMain, supportedChainHexTest } from '../utils/addressHelper';
+import { symbol } from '../utils/callHelper2';
 
 export const Home = () => {
     const [_provider, setProvider] = useState<any>()
@@ -68,81 +69,114 @@ export const Home = () => {
         setSigner(signer)
         const address = await signer.getAddress();
         const rawBalance = await provider.getBalance(address);
-        const funn = () => {
-            console.log("it worked")
+        const ctx = await napaNftContract(signer);
+        console.log(ctx, "contract object")
+        const sym = await symbol(ctx)
+        console.log(sym, "symbol")
+    }
+    {
+        const _acceptOwnership = async () => {
+            const ctr = await marketPlaceContract(_signer);
+            console.log(ctr, "conract")
+            // const funCall = await getOwner(ctr);
+            // console.log(funCall, "got the Owner")
+            const accept = await acceptOwnership(ctr);
+            console.log(await accept, "accept response")
+        }
+
+        const _buyNftToken = async () => {
+            const ctr = await marketPlaceContract(_signer);
+            console.log(ctr, "conract")
+            const accept = await buyNftToken(ctr, 1, 1);
+            console.log(await accept, "buyNftToken")
+        }
+
+        const _fulfill = async () => {
+            const ctr = await marketPlaceContract(_signer);
+            console.log(ctr, "conract")
+            const accept = await fulfill(ctr, "0x7fbd3EB69926273eBD69652d11fa800a7fbd3EB69926273eBD69652d11fa800a", 10);
+            console.log(await accept, "fulfill");
+        }
+
+        const _requestVolumeData = async () => {
+            const ctr = await marketPlaceContract(_signer);
+            console.log(ctr, "conract")
+            const accept = await requestVolumeData(ctr);
+            console.log(await accept, "requestVolumeData");
+        }
+
+        const _setSale = async () => {
+            const ctr = await marketPlaceContract(_signer);
+            console.log(ctr, "conract")
+            const accept = await setSale(ctr, 1, 1, MarketPlaceAddress);
+            console.log(await accept, "setSale");
+        }
+
+        const _setSaleFromWallet = async () => {
+            const ctr = await marketPlaceContract(_signer);
+            console.log(ctr, "conract")
+            const accept = await setSaleFromWallet(ctr, 1, 1);
+            console.log(await accept, "setSaleFromWallet");
+        }
+
+        const _transferOwnership = async () => {
+            const ctr = await marketPlaceContract(_signer);
+            console.log(ctr, "conract")
+            const accept = await transferOwnership(ctr, MarketPlaceAddress);
+            console.log(await accept, "transferOwnership");
+        }
+
+        const _updateApiLink = async () => {
+            const ctr = await marketPlaceContract(_signer);
+            console.log(ctr, "conract")
+            const accept = await updateApiLink(ctr, "url");
+            console.log(await accept, "updateApiLink");
+        }
+
+        const _withdrawLink = async () => {
+            const ctr = await marketPlaceContract(_signer);
+            console.log(ctr, "conract")
+            const accept = await withdrawLink(ctr);
+            console.log(await accept, "withdrawLink");
         }
     }
 
-    const _acceptOwnership = async () => {
-        const ctr = await marketPlaceContract(_signer);
-        console.log(ctr, "conract")
-        // const funCall = await getOwner(ctr);
-        // console.log(funCall, "got the Owner")
-        const accept = await acceptOwnership(ctr);
-        console.log(await accept, "accept response")
-    }
+    const _MarketPlaceCheck = async () => {
 
-    const _buyNftToken = async () => {
-        const ctr = await marketPlaceContract(_signer);
-        console.log(ctr, "conract")
-        const accept = await buyNftToken(ctr, 1, 1);
-        console.log(await accept, "buyNftToken")
-    }
+        //MarketPlace CallFunctionCheck =>
 
-    const _fulfill = async () => {
-        const ctr = await marketPlaceContract(_signer);
-        console.log(ctr, "conract")
-        const accept = await fulfill(ctr, "0x7fbd3EB69926273eBD69652d11fa800a7fbd3EB69926273eBD69652d11fa800a", 10);
-        console.log(await accept, "fulfill");
-    }
+        // const ctr = await marketPlaceContract(_signer);
+        // console.log(ctr, "conract");
+        // const accept = await NFT(ctr);
+        // console.log(await accept, "NFT name");
+        // const accept2 = await NapaToken(ctr);
+        // console.log(await accept2, "NapaToken ");
+        // const accept3 = await Usdt(ctr);
+        // console.log(await accept3, "Usdt ");
+        // const accept4 = await api(ctr);
+        // console.log(await accept4, "api");
+        // const accept5 = await getLatestPrice(ctr);
+        // console.log(await accept5.toString(), "getLatestPrice");
+        // const accept6 = await napaTokenAmount(ctr);
+        // console.log(await accept6.toString(), "napaTokenAmount");
+        // const accept7 = await nftInfo(ctr, 1);
+        // console.log(await accept7.toString(), "nftInfo");
+        // const accept8 = await owner(ctr);
+        // console.log(await accept8, "owner");
+        // const accept9 = await priceOfNFT(ctr);
+        // console.log(await accept9.toString(), "priceOfNFT");
+        // const accept10 = await volume(ctr);
+        // console.log(await accept10.toString(), "volume");
 
-    const _requestVolumeData = async () => {
-        const ctr = await marketPlaceContract(_signer);
-        console.log(ctr, "conract")
-        const accept = await requestVolumeData(ctr);
-        console.log(await accept, "requestVolumeData");
-    }
-
-    const _setSale = async () => {
-        const ctr = await marketPlaceContract(_signer);
-        console.log(ctr, "conract")
-        const accept = await setSale(ctr, 1, 1, MarketPlaceAddress);
-        console.log(await accept, "setSale");
-    }
-
-    const _setSaleFromWallet = async () => {
-        const ctr = await marketPlaceContract(_signer);
-        console.log(ctr, "conract")
-        const accept = await setSaleFromWallet(ctr, 1, 1);
-        console.log(await accept, "setSaleFromWallet");
-    }
-
-    const _transferOwnership = async () => {
-        const ctr = await marketPlaceContract(_signer);
-        console.log(ctr, "conract")
-        const accept = await transferOwnership(ctr, MarketPlaceAddress);
-        console.log(await accept, "transferOwnership");
-    }
-
-    const _updateApiLink = async () => {
-        const ctr = await marketPlaceContract(_signer);
-        console.log(ctr, "conract")
-        const accept = await updateApiLink(ctr, "url");
-        console.log(await accept, "updateApiLink");
-    }
-
-    const _withdrawLink = async () => {
-        const ctr = await marketPlaceContract(_signer);
-        console.log(ctr, "conract")
-        const accept = await withdrawLink(ctr);
-        console.log(await accept, "withdrawLink");
-    }
+        // _NFTContract Function Check
+         
+    }   
 
     return (
         <>
             <div>Home</div>
             <div>
-                <button onClick={call}>Call</button>
+                {/* <button onClick={call}>Call</button>
                 <button onClick={_acceptOwnership}>fun1</button>
                 <button onClick={_buyNftToken}>fun2</button>
                 <button onClick={_fulfill}>fun3</button>
@@ -151,7 +185,10 @@ export const Home = () => {
                 <button onClick={_setSaleFromWallet}>fun6</button>
                 <button onClick={_transferOwnership}>fun7</button>
                 <button onClick={_updateApiLink}>fun8</button>
-                <button onClick={_withdrawLink}>fun9</button>
+                <button onClick={_withdrawLink}>fun9</button> */}
+                <button onClick={call}>Call</button>
+                <button onClick={_MarketPlaceCheck}>fun9</button>
+
             </div>
         </>
     )
