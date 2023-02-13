@@ -4,13 +4,17 @@ import Web3Modal from "web3modal";
 import providerOptions from '../utils/web3Configs/providerOptions';
 import marketAbi from "../utils/abis/market.json"
 import { Contract } from "web3-eth-contract"
-import { acceptOwnership, owner, buyNftToken, fulfill, requestVolumeData, setSale, setSaleFromWallet, transferOwnership, updateApiLink, withdrawLink, NFT, getLatestPrice, NapaToken, Usdt, api, napaTokenAmount, nftInfo, priceOfNFT, volume } from '../utils/callHelpers';
+import { acceptOwnership, owner, buyNftToken, fulfill, requestVolumeData, setSale, setSaleFromWallet, transferOwnership as transferOwnership1, updateApiLink, withdrawLink, NFT, getLatestPrice, NapaToken, Usdt, api, napaTokenAmount, nftInfo, priceOfNFT, volume } from '../utils/callHelpers';
 import {
-    NAPA_WALLET, NapaMintFee, NapaToken, Usdt, UsdtMintFee, _exist, balanceOf, baseURI, blackList, ethFee, feeWallet, getApproved, isApprovedForAll, marketPlace, minters, name, owner, ownerOf, supportsInterface, symbol, tokenByIndex, tokenOfOwnerByIndex, tokenURI, totalSupply
+    NAPA_WALLET, NapaMintFee, UsdtMintFee, _exist, balanceOf, baseURI, blackList, ethFee, feeWallet, getApproved, isApprovedForAll, marketPlace, minters, name, ownerOf, supportsInterface, tokenByIndex, tokenOfOwnerByIndex, tokenURI, totalSupply
+    , addToBlackList, approve, bulkMintToken, removeFromBlackList, renounceOwnership, safeTransferFrom, safeTransferFrom2, setApprovalForAll, setBaseURI, setFees, setTokenAddresses, setWallets, singleMintToken, transferFrom, transferOwnership, updatemarketPlaceAddress
+
+
+
 
 } from "../utils/callHelper2"
 import { marketPlaceContract, napaNftContract } from '../utils/contractObjects';
-import { MarketPlaceAddress, supportedChainHexMain, supportedChainHexTest } from '../utils/addressHelper';
+import { MarketPlaceAddress, NapaNFTAddress, supportedChainHexMain, supportedChainHexTest } from '../utils/addressHelper';
 import { symbol } from '../utils/callHelper2';
 
 export const Home = () => {
@@ -123,11 +127,11 @@ export const Home = () => {
             console.log(await accept, "setSaleFromWallet");
         }
 
-        const _transferOwnership = async () => {
+        const _transferOwnership1 = async () => {
             const ctr = await marketPlaceContract(_signer);
             console.log(ctr, "conract")
-            const accept = await transferOwnership(ctr, MarketPlaceAddress);
-            console.log(await accept, "transferOwnership");
+            const accept = await transferOwnership1(ctr, MarketPlaceAddress);
+            console.log(await accept, "transferOwnership1");
         }
 
         const _updateApiLink = async () => {
@@ -145,42 +149,112 @@ export const Home = () => {
         }
     }
 
-    const _MarketPlaceCheck = async () => {
+    // const _MarketPlaceCheck = async () => {
 
-        //MarketPlace CallFunctionCheck =>
+    //     //MarketPlace CallFunctionCheck =>
 
-        // const ctr = await marketPlaceContract(_signer);
-        // console.log(ctr, "conract");
-        // const accept = await NFT(ctr);
-        // console.log(await accept, "NFT name");
-        // const accept2 = await NapaToken(ctr);
-        // console.log(await accept2, "NapaToken ");
-        // const accept3 = await Usdt(ctr);
-        // console.log(await accept3, "Usdt ");
-        // const accept4 = await api(ctr);
-        // console.log(await accept4, "api");
-        // const accept5 = await getLatestPrice(ctr);
-        // console.log(await accept5.toString(), "getLatestPrice");
-        // const accept6 = await napaTokenAmount(ctr);
-        // console.log(await accept6.toString(), "napaTokenAmount");
-        // const accept7 = await nftInfo(ctr, 1);
-        // console.log(await accept7.toString(), "nftInfo");
-        // const accept8 = await owner(ctr);
-        // console.log(await accept8, "owner");
-        // const accept9 = await priceOfNFT(ctr);
-        // console.log(await accept9.toString(), "priceOfNFT");
-        // const accept10 = await volume(ctr);
-        // console.log(await accept10.toString(), "volume");
+    //     // const ctr = await marketPlaceContract(_signer);
+    //     // console.log(ctr, "conract");
+    //     // const accept = await NFT(ctr);
+    //     // console.log(await accept, "NFT name");
+    //     // const accept2 = await NapaToken(ctr);
+    //     // console.log(await accept2, "NapaToken ");
+    //     // const accept3 = await Usdt(ctr);
+    //     // console.log(await accept3, "Usdt ");
+    //     // const accept4 = await api(ctr);
+    //     // console.log(await accept4, "api");
+    //     // const accept5 = await getLatestPrice(ctr);
+    //     // console.log(await accept5.toString(), "getLatestPrice");
+    //     // const accept6 = await napaTokenAmount(ctr);
+    //     // console.log(await accept6.toString(), "napaTokenAmount");
+    //     // const accept7 = await nftInfo(ctr, 1);
+    //     // console.log(await accept7.toString(), "nftInfo");
+    //     // const accept8 = await owner(ctr);
+    //     // console.log(await accept8, "owner");
+    //     // const accept9 = await priceOfNFT(ctr);
+    //     // console.log(await accept9.toString(), "priceOfNFT");
+    //     // const accept10 = await volume(ctr);
+    //     // console.log(await accept10.toString(), "volume");
 
 
+    //     // _NFTContract read Function Check
+
+    //     const ctr = await napaNftContract(_signer);
+    //     console.log(ctr, "napaNftContract conract");
+
+
+    //     const _NAPA_WALLET = await NAPA_WALLET(ctr);
+    //     console.log(await _NAPA_WALLET, "NAPA_WALLET");
+
+    //     const _NapaMintFee = await NapaMintFee(ctr);
+    //     console.log(await _NapaMintFee, "NapaMintFee");
+
+    //     const _UsdtMintFee = await UsdtMintFee(ctr);
+    //     console.log(await _UsdtMintFee, "UsdtMintFee");
+
+    //     const exist = await _exist(ctr,1);
+    //     console.log(await exist, "exist");
+
+    //     const _balanceOf = await balanceOf(ctr,NapaNFTAddress);
+    //     console.log(await _balanceOf, "balanceOf");
+
+    //     const _baseURI = await baseURI(ctr);
+    //     console.log(await _baseURI, "baseURI");
+
+    //     const _blackList = await blackList(ctr,NapaNFTAddress);
+    //     console.log(await _blackList, "blackList");
+
+    //     const _ethFee = await ethFee(ctr);
+    //     console.log(await _ethFee, "ethFee");
+
+    //     const _feeWallet = await feeWallet(ctr);
+    //     console.log(await _feeWallet, "feeWallet");
+
+    //     const _getApproved = await getApproved(ctr,2);
+    //     console.log(await _getApproved, "getApproved");
+
+    //     const _isApprovedForAll = await isApprovedForAll(ctr,NapaNFTAddress,"0x20845c0782D2279Fd906Ea3E3b3769c196032C46");
+    //     console.log(await _isApprovedForAll, "isApprovedForAll");
+
+    //     const _marketPlace = await marketPlace(ctr);
+    //     console.log(await _marketPlace, "marketPlace");
+
+    //     const _minters = await minters(ctr,1);
+    //     console.log(await _minters, "minters");
+
+    //     const _name = await name(ctr);
+    //     console.log(await _name, "name");
+
+    //     const _ownerOf = await ownerOf(ctr,1);
+    //     console.log(await _ownerOf, "ownerOf");
+
+    //     const _supportsInterface = await supportsInterface(ctr,"0x01ffc9a7");
+    //     console.log(await _supportsInterface, "supportsInterface");
+
+    //     const _tokenByIndex = await tokenByIndex(ctr,1);
+    //     console.log(await _tokenByIndex, "tokenByIndex");
+
+    //     // const _tokenOfOwnerByIndex = await tokenOfOwnerByIndex(ctr,NapaNFTAddress,1);
+    //     // console.log(await _tokenOfOwnerByIndex, "tokenOfOwnerByIndex");
+
+    //     const _tokenURI = await tokenURI(ctr,1);
+    //     console.log(await _tokenURI, "tokenURI");
+
+    //     const _totalSupply = await totalSupply(ctr);
+    //     console.log(await _totalSupply, "totalSupply");
+    // }
+
+    const WriteNFT = async () => {
         // _NFTContract read Function Check
-
         const ctr = await napaNftContract(_signer);
         console.log(ctr, "napaNftContract conract");
 
-        const accept = await NAPA_WALLET(ctr);
-        console.log(await accept, "NFT name");
+        //remaining
+        // safeTransferFrom2,safeTransferFrom
 
+        //
+        const _updatemarketPlaceAddress = await updatemarketPlaceAddress(ctr,"0xaF09B9535E239AaDcC2B96331341647F84a3537f");
+        console.log(await _updatemarketPlaceAddress, "updatemarketPlaceAddress");
 
     }
 
@@ -188,7 +262,8 @@ export const Home = () => {
         <>
             <div>Home</div>
             <div>
-                {/* <button onClick={call}>Call</button>
+                {/*
+                 <button onClick={call}>Call</button>
                 <button onClick={_acceptOwnership}>fun1</button>
                 <button onClick={_buyNftToken}>fun2</button>
                 <button onClick={_fulfill}>fun3</button>
@@ -199,8 +274,8 @@ export const Home = () => {
                 <button onClick={_updateApiLink}>fun8</button>
                 <button onClick={_withdrawLink}>fun9</button> */}
                 <button onClick={call}>Call</button>
-                <button onClick={_MarketPlaceCheck}>fun9</button>
-
+                {/* <button onClick={_MarketPlaceCheck}>fun9</button> */}
+                <button onClick={WriteNFT}>nft write functions</button>
             </div>
         </>
     )

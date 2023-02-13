@@ -10,17 +10,17 @@ export const addToBlackList = async (contract: any, _address: string) => {
 }
 //2 approve
 export const approve = async (contract: any, _to: string, _tokenId: number) => {
-    return await contract.buyNftToken(_to, _tokenId);
+    return await contract.approve(_to, _tokenId);
 }
 //3 bulkMintToken
 export const bulkMintToken = async (contract: any,
-    tokenSelect: number,
+tokenSelect: number,
     salePrice: Array<number>,
     tokenUri: Array<string>,
     _transferToNapa: Array<boolean>,
     _setSaleMinter: Array<boolean>) => {
     return await contract.bulkMintToken(
-        salePrice,
+        tokenSelect,salePrice,
         tokenUri,
         _transferToNapa,
         _setSaleMinter);
@@ -78,7 +78,16 @@ export const setWallets = async (contract: any, _NAPA_WALLET: string, _feeWallet
 }
 
 
-//13 singleMintToken
+
+/*
+Single Mint Token
+Params:
+salePrice: This is the sale price of the token that is being minted.
+_TokenSelect: This is an integer parameter that represents the type of token that the user wants to use for minting the new token. If the value is 0, the user will use NapaToken, if the value is 1, the user will use Usdt, otherwise, the user will use ETH.
+tokenUri: This is a string parameter that represents the token's unique identifier (URI).
+_transferToNapa: This is a boolean parameter that represents whether the new token will be transferred to the NAPA_WALLET address after being minted.
+_setSaleMinter: This is a boolean parameter that represents whether the new token will be put up for sale after being minted.
+*/
 export const singleMintToken = async (contract: any,
     _salePrice: number,
     _TokenSelect: number,
@@ -145,11 +154,11 @@ export const UsdtMintFee = async (contract: any) => {
 
 //6 _exist
 export const _exist = async (contract: any, tokenId: number) => {
-    return await contract._exist(tokenId);
+    return await contract._exists(tokenId);
 }
 
 //7 balanceOf
-export const balanceOf = async (contract: any, _address: number) => {
+export const balanceOf = async (contract: any, _address: string) => {
     return await contract.balanceOf(_address);
 }
 
@@ -209,7 +218,7 @@ export const ownerOf = async (contract: any, _tokenId: number) => {
 }
 
 //19 supportsInterface
-export const supportsInterface = async (contract: any, _InterFaceId: number) => {
+export const supportsInterface = async (contract: any, _InterFaceId: string) => {
     return await contract.supportsInterface(_InterFaceId);
 }
 
