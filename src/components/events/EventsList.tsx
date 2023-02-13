@@ -154,7 +154,11 @@ export default function EventsList() {
                           >
                             <a className={`${styles.CardlistABx} hovereffect`}>
                               <Image
-                                src={event.eventImageBanner}
+                                src={
+                                  event.eventImageBanner ||
+                                  event.eventImageOne ||
+                                  event.eventImageTwo
+                                }
                                 width={282}
                                 height={372}
                                 alt=""

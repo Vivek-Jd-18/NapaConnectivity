@@ -244,7 +244,11 @@ const NapaSociety: NextPage = () => {
                       events?.slice(0, 4).map((event, index) => {
                         return (
                           <li key={index}>
-                            <img src={event.eventImageBanner}></img>
+                            <img
+                              src={
+                                event.eventImageBanner || event.eventImageOne || event.eventImageTwo
+                              }
+                            ></img>
                             <div>
                               <p>{moment(event.updatedAt).format('lll')}</p>
                               <h4>{event.eventTitle}</h4>
