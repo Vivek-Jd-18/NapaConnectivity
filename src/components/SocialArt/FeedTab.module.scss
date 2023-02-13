@@ -235,12 +235,10 @@
       }
       .messageContainer {
         @include font-md-avenir-regular;
-        width: 500px;
         max-height: 30px;
         overflow: auto;
         white-space: nowrap;
         text-align: center;
-        margin-left: 2rem;
       }
       .UserRightTxt {
         text-align: right;
@@ -785,7 +783,7 @@
     .leftBox {
       .HadUserText {
         .messageContainer {
-          width: 160px;
+          width: 180px;
         }
       }
     }
