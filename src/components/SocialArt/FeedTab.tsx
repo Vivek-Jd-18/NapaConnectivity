@@ -1380,7 +1380,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
                         <div className={styles.MdlImage}>
                           <video
                             width={'100%'}
-                            height="400"
+                            height="300"
                             preload="auto"
                             autoPlay
                             muted
