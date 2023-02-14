@@ -13,13 +13,29 @@ import {
 
 
 } from "../utils/callHelper2"
+
 import { marketPlaceContract, napaNftContract } from '../utils/contractObjects';
 import { MarketPlaceAddress, NapaNFTAddress, supportedChainHexMain, supportedChainHexTest } from '../utils/addressHelper';
 import { symbol } from '../utils/callHelper2';
+import { lazyMint, ethFee as ethFees, NapaMintFee as _NapaMintFee, UsdtMintFee as _UsdtMintFee, lazyMintEth } from '../utils/testnet/callHelpers';
+import { napaTokenContract, newNapaNftContract, usdtTokenContract } from '../utils/testnet/contractObject';
+import { nftAddress } from '../utils/testnet/addressHelper';
 
 export const Home = () => {
     const [_provider, setProvider] = useState<any>()
     const [_signer, setSigner] = useState<any>()
+    const [transactionType, setTransactionType] = useState<number | string>()
+    const [CurrentWalletAddress, setCurrentWalletAddress] = useState<string>()
+    const [_ethFee, setEthFee] = useState<string|undefined>()
+
+    const handleChange1 = (e: any) => {
+        setEthFee(e.target.value);
+        console.log(e.target.value)
+        console.log(_ethFee)
+    }
+    const handleChange2 = (e: any) => {
+        setEthFee(e.target.value);
+    }
 
     const checkNetwork = async (provider: ethers.providers.Web3Provider) => {
         if (window.ethereum) {
@@ -67,7 +83,7 @@ export const Home = () => {
         const provider = await connect();
         setProvider(provider)
         const { chainId } = await provider.getNetwork()
-        await checkNetwork(provider)
+        // await checkNetwork(provider)
         // while (chainId.toString() != supportedChainHexTest){
         //     console.log((chainId.toString() != supportedChainHexTest))
         //     await checkNetwork(provider)
@@ -76,6 +92,8 @@ export const Home = () => {
         const signer = await provider.getSigner(0);
         setSigner(signer)
         const address = await signer.getAddress();
+        setCurrentWalletAddress(address)
+        console.log(address)
         const rawBalance = await provider.getBalance(address);
         const ctx = await napaNftContract(signer);
         console.log(ctx, "contract object")
@@ -244,18 +262,187 @@ export const Home = () => {
     //     console.log(await _totalSupply, "totalSupply");
     // }
 
-    const WriteNFT = async () => {
-        // _NFTContract read Function Check
-        const ctr = await napaNftContract(_signer);
-        console.log(ctr, "napaNftContract conract");
+    // const WriteNFT = async () => {
+    //     // _NFTContract read Function Check
+    //     // const ctr = await napaNftContract(_signer);
+    //     // console.log(ctr, "napaNftContract conract");
 
-        //remaining
-        // safeTransferFrom2,safeTransferFrom
+    //     const NftCtr = await newNapaNftContract(_signer);
+    //     console.log(NftCtr, "napaNftContract conract");
 
-        //
-        const _updatemarketPlaceAddress = await updatemarketPlaceAddress(ctr,"0xaF09B9535E239AaDcC2B96331341647F84a3537f");
-        console.log(await _updatemarketPlaceAddress, "updatemarketPlaceAddress");
+    //     //remaining
+    //     // safeTransferFrom2,safeTransferFrom
 
+    //     //
+    //     // const _updatemarketPlaceAddress = await updatemarketPlaceAddress(ctr,"0xaF09B9535E239AaDcC2B96331341647F84a3537f");
+    //     // console.log(await _updatemarketPlaceAddress, "updatemarketPlaceAddress");
+
+    //     let amt = ethers.utils.parseEther("20") 
+    //     let nn = amt.toString()
+    //     console.log(nn)        
+    //     const _lazy = await lazyMint(NftCtr, "0x20845c0782D2279Fd906Ea3E3b3769c196032C46",
+    //     nn, 0,
+    //         "www.ww.com",
+    //         false,
+    //         false);
+    //     console.log(await _lazy, "_lazy response");
+
+    // }
+
+
+    const checkApproval: () => Promise<string> = async () => {
+        console.log(_ethFee)
+        if (transactionType == 0) {
+            const npaTokenctr: any = await napaTokenContract(_signer);
+            console.log(npaTokenctr, "npaTokenctr contract");
+            const alw1 = await npaTokenctr.allowance(CurrentWalletAddress, nftAddress)
+            console.log(alw1.toString(), "allowance of napa")
+            return alw1.toString()
+        } else if (transactionType == 1) {
+            const usdtTokenctr: any = await usdtTokenContract(_signer);
+            console.log(usdtTokenctr, "usdtTokenctr contract");
+            const alw1 = await usdtTokenctr.allowance(CurrentWalletAddress, nftAddress)
+            console.log(alw1.toString(), "allowance of usdt")
+            return alw1.toString()
+        } else {
+            console.log("don't need any approval check");
+            return -1
+        }
+        // // const apr1  = await myContract1.approve("0xEF32F87f63b35061823e7f9BF1F8acEaBb6a1d79","100000000000000000000");
+        // // console.log(apr1)
+    }
+
+    const doApproval: any = async (amt: string) => {
+        if (transactionType == 0) {
+            const npaTokenctr: any = await napaTokenContract(_signer);
+            console.log(npaTokenctr, "npaTokenctr contract");
+            const alw1 = await npaTokenctr.approve("0xEF32F87f63b35061823e7f9BF1F8acEaBb6a1d79", "100000000000000000000");
+            console.log(alw1, "allowance of napa");
+            return alw1;
+        } else if (transactionType == 1) {
+            const usdtTokenctr: any = await usdtTokenContract(_signer);
+            console.log(usdtTokenctr, "usdtTokenctr contract");
+            const alw1 = await usdtTokenctr.approve("0xEF32F87f63b35061823e7f9BF1F8acEaBb6a1d79", "10000000000000000000");
+            console.log(alw1, "allowance of usdt");
+            return alw1;
+        } else {
+            console.log("don't need any approval check");
+            return -1
+        }
+        // // const apr1  = await myContract1.approve("0xEF32F87f63b35061823e7f9BF1F8acEaBb6a1d79","100000000000000000000");
+        // // console.log(apr1)
+    }
+
+
+
+    const LazyButton = async () => {
+
+        const NftCtr = await newNapaNftContract(_signer);
+        console.log(NftCtr, "napaNftContract conract");
+
+        console.log(_ethFee,"inside")
+        let amt = ethers.utils.parseEther(`${_ethFee}`)
+        let nn = amt.toString()
+        console.log(nn, "=-=--=-=-=")
+
+
+        if (transactionType == 0) {
+            console.log("lvl 1")
+            const napaAllowance = await checkApproval();
+            let additional: any =await _NapaMintFee(NftCtr);
+            console.log(additional.toString(),"additional")
+            let convertedEthFee: any = _ethFee;
+            console.log(convertedEthFee,"ADDITIONAL ")
+
+            console.log("lvl 2")
+            console.log(napaAllowance, "allllllll")
+            console.log(nn, "npppp")
+            if (napaAllowance >= convertedEthFee + additional) {
+                const hit = Number(_ethFee)+Number(additional.toString())
+                console.log(typeof Number(_ethFee),"eth fee type")
+                console.log(typeof Number(additional.toString()),"additional type")
+                console.log(hit,"-==-HIT=-=-")
+                const _lazy = await lazyMint(NftCtr, "0x20845c0782D2279Fd906Ea3E3b3769c196032C46",
+                    hit.toString(), 0,
+                    "www.ww.com",
+                    false,
+                    false);
+                console.log(await _lazy, "_lazy response");
+            } else {
+                console.log(" else part")
+                let additional: any = _NapaMintFee(NftCtr);
+                const approveRes = await doApproval(_ethFee + additional);
+                if (approveRes != -1) {
+                    const _lazy = await lazyMint(NftCtr, "0x20845c0782D2279Fd906Ea3E3b3769c196032C46",
+                        nn, 0,
+                        "www.ww.com",
+                        false,
+                        false);
+                    console.log(await _lazy, "_lazy response");
+                } else {
+                    console.log("Failed approval")
+                }
+            }
+        } else if (transactionType == 1) {
+            const napaAllowance = await checkApproval();
+            let additional: any =await _UsdtMintFee(NftCtr);
+            console.log(additional.toString(),"additional")
+            let convertedEthFee: any = _ethFee;
+            console.log(convertedEthFee,"ADDITIONAL ")
+
+            if (napaAllowance >= convertedEthFee + additional) {
+                const hit = Number(_ethFee)+Number(additional.toString())
+                // console.log(typeof Number(_ethFee),"eth fee type")
+                // console.log(typeof Number(additional.toString()),"additional type")
+                console.log(hit,"-==-HIT=-=-")
+                const _lazy = await lazyMint(NftCtr, "0x20845c0782D2279Fd906Ea3E3b3769c196032C46",
+                    hit.toString(), 1,
+                    "www.ww.com",
+                    false,
+                    false);
+                console.log(await _lazy, "_lazy response");
+            } else {
+                console.log(" else part")
+                let additional: any = _NapaMintFee(NftCtr);
+                const approveRes = await doApproval(_ethFee + additional);
+                if (approveRes != -1) {
+                    const _lazy = await lazyMint(NftCtr, "0x20845c0782D2279Fd906Ea3E3b3769c196032C46",
+                        nn, 0,
+                        "www.ww.com",
+                        false,
+                        false);
+                    console.log(await _lazy, "_lazy response");
+                } else {
+                    console.log("Failed approval")
+                }
+            }
+        } else {
+            // console.log("elseeeeeeeee")
+            // const etherFee = await ethFees(NftCtr);
+            // let _amt = ethers.utils.parseEther(`${Number(_ethFee) + Number(etherFee)}`)
+            // console.log(_amt.toString())
+            // let _nn = amt.toString()
+            // console.log(_nn)
+
+            // const _lazy = await lazyMint(NftCtr, "0x20845c0782D2279Fd906Ea3E3b3769c196032C46",
+            //     nn, 2,
+            //     "www.ww.com",
+            //     false,
+            //     false, { value: _ethFee });
+            const etherFee = await ethFees(NftCtr);
+            let _amt = ethers.utils.parseEther(`${Number(_ethFee) + etherFee}`)
+            let _nn = amt.toString()
+
+            console.log(_nn)
+
+            let hit =Number(_ethFee)+Number(etherFee.toString())
+
+            const _lazy = await lazyMintEth(NftCtr, "0x20845c0782D2279Fd906Ea3E3b3769c196032C46",
+                hit.toString(), 2,
+                "www.ww.com",
+                false,
+                false, { value: hit.toString() });
+        }
     }
 
     return (
@@ -273,9 +460,20 @@ export const Home = () => {
                 <button onClick={_transferOwnership}>fun7</button>
                 <button onClick={_updateApiLink}>fun8</button>
                 <button onClick={_withdrawLink}>fun9</button> */}
+
+                <label>Enter the Currency type</label>
+                <input value={transactionType} onChange={(e) => { setTransactionType(e.target.value) }} type='number' />
+                <label>Enter the amount</label>
+                <input value={_ethFee} onChange={handleChange1} type='number' />
                 <button onClick={call}>Call</button>
                 {/* <button onClick={_MarketPlaceCheck}>fun9</button> */}
-                <button onClick={WriteNFT}>nft write functions</button>
+                <br />
+                <br />
+                <button onClick={checkApproval}>check approval</button>
+                <br /><br />
+                <button onClick={doApproval}>do approval</button>
+                <br /><br />
+                <button onClick={LazyButton}>nft write functions</button>
             </div>
         </>
     )

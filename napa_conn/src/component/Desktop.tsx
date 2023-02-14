@@ -46,3 +46,11 @@ export const Desktop = () => {
         </div>
     );
 }
+
+
+    // const etherFee = await ethFees(NftCtr);
+    // console.log(etherFee.toString(),"real eth fees")
+    // const hit = Number(_ethFee)+Number(etherFee)
+    // let _amt = ethers.utils.parseEther(`${Number(_ethFee) + Number(etherFee)}`)
+    // let _nn = amt.toString()
+    // console.log(hit,"eth fee")
