@@ -55,6 +55,7 @@ export default function SocialArtSc() {
 
   useEffect(() => {
     handleGetMintPosts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {

@@ -26,6 +26,7 @@ export default function CreateNewNFTTow() {
 
   useEffect(() => {
     handleGetSnft();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleGetSnft = async () => {
@@ -58,8 +59,8 @@ export default function CreateNewNFTTow() {
           </div>
         ) : (
           <>
-            <SectionOne snftDetails={snftDetails} profileId={profileId}/>
-            <SectionTow snftDetails={snftDetails}/>
+            <SectionOne snftDetails={snftDetails} profileId={profileId} />
+            <SectionTow snftDetails={snftDetails} />
             <SectionThreeTbl />
             <SectionFourTbl />
             <SectionFiveSlider />

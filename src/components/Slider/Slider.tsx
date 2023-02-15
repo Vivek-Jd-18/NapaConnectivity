@@ -68,6 +68,7 @@ const SliderComponent: NextPage<any, SliderProps> = React.forwardRef(
           .getElementById('sliderComponent')
           ?.removeEventListener('wheel', scroll, true);
       };
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (

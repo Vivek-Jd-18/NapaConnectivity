@@ -72,6 +72,7 @@ const LeaderboardsSliderComponent: NextPage<any, SliderProps> =
           .getElementById('sliderComponent')
           ?.removeEventListener('wheel', scroll, true);
       };
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (

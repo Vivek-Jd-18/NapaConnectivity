@@ -197,6 +197,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
       if (!textDiv) return;
       textDiv.style.visibility = 'visible';
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [textTimeRef.current, textTimerRef.current, getPostsLoading]);
 
   const handleClick = (ref: any) => {
@@ -321,6 +322,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
   useEffect(() => {
     window.addEventListener('load', videoScroll);
     window.addEventListener('wheel', videoScroll);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function videoScroll() {
@@ -353,6 +355,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
   useEffect(() => {
     handleModalPosition();
     window.addEventListener('resize', handleModalPosition);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -361,6 +364,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
         .getElementById(postId)
         ?.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [postId, getPostsLoading]);
 
   const handleNewPost = (post: any) => {
@@ -392,6 +396,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
     return () => {
       socket.removeEventListener('message', () => {});
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   //@ts-ignore
@@ -496,6 +501,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
 
   useEffect(() => {
     handleGetPosts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -513,6 +519,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
       },
       true
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleMintPostCancel = () => {
@@ -975,6 +982,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
     return () => {
       socket.removeEventListener('message', () => {});
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleNewPostCommentCount = (
@@ -1004,6 +1012,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
     return () => {
       socket.removeEventListener('message', () => {});
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleGetUpdatedPost = (post: Post, postId: string) => {
@@ -1032,6 +1041,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
     return () => {
       socket.removeEventListener('message', () => {});
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleGetUpdatedAwards = (postId: string, rewards: string) => {
@@ -1058,6 +1068,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
     return () => {
       socket.removeEventListener('message', () => {});
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handlePostAward = async (post: Post) => {
@@ -1214,6 +1225,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
                     src="/assets/images/video-icon.png"
                     width="24px"
                     height="24px"
+                    alt=""
                   />
                   <p className={styles.dragAndDropText}>
                     Drag and drop an video, or
@@ -1841,6 +1853,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
                                             src={ReplyExit}
                                             width={10}
                                             height={10}
+                                            alt=""
                                           />
                                         </div>
                                       </div>

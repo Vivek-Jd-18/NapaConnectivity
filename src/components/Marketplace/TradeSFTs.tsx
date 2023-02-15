@@ -58,6 +58,7 @@ export default function TradeSFTs(props: any) {
     return () => {
       document.removeEventListener('click', handleClickOutside, true);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [onClickOutside]);
 
   const [snftsData, setSnftsData] = React.useState<SnftResponse[] | null>(null);
@@ -66,6 +67,7 @@ export default function TradeSFTs(props: any) {
 
   useEffect(() => {
     handleGetSnfts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleGetSnfts = async () => {
@@ -443,7 +445,7 @@ export default function TradeSFTs(props: any) {
                         />
                         <div className={styles.upCont}>
                           <Image
-                          style={{borderRadius : '50px'}}
+                            style={{ borderRadius: '50px' }}
                             src={`${
                               snft.userImage
                                 ? snft.userImage

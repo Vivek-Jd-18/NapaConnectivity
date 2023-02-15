@@ -35,6 +35,7 @@ const NapaSociety: NextPage = () => {
     return () => {
       clearInterval(interval);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleIncrement = () => {
@@ -78,6 +79,7 @@ const NapaSociety: NextPage = () => {
     handleGetPosts();
     handleGetRecentTrendings();
     handleGetRecentEvents();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -161,6 +163,7 @@ const NapaSociety: NextPage = () => {
                                   ? trending.userProfilePic
                                   : '/assets/images/img_avatar.png'
                               }
+                              alt=""
                             ></img>
                             <div>
                               <p>{moment(trending.updatedAt).format('ll')}</p>
@@ -199,6 +202,7 @@ const NapaSociety: NextPage = () => {
                                   ? post.thumbnail
                                   : 'assets/images/leaders1.jpg'
                               }`}
+                              alt="thumbnail"
                             ></img>
                             <div>
                               <p>
@@ -246,8 +250,11 @@ const NapaSociety: NextPage = () => {
                           <li key={index}>
                             <img
                               src={
-                                event.eventImageBanner || event.eventImageOne || event.eventImageTwo
+                                event.eventImageBanner ||
+                                event.eventImageOne ||
+                                event.eventImageTwo
                               }
+                              alt="eventImage"
                             ></img>
                             <div>
                               <p>{moment(event.updatedAt).format('lll')}</p>

@@ -100,6 +100,7 @@ const Payouts: NextPage = () => {
   useEffect(() => {
     handleGetUsersCount();
     handleGetTotalNapaUsersCount();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -228,8 +229,9 @@ const Payouts: NextPage = () => {
                     NAPA Rewards Categories
                   </div>
                   <div className={`${styles.payoutsTableRow} text-white my-2`}>
-                    The reward % Value is a percentage of the current token price and
-                    payout amounts will fluctuate based on the NAPA token trading activity.
+                    The reward % Value is a percentage of the current token
+                    price and payout amounts will fluctuate based on the NAPA
+                    token trading activity.
                   </div>
                   <div className={styles.tableContainer}>
                     <Table responsive>
@@ -249,13 +251,21 @@ const Payouts: NextPage = () => {
                                     content={
                                       <div>
                                         <p style={{ textAlign: 'left' }}>
-                                          The total number of rewards received for your post during the live period
-                                          must meet or exceed this number to determine which category your post will be considered for NAPA token payout
-                                          after your live period has expired. 
-                                          
+                                          The total number of rewards received
+                                          for your post during the live period
+                                          must meet or exceed this number to
+                                          determine which category your post
+                                          will be considered for NAPA token
+                                          payout after your live period has
+                                          expired.
                                           <br></br>
                                           <br></br>
-                                          For example, if <strong>Step Your Game Up</strong> has an rewards cap of 5 rewards recieved for your post, then your post nust have recieved 5 awards or more to be in this category.
+                                          For example, if{' '}
+                                          <strong>Step Your Game Up</strong> has
+                                          an rewards cap of 5 rewards recieved
+                                          for your post, then your post nust
+                                          have recieved 5 awards or more to be
+                                          in this category.
                                         </p>
                                       </div>
                                     }

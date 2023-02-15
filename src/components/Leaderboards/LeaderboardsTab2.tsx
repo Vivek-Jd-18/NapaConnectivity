@@ -24,6 +24,7 @@ const LeaderboardsTab2 = () => {
 
   useEffect(() => {
     handleGetMostLikedPosts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {

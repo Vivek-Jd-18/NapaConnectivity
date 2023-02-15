@@ -26,6 +26,7 @@ const ChatWindow: NextPage<ChatWindowProps> = ({
       // @ts-ignore
       ref.current.scrollTop = ref.current.scrollHeight;
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [messages]);
 
   return (

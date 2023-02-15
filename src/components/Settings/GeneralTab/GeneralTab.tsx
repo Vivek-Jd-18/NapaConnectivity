@@ -59,6 +59,7 @@ const GeneralTab: NextPage = () => {
       setLanguage(profileDetails.language || 'English');
       setPreview(profileDetails?.avatar as any);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [profileDetails]);
 
   const createUserProfileHandler = useCallback(async () => {
@@ -116,6 +117,7 @@ const GeneralTab: NextPage = () => {
         })
       );
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     name,
     bio,
@@ -180,6 +182,7 @@ const GeneralTab: NextPage = () => {
         })
       );
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     name,
     bio,
@@ -258,6 +261,7 @@ const GeneralTab: NextPage = () => {
     if (file) {
       reader.readAsDataURL(file);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleDrop = (file: any) => {

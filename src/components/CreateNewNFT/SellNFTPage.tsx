@@ -97,6 +97,7 @@ export default function SellNFTPage({
         setType('Fixed Price');
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [snftDetails]);
 
   const handleCreateSnft = async () => {

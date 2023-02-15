@@ -38,6 +38,7 @@ const WalletPopup: NextPage<WalletPopupProps> = ({
     return () => {
       document.removeEventListener('click', handleClickOutside, true);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setPopupShow]);
 
   return (

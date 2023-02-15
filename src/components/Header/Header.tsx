@@ -46,6 +46,7 @@ const Header: NextPage<HeaderProps> = ({
       getAccounts();
       setShow(false);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [show]);
 
   const handleResize = () => {
@@ -59,6 +60,7 @@ const Header: NextPage<HeaderProps> = ({
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const { profileDetails } = useProfile();
@@ -69,11 +71,13 @@ const Header: NextPage<HeaderProps> = ({
       duration: 200,
       animTimingFunction: Vivus.EASE_OUT,
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
     document.body.classList.add('scroll-up');
     document.body.classList.remove('scroll-down-landing');
     document.body.classList.remove('scroll-down');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
 
   return (

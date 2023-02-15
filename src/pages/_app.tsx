@@ -29,6 +29,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     setTimeout(() => {
       setLoading(false);
     }, 3000);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const openMenu = () => {
@@ -37,6 +38,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
     require('bootstrap/dist/js/bootstrap.bundle.min.js');
     AOS.init();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleScroll = (element: any) => {
@@ -46,7 +48,6 @@ function MyApp({ Component, pageProps }: AppProps) {
     const scrollUp = 'scroll-up';
     const scrollDown = 'scroll-down';
     const currentScroll = element.scrollTop;
-
 
     if (currentScroll > lastScroll && !body.classList.contains(scrollDown)) {
       // down

@@ -8,7 +8,7 @@ import styles from '../../styles/pages/Home.module.scss';
 
 import TrendingSection from '../components/TrendingSection/Trending';
 import ReactGA from 'react-ga';
-const TRACKING_ID = "G-QDKH4LLBNW"; // OUR_TRACKING_ID
+const TRACKING_ID = 'G-QDKH4LLBNW'; // OUR_TRACKING_ID
 ReactGA.initialize(TRACKING_ID);
 
 const WhatsTrending: NextPage = () => {
@@ -17,12 +17,14 @@ const WhatsTrending: NextPage = () => {
     socket.addEventListener('open', () => {
       console.log('connected from client');
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
     document.body.classList.add('home_page');
     return () => {
       document.body.classList.remove('home_page');
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

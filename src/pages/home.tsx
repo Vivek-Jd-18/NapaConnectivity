@@ -10,6 +10,7 @@ const Home: NextPage = () => {
     return () => {
       document.body.classList.remove('home_page');
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

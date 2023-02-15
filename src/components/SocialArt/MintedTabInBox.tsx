@@ -39,6 +39,7 @@ export default function MintedTabInBox({
       const temp = mintPosts?.filter((p) => p?.profileId === profileId);
       setFilteredMintedPosts(temp);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mintPosts, profileId]);
 
   useEffect(() => {

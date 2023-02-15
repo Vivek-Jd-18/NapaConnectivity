@@ -61,8 +61,7 @@
   z-index: 99;
   padding: 30px;
   background: #1D3031;
-  display: flex;
-  justify-content: start;
+  @include flex-start;
   align-items: self-start;
   height: 390px;
   box-shadow: 0 0 50px 0 rgb(0 0 0 / 0%);
@@ -334,9 +333,8 @@
       justify-content: center;
     }
     .HeadLabelstart {
-      display: flex;
       align-items: center;
-      justify-content: flex-start;
+      @include flex-start;
     }
   }
 
@@ -450,9 +448,8 @@
       }
     }
     .RowLabelStart {
-      display: flex;
       align-items: center;
-      justify-content: flex-start;
+      @include flex-start;
       .BlueTxts {
         color: #16E6EF !important; 
         >span {
@@ -696,8 +693,7 @@
   z-index: 99;
   padding: 30px;
   background: #1D3031;
-  display: flex;
-  justify-content: start;
+  @include flex-start;
   align-items: self-start;
   height: 390px;
   box-shadow: 0 0 50px 0 rgb(0 0 0 / 0%);

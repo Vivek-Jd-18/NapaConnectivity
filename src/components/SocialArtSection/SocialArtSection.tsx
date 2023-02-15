@@ -28,6 +28,7 @@ const SocialArtSection: NextPage = () => {
 
   useEffect(() => {
     handleGetRecentMintedPosts();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -42,6 +43,7 @@ const SocialArtSection: NextPage = () => {
     return () => {
       clearInterval(interval);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mintedPosts]);
 
   const handleNextSection = (slide: number) => {
@@ -86,7 +88,7 @@ const SocialArtSection: NextPage = () => {
                     src={`${
                       mintedPosts && mintedPosts[slider - 1]?.avatar
                         ? mintedPosts[slider - 1]?.avatar
-                        :  '/assets/images/img_avatar.png'
+                        : '/assets/images/img_avatar.png'
                     }`}
                     alt=""
                     className={styles.avatar}
@@ -103,7 +105,11 @@ const SocialArtSection: NextPage = () => {
                   {mintedPosts &&
                     mintedPosts.slice(0, 5).map((_, index) => {
                       return (
-                        <span key={index} className={styles.circles} onClick={() => handleNextSection(index + 1)}>
+                        <span
+                          key={index}
+                          className={styles.circles}
+                          onClick={() => handleNextSection(index + 1)}
+                        >
                           <svg
                             width="32"
                             height="32"

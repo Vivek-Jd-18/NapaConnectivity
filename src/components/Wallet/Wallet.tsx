@@ -20,7 +20,7 @@ type WalletComponentProps = {
 };
 
 const WalletComponent: NextPage<WalletComponentProps> = ({ account }) => {
-  const { push, query ,back } = useRouter();
+  const { push, query, back } = useRouter();
   const { connectWallet, getAccounts } = useWebThree();
   const [show, setShow] = useState(true);
   const { getUserProfileDetails } = useProfile();
@@ -30,6 +30,7 @@ const WalletComponent: NextPage<WalletComponentProps> = ({ account }) => {
       getAccounts();
       setShow(false);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [show]);
 
   useEffect(() => {
@@ -39,6 +40,7 @@ const WalletComponent: NextPage<WalletComponentProps> = ({ account }) => {
 
       animTimingFunction: Vivus.EASE_OUT,
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const walletHandler = () => {
@@ -49,7 +51,7 @@ const WalletComponent: NextPage<WalletComponentProps> = ({ account }) => {
         // @ts-ignore
         if (response && profileDetails) {
           if (query) {
-            back()
+            back();
             return;
           }
         } else if (response) {

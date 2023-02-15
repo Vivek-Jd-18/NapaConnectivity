@@ -61,8 +61,7 @@
   z-index: 99;
   padding: 30px;
   background: #1D3031;
-  display: flex;
-  justify-content: start;
+  @include flex-start;
   align-items: self-start;
   height: 390px;
   box-shadow: 0 0 50px 0 rgb(0 0 0 / 0%);
@@ -303,9 +302,8 @@
   .VolumeAnalisisbrdr {
     border: 1px solid rgb(145 165 166 / 15%);
     padding: 28px 32px;
-    display: flex;
     align-items: flex-start;
-    justify-content: flex-start;
+    @include flex-start;
     flex-direction: column;
     width: 100%;
   }
@@ -584,7 +582,7 @@
         .Right24txt {
           display: flex;
           align-items: center;
-          justify-content: end;
+          justify-content: flex-end;
           margin-bottom: 6px;
           h3 {
             font-family: 'Avenir';

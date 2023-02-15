@@ -12,6 +12,7 @@ const Loader: NextPage = () => {
       duration: 200,
       animTimingFunction: Vivus.EASE_OUT,
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

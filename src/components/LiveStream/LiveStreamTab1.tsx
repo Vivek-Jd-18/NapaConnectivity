@@ -88,7 +88,7 @@ const LiveStreamTab1 = () => {
                 <p className={styles.streamStatus}>{val.status}</p>
                 <p className={styles.streamViewers}>{val.viewers}</p>
               </div>
-              <img className={styles.liveStreams} src={val.streamImg} />
+              <img alt='' className={styles.liveStreams} src={val.streamImg} />
               <h5 className={styles.streamTitle}>{val.title}</h5>
               <div className={styles.avatarContainer}>
                 <img

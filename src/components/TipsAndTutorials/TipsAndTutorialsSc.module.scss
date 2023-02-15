@@ -191,8 +191,7 @@
   z-index: 99;
   padding: 30px;
   background: #1D3031;
-  display: flex;
-  justify-content: start;
+  @include flex-start;
   align-items: self-start;
   height: 390px;
   box-shadow: 0 0 50px 0 rgb(0 0 0 / 0%);

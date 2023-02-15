@@ -39,6 +39,7 @@ export default function EventsList() {
 
   useEffect(() => {
     handleGetRecentEvents();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <>

@@ -42,49 +42,62 @@ const WhitelistTab: NextPage = () => {
           <WhiteListComponent />
         </div>
       )}
-      <div className={active ? `${styles.NewAddressBoxMin} ${styles.Active}` : `${styles.NewAddressBoxMin}`}>
+      <div
+        className={
+          active
+            ? `${styles.NewAddressBoxMin} ${styles.Active}`
+            : `${styles.NewAddressBoxMin}`
+        }
+      >
         <div className={styles.NewAddressBox}>
           <div className={styles.NewAddreBtnSpbt}>
             <h3>New Address</h3>
-            <Image src="/img/project_cret_ic.png" onClick={handleClick} width={32} height={32}/>
-          </div>
-        
-            <DropDownComponent
-              title="Currency"
-              options={currencies}
-              dropDownValue={currency}
-              onChange={(e) => setCurrency(e.target.value)}
+            <Image
+              alt=""
+              src="/img/project_cret_ic.png"
+              onClick={handleClick}
+              width={32}
+              height={32}
             />
-            <div className="GeneralInputBox">
-              <div className='FrstInput'>
-                  <Input
-                      value={namesix}
-                      type="text"
-                      placeholder="General ETH Wallet"
-                      label="Name"
-                      onChange={(e) => setNamesix(e.target.value)}
-                  />
-              </div>
-            </div>          
-            <div className="GeneralInputBox">
-              <div className='FrstInput'>
-                  <Input
-                      value={namesix}
-                      type="text"
-                      placeholder="Hy6kI98oLlKnF5Rt80PaLw29j8TY5rVe0"
-                      label="Address"
-                      onChange={(e) => setNamesix(e.target.value)}
-                  />
-              </div>
-            </div>            
+          </div>
+
+          <DropDownComponent
+            title="Currency"
+            options={currencies}
+            dropDownValue={currency}
+            onChange={(e) => setCurrency(e.target.value)}
+          />
+          <div className="GeneralInputBox">
+            <div className="FrstInput">
+              <Input
+                value={namesix}
+                type="text"
+                placeholder="General ETH Wallet"
+                label="Name"
+                onChange={(e) => setNamesix(e.target.value)}
+              />
+            </div>
+          </div>
+          <div className="GeneralInputBox">
+            <div className="FrstInput">
+              <Input
+                value={namesix}
+                type="text"
+                placeholder="Hy6kI98oLlKnF5Rt80PaLw29j8TY5rVe0"
+                label="Address"
+                onChange={(e) => setNamesix(e.target.value)}
+              />
+            </div>
+          </div>
         </div>
         <div className={styles.NewAddrBtnCnlSve}>
-          <Button className={styles.Cancel} onClick={handleClick}>Cancel</Button>
+          <Button className={styles.Cancel} onClick={handleClick}>
+            Cancel
+          </Button>
           <Button className={styles.Save}>Save</Button>
         </div>
-      </div>     
+      </div>
     </div>
-    
   );
 };
 

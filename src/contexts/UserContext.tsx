@@ -41,12 +41,14 @@ export const UserContextProvider = (props: { children: React.ReactNode }) => {
 
   useEffect(() => {
     getProfileIdFromLocalStorage();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     if (account) {
       getUserProfileDetails(profileId || account);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [profileId, account]);
 
   const getUserProfileDetails = useCallback(
@@ -109,6 +111,7 @@ export const UserContextProvider = (props: { children: React.ReactNode }) => {
         );
       }
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [setProfileId, setProfileDetails, account]
   );
 
@@ -134,6 +137,7 @@ export const UserContextProvider = (props: { children: React.ReactNode }) => {
         );
       }
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [setProfileName, account]
   );
 

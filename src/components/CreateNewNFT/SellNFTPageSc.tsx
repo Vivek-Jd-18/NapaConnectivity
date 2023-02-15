@@ -29,6 +29,7 @@ export default function SellNFTPageSc() {
       handleGetMintPost(router.query.id as string);
       handleGetSnft();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router]);
 
   const [snftDetails, setSnftDetails] = React.useState<SnftResponse | null>(
