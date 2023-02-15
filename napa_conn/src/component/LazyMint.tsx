@@ -3,7 +3,7 @@ import { ethers } from "ethers";
 import Web3Modal from "web3modal";
 import providerOptions from '../utils/web3Configs/providerOptions';
 
-import { lazyMint, ethFee as ethFees, NapaMintFee as _NapaMintFee, UsdtMintFee as _UsdtMintFee, lazyMintEth, approve, allowance } from '../utils/testnet/callHelpers';
+import { lazyMint, ethFee as ethFees, NapaMintFee as _NapaMintFee, UsdtMintFee as _UsdtMintFee, lazyMintEth, approve, allowance, marketPlace, updatemarketPlaceAddress } from '../utils/testnet/callHelpers';
 import { napaTokenContract, newNapaNftContract, usdtTokenContract } from '../utils/testnet/contractObject';
 import { nftAddress } from '../utils/testnet/addressHelper';
 import { Spinner } from './Spinner';
@@ -124,12 +124,37 @@ export const Home = () => {
     }
 
 
+    // function setApprovalForAll(address operator, bool _approved) external;
+    const doApprovalFroMarketContract = async () => {
+        const marketAddress = "0x61584c74b5d215D57338A28754cBcC17f33d469a";
+        const NftCtr: any = await newNapaNftContract(_signer);
+        const approveRes = await NftCtr.setApprovalForAll(marketAddress, true).then(async (res: any) => {
+            await res.wait();
+            console.log(await res.wait(), "approve res");
+        }).catch((e: any)=>{
+            console.log(e)
+        })
+    }
+
     /**
     function to mint or LazyMint the nfts according to the token type @transactionType ("tokenType")
     this function sends the fees to the feeAccount, sends the nft price to the owner of the NFT and then
     sends/mints the NFT to the buyer's account
     */
 
+    const getMarketPlace: () => Promise<string> = async () => {
+
+        const NftCtr: any = await newNapaNftContract(_signer);
+
+        console.log(await NftCtr.owner(), "owner")
+
+        // const updateRes = await updatemarketPlaceAddress(NftCtr,"0x61584c74b5d215D57338A28754cBcC17f33d469a")
+        // console.log(await updateRes,"new address")
+
+
+        console.log(await marketPlace(NftCtr))
+        return await marketPlace(NftCtr);
+    }
 
     const LazyButton = async () => {
         setShowSpinner(true)
@@ -158,7 +183,7 @@ export const Home = () => {
                                 hit.toString(), 0,
                                 "www.ww.com",
                                 false,
-                                false);
+                                true);
                             setShowSpinner(true)
                             const _lazyRes = await _lazy.wait()
                             setShowSpinner(false)
@@ -248,6 +273,10 @@ export const Home = () => {
                         <button onClick={checkApproval} className="btn btn-sm btn-outline-warning" type="button">Check Approval</button>
                         <button onClick={LazyButton} className="btn btn-sm btn-outline-success" type="button">LazyMint</button>
                     </div>
+                    <br /><br />
+                    
+                    <button onClick={doApprovalFroMarketContract} className="btn btn-sm btn-outline-warning" type="button">approve market</button>
+                    <button onClick={getMarketPlace} className="btn btn-sm btn-outline-warning" type="button">get market address</button>
                 </div>
             </div>
         </>

@@ -52,14 +52,24 @@ export const UsdtMintFee = async (contract: any) => {
 
 //6 approve
 export const approve = async (contract: any, approveTo: string, _amount: string) => {
-    try{
+    try {
         return await contract.approve(approveTo, _amount);
-    }catch(e:any){
-        console.log(e.message,e.code,"Error Caught")
+    } catch (e: any) {
+        console.log(e.message, e.code, "Error Caught")
     }
 }
 
 //7 allowance
 export const allowance = async (contract: any, _from?: string, _to?: string) => {
     return await contract.allowance(_from, _to);
+}
+
+//8 marketPlace
+export const marketPlace = async (contract: any) => {
+    return await contract.marketPlace();
+}
+
+//9  updateMarketPlace
+export const updatemarketPlaceAddress = async (contract: any, _newMarketAddress: string) => {
+    return await contract.updatemarketPlaceAddress(_newMarketAddress);
 }
