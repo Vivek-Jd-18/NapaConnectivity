@@ -8,9 +8,13 @@
 export const acceptOwnership = async (contract: any) => {
     return await contract.acceptOwnership();
 }
-//2 buyNftToken
+//2.0 buyNftToken
 export const buyNftToken = async (contract: any, _tokenSelect: number, _tokenID: number) => {
     return await contract.buyNftToken(_tokenSelect, _tokenID);
+}
+//2.1 buyNftTokenWithEth
+export const buyNftTokenWithEth = async (contract: any, _tokenSelect: number, _tokenID: number,_tx:any) => {
+    return await contract.buyNftToken(_tokenSelect, _tokenID,_tx);
 }
 //3 fulfill
 export const fulfill = async (contract: any, _requestedId: string, _volume: number) => {
@@ -20,12 +24,14 @@ export const fulfill = async (contract: any, _requestedId: string, _volume: numb
 export const requestVolumeData = async (contract: any) => {
     return await contract.requestVolumeData();
 }
-//5 setSale
+
+//5 setSale ,! Note: this function is only for calling in other contract you can't call it in your front-end  
 export const setSale = async (contract: any, _tokenId: number, salePrice: number, _address: string) => {
     return await contract.setSale(_tokenId, salePrice, _address);
 }
+
 //6 setSaleFromWallet
-export const setSaleFromWallet = async (contract: any, _tokenId: number, salePrice: number) => {
+export const setSaleFromWallet = async (contract: any, _tokenId: number, salePrice: number|string) => {
     return await contract.setSaleFromWallet(_tokenId, salePrice);
 }
 //7 transferOwnership

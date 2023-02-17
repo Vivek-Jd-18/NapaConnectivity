@@ -3,9 +3,9 @@ import { ethers } from "ethers";
 import Web3Modal from "web3modal";
 import providerOptions from '../utils/web3Configs/providerOptions';
 
-import { lazyMint, ethFee as ethFees, NapaMintFee as _NapaMintFee, UsdtMintFee as _UsdtMintFee, lazyMintEth, approve, allowance, marketPlace, updatemarketPlaceAddress } from '../utils/testnet/callHelpers';
+import { lazyMint, ethFee as ethFees, NapaMintFee as _NapaMintFee, UsdtMintFee as _UsdtMintFee, lazyMintEth, approve, allowance, marketPlace, updatemarketPlaceAddress, currentTokenId } from '../utils/testnet/callHelpers';
 import { napaTokenContract, newNapaNftContract, usdtTokenContract } from '../utils/testnet/contractObject';
-import { nftAddress } from '../utils/testnet/addressHelper';
+import { nftAddress, marketPlace as marketPlaceAddress } from '../utils/testnet/addressHelper';
 import { Spinner } from './Spinner';
 
 export const Home = () => {
@@ -108,13 +108,13 @@ export const Home = () => {
         if (transactionType == 0) { // Check if the transaction is for NPA tokens
             const npaTokenctr: any = await napaTokenContract(_signer); // Get the NPA token contract
             console.log(npaTokenctr, "npaTokenctr contract");
-            const alw1 = await approve(npaTokenctr, "0xEF32F87f63b35061823e7f9BF1F8acEaBb6a1d79", amt.toString()); // Call the approve function of the NPA token contract to allow spending of tokens
+            const alw1 = await approve(npaTokenctr, nftAddress, amt.toString()); // Call the approve function of the NPA token contract to allow spending of tokens
             console.log(alw1, "allowance of napa");
             return alw1;
         } else if (transactionType == 1) { // Check if the transaction is for USDT tokens
             const usdtTokenctr: any = await usdtTokenContract(_signer); // Get the USDT token contract
             console.log(usdtTokenctr, "usdtTokenctr contract");
-            const alw1 = await approve(usdtTokenctr, "0xEF32F87f63b35061823e7f9BF1F8acEaBb6a1d79", amt.toString()); // Call the approve function of the USDT token contract to allow spending of tokens
+            const alw1 = await approve(usdtTokenctr, nftAddress, amt.toString()); // Call the approve function of the USDT token contract to allow spending of tokens
             console.log(alw1, "allowance of usdt");
             return alw1;
         } else { // If the transaction is not for tokens, return -1
@@ -126,12 +126,22 @@ export const Home = () => {
 
     // function setApprovalForAll(address operator, bool _approved) external;
     const doApprovalFroMarketContract = async () => {
-        const marketAddress = "0x61584c74b5d215D57338A28754cBcC17f33d469a";
         const NftCtr: any = await newNapaNftContract(_signer);
-        const approveRes = await NftCtr.setApprovalForAll(marketAddress, true).then(async (res: any) => {
+        const approveRes = await NftCtr.setApprovalForAll(marketPlaceAddress, true).then(async (res: any) => {
             await res.wait();
             console.log(await res.wait(), "approve res");
-        }).catch((e: any)=>{
+        }).catch((e: any) => {
+            console.log(e)
+        })
+    }
+
+    // function setApprovalForAll(address operator, bool _approved) external;
+    const checkApprovalFroMarketContract = async () => {
+        const NftCtr: any = await newNapaNftContract(_signer);
+        const approveRes = await NftCtr.isApprovedForAll(CurrentWalletAddress, marketPlaceAddress).then(async (res: any) => {
+            // await res.wait();
+            console.log(await res, "approve res");
+        }).catch((e: any) => {
             console.log(e)
         })
     }
@@ -160,6 +170,7 @@ export const Home = () => {
         setShowSpinner(true)
         // get NftCtr instance from newNapaNftContract function
         const NftCtr = await newNapaNftContract(_signer);
+        const supposedSeller: string = "0x20845c0782D2279Fd906Ea3E3b3769c196032C46"
 
         try {
             if (transactionType == 0) {
@@ -167,8 +178,8 @@ export const Home = () => {
                 let additional: any = await _NapaMintFee(NftCtr);
                 let convertedEthFee: any = _ethFee;
                 // Calculate the total fee by adding the additional fee and eth fee
-                const hit = Number(Number(_ethFee) * (10 ** 18)) + Number(additional.toString())
-                console.log(hit, "new hit")
+                const hit = Number(Number(_ethFee) * (10 ** 18)) + Number(additional.toString());
+                console.log(hit, "new hit");
 
                 // Check if total fee is greater than the provided eth fee
                 if (hit > convertedEthFee) {
@@ -179,7 +190,7 @@ export const Home = () => {
                         if (await mainRes) {
                             setShowSpinner(false)
                             console.log(mainRes, "mainrs")
-                            const _lazy = await lazyMint(NftCtr, "0x20845c0782D2279Fd906Ea3E3b3769c196032C46",
+                            const _lazy = await lazyMint(NftCtr, supposedSeller,
                                 hit.toString(), 0,
                                 "www.ww.com",
                                 false,
@@ -208,11 +219,11 @@ export const Home = () => {
                 // Check if total fee is greater than the provided eth fee
                 if (hit > convertedEthFee) {
                     // If yes, do token approval for USDT token and then mint NFT
-                    const approveRes = await doApproval(hit.toString()).then(async function checkApproval(res: any) {
+                    const isApproveRes = await doApproval(hit.toString()).then(async function checkApproval(res: any) {
                         const mainRes = await res.wait();
                         if (await mainRes) {
                             console.log(mainRes, "mainrs")
-                            const _lazy = await lazyMint(NftCtr, "0x20845c0782D2279Fd906Ea3E3b3769c196032C46",
+                            const _lazy = await lazyMint(NftCtr, supposedSeller,
                                 hit.toString(), 1,
                                 "www.ww.com",
                                 false,
@@ -231,7 +242,7 @@ export const Home = () => {
                 const etherFee = await ethFees(NftCtr);
                 let hit = Number(Number(_ethFee) * (10 ** 18)) + Number(etherFee.toString())
                 // Mint NFT with eth
-                const _lazy = await lazyMintEth(NftCtr, "0x20845c0782D2279Fd906Ea3E3b3769c196032C46",
+                const _lazy = await lazyMintEth(NftCtr, supposedSeller,
                     hit.toString(), 2,
                     "www.ww.com",
                     false,
@@ -244,6 +255,15 @@ export const Home = () => {
         }
     }
 
+    const _currentTokenId = async () => {
+        const NftCtr: any = await newNapaNftContract(_signer);
+        console.log(NftCtr,"whole contract")
+        let name = await NftCtr.currentTokenId();
+        console.log(name)
+        // let tknCount = await currentTokenId(NftCtr);
+        // console.log(tknCount, "-==-tknCount=-=-");
+        // return tknCount;
+    }
 
     return (
         <>
@@ -274,9 +294,12 @@ export const Home = () => {
                         <button onClick={LazyButton} className="btn btn-sm btn-outline-success" type="button">LazyMint</button>
                     </div>
                     <br /><br />
-                    
+
+                    <button onClick={_currentTokenId} className="btn btn-sm btn-outline-warning" type="button">current TokenId</button>
                     <button onClick={doApprovalFroMarketContract} className="btn btn-sm btn-outline-warning" type="button">approve market</button>
                     <button onClick={getMarketPlace} className="btn btn-sm btn-outline-warning" type="button">get market address</button>
+                    <button onClick={checkApprovalFroMarketContract} className="btn btn-sm btn-outline-warning" type="button">checkApproval</button>
+
                 </div>
             </div>
         </>

@@ -1,3 +1,6 @@
+
+// SNFT Function
+
 //1 lazyMint with Napa and USDT
 export const lazyMint = async (contract: any,
     _seller: string,
@@ -73,3 +76,65 @@ export const marketPlace = async (contract: any) => {
 export const updatemarketPlaceAddress = async (contract: any, _newMarketAddress: string) => {
     return await contract.updatemarketPlaceAddress(_newMarketAddress);
 }
+
+// setApprovalForAll(address operator, bool _approved)
+
+//10  setApprovalForAll
+export const setApprovalForAll = async (contract: any, operator: string, _approved: boolean) => {
+    return await contract.setApprovalForAll(operator, _approved);
+}
+
+//11  isApprovedForAll
+export const isApprovedForAll = async (contract: any, owner: string, operator: string) => {
+    return await contract.isApprovedForAll(owner, operator);
+}
+
+//12  ownerOf
+export const ownerOf = async (contract: any, _tokenId: number) => {
+    return await contract.ownerOf(_tokenId);
+}
+
+//13  currentTokenId
+export const currentTokenId = async (contract: any) => {
+    return await contract.currentTokenId();
+}
+
+
+
+
+//-------------------------------------  MarketPlaceContract Functions -----------------------------------------------
+
+
+
+//1 nftInfo
+export const nftInfo = async (contract: any, _nftId: number) => {
+    return await contract.nftInfo(_nftId);
+}
+
+//2.0 buyNftToken
+export const buyNftToken = async (contract: any, _tokenSelect: number, _tokenID: number) => {
+    return await contract.buyNftToken(_tokenSelect, _tokenID);
+}
+
+//2.1 buyNftTokenWithEth
+export const buyNftTokenWithEth = async (contract: any, _tokenSelect: number, _tokenID: number, _tx: any) => {
+    return await contract.buyNftToken(_tokenSelect, _tokenID, _tx);
+}
+
+//3 setSaleFromWallet
+export const setSaleFromWallet = async (contract: any, _tokenId: number, salePrice: number | string) => {
+    return await contract.setSaleFromWallet(_tokenId, salePrice);
+}
+
+//5 napaTokenAmount
+export const napaTokenAmount = async (contract: any) => {
+    return await contract.napaTokenAmount();
+}
+
+//6 getLatestPrice
+export const getLatestPrice = async (contract: any) => {
+    return await contract.getLatestPrice({ gasLimit: 5000000 });
+}
+
+
+
