@@ -3,6 +3,7 @@
 
 //1 lazyMint with Napa and USDT
 export const lazyMint = async (contract: any,
+    _tknId: number,
     _seller: string,
     salePrice: string | undefined,
     _TokenSelect: number,
@@ -10,6 +11,7 @@ export const lazyMint = async (contract: any,
     _transferToNapa: boolean,
     _setSaleMinter: boolean, tx?: any) => {
     return await contract.lazyMint(
+        _tknId,
         _seller,
         salePrice,
         _TokenSelect,
@@ -21,6 +23,7 @@ export const lazyMint = async (contract: any,
 
 //2 lazyMint with eth
 export const lazyMintEth = async (contract: any,
+    _tknId: number,
     _seller: string,
     salePrice: string,
     _TokenSelect: number,
@@ -28,6 +31,7 @@ export const lazyMintEth = async (contract: any,
     _transferToNapa: boolean,
     _setSaleMinter: boolean, tx?: any) => {
     return await contract.lazyMint(
+        _tknId,
         _seller,
         salePrice,
         _TokenSelect,

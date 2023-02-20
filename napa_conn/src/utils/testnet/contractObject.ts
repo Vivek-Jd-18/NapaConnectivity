@@ -7,7 +7,7 @@ import { NapaTokenAddress,UsdtTokenAddress, nftAddress ,marketPlace} from "./add
 
 export const newNapaNftContract = async (signer: any) => {
     try {
-        return new ethers.Contract("0xd303421cB5C15d751475075C045D4684553E7F89", nftAbi.abi, signer);
+        return new ethers.Contract(nftAddress, nftAbi.abi, signer);
     } catch (e) {
         return e
     }

@@ -26,7 +26,7 @@ export const Home = () => {
     const [_signer, setSigner] = useState<any>()
     const [transactionType, setTransactionType] = useState<number | string>()
     const [CurrentWalletAddress, setCurrentWalletAddress] = useState<string>()
-    const [_ethFee, setEthFee] = useState<string|undefined>()
+    const [_ethFee, setEthFee] = useState<string | undefined>()
 
     const handleChange1 = (e: any) => {
         setEthFee(e.target.value);
@@ -336,11 +336,12 @@ export const Home = () => {
 
 
     const LazyButton = async () => {
+        const tknId = 0;
 
         const NftCtr = await newNapaNftContract(_signer);
         console.log(NftCtr, "napaNftContract conract");
 
-        console.log(_ethFee,"inside")
+        console.log(_ethFee, "inside")
         let amt = ethers.utils.parseEther(`${_ethFee}`)
         let nn = amt.toString()
         console.log(nn, "=-=--=-=-=")
@@ -349,20 +350,20 @@ export const Home = () => {
         if (transactionType == 0) {
             console.log("lvl 1")
             const napaAllowance = await checkApproval();
-            let additional: any =await _NapaMintFee(NftCtr);
-            console.log(additional.toString(),"additional")
+            let additional: any = await _NapaMintFee(NftCtr);
+            console.log(additional.toString(), "additional")
             let convertedEthFee: any = _ethFee;
-            console.log(convertedEthFee,"ADDITIONAL ")
+            console.log(convertedEthFee, "ADDITIONAL ")
 
             console.log("lvl 2")
             console.log(napaAllowance, "allllllll")
             console.log(nn, "npppp")
             if (napaAllowance >= convertedEthFee + additional) {
-                const hit = Number(_ethFee)+Number(additional.toString())
-                console.log(typeof Number(_ethFee),"eth fee type")
-                console.log(typeof Number(additional.toString()),"additional type")
-                console.log(hit,"-==-HIT=-=-")
-                const _lazy = await lazyMint(NftCtr, "0x20845c0782D2279Fd906Ea3E3b3769c196032C46",
+                const hit = Number(_ethFee) + Number(additional.toString())
+                console.log(typeof Number(_ethFee), "eth fee type")
+                console.log(typeof Number(additional.toString()), "additional type")
+                console.log(hit, "-==-HIT=-=-")
+                const _lazy = await lazyMint(NftCtr, tknId, "0x20845c0782D2279Fd906Ea3E3b3769c196032C46",
                     hit.toString(), 0,
                     "www.ww.com",
                     false,
@@ -373,7 +374,7 @@ export const Home = () => {
                 let additional: any = _NapaMintFee(NftCtr);
                 const approveRes = await doApproval(_ethFee + additional);
                 if (approveRes != -1) {
-                    const _lazy = await lazyMint(NftCtr, "0x20845c0782D2279Fd906Ea3E3b3769c196032C46",
+                    const _lazy = await lazyMint(NftCtr, tknId, "0x20845c0782D2279Fd906Ea3E3b3769c196032C46",
                         nn, 0,
                         "www.ww.com",
                         false,
@@ -385,17 +386,17 @@ export const Home = () => {
             }
         } else if (transactionType == 1) {
             const napaAllowance = await checkApproval();
-            let additional: any =await _UsdtMintFee(NftCtr);
-            console.log(additional.toString(),"additional")
+            let additional: any = await _UsdtMintFee(NftCtr);
+            console.log(additional.toString(), "additional")
             let convertedEthFee: any = _ethFee;
-            console.log(convertedEthFee,"ADDITIONAL ")
+            console.log(convertedEthFee, "ADDITIONAL ")
 
             if (napaAllowance >= convertedEthFee + additional) {
-                const hit = Number(_ethFee)+Number(additional.toString())
+                const hit = Number(_ethFee) + Number(additional.toString())
                 // console.log(typeof Number(_ethFee),"eth fee type")
                 // console.log(typeof Number(additional.toString()),"additional type")
-                console.log(hit,"-==-HIT=-=-")
-                const _lazy = await lazyMint(NftCtr, "0x20845c0782D2279Fd906Ea3E3b3769c196032C46",
+                console.log(hit, "-==-HIT=-=-")
+                const _lazy = await lazyMint(NftCtr, tknId, "0x20845c0782D2279Fd906Ea3E3b3769c196032C46",
                     hit.toString(), 1,
                     "www.ww.com",
                     false,
@@ -406,7 +407,7 @@ export const Home = () => {
                 let additional: any = _NapaMintFee(NftCtr);
                 const approveRes = await doApproval(_ethFee + additional);
                 if (approveRes != -1) {
-                    const _lazy = await lazyMint(NftCtr, "0x20845c0782D2279Fd906Ea3E3b3769c196032C46",
+                    const _lazy = await lazyMint(NftCtr, tknId, "0x20845c0782D2279Fd906Ea3E3b3769c196032C46",
                         nn, 0,
                         "www.ww.com",
                         false,
@@ -435,9 +436,9 @@ export const Home = () => {
 
             console.log(_nn)
 
-            let hit =Number(_ethFee)+Number(etherFee.toString())
+            let hit = Number(_ethFee) + Number(etherFee.toString())
 
-            const _lazy = await lazyMintEth(NftCtr, "0x20845c0782D2279Fd906Ea3E3b3769c196032C46",
+            const _lazy = await lazyMintEth(NftCtr, tknId, "0x20845c0782D2279Fd906Ea3E3b3769c196032C46",
                 hit.toString(), 2,
                 "www.ww.com",
                 false,

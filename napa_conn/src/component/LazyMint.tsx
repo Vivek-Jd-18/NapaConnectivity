@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { ethers } from "ethers";
+import { useContext } from "react";
 import Web3Modal from "web3modal";
 import providerOptions from '../utils/web3Configs/providerOptions';
 
@@ -7,17 +8,22 @@ import { lazyMint, ethFee as ethFees, NapaMintFee as _NapaMintFee, UsdtMintFee a
 import { napaTokenContract, newNapaNftContract, usdtTokenContract } from '../utils/testnet/contractObject';
 import { nftAddress, marketPlace as marketPlaceAddress } from '../utils/testnet/addressHelper';
 import { Spinner } from './Spinner';
+import { CurrentUserContext } from '../App';
 
 export const Home = () => {
-    const [_provider, setProvider] = useState<any>()
-    const [_signer, setSigner] = useState<any>()
+    const currentUser = useContext(CurrentUserContext);
+    const _provider = currentUser._provider;
+    const _signer = currentUser._signer;
+    const CurrentWalletAddress = currentUser.CurrentWalletAddress;
+
     const [transactionType, setTransactionType] = useState<number | string>()
-    const [CurrentWalletAddress, setCurrentWalletAddress] = useState<string>()
     const [_ethFee, setEthFee] = useState<string>("0")
     const [conn, setConn] = useState<boolean>(false)
     const [showSpinner, setShowSpinner] = useState<boolean>(false)
     const [tType, setTType] = useState<string>("Other")
     const [btnClass, setBtnClass] = useState<string>("")
+    const [currentToken, setCurrentToken] = useState<number>()
+    
 
 
     const handleChange1 = (e: any) => {
@@ -32,35 +38,6 @@ export const Home = () => {
     using the "setConn" and "setCurrentWalletAddress" functions.
     */
 
-    const call = async () => {
-        async function connect() {
-            const externalProvider = await web3Modal.connect();
-            return new ethers.providers.Web3Provider(externalProvider);
-        }
-        const web3Modal = new Web3Modal({
-            network: "mainnet",
-            cacheProvider: true,
-            providerOptions,
-            theme: {
-                background: "rgb(39, 49, 56)",
-                main: "rgb(199, 199, 199)",
-                secondary: "rgb(136, 136, 136)",
-                border: "rgba(195, 195, 195, 0.14)",
-                hover: "rgb(16, 26, 32)"
-            }
-        });
-        const provider = await connect();
-        setProvider(provider)
-        const { chainId } = await provider.getNetwork()
-        const signer = await provider.getSigner(0);
-        setSigner(signer)
-        const address = await signer.getAddress();
-        if (address) {
-            setConn(true)
-        }
-        setCurrentWalletAddress(address)
-    }
-
 
 
     /**
@@ -68,6 +45,7 @@ export const Home = () => {
     this will return the allowance approved by @walletAddress to @NFTcontract
     */
     const checkApproval: () => Promise<string> = async () => {
+        console.log(currentUser)
         // Log the value of the _ethFee parameter
         // console.log(_ethFee)
 
@@ -167,9 +145,10 @@ export const Home = () => {
     }
 
     const LazyButton = async () => {
-        setShowSpinner(true)
+        const tknId = 55;
         // get NftCtr instance from newNapaNftContract function
-        const NftCtr = await newNapaNftContract(_signer);
+        const NftCtr:any = await newNapaNftContract(_signer);
+        console.log(await NftCtr,"nannananananana")
         const supposedSeller: string = "0x20845c0782D2279Fd906Ea3E3b3769c196032C46"
 
         try {
@@ -190,7 +169,7 @@ export const Home = () => {
                         if (await mainRes) {
                             setShowSpinner(false)
                             console.log(mainRes, "mainrs")
-                            const _lazy = await lazyMint(NftCtr, supposedSeller,
+                            const _lazy = await NftCtr.lazyMint( tknId, supposedSeller,
                                 hit.toString(), 0,
                                 "www.ww.com",
                                 false,
@@ -223,7 +202,7 @@ export const Home = () => {
                         const mainRes = await res.wait();
                         if (await mainRes) {
                             console.log(mainRes, "mainrs")
-                            const _lazy = await lazyMint(NftCtr, supposedSeller,
+                            const _lazy = await lazyMint(NftCtr, tknId, supposedSeller,
                                 hit.toString(), 1,
                                 "www.ww.com",
                                 false,
@@ -242,7 +221,7 @@ export const Home = () => {
                 const etherFee = await ethFees(NftCtr);
                 let hit = Number(Number(_ethFee) * (10 ** 18)) + Number(etherFee.toString())
                 // Mint NFT with eth
-                const _lazy = await lazyMintEth(NftCtr, supposedSeller,
+                const _lazy = await lazyMintEth(NftCtr, tknId, supposedSeller,
                     hit.toString(), 2,
                     "www.ww.com",
                     false,
@@ -257,7 +236,7 @@ export const Home = () => {
 
     const _currentTokenId = async () => {
         const NftCtr: any = await newNapaNftContract(_signer);
-        console.log(NftCtr,"whole contract")
+        console.log(NftCtr, "whole contract")
         let name = await NftCtr.currentTokenId();
         console.log(name)
         // let tknCount = await currentTokenId(NftCtr);
@@ -268,7 +247,7 @@ export const Home = () => {
     return (
         <>
             <div>Lazy Mint</div>
-            <div>
+            <div>{currentToken}
                 {/* {showSpinner ?
                     <Spinner /> : null
                 } */}
@@ -276,7 +255,7 @@ export const Home = () => {
                     <br /><br />
                     {CurrentWalletAddress}
                     <br /><br />
-                    <button className='btn btn-sm btn-primary' onClick={call}>{conn ? <span style={{ color: "green" }}>Connected</span> : <span style={{ color: "red" }}>Connect</span>}</button>
+                    {/* <button className='btn btn-sm btn-primary' onClick={call}>{conn ? <span style={{ color: "green" }}>Connected</span> : <span style={{ color: "red" }}>Connect</span>}</button> */}
                     <br /><br />
                     <label>Enter the Currency type</label><br />
                     {transactionType}<br /><br />

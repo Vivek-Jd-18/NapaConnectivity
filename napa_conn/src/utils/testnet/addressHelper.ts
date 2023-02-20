@@ -5,8 +5,6 @@
 
 
 export const marketPlace = "0x71199C2D4f59608d56475FbF17385092f3E009FC";
-export const nftAddress = "0xd303421cB5C15d751475075C045D4684553E7F89";
+export const nftAddress = "0x20bf1A09C7C7211ead72dE3d96bC129CD2BFE743";
 export const NapaTokenAddress = "0x93178F8d876564b6C0307E1aDCcB8e46bA8E5D7c";
 export const UsdtTokenAddress = "0x136c2c5b26Bf8D3434a1b67887dB98fE5D28E946";
-
-
