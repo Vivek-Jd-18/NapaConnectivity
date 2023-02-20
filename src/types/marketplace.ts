@@ -28,6 +28,8 @@ export type SnftResponse = {
   videoURL: string;
   userName: string;
   userImage: string;
+  tokenUri?: string;
+  accountId?: string;
 };
 
 export type GetSnftsResponse = {
