@@ -1392,16 +1392,14 @@ export default function FeedTab({ socket }: FeedTabProps) {
                         <div className={styles.MdlImage}>
                           <video
                             width={'100%'}
+                            height={'400'}
                             preload="auto"
                             autoPlay
                             muted
                             loop
                             controls
                             src={post.videoURL as string}
-                            style={{
-                              objectFit: 'contain',
-                              height: 'calc(100vh - 650px)',
-                            }}
+                            style={{ objectFit: 'contain' }}
                           >
                             The “video” tag is not supported by your browser.
                           </video>
