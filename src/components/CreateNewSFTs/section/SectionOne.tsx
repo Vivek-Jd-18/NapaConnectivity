@@ -59,7 +59,6 @@ export default function SectionOne({
     //to get signer from wallet
     await call()
     // let tknID = data.tokenId
-
     try {
       await LazyFunction(88, data.accountId, "0.001", 1, "www.w.com", false, false);
     } catch (e) {
