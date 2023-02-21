@@ -30,6 +30,7 @@ export type SnftResponse = {
   userImage: string;
   tokenUri?: string;
   accountId?: string;
+  tokenId?: string;
 };
 
 export type GetSnftsResponse = {
