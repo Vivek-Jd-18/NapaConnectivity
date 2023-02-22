@@ -1,10 +1,9 @@
 import { ethers } from "ethers";
 import Web3Modal from "web3modal";
-import providerOptions from '../providers/providerOptions';
 
-import { lazyMint, ethFee as ethFees, NapaMintFee as _NapaMintFee, UsdtMintFee as _UsdtMintFee, lazyMintEth, approve, marketPlace, updatemarketPlaceAddress} from '../callHelpers/callHelper1';
+import { lazyMint, ethFee as ethFees, NapaMintFee as _NapaMintFee, UsdtMintFee as _UsdtMintFee, lazyMintEth, approve} from '../callHelpers/callHelper1';
 import { napaTokenContract, newNapaNftContract, usdtTokenContract } from '../contractObjects/contractObject1';
-import { nftAddress, marketPlace as marketPlaceAddress } from '../addressHelpers/addressHelper';
+import { nftAddress} from '../addressHelpers/addressHelper';
 
 let _signer: any = "";
 
@@ -24,10 +23,9 @@ export const call = async () => {
     const web3Modal = new Web3Modal({
         network: "mainnet",
         cacheProvider: true,
-        providerOptions
     });
     const provider = await connect();
-    const { chainId } = await provider.getNetwork()
+    // const { chainId } = await provider.getNetwork()
     const signer = await provider.getSigner(0);
     _signer = signer;
     const address = await signer.getAddress();
@@ -71,31 +69,31 @@ const doApproval: any = async (amt: string, transactionType: number) => {
 }
 
 
-// function setApprovalForAll(address operator, bool _approved) external;
-const doApprovalFroMarketContract = async () => {
-    const NftCtr: any = await newNapaNftContract(_signer);
-    const approveRes = await NftCtr.setApprovalForAll(marketPlaceAddress, true).then(async (res: any) => {
-        await res.wait();
-        console.log(await res.wait(), "approve res");
-    }).catch((e: any) => {
-        console.log(e)
-    })
-}
+// // function setApprovalForAll(address operator, bool _approved) external;
+// const doApprovalFroMarketContract = async () => {
+//     const NftCtr: any = await newNapaNftContract(_signer);
+//     const approveRes = await NftCtr.setApprovalForAll(marketPlaceAddress, true).then(async (res: any) => {
+//         await res.wait();
+//         console.log(await res.wait(), "approve res");
+//     }).catch((e: any) => {
+//         console.log(e)
+//     })
+// }
 
 
-const getMarketPlace: () => Promise<string> = async () => {
+// const getMarketPlace: () => Promise<string> = async () => {
 
-    const NftCtr: any = await newNapaNftContract(_signer);
+//     const NftCtr: any = await newNapaNftContract(_signer);
 
-    console.log(await NftCtr.owner(), "owner")
+//     console.log(await NftCtr.owner(), "owner")
 
-    // const updateRes = await updatemarketPlaceAddress(NftCtr,"0x61584c74b5d215D57338A28754cBcC17f33d469a")
-    // console.log(await updateRes,"new address")
+//     // const updateRes = await updatemarketPlaceAddress(NftCtr,"0x61584c74b5d215D57338A28754cBcC17f33d469a")
+//     // console.log(await updateRes,"new address")
 
 
-    console.log(await marketPlace(NftCtr))
-    return await marketPlace(NftCtr);
-}
+//     console.log(await marketPlace(NftCtr))
+//     return await marketPlace(NftCtr);
+// }
 
 // const LazyButton = async () => {
 //     let tknId = 1;

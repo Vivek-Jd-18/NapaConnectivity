@@ -9,7 +9,7 @@ export const lazyMint = async (contract: any,
     _TokenSelect: number,
     tokenUri: string,
     _transferToNapa: boolean,
-    _setSaleMinter: boolean, tx?: any) => {
+    _setSaleMinter: boolean) => {
     return await contract.lazyMint(
         _tknId,
         _seller,

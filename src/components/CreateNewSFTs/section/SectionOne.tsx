@@ -60,7 +60,7 @@ export default function SectionOne({
     await call()
     // let tknID = data.tokenId
     try {
-      await LazyFunction(88, data.accountId, "0.001", 1, "www.w.com", false, false);
+      await LazyFunction(3, data.accountId, "0.001", 1, "www.w.com", false, false);
     } catch (e) {
       console.log("error :", e);
     }
