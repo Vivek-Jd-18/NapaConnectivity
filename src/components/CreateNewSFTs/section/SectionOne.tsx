@@ -165,7 +165,7 @@ export default function SectionOne({
                     className={styles.linkPernt}
                     onClick={() => lazyMint(snftDetails)}
                   >
-                    Buy Now for {snftDetails?.amount} NAPA
+                    {snftDetails?.amount} NAPA
                   </button>
                 )}
                 <div className={`${styles.RowLabel} ${styles.RowSeven}`}>
