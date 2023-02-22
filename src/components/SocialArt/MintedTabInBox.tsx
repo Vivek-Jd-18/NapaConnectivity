@@ -8,6 +8,7 @@ import moment from 'moment';
 import MyTimer from '../LiverTimer/Mytimer';
 import { MintPost } from '../../types/mint';
 import { useRouter } from 'next/router';
+import { nftAddress } from '../../connectivity/addressHelpers/addressHelper';
 
 type MintedTabInBoxProps = {
   loading: boolean;
@@ -72,7 +73,20 @@ export default function MintedTabInBox({
                   <div className={styles.DarinHedh}>
                     <h3 className={styles.DariH}>{post.SNFTTitle}</h3>
                     <h6>
-                      <span>Etherscan Address:</span> 0x8eb2df7137fb74...6e884
+                      <span>Etherscan Address:</span>{' '}
+                      {nftAddress.substring(0, 12) +
+                        '...' +
+                        nftAddress.substring(nftAddress.length - 5)}
+                    </h6>
+                    <h6>
+                      <span>Token Id:</span>{' '}
+                      {post.tokenId
+                        ? post.tokenId.toString().substring(0, 6) +
+                          '...' +
+                          post.tokenId
+                            .toString()
+                            .substring(post.tokenId.toString().length - 6)
+                        : null}
                     </h6>
                     <div className={styles.DarinImgpspan}>
                       <Image
@@ -153,6 +167,8 @@ export default function MintedTabInBox({
                     expiryTimestamp={new Date(post.timeMinted).setHours(
                       new Date(post.timeMinted).getHours() + 12
                     )}
+                    postId={post.postId}
+                    napaTokenEarned={post.napaTokenEarned}
                     socket={socket}
                   />
                 </div>
