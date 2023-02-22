@@ -7,18 +7,29 @@ type MyTimerProps = {
   expiryTimestamp: number;
   postId?: string;
   isExpired?: string;
+  napaTokenEarned?: string;
   socket: WebSocket;
 };
 
-function MyTimer({ expiryTimestamp, postId, isExpired, socket }: MyTimerProps) {
-  const [currentNapaPrice, setCurrentNapaPrice] = useState('');
+function MyTimer({
+  expiryTimestamp,
+  postId,
+  isExpired,
+  socket,
+  napaTokenEarned,
+}: MyTimerProps) {
+  const [currentNapaPrice, setCurrentNapaPrice] = useState(`4.29650254`);
   const { seconds, minutes, hours, isRunning } = useTimer({
     //@ts-ignore
     expiryTimestamp,
-    onExpire: async () =>
-      postId &&
-      isExpired == 'false' &&
-      (await updateMintPostStatus(postId, '1', currentNapaPrice)),
+    onExpire: async () => {
+      if (postId && isExpired == 'false') {
+        await updateMintPostStatus(postId, '1', currentNapaPrice);
+      }
+      if (postId && napaTokenEarned == '') {
+        await updateMintPostStatus(postId, '1', currentNapaPrice);
+      }
+    },
   });
 
   useEffect(() => {

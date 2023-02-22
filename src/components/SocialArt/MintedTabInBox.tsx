@@ -167,6 +167,8 @@ export default function MintedTabInBox({
                     expiryTimestamp={new Date(post.timeMinted).setHours(
                       new Date(post.timeMinted).getHours() + 12
                     )}
+                    postId={post.postId}
+                    napaTokenEarned={post.napaTokenEarned}
                     socket={socket}
                   />
                 </div>
