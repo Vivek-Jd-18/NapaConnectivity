@@ -9,10 +9,8 @@ import { toast } from 'react-toastify';
 import { CustomToastWithLink } from '../../../components/CustomToast/CustomToast';
 import { DoneIcon, ErrorIcon } from '../../../components/assets';
 import { FadeLoader } from 'react-spinners';
-import {
-  LazyFunction,
-  call,
-} from '../../../connectivity/mainFunctions/Functions';
+import { LazyFunction, call } from '@/connectivity/mainFunctions/Functions';
+
 
 type SectionOneProps = {
   snftDetails: SnftResponse | null;
@@ -23,10 +21,11 @@ export default function SectionOne({
   snftDetails,
   profileId,
 }: SectionOneProps) {
+
   const router = useRouter();
   const [loading, setLoading] = React.useState(false);
 
-  console.log(snftDetails, 'all data');
+  console.log(snftDetails, "all data");
 
   const handleDeleteSnft = async () => {
     setLoading(true);
@@ -58,23 +57,16 @@ export default function SectionOne({
   //connectivity function
   const lazyMint = async (data: any) => {
     //to get signer from wallet
-    await call();
+    await call()
     // let tknID = data.tokenId
-
     try {
-      await LazyFunction(
-        88,
-        data.accountId,
-        '0.001',
-        1,
-        'www.w.com',
-        false,
-        false
-      );
+      await LazyFunction(3, data.accountId, "0.001", 1, "www.w.com", false, false);
     } catch (e) {
-      console.log('error :', e);
+      console.log("error :", e);
     }
-  };
+  }
+
+
 
   return (
     <div className={styles.SectionOne}>
@@ -104,11 +96,10 @@ export default function SectionOne({
             <p>{snftDetails?.SNFTDescription}</p>
             <div className={styles.imgAndperaFlex}>
               <Image
-                src={`${
-                  snftDetails?.userImage
-                    ? snftDetails?.userImage
-                    : '/assets/images/img_avatar.png'
-                }`}
+                src={`${snftDetails?.userImage
+                  ? snftDetails?.userImage
+                  : '/assets/images/img_avatar.png'
+                  }`}
                 alt=""
                 width={40}
                 height={40}
@@ -161,12 +152,11 @@ export default function SectionOne({
                   </Link>
                 )}
                 {profileId != snftDetails?.profileId && (
-                  <button
-                    className={styles.linkPernt}
-                    onClick={() => lazyMint(snftDetails)}
-                  >
+
+                  <button className={styles.linkPernt} onClick={() => lazyMint(snftDetails)}>
                     Buy Now for {snftDetails?.amount} NAPA
                   </button>
+
                 )}
                 <div className={`${styles.RowLabel} ${styles.RowSeven}`}>
                   <div className={styles.butnPernt}>

@@ -1,172 +1,144 @@
+
 // SNFT Function
 
 //1 lazyMint with Napa and USDT
-export const lazyMint = async (
-  contract: any,
-  _tknId: number,
-  _seller: string,
-  salePrice: string | undefined,
-  _TokenSelect: number,
-  tokenUri: string,
-  _transferToNapa: boolean,
-  _setSaleMinter: boolean
-) => {
-  return await contract.lazyMint(
-    _tknId,
-    _seller,
-    salePrice,
-    _TokenSelect,
-    tokenUri,
-    _transferToNapa,
-    _setSaleMinter
-  );
-};
+export const lazyMint = async (contract: any,
+    _tknId: number,
+    _seller: string,
+    salePrice: string | undefined,
+    _TokenSelect: number,
+    tokenUri: string,
+    _transferToNapa: boolean,
+    _setSaleMinter: boolean) => {
+    return await contract.lazyMint(
+        _tknId,
+        _seller,
+        salePrice,
+        _TokenSelect,
+        tokenUri,
+        _transferToNapa,
+        _setSaleMinter
+    );
+}
 
 //2 lazyMint with eth
-export const lazyMintEth = async (
-  contract: any,
-  _tknId: number,
-  _seller: string,
-  salePrice: string,
-  _TokenSelect: number,
-  tokenUri: string,
-  _transferToNapa: boolean,
-  _setSaleMinter: boolean,
-  tx?: any
-) => {
-  return await contract.lazyMint(
-    _tknId,
-    _seller,
-    salePrice,
-    _TokenSelect,
-    tokenUri,
-    _transferToNapa,
-    _setSaleMinter,
-    tx
-  );
-};
+export const lazyMintEth = async (contract: any,
+    _tknId: number,
+    _seller: string,
+    salePrice: string,
+    _TokenSelect: number,
+    tokenUri: string,
+    _transferToNapa: boolean,
+    _setSaleMinter: boolean, tx?: any) => {
+    return await contract.lazyMint(
+        _tknId,
+        _seller,
+        salePrice,
+        _TokenSelect,
+        tokenUri,
+        _transferToNapa,
+        _setSaleMinter,
+        tx
+    );
+}
 
 //3 fetchEthFee
 export const ethFee = async (contract: any) => {
-  return await contract.ethFee();
-};
+    return await contract.ethFee();
+}
 
 //4 NapaMintFee
 export const NapaMintFee: any = async (contract: any) => {
-  return await contract.NapaMintFee();
-};
+    return await contract.NapaMintFee();
+}
 
 //5 fetchEthFee
 export const UsdtMintFee = async (contract: any) => {
-  return await contract.UsdtMintFee();
-};
+    return await contract.UsdtMintFee();
+}
 
 //6 approve
-export const approve = async (
-  contract: any,
-  approveTo: string,
-  _amount: string
-) => {
-  try {
-    return await contract.approve(approveTo, _amount);
-  } catch (e: any) {
-    console.log(e.message, e.code, 'Error Caught');
-  }
-};
+export const approve = async (contract: any, approveTo: string, _amount: string) => {
+    try {
+        return await contract.approve(approveTo, _amount);
+    } catch (e: any) {
+        console.log(e.message, e.code, "Error Caught")
+    }
+}
 
 //7 allowance
-export const allowance = async (
-  contract: any,
-  _from?: string,
-  _to?: string
-) => {
-  return await contract.allowance(_from, _to);
-};
+export const allowance = async (contract: any, _from?: string, _to?: string) => {
+    return await contract.allowance(_from, _to);
+}
 
 //8 marketPlace
 export const marketPlace = async (contract: any) => {
-  return await contract.marketPlace();
-};
+    return await contract.marketPlace();
+}
 
 //9  updateMarketPlace
-export const updatemarketPlaceAddress = async (
-  contract: any,
-  _newMarketAddress: string
-) => {
-  return await contract.updatemarketPlaceAddress(_newMarketAddress);
-};
+export const updatemarketPlaceAddress = async (contract: any, _newMarketAddress: string) => {
+    return await contract.updatemarketPlaceAddress(_newMarketAddress);
+}
 
 // setApprovalForAll(address operator, bool _approved)
 
 //10  setApprovalForAll
-export const setApprovalForAll = async (
-  contract: any,
-  operator: string,
-  _approved: boolean
-) => {
-  return await contract.setApprovalForAll(operator, _approved);
-};
+export const setApprovalForAll = async (contract: any, operator: string, _approved: boolean) => {
+    return await contract.setApprovalForAll(operator, _approved);
+}
 
 //11  isApprovedForAll
-export const isApprovedForAll = async (
-  contract: any,
-  owner: string,
-  operator: string
-) => {
-  return await contract.isApprovedForAll(owner, operator);
-};
+export const isApprovedForAll = async (contract: any, owner: string, operator: string) => {
+    return await contract.isApprovedForAll(owner, operator);
+}
 
 //12  ownerOf
 export const ownerOf = async (contract: any, _tokenId: number) => {
-  return await contract.ownerOf(_tokenId);
-};
+    return await contract.ownerOf(_tokenId);
+}
 
 //13  currentTokenId
 export const currentTokenId = async (contract: any) => {
-  return await contract.currentTokenId();
-};
+    return await contract.currentTokenId();
+}
+
+
+
 
 //-------------------------------------  MarketPlaceContract Functions -----------------------------------------------
 
+
+
 //1 nftInfo
 export const nftInfo = async (contract: any, _nftId: number) => {
-  return await contract.nftInfo(_nftId);
-};
+    return await contract.nftInfo(_nftId);
+}
 
 //2.0 buyNftToken
-export const buyNftToken = async (
-  contract: any,
-  _tokenSelect: number,
-  _tokenID: number
-) => {
-  return await contract.buyNftToken(_tokenSelect, _tokenID);
-};
+export const buyNftToken = async (contract: any, _tokenSelect: number, _tokenID: number) => {
+    return await contract.buyNftToken(_tokenSelect, _tokenID);
+}
 
 //2.1 buyNftTokenWithEth
-export const buyNftTokenWithEth = async (
-  contract: any,
-  _tokenSelect: number,
-  _tokenID: number,
-  _tx: any
-) => {
-  return await contract.buyNftToken(_tokenSelect, _tokenID, _tx);
-};
+export const buyNftTokenWithEth = async (contract: any, _tokenSelect: number, _tokenID: number, _tx: any) => {
+    return await contract.buyNftToken(_tokenSelect, _tokenID, _tx);
+}
 
 //3 setSaleFromWallet
-export const setSaleFromWallet = async (
-  contract: any,
-  _tokenId: number,
-  salePrice: number | string
-) => {
-  return await contract.setSaleFromWallet(_tokenId, salePrice);
-};
+export const setSaleFromWallet = async (contract: any, _tokenId: number, salePrice: number | string) => {
+    return await contract.setSaleFromWallet(_tokenId, salePrice);
+}
 
 //5 napaTokenAmount
 export const napaTokenAmount = async (contract: any) => {
-  return await contract.napaTokenAmount();
-};
+    return await contract.napaTokenAmount();
+}
 
 //6 getLatestPrice
 export const getLatestPrice = async (contract: any) => {
-  return await contract.getLatestPrice({ gasLimit: 5000000 });
-};
+    return await contract.getLatestPrice({ gasLimit: 5000000 });
+}
+
+
+
