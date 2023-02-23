@@ -80,13 +80,7 @@ export default function MintedTabInBox({
                     </h6>
                     <h6>
                       <span>Token Id:</span>{' '}
-                      {post.tokenId
-                        ? post.tokenId.toString().substring(0, 6) +
-                          '...' +
-                          post.tokenId
-                            .toString()
-                            .substring(post.tokenId.toString().length - 6)
-                        : null}
+                      {post.tokenId?.toString()?.padStart(7, '0')}
                     </h6>
                     <div className={styles.DarinImgpspan}>
                       <Image
