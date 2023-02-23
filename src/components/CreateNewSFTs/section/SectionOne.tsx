@@ -70,6 +70,7 @@ export default function SectionOne({
 
   //lazy mint connectivity function
   const lazyMint = async (data: any) => {
+    console.log("changes appeared")
     try {
       await call();//to get signer from wallet
       let val = data.tokenId.toString();
@@ -205,7 +206,7 @@ export default function SectionOne({
                 {profileId != snftDetails?.profileId && (
                   <button
                     className={styles.linkPernt}
-                    onClick={BuyFunction}
+                    onClick={()=>lazyMint(snftDetails)}
                   >
                     Buy Now for {snftDetails?.amount} NAPA
                   </button>
