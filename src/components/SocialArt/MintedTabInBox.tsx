@@ -73,10 +73,7 @@ export default function MintedTabInBox({
                   <div className={styles.DarinHedh}>
                     <h3 className={styles.DariH}>{post.SNFTTitle}</h3>
                     <h6>
-                      <span>Etherscan Address:</span>{' '}
-                      {nftAddress.substring(0, 12) +
-                        '...' +
-                        nftAddress.substring(nftAddress.length - 5)}
+                      <span>Etherscan Address:</span> {nftAddress}
                     </h6>
                     <h6>
                       <span>Token Id:</span>{' '}
