@@ -9,7 +9,18 @@ import { toast } from 'react-toastify';
 import { CustomToastWithLink } from '../../../components/CustomToast/CustomToast';
 import { DoneIcon, ErrorIcon } from '../../../components/assets';
 import { FadeLoader } from 'react-spinners';
-import { LazyFunction, call } from '@/connectivity/mainFunctions/Functions';
+import {
+  LazyFunction,
+  call,
+} from '../../../connectivity/mainFunctions/Functions';
+import {
+  call as call2,
+  _setSaleFromWallet,
+  _buyNftToken, doApprovalForMarketContract,
+  checkApprovalFroMarketContract,
+  calculateTokenAllowance,
+  _nftInfo
+} from '../../../connectivity/mainFunctions/marketFunctions';
 
 
 type SectionOneProps = {
@@ -21,11 +32,10 @@ export default function SectionOne({
   snftDetails,
   profileId,
 }: SectionOneProps) {
-
   const router = useRouter();
   const [loading, setLoading] = React.useState(false);
 
-  console.log(snftDetails, "all data");
+  console.log(snftDetails, 'all data');
 
   const handleDeleteSnft = async () => {
     setLoading(true);
@@ -54,19 +64,60 @@ export default function SectionOne({
     setLoading(false);
     router.push('/marketplace');
   };
-  //connectivity function
+
+
+  //connectivity functions starts here
+
+  //lazy mint connectivity function
   const lazyMint = async (data: any) => {
-    //to get signer from wallet
-    await call()
-    // let tknID = data.tokenId
     try {
-      await LazyFunction(3, data.accountId, "0.001", 1, "www.w.com", false, false);
+      await call();//to get signer from wallet
+      let val = data.tokenId.toString();
+      await LazyFunction(
+        val,
+        data.accountId,
+        '0.001',
+        1,
+        'https://bafybeiho2j43vulwhnjmfyvjafohl5prvcx24hr2sqvz7wliynnodmovru.ipfs.dweb.link/101.json',
+        false,
+        false
+      );
     } catch (e) {
-      console.log("error :", e);
+      console.log('error :', e);
     }
-  }
+  };
 
 
+
+  // marketPlace setApprovalFunction to approve NFTs by owner('Should be called by NFT owner')
+  const approveNFTFromOwner = async () => {
+    try {
+      let tknId = 452610601930869570;
+      await call2();//to get signer from wallet
+      await _setSaleFromWallet(tknId.toString());
+      await doApprovalForMarketContract();
+      await checkApprovalFroMarketContract();
+    } catch (e) {
+      console.log('error :', e);
+    }
+  };
+
+
+  // marketPlace BuyFunction to buyNFT by marketPlace('Should be called by Buyer')
+  const BuyFunction = async () => {
+    try {
+      await call2();//to get signer from wallet
+      // console.log(await calculateTokenAllowance(2));
+      let typeOfTransaction = 2;//should be 0,1 or 2
+      let tknId = 452610601930869570;
+      await _nftInfo(tknId.toString())
+      await _buyNftToken(typeOfTransaction, tknId.toString());
+    } catch (e) {
+      console.log('error :', e);
+    }
+  };
+
+  //connectivity functions ends here
 
   return (
     <div className={styles.SectionOne}>
@@ -152,9 +203,11 @@ export default function SectionOne({
                   </Link>
                 )}
                 {profileId != snftDetails?.profileId && (
-
-                  <button className={styles.linkPernt} onClick={() => lazyMint(snftDetails)}>
-                    {snftDetails?.amount} NAPA
+                  <button
+                    className={styles.linkPernt}
+                    onClick={BuyFunction}
+                  >
+                    Buy Now for {snftDetails?.amount} NAPA
                   </button>
 
                 )}
