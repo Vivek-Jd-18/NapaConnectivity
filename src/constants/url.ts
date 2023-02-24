@@ -4,3 +4,4 @@ export const SOCIAL_ART_API_URL = 'https://napa-social-backend-staging.napasocie
 export const SOCIAL_ART_WEBSOCKET_URL = 'wss://napa-social-backend-staging.napasociety.io';
 export const WEB_STAGING_SOCIALART_URL =
   'https://staging.napasociety.io/socialart';
+  
