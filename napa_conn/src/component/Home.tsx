@@ -17,9 +17,9 @@ import {
 import { marketPlaceContract, napaNftContract } from '../utils/contractObjects';
 import { MarketPlaceAddress, NapaNFTAddress, supportedChainHexMain, supportedChainHexTest } from '../utils/addressHelper';
 import { symbol } from '../utils/callHelper2';
-import { lazyMint, ethFee as ethFees, NapaMintFee as _NapaMintFee, UsdtMintFee as _UsdtMintFee, lazyMintEth } from '../utils/testnet/callHelpers';
-import { napaTokenContract, newNapaNftContract, usdtTokenContract } from '../utils/testnet/contractObject';
-import { nftAddress } from '../utils/testnet/addressHelper';
+import { lazyMint, ethFee as ethFees, NapaMintFee as _NapaMintFee, UsdtMintFee as _UsdtMintFee, lazyMintEth } from '../utils/testnet/CallHelpers/callHelpers';
+import { napaTokenContract, newNapaNftContract, usdtTokenContract } from '../utils/testnet/conractObjects/contractObject';
+import { nftAddress } from '../utils/testnet/addressHelpers/addressHelper';
 
 export const Home = () => {
     const [_provider, setProvider] = useState<any>()
@@ -445,7 +445,6 @@ export const Home = () => {
                 false, { value: hit.toString() });
         }
     }
-
     return (
         <>
             <div>Home</div>

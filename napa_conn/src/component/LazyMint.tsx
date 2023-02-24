@@ -4,9 +4,9 @@ import { useContext } from "react";
 import Web3Modal from "web3modal";
 import providerOptions from '../utils/web3Configs/providerOptions';
 
-import { lazyMint, ethFee as ethFees, NapaMintFee as _NapaMintFee, UsdtMintFee as _UsdtMintFee, lazyMintEth, approve, allowance, marketPlace, updatemarketPlaceAddress, currentTokenId } from '../utils/testnet/callHelpers';
-import { napaTokenContract, newNapaNftContract, usdtTokenContract } from '../utils/testnet/contractObject';
-import { nftAddress, marketPlace as marketPlaceAddress } from '../utils/testnet/addressHelper';
+import { lazyMint, ethFee as ethFees, NapaMintFee as _NapaMintFee, UsdtMintFee as _UsdtMintFee, lazyMintEth, approve, allowance, marketPlace, updatemarketPlaceAddress, currentTokenId } from '../utils/testnet/CallHelpers/callHelpers';
+import { napaTokenContract, newNapaNftContract, usdtTokenContract } from '../utils/testnet/conractObjects/contractObject';
+import { nftAddress, marketPlace as marketPlaceAddress } from '../utils/testnet/addressHelpers/addressHelper';
 import { Spinner } from './Spinner';
 import { CurrentUserContext } from '../App';
 

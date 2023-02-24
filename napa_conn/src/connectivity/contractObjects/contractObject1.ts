@@ -1,9 +1,9 @@
 import { ethers } from "ethers";
 // import marketAbi from "../utils/abis/market.json"
-import nftAbi from "./abis/NAPANft.json"
-import anyAbi from "./abis/anyToken.json"
+import nftAbi from "../abis/NAPANft.json"
+import anyAbi from "../abis/anyToken.json"
 import marketAbi from "../abis/market.json"
-import { NapaTokenAddress,UsdtTokenAddress, nftAddress ,marketPlace} from "./addressHelper";
+import { NapaTokenAddress,UsdtTokenAddress, nftAddress ,marketPlace} from "../addressHelpers/addressHelper";
 
 export const newNapaNftContract = async (signer: any) => {
     try {

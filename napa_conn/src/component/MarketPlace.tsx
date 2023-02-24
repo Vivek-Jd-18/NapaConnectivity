@@ -6,9 +6,9 @@ import {
     lazyMint, ethFee as ethFees, NapaMintFee as _NapaMintFee, UsdtMintFee as _UsdtMintFee, lazyMintEth,
     approve, allowance, marketPlace, updatemarketPlaceAddress, setApprovalForAll, buyNftToken, buyNftTokenWithEth,
     nftInfo, setSaleFromWallet, isApprovedForAll, ownerOf, napaTokenAmount, getLatestPrice
-} from '../utils/testnet/callHelpers';
-import { napaTokenContract, newNapaNftContract, usdtTokenContract, marketPlaceContract } from '../utils/testnet/contractObject';
-import { nftAddress, marketPlace as marketPlaceAddress } from '../utils/testnet/addressHelper';
+} from '../utils/testnet/CallHelpers/callHelpers';
+import { napaTokenContract, newNapaNftContract, usdtTokenContract, marketPlaceContract } from '../utils/testnet/conractObjects/contractObject';
+import { nftAddress, marketPlace as marketPlaceAddress } from '../utils/testnet/addressHelpers/addressHelper';
 import { CurrentUserContext } from '../App';
 
 export const MarketPlace = () => {
@@ -38,7 +38,7 @@ export const MarketPlace = () => {
 
     //#1 buynft from market place
     const _buyNftToken = async () => {
-        const _tokenId: number = 2;
+        const _tokenId: number = 55;
         console.log("you are buying token :", _tokenId);
         // const isApprovedNft = await doApprovalForMarketContract(CurrentWalletAddress, true);
         const isApprovedTkn = await doApprovalForToken();
