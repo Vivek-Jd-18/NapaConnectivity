@@ -75,14 +75,14 @@ export default function MintedTabInBox({
                     <h3 className={styles.DariH}>{post.SNFTTitle}</h3>
                     <h6>
                       <span>Etherscan Address:</span>{' '}
-                      <Link
+                      <a
                         href={
                           'https://goerli.etherscan.io/address/0x20bf1A09C7C7211ead72dE3d96bC129CD2BFE743'
                         }
                         target="_blank"
                       >
                         {nftAddress}
-                      </Link>
+                      </a>
                     </h6>
                     <h6>
                       <span>Token Id:</span>{' '}

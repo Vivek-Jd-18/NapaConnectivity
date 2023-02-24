@@ -102,6 +102,7 @@
     color: #fff;
     margin-top: 12px;
     margin-bottom: 5px;
+    word-break: break-word;
     span {
       @include font-md-avenir-regular;
       font-size: 14px;
@@ -109,12 +110,9 @@
       color: #91a5a6;
     }
     a {
-      color: #91a5a6;
+      color: $hover-links;
       font-size: 14px;
       text-decoration: none;
-      &:hover {
-        color: $hover-links;
-      }
     }
   }
   .DarinImgpspan {
