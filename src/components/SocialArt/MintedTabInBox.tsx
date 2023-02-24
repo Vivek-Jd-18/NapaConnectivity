@@ -9,7 +9,6 @@ import MyTimer from '../LiverTimer/Mytimer';
 import { MintPost } from '../../types/mint';
 import { useRouter } from 'next/router';
 import { nftAddress } from '../../connectivity/addressHelpers/addressHelper';
-import Link from 'next/link';
 
 type MintedTabInBoxProps = {
   loading: boolean;
@@ -80,6 +79,7 @@ export default function MintedTabInBox({
                           'https://goerli.etherscan.io/address/0x20bf1A09C7C7211ead72dE3d96bC129CD2BFE743'
                         }
                         target="_blank"
+                        rel="noreferrer"
                       >
                         {nftAddress}
                       </a>
