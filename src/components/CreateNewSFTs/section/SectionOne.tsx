@@ -14,11 +14,11 @@ import {
   call,
 } from '../../../connectivity/mainFunctions/Functions';
 import {
-  call as call2,
+  // call as call2,
   _setSaleFromWallet,
-  _buyNftToken, doApprovalForMarketContract,
-  checkApprovalFroMarketContract,
-  calculateTokenAllowance,
+  // _buyNftToken, doApprovalForMarketContract,
+  // checkApprovalFroMarketContract,
+  // calculateTokenAllowance,
   _nftInfo
 } from '../../../connectivity/mainFunctions/marketFunctions';
 
@@ -91,32 +91,32 @@ export default function SectionOne({
 
 
   // marketPlace setApprovalFunction to approve NFTs by owner('Should be called by NFT owner')
-  const approveNFTFromOwner = async () => {
-    try {
-      let tknId = 452610601930869570;
-      await call2();//to get signer from wallet
-      await _setSaleFromWallet(tknId.toString());
-      await doApprovalForMarketContract();
-      await checkApprovalFroMarketContract();
-    } catch (e) {
-      console.log('error :', e);
-    }
-  };
+  // const approveNFTFromOwner = async () => {
+  //   try {
+  //     let tknId = 452610601930869570;
+  //     await call2();//to get signer from wallet
+  //     await _setSaleFromWallet(tknId.toString());
+  //     await doApprovalForMarketContract();
+  //     await checkApprovalFroMarketContract();
+  //   } catch (e) {
+  //     console.log('error :', e);
+  //   }
+  // };
 
 
   // marketPlace BuyFunction to buyNFT by marketPlace('Should be called by Buyer')
-  const BuyFunction = async () => {
-    try {
-      await call2();//to get signer from wallet
-      // console.log(await calculateTokenAllowance(2));
-      let typeOfTransaction = 2;//should be 0,1 or 2
-      let tknId = 452610601930869570;
-      await _nftInfo(tknId.toString())
-      await _buyNftToken(typeOfTransaction, tknId.toString());
-    } catch (e) {
-      console.log('error :', e);
-    }
-  };
+  // const BuyFunction = async () => {
+  //   try {
+  //     await call2();//to get signer from wallet
+  //     // console.log(await calculateTokenAllowance(2));
+  //     let typeOfTransaction = 2;//should be 0,1 or 2
+  //     let tknId = 452610601930869570;
+  //     await _nftInfo(tknId.toString())
+  //     await _buyNftToken(typeOfTransaction, tknId.toString());
+  //   } catch (e) {
+  //     console.log('error :', e);
+  //   }
+  // };
 
   //connectivity functions ends here
 
