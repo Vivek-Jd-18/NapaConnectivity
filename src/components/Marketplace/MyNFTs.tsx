@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import Image from 'next/image';
 import Select from 'react-select';
 import 'bootstrap-daterangepicker/daterangepicker.css';
@@ -7,6 +7,10 @@ import 'bootstrap/dist/css/bootstrap.css';
 import moment from 'moment';
 import styles from './MyNFTs.module.scss';
 import Link from 'next/link';
+import { call, fetchNFTs } from "../../connectivity/otherFeatures/fetchAllNfts"
+import { commanNFTContract } from '@/connectivity/contractObjects/commanNFTContract';
+import { approve, transferFrom } from '@/connectivity/callHelpers/commanNFTCallHandlers';
+import axios from 'axios';
 
 export default function MyNFTs(props: any) {
   const options = [
@@ -30,6 +34,10 @@ export default function MyNFTs(props: any) {
     { value: 'vanilla', label: '4h 32 min' },
   ];
   const [active, setActive] = React.useState(false);
+
+  const [nfts, setNfts] = useState<any[]>([]);
+
+
   const handleClick = () => {
     setActive(!active);
   };
@@ -38,6 +46,7 @@ export default function MyNFTs(props: any) {
   const toggleClass = () => {
     setActiveTwo(!isActiveTwo);
   };
+
   ///
   const ref: any = useRef(null);
   const { onClickOutside } = props;
@@ -54,6 +63,87 @@ export default function MyNFTs(props: any) {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [onClickOutside]);
+
+
+
+
+  // fetch nfts starts here
+  const loadNFTs: () => Promise<object[]> = async () => {
+    let dt: any = []
+    const callData = await call();
+    const accAddress = callData.address;
+    try {
+      const config = {
+        method: 'get',
+        url: `https://deep-index.moralis.io/api/v2/${accAddress}/nft?chain=goerli&format=decimal`,
+        headers: { 'X-API-Key': "D8Kfm2KtjFHVEpqvPmTVgaNLvY8TFEhrIBi8h71wjcTfFIdlmSKFlYJcEGATK8dr" }
+      }
+      let res = await axios(config)
+      console.log(res, "all nfts of user")
+      // for (let i = 0; i < res.data.result.length; i++) {
+      const items = res.data.result.map(async (data: any, i: any) => {
+        let ff = await data.token_uri
+        let meta: any = await axios.get(ff);
+        console.log(meta.data.name, "meta");
+        let item = {
+          id: await meta.data.id,
+          name: await meta.data.name,
+          description: await meta.data.description,
+          attributes: await meta.data.attributes,
+          image: await meta.data.image
+        }
+        return item
+      })
+      setNfts(await items);
+      console.log(nfts, "ALLL")
+      // return items
+    } catch (e) {
+      console.log(e);
+    }
+    return dt;
+  }
+
+  useEffect(() => {
+    loadNFTs()
+  }, [])
+
+  console.log(nfts, "nnn");
+
+
+
+  // user will allow his Other NFTs by approving to MarketPlace Contract (LISTING)
+
+
+  const allowMarketToSell = async () => {
+    const nftAddress: string = ""
+    const newTokenID = 1;
+    const { signer }: any = await call()
+    const commanNFTCtr = await commanNFTContract("", signer);
+    await approve(commanNFTCtr, nftAddress, newTokenID).then(async (res) => {
+      console.log("Wait for Transaction 'Approval'... ");
+      console.log(await res.wait());
+    }).catch((e: any) => {
+      console.log(e, "Error");
+    });
+  }
+
+  // users NFTs will be sold by MarketPlace Contract only if allowed(NFT BUY FROM MarketPlace)
+  const _transferFrom = async () => {
+    const nftAddress: string = "";
+    const receiver = "";
+    const newTokenID = 1;
+    const { signer }: any = await call()
+    const commanNFTCtr = await commanNFTContract("", signer);
+    await transferFrom(commanNFTCtr, nftAddress, receiver, newTokenID).then(async (res: any) => {
+      console.log("Wait for Transaction 'Approval'... ");
+      console.log(await res.wait());
+    }).catch((e: any) => {
+      console.log(e, "Error");
+    });
+  }
+
+  // fetch NFTs working ends
+
   return (
     <>
       <div className={styles.tipandtotolmain}>
@@ -390,59 +480,71 @@ export default function MyNFTs(props: any) {
         </div>
       </div>
 
-      <div className={styles.scrollPernt}>
-        <div className={styles.CustomGridContainer}>
-          <div className={styles.CustomGrid}>
-            <div className={styles.TipsTulsOverlay}>
-              <div className={styles.boxinnrcont}>
-                <Link href="#">
-                  <a href="#" className={`${styles.apernt} hovereffect`}>
-                    <Image
-                      src="/img/nft_06.png"
-                      height="372px"
-                      width="282px"
-                      alt=""
-                      className="evmtimg"
-                    />
-                    {/* <div className={styles.upCont}>
-                                                <Image
-                                                    src="/img/feed_small_img06.png"
-                                                    height="40px"
-                                                    width="40px"
-                                                    alt=""
-                                                    className=""
-                                                />
-                                                <p>@CatherinePatton</p>
-                                            </div> */}
-                    <div className={styles.downCont}>
-                      <h3>That Which Falls Upwards</h3>
-                      <div className={styles.flexPernt}>
-                        <div className={styles.currentBit}>
-                          <h5>Current Bid</h5>
-                          <div className={styles.txtimgFlex}>
-                            <Image
-                              src="/img/etherium_ic.svg"
-                              height="24px"
-                              width="24px"
-                              alt=""
-                              className=""
-                            />
-                            <p>0.45 ETH</p>
+      {nfts.map((data: any) => {
+        return (
+          <div className={styles.scrollPernt}>
+            <div className={styles.CustomGridContainer}>
+              <div className={styles.CustomGrid}>
+                <div className={styles.TipsTulsOverlay}>
+                  <div className={styles.boxinnrcont}>
+                    <Link href="#">
+                      <a href="#" className={`${styles.apernt} hovereffect`}>
+                        {/* <Image
+                        src={data.image}
+                        height="372px"
+                        width="282px"
+                        alt=""
+                        className="evmtimg"
+                      /> */}
+                        <img src={data.image}
+                          height="372px"
+                          width="282px"
+                          alt=""
+                          className="evmtimg" />
+                        {/* <div className={styles.upCont}>
+                                          <Image
+                                              src="/img/feed_small_img06.png"
+                                              height="40px"
+                                              width="40px"
+                                              alt=""
+                                              className=""
+                                          />
+                                          <p>@CatherinePatton</p>
+                                      </div> */}
+                        <div className={styles.downCont}>
+                          <h3>{data.name}</h3>
+                          <div className={styles.flexPernt}>
+                            {/* <button onClick={allowMarketToSell}>List</button> */}
+                            <div className={styles.currentBit}>
+                              <h5>Current Bid</h5>
+                              <div className={styles.txtimgFlex}>
+                                <Image
+                                  src="/img/etherium_ic.svg"
+                                  height="24px"
+                                  width="24px"
+                                  alt=""
+                                  className=""
+                                />
+                                <p>0.45 ETH</p>
+                              </div>
+                            </div>
+                            <div className={styles.endingIn}>
+                              <p>Ending In</p>
+                              <h3>1h 26 min</h3>
+                            </div>
                           </div>
                         </div>
-                        <div className={styles.endingIn}>
-                          <p>Ending In</p>
-                          <h3>1h 26 min</h3>
-                        </div>
-                      </div>
-                    </div>
-                  </a>
-                </Link>
+                      </a>
+                    </Link>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
+          </div>)
+      })
+      }
+
+
     </>
   );
 }
