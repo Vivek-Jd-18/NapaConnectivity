@@ -19,9 +19,8 @@ import {
   // _buyNftToken, doApprovalForMarketContract,
   // checkApprovalFroMarketContract,
   // calculateTokenAllowance,
-  _nftInfo
+  _nftInfo,
 } from '../../../connectivity/mainFunctions/marketFunctions';
-
 
 type SectionOneProps = {
   snftDetails: SnftResponse | null;
@@ -65,14 +64,13 @@ export default function SectionOne({
     router.push('/marketplace');
   };
 
-
   //connectivity functions starts here
 
   //lazy mint connectivity function
   const lazyMint = async (data: any) => {
-    console.log("changes appeared")
+    console.log('changes appeared');
     try {
-      await call();//to get signer from wallet
+      await call(); //to get signer from wallet
       let val = data.tokenId.toString();
       await LazyFunction(
         val,
@@ -88,8 +86,6 @@ export default function SectionOne({
     }
   };
 
-
-
   // marketPlace setApprovalFunction to approve NFTs by owner('Should be called by NFT owner')
   // const approveNFTFromOwner = async () => {
   //   try {
@@ -102,7 +98,6 @@ export default function SectionOne({
   //     console.log('error :', e);
   //   }
   // };
-
 
   // marketPlace BuyFunction to buyNFT by marketPlace('Should be called by Buyer')
   // const BuyFunction = async () => {
@@ -144,14 +139,15 @@ export default function SectionOne({
         </div>
         <div className={styles.CustomGrid}>
           <div className={styles.ScOneLeftCont}>
-            <h1>{snftDetails?.collection}</h1>
+            <h1>{snftDetails?.SNFTTitle}</h1>
             <p>{snftDetails?.SNFTDescription}</p>
             <div className={styles.imgAndperaFlex}>
               <Image
-                src={`${snftDetails?.userImage
-                  ? snftDetails?.userImage
-                  : '/assets/images/img_avatar.png'
-                  }`}
+                src={`${
+                  snftDetails?.userImage
+                    ? snftDetails?.userImage
+                    : '/assets/images/img_avatar.png'
+                }`}
                 alt=""
                 width={40}
                 height={40}
@@ -206,11 +202,10 @@ export default function SectionOne({
                 {profileId != snftDetails?.profileId && (
                   <button
                     className={styles.linkPernt}
-                    onClick={()=>lazyMint(snftDetails)}
+                    onClick={() => lazyMint(snftDetails)}
                   >
                     Buy Now for {snftDetails?.amount} NAPA
                   </button>
-
                 )}
                 <div className={`${styles.RowLabel} ${styles.RowSeven}`}>
                   <div className={styles.butnPernt}>

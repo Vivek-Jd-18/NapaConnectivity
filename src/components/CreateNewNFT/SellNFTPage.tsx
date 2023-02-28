@@ -28,55 +28,55 @@ export default function SellNFTPage({
 }: SellNFTPageProps) {
   const optionsone = [
     {
-      value: 'Napa NAPA 1',
+      value: '0',
       label: (
         <div className="cstm_napa_slct">
           <Image src="/img/napa_ic.svg" alt="" width="20px" height="20px" />
-          Napa NAPA 1
+          NAPA
         </div>
       ),
     },
     {
-      value: 'Napa NAPA 2',
+      value: '1',
       label: (
         <div className="cstm_napa_slct">
           <Image src="/img/napa_ic.svg" alt="" width="20px" height="20px" />
-          Napa NAPA 2
+          USDT
         </div>
       ),
     },
     {
-      value: 'Napa NAPA 3',
+      value: '2',
       label: (
         <div className="cstm_napa_slct">
           <Image src="/img/napa_ic.svg" alt="" width="20px" height="20px" />
-          Napa NAPA 3
+          ETH
         </div>
       ),
     },
   ];
   const { push } = useRouter();
   const [isLoading, setIsLoading] = React.useState(false);
-  const [collection, setCollection] = React.useState<any>();
+  const [currencyType, setCurrencyType] = React.useState<any>();
   const [amount, setAmount] = React.useState('');
   const [duration, setDuration] = React.useState<any>();
   const [type, setType] = React.useState('Fixed Price');
   const [errors, setErrors] = React.useState({
-    collection: '',
+    currencyType: '',
     amount: '',
     duration: '',
   });
 
   useEffect(() => {
     if (snftDetails) {
-      const collectionIndex = optionsone.findIndex(
-        (option) => snftDetails.collection == option.value
+      const currencyTypeIndex = optionsone.findIndex(
+        (option) => snftDetails.currencyType == option.value
       );
 
-      if (collectionIndex > -1) {
-        setCollection({ ...optionsone[collectionIndex] });
+      if (currencyTypeIndex > -1) {
+        setCurrencyType({ ...optionsone[currencyTypeIndex] });
       } else {
-        setCollection(null);
+        setCurrencyType(null);
       }
       const durationIndex = Dayoptions.findIndex(
         (option) => snftDetails.duration == option.value
@@ -113,15 +113,15 @@ export default function SellNFTPage({
       return;
     }
     setErrors({
-      collection: '',
+      currencyType: '',
       amount: '',
       duration: '',
     });
-    if (!collection) {
+    if (!currencyType) {
       setErrors((prev) => {
         return {
           ...prev,
-          collection: 'Collection is required',
+          currencyType: 'Currency type is required',
         };
       });
     }
@@ -141,10 +141,10 @@ export default function SellNFTPage({
         };
       });
     }
-    if (!duration || !amount || !collection) return;
+    if (!duration || !amount || !currencyType) return;
     setIsLoading(true);
     const newSnft = {
-      collection: collection?.value ?? '',
+      currencyType: currencyType?.value ?? '',
       type,
       amount,
       duration: duration?.value ?? '',
@@ -166,7 +166,7 @@ export default function SellNFTPage({
       return;
     }
     setIsLoading(false);
-    setCollection(null);
+    setCurrencyType(null);
     setAmount('');
     setDuration(null);
     setType('Fixed Price');
@@ -183,15 +183,15 @@ export default function SellNFTPage({
 
   const handleUpdateSnft = async () => {
     setErrors({
-      collection: '',
+      currencyType: '',
       amount: '',
       duration: '',
     });
-    if (!collection) {
+    if (!currencyType) {
       setErrors((prev) => {
         return {
           ...prev,
-          collection: 'Collection is required',
+          currencyType: 'Currency type is required',
         };
       });
     }
@@ -211,10 +211,10 @@ export default function SellNFTPage({
         };
       });
     }
-    if (!duration || !amount || !collection) return;
+    if (!duration || !amount || !currencyType) return;
     setIsLoading(true);
     const updatedSnft = {
-      collection: collection?.value ?? '',
+      currencyType: currencyType?.value ?? '',
       type,
       amount,
       duration: duration?.value ?? '',
@@ -234,7 +234,7 @@ export default function SellNFTPage({
       return;
     }
     setIsLoading(false);
-    setCollection(null);
+    setCurrencyType(null);
     setAmount('');
     setDuration(null);
     setType('Fixed Price');
@@ -287,26 +287,26 @@ export default function SellNFTPage({
                 </div>
               </div>
               <div className={styles.typePrnt}>
-                <h1 className={styles.DefHed}>Price & Collection</h1>
+                <h1 className={styles.DefHed}>Price & Currency Type</h1>
                 <div className={styles.MixInputPool}>
                   <div
                     style={{ position: 'relative' }}
                     className={`${styles.SelectPrntNftSell} selectprntnft selectprntnftssell`}
                   >
-                    <p className={styles.ClctionTxt}>Collection</p>
+                    <p className={styles.ClctionTxt}>Currency Type</p>
                     <Select
                       options={optionsone}
                       // menuIsOpen={true}
                       className="select_pernt select_pernt_v2"
-                      placeholder="Bring Me the Open Space"
+                      placeholder="Select currency type"
                       classNamePrefix="cntrslct"
                       onChange={(selectedOption) =>
                         //@ts-ignore
-                        setCollection(selectedOption)
+                        setCurrencyType(selectedOption)
                       }
-                      value={collection}
+                      value={currencyType}
                     />
-                    {!collection && errors.collection && (
+                    {!currencyType && errors.currencyType && (
                       <span
                         style={{
                           position: 'absolute',
@@ -315,7 +315,7 @@ export default function SellNFTPage({
                         }}
                         className={styles.errormsg}
                       >
-                        {errors.collection}
+                        {errors.currencyType}
                       </span>
                     )}
                   </div>

@@ -12,7 +12,7 @@ export type DeleteSnftResponse = {
 
 export type SnftResponse = {
   snftId: string;
-  collection: string;
+  currencyType: string;
   amount: string;
   duration: string;
   mintId: string;
@@ -40,7 +40,7 @@ export type GetSnftsResponse = {
 };
 
 export type NewSnft = {
-  collection: string;
+  currencyType: string;
   type: string;
   amount: string;
   duration: string;
