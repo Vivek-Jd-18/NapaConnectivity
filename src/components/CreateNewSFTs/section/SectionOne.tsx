@@ -200,12 +200,13 @@ export default function SectionOne({
                   </Link>
                 )}
                 {profileId != snftDetails?.profileId && (
-                  <button
+                  <a
+                    href="javascript:void(0);"
                     className={styles.linkPernt}
                     onClick={() => lazyMint(snftDetails)}
                   >
                     Buy Now for {snftDetails?.amount} NAPA
-                  </button>
+                  </a>
                 )}
                 <div className={`${styles.RowLabel} ${styles.RowSeven}`}>
                   <div className={styles.butnPernt}>
