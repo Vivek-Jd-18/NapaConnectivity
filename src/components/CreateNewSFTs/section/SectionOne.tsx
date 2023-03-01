@@ -14,12 +14,9 @@ import {
   call,
 } from '../../../connectivity/mainFunctions/Functions';
 import {
-  // call as call2,
   _setSaleFromWallet,
-  // _buyNftToken, doApprovalForMarketContract,
-  // checkApprovalFroMarketContract,
-  // calculateTokenAllowance,
-  _nftInfo,
+  _buyNftToken,
+  _nftInfo
 } from '../../../connectivity/mainFunctions/marketFunctions';
 import { createNewTransaction } from '../../../services/Transaction';
 
