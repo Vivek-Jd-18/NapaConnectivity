@@ -7,9 +7,9 @@ import 'bootstrap/dist/css/bootstrap.css';
 import moment from 'moment';
 import styles from './MyNFTs.module.scss';
 import Link from 'next/link';
-import { call, fetchNFTs } from "../../connectivity/otherFeatures/fetchAllNfts"
+import { call } from "../../connectivity/otherFeatures/fetchAllNfts"
 import { commanNFTContract } from '@/connectivity/contractObjects/commanNFTContract';
-import { approve, transferFrom } from '@/connectivity/callHelpers/commanNFTCallHandlers';
+import { approve, getApproved, transferFrom } from '@/connectivity/callHelpers/commanNFTCallHandlers';
 import axios from 'axios';
 
 export default function MyNFTs(props: any) {
@@ -79,24 +79,31 @@ export default function MyNFTs(props: any) {
         headers: { 'X-API-Key': "D8Kfm2KtjFHVEpqvPmTVgaNLvY8TFEhrIBi8h71wjcTfFIdlmSKFlYJcEGATK8dr" }
       }
       let res = await axios(config)
-      console.log(res, "all nfts of user")
-      // for (let i = 0; i < res.data.result.length; i++) {
-      const items = res.data.result.map(async (data: any, i: any) => {
-        let ff = await data.token_uri
-        let meta: any = await axios.get(ff);
-        console.log(meta.data.name, "meta");
-        let item = {
-          id: await meta.data.id,
-          name: await meta.data.name,
-          description: await meta.data.description,
-          attributes: await meta.data.attributes,
-          image: await meta.data.image
-        }
-        return item
-      })
-      setNfts(await items);
-      console.log(nfts, "ALLL")
-      // return items
+      console.log(res)
+      let newItems: any = []
+      await Promise.all(
+        res.data.result.map(async (data: any) => {
+          let splitted = data.token_address.slice(0, 6) + "..." + data.token_address.slice(38, data.token_address.length);
+          // console.log(splitted, "datas")
+          let isOnSold = await checkIfApprovedToMarket(data.token_id, data.token_address);
+          console.log(isOnSold, "onsold")
+          let ff = await data.token_uri
+          let meta: any = await axios.get(ff);
+          let item = {
+            tokenId: await data.token_id,
+            shortContractAddress: splitted,
+            contractAddress: data.token_address,
+            id: await meta.data.id,
+            name: await meta.data.name,
+            description: await meta.data.description,
+            attributes: await meta.data.attributes,
+            image: await meta.data.image,
+            onSold: isOnSold
+          }
+          newItems.push(item);
+        })
+      )
+      setNfts(newItems);
     } catch (e) {
       console.log(e);
     }
@@ -107,20 +114,36 @@ export default function MyNFTs(props: any) {
     loadNFTs()
   }, [])
 
-  console.log(nfts, "nnn");
 
-
+  const checkIfApprovedToMarket = async (tknId: number, nftAddress: string) => {
+    let flag: boolean = false;
+    console.log(tknId, nftAddress, "rel")
+    const { signer }: any = await call()
+    const commanNFTCtr = await commanNFTContract(signer, nftAddress);
+    await getApproved(commanNFTCtr, tknId).then(async (res) => {
+      // console.log(`${tknId}, ${res} ${res.startsWith("0x00000")} vvv`);
+      // console.log(await res.wait());
+      console.log(res, "hh")
+      if (res.startsWith("0x0000000")) {
+        console.log("status")
+        flag = false
+      } else {
+        flag = true
+      }
+    }).catch((e: any) => {
+      console.log(e, "Error");
+      return false
+    });
+    return flag
+  }
 
   // user will allow his Other NFTs by approving to MarketPlace Contract (LISTING)
-
-
-  const allowMarketToSell = async () => {
-    const nftAddress: string = ""
-    const newTokenID = 1;
+  const allowMarketToSell = async (tknId: number, nftAddress: string) => {
+    console.log("you are giving approval to token id:", tknId);
     const { signer }: any = await call()
-    const commanNFTCtr = await commanNFTContract("", signer);
-    await approve(commanNFTCtr, nftAddress, newTokenID).then(async (res) => {
-      console.log("Wait for Transaction 'Approval'... ");
+    const commanNFTCtr = await commanNFTContract(signer, nftAddress);
+    await approve(commanNFTCtr, nftAddress, tknId).then(async (res) => {
+      console.log(`You have approved your nft with id: ${tknId}, Wait for the Transaction 'Approval'... `);
       console.log(await res.wait());
     }).catch((e: any) => {
       console.log(e, "Error");
@@ -497,8 +520,8 @@ export default function MyNFTs(props: any) {
                         className="evmtimg"
                       /> */}
                         <img src={data.image}
-                          height="372px"
-                          width="282px"
+                          height="322px"
+                          width="242px"
                           alt=""
                           className="evmtimg" />
                         {/* <div className={styles.upCont}>
@@ -512,9 +535,22 @@ export default function MyNFTs(props: any) {
                                           <p>@CatherinePatton</p>
                                       </div> */}
                         <div className={styles.downCont}>
+                          <h3>{data.tokenId}</h3>
+                          <h3>{data.shortContractAddress}</h3>
+                          {data.onSold ? <span style={{
+                            height: "25px",
+                            width: "25px",
+                            backgroundColor: "green",
+                            borderRadius: "50%", display: "inline-block"
+                          }}></span> : <span style={{
+                            height: "25px",
+                            width: "25px",
+                            backgroundColor: "red",
+                            borderRadius: "50%", display: "inline-block"
+                          }}></span>}
                           <h3>{data.name}</h3>
                           <div className={styles.flexPernt}>
-                            {/* <button onClick={allowMarketToSell}>List</button> */}
+                            <button onClick={() => allowMarketToSell(data.tokenId, data.contractAddress)} className='btn btn-primary'>List To Market</button>
                             <div className={styles.currentBit}>
                               <h5>Current Bid</h5>
                               <div className={styles.txtimgFlex}>
@@ -540,11 +576,9 @@ export default function MyNFTs(props: any) {
                 </div>
               </div>
             </div>
-          </div>)
+          </div >)
       })
       }
-
-
     </>
   );
 }

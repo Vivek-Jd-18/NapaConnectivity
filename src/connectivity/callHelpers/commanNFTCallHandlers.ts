@@ -10,7 +10,17 @@ export const approve = async (
     }
 };
 
-//2 transferFrom
+//2 getApproved check if NFT is approved to the market place or not
+export const getApproved = async (contract: any, tokenId: string | number) => {
+    try {
+        return await contract.getApproved(tokenId);
+    } catch (e: any) {
+        console.log(e.message, e.code, 'Error Caught');
+    }
+};
+
+
+//3 transferFrom
 export const transferFrom = async (
     contract: any,
     from: string,
