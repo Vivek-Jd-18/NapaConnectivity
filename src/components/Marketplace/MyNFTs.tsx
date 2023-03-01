@@ -114,7 +114,7 @@ export default function MyNFTs(props: any) {
 
   useEffect(() => {
     loadNFTs()
-  })
+  },[])
 
 
   const checkIfApprovedToMarket = async (tknId: number, nftAddress: string) => {

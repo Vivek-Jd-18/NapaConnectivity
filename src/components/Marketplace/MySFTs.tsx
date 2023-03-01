@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import Image from 'next/image';
 import Select from 'react-select';
 import 'bootstrap-daterangepicker/daterangepicker.css';
@@ -7,6 +7,18 @@ import 'bootstrap/dist/css/bootstrap.css';
 import moment from 'moment';
 import styles from './MySFTs.module.scss';
 import Link from 'next/link';
+
+import { call } from "../../connectivity/otherFeatures/fetchAllNfts"
+import { commanNFTContract } from '@/connectivity/contractObjects/commanNFTContract';
+import {
+  approve, getApproved,
+  //  transferFrom
+} from '@/connectivity/callHelpers/commanNFTCallHandlers';
+import axios from 'axios';
+import { nftAddress } from '@/connectivity/addressHelpers/addressHelper';
+
+
+
 
 export default function MySFTs(props: any) {
   const options = [
@@ -30,6 +42,10 @@ export default function MySFTs(props: any) {
     { value: 'vanilla', label: '4h 32 min' },
   ];
   const [active, setActive] = React.useState(false);
+
+  const [nfts, setNfts] = useState<any[]>([]);
+
+
   const handleClick = () => {
     setActive(!active);
   };
@@ -53,6 +69,116 @@ export default function MySFTs(props: any) {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [onClickOutside]);
+
+
+  // fetch nfts starts here
+  const loadNFTs: () => Promise<object[]> = async () => {
+    let dt: any = []
+    const callData = await call();
+    const accAddress = callData.address;
+    try {
+      const config = {
+        method: 'get',
+        url: `https://deep-index.moralis.io/api/v2/${accAddress}/nft?chain=goerli&format=decimal`,
+        headers: { 'X-API-Key': "D8Kfm2KtjFHVEpqvPmTVgaNLvY8TFEhrIBi8h71wjcTfFIdlmSKFlYJcEGATK8dr" }
+      }
+      let res = await axios(config)
+      console.log(res)
+      let newItems: any = []
+      await Promise.all(
+        res.data.result.map(async (data: any) => {
+          let splitted = data.token_address.slice(0, 6) + "..." + data.token_address.slice(38, data.token_address.length);
+          // console.log(splitted, "datas")
+          let isOnSold = await checkIfApprovedToMarket(data.token_id, data.token_address);
+          let contractAddress = data.token_address;
+          console.log(nftAddress)
+          console.log(nftAddress.toUpperCase() == contractAddress.toUpperCase(), "onsold1")
+          if (nftAddress.toUpperCase() == contractAddress.toUpperCase()) {
+            console.log("inside if")
+            let ff = await data.token_uri
+            let meta: any = await axios.get(ff);
+            let item = {
+              tokenId: await data.token_id,
+              shortContractAddress: splitted,
+              contractAddress: data.token_address,
+              id: await meta.data.id,
+              name: await meta.data.name,
+              description: await meta.data.description,
+              attributes: await meta.data.attributes,
+              image: await meta.data.image,
+              onSold: isOnSold
+            }
+            newItems.push(item);
+          } else {
+            console.log(data.token_address, `the nft with id ${data.token_id} is not for SNFT`);
+          }
+        })
+      )
+      setNfts(newItems);
+    } catch (e) {
+      console.log(e);
+    }
+    return dt;
+  }
+
+  useEffect(() => {
+    loadNFTs()
+  }, [])
+
+
+  const checkIfApprovedToMarket = async (tknId: number, nftAddress: string) => {
+    let flag: boolean = false;
+    console.log(tknId, nftAddress, "rel")
+    const { signer }: any = await call()
+    const commanNFTCtr = await commanNFTContract(signer, nftAddress);
+    await getApproved(commanNFTCtr, tknId).then(async (res) => {
+      // console.log(`${tknId}, ${res} ${res.startsWith("0x00000")} vvv`);
+      // console.log(await res.wait());
+      console.log(res, "hh")
+      if (res.startsWith("0x0000000")) {
+        console.log("status")
+        flag = false
+      } else {
+        flag = true
+      }
+    }).catch((e: any) => {
+      console.log(e, "Error");
+      return false
+    });
+    return flag
+  }
+
+  // user will allow his Other NFTs by approving to MarketPlace Contract (LISTING)
+  const allowMarketToSell = async (tknId: number, nftAddress: string) => {
+    console.log("you are giving approval to token id:", tknId);
+    const { signer }: any = await call()
+    const commanNFTCtr = await commanNFTContract(signer, nftAddress);
+    await approve(commanNFTCtr, nftAddress, tknId).then(async (res) => {
+      console.log(`You have approved your nft with id: ${tknId}, Wait for the Transaction 'Approval'... `);
+      console.log(await res.wait());
+    }).catch((e: any) => {
+      console.log(e, "Error");
+    });
+  }
+
+  // users NFTs will be sold by MarketPlace Contract only if allowed(NFT BUY FROM MarketPlace)
+  // const _transferFrom = async () => {
+  //   const nftAddress: string = "";
+  //   const receiver = "";
+  //   const newTokenID = 1;
+  //   const { signer }: any = await call()
+  //   const commanNFTCtr = await commanNFTContract("", signer);
+  //   await transferFrom(commanNFTCtr, nftAddress, receiver, newTokenID).then(async (res: any) => {
+  //     console.log("Wait for Transaction 'Approval'... ");
+  //     console.log(await res.wait());
+  //   }).catch((e: any) => {
+  //     console.log(e, "Error");
+  //   });
+  // }
+
+  // fetch NFTs working ends
+
+
   return (
     <>
       <div className={styles.tipandtotolmain}>
@@ -389,7 +515,7 @@ export default function MySFTs(props: any) {
         </div>
       </div>
 
-      <div className={styles.scrollPernt}>
+      {/* <div className={styles.scrollPernt}>
         <div className={styles.CustomGridContainer}>
           <div className={styles.CustomGrid}>
             <div className={styles.TipsTulsOverlay}>
@@ -403,7 +529,7 @@ export default function MySFTs(props: any) {
                       alt=""
                       className="evmtimg"
                     />
-                    {/* <div className={styles.upCont}>
+                    <div className={styles.upCont}>
                                                 <Image
                                                     src="/img/feed_small_img01.png"
                                                     height="40px"
@@ -412,7 +538,7 @@ export default function MySFTs(props: any) {
                                                     className=""
                                                 />
                                                 <p>@DorothyMccoy</p>
-                                            </div> */}
+                                            </div>
                     <div className={styles.downCont}>
                       <h3>Futuristic Fierce Radiant Cube</h3>
                       <div className={styles.flexPernt}>
@@ -441,7 +567,84 @@ export default function MySFTs(props: any) {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
+      {nfts.map((data: any) => {
+        return (
+          <div className={styles.scrollPernt} key={data.id}>
+            <div className={styles.CustomGridContainer}>
+              <div className={styles.CustomGrid}>
+                <div className={styles.TipsTulsOverlay}>
+                  <div className={styles.boxinnrcont}>
+                    <Link href="#">
+                      <a href="#" className={`${styles.apernt} hovereffect`}>
+                        {/* <Image
+                        src={data.image}
+                        height="372px"
+                        width="282px"
+                        alt=""
+                        className="evmtimg"
+                      /> */}
+                        <img src={data.image}
+                          height="322px"
+                          width="242px"
+                          alt=""
+                          className="evmtimg" />
+                        {/* <div className={styles.upCont}>
+                                          <Image
+                                              src="/img/feed_small_img06.png"
+                                              height="40px"
+                                              width="40px"
+                                              alt=""
+                                              className=""
+                                          />
+                                          <p>@CatherinePatton</p>
+                                      </div> */}
+                        <div className={styles.downCont}>
+                          <h3>{data.tokenId}</h3>
+                          <h3>{data.shortContractAddress}</h3>
+                          {data.onSold ? <span style={{
+                            height: "25px",
+                            width: "25px",
+                            backgroundColor: "green",
+                            borderRadius: "50%", display: "inline-block"
+                          }}></span> : <span style={{
+                            height: "25px",
+                            width: "25px",
+                            backgroundColor: "red",
+                            borderRadius: "50%", display: "inline-block"
+                          }}></span>}
+                          <h3>{data.name}</h3>
+                          <div className={styles.flexPernt}>
+                            <button onClick={() => allowMarketToSell(data.tokenId, data.contractAddress)} className='btn btn-primary'>List To Market</button>
+                            <div className={styles.currentBit}>
+                              <h5>Current Bid</h5>
+                              <div className={styles.txtimgFlex}>
+                                <Image
+                                  src="/img/etherium_ic.svg"
+                                  height="24px"
+                                  width="24px"
+                                  alt=""
+                                  className=""
+                                />
+                                <p>0.45 ETH</p>
+                              </div>
+                            </div>
+                            <div className={styles.endingIn}>
+                              <p>Ending In</p>
+                              <h3>1h 26 min</h3>
+                            </div>
+                          </div>
+                        </div>
+                      </a>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div >)
+      })
+      }
+
     </>
   );
 }
