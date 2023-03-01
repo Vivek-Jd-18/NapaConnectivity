@@ -9,7 +9,9 @@ import styles from './MyNFTs.module.scss';
 import Link from 'next/link';
 import { call } from "../../connectivity/otherFeatures/fetchAllNfts"
 import { commanNFTContract } from '@/connectivity/contractObjects/commanNFTContract';
-import { approve, getApproved, transferFrom } from '@/connectivity/callHelpers/commanNFTCallHandlers';
+import { approve, getApproved,
+  //  transferFrom
+   } from '@/connectivity/callHelpers/commanNFTCallHandlers';
 import axios from 'axios';
 
 export default function MyNFTs(props: any) {
@@ -112,7 +114,7 @@ export default function MyNFTs(props: any) {
 
   useEffect(() => {
     loadNFTs()
-  }, [])
+  })
 
 
   const checkIfApprovedToMarket = async (tknId: number, nftAddress: string) => {
@@ -151,19 +153,19 @@ export default function MyNFTs(props: any) {
   }
 
   // users NFTs will be sold by MarketPlace Contract only if allowed(NFT BUY FROM MarketPlace)
-  const _transferFrom = async () => {
-    const nftAddress: string = "";
-    const receiver = "";
-    const newTokenID = 1;
-    const { signer }: any = await call()
-    const commanNFTCtr = await commanNFTContract("", signer);
-    await transferFrom(commanNFTCtr, nftAddress, receiver, newTokenID).then(async (res: any) => {
-      console.log("Wait for Transaction 'Approval'... ");
-      console.log(await res.wait());
-    }).catch((e: any) => {
-      console.log(e, "Error");
-    });
-  }
+  // const _transferFrom = async () => {
+  //   const nftAddress: string = "";
+  //   const receiver = "";
+  //   const newTokenID = 1;
+  //   const { signer }: any = await call()
+  //   const commanNFTCtr = await commanNFTContract("", signer);
+  //   await transferFrom(commanNFTCtr, nftAddress, receiver, newTokenID).then(async (res: any) => {
+  //     console.log("Wait for Transaction 'Approval'... ");
+  //     console.log(await res.wait());
+  //   }).catch((e: any) => {
+  //     console.log(e, "Error");
+  //   });
+  // }
 
   // fetch NFTs working ends
 
@@ -505,7 +507,7 @@ export default function MyNFTs(props: any) {
 
       {nfts.map((data: any) => {
         return (
-          <div className={styles.scrollPernt}>
+          <div className={styles.scrollPernt} key={data.id}>
             <div className={styles.CustomGridContainer}>
               <div className={styles.CustomGrid}>
                 <div className={styles.TipsTulsOverlay}>

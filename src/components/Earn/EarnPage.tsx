@@ -23,30 +23,30 @@ import { checkReward, deposit, pendingRewards, stakeTokens } from '@/connectivit
 import { originalNapaStakingAddress } from '@/connectivity/addressHelpers/addressHelper';
 
 export default function EarnPage() {
-  const [lock, setLock] = useState<string>();
+  // const [lock, setLock] = useState<string>();
   const [_provider, setProvider] = useState<any>();
   const [_signer, setSigner] = useState<any>()
-  const [_ethFee, setEthFee] = useState<string>("0")
-  const [ethBal, setEthBal] = useState<any>();
-  const [conn, setConn] = useState<boolean>(false)
-  const [napaBal, setNapaBal] = useState<number>(0);
+  // const [_ethFee, setEthFee] = useState<string>("0")
+  // const [ethBal, setEthBal] = useState<any>();
+  // const [conn, setConn] = useState<boolean>(false)
+  // const [napaBal, setNapaBal] = useState<number>(0);
   const [_pendingMilk, setPendingMilk] = useState<number>(0);
   const [_treasuryWallet, setTreasuryWallet] = useState<string>("");
-  const [currentUserReward, setCurrentUserReward] = useState<number>(0);
+  // const [currentUserReward, setCurrentUserReward] = useState<number>(0);
   const [CurrentWalletAddress, setCurrentWalletAddress] = useState<string>("");
   const [stakePlan, setStakePlan] = useState<number>(0);
   const [stakeAmt, setStakeAmt] = useState<number>(0);
-  const [stakeBtnStyle, setStakeBtnStyle] = useState<string>("btn btn-outline-success disabled");
+  // const [stakeBtnStyle, setStakeBtnStyle] = useState<string>("btn btn-outline-success disabled");
 
   const decimals = 10 ** 18;
 
-  const onAmountChange = (e: any) => {
-    const amount = e.target.value;
+  // const onAmountChange = (e: any) => {
+  //   const amount = e.target.value;
 
-    if (!amount || amount.match(/^\d{1,}(\.\d{0,4})?$/)) {
-      setLock(amount);
-    }
-  };
+  //   if (!amount || amount.match(/^\d{1,}(\.\d{0,4})?$/)) {
+  //     setLock(amount);
+  //   }
+  // };
 
 
   //staking/unstaking connectivity start
@@ -70,13 +70,13 @@ export default function EarnPage() {
     setCurrentWalletAddress(address);
     const ehBalance = await provider.getBalance(address);
     console.log(ehBalance.toString(), "balance of ETH")
-    setEthBal(Number(ehBalance.toString()) / (10 ** 18))
+    // setEthBal(Number(ehBalance.toString()) / (10 ** 18))
     if (address) {
-      setConn(true)
+      // setConn(true)
     }
     setCurrentWalletAddress(address)
     //process to get NAPA balance of current user
-    setNapaBal((await balanceOf(await originalNapaTokenContract(signer), address)) / 10 ** 18);
+    // setNapaBal((await balanceOf(await originalNapaTokenContract(signer), address)) / 10 ** 18);
 
     const oriNapaStakeCtr = await originalNapaStakingContract(signer);
     console.log(" callllllll")
@@ -92,7 +92,7 @@ export default function EarnPage() {
     //check pending rewards of current user
     try {
       console.log((await checkReward(oriNapaStakeCtr)).toString(), "checkReward");
-      setCurrentUserReward(Number((await checkReward(oriNapaStakeCtr)).toString()) / decimals);
+      // setCurrentUserReward(Number((await checkReward(oriNapaStakeCtr)).toString()) / decimals);
     } catch (e) {
       console.log("Error :", e);
     }
@@ -115,20 +115,20 @@ export default function EarnPage() {
   const amtHandler = (e: any) => {
     setStakeAmt(e.target.value);
     if (stakeAmt > 0) {
-      setStakeBtnStyle("btn btn-outline-success");
+      // setStakeBtnStyle("btn btn-outline-success");
     }
     else {
-      setStakeBtnStyle("btn btn-outline-success disabled");
+      // setStakeBtnStyle("btn btn-outline-success disabled");
     }
   }
 
   const changePlan = (plan: number) => {
     setStakePlan(plan);
     if (stakeAmt > 0) {
-      setStakeBtnStyle("btn btn-outline-success");
+      // setStakeBtnStyle("btn btn-outline-success");
     }
     else {
-      setStakeBtnStyle("btn btn-outline-success disabled");
+      // setStakeBtnStyle("btn btn-outline-success disabled");
     }
   }
   const handleStake = async () => {
@@ -228,7 +228,7 @@ export default function EarnPage() {
                     {/* <h3>0.48</h3> */}
                     <input
                       type="number"
-                      value={lock}
+                      // value={lock}
                       placeholder="0.00"
                       onChange={amtHandler}
                       onClick={call}
