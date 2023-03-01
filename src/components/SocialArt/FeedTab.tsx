@@ -1951,14 +1951,14 @@ export default function FeedTab({ socket }: FeedTabProps) {
                                     })
                                   }
                                 />
-                                <div style={{ marginTop: '-1rem' }}>
+                                {/* <div style={{ marginTop: '-1rem' }}>
                                   {mintDetails.collection ==
                                     'Take Ownership' && (
                                     <p className={styles.errmsg}>
                                       NAPA Mint Fee Required For this Option
                                     </p>
                                   )}
-                                </div>
+                                </div> */}
                               </div>
                               <div className={styles.descriptionContainer}>
                                 <p>SNFT Description</p>

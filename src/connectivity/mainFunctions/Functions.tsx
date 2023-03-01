@@ -15,9 +15,10 @@ import {
   newNapaNftContract,
   usdtTokenContract,
 } from '../contractObjects/contractObject1';
-import {
-  nftAddress,
-} from '../addressHelpers/addressHelper';
+import { nftAddress } from '../addressHelpers/addressHelper';
+import { ErrorIcon } from '../../components/assets';
+import { CustomToastWithLink } from '../../components/CustomToast/CustomToast';
+import { toast } from 'react-toastify';
 
 let _signer: any = '';
 
@@ -104,7 +105,8 @@ export const LazyFunction = async (
   typeOfTransaction: number,
   _tokenUri: string,
   _transferToNapa: boolean,
-  _setSaleMinter: boolean
+  _setSaleMinter: boolean,
+  callback: CallableFunction
 ) => {
   call();
   const tknId = 1;
@@ -144,13 +146,23 @@ export const LazyFunction = async (
               );
               const _lazyRes = await _lazy.wait();
               console.log(await _lazyRes, '_lazy response');
+              callback(undefined, _lazyRes)
             } else {
               console.log('waiting for confirmation');
               checkApproval(res);
             }
           })
           .catch((e: any) => {
+            callback(e)
             console.log('Unknown error occured :', e);
+            toast.error(
+              CustomToastWithLink({
+                icon: ErrorIcon,
+                title: 'Error',
+                description: e.error.message,
+                time: 'Now',
+              })
+            );
           });
       }
     } else if (typeOfTransaction == 1) {
@@ -190,7 +202,16 @@ export const LazyFunction = async (
             }
           })
           .catch((e: any) => {
+            callback(e)
             console.log('Unknown error occured :', e);
+            toast.error(
+              CustomToastWithLink({
+                icon: ErrorIcon,
+                title: 'Error',
+                description: e.error.message,
+                time: 'Now',
+              })
+            );
           });
       }
     } else {
@@ -213,6 +234,7 @@ export const LazyFunction = async (
       console.log(await _lazy);
     }
   } catch (e: any) {
+    callback(e)
     console.log(e.code, e.message, 'caught');
   }
 };

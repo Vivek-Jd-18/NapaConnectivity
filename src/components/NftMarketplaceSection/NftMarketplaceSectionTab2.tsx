@@ -77,11 +77,11 @@ const NftMarketplaceSectionTab2 = () => {
                 <div key={index} className={styles.projectCardContainer}>
                   <NftProjectCard
                     backgroundImg={val.thumbnail}
-                    avatar={val.userImage}
+                    avatar={val.userImage as string}
                     ending={val.duration}
                     currentBid={val.amount}
-                    userName={val.userName}
-                    title={val.SNFTTitle}
+                    userName={val.userName as string}
+                    title={val.SNFTTitle as string}
                   />
                 </div>
               );

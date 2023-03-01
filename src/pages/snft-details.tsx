@@ -13,7 +13,7 @@ const CreateNeSFTsTwo: NextPage = () => {
       </Head>
       <section className={styles.container} id="earn-container">
         <div
-          className={`${styles.child} earnpage crtnwnfttw`}
+          className={`${styles.child} earnpage mrktplcbg`}
           id="scrollElement"
         >
           <CreateNewNFTScTow />

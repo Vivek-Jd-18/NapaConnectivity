@@ -33,123 +33,129 @@
     padding-top: 3rem;
   }
 }
-.imgPerntScone{
-  >span{
+.imgPerntScone {
+  > span {
     width: 100% !important;
   }
 }
-.ScOneLeftCont{
-  h1{
+.ScOneLeftCont {
+  h1 {
     font-family: 'Neuropolitical';
     font-style: normal;
     font-weight: 400;
     font-size: 76px;
     line-height: 110%;
-    color: #FFFFFF;
+    color: #ffffff;
     margin: 0;
     text-align: start;
   }
-  p{
+  p {
     font-family: 'Avenir';
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
     line-height: 140%;
-    color: #FFFFFF;
+    color: #ffffff;
     margin: 22px 0 33px 0;
     text-align: start;
   }
 }
-.imgAndperaFlex{
+.imgAndperaFlex {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  p{
+  p {
     font-family: 'Avenir';
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
     line-height: 140%;
-    color: #FFFFFF;
+    color: #ffffff;
     margin: 0 0 0 16px;
   }
 }
-.thrBtnPrnt{
+.thrBtnPrnt {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding-top: 80px;
-  .linkPernt{
+  .linkPernt {
     font-family: 'Neuropolitical';
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
     line-height: 110%;
     text-align: center;
-    color: #FFFFFF;
-    border: 2px solid #91A5A6;
+    color: #ffffff;
+    border: 2px solid #91a5a6;
     text-decoration: none;
     padding: 26px 0;
     width: 100%;
     margin-right: 16px;
-    &:hover{
-      border: 2px solid #16E6EF;
-      color: #16E6EF;
+    &:hover {
+      border: 2px solid #16e6ef;
+      color: #16e6ef;
+    }
+  }
+  .disabled {
+    pointer-events: none;
+    color: gray;
+    img {
+      opacity: 0.4;
     }
   }
 }
-.butnPernt{
+.butnPernt {
   min-width: 72px;
-  button{
+  button {
     background: transparent;
-    border: 2px solid #91A5A6;
+    border: 2px solid #91a5a6;
     padding: 20px;
     align-items: center;
     display: flex;
     justify-content: center;
   }
-  a{
+  a {
     padding: 0 !important;
   }
-  ul{
+  ul {
     width: 214px;
   }
 }
 
-
-.CurrentBitBox{
+.CurrentBitBox {
   padding-top: 35px;
   display: flex;
   align-items: center;
-  .CurrentBitBoxInrr{
+  .CurrentBitBoxInrr {
     margin-right: 60px;
-    &:last-child{
+    &:last-child {
       margin-right: 0;
     }
-    p{
+    p {
       font-family: 'Avenir';
       font-style: normal;
       font-weight: 400;
       font-size: 18px;
       line-height: 140%;
-      color: #FFFFFF;
+      color: #ffffff;
       margin: 0 0 5px 0;
     }
-    .imgAdnHH{
+    .imgAdnHH {
       display: flex;
       align-items: center;
       justify-content: flex-start;
-      >span{
+      > span {
         margin-right: 16px !important;
       }
     }
-    h3{
+    h3 {
       font-family: 'Neuropolitical';
       font-style: normal;
       font-weight: 400;
       font-size: 32px;
       line-height: 110%;
-      color: #FFFFFF;
+      color: #ffffff;
       margin: 0;
     }
   }

@@ -3,7 +3,7 @@ import styles from './SectionOne.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
 import { SnftResponse } from '../../../types/marketplace';
-import { deleteSnft } from '../../../services/MarketplaceApi';
+import { buySnft, deleteSnft } from '../../../services/MarketplaceApi';
 import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
 import { CustomToastWithLink } from '../../../components/CustomToast/CustomToast';
@@ -18,7 +18,7 @@ import {
   _buyNftToken,
   _nftInfo
 } from '../../../connectivity/mainFunctions/marketFunctions';
-
+import { createNewTransaction } from '../../../services/Transaction';
 
 type SectionOneProps = {
   snftDetails: SnftResponse | null;
@@ -62,14 +62,47 @@ export default function SectionOne({
     router.push('/marketplace');
   };
 
+  const handleNewTransaction = async (data: any) => {
+    const { error, message }: any = await createNewTransaction(data);
+    if (error) {
+      setLoading(false);
+      toast.error(
+        CustomToastWithLink({
+          icon: ErrorIcon,
+          title: 'Error',
+          description: message,
+          time: 'Now',
+        })
+      );
+      return;
+    }
+  };
+
+  const handleBuySnft = async (id: string) => {
+    const { error, message }: any = await buySnft(id);
+    if (error) {
+      setLoading(false);
+      toast.error(
+        CustomToastWithLink({
+          icon: ErrorIcon,
+          title: 'Error',
+          description: message,
+          time: 'Now',
+        })
+      );
+      return;
+    }
+    // router.push('/marketplace');
+  };
 
   //connectivity functions starts here
 
   //lazy mint connectivity function
   const lazyMint = async (data: any) => {
-    console.log("changes appeared")
+    console.log('changes appeared');
     try {
-      await call();//to get signer from wallet
+      setLoading(true);
+      await call(); //to get signer from wallet
       let val = data.tokenId.toString();
       await LazyFunction(
         val,
@@ -78,14 +111,34 @@ export default function SectionOne({
         1,
         'https://bafybeiho2j43vulwhnjmfyvjafohl5prvcx24hr2sqvz7wliynnodmovru.ipfs.dweb.link/101.json',
         false,
-        false
+        false,
+        async (err: any, data: any) => {
+          if (err) {
+            setLoading(false);
+          } else {
+            const newTransaction = {
+              sellerWallet: data.to,
+              buyerWallet: data.from,
+              type: 'SNFT',
+              itemId: snftDetails?.snftId,
+              amount: snftDetails?.amount,
+              currencyType: snftDetails?.currencyType,
+              status: '1',
+              txId: '',
+              contractAddress: data.contractAddress,
+              tokenId: snftDetails?.tokenId,
+              wallet: 'metamask',
+            };
+            await handleNewTransaction(newTransaction);
+            await handleBuySnft(snftDetails?.snftId as string);
+            setLoading(false);
+          }
+        }
       );
     } catch (e) {
       console.log('error :', e);
     }
   };
-
-
 
   // marketPlace setApprovalFunction to approve NFTs by owner('Should be called by NFT owner')
   // const approveNFTFromOwner = async () => {
@@ -100,8 +153,7 @@ export default function SectionOne({
   //   }
   // };
 
-
-  // // marketPlace BuyFunction to buyNFT by marketPlace('Should be called by Buyer')
+  // marketPlace BuyFunction to buyNFT by marketPlace('Should be called by Buyer')
   // const BuyFunction = async () => {
   //   try {
   //     await call2();//to get signer from wallet
@@ -141,14 +193,15 @@ export default function SectionOne({
         </div>
         <div className={styles.CustomGrid}>
           <div className={styles.ScOneLeftCont}>
-            <h1>{snftDetails?.collection}</h1>
+            <h1>{snftDetails?.SNFTTitle}</h1>
             <p>{snftDetails?.SNFTDescription}</p>
             <div className={styles.imgAndperaFlex}>
               <Image
-                src={`${snftDetails?.userImage
-                  ? snftDetails?.userImage
-                  : '/assets/images/img_avatar.png'
-                  }`}
+                src={`${
+                  snftDetails?.userImage
+                    ? snftDetails?.userImage
+                    : '/assets/images/img_avatar.png'
+                }`}
                 alt=""
                 width={40}
                 height={40}
@@ -197,17 +250,32 @@ export default function SectionOne({
                 )}
                 {profileId != snftDetails?.profileId && (
                   <Link href="/">
-                    <a className={styles.linkPernt}>Submit Offer</a>
+                    <a
+                      className={`${styles.linkPernt} ${
+                        snftDetails?.listed == '2' && styles.disabled
+                      }`}
+                    >
+                      Submit Offer
+                    </a>
                   </Link>
                 )}
                 {profileId != snftDetails?.profileId && (
-                  <button
-                    className={styles.linkPernt}
-                    onClick={()=>lazyMint(snftDetails)}
+                  <a
+                    href="javascript:void(0);"
+                    className={`${styles.linkPernt} ${
+                      snftDetails?.listed == '2' && styles.disabled
+                    }`}
+                    onClick={() => {
+                      if (snftDetails?.listed == '2') {
+                        return;
+                      }
+                      lazyMint(snftDetails);
+                    }}
                   >
-                    Buy Now for {snftDetails?.amount} NAPA
-                  </button>
-
+                    {snftDetails?.listed == '2'
+                      ? 'Sold'
+                      : `Buy Now for ${snftDetails?.amount} NAPA`}
+                  </a>
                 )}
                 <div className={`${styles.RowLabel} ${styles.RowSeven}`}>
                   <div className={styles.butnPernt}>

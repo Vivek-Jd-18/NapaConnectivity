@@ -15,7 +15,7 @@ import {
     isApprovedForAll,
     napaTokenAmount,
     getLatestPrice,
-    allowance
+    // allowance
 } from '../callHelpers/callHelper1';
 import {
     marketPlaceContract,
@@ -209,31 +209,31 @@ export const calculateTokenAllowance = async (transactionType: number) => {
 }
 
 // #9 checks token approval 
-const checkTokenApproval = async (transactionType: number) => {
-    // Check the transactionType to determine which contract to use
-    if (transactionType == 0) {
-        // If transactionType is 0, get the NPA token contract using the _signer object
-        const npaTokenctr: any = await napaTokenContract(_signer);
-        // Get the allowance of the NPA token for the current wallet address and the nftAddress
-        const alw1 = await allowance(npaTokenctr, CurrentWalletAddress, marketPlaceAddress)
-        // Log the allowance of the NPA token
-        console.log(alw1.toString(), "allowance of napa")
-        // Return the allowance of the NPA token as a string
-        return alw1.toString()
-    } else if (transactionType == 1) {
-        // If transactionType is 1, get the USDT token contract using the _signer object
-        const usdtTokenctr: any = await usdtTokenContract(_signer);
-        // Get the allowance of the USDT token for the current wallet address and the nftAddress
-        const alw1 = await allowance(usdtTokenctr, CurrentWalletAddress, marketPlaceAddress)
-        // Log the allowance of the USDT token
-        console.log(alw1.toString(), "allowance of usdt")
-        // Return the allowance of the USDT token as a string
-        return alw1.toString()
-    } else {
-        // If transactionType is not 0 or 1, no approval check is needed
-        console.log("don't need any approval check");
-        // Return -1 to indicate no approval check is needed
-        return -1
-    }
+// const checkTokenApproval = async (transactionType: number) => {
+//     // Check the transactionType to determine which contract to use
+//     if (transactionType == 0) {
+//         // If transactionType is 0, get the NPA token contract using the _signer object
+//         const npaTokenctr: any = await napaTokenContract(_signer);
+//         // Get the allowance of the NPA token for the current wallet address and the nftAddress
+//         const alw1 = await allowance(npaTokenctr, CurrentWalletAddress, marketPlaceAddress)
+//         // Log the allowance of the NPA token
+//         console.log(alw1.toString(), "allowance of napa")
+//         // Return the allowance of the NPA token as a string
+//         return alw1.toString()
+//     } else if (transactionType == 1) {
+//         // If transactionType is 1, get the USDT token contract using the _signer object
+//         const usdtTokenctr: any = await usdtTokenContract(_signer);
+//         // Get the allowance of the USDT token for the current wallet address and the nftAddress
+//         const alw1 = await allowance(usdtTokenctr, CurrentWalletAddress, marketPlaceAddress)
+//         // Log the allowance of the USDT token
+//         console.log(alw1.toString(), "allowance of usdt")
+//         // Return the allowance of the USDT token as a string
+//         return alw1.toString()
+//     } else {
+//         // If transactionType is not 0 or 1, no approval check is needed
+//         console.log("don't need any approval check");
+//         // Return -1 to indicate no approval check is needed
+//         return -1
+//     }
     // The function is checking the approval status of a token before a transaction can be made on the contract. It first checks the transaction type to determine which token contract to use. If the transaction type is 0, the NPA token contract is used, and if the transaction type is 1, the USDT token contract is used. It then gets the allowance of the token for the current wallet address and the nftAddress, logs the allowance value, and returns the allowance value as a string. If the transaction type is neither 0 nor 1, it logs that no approval check is needed and returns -1.
-}
+// }

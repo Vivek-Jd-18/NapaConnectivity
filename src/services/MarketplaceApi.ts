@@ -102,3 +102,22 @@ export const deleteSnft = async (id: string) => {
     };
   }
 };
+
+export const buySnft = async (id: string) => {
+  try {
+    const p = await axios.post<{}, AxiosResponse<GetSnftsResponse>>(
+      `${SOCIAL_ART_API_URL}/user/marketplace/snft/buy/${id}`
+    );
+    return {
+      data: p.data,
+      message: '',
+      error: false,
+    };
+  } catch (error) {
+    return {
+      data: null,
+      error: true,
+      message: error?.response?.data?.message,
+    };
+  }
+};
