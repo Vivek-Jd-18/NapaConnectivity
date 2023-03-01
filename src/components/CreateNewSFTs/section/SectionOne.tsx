@@ -3,7 +3,7 @@ import styles from './SectionOne.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
 import { SnftResponse } from '../../../types/marketplace';
-import { deleteSnft } from '../../../services/MarketplaceApi';
+import { buySnft, deleteSnft } from '../../../services/MarketplaceApi';
 import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
 import { CustomToastWithLink } from '../../../components/CustomToast/CustomToast';
@@ -21,6 +21,7 @@ import {
   // calculateTokenAllowance,
   _nftInfo,
 } from '../../../connectivity/mainFunctions/marketFunctions';
+import { createNewTransaction } from '../../../services/Transaction';
 
 type SectionOneProps = {
   snftDetails: SnftResponse | null;
@@ -64,12 +65,46 @@ export default function SectionOne({
     router.push('/marketplace');
   };
 
+  const handleNewTransaction = async (data: any) => {
+    const { error, message }: any = await createNewTransaction(data);
+    if (error) {
+      setLoading(false);
+      toast.error(
+        CustomToastWithLink({
+          icon: ErrorIcon,
+          title: 'Error',
+          description: message,
+          time: 'Now',
+        })
+      );
+      return;
+    }
+  };
+
+  const handleBuySnft = async (id: string) => {
+    const { error, message }: any = await buySnft(id);
+    if (error) {
+      setLoading(false);
+      toast.error(
+        CustomToastWithLink({
+          icon: ErrorIcon,
+          title: 'Error',
+          description: message,
+          time: 'Now',
+        })
+      );
+      return;
+    }
+    // router.push('/marketplace');
+  };
+
   //connectivity functions starts here
 
   //lazy mint connectivity function
   const lazyMint = async (data: any) => {
     console.log('changes appeared');
     try {
+      setLoading(true);
       await call(); //to get signer from wallet
       let val = data.tokenId.toString();
       await LazyFunction(
@@ -79,7 +114,29 @@ export default function SectionOne({
         1,
         'https://bafybeiho2j43vulwhnjmfyvjafohl5prvcx24hr2sqvz7wliynnodmovru.ipfs.dweb.link/101.json',
         false,
-        false
+        false,
+        async (err: any, data: any) => {
+          if (err) {
+            setLoading(false);
+          } else {
+            const newTransaction = {
+              sellerWallet: data.to,
+              buyerWallet: data.from,
+              type: 'SNFT',
+              itemId: snftDetails?.snftId,
+              amount: snftDetails?.amount,
+              currencyType: snftDetails?.currencyType,
+              status: '1',
+              txId: '',
+              contractAddress: data.contractAddress,
+              tokenId: snftDetails?.tokenId,
+              wallet: 'metamask',
+            };
+            await handleNewTransaction(newTransaction);
+            await handleBuySnft(snftDetails?.snftId as string);
+            setLoading(false);
+          }
+        }
       );
     } catch (e) {
       console.log('error :', e);
@@ -196,16 +253,31 @@ export default function SectionOne({
                 )}
                 {profileId != snftDetails?.profileId && (
                   <Link href="/">
-                    <a className={styles.linkPernt}>Submit Offer</a>
+                    <a
+                      className={`${styles.linkPernt} ${
+                        snftDetails?.listed == '2' && styles.disabled
+                      }`}
+                    >
+                      Submit Offer
+                    </a>
                   </Link>
                 )}
                 {profileId != snftDetails?.profileId && (
                   <a
                     href="javascript:void(0);"
-                    className={styles.linkPernt}
-                    onClick={() => lazyMint(snftDetails)}
+                    className={`${styles.linkPernt} ${
+                      snftDetails?.listed == '2' && styles.disabled
+                    }`}
+                    onClick={() => {
+                      if (snftDetails?.listed == '2') {
+                        return;
+                      }
+                      lazyMint(snftDetails);
+                    }}
                   >
-                    Buy Now for {snftDetails?.amount} NAPA
+                    {snftDetails?.listed == '2'
+                      ? 'Sold'
+                      : `Buy Now for ${snftDetails?.amount} NAPA`}
                   </a>
                 )}
                 <div className={`${styles.RowLabel} ${styles.RowSeven}`}>

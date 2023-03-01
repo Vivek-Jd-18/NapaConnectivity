@@ -17,20 +17,22 @@ export type SnftResponse = {
   duration: string;
   mintId: string;
   postId: string;
-  SNFTDescription: string;
-  SNFTTitle: string;
+  SNFTDescription?: string;
+  SNFTTitle?: string;
   marketplace_listed?: string;
   profileId: string;
   type: string;
   createdAt: string;
   updatedAt: string;
-  thumbnail: string;
-  videoURL: string;
-  userName: string;
-  userImage: string;
+  thumbnail?: string;
+  videoURL?: string;
+  userName?: string;
+  userImage?: string;
   tokenUri?: string;
   accountId?: string;
   tokenId?: string;
+  listed?: string;
+  lazyMinted?: string;
 };
 
 export type GetSnftsResponse = {
