@@ -251,7 +251,7 @@ export default function SellNFTPage({
       CustomToastWithLink({
         icon: DoneIcon,
         title: 'Success',
-        description: 'Nft Was Updated Successfully',
+        description: 'SNFT Was Successfully Updated',
         time: 'Now',
       })
     );
