@@ -459,7 +459,7 @@ export default function TradeSFTs(props: any) {
                           <p>@{snft.userName}</p>
                         </div>
                         <div className={styles.downCont}>
-                          <h3>{snft.collection}</h3>
+                          <h3>{snft.SNFTTitle}</h3>
                           <div className={styles.flexPernt}>
                             <div className={styles.currentBit}>
                               <h5>Current Bid</h5>

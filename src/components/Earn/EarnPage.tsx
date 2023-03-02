@@ -15,16 +15,198 @@ import 'bootstrap/dist/css/bootstrap.css';
 // you will also need the css that comes with bootstrap-daterangepicker
 import 'bootstrap-daterangepicker/daterangepicker.css';
 
+import { ethers } from "ethers";
+import Web3Modal from "web3modal";
+import { originalNapaStakingContract, originalNapaTokenContract } from '@/connectivity/contractObjects/contractObject1';
+import { balanceOf, treasuryWallet, approve } from '@/connectivity/callHelpers/napaTokenCallHandlers';
+import { checkReward, deposit, pendingRewards, stakeTokens } from '@/connectivity/callHelpers/napaStakeCallHandlers';
+import { originalNapaStakingAddress } from '@/connectivity/addressHelpers/addressHelper';
+
 export default function EarnPage() {
-  const [lock, setLock] = useState<string>();
+  // const [lock, setLock] = useState<string>();
+  const [_provider, setProvider] = useState<any>();
+  const [_signer, setSigner] = useState<any>()
+  // const [_ethFee, setEthFee] = useState<string>("0")
+  // const [ethBal, setEthBal] = useState<any>();
+  // const [conn, setConn] = useState<boolean>(false)
+  // const [napaBal, setNapaBal] = useState<number>(0);
+  const [_pendingMilk, setPendingMilk] = useState<number>(0);
+  const [_treasuryWallet, setTreasuryWallet] = useState<string>("");
+  // const [currentUserReward, setCurrentUserReward] = useState<number>(0);
+  const [CurrentWalletAddress, setCurrentWalletAddress] = useState<string>("");
+  const [stakePlan, setStakePlan] = useState<number>(0);
+  const [stakeAmt, setStakeAmt] = useState<number>(0);
+  // const [stakeBtnStyle, setStakeBtnStyle] = useState<string>("btn btn-outline-success disabled");
 
-  const onAmountChange = (e: any) => {
-    const amount = e.target.value;
+  const decimals = 10 ** 18;
 
-    if (!amount || amount.match(/^\d{1,}(\.\d{0,4})?$/)) {
-      setLock(amount);
+  // const onAmountChange = (e: any) => {
+  //   const amount = e.target.value;
+
+  //   if (!amount || amount.match(/^\d{1,}(\.\d{0,4})?$/)) {
+  //     setLock(amount);
+  //   }
+  // };
+
+
+  //staking/unstaking connectivity start
+
+  const call = async () => {
+    async function connect() {
+      const externalProvider = await web3Modal.connect();
+      return new ethers.providers.Web3Provider(externalProvider);
     }
-  };
+    const web3Modal = new Web3Modal({
+      network: "mainnet",
+      cacheProvider: true,
+    });
+    const provider = await connect();
+    setProvider(provider)
+    // const { chainId } = await provider.getNetwork()
+    const signer = await provider.getSigner(0);
+    setSigner(signer)
+    const address = await signer.getAddress();
+    console.log(address,"current address")
+    setCurrentWalletAddress(address);
+    const ehBalance = await provider.getBalance(address);
+    console.log(ehBalance.toString(), "balance of ETH")
+    // setEthBal(Number(ehBalance.toString()) / (10 ** 18))
+    if (address) {
+      // setConn(true)
+    }
+    setCurrentWalletAddress(address)
+    //process to get NAPA balance of current user
+    // setNapaBal((await balanceOf(await originalNapaTokenContract(signer), address)) / 10 ** 18);
+
+    const oriNapaStakeCtr = await originalNapaStakingContract(signer);
+    console.log(" callllllll")
+    //fetching pending milks or availabe treasure from treasury to Stake contract
+    const _treasuryWallet = await treasuryWallet(oriNapaStakeCtr);
+    console.log(_treasuryWallet.length, "loggger")
+    if (_treasuryWallet == address) {
+      setTreasuryWallet(_treasuryWallet);
+    }
+    const _pendingRewards = await pendingRewards(oriNapaStakeCtr);
+    setPendingMilk(Number(_pendingRewards) / decimals);
+
+    //check pending rewards of current user
+    try {
+      console.log((await checkReward(oriNapaStakeCtr)).toString(), "checkReward");
+      // setCurrentUserReward(Number((await checkReward(oriNapaStakeCtr)).toString()) / decimals);
+    } catch (e) {
+      console.log("Error :", e);
+    }
+
+
+    const userDeposit = await deposit(oriNapaStakeCtr, CurrentWalletAddress);
+    console.log(userDeposit[0].toString(), "-=-=plan-=-=");
+    console.log(userDeposit[1].toString(), "-=-=Amount-=-=");
+    console.log(userDeposit[2].toString(), "-=-=startTime-=-=");
+    console.log(userDeposit[3].toString(), "-=-=EndTime-=-=");
+    console.log(userDeposit[4].toString(), "-=-=LastClaimTime-=-=");
+  }
+
+
+
+
+
+
+
+  const amtHandler = (e: any) => {
+    setStakeAmt(e.target.value);
+    if (stakeAmt > 0) {
+      // setStakeBtnStyle("btn btn-outline-success");
+    }
+    else {
+      // setStakeBtnStyle("btn btn-outline-success disabled");
+    }
+  }
+
+  const changePlan = (plan: number) => {
+    setStakePlan(plan);
+    if (stakeAmt > 0) {
+      // setStakeBtnStyle("btn btn-outline-success");
+    }
+    else {
+      // setStakeBtnStyle("btn btn-outline-success disabled");
+    }
+  }
+  const handleStake = async () => {
+    var timestamp = Date.now() / 1000;
+    console.log("---timestamp---")
+    console.log(timestamp);//current timestamp  
+    var datetime = new Date(1677237288 * 1000);
+    console.log("---datetime---");
+    console.log(datetime.toLocaleString());
+
+    console.log("---toDateString---");
+    console.log(datetime.toDateString());
+
+    console.log("---toTimeString---");
+    console.log(datetime.toTimeString());
+
+    console.log("---toString---");
+    console.log(datetime.toString());
+
+    const amount = stakeAmt;
+    console.log("in stake", stakeAmt);
+    const oriNapaTokenCtr = await originalNapaTokenContract(_signer);
+    const oriNapaStakeCtr = await originalNapaStakingContract(_signer);
+    const amtInWei = amount * decimals;
+    //1. check if user have enough balance or not
+    const userBal: Promise<number> = await balanceOf(oriNapaTokenCtr, CurrentWalletAddress);
+    if ((await userBal / decimals) > amount && await userBal > 0) {
+      //2. user gives allowance to staking 
+      await approve(oriNapaTokenCtr, originalNapaStakingAddress, amtInWei.toString()).then(async (res) => {
+        console.log("Hang on Transaction is in progress...");
+        await res.wait();
+        console.log(await res.wait(), "stake approval response");
+        //3. after approval to stake contract actual staking will happen down here
+        if (stakePlan == 1) {
+          await stakeTokens(oriNapaStakeCtr, amtInWei.toString(), 30).then(async (res) => {
+            console.log("Hang on Transaction is in progress...");
+            await res.wait();
+            console.log(await res.wait(), "success response from staking");
+          }).catch((e) => {
+            console.log(e, "error in stake token 30 days")
+          })
+        } else if (stakePlan == 2) {
+          await stakeTokens(oriNapaStakeCtr, amtInWei.toString(), 60).then(async (res) => {
+            console.log("Hang on Transaction is in progress...");
+            await res.wait();
+            console.log(await res.wait(), "success response from staking");
+          }).catch((e) => {
+            console.log(e, "error in stake token 60 days")
+          })
+        } else if (stakePlan == 3) {
+          await stakeTokens(oriNapaStakeCtr, amtInWei.toString(), 90).then(async (res) => {
+            console.log("Hang on Transaction is in progress...");
+            await res.wait();
+            console.log(await res.wait(), "success response from staking");
+          }).catch((e) => {
+            console.log(e, "error in stake token 90 days")
+          })
+        } else if (stakePlan == 4) {
+          await stakeTokens(oriNapaStakeCtr, amtInWei.toString(), 120).then(async (res) => {
+            console.log("Hang on Transaction is in progress...");
+            await res.wait();
+            console.log(await res.wait(), "success response from staking");
+          }).catch((e) => {
+            console.log(e, "error in stake token 120 days")
+          })
+        } else {
+          console.log("selected wrong plan");
+        }
+      }).catch((e) => {
+        console.log(e, "error in approval of stake contract");
+      })
+    } else {
+      console.log("either your balance is low or you don't have enough amount to stake");
+    }
+  }
+
+  //staking/unstaking connectivity ends
+
   return (
     <div className={`${styles.container}`}>
       <Container className={`${styles.settingsContainer} asinnerContainer`}>
@@ -36,8 +218,8 @@ export default function EarnPage() {
                 <div className={styles.TopLogo}>
                   <Image src={NapaIcon} alt="NapaIcon" width={48} height={48} />
                   <h4>
-                    NAPA Token | <Link href="https://etherscan.io/token/0x8eb2df7137fb778a6387e84f17b80cc82cf9e884"> Etherscan </Link> 
-                     | Price $0.05 24h Chg +24%
+                    NAPA Token | <Link href="https://etherscan.io/token/0x8eb2df7137fb778a6387e84f17b80cc82cf9e884"> Etherscan </Link>
+                    | Price $0.05 24h Chg +24%
                   </h4>
                 </div>
                 <div className={styles.MiddleCont}>
@@ -46,38 +228,38 @@ export default function EarnPage() {
                     {/* <h3>0.48</h3> */}
                     <input
                       type="number"
-                      value={lock}
+                      // value={lock}
                       placeholder="0.00"
-                      onChange={onAmountChange}
-                      disabled
+                      onChange={amtHandler}
+                      onClick={call}
                     />
                     <span />
                     <p>NAPA</p>
                   </div>
                 </div>
                 <div className={styles.BottomCont}>
-                  <label>Lock Period</label>
+                  <label>Lock Period</label><span>{<span>Plan Selected - {stakePlan == 0 ? "not selected" : stakePlan == 1 ? "30 days" : stakePlan == 2 ? "60 days" : stakePlan == 3 ? "90 days" : stakePlan == 4 ? "120 days" : null}</span>}</span>
                   <ul>
                     <li>
-                      <input type="radio" name="lock-amout" id="amountOne" />
+                      <input type="radio" name="lock-amout" id="amountOne" onClick={() => changePlan(1)} />
                       <p>30 Days</p>
                     </li>
                     <li>
-                      <input type="radio" name="lock-amout" id="amountOne" />
+                      <input type="radio" name="lock-amout" id="amountOne" onClick={() => changePlan(2)} />
                       <p>60 Days</p>
                     </li>
                     <li>
-                      <input type="radio" name="lock-amout" id="amountOne" />
+                      <input type="radio" name="lock-amout" id="amountOne" onClick={() => changePlan(3)} />
                       <p>90 Days</p>
                     </li>
                     <li>
-                      <input type="radio" name="lock-amout" id="amountOne" />
+                      <input type="radio" name="lock-amout" id="amountOne" onClick={() => changePlan(4)} />
                       <p>120 Days</p>
                     </li>
                   </ul>
                 </div>
                 <div className={styles.BottomAction}>
-                  <Button text="Lock" outlined />
+                  <Button text="Lock" onClick={handleStake} outlined />
                 </div>
               </div>
             </div>

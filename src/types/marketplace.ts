@@ -12,25 +12,27 @@ export type DeleteSnftResponse = {
 
 export type SnftResponse = {
   snftId: string;
-  collection: string;
+  currencyType: string;
   amount: string;
   duration: string;
   mintId: string;
   postId: string;
-  SNFTDescription: string;
-  SNFTTitle: string;
+  SNFTDescription?: string;
+  SNFTTitle?: string;
   marketplace_listed?: string;
   profileId: string;
   type: string;
   createdAt: string;
   updatedAt: string;
-  thumbnail: string;
-  videoURL: string;
-  userName: string;
-  userImage: string;
+  thumbnail?: string;
+  videoURL?: string;
+  userName?: string;
+  userImage?: string;
   tokenUri?: string;
   accountId?: string;
   tokenId?: string;
+  listed?: string;
+  lazyMinted?: string;
 };
 
 export type GetSnftsResponse = {
@@ -40,7 +42,7 @@ export type GetSnftsResponse = {
 };
 
 export type NewSnft = {
-  collection: string;
+  currencyType: string;
   type: string;
   amount: string;
   duration: string;
