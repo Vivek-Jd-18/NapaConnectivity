@@ -12,7 +12,9 @@ import { FadeLoader } from 'react-spinners';
 import { toast } from 'react-toastify';
 import { DoneIcon, ErrorIcon } from '../assets';
 import { CustomToastWithLink } from '../CustomToast/CustomToast';
-import { createNewSnft, updateSnft } from '../../services/MarketplaceApi';
+import { 
+  // createNewSnft,
+   updateSnft } from '../../services/MarketplaceApi';
 import { SnftResponse } from '../../types/marketplace';
 import { commanNFTContract } from '@/connectivity/contractObjects/commanNFTContract';
 import { call } from '@/connectivity/mainFunctions/marketFunctions';
@@ -107,86 +109,86 @@ export default function SellNFTPage({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [snftDetails]);
 
-  const handleCreateSnft = async () => {
-    if (mintDetails?.marketplace_listed == 'true') {
-      toast.error(
-        CustomToastWithLink({
-          icon: ErrorIcon,
-          title: 'Error',
-          description: 'Already listed to marketplace',
-          time: 'Now',
-        })
-      );
-      return;
-    }
-    setErrors({
-      currencyType: '',
-      amount: '',
-      duration: '',
-    });
-    if (!currencyType) {
-      setErrors((prev) => {
-        return {
-          ...prev,
-          currencyType: 'Currency type is required',
-        };
-      });
-    }
-    if (!amount) {
-      setErrors((prev) => {
-        return {
-          ...prev,
-          amount: 'Amount is required',
-        };
-      });
-    }
-    if (!duration) {
-      setErrors((prev) => {
-        return {
-          ...prev,
-          duration: 'Duration is required',
-        };
-      });
-    }
-    if (!duration || !amount || !currencyType) return;
-    setIsLoading(true);
-    const newSnft = {
-      currencyType: currencyType?.value ?? '',
-      type,
-      amount,
-      duration: duration?.value ?? '',
-      mintId: mintDetails?.mintId ?? '',
-      profileId: mintDetails?.profileId ?? '',
-      postId: mintDetails?.postId ?? '',
-    };
-    const { error, message }: any = await createNewSnft(newSnft);
-    if (error) {
-      setIsLoading(false);
-      toast.error(
-        CustomToastWithLink({
-          icon: ErrorIcon,
-          title: 'Error',
-          description: message,
-          time: 'Now',
-        })
-      );
-      return;
-    }
-    setIsLoading(false);
-    setCurrencyType(null);
-    setAmount('');
-    setDuration(null);
-    setType('Fixed Price');
-    toast.success(
-      CustomToastWithLink({
-        icon: DoneIcon,
-        title: 'Success',
-        description: 'Nft Was Created Successfully',
-        time: 'Now',
-      })
-    );
-    push('/marketplace');
-  };
+  // const handleCreateSnft = async () => {
+  //   if (mintDetails?.marketplace_listed == 'true') {
+  //     toast.error(
+  //       CustomToastWithLink({
+  //         icon: ErrorIcon,
+  //         title: 'Error',
+  //         description: 'Already listed to marketplace',
+  //         time: 'Now',
+  //       })
+  //     );
+  //     return;
+  //   }
+  //   setErrors({
+  //     currencyType: '',
+  //     amount: '',
+  //     duration: '',
+  //   });
+  //   if (!currencyType) {
+  //     setErrors((prev) => {
+  //       return {
+  //         ...prev,
+  //         currencyType: 'Currency type is required',
+  //       };
+  //     });
+  //   }
+  //   if (!amount) {
+  //     setErrors((prev) => {
+  //       return {
+  //         ...prev,
+  //         amount: 'Amount is required',
+  //       };
+  //     });
+  //   }
+  //   if (!duration) {
+  //     setErrors((prev) => {
+  //       return {
+  //         ...prev,
+  //         duration: 'Duration is required',
+  //       };
+  //     });
+  //   }
+  //   if (!duration || !amount || !currencyType) return;
+  //   setIsLoading(true);
+  //   const newSnft = {
+  //     currencyType: currencyType?.value ?? '',
+  //     type,
+  //     amount,
+  //     duration: duration?.value ?? '',
+  //     mintId: mintDetails?.mintId ?? '',
+  //     profileId: mintDetails?.profileId ?? '',
+  //     postId: mintDetails?.postId ?? '',
+  //   };
+  //   const { error, message }: any = await createNewSnft(newSnft);
+  //   if (error) {
+  //     setIsLoading(false);
+  //     toast.error(
+  //       CustomToastWithLink({
+  //         icon: ErrorIcon,
+  //         title: 'Error',
+  //         description: message,
+  //         time: 'Now',
+  //       })
+  //     );
+  //     return;
+  //   }
+  //   setIsLoading(false);
+  //   setCurrencyType(null);
+  //   setAmount('');
+  //   setDuration(null);
+  //   setType('Fixed Price');
+  //   toast.success(
+  //     CustomToastWithLink({
+  //       icon: DoneIcon,
+  //       title: 'Success',
+  //       description: 'Nft Was Created Successfully',
+  //       time: 'Now',
+  //     })
+  //   );
+  //   push('/marketplace');
+  // };
 
   const handleUpdateSnft = async () => {
     setErrors({

@@ -239,6 +239,7 @@ export const WebThreeContextProvider = (props: {
     walletNapa,
     connectWallet,
     getAccounts,
+    call
   };
 
   return (
