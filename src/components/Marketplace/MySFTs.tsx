@@ -91,8 +91,7 @@ export default function MySFTs(props: any) {
           // console.log(splitted, "datas")
           let isOnSold = await checkIfApprovedToMarket(data.token_id, data.token_address);
           let contractAddress = data.token_address;
-          console.log(nftAddress)
-          console.log(nftAddress.toUpperCase() == contractAddress.toUpperCase(), "onsold1")
+          console.log(nftAddress.toUpperCase() == contractAddress.toUpperCase(), "onsold1");
           if (nftAddress.toUpperCase() == contractAddress.toUpperCase()) {
             console.log("inside if")
             let ff = await data.token_uri
@@ -132,9 +131,6 @@ export default function MySFTs(props: any) {
     const { signer }: any = await call()
     const commanNFTCtr = await commanNFTContract(signer, nftAddress);
     await getApproved(commanNFTCtr, tknId).then(async (res) => {
-      // console.log(`${tknId}, ${res} ${res.startsWith("0x00000")} vvv`);
-      // console.log(await res.wait());
-      console.log(res, "hh")
       if (res.startsWith("0x0000000")) {
         console.log("status")
         flag = false

@@ -9,10 +9,12 @@ import styles from './MyNFTs.module.scss';
 import Link from 'next/link';
 import { call } from "../../connectivity/otherFeatures/fetchAllNfts"
 import { commanNFTContract } from '@/connectivity/contractObjects/commanNFTContract';
-import { approve, getApproved,
+import {
+  approve, getApproved,
   //  transferFrom
-   } from '@/connectivity/callHelpers/commanNFTCallHandlers';
+} from '@/connectivity/callHelpers/commanNFTCallHandlers';
 import axios from 'axios';
+import { nftAddress } from '@/connectivity/addressHelpers/addressHelper';
 
 export default function MyNFTs(props: any) {
   const options = [
@@ -81,7 +83,6 @@ export default function MyNFTs(props: any) {
         headers: { 'X-API-Key': "D8Kfm2KtjFHVEpqvPmTVgaNLvY8TFEhrIBi8h71wjcTfFIdlmSKFlYJcEGATK8dr" }
       }
       let res = await axios(config)
-      console.log(res)
       let newItems: any = []
       await Promise.all(
         res.data.result.map(async (data: any) => {
@@ -89,20 +90,25 @@ export default function MyNFTs(props: any) {
           // console.log(splitted, "datas")
           let isOnSold = await checkIfApprovedToMarket(data.token_id, data.token_address);
           console.log(isOnSold, "onsold")
-          let ff = await data.token_uri
-          let meta: any = await axios.get(ff);
-          let item = {
-            tokenId: await data.token_id,
-            shortContractAddress: splitted,
-            contractAddress: data.token_address,
-            id: await meta.data.id,
-            name: await meta.data.name,
-            description: await meta.data.description,
-            attributes: await meta.data.attributes,
-            image: await meta.data.image,
-            onSold: isOnSold
+          let contractAddress = data.token_address;
+          console.log(nftAddress.toUpperCase() == contractAddress.toUpperCase(), "onsold1");
+          if (nftAddress.toUpperCase() !== contractAddress.toUpperCase()) {
+            console.log("inside if")
+            let ff = await data.token_uri
+            let meta: any = await axios.get(ff);
+            let item = {
+              tokenId: await data.token_id,
+              shortContractAddress: splitted,
+              contractAddress: data.token_address,
+              id: await meta.data.id,
+              name: await meta.data.name,
+              description: await meta.data.description,
+              attributes: await meta.data.attributes,
+              image: await meta.data.image,
+              onSold: isOnSold
+            }
+            newItems.push(item);
           }
-          newItems.push(item);
         })
       )
       setNfts(newItems);
@@ -114,7 +120,7 @@ export default function MyNFTs(props: any) {
 
   useEffect(() => {
     loadNFTs()
-  },[])
+  }, [])
 
 
   const checkIfApprovedToMarket = async (tknId: number, nftAddress: string) => {
