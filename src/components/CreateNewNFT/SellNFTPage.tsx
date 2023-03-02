@@ -14,6 +14,13 @@ import { DoneIcon, ErrorIcon } from '../assets';
 import { CustomToastWithLink } from '../CustomToast/CustomToast';
 import { createNewSnft, updateSnft } from '../../services/MarketplaceApi';
 import { SnftResponse } from '../../types/marketplace';
+import { commanNFTContract } from '@/connectivity/contractObjects/commanNFTContract';
+import { call } from '@/connectivity/mainFunctions/marketFunctions';
+import {
+  approve,
+  // getApproved,
+  //  transferFrom
+} from '@/connectivity/callHelpers/commanNFTCallHandlers';
 
 type SellNFTPageProps = {
   mintDetails: MintPost | null;
@@ -249,6 +256,26 @@ export default function SellNFTPage({
     push('/marketplace');
   };
 
+
+  //web3 functions starts here
+  // user will allow his Other NFTs by approving to MarketPlace Contract (LISTING)
+  let id = "1"
+  let contract = "0x20bf1A09C7C7211ead72dE3d96bC129CD2BFE743"
+  const allowMarketToSell = async (tknId: number|string, nftAddress: string) => {
+    console.log("you are giving approval to token id:", tknId);
+    const { signer }: any = await call()
+    const commanNFTCtr = await commanNFTContract(signer, nftAddress);
+    await approve(commanNFTCtr, nftAddress, tknId).then(async (res) => {
+      console.log(`You have approved your nft with id: ${tknId}, Wait for the Transaction 'Approval'... `);
+      console.log(await res.wait());
+    }).catch((e: any) => {
+      console.log(e, "Error");
+    });
+  }
+
+
+  //web3 functions ends here
+
   return (
     <>
       <div className={styles.SellNFTPage}>
@@ -272,9 +299,8 @@ export default function SellNFTPage({
                   </button>
                   <button
                     onClick={() => setType('Time Based Auction')}
-                    className={`${
-                      type == 'Time Based Auction' && styles.Active
-                    }`}
+                    className={`${type == 'Time Based Auction' && styles.Active
+                      }`}
                   >
                     <Image
                       src="/img/time_icon.svg"
@@ -433,9 +459,10 @@ export default function SellNFTPage({
                     Update Listing
                   </a>
                 ) : (
-                  <a onClick={handleCreateSnft} className={styles.linkPrnt}>
-                    Complete Listing
-                  </a>
+                  <button onClick={() => { allowMarketToSell(id, contract) }} className={styles.linkPrnt}>Complete Listing</button>
+                  // <a onClick={handleCreateSnft} className={styles.linkPrnt}>
+                  //   Complete Listing
+                  // </a>
                 )}
               </div>
             </div>
