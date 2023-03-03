@@ -1,7 +1,3 @@
-import { ethers } from 'ethers';
-import Web3Modal from 'web3modal';
-import providerOptions from '../providers/providerOptions';
-
 import {
   lazyMint,
   ethFee as ethFees,
@@ -29,27 +25,6 @@ connects to an Ethereum provider, sets the provider and signer, gets the current
 and logs the chain ID and the address. It also sets the connection status and current wallet address
 using the "setConn" and "setCurrentWalletAddress" functions.
 */
-
-export const call = async () => {
-  async function connect() {
-    const externalProvider = await web3Modal.connect();
-    return new ethers.providers.Web3Provider(externalProvider);
-  }
-  const web3Modal = new Web3Modal({
-    network: 'mainnet',
-    cacheProvider: true,
-    providerOptions,
-  });
-  const provider = await connect();
-  // const { chainId } = await provider.getNetwork()
-  await provider.getNetwork();
-
-  const signer = await provider.getSigner(0);
-  _signer = signer;
-  const address = await signer.getAddress();
-  console.log(address, '-=-address-==-');
-  return signer;
-};
 
 /**
 function to make approval from @walletAddress to @NFTcontract 
@@ -108,7 +83,6 @@ export const LazyFunction = async (
   _setSaleMinter: boolean,
   callback: CallableFunction
 ) => {
-  call();
   const tknId = 1;
   // get NftCtr instance from newNapaNftContract function
   const NftCtr: any = await newNapaNftContract(_signer);

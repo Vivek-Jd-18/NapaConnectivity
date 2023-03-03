@@ -7,7 +7,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 import moment from 'moment';
 import styles from './MyNFTs.module.scss';
 import Link from 'next/link';
-import { call } from '../../connectivity/otherFeatures/fetchAllNfts';
 import { commanNFTContract } from '@/connectivity/contractObjects/commanNFTContract';
 import {
   approve,
@@ -17,8 +16,10 @@ import {
 import axios from 'axios';
 import { nftAddress } from '@/connectivity/addressHelpers/addressHelper';
 import useProfile from '../../hooks/useProfile';
+import useWebThree from '@/hooks/useWebThree';
 
 export default function MyNFTs(props: any) {
+  const { address, signer } = useWebThree();
   const options = [
     { value: 'chocolate', label: 'Chocolate' },
     { value: 'strawberry', label: 'Strawberry' },
@@ -73,12 +74,10 @@ export default function MyNFTs(props: any) {
   // fetch nfts starts here
   const loadNFTs: () => Promise<object[]> = async () => {
     let dt: any = [];
-    const callData = await call();
-    const accAddress = callData.address;
     try {
       const config = {
         method: 'get',
-        url: `https://deep-index.moralis.io/api/v2/${accAddress}/nft?chain=goerli&format=decimal`,
+        url: `https://deep-index.moralis.io/api/v2/${address}/nft?chain=goerli&format=decimal`,
         headers: {
           'X-API-Key':
             'D8Kfm2KtjFHVEpqvPmTVgaNLvY8TFEhrIBi8h71wjcTfFIdlmSKFlYJcEGATK8dr',
@@ -138,7 +137,6 @@ export default function MyNFTs(props: any) {
   const checkIfApprovedToMarket = async (tknId: number, nftAddress: string) => {
     let flag: boolean = false;
     console.log(tknId, nftAddress, 'rel');
-    const { signer }: any = await call();
     const commanNFTCtr = await commanNFTContract(signer, nftAddress);
     await getApproved(commanNFTCtr, tknId)
       .then(async (res) => {
@@ -162,7 +160,6 @@ export default function MyNFTs(props: any) {
   // user will allow his Other NFTs by approving to MarketPlace Contract (LISTING)
   const allowMarketToSell = async (tknId: number, nftAddress: string) => {
     console.log('you are giving approval to token id:', tknId);
-    const { signer }: any = await call();
     const commanNFTCtr = await commanNFTContract(signer, nftAddress);
     await approve(commanNFTCtr, nftAddress, tknId)
       .then(async (res) => {

@@ -11,7 +11,6 @@ import { DoneIcon, ErrorIcon } from '../../../components/assets';
 import { FadeLoader } from 'react-spinners';
 import {
   LazyFunction,
-  call,
 } from '../../../connectivity/mainFunctions/Functions';
 import {
   _setSaleFromWallet,
@@ -19,6 +18,7 @@ import {
   _nftInfo
 } from '../../../connectivity/mainFunctions/marketFunctions';
 import { createNewTransaction } from '../../../services/Transaction';
+import useWebThree from '@/hooks/useWebThree';
 
 type SectionOneProps = {
   snftDetails: SnftResponse | null;
@@ -34,6 +34,8 @@ export default function SectionOne({
 
   console.log(snftDetails, 'all data');
 
+  const { address, balance, chainId, signer } = useWebThree();
+  console.log(address, balance, chainId, signer)
   const handleDeleteSnft = async () => {
     setLoading(true);
     //@ts-ignore
@@ -102,7 +104,6 @@ export default function SectionOne({
     console.log('changes appeared');
     try {
       setLoading(true);
-      await call(); //to get signer from wallet
       let val = data.tokenId.toString();
       await LazyFunction(
         val,
@@ -197,11 +198,10 @@ export default function SectionOne({
             <p>{snftDetails?.SNFTDescription}</p>
             <div className={styles.imgAndperaFlex}>
               <Image
-                src={`${
-                  snftDetails?.userImage
+                src={`${snftDetails?.userImage
                     ? snftDetails?.userImage
                     : '/assets/images/img_avatar.png'
-                }`}
+                  }`}
                 alt=""
                 width={40}
                 height={40}
@@ -251,9 +251,8 @@ export default function SectionOne({
                 {profileId != snftDetails?.profileId && (
                   <Link href="/">
                     <a
-                      className={`${styles.linkPernt} ${
-                        snftDetails?.listed == '2' && styles.disabled
-                      }`}
+                      className={`${styles.linkPernt} ${snftDetails?.listed == '2' && styles.disabled
+                        }`}
                     >
                       Submit Offer
                     </a>
@@ -262,9 +261,8 @@ export default function SectionOne({
                 {profileId != snftDetails?.profileId && (
                   <a
                     href="javascript:void(0);"
-                    className={`${styles.linkPernt} ${
-                      snftDetails?.listed == '2' && styles.disabled
-                    }`}
+                    className={`${styles.linkPernt} ${snftDetails?.listed == '2' && styles.disabled
+                      }`}
                     onClick={() => {
                       if (snftDetails?.listed == '2') {
                         return;
