@@ -232,7 +232,7 @@ export const WebThreeContextProvider = (props: {
           .then(async function (result: any) {
             const provider = new ethers.providers.Web3Provider(window.ethereum);
             console.log(`provider is ${provider} and result is: ${result}`);
-            alert('Connected to correct Network');
+            // alert('Connected to correct Network');
           })
           .catch(function (error: any) {
             alert(`Problem occured while changing   : ${error.message} `);

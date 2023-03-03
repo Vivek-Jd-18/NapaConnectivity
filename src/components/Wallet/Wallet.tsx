@@ -21,7 +21,7 @@ type WalletComponentProps = {
 
 const WalletComponent: NextPage<WalletComponentProps> = ({ account }) => {
   const { push, query, back } = useRouter();
-  const { connectWallet, getAccounts } = useWebThree();
+  const { connectWallet, getAccounts, call } = useWebThree();
   const [show, setShow] = useState(true);
   const { getUserProfileDetails } = useProfile();
 
@@ -43,10 +43,11 @@ const WalletComponent: NextPage<WalletComponentProps> = ({ account }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const walletHandler = () => {
+  const walletHandler = async () => {
     connectWallet()
       // @ts-ignore
       .then(async (response: string) => {
+        call();
         const profileDetails = await getUserProfileDetails(response);
         // @ts-ignore
         if (response && profileDetails) {
