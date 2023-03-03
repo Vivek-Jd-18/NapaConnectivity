@@ -19,7 +19,7 @@ import { ethers } from "ethers";
 import Web3Modal from "web3modal";
 import { originalNapaStakingContract, originalNapaTokenContract } from '@/connectivity/contractObjects/contractObject1';
 import { balanceOf, treasuryWallet, approve } from '@/connectivity/callHelpers/napaTokenCallHandlers';
-import { checkReward, deposit, pendingRewards, stakeTokens } from '@/connectivity/callHelpers/napaStakeCallHandlers';
+import { UnstakeTokens, checkReward, deposit, pendingRewards, stakeTokens } from '@/connectivity/callHelpers/napaStakeCallHandlers';
 import { originalNapaStakingAddress } from '@/connectivity/addressHelpers/addressHelper';
 
 export default function EarnPage() {
@@ -66,7 +66,7 @@ export default function EarnPage() {
     const signer = await provider.getSigner(0);
     setSigner(signer)
     const address = await signer.getAddress();
-    console.log(address,"current address")
+    console.log(address, "current address")
     setCurrentWalletAddress(address);
     const ehBalance = await provider.getBalance(address);
     console.log(ehBalance.toString(), "balance of ETH")
@@ -105,12 +105,6 @@ export default function EarnPage() {
     console.log(userDeposit[3].toString(), "-=-=EndTime-=-=");
     console.log(userDeposit[4].toString(), "-=-=LastClaimTime-=-=");
   }
-
-
-
-
-
-
 
   const amtHandler = (e: any) => {
     setStakeAmt(e.target.value);
@@ -202,6 +196,105 @@ export default function EarnPage() {
       })
     } else {
       console.log("either your balance is low or you don't have enough amount to stake");
+    }
+  }
+
+  const handleUnStake = async () => {
+    const oriNapaStakeCtr = await originalNapaStakingContract(_signer);
+    // const oriNapaTokenCtr = await originalNapaTokenContract(_signer);
+
+
+    const userDeposit = await deposit(oriNapaStakeCtr, CurrentWalletAddress);
+    console.log(userDeposit[0].toString(), "-=-=plan-=-=");
+    console.log(userDeposit[1].toString(), "-=-=Amount-=-=");
+    console.log(userDeposit[2].toString(), "-=-=startTime-=-=");
+    console.log(userDeposit[3].toString(), "-=-=EndTime-=-=");
+    console.log(userDeposit[4].toString(), "-=-=LastClaimTime-=-=");
+
+    var datetime1 = new Date(userDeposit[2].toString() * 1000);
+    console.log("datetime startTime");
+    console.log(datetime1, "start-");
+
+    console.log("toDateString startTime");
+    console.log(datetime1.toDateString(), "start-");
+
+    console.log("toTimeString startTime");
+    console.log(datetime1.toTimeString(), "start-");
+
+    console.log("toString startTime");
+    console.log(datetime1.toString(), "start-");
+
+    console.log("toLocaleString startTime");
+    console.log(datetime1.toLocaleString(), "start-");
+
+    console.log("toLocaleDateString startTime");
+    console.log(datetime1.toLocaleDateString(), "start-");
+
+    console.log("toJSON startTime");
+    console.log(datetime1.toJSON(), "start-");
+
+
+
+    var datetime2 = new Date(userDeposit[2].toString() * 1000);
+    console.log("datetime endtime");
+    console.log(datetime2, "end-");
+
+    console.log("toDateString endtime");
+    console.log(datetime2.toDateString(), "end-");
+
+    console.log("toTimeString endtime");
+    console.log(datetime2.toTimeString(), "end-");
+
+    console.log("toString endtime");
+    console.log(datetime2.toString(), "end-");
+
+    console.log("toLocaleString endtime");
+    console.log(datetime2.toLocaleString(), "end-");
+
+    console.log("toLocaleDateString endtime");
+    console.log(datetime2.toLocaleDateString(), "end-");
+
+    console.log("toJSON endtime");
+    console.log(datetime2.toJSON(), "end-");
+
+
+    var datetime3 = new Date(userDeposit[2].toString() * 1000);
+    console.log("datetime lastTime");
+    console.log(datetime3, "last-");
+
+    console.log("toDateString lastTime");
+    console.log(datetime3.toDateString(), "last-");
+
+    console.log("toTimeString lastTime");
+    console.log(datetime3.toTimeString(), "last-");
+
+    console.log("toString lastTime");
+    console.log(datetime3.toString(), "last-");
+
+    console.log("toLocaleString lastTime");
+    console.log(datetime3.toLocaleString(), "last-");
+
+    console.log("toLocaleDateString lastTime");
+    console.log(datetime3.toLocaleDateString(), "last-");
+
+    console.log("toJSON lastTime");
+    console.log(datetime3.toJSON(), "last-");
+
+    if (Number(userDeposit[1].toString()) <= 0) {
+      console.log("you don't have any tokens staked yet");
+    } else if (Number(userDeposit[3].toString()) <= 0) {
+      console.log("Tokens are locked, you can't unstake now");
+    } else {
+      const treasuryToStakeCtrAllowance = await pendingRewards(oriNapaStakeCtr);
+      if (treasuryToStakeCtrAllowance > 0) {
+        console.log((await checkReward(oriNapaStakeCtr)).toString(), "Check Rewards: res")
+        await UnstakeTokens(oriNapaStakeCtr).then(async (res: any) => {
+          console.log("transaction for Unstake is in progress have patience...");
+          await res.wait();
+        }).catch();
+      } else {
+        console.log("Boom");
+      }
     }
   }
 
@@ -384,7 +477,7 @@ export default function EarnPage() {
                     </h4>
                     <h4>
                       <label>&nbsp;</label>
-                      <button className={styles.ClaimBtn}>Claim</button>
+                      <button className={styles.ClaimBtn} onClick={handleUnStake}>Claim 1</button>
                     </h4>
                   </div>
                   <div className={styles.TableRow}>
