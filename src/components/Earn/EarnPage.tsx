@@ -128,7 +128,7 @@ export default function EarnPage() {
   }
   const handleStake = async () => {
     var timestamp = Date.now() / 1000;
-    console.log("---timestamp---")
+    console.log("---timestamp---",signer) 
     console.log(timestamp);//current timestamp  
     var datetime = new Date(1677237288 * 1000);
     console.log("---datetime---");

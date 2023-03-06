@@ -264,12 +264,13 @@ export default function SellNFTPage({
 
   //web3 functions starts here
   // user will allow his Other NFTs by approving to MarketPlace Contract (LISTING)
-  let id = "104"
-  let contract = "0x20bf1a09c7c7211ead72de3d96bc129cd2bfe743"
-  const allowMarketToSell = async (tknId: number | string, nftAddress: string) => {
-
-    console.log("you are giving approval to token id:", tknId, await signer, await address, balance.toString(), await chainId.toString());
-
+  // let id = "104"
+  // let contract = "0x20bf1a09c7c7211ead72de3d96bc129cd2bfe743"
+  
+  const allowMarketToSell = async (tknId: number | string, nftAddress: string): Promise<boolean> => {
+    console.log(tknId,nftAddress,"strike")
+    let flag = false;
+    console.log("you are giving approval to token id:", tknId, await signer, await address, await chainId.toString());
     const commanNFTCtr = await commanNFTContract(signer, nftAddress);
     await commanNFTCtr.approve(nftAddress, tknId).then(async (res: any) => {
       console.log(`You have approved your nft with id: ${tknId}, Wait for the Transaction 'Approval'... `);
@@ -277,6 +278,17 @@ export default function SellNFTPage({
     }).catch((e: any) => {
       console.log(e, "Error");
     });
+    try {
+      const checkApproval = await commanNFTCtr.getApproved(tknId);
+      console.log(checkApproval, "address which is approved");
+      if (checkApproval) {
+        flag = true;
+      }
+    } catch (e) {
+      console.log(e, "Error While checking the Approval");
+      flag = false
+    }
+    return flag
   }
 
 
@@ -465,7 +477,7 @@ export default function SellNFTPage({
                     Update Listing
                   </a>
                 ) : (
-                  <button onClick={() => { allowMarketToSell(id, contract) }} className={styles.linkPrnt}>Complete Listing</button>
+                  <button onClick={() => { allowMarketToSell("104", "0x20bf1a09c7c7211ead72de3d96bc129cd2bfe743") }} className={styles.linkPrnt} style={{ backgroundColor: "transparent" }}>Complete Listing</button>
                   // <a onClick={handleCreateSnft} className={styles.linkPrnt}>
                   //   Complete Listing
                   // </a>

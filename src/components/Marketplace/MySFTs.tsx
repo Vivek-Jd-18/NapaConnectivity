@@ -85,7 +85,7 @@ export default function MySFTs(props: any) {
         },
       };
       let res = await axios(config);
-      console.log(res);
+      console.log(res,"SNFTS");
       let newItems: any = [];
       await Promise.all(
         res.data.result.map(async (data: any) => {
