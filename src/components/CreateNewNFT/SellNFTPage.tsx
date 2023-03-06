@@ -12,17 +12,18 @@ import { FadeLoader } from 'react-spinners';
 import { toast } from 'react-toastify';
 import { DoneIcon, ErrorIcon } from '../assets';
 import { CustomToastWithLink } from '../CustomToast/CustomToast';
-import { 
+import {
   // createNewSnft,
-   updateSnft } from '../../services/MarketplaceApi';
+  updateSnft
+} from '../../services/MarketplaceApi';
 import { SnftResponse } from '../../types/marketplace';
 import { commanNFTContract } from '@/connectivity/contractObjects/commanNFTContract';
-import { call } from '@/connectivity/mainFunctions/marketFunctions';
 import {
-  approve,
+  // approve,
   // getApproved,
   //  transferFrom
 } from '@/connectivity/callHelpers/commanNFTCallHandlers';
+import useWebThree from '@/hooks/useWebThree';
 
 type SellNFTPageProps = {
   mintDetails: MintPost | null;
@@ -75,6 +76,8 @@ export default function SellNFTPage({
     amount: '',
     duration: '',
   });
+
+  const { address, balance, chainId, signer } = useWebThree();
 
   useEffect(() => {
     if (snftDetails) {
@@ -261,15 +264,16 @@ export default function SellNFTPage({
 
   //web3 functions starts here
   // user will allow his Other NFTs by approving to MarketPlace Contract (LISTING)
-  let id = "1"
-  let contract = "0x20bf1A09C7C7211ead72dE3d96bC129CD2BFE743"
-  const allowMarketToSell = async (tknId: number|string, nftAddress: string) => {
-    console.log("you are giving approval to token id:", tknId);
-    const { signer }: any = await call()
+  let id = "104"
+  let contract = "0x20bf1a09c7c7211ead72de3d96bc129cd2bfe743"
+  const allowMarketToSell = async (tknId: number | string, nftAddress: string) => {
+
+    console.log("you are giving approval to token id:", tknId, await signer, await address, balance.toString(), await chainId.toString());
+
     const commanNFTCtr = await commanNFTContract(signer, nftAddress);
-    await approve(commanNFTCtr, nftAddress, tknId).then(async (res) => {
+    await commanNFTCtr.approve(nftAddress, tknId).then(async (res: any) => {
       console.log(`You have approved your nft with id: ${tknId}, Wait for the Transaction 'Approval'... `);
-      console.log(await res.wait());
+      console.log(await res.wait(), "approve to market result");
     }).catch((e: any) => {
       console.log(e, "Error");
     });

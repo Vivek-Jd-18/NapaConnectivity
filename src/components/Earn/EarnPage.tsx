@@ -21,11 +21,11 @@ import { originalNapaStakingContract, originalNapaTokenContract } from '@/connec
 import { balanceOf, treasuryWallet, approve } from '@/connectivity/callHelpers/napaTokenCallHandlers';
 import { UnstakeTokens, checkReward, deposit, pendingRewards, stakeTokens } from '@/connectivity/callHelpers/napaStakeCallHandlers';
 import { originalNapaStakingAddress } from '@/connectivity/addressHelpers/addressHelper';
+import useWebThree from '@/hooks/useWebThree';
 
 export default function EarnPage() {
   // const [lock, setLock] = useState<string>();
   const [_provider, setProvider] = useState<any>();
-  const [_signer, setSigner] = useState<any>()
   // const [_ethFee, setEthFee] = useState<string>("0")
   // const [ethBal, setEthBal] = useState<any>();
   // const [conn, setConn] = useState<boolean>(false)
@@ -38,6 +38,8 @@ export default function EarnPage() {
   const [stakeAmt, setStakeAmt] = useState<number>(0);
   // const [stakeBtnStyle, setStakeBtnStyle] = useState<string>("btn btn-outline-success disabled");
 
+  const { address, balance, chainId, signer } = useWebThree();
+  console.log(address, balance, chainId, signer)
   const decimals = 10 ** 18;
 
   // const onAmountChange = (e: any) => {
@@ -64,7 +66,6 @@ export default function EarnPage() {
     setProvider(provider)
     // const { chainId } = await provider.getNetwork()
     const signer = await provider.getSigner(0);
-    setSigner(signer)
     const address = await signer.getAddress();
     console.log(address, "current address")
     setCurrentWalletAddress(address);
@@ -144,8 +145,8 @@ export default function EarnPage() {
 
     const amount = stakeAmt;
     console.log("in stake", stakeAmt);
-    const oriNapaTokenCtr = await originalNapaTokenContract(_signer);
-    const oriNapaStakeCtr = await originalNapaStakingContract(_signer);
+    const oriNapaTokenCtr = await originalNapaTokenContract(signer);
+    const oriNapaStakeCtr = await originalNapaStakingContract(signer);
     const amtInWei = amount * decimals;
     //1. check if user have enough balance or not
     const userBal: Promise<number> = await balanceOf(oriNapaTokenCtr, CurrentWalletAddress);
@@ -200,7 +201,7 @@ export default function EarnPage() {
   }
 
   const handleUnStake = async () => {
-    const oriNapaStakeCtr = await originalNapaStakingContract(_signer);
+    const oriNapaStakeCtr = await originalNapaStakingContract(signer);
     // const oriNapaTokenCtr = await originalNapaTokenContract(_signer);
 
 

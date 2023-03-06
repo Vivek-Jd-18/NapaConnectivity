@@ -8,19 +8,21 @@ import moment from 'moment';
 import styles from './MySFTs.module.scss';
 import Link from 'next/link';
 
-import { call } from "../../connectivity/otherFeatures/fetchAllNfts"
 import { commanNFTContract } from '@/connectivity/contractObjects/commanNFTContract';
 import {
-  approve, getApproved,
+  approve,
+  getApproved,
   //  transferFrom
 } from '@/connectivity/callHelpers/commanNFTCallHandlers';
 import axios from 'axios';
 import { nftAddress } from '@/connectivity/addressHelpers/addressHelper';
-
-
-
+import useProfile from '../../hooks/useProfile';
+import useWebThree from '@/hooks/useWebThree';
 
 export default function MySFTs(props: any) {
+
+  const { address, balance, chainId, signer } = useWebThree();
+  console.log(address, balance, chainId, signer)
   const options = [
     { value: 'chocolate', label: 'Chocolate' },
     { value: 'strawberry', label: 'Strawberry' },
@@ -44,7 +46,7 @@ export default function MySFTs(props: any) {
   const [active, setActive] = React.useState(false);
 
   const [nfts, setNfts] = useState<any[]>([]);
-
+  const { profileId } = useProfile();
 
   const handleClick = () => {
     setActive(!active);
@@ -70,31 +72,40 @@ export default function MySFTs(props: any) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [onClickOutside]);
 
-
   // fetch nfts starts here
   const loadNFTs: () => Promise<object[]> = async () => {
-    let dt: any = []
-    const callData = await call();
-    const accAddress = callData.address;
+    let dt: any = [];
     try {
       const config = {
         method: 'get',
-        url: `https://deep-index.moralis.io/api/v2/${accAddress}/nft?chain=goerli&format=decimal`,
-        headers: { 'X-API-Key': "D8Kfm2KtjFHVEpqvPmTVgaNLvY8TFEhrIBi8h71wjcTfFIdlmSKFlYJcEGATK8dr" }
-      }
-      let res = await axios(config)
-      console.log(res)
-      let newItems: any = []
+        url: `https://deep-index.moralis.io/api/v2/${address}/nft?chain=goerli&format=decimal`,
+        headers: {
+          'X-API-Key':
+            'D8Kfm2KtjFHVEpqvPmTVgaNLvY8TFEhrIBi8h71wjcTfFIdlmSKFlYJcEGATK8dr',
+        },
+      };
+      let res = await axios(config);
+      console.log(res);
+      let newItems: any = [];
       await Promise.all(
         res.data.result.map(async (data: any) => {
-          let splitted = data.token_address.slice(0, 6) + "..." + data.token_address.slice(38, data.token_address.length);
+          let splitted =
+            data.token_address.slice(0, 6) +
+            '...' +
+            data.token_address.slice(38, data.token_address.length);
           // console.log(splitted, "datas")
-          let isOnSold = await checkIfApprovedToMarket(data.token_id, data.token_address);
+          let isOnSold = await checkIfApprovedToMarket(
+            data.token_id,
+            data.token_address
+          );
           let contractAddress = data.token_address;
-          console.log(nftAddress.toUpperCase() == contractAddress.toUpperCase(), "onsold1");
+          console.log(
+            nftAddress.toUpperCase() == contractAddress.toUpperCase(),
+            'onsold1'
+          );
           if (nftAddress.toUpperCase() == contractAddress.toUpperCase()) {
-            console.log("inside if")
-            let ff = await data.token_uri
+            console.log('inside if');
+            let ff = await data.token_uri;
             let meta: any = await axios.get(ff);
             let item = {
               tokenId: await data.token_id,
@@ -105,57 +116,65 @@ export default function MySFTs(props: any) {
               description: await meta.data.description,
               attributes: await meta.data.attributes,
               image: await meta.data.image,
-              onSold: isOnSold
-            }
+              onSold: isOnSold,
+            };
             newItems.push(item);
           } else {
-            console.log(data.token_address, `the nft with id ${data.token_id} is not for SNFT`);
+            console.log(
+              data.token_address,
+              `the nft with id ${data.token_id} is not for SNFT`
+            );
           }
         })
-      )
+      );
       setNfts(newItems);
     } catch (e) {
       console.log(e);
     }
     return dt;
-  }
+  };
 
   useEffect(() => {
-    loadNFTs()
-  }, [])
-
+    if (profileId) {
+      loadNFTs();
+    }
+  }, [profileId]);
 
   const checkIfApprovedToMarket = async (tknId: number, nftAddress: string) => {
     let flag: boolean = false;
-    console.log(tknId, nftAddress, "rel")
-    const { signer }: any = await call()
+    console.log(tknId, nftAddress, 'rel');
     const commanNFTCtr = await commanNFTContract(signer, nftAddress);
-    await getApproved(commanNFTCtr, tknId).then(async (res) => {
-      if (res.startsWith("0x0000000")) {
-        console.log("status")
-        flag = false
-      } else {
-        flag = true
-      }
-    }).catch((e: any) => {
-      console.log(e, "Error");
-      return false
-    });
-    return flag
-  }
+    await getApproved(commanNFTCtr, tknId)
+      .then(async (res) => {
+        if (res.startsWith('0x0000000')) {
+          console.log('status');
+          flag = false;
+        } else {
+          flag = true;
+        }
+      })
+      .catch((e: any) => {
+        console.log(e, 'Error');
+        return false;
+      });
+    return flag;
+  };
 
   // user will allow his Other NFTs by approving to MarketPlace Contract (LISTING)
   const allowMarketToSell = async (tknId: number, nftAddress: string) => {
-    console.log("you are giving approval to token id:", tknId);
-    const { signer }: any = await call()
+    console.log('you are giving approval to token id:', tknId);
     const commanNFTCtr = await commanNFTContract(signer, nftAddress);
-    await approve(commanNFTCtr, nftAddress, tknId).then(async (res) => {
-      console.log(`You have approved your nft with id: ${tknId}, Wait for the Transaction 'Approval'... `);
-      console.log(await res.wait());
-    }).catch((e: any) => {
-      console.log(e, "Error");
-    });
-  }
+    await approve(commanNFTCtr, nftAddress, tknId)
+      .then(async (res) => {
+        console.log(
+          `You have approved your nft with id: ${tknId}, Wait for the Transaction 'Approval'... `
+        );
+        console.log(await res.wait());
+      })
+      .catch((e: any) => {
+        console.log(e, 'Error');
+      });
+  };
 
   // users NFTs will be sold by MarketPlace Contract only if allowed(NFT BUY FROM MarketPlace)
   // const _transferFrom = async () => {
@@ -173,7 +192,6 @@ export default function MySFTs(props: any) {
   // }
 
   // fetch NFTs working ends
-
 
   return (
     <>
@@ -580,11 +598,13 @@ export default function MySFTs(props: any) {
                         alt=""
                         className="evmtimg"
                       /> */}
-                        <img src={data.image}
+                        <img
+                          src={data.image}
                           height="322px"
                           width="242px"
                           alt=""
-                          className="evmtimg" />
+                          className="evmtimg"
+                        />
                         {/* <div className={styles.upCont}>
                                           <Image
                                               src="/img/feed_small_img06.png"
@@ -598,20 +618,40 @@ export default function MySFTs(props: any) {
                         <div className={styles.downCont}>
                           <h3>{data.tokenId}</h3>
                           <h3>{data.shortContractAddress}</h3>
-                          {data.onSold ? <span style={{
-                            height: "25px",
-                            width: "25px",
-                            backgroundColor: "green",
-                            borderRadius: "50%", display: "inline-block"
-                          }}></span> : <span style={{
-                            height: "25px",
-                            width: "25px",
-                            backgroundColor: "red",
-                            borderRadius: "50%", display: "inline-block"
-                          }}></span>}
+                          {data.onSold ? (
+                            <span
+                              style={{
+                                height: '25px',
+                                width: '25px',
+                                backgroundColor: 'green',
+                                borderRadius: '50%',
+                                display: 'inline-block',
+                              }}
+                            ></span>
+                          ) : (
+                            <span
+                              style={{
+                                height: '25px',
+                                width: '25px',
+                                backgroundColor: 'red',
+                                borderRadius: '50%',
+                                display: 'inline-block',
+                              }}
+                            ></span>
+                          )}
                           <h3>{data.name}</h3>
                           <div className={styles.flexPernt}>
-                            <button onClick={() => allowMarketToSell(data.tokenId, data.contractAddress)} className='btn btn-primary'>List To Market</button>
+                            <button
+                              onClick={() =>
+                                allowMarketToSell(
+                                  data.tokenId,
+                                  data.contractAddress
+                                )
+                              }
+                              className="btn btn-primary"
+                            >
+                              List To Market
+                            </button>
                             <div className={styles.currentBit}>
                               <h5>Current Bid</h5>
                               <div className={styles.txtimgFlex}>
@@ -637,10 +677,9 @@ export default function MySFTs(props: any) {
                 </div>
               </div>
             </div>
-          </div >)
-      })
-      }
-
+          </div>
+        );
+      })}
     </>
   );
 }

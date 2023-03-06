@@ -19,6 +19,11 @@ type WebThreeContextType = {
   walletNapa: string;
   connectWallet: () => Promise<void>;
   getAccounts: () => void;
+  call: any;
+  address: any;
+  balance: any;
+  signer: any;
+  chainId: any;
 };
 
 const WebThreeContext = createContext<WebThreeContextType>(
@@ -54,6 +59,10 @@ export const WebThreeContextProvider = (props: {
   const [walletEth, setWalletEth] = useState(0);
   const [walletBnb, setWalletBnb] = useState('');
   const [walletNapa, setWalletNapa] = useState('');
+  const [address, setAddress] = useState<any>();
+  const [balance, setBalance] = useState<any>();
+  const [signer, setSigner] = useState<any>();
+  const [chainId, setChainId] = useState<any>();
 
   const getBalances = async () => {
     try {
@@ -196,36 +205,44 @@ export const WebThreeContextProvider = (props: {
       cacheProvider: true,
     });
     const provider = await connect();
-    const { chainId } = await provider.getNetwork()
+    const { chainId } = await provider.getNetwork();
     validateNetwork(chainId);
     await provider.getNetwork();
     const signer = provider.getSigner(0);
     const address = await signer.getAddress();
     const balance = provider.getBalance(address);
+    setAddress(address);
+    setBalance(balance);
+    setSigner(signer);
+    setChainId(chainId);
     console.log(address, balance, signer, chainId, 'all details');
     //need to make these variables avialable to all components
     return { address, balance, signer, chainId };
   };
 
-
-
   async function validateNetwork(currentNetwork: any) {
     if (window.ethereum) {
-      console.log(currentNetwork, "currentNetwork");
+      console.log(currentNetwork, 'currentNetwork');
       if (currentNetwork !== goerliChainHex) {
-        window.ethereum.request({
-          method: 'wallet_switchEthereumChain',
-          params: [{ chainId: goerliChainHex }], // chainId must be in hexadecimal numbers
-        }).then(async function (result: any) {
-          const provider = new ethers.providers.Web3Provider(window.ethereum);
-          console.log(`provider is ${provider} and result is: ${result}`);
-          alert("Connected to correct Network");
-        }).catch(function (error: any) {
-          alert(`Problem occured while changing   : ${error.message} `);
-          console.log("Problem occured while changing Network: ", error.message);
-        });
+        window.ethereum
+          .request({
+            method: 'wallet_switchEthereumChain',
+            params: [{ chainId: goerliChainHex }], // chainId must be in hexadecimal numbers
+          })
+          .then(async function (result: any) {
+            const provider = new ethers.providers.Web3Provider(window.ethereum);
+            console.log(`provider is ${provider} and result is: ${result}`);
+            // alert('Connected to correct Network');
+          })
+          .catch(function (error: any) {
+            alert(`Problem occured while changing   : ${error.message} `);
+            console.log(
+              'Problem occured while changing Network: ',
+              error.message
+            );
+          });
       } else {
-        console.log("Connected to correct Network");
+        console.log('Connected to correct Network');
       }
     }
   }
@@ -239,7 +256,11 @@ export const WebThreeContextProvider = (props: {
     walletNapa,
     connectWallet,
     getAccounts,
-    call
+    call,
+    address,
+    balance,
+    signer,
+    chainId,
   };
 
   return (
