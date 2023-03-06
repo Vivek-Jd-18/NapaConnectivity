@@ -13,7 +13,7 @@ import { toast } from 'react-toastify';
 import { DoneIcon, ErrorIcon } from '../assets';
 import { CustomToastWithLink } from '../CustomToast/CustomToast';
 import {
-  // createNewSnft,
+  createNewSnft,
   updateSnft
 } from '../../services/MarketplaceApi';
 import { SnftResponse } from '../../types/marketplace';
@@ -24,6 +24,15 @@ import {
   //  transferFrom
 } from '@/connectivity/callHelpers/commanNFTCallHandlers';
 import useWebThree from '@/hooks/useWebThree';
+import { marketPlaceContract, 
+  // napaTokenContract, usdtTokenContract 
+} from '@/connectivity/contractObjects/contractObject1';
+import { 
+  // approve, buyNftToken, buyNftTokenWithEth, getLatestPrice, napaTokenAmount, 
+  nftInfo, setSaleFromWallet } from '@/connectivity/callHelpers/callHelper1';
+import { 
+  // marketPlace,
+   nftAddress } from '@/connectivity/addressHelpers/addressHelper';
 
 type SellNFTPageProps = {
   mintDetails: MintPost | null;
@@ -77,7 +86,7 @@ export default function SellNFTPage({
     duration: '',
   });
 
-  const { address, balance, chainId, signer } = useWebThree();
+  const { address, chainId, signer } = useWebThree();
 
   useEffect(() => {
     if (snftDetails) {
@@ -112,86 +121,92 @@ export default function SellNFTPage({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [snftDetails]);
 
-  // const handleCreateSnft = async () => {
-  //   if (mintDetails?.marketplace_listed == 'true') {
-  //     toast.error(
-  //       CustomToastWithLink({
-  //         icon: ErrorIcon,
-  //         title: 'Error',
-  //         description: 'Already listed to marketplace',
-  //         time: 'Now',
-  //       })
-  //     );
-  //     return;
-  //   }
-  //   setErrors({
-  //     currencyType: '',
-  //     amount: '',
-  //     duration: '',
-  //   });
-  //   if (!currencyType) {
-  //     setErrors((prev) => {
-  //       return {
-  //         ...prev,
-  //         currencyType: 'Currency type is required',
-  //       };
-  //     });
-  //   }
-  //   if (!amount) {
-  //     setErrors((prev) => {
-  //       return {
-  //         ...prev,
-  //         amount: 'Amount is required',
-  //       };
-  //     });
-  //   }
-  //   if (!duration) {
-  //     setErrors((prev) => {
-  //       return {
-  //         ...prev,
-  //         duration: 'Duration is required',
-  //       };
-  //     });
-  //   }
-  //   if (!duration || !amount || !currencyType) return;
-  //   setIsLoading(true);
-  //   const newSnft = {
-  //     currencyType: currencyType?.value ?? '',
-  //     type,
-  //     amount,
-  //     duration: duration?.value ?? '',
-  //     mintId: mintDetails?.mintId ?? '',
-  //     profileId: mintDetails?.profileId ?? '',
-  //     postId: mintDetails?.postId ?? '',
-  //   };
-  //   const { error, message }: any = await createNewSnft(newSnft);
-  //   if (error) {
-  //     setIsLoading(false);
-  //     toast.error(
-  //       CustomToastWithLink({
-  //         icon: ErrorIcon,
-  //         title: 'Error',
-  //         description: message,
-  //         time: 'Now',
-  //       })
-  //     );
-  //     return;
-  //   }
-  //   setIsLoading(false);
-  //   setCurrencyType(null);
-  //   setAmount('');
-  //   setDuration(null);
-  //   setType('Fixed Price');
-  //   toast.success(
-  //     CustomToastWithLink({
-  //       icon: DoneIcon,
-  //       title: 'Success',
-  //       description: 'Nft Was Created Successfully',
-  //       time: 'Now',
-  //     })
-  //   );
-  //   push('/marketplace');
-  // };
+  const handleCreateSnft = async () => {
+    let id = "104"
+    let contract = "0x20bf1a09c7c7211ead72de3d96bc129cd2bfe743"
+    const deployedWeb3 = await listNFT(id, 1, contract);
+
+    console.log(deployedWeb3, "web");
+
+    if (mintDetails?.marketplace_listed == 'true') {
+      toast.error(
+        CustomToastWithLink({
+          icon: ErrorIcon,
+          title: 'Error',
+          description: 'Already listed to marketplace',
+          time: 'Now',
+        })
+      );
+      return;
+    }
+    setErrors({
+      currencyType: '',
+      amount: '',
+      duration: '',
+    });
+    if (!currencyType) {
+      setErrors((prev) => {
+        return {
+          ...prev,
+          currencyType: 'Currency type is required',
+        };
+      });
+    }
+    if (!amount) {
+      setErrors((prev) => {
+        return {
+          ...prev,
+          amount: 'Amount is required',
+        };
+      });
+    }
+    if (!duration) {
+      setErrors((prev) => {
+        return {
+          ...prev,
+          duration: 'Duration is required',
+        };
+      });
+    }
+    if (!duration || !amount || !currencyType) return;
+    setIsLoading(true);
+    const newSnft = {
+      currencyType: currencyType?.value ?? '',
+      type,
+      amount,
+      duration: duration?.value ?? '',
+      mintId: mintDetails?.mintId ?? '',
+      profileId: mintDetails?.profileId ?? '',
+      postId: mintDetails?.postId ?? '',
+    };
+    const { error, message }: any = await createNewSnft(newSnft);
+    if (error) {
+      setIsLoading(false);
+      toast.error(
+        CustomToastWithLink({
+          icon: ErrorIcon,
+          title: 'Error',
+          description: message,
+          time: 'Now',
+        })
+      );
+      return;
+    }
+    setIsLoading(false);
+    setCurrencyType(null);
+    setAmount('');
+    setDuration(null);
+    setType('Fixed Price');
+    toast.success(
+      CustomToastWithLink({
+        icon: DoneIcon,
+        title: 'Success',
+        description: 'Nft Was Created Successfully',
+        time: 'Now',
+      })
+    );
+    push('/marketplace');
+  };
 
   const handleUpdateSnft = async () => {
     setErrors({
@@ -266,9 +281,44 @@ export default function SellNFTPage({
   // user will allow his Other NFTs by approving to MarketPlace Contract (LISTING)
   // let id = "104"
   // let contract = "0x20bf1a09c7c7211ead72de3d96bc129cd2bfe743"
-  
+
+
+
+  // case #1 to list SNFT (setSaleFromWallet)
+  const allowMarketToSellForSNFT = async (tknId: number | string, salePrice: number | string): Promise<boolean> => {
+    let flag: boolean = false;
+    console.log("you are giving approval to SNFT token id:", tknId, await signer, await address);
+    const marketContract = await marketPlaceContract(signer);
+    //set list from MarketPlace contract
+    await setSaleFromWallet(marketContract, tknId, salePrice).then(async (res: any) => {
+      console.log(`You have approved your nft with id: ${tknId}, Wait for the Transaction 'Approval'... `);
+      console.log(await res.wait(), "approve to market result");
+    }).catch((e: any) => {
+      console.log(e, "Error");
+    });
+    const commanNFTCtr = await commanNFTContract(signer, nftAddress);
+    await commanNFTCtr.approve(nftAddress, tknId).then(async (res: any) => {
+      console.log(`You have approved your nft with id: ${tknId}, Wait for the Transaction 'Approval'... `);
+      console.log(await res.wait(), "approve to market result");
+    }).catch((e: any) => {
+      console.log(e, "Error");
+    });
+    try {
+      //#2 NFT info
+      const marketCtr = await marketPlaceContract(signer);
+      const _nftInfoRes = await nftInfo(marketCtr, tknId);
+      console.log("saleStatus", _nftInfoRes[2]);
+      flag = _nftInfoRes[2];
+    } catch (e) {
+      console.log(e, "Error While checking the Approval");
+      flag = false;
+    }
+    return flag
+  }
+
+  // case #2 to list other NFT (approve)
   const allowMarketToSell = async (tknId: number | string, nftAddress: string): Promise<boolean> => {
-    console.log(tknId,nftAddress,"strike")
+    console.log(tknId, nftAddress, "strike")
     let flag = false;
     console.log("you are giving approval to token id:", tknId, await signer, await address, await chainId.toString());
     const commanNFTCtr = await commanNFTContract(signer, nftAddress);
@@ -292,6 +342,110 @@ export default function SellNFTPage({
   }
 
 
+  //main function who will decide to call which listing function
+  const listNFT = async (tknId: number | string, salePrice: number | string, nftAddress: string): Promise<boolean | undefined> => {
+    try {
+      if (nftAddress.toUpperCase() == nftAddress.toUpperCase()) {
+        return await allowMarketToSellForSNFT(tknId, salePrice);
+      } else {
+        return await allowMarketToSell(tknId, nftAddress);
+      }
+    } catch (e) {
+      console.log(e, "Error while Listing NFTs");
+      return false;
+    }
+  }
+
+
+
+
+
+
+  //#1 buynft from market place
+  // const _buyNftTokenFromMarket = async (transactionType: number, _tokenId: number | string) => {
+  //   // const _tokenId: number = 88;
+  //   console.log("you are buying token :", _tokenId);
+  //   const isApprovedTkn = await doApprovalForToken(transactionType);
+
+  //   console.log("lvl2");
+  //   const marketCtr: any = await marketPlaceContract(signer);
+  //   if (Number(transactionType) == 0 && await isApprovedTkn) {
+  //     console.log("buy from market in NAPA");
+  //     await buyNftToken(marketCtr, 0, _tokenId).then(async (res: any) => {
+  //       await res.wait();
+  //       console.log(await res.wait(), "buyNftToken res");
+  //     }).catch((e: any) => {
+  //       console.log(e)
+  //     })
+  //   } else if (Number(transactionType) == 1 && await isApprovedTkn) {
+  //     console.log("buy from market in USDT");
+  //     await buyNftToken(marketCtr, 1, _tokenId).then(async (res: any) => {
+  //       await res.wait();
+  //       console.log(await res.wait(), "buyNftToken res");
+  //     }).catch((e: any) => {
+  //       console.log(e)
+  //     })
+  //   } else {
+  //     let valInEth = await calculateTokenAllowance(2, _tokenId);
+  //     console.log(valInEth, "valInEth");
+  //     if (isApprovedTkn) {
+  //       console.log("in to the ether put my stress right now");
+  //       await buyNftTokenWithEth(marketCtr, Number(transactionType), _tokenId, { value: "100000000000000" }).then(async (res: any) => {
+  //         await res.wait();
+  //         console.log(await res.wait(), "approve res");
+  //       }).catch((e: any) => {
+  //         console.log(e)
+  //       })
+  //     }
+  //   }
+  // }
+
+
+  //#7 approve Napa Or Usdt Token
+  // This function does the approval for a specific token contract
+  // const doApprovalForToken: any = async (transactionType: number, tokenId: string | number) => {
+  //   const amountToApprove: any = await calculateTokenAllowance(transactionType, tokenId);
+  //   console.log(((amountToApprove * 2).toString()), "token allowance");
+  //   if (transactionType == 0) { // Check if the transaction is for NPA tokens
+  //     const npaTokenctr: any = await napaTokenContract(signer); // Get the NPA token contract
+  //     console.log(npaTokenctr, "npaTokenctr contract");
+  //     const approveRes = await approve(npaTokenctr, marketPlace, ((amountToApprove * 2).toString())); // Call the approve function of the NPA token contract to allow spending of tokens
+  //     console.log(approveRes, "approve response of napa");
+  //     return await approveRes.wait();
+  //   } else if (transactionType == 1) { // Check if the transaction is for USDT tokens
+  //     const usdtTokenctr: any = await usdtTokenContract(signer); // Get the USDT token contract
+  //     console.log(usdtTokenctr, "usdtTokenctr contract");
+  //     const approveRes = await approve(usdtTokenctr, marketPlace, ((amountToApprove * 2).toString())); // Call the approve function of the USDT token contract to allow spending of tokens
+  //     console.log(approveRes, "approve response of usdt");
+  //     return await approveRes.wait();
+  //   } else { // If the transaction is not for tokens, return -1
+  //     console.log("don't need any approval check as you've opted for ether");
+  //     return -1;
+  //   }
+  // }
+
+  // #8 calculates token allowance for each type
+  // const calculateTokenAllowance = async (transactionType: number, toknId: string | number) => {
+  //   const decimals: number = 10 ** 18;
+  //   const otherDecimals: number = 10 ** 10;
+  //   const marketCtr: any = await marketPlaceContract(signer);
+  //   const { salePrice } = await nftInfo(marketCtr, (toknId).toString());
+
+  //   if (transactionType == 0 || transactionType == 1) {
+  //     const _napaTokenAmount = await napaTokenAmount(marketCtr);
+  //     const calculatedAmount = await salePrice / await _napaTokenAmount;
+  //     console.log(calculatedAmount * decimals, "total allowance need");
+  //     return calculatedAmount * decimals;
+  //   } else {
+  //     console.log("into ethers part")
+  //     const _getLatestPrice: number = await getLatestPrice(marketCtr);
+  //     console.log(_getLatestPrice.toString(), "_getLatestPrice aa");
+  //     const calculatedAmount: number = await salePrice / (_getLatestPrice * otherDecimals);
+  //     console.log(salePrice.toString(), "salePrice");
+  //     console.log(calculatedAmount, "calculated");
+  //     return (calculatedAmount.toFixed(18));
+  //   }
+  // }
   //web3 functions ends here
 
   return (
@@ -477,7 +631,7 @@ export default function SellNFTPage({
                     Update Listing
                   </a>
                 ) : (
-                  <button onClick={() => { allowMarketToSell("104", "0x20bf1a09c7c7211ead72de3d96bc129cd2bfe743") }} className={styles.linkPrnt} style={{ backgroundColor: "transparent" }}>Complete Listing</button>
+                  <button onClick={handleCreateSnft} className={styles.linkPrnt} style={{ backgroundColor: "transparent" }}>Complete Listing</button>
                   // <a onClick={handleCreateSnft} className={styles.linkPrnt}>
                   //   Complete Listing
                   // </a>
