@@ -526,22 +526,22 @@ export default function MyNFTs(props: any) {
         </div>
       </div>
 
-      {nfts.map((data: any) => {
-        return (
-          <div className={styles.scrollPernt} key={data.id}>
-            <div className={styles.CustomGridContainer}>
-              <div className={styles.CustomGrid}>
+      <div className={styles.scrollPernt}>
+        <div className={styles.CustomGridContainer}>
+          {nfts.map((data: any) => {
+            return (
+              <div className={styles.CustomGrid} key={data.id}>
                 <div className={styles.TipsTulsOverlay}>
                   <div className={styles.boxinnrcont}>
                     <Link href="#">
                       <a href="#" className={`${styles.apernt} hovereffect`}>
                         {/* <Image
-                        src={data.image}
-                        height="372px"
-                        width="282px"
-                        alt=""
-                        className="evmtimg"
-                      /> */}
+                            src={data.image}
+                            height="372px"
+                            width="282px"
+                            alt=""
+                            className="evmtimg"
+                          /> */}
                         <img
                           src={data.image}
                           height="322px"
@@ -550,15 +550,15 @@ export default function MyNFTs(props: any) {
                           className="evmtimg"
                         />
                         {/* <div className={styles.upCont}>
-                                          <Image
-                                              src="/img/feed_small_img06.png"
-                                              height="40px"
-                                              width="40px"
-                                              alt=""
-                                              className=""
-                                          />
-                                          <p>@CatherinePatton</p>
-                                      </div> */}
+                                              <Image
+                                                  src="/img/feed_small_img06.png"
+                                                  height="40px"
+                                                  width="40px"
+                                                  alt=""
+                                                  className=""
+                                              />
+                                              <p>@CatherinePatton</p>
+                                          </div> */}
                         <div className={styles.downCont}>
                           <h3>{data.tokenId}</h3>
                           <h3>{data.shortContractAddress}</h3>
@@ -620,10 +620,10 @@ export default function MyNFTs(props: any) {
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        );
-      })}
+            );
+          })}
+        </div>
+      </div>
     </>
   );
 }
