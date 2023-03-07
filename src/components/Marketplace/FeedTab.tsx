@@ -6,7 +6,6 @@ import DateRangePicker from 'react-bootstrap-daterangepicker';
 import 'bootstrap/dist/css/bootstrap.css';
 import moment from 'moment';
 import styles from './FeedTab.module.scss';
-import Link from 'next/link';
 
 export default function FeedTab(props: any) {
   const options = [
@@ -385,7 +384,7 @@ export default function FeedTab(props: any) {
 
       <div className={styles.scrollPernt}>
         <div className={styles.CustomGridContainer}>
-          <div className={styles.CustomGrid}>
+          {/* <div className={styles.CustomGrid}>
             <div className={styles.TipsTulsOverlay}>
               <div className={styles.boxinnrcont}>
                 <Link href="/create-new-nft-two">
@@ -433,7 +432,7 @@ export default function FeedTab(props: any) {
                 </Link>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </>
