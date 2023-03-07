@@ -38,8 +38,12 @@ const Header: NextPage<HeaderProps> = ({
   const [popupShow, setPopupShow] = useState(false);
   const [show, setShow] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
-  const { walletEth, account, walletBnb, walletNapa, getAccounts } =
+  const { walletEth, account, walletBnb, walletNapa, getAccounts, call } =
     useWebThree();
+
+  useEffect(() => {
+    call();
+  }, []);
 
   useEffect(() => {
     if (show) {
