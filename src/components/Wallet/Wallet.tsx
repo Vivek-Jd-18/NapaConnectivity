@@ -113,7 +113,7 @@ const WalletComponent: NextPage<WalletComponentProps> = ({ account }) => {
                               time: 'Now',
                             })
                           );
-                          push('/home');
+                          back();
                           return;
                         }
                         if (index === 0) {
