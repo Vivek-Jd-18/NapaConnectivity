@@ -144,7 +144,6 @@ export default function SectionOne({
     _setSaleMinter: boolean,
     callback: CallableFunction
   ) => {
-    const tknId = 1;
     // get NftCtr instance from newNapaNftContract function
     const NftCtr: any = await newNapaNftContract(signer);
     // console.log(await NftCtr, "nannananananana")
@@ -257,7 +256,7 @@ export default function SectionOne({
         // Mint NFT with eth
         const _lazy = await lazyMintEth(
           NftCtr,
-          tknId,
+          _tokenId,
           supposedSeller,
           hit.toString(),
           2,
@@ -303,7 +302,7 @@ export default function SectionOne({
       console.log(valInEth, "valInEth");
       if (isApprovedTkn) {
         console.log("in to the ether put my stress right now");
-        await buyNftTokenWithEth(marketCtr, Number(transactionType), _tokenId, { value: "100000000000000" }).then(async (res: any) => {
+        await buyNftTokenWithEth(marketCtr, Number(transactionType), _tokenId, { value: valInEth.toString() }).then(async (res: any) => {
           await res.wait();
           console.log(await res.wait(), "approve res");
         }).catch((e: any) => {
@@ -363,31 +362,35 @@ export default function SectionOne({
 
   //6 lazy mint connectivity function
   const lazyMintHandler = async (data: any) => {
-    console.log('changes appeared', signer, address);
+
+    const tokenId = (data.tokenId).toString();
+    const transactionType = 2;
+
+    console.log('changes appeared', signer, address, data);
     const NFTCtr = await newNapaNftContract(signer);
     // data.tokenId.toString()
     let isNFTAvailable;
     try {
-      isNFTAvailable = await NFTCtr.ownerOf(1);
+      isNFTAvailable = await NFTCtr.ownerOf(tokenId);
       console.log(isNFTAvailable, "NFAVA")
     } catch (e) {
       isNFTAvailable = 0
       console.log(e, "NFAVA")
     }
+    console.log("NFT AVAILABILITY", isNFTAvailable);
     if (isNFTAvailable) {
       let val = data.tokenId.toString();
       console.log("NFT exists", val);
-      _buyNftTokenFromMarket(1, val)
+      _buyNftTokenFromMarket(transactionType, val);
     } else {
-      console.log("NFT doesn't exists");
+      console.log("NFT exists");
       try {
         setLoading(true);
-        let val = data.tokenId.toString();
         await LazyFunction(
-          val,
+          tokenId,
           data.accountId,
           '0.001',
-          1,
+          transactionType,
           'https://bafybeiho2j43vulwhnjmfyvjafohl5prvcx24hr2sqvz7wliynnodmovru.ipfs.dweb.link/101.json',
           false,
           false,

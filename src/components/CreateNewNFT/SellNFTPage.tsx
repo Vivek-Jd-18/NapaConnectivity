@@ -29,11 +29,12 @@ import {
   // napaTokenContract, usdtTokenContract 
 } from '@/connectivity/contractObjects/contractObject1';
 import {
+  isApprovedForAll,
   // approve, buyNftToken, buyNftTokenWithEth, getLatestPrice, napaTokenAmount, 
   nftInfo, setSaleFromWallet
 } from '@/connectivity/callHelpers/callHelper1';
 import {
-  // marketPlace,
+  marketPlace,
   nftAddress
 } from '@/connectivity/addressHelpers/addressHelper';
 
@@ -127,7 +128,7 @@ export default function SellNFTPage({
   const handleCreateSnft = async () => {
     let id = "101"
     let contract = "0x20bf1a09c7c7211ead72de3d96bc129cd2bfe743"
-    const deployedWeb3 = await listNFT(id, 1, contract);
+    const deployedWeb3 = await listNFT(id, amount, contract);
 
     console.log(deployedWeb3, "web");
 
@@ -294,24 +295,32 @@ export default function SellNFTPage({
     const marketContract = await marketPlaceContract(signer);
     //set list from MarketPlace contract
     await setSaleFromWallet(marketContract, tknId, salePrice).then(async (res: any) => {
-      console.log(`You have approved your nft with id: ${tknId}, Wait for the Transaction 'Approval'... `);
+      console.log(`You are setting for sale to token id: ${tknId}, Wait for the Transaction 'Approval'... `);
       console.log(await res.wait(), "approve to market result");
     }).catch((e: any) => {
+      alert("Already in Marketplace");
       console.log(e, "Error");
     });
     const commanNFTCtr = await commanNFTContract(signer, nftAddress);
-    await commanNFTCtr.approve(nftAddress, tknId).then(async (res: any) => {
-      console.log(`You have approved your nft with id: ${tknId}, Wait for the Transaction 'Approval'... `);
-      console.log(await res.wait(), "approve to market result");
+    await commanNFTCtr.setApprovalForAll(marketPlace, true).then(async (res: any) => {
+      console.log(await res.wait(), "Approval response for SNFT");
     }).catch((e: any) => {
-      console.log(e, "Error");
+      console.log(e, "Error while approving SNFT")
     });
+    let approvalTwo: boolean = await isApprovedForAll(commanNFTCtr, address, marketPlace);
+    // const commanNFTCtr = await commanNFTContract(signer, nftAddress);
+    // await commanNFTCtr.approve(nftAddress, tknId).then(async (res: any) => {
+    //   console.log(`You have approved your nft with id: ${tknId}, Wait for the Transaction 'Approval'... `);
+    //   console.log(await res.wait(), "approve to market result");
+    // }).catch((e: any) => {
+    //   console.log(e, "Error");
+    // });
     try {
       //#2 NFT info
       const marketCtr = await marketPlaceContract(signer);
       const _nftInfoRes = await nftInfo(marketCtr, tknId);
       console.log("saleStatus", _nftInfoRes[2]);
-      flag = _nftInfoRes[2];
+      flag = _nftInfoRes[2] && approvalTwo;
     } catch (e) {
       console.log(e, "Error While checking the Approval");
       flag = false;
@@ -320,8 +329,7 @@ export default function SellNFTPage({
   }
 
   // case #2 to list other NFT (approve)
-  const allowMarketToSell = async (tknId: number | string, nftAddress: string): Promise<boolean> => {
-    console.log(tknId, nftAddress, "strike")
+  const allowMarketToSellOtherNft = async (tknId: number | string, nftAddress: string): Promise<boolean> => {
     let flag = false;
     console.log("you are giving approval to token id:", tknId, await signer, await address, await chainId.toString());
     const commanNFTCtr = await commanNFTContract(signer, nftAddress);
@@ -351,7 +359,7 @@ export default function SellNFTPage({
       if (nftAddress.toUpperCase() == nftAddress.toUpperCase()) {
         return await allowMarketToSellForSNFT(tknId, salePrice);
       } else {
-        return await allowMarketToSell(tknId, nftAddress);
+        return await allowMarketToSellOtherNft(tknId, nftAddress);
       }
     } catch (e) {
       console.log(e, "Error while Listing NFTs");
@@ -634,7 +642,7 @@ export default function SellNFTPage({
                     Update Listing
                   </a>
                 ) : (
-                  <button onClick={handleCreateSnft} className={styles.linkPrnt} style={{ backgroundColor: "transparent" }}>Complete Listing</button>
+                  <button onClick={handleCreateSnft} className={styles.linkPrnt} style={{ backgroundColor: "transparent" }}>Complete Listing1</button>
                   // <a onClick={handleCreateSnft} className={styles.linkPrnt}>
                   //   Complete Listing
                   // </a>
