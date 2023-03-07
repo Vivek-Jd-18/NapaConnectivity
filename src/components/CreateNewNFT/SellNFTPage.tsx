@@ -28,10 +28,12 @@ import { marketPlaceContract,
   // napaTokenContract, usdtTokenContract 
 } from '@/connectivity/contractObjects/contractObject1';
 import {
+  isApprovedForAll,
   // approve, buyNftToken, buyNftTokenWithEth, getLatestPrice, napaTokenAmount, 
   nftInfo, setSaleFromWallet
 } from '@/connectivity/callHelpers/callHelper1';
 import {
+  marketPlace,
   // marketPlace,
   nftAddress
 } from '@/connectivity/addressHelpers/addressHelper';
