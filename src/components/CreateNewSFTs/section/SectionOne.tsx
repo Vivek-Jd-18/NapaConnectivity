@@ -9,7 +9,9 @@ import { toast } from 'react-toastify';
 import { CustomToastWithLink } from '../../../components/CustomToast/CustomToast';
 import { DoneIcon, ErrorIcon } from '../../../components/assets';
 import { FadeLoader } from 'react-spinners';
-// import { LazyFunction } from '../../../connectivity/mainFunctions/Functions';
+// import {
+//   LazyFunction,
+// } from '../../../connectivity/mainFunctions/Functions';
 import {
   _setSaleFromWallet,
   _buyNftToken,
