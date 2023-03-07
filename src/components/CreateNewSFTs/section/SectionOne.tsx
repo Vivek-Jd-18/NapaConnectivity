@@ -22,6 +22,7 @@ import useWebThree from '@/hooks/useWebThree';
 import { marketPlaceContract, napaTokenContract, newNapaNftContract, usdtTokenContract } from '@/connectivity/contractObjects/contractObject1';
 import { marketPlace, nftAddress } from '@/connectivity/addressHelpers/addressHelper';
 import { approve, ethFee as ethFees, lazyMint, lazyMintEth, UsdtMintFee as _UsdtMintFee, NapaMintFee as _NapaMintFee, napaTokenAmount, nftInfo, getLatestPrice, buyNftToken, buyNftTokenWithEth } from '@/connectivity/callHelpers/callHelper1';
+import { decimals } from '@/connectivity/callHelpers/napaTokenCallHandlers';
 
 type SectionOneProps = {
   snftDetails: SnftResponse | null;
@@ -274,7 +275,7 @@ export default function SectionOne({
   };
 
   //3 buynft from market place
-  const _buyNftTokenFromMarket = async (transactionType: number, _tokenId: number | string) => {
+  const _buyNftTokenFromMarket = async (transactionType: number, _tokenId: number | string,amount:string|number) => {
     // const _tokenId: number = 88;
     console.log("you are buying token :", _tokenId);
     const isApprovedTkn = await doApprovalForToken(transactionType, _tokenId);
@@ -302,7 +303,7 @@ export default function SectionOne({
       console.log(valInEth, "valInEth");
       if (isApprovedTkn) {
         console.log("in to the ether put my stress right now");
-        await buyNftTokenWithEth(marketCtr, Number(transactionType), _tokenId, { value: valInEth.toString() }).then(async (res: any) => {
+        await buyNftTokenWithEth(marketCtr, Number(transactionType), _tokenId, { value: amount.toString() }).then(async (res: any) => {
           await res.wait();
           console.log(await res.wait(), "approve res");
         }).catch((e: any) => {
@@ -343,7 +344,7 @@ export default function SectionOne({
     const otherDecimals: number = 10 ** 10;
     const marketCtr: any = await marketPlaceContract(signer);
     const { salePrice } = await nftInfo(marketCtr, (toknId).toString());
-
+    console.log(salePrice.toString(),"mysale",toknId);
     if (transactionType == 0 || transactionType == 1) {
       const _napaTokenAmount = await napaTokenAmount(marketCtr);
       const calculatedAmount = await salePrice / await _napaTokenAmount;
@@ -365,6 +366,7 @@ export default function SectionOne({
 
     const tokenId = (data.tokenId).toString();
     const transactionType = 2;
+    const _amount = (Number(data.amount)*(10**18)).toString();
 
     console.log('changes appeared', signer, address, data);
     const NFTCtr = await newNapaNftContract(signer);
@@ -381,7 +383,7 @@ export default function SectionOne({
     if (isNFTAvailable) {
       let val = data.tokenId.toString();
       console.log("NFT exists", val);
-      _buyNftTokenFromMarket(transactionType, val);
+      _buyNftTokenFromMarket(transactionType, val,_amount);
     } else {
       console.log("NFT exists");
       try {
@@ -389,7 +391,7 @@ export default function SectionOne({
         await LazyFunction(
           tokenId,
           data.accountId,
-          '0.001',
+          _amount,
           transactionType,
           'https://bafybeiho2j43vulwhnjmfyvjafohl5prvcx24hr2sqvz7wliynnodmovru.ipfs.dweb.link/101.json',
           false,
