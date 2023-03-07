@@ -24,15 +24,18 @@ import {
   //  transferFrom
 } from '@/connectivity/callHelpers/commanNFTCallHandlers';
 import useWebThree from '@/hooks/useWebThree';
-import { marketPlaceContract, 
+import {
+  marketPlaceContract,
   // napaTokenContract, usdtTokenContract 
 } from '@/connectivity/contractObjects/contractObject1';
-import { 
+import {
   // approve, buyNftToken, buyNftTokenWithEth, getLatestPrice, napaTokenAmount, 
-  nftInfo, setSaleFromWallet } from '@/connectivity/callHelpers/callHelper1';
-import { 
+  nftInfo, setSaleFromWallet
+} from '@/connectivity/callHelpers/callHelper1';
+import {
   // marketPlace,
-   nftAddress } from '@/connectivity/addressHelpers/addressHelper';
+  nftAddress
+} from '@/connectivity/addressHelpers/addressHelper';
 
 type SellNFTPageProps = {
   mintDetails: MintPost | null;
@@ -122,7 +125,7 @@ export default function SellNFTPage({
   }, [snftDetails]);
 
   const handleCreateSnft = async () => {
-    let id = "104"
+    let id = "101"
     let contract = "0x20bf1a09c7c7211ead72de3d96bc129cd2bfe743"
     const deployedWeb3 = await listNFT(id, 1, contract);
 
