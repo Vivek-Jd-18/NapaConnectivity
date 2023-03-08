@@ -493,7 +493,7 @@ export default function SectionOne({
             </div>
             <div className={styles.CurrentBitBox}>
               <div className={styles.CurrentBitBoxInrr}>
-                <p>Current Bid</p>
+                <p>Current Price</p>
                 <div className={styles.imgAdnHH}>
                   <Image
                     src="/img/napa_ic.svg"
