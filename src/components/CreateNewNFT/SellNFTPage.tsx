@@ -559,7 +559,7 @@ export default function SellNFTPage({
                     <Input
                       value={amount}
                       type="number"
-                      placeholder="0.48"
+                      placeholder=""
                       label="Amount"
                       onChange={(e) => setAmount(e.target.value)}
                     />
