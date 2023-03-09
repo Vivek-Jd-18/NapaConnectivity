@@ -6,7 +6,8 @@
 export const marketPlace = "0x6DaBa1A83572576c2dfa4a53678Ac482262c6960";
 export const nftAddress = "0x20bf1A09C7C7211ead72dE3d96bC129CD2BFE743";
 export const NapaTokenAddress = "0x93178F8d876564b6C0307E1aDCcB8e46bA8E5D7c";
-export const UsdtTokenAddress = "0x136c2c5b26Bf8D3434a1b67887dB98fE5D28E946";
+// export const UsdtTokenAddress = "0x9E1abF10f53BB62cB2FDB28B76DEC5E50AF8C896";//newer
+export const UsdtTokenAddress = "0x136c2c5b26Bf8D3434a1b67887dB98fE5D28E946";//older
 
 export const originalNapatokenAddress = "0xE2D4E29BfAC30D91a5e5Dd9BF4492A4241AE2A1D"
 export const originalNapaStakingAddress = "0x94623B63dB0A47CcdD2021F117b9398DCc7FB7E5"
