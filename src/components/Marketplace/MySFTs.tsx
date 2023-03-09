@@ -77,7 +77,7 @@ export default function MySFTs(props: any) {
     try {
       const config = {
         method: 'get',
-        url: `https://deep-index.moralis.io/api/v2/${address}/nft?chain=goerli&format=decimal`,
+        url: `https://deep-index.moralis.io/api/v2/${"0x13c8c779899b5EA05236923203A2DbAbBC485AC0"}/nft?chain=goerli&format=decimal`,
         headers: {
           'X-API-Key':
             'D8Kfm2KtjFHVEpqvPmTVgaNLvY8TFEhrIBi8h71wjcTfFIdlmSKFlYJcEGATK8dr',
@@ -103,7 +103,7 @@ export default function MySFTs(props: any) {
             'onsold1'
           );
           if (nftAddress.toUpperCase() == contractAddress.toUpperCase()) {
-            console.log('inside if');
+            console.log('inside if',data.token_uri);
             let ff = await data.token_uri;
             let meta: any = await axios.get(ff);
             let item = {

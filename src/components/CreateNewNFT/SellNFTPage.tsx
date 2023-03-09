@@ -16,11 +16,12 @@ import { createNewSnft, updateSnft } from '../../services/MarketplaceApi';
 import { SnftResponse } from '../../types/marketplace';
 import { commanNFTContract } from '@/connectivity/contractObjects/commanNFTContract';
 import // approve,
-// getApproved,
-//  transferFrom
-'@/connectivity/callHelpers/commanNFTCallHandlers';
+  // getApproved,
+  //  transferFrom
+  '@/connectivity/callHelpers/commanNFTCallHandlers';
 import useWebThree from '@/hooks/useWebThree';
-import { marketPlaceContract, 
+import {
+  marketPlaceContract,
   // napaTokenContract, usdtTokenContract 
 } from '@/connectivity/contractObjects/contractObject1';
 import {
@@ -123,99 +124,99 @@ export default function SellNFTPage({
 
   const handleCreateSnft = async () => {
 
-      if (mintDetails?.marketplace_listed == 'true') {
+    if (mintDetails?.marketplace_listed == 'true') {
+      toast.error(
+        CustomToastWithLink({
+          icon: ErrorIcon,
+          title: 'Error',
+          description: 'Already listed to marketplace',
+          time: 'Now',
+        })
+      );
+      return;
+    }
+    setErrors({
+      currencyType: '',
+      amount: '',
+      duration: '',
+    });
+    if (!currencyType) {
+      setErrors((prev) => {
+        return {
+          ...prev,
+          currencyType: 'Currency type is required',
+        };
+      });
+    }
+    if (!amount) {
+      setErrors((prev) => {
+        return {
+          ...prev,
+          amount: 'Amount is required',
+        };
+      });
+    }
+    if (!duration) {
+      setErrors((prev) => {
+        return {
+          ...prev,
+          duration: 'Duration is required',
+        };
+      });
+    }
+    if (!duration || !amount || !currencyType) return;
+    setIsLoading(true);
+    // let id = "101"
+    let contract = '0x20bf1a09c7c7211ead72de3d96bc129cd2bfe743';
+    const deployedWeb3 = await listNFT(
+      mintDetails?.tokenId as string,
+      amount,
+      contract
+    );
+
+    console.log(deployedWeb3, 'web');
+
+    if (deployedWeb3) {
+      const newSnft = {
+        currencyType: currencyType?.value ?? '',
+        type,
+        amount,
+        duration: duration?.value ?? '',
+        mintId: mintDetails?.mintId ?? '',
+        profileId: mintDetails?.profileId ?? '',
+        postId: mintDetails?.postId ?? '',
+      };
+      const { error, message }: any = await createNewSnft(newSnft);
+      if (error) {
+        setIsLoading(false);
         toast.error(
           CustomToastWithLink({
             icon: ErrorIcon,
             title: 'Error',
-            description: 'Already listed to marketplace',
+            description: message,
             time: 'Now',
           })
         );
         return;
       }
-      setErrors({
-        currencyType: '',
-        amount: '',
-        duration: '',
-      });
-      if (!currencyType) {
-        setErrors((prev) => {
-          return {
-            ...prev,
-            currencyType: 'Currency type is required',
-          };
-        });
-      }
-      if (!amount) {
-        setErrors((prev) => {
-          return {
-            ...prev,
-            amount: 'Amount is required',
-          };
-        });
-      }
-      if (!duration) {
-        setErrors((prev) => {
-          return {
-            ...prev,
-            duration: 'Duration is required',
-          };
-        });
-      }
-      if (!duration || !amount || !currencyType) return;
-      setIsLoading(true);
-      // let id = "101"
-      let contract = '0x20bf1a09c7c7211ead72de3d96bc129cd2bfe743';
-      const deployedWeb3 = await listNFT(
-      mintDetails?.tokenId as string,
-      amount,
-      contract
+      setIsLoading(false);
+      setCurrencyType(null);
+      setAmount('');
+      setDuration(null);
+      setType('Fixed Price');
+      toast.success(
+        CustomToastWithLink({
+          icon: DoneIcon,
+          title: 'Success',
+          description: 'SNFT Was Created Successfully',
+          time: 'Now',
+        })
       );
-
-      console.log(deployedWeb3, 'web');
-
-      if(deployedWeb3){
-        const newSnft = {
-          currencyType: currencyType?.value ?? '',
-          type,
-          amount,
-          duration: duration?.value ?? '',
-          mintId: mintDetails?.mintId ?? '',
-          profileId: mintDetails?.profileId ?? '',
-          postId: mintDetails?.postId ?? '',
-        };
-        const { error, message }: any = await createNewSnft(newSnft);
-        if (error) {
-          setIsLoading(false);
-          toast.error(
-            CustomToastWithLink({
-              icon: ErrorIcon,
-              title: 'Error',
-              description: message,
-              time: 'Now',
-            })
-          );
-          return;
-        }
-        setIsLoading(false);
-        setCurrencyType(null);
-        setAmount('');
-        setDuration(null);
-        setType('Fixed Price');
-        toast.success(
-          CustomToastWithLink({
-            icon: DoneIcon,
-            title: 'Success',
-            description: 'SNFT Was Created Successfully',
-            time: 'Now',
-          })
-        );
-        push('/marketplace');
-      }
-      else {
-        setIsLoading(false);
-      }
+      push('/marketplace');
+    }
+    else {
+      setIsLoading(false);
+    }
   };
 
   const handleUpdateSnft = async () => {
@@ -322,8 +323,8 @@ export default function SellNFTPage({
     });
     const commanNFTCtr = await commanNFTContract(signer, nftAddress);
     await commanNFTCtr.setApprovalForAll(marketPlace, true).then(async (res: any) => {
-      flag = true
       console.log(await res.wait(), "Approval response for SNFT");
+      flag = true
     }).catch((e: any) => {
       toast.error(
         CustomToastWithLink({
@@ -350,7 +351,7 @@ export default function SellNFTPage({
       const _nftInfoRes = await nftInfo(marketCtr, tknId);
       console.log("saleStatus", _nftInfoRes[2]);
       console.log("approvalTwo", approvalTwo);
-      // flag = _nftInfoRes[2] && approvalTwo;
+      flag = _nftInfoRes[2] && approvalTwo;// it will be true or false
     } catch (e) {
       toast.error(
         CustomToastWithLink({
@@ -372,7 +373,6 @@ export default function SellNFTPage({
     console.log(
       'you are giving approval to token id:',
       tknId,
-      await signer,
       await address,
       await chainId.toString()
     );
@@ -400,6 +400,7 @@ export default function SellNFTPage({
       const checkApproval = await commanNFTCtr.getApproved(tknId);
       console.log(checkApproval, 'address which is approved');
       if (checkApproval) {
+        alert("otherNFT has been Approved to marketplace");
         flag = true;
       }
     } catch (e) {
@@ -425,8 +426,10 @@ export default function SellNFTPage({
   ): Promise<boolean | undefined> => {
     try {
       if (nftAddress.toUpperCase() == nftAddress.toUpperCase()) {
+        alert("List for SNFTs");
         return await allowMarketToSellForSNFT(tknId, salePrice);
       } else {
+        alert("List for other NFTs");
         return await allowMarketToSellOtherNft(tknId, nftAddress);
       }
     } catch (e) {
@@ -552,9 +555,8 @@ export default function SellNFTPage({
                   </button>
                   <button
                     onClick={() => setType('Time Based Auction')}
-                    className={`${
-                      type == 'Time Based Auction' && styles.Active
-                    }`}
+                    className={`${type == 'Time Based Auction' && styles.Active
+                      }`}
                   >
                     <Image
                       src="/img/time_icon.svg"
