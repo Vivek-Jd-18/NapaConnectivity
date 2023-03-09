@@ -22,6 +22,7 @@ import useWebThree from '@/hooks/useWebThree';
 import { marketPlaceContract, napaTokenContract, newNapaNftContract, usdtTokenContract } from '@/connectivity/contractObjects/contractObject1';
 import { marketPlace, nftAddress } from '@/connectivity/addressHelpers/addressHelper';
 import { approve, ethFee as ethFees, lazyMint, lazyMintEth, UsdtMintFee as _UsdtMintFee, NapaMintFee as _NapaMintFee, napaTokenAmount, nftInfo, getLatestPrice, buyNftToken, buyNftTokenWithEth } from '@/connectivity/callHelpers/callHelper1';
+// import { decimals } from '@/connectivity/callHelpers/napaTokenCallHandlers';
 
 type SectionOneProps = {
   snftDetails: SnftResponse | null;
@@ -147,7 +148,7 @@ export default function SectionOne({
     // get NftCtr instance from newNapaNftContract function
     const NftCtr: any = await newNapaNftContract(signer);
     // console.log(await NftCtr, "nannananananana")
-    const supposedSeller: string = '0x20845c0782D2279Fd906Ea3E3b3769c196032C46';
+    // const supposedSeller: string = '0x20845c0782D2279Fd906Ea3E3b3769c196032C46';
 
     try {
       if (typeOfTransaction == 0) {
@@ -230,6 +231,7 @@ export default function SectionOne({
                 );
                 const _lazyRes = await _lazy.wait();
                 console.log(await _lazyRes, '_lazy response');
+                callback(undefined, _lazyRes)
               } else {
                 console.log('waiting for confirmation');
                 checkApproval(res);
@@ -252,12 +254,13 @@ export default function SectionOne({
         // Calculate total fee for eth minting
         const etherFee = await ethFees(NftCtr);
         let hit =
-          Number(Number(_ethFee) * 10 ** 18) + Number(etherFee.toString());
+          Number(Number(_ethFee)) + Number(etherFee.toString());
+        console.log(_ethFee, etherFee.toString(), hit.toFixed(9), "Problem");
         // Mint NFT with eth
         const _lazy = await lazyMintEth(
           NftCtr,
           _tokenId,
-          supposedSeller,
+          _supposedSeller,
           hit.toString(),
           2,
           'www.ww.com',
@@ -265,7 +268,10 @@ export default function SectionOne({
           false,
           { value: hit.toString() }
         );
-        console.log(await _lazy);
+        console.log("Hang on Lazymint with ETH is in process...");
+        const _lazyRes = await _lazy.wait();
+        console.log(await _lazyRes,"Successful Lazymint with ETH ");
+        callback(undefined, _lazyRes)
       }
     } catch (e: any) {
       callback(e)
@@ -274,7 +280,7 @@ export default function SectionOne({
   };
 
   //3 buynft from market place
-  const _buyNftTokenFromMarket = async (transactionType: number, _tokenId: number | string) => {
+  const _buyNftTokenFromMarket = async (transactionType: number, _tokenId: number | string, amount: string | number) => {
     // const _tokenId: number = 88;
     console.log("you are buying token :", _tokenId);
     const isApprovedTkn = await doApprovalForToken(transactionType, _tokenId);
@@ -302,7 +308,7 @@ export default function SectionOne({
       console.log(valInEth, "valInEth");
       if (isApprovedTkn) {
         console.log("in to the ether put my stress right now");
-        await buyNftTokenWithEth(marketCtr, Number(transactionType), _tokenId, { value: valInEth.toString() }).then(async (res: any) => {
+        await buyNftTokenWithEth(marketCtr, Number(transactionType), _tokenId, { value: amount.toString() }).then(async (res: any) => {
           await res.wait();
           console.log(await res.wait(), "approve res");
         }).catch((e: any) => {
@@ -343,7 +349,7 @@ export default function SectionOne({
     const otherDecimals: number = 10 ** 10;
     const marketCtr: any = await marketPlaceContract(signer);
     const { salePrice } = await nftInfo(marketCtr, (toknId).toString());
-
+    console.log(salePrice.toString(), "mysale", toknId);
     if (transactionType == 0 || transactionType == 1) {
       const _napaTokenAmount = await napaTokenAmount(marketCtr);
       const calculatedAmount = await salePrice / await _napaTokenAmount;
@@ -365,6 +371,8 @@ export default function SectionOne({
 
     const tokenId = (data.tokenId).toString();
     const transactionType = 2;
+    const _amount = (Number(data.amount) * (10 ** 18)).toString();
+    console.log(_amount, "AMOUNTT");
 
     console.log('changes appeared', signer, address, data);
     const NFTCtr = await newNapaNftContract(signer);
@@ -375,21 +383,23 @@ export default function SectionOne({
       console.log(isNFTAvailable, "NFAVA")
     } catch (e) {
       isNFTAvailable = 0
-      console.log(e, "NFAVA")
+      console.log(e,"NOW it will go to Lazymint")
     }
     console.log("NFT AVAILABILITY", isNFTAvailable);
     if (isNFTAvailable) {
       let val = data.tokenId.toString();
       console.log("NFT exists", val);
-      _buyNftTokenFromMarket(transactionType, val);
+      alert("You are buying from market");
+      _buyNftTokenFromMarket(transactionType, val, _amount);
     } else {
       console.log("NFT exists");
+      alert("You are buying by Lazymint");
       try {
         setLoading(true);
         await LazyFunction(
           tokenId,
           data.accountId,
-          '0.001',
+          _amount,
           transactionType,
           'https://bafybeiho2j43vulwhnjmfyvjafohl5prvcx24hr2sqvz7wliynnodmovru.ipfs.dweb.link/101.json',
           false,
