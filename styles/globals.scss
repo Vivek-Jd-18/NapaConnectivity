@@ -946,26 +946,28 @@ input::-webkit-inner-spin-button {
     color: #ffffff;
   }
   .cntrslct__menu {
-    background-color: rgb(125 125 125 / 40%);
+    border: 1px solid rgb(125 125 125 / 40%);
+    // border-top: none;
+    background-color: black;
     backdrop-filter: blur(50px);
     padding: 0;
     min-width: 150px;
-    border-radius: 5px;
+    border-radius: 1px;
     margin: 0;
     z-index: 2;
     .cntrslct__option--is-selected {
       color: #16e6ef !important;
-      background: rgb(67 93 88) !important;
-      border-radius: 5px;
+      background: rgb(125 125 125 / 40%) !important;
+      border-radius: 1px;
     }
   }
   .cntrslct__option {
     background: transparent;
     color: #fff;
-    border-radius: 5px;
+    border-radius: 1px;
     &:hover {
       color: #16e6ef;
-      background: rgb(67 93 88);
+      background: rgb(125 125 125 / 40%);
     }
   }
 

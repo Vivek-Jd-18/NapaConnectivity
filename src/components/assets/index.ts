@@ -73,3 +73,5 @@ export const NapaWhitebgIcon = '/assets/images/napa_whitebg_icon.png';
 export const NapaTokenIcon = '/assets/images/napa-token.png';
 export const AvatarIcon = '/assets/images/avatar-icon.svg';
 export const ReplyExit = '/assets/images/reply-exit.svg';
+export const NapaBlueBgIcon = '/assets/images/napa_bluebg_icon.png';
+export const UsdtYellowBgIcon = '/assets/images/tether_icon.png';

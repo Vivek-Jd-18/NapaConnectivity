@@ -10,7 +10,7 @@ import { Dayoptions } from '../../constants/sell-nft.constants';
 import { MintPost } from '../../types/mint';
 import { FadeLoader } from 'react-spinners';
 import { toast } from 'react-toastify';
-import { DoneIcon, ErrorIcon, EthereumBlackIcon, NapaWhitebgIcon, UsdtIcon } from '../assets';
+import { DoneIcon, ErrorIcon, EtheriumIcon, NapaBlueBgIcon, UsdtYellowBgIcon } from '../assets';
 import { CustomToastWithLink } from '../CustomToast/CustomToast';
 import { createNewSnft, updateSnft } from '../../services/MarketplaceApi';
 import { SnftResponse } from '../../types/marketplace';
@@ -51,7 +51,7 @@ export default function SellNFTPage({
       value: '0',
       label: (
         <div className="cstm_napa_slct">
-          <Image src={NapaWhitebgIcon} alt="" width="20px" height="20px" />
+          <Image src={NapaBlueBgIcon} alt="" width="20px" height="20px" />
           NAPA
         </div>
       ),
@@ -60,7 +60,7 @@ export default function SellNFTPage({
       value: '1',
       label: (
         <div className="cstm_napa_slct">
-          <Image src={UsdtIcon} alt="" width="20px" height="20px" />
+          <Image src={UsdtYellowBgIcon} alt="" width="20px" height="20px" />
           USDT
         </div>
       ),
@@ -69,7 +69,7 @@ export default function SellNFTPage({
       value: '2',
       label: (
         <div className="cstm_napa_slct">
-          <Image src={EthereumBlackIcon} alt="" width="20px" height="20px" />
+          <Image src={EtheriumIcon} alt="" width="20px" height="20px" />
           ETH
         </div>
       ),
