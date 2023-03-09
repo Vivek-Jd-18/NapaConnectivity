@@ -554,7 +554,7 @@ export default function SectionOne({
                   >
                     {snftDetails?.listed == '2'
                       ? 'Sold'
-                      : `Buy Now for ${snftDetails?.amount} NAPA`}
+                      : `Buy Now ${snftDetails?.amount} NAPA`}
                   </a>
                 )}
                 <div className={`${styles.RowLabel} ${styles.RowSeven}`}>
