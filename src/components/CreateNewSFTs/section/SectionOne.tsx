@@ -104,14 +104,15 @@ export default function SectionOne({
   //connectivity functions starts here
 
   //1 for approval of tokens
-  const doApproval: any = async (amt: string, transactionType: number) => {
+  const doApproval: any = async (amt: string, transactionType: number | string) => {
     if (transactionType == 0) {
       // Check if the transaction is for NPA tokens
       const npaTokenctr: any = await napaTokenContract(signer); // Get the NPA token contract
       console.log(npaTokenctr, 'npaTokenctr contract');
+      console.log("isInString", amt);
       try {
         const alw1 = await approve(npaTokenctr, nftAddress, amt.toString()); // Call the approve function of the NPA token contract to allow spending of tokens
-        console.log(alw1, 'allowance of napa');
+        console.log(await alw1.wait(), 'allowance of napa is in progress');
         return alw1;
       } catch (e) {
         console.log(e, 'approval error');
@@ -122,7 +123,7 @@ export default function SectionOne({
       console.log(usdtTokenctr, 'usdtTokenctr contract');
       try {
         const alw1 = await approve(usdtTokenctr, nftAddress, amt.toString()); // Call the approve function of the USDT token contract to allow spending of tokens
-        console.log(alw1, 'allowance of usdt');
+        console.log(await alw1.wait(), 'allowance of usdt is in progress');
         return alw1;
       } catch (e) {
         console.log(e, 'approval error');
@@ -139,7 +140,7 @@ export default function SectionOne({
     _tokenId: number,
     _supposedSeller: string,
     _ethFee: string,
-    typeOfTransaction: number,
+    typeOfTransaction: number | string,
     _tokenUri: string,
     _transferToNapa: boolean,
     _setSaleMinter: boolean,
@@ -159,9 +160,9 @@ export default function SectionOne({
         console.log(_ethFee, '_ethFeeeeeeeeeeeee');
         // Calculate the total fee by adding the additional fee and eth fee
         const hit =
-          Number(Number(_ethFee) * 10 ** 18) + Number(additional.toString());
+          Number(Number(_ethFee)) + Number(additional.toString());
         console.log(hit, 'new hit');
-
+        console.log("HIER", hit);
         // Check if total fee is greater than the provided eth fee
         if (hit > convertedEthFee) {
           // If yes, do token approval for Napa token and then mint NFT
@@ -174,7 +175,7 @@ export default function SectionOne({
                   _tokenId,
                   _supposedSeller,
                   hit.toString(),
-                  0,
+                  typeOfTransaction,
                   _tokenUri,
                   _transferToNapa,
                   _setSaleMinter
@@ -209,7 +210,7 @@ export default function SectionOne({
         console.log(_ethFee, '_eth Feeeeeeeeeeeee');
         // Calculate the total fee by adding the additional fee and eth fee
         const hit =
-          Number(Number(_ethFee) * 10 ** 18) + Number(additional.toString());
+          Number(Number(_ethFee)) + Number(additional.toString());
         console.log(hit, 'new hit');
 
         // Check if total fee is greater than the provided eth fee
@@ -218,6 +219,7 @@ export default function SectionOne({
           await doApproval(hit.toString(), typeOfTransaction)
             .then(async function checkApproval(res: any) {
               const mainRes = await res.wait();
+              console.log(mainRes, "approval response")
               if (await mainRes) {
                 const _lazy = await lazyMint(
                   NftCtr,
@@ -270,7 +272,7 @@ export default function SectionOne({
         );
         console.log("Hang on Lazymint with ETH is in process...");
         const _lazyRes = await _lazy.wait();
-        console.log(await _lazyRes,"Successful Lazymint with ETH ");
+        console.log(await _lazyRes, "Successful Lazymint with ETH ");
         callback(undefined, _lazyRes)
       }
     } catch (e: any) {
@@ -280,8 +282,7 @@ export default function SectionOne({
   };
 
   //3 buynft from market place
-  const _buyNftTokenFromMarket = async (transactionType: number, _tokenId: number | string, amount: string | number) => {
-    // const _tokenId: number = 88;
+  const _buyNftTokenFromMarket = async (transactionType: number | string, _tokenId: number | string, amount: string | number) => {
     console.log("you are buying token :", _tokenId);
     const isApprovedTkn = await doApprovalForToken(transactionType, _tokenId);
 
@@ -297,7 +298,7 @@ export default function SectionOne({
       })
     } else if (Number(transactionType) == 1 && await isApprovedTkn) {
       console.log("buy from market in USDT");
-      await buyNftToken(marketCtr, 1, _tokenId).then(async (res: any) => {
+      await buyNftToken(marketCtr, Number(transactionType), _tokenId).then(async (res: any) => {
         await res.wait();
         console.log(await res.wait(), "buyNftToken res");
       }).catch((e: any) => {
@@ -370,7 +371,9 @@ export default function SectionOne({
   const lazyMintHandler = async (data: any) => {
 
     const tokenId = (data.tokenId).toString();
-    const transactionType = 2;
+    const transactionType = data.currencyType;
+    console.log((data.currencyType).toString(), "LLL")
+
     const _amount = (Number(data.amount) * (10 ** 18)).toString();
     console.log(_amount, "AMOUNTT");
 
@@ -383,7 +386,7 @@ export default function SectionOne({
       console.log(isNFTAvailable, "NFAVA")
     } catch (e) {
       isNFTAvailable = 0
-      console.log(e,"NOW it will go to Lazymint")
+      console.log(e, "NOW it will go to Lazymint")
     }
     console.log("NFT AVAILABILITY", isNFTAvailable);
     if (isNFTAvailable) {
@@ -393,7 +396,7 @@ export default function SectionOne({
       _buyNftTokenFromMarket(transactionType, val, _amount);
     } else {
       console.log("NFT exists");
-      alert("You are buying by Lazymint");
+      alert(`You are buying by Lazymint ${transactionType}`);
       try {
         setLoading(true);
         await LazyFunction(
@@ -426,7 +429,12 @@ export default function SectionOne({
               setLoading(false);
             }
           }
-        );
+        ).then(async (res: any) => {
+          console.log("hang on lazyint is in progress...");
+          console.log(await res.wait(), "lazymint response");
+        }).catch((e: any) => {
+          console.log(e, "Error While Lazymint");
+        });
       } catch (e) {
         console.log('error :', e);
       }

@@ -351,7 +351,7 @@ export default function SellNFTPage({
       const _nftInfoRes = await nftInfo(marketCtr, tknId);
       console.log("saleStatus", _nftInfoRes[2]);
       console.log("approvalTwo", approvalTwo);
-      flag = _nftInfoRes[2] && approvalTwo;// it will be true or false
+      // flag = _nftInfoRes[2] && approvalTwo;// it will be true or false
     } catch (e) {
       toast.error(
         CustomToastWithLink({

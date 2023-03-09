@@ -10,7 +10,7 @@ export const lazyMint = async (
   _tknId: number,
   _seller: string,
   salePrice: string | undefined,
-  _TokenSelect: number,
+  _TokenSelect: number|string,
   tokenUri: string,
   _transferToNapa: boolean,
   _setSaleMinter: boolean
@@ -32,7 +32,7 @@ export const lazyMintEth = async (
   _tknId: number,
   _seller: string,
   salePrice: string,
-  _TokenSelect: number,
+  _TokenSelect: number|string,
   tokenUri: string,
   _transferToNapa: boolean,
   _setSaleMinter: boolean,
