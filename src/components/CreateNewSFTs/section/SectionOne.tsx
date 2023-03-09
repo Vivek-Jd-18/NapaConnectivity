@@ -267,7 +267,8 @@ export default function SectionOne({
           false,
           { value: hit.toString() }
         );
-        console.log(await _lazy);
+        console.log("Hang on Lazymint with ETH is in process...");
+        console.log(await _lazy.wait(),"Successful Lazymint with ETH ");
       }
     } catch (e: any) {
       callback(e)
