@@ -306,7 +306,7 @@ export default function SellNFTPage({
     );
     const marketContract = await marketPlaceContract(signer);
     //set list from MarketPlace contract
-    await setSaleFromWallet(marketContract, tknId.toString(), salePrice).then(async (res: any) => {
+    await setSaleFromWallet(marketContract, tknId, salePrice.toString()).then(async (res: any) => {
       console.log(`You are setting for sale to token id: ${tknId}, Wait for the Transaction 'Approval'... `);
       console.log(await res.wait(), "approve to market result");
     }).catch((e: any) => {
