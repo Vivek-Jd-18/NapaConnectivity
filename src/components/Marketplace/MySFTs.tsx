@@ -21,7 +21,7 @@ import useWebThree from '@/hooks/useWebThree';
 
 export default function MySFTs(props: any) {
   const { address, balance, chainId, signer } = useWebThree();
-  console.log(address, balance, chainId, signer);
+  console.log(address, balance, chainId, signer, "All data");
   const options = [
     { value: 'chocolate', label: 'Chocolate' },
     { value: 'strawberry', label: 'Strawberry' },
@@ -44,7 +44,17 @@ export default function MySFTs(props: any) {
   ];
   const [active, setActive] = React.useState(false);
 
-  const [nfts, setNfts] = useState<any[]>([]);
+  const [nfts, setNfts] = useState<any[]>([{
+    tokenId: "loading..",
+    shortContractAddress: "loading..",
+    contractAddress: "loading..",
+    id: "loading..",
+    name: "loading..",
+    description: "loading..",
+    attributes: "loading..",
+    image: "loading..",
+    onSold: "loading..",
+  }]);
   const { profileId } = useProfile();
 
   const handleClick = () => {
@@ -73,11 +83,13 @@ export default function MySFTs(props: any) {
 
   // fetch nfts starts here
   const loadNFTs: () => Promise<object[]> = async () => {
+    let newItems: any = [];
+    console.log("inside Lead")
     let dt: any = [];
     try {
       const config = {
         method: 'get',
-        url: `https://deep-index.moralis.io/api/v2/${"0x13c8c779899b5EA05236923203A2DbAbBC485AC0"}/nft?chain=goerli&format=decimal`,
+        url: `https://deep-index.moralis.io/api/v2/${address}/nft?chain=goerli&format=decimal`,
         headers: {
           'X-API-Key':
             'D8Kfm2KtjFHVEpqvPmTVgaNLvY8TFEhrIBi8h71wjcTfFIdlmSKFlYJcEGATK8dr',
@@ -85,7 +97,6 @@ export default function MySFTs(props: any) {
       };
       let res = await axios(config);
       console.log(res, 'SNFTS');
-      let newItems: any = [];
       await Promise.all(
         res.data.result.map(async (data: any) => {
           let splitted =
@@ -103,9 +114,10 @@ export default function MySFTs(props: any) {
             'onsold1'
           );
           if (nftAddress.toUpperCase() == contractAddress.toUpperCase()) {
-            console.log('inside if',data.token_uri);
+            console.log('inside if', data.token_uri);
             let ff = await data.token_uri;
             let meta: any = await axios.get(ff);
+            console.log(meta, "MMM");
             let item = {
               tokenId: await data.token_id,
               shortContractAddress: splitted,
@@ -117,7 +129,9 @@ export default function MySFTs(props: any) {
               image: await meta.data.image,
               onSold: isOnSold,
             };
+            console.log(item, "III", newItems)
             newItems.push(item);
+            console.log(newItems, "AAA");
           } else {
             console.log(
               data.token_address,
@@ -126,15 +140,17 @@ export default function MySFTs(props: any) {
           }
         })
       );
-      setNfts(newItems);
+      console.log(newItems, "all Items");
     } catch (e) {
       console.log(e);
     }
+    setNfts(newItems);
     return dt;
   };
 
   useEffect(() => {
     if (profileId) {
+      console.log(nfts, "AAA")
       loadNFTs();
     }
   }, [profileId]);
