@@ -22,7 +22,7 @@ import useWebThree from '@/hooks/useWebThree';
 import { marketPlaceContract, napaTokenContract, newNapaNftContract, usdtTokenContract } from '@/connectivity/contractObjects/contractObject1';
 import { marketPlace, nftAddress } from '@/connectivity/addressHelpers/addressHelper';
 import { approve, ethFee as ethFees, lazyMint, lazyMintEth, UsdtMintFee as _UsdtMintFee, NapaMintFee as _NapaMintFee, napaTokenAmount, nftInfo, getLatestPrice, buyNftToken, buyNftTokenWithEth } from '@/connectivity/callHelpers/callHelper1';
-import { decimals } from '@/connectivity/callHelpers/napaTokenCallHandlers';
+// import { decimals } from '@/connectivity/callHelpers/napaTokenCallHandlers';
 
 type SectionOneProps = {
   snftDetails: SnftResponse | null;
@@ -231,6 +231,7 @@ export default function SectionOne({
                 );
                 const _lazyRes = await _lazy.wait();
                 console.log(await _lazyRes, '_lazy response');
+                callback(undefined, _lazyRes)
               } else {
                 console.log('waiting for confirmation');
                 checkApproval(res);
@@ -268,7 +269,9 @@ export default function SectionOne({
           { value: hit.toString() }
         );
         console.log("Hang on Lazymint with ETH is in process...");
-        console.log(await _lazy.wait(),"Successful Lazymint with ETH ");
+        const _lazyRes = await _lazy.wait();
+        console.log(await _lazyRes,"Successful Lazymint with ETH ");
+        callback(undefined, _lazyRes)
       }
     } catch (e: any) {
       callback(e)
