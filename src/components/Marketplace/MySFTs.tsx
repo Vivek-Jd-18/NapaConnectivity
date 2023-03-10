@@ -10,7 +10,7 @@ import Link from 'next/link';
 
 import { commanNFTContract } from '@/connectivity/contractObjects/commanNFTContract';
 import {
-  approve,
+  // approve,
   getApproved,
   //  transferFrom
 } from '@/connectivity/callHelpers/commanNFTCallHandlers';
@@ -176,20 +176,20 @@ export default function MySFTs(props: any) {
   };
 
   // user will allow his Other NFTs by approving to MarketPlace Contract (LISTING)
-  const allowMarketToSell = async (tknId: number, nftAddress: string) => {
-    console.log('you are giving approval to token id:', tknId);
-    const commanNFTCtr = await commanNFTContract(signer, nftAddress);
-    await approve(commanNFTCtr, nftAddress, tknId)
-      .then(async (res) => {
-        console.log(
-          `You have approved your nft with id: ${tknId}, Wait for the Transaction 'Approval'... `
-        );
-        console.log(await res.wait());
-      })
-      .catch((e: any) => {
-        console.log(e, 'Error');
-      });
-  };
+  // const allowMarketToSell = async (tknId: number, nftAddress: string) => {
+  //   console.log('you are giving approval to token id:', tknId);
+  //   const commanNFTCtr = await commanNFTContract(signer, nftAddress);
+  //   await approve(commanNFTCtr, nftAddress, tknId)
+  //     .then(async (res) => {
+  //       console.log(
+  //         `You have approved your nft with id: ${tknId}, Wait for the Transaction 'Approval'... `
+  //       );
+  //       console.log(await res.wait());
+  //     })
+  //     .catch((e: any) => {
+  //       console.log(e, 'Error');
+  //     });
+  // };
 
   // users NFTs will be sold by MarketPlace Contract only if allowed(NFT BUY FROM MarketPlace)
   // const _transferFrom = async () => {
@@ -599,98 +599,62 @@ export default function MySFTs(props: any) {
       </div> */}
       <div className={styles.scrollPernt}>
         <div className={styles.CustomGridContainer}>
-          {nfts.map((data: any) => {
+          {nfts.map((data: any, index) => {
             return (
-              <div className={styles.CustomGrid} key={data.id}>
-                <div className={styles.TipsTulsOverlay}>
-                  <div className={styles.boxinnrcont}>
-                    <Link href="#">
-                      <a href="#" className={`${styles.apernt} hovereffect`}>
-                        {/* <Image
-                            src={data.image}
-                            height="372px"
-                            width="282px"
-                            alt=""
-                            className="evmtimg"
-                          /> */}
-                        <img
-                          src={data.image}
-                          height="322px"
-                          width="242px"
-                          alt=""
-                          className="evmtimg"
-                        />
-                        {/* <div className={styles.upCont}>
-                                              <Image
-                                                  src="/img/feed_small_img06.png"
-                                                  height="40px"
-                                                  width="40px"
-                                                  alt=""
-                                                  className=""
-                                              />
-                                              <p>@CatherinePatton</p>
-                                          </div> */}
-                        <div className={styles.downCont}>
-                          <h3>{data.tokenId}</h3>
-                          <h3>{data.shortContractAddress}</h3>
-                          {data.onSold ? (
-                            <span
-                              style={{
-                                height: '25px',
-                                width: '25px',
-                                backgroundColor: 'green',
-                                borderRadius: '50%',
-                                display: 'inline-block',
-                              }}
-                            ></span>
-                          ) : (
-                            <span
-                              style={{
-                                height: '25px',
-                                width: '25px',
-                                backgroundColor: 'red',
-                                borderRadius: '50%',
-                                display: 'inline-block',
-                              }}
-                            ></span>
-                          )}
-                          <h3>{data.name}</h3>
-                          <div className={styles.flexPernt}>
-                            <button
-                              onClick={() =>
-                                allowMarketToSell(
-                                  data.tokenId,
-                                  data.contractAddress
-                                )
-                              }
-                              className="btn btn-primary"
-                            >
-                              List To Market
-                            </button>
-                            <div className={styles.currentBit}>
-                              <h5>Current Bid</h5>
-                              <div className={styles.txtimgFlex}>
-                                <Image
-                                  src="/img/etherium_ic.svg"
-                                  height="24px"
-                                  width="24px"
-                                  alt=""
-                                  className=""
-                                />
-                                <p>0.45 ETH</p>
-                              </div>
-                            </div>
-                            <div className={styles.endingIn}>
-                              <p>Ending In</p>
-                              <h3>1h 26 min</h3>
-                            </div>
+              <div key={index} className={styles.CustomGrid}>
+              <div
+                // onClick={() => push(`snft-details?id=${snft.snftId}`)}
+                className={styles.TipsTulsOverlay}
+                style={{overflow:'hidden'}}
+              >
+                <div className={styles.boxinnrcont}>
+                  {/* <Link href=""> */}
+                  <a href="" className={`${styles.apernt} hovereffect`}>
+                    <img
+                      src={`${data.image}`}
+                      height="372px"
+                      width="282px"
+                      alt=""
+                      className="evmtimg"
+                    />
+                    <div className={styles.upCont}>
+                      <img
+                        style={{ borderRadius: '50px' }}
+                        src={`${data.image}`}
+                        height="40px"
+                        width="40px"
+                        alt=""
+                        className=""
+                      />
+                      <p>@{data.name}</p>
+                    </div>
+                    <div className={styles.downCont}>
+                      <h3>{data.description}</h3>
+                      <div className={styles.flexPernt}>
+                        <div className={styles.currentBit}>
+                          <h5>Current Bid</h5>
+                          <div className={styles.txtimgFlex}>
+                            <Image
+                              src="/img/etherium_ic.svg"
+                              height="24px"
+                              width="24px"
+                              alt=""
+                              className=""
+                            />
+                            <p>{data.amount}</p>
                           </div>
                         </div>
-                      </a>
-                    </Link>
-                  </div>
+                        <div className={styles.endingIn}>
+                          <p>Ending In</p>
+                          <h3>1h 23min</h3>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  {/* </Link> */}
                 </div>
               </div>
+            </div>
             );
           })}
         </div>

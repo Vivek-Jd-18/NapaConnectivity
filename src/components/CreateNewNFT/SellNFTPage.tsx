@@ -10,24 +10,31 @@ import { Dayoptions } from '../../constants/sell-nft.constants';
 import { MintPost } from '../../types/mint';
 import { FadeLoader } from 'react-spinners';
 import { toast } from 'react-toastify';
-import { DoneIcon, ErrorIcon, EtheriumIcon, NapaBlueBgIcon, UsdtYellowBgIcon } from '../assets';
+import {
+  DoneIcon,
+  ErrorIcon,
+  EtheriumIcon,
+  NapaBlueBgIcon,
+  UsdtYellowBgIcon,
+} from '../assets';
 import { CustomToastWithLink } from '../CustomToast/CustomToast';
 import { createNewSnft, updateSnft } from '../../services/MarketplaceApi';
 import { SnftResponse } from '../../types/marketplace';
 import { commanNFTContract } from '@/connectivity/contractObjects/commanNFTContract';
 import // approve,
-  // getApproved,
-  //  transferFrom
-  '@/connectivity/callHelpers/commanNFTCallHandlers';
+// getApproved,
+//  transferFrom
+'@/connectivity/callHelpers/commanNFTCallHandlers';
 import useWebThree from '@/hooks/useWebThree';
 import {
   marketPlaceContract,
-  // napaTokenContract, usdtTokenContract 
+  // napaTokenContract, usdtTokenContract
 } from '@/connectivity/contractObjects/contractObject1';
 import {
   isApprovedForAll,
-  // approve, buyNftToken, buyNftTokenWithEth, getLatestPrice, napaTokenAmount, 
-  nftInfo, setSaleFromWallet
+  // approve, buyNftToken, buyNftTokenWithEth, getLatestPrice, napaTokenAmount,
+  nftInfo,
+  setSaleFromWallet,
 } from '@/connectivity/callHelpers/callHelper1';
 import {
   marketPlace,
@@ -123,7 +130,6 @@ export default function SellNFTPage({
   }, [snftDetails]);
 
   const handleCreateSnft = async () => {
-
     if (mintDetails?.marketplace_listed == 'true') {
       toast.error(
         CustomToastWithLink({
@@ -208,13 +214,12 @@ export default function SellNFTPage({
         CustomToastWithLink({
           icon: DoneIcon,
           title: 'Success',
-          description: 'SNFT Was Created Successfully',
+          description: 'SNFT Was Successfully Listed in Marketplace',
           time: 'Now',
         })
       );
       push('/marketplace');
-    }
-    else {
+    } else {
       setIsLoading(false);
     }
   };
@@ -306,38 +311,49 @@ export default function SellNFTPage({
     );
     const marketContract = await marketPlaceContract(signer);
     //set list from MarketPlace contract
-    await setSaleFromWallet(marketContract, tknId, salePrice.toString()).then(async (res: any) => {
-      console.log(`You are setting for sale to token id: ${tknId}, Wait for the Transaction 'Approval'... `);
-      console.log(await res.wait(), "approve to market result");
-    }).catch((e: any) => {
-      // alert("Already in Marketplace");
-      toast.error(
-        CustomToastWithLink({
-          icon: ErrorIcon,
-          title: 'Error',
-          description: e.message,
-          time: 'Now',
-        })
-      );
-      console.log(e, "Error");
-    });
+    await setSaleFromWallet(marketContract, tknId, salePrice.toString())
+      .then(async (res: any) => {
+        console.log(
+          `You are setting for sale to token id: ${tknId}, Wait for the Transaction 'Approval'... `
+        );
+        console.log(await res.wait(), 'approve to market result');
+      })
+      .catch((e: any) => {
+        // alert("Already in Marketplace");
+        toast.error(
+          CustomToastWithLink({
+            icon: ErrorIcon,
+            title: 'Error',
+            description: e.message,
+            time: 'Now',
+          })
+        );
+        console.log(e, 'Error');
+      });
     const commanNFTCtr = await commanNFTContract(signer, nftAddress);
-    await commanNFTCtr.setApprovalForAll(marketPlace, true).then(async (res: any) => {
-      console.log(await res.wait(), "Approval response for SNFT");
-      flag = true
-    }).catch((e: any) => {
-      toast.error(
-        CustomToastWithLink({
-          icon: ErrorIcon,
-          title: 'Error',
-          description: e.message,
-          time: 'Now',
-        })
-      );
-      console.log(e, "Error while approving SNFT")
-      flag = false
-    });
-    let approvalTwo: boolean = await isApprovedForAll(commanNFTCtr, address, marketPlace);
+    await commanNFTCtr
+      .setApprovalForAll(marketPlace, true)
+      .then(async (res: any) => {
+        console.log(await res.wait(), 'Approval response for SNFT');
+        flag = true;
+      })
+      .catch((e: any) => {
+        toast.error(
+          CustomToastWithLink({
+            icon: ErrorIcon,
+            title: 'Error',
+            description: e.message,
+            time: 'Now',
+          })
+        );
+        console.log(e, 'Error while approving SNFT');
+        flag = false;
+      });
+    let approvalTwo: boolean = await isApprovedForAll(
+      commanNFTCtr,
+      address,
+      marketPlace
+    );
     // const commanNFTCtr = await commanNFTContract(signer, nftAddress);
     // await commanNFTCtr.approve(nftAddress, tknId).then(async (res: any) => {
     //   console.log(`You have approved your nft with id: ${tknId}, Wait for the Transaction 'Approval'... `);
@@ -349,8 +365,8 @@ export default function SellNFTPage({
       //#2 NFT info
       const marketCtr = await marketPlaceContract(signer);
       const _nftInfoRes = await nftInfo(marketCtr, tknId);
-      console.log("saleStatus", _nftInfoRes[2]);
-      console.log("approvalTwo", approvalTwo);
+      console.log('saleStatus', _nftInfoRes[2]);
+      console.log('approvalTwo', approvalTwo);
       // flag = _nftInfoRes[2] && approvalTwo;// it will be true or false
     } catch (e) {
       toast.error(
@@ -368,7 +384,10 @@ export default function SellNFTPage({
   };
 
   // case #2 to list other NFT (approve)
-  const allowMarketToSellOtherNft = async (tknId: number | string, nftAddress: string): Promise<boolean> => {
+  const allowMarketToSellOtherNft = async (
+    tknId: number | string,
+    nftAddress: string
+  ): Promise<boolean> => {
     let flag = false;
     console.log(
       'you are giving approval to token id:',
@@ -400,7 +419,7 @@ export default function SellNFTPage({
       const checkApproval = await commanNFTCtr.getApproved(tknId);
       console.log(checkApproval, 'address which is approved');
       if (checkApproval) {
-        alert("otherNFT has been Approved to marketplace");
+        alert('otherNFT has been Approved to marketplace');
         flag = true;
       }
     } catch (e) {
@@ -426,10 +445,12 @@ export default function SellNFTPage({
   ): Promise<boolean | undefined> => {
     try {
       if (nftAddress.toUpperCase() == nftAddress.toUpperCase()) {
-        alert("List for SNFTs");
+        // alert('List for SNFTs');
+        console.log('List for SNFTs');
         return await allowMarketToSellForSNFT(tknId, salePrice);
       } else {
-        alert("List for other NFTs");
+        // alert('List for other NFTs');
+        console.log('List for other NFTs');
         return await allowMarketToSellOtherNft(tknId, nftAddress);
       }
     } catch (e) {
@@ -532,6 +553,10 @@ export default function SellNFTPage({
   // }
   //web3 functions ends here
 
+  function removeSpecialChars(str: any) {
+    return str.replace(/[^0-9.]/g, '');
+  }
+
   return (
     <>
       <div className={styles.SellNFTPage}>
@@ -555,8 +580,9 @@ export default function SellNFTPage({
                   </button>
                   <button
                     onClick={() => setType('Time Based Auction')}
-                    className={`${type == 'Time Based Auction' && styles.Active
-                      }`}
+                    className={`${
+                      type == 'Time Based Auction' && styles.Active
+                    }`}
                   >
                     <Image
                       src="/img/time_icon.svg"
@@ -607,10 +633,23 @@ export default function SellNFTPage({
                   >
                     <Input
                       value={amount}
-                      type="number"
+                      type="text"
                       placeholder=""
                       label="Amount"
-                      onChange={(e) => setAmount(e.target.value)}
+                      onChange={(e) => {
+                        const updated = removeSpecialChars(
+                          e.target.value.toString()
+                        );
+                        const regex = /^\d+(\.\d{1,8})?$/;
+                        if (updated == '') {
+                          setAmount('');
+                        } else {
+                          //@ts-ignore
+                          if (regex.test(Number(updated))) {
+                            setAmount(updated.toString());
+                          }
+                        }
+                      }}
                     />
                     {!amount && errors.amount && (
                       <span
