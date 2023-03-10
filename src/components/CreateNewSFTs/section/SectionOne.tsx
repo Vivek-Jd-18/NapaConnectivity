@@ -282,7 +282,7 @@ export default function SectionOne({
   };
 
   //3 buynft from market place
-  const _buyNftTokenFromMarket = async (transactionType: number | string, _tokenId: number | string, amount: string | number) => {
+  const _buyNftTokenFromMarket = async (transactionType: number | string, _tokenId: number | string, amount: string | number, callback: CallableFunction) => {
     console.log("you are buying token :", _tokenId);
     const isApprovedTkn = await doApprovalForToken(transactionType, _tokenId);
 
@@ -291,18 +291,38 @@ export default function SectionOne({
     if (Number(transactionType) == 0 && await isApprovedTkn) {
       console.log("buy from market in NAPA");
       await buyNftToken(marketCtr, 0, _tokenId).then(async (res: any) => {
-        await res.wait();
-        console.log(await res.wait(), "buyNftToken res");
+       const response = await res.wait();
+       console.log(await response , "buyNftToken res");
+       callback(undefined, response)
       }).catch((e: any) => {
+        callback(e)
         console.log(e)
+        toast.error(
+          CustomToastWithLink({
+            icon: ErrorIcon,
+            title: 'Error',
+            description: e.error.message,
+            time: 'Now',
+          })
+        );
       })
     } else if (Number(transactionType) == 1 && await isApprovedTkn) {
       console.log("buy from market in USDT");
       await buyNftToken(marketCtr, Number(transactionType), _tokenId).then(async (res: any) => {
-        await res.wait();
-        console.log(await res.wait(), "buyNftToken res");
+       const response = await res.wait();
+        console.log(await response, "buyNftToken res");
+        callback(undefined, response)
       }).catch((e: any) => {
+        callback(e)
         console.log(e)
+        toast.error(
+          CustomToastWithLink({
+            icon: ErrorIcon,
+            title: 'Error',
+            description: e.error.message,
+            time: 'Now',
+          })
+        );
       })
     } else {
       let valInEth = await calculateTokenAllowance(2, _tokenId);
@@ -310,10 +330,20 @@ export default function SectionOne({
       if (isApprovedTkn) {
         console.log("in to the ether put my stress right now");
         await buyNftTokenWithEth(marketCtr, Number(transactionType), _tokenId, { value: amount.toString() }).then(async (res: any) => {
-          await res.wait();
-          console.log(await res.wait(), "approve res");
+          const response = await res.wait();
+          console.log(response, "approve res");
+          callback(undefined, response)
         }).catch((e: any) => {
+          callback(e)
           console.log(e)
+          toast.error(
+            CustomToastWithLink({
+              icon: ErrorIcon,
+              title: 'Error',
+              description: e.error.message,
+              time: 'Now',
+            })
+          );
         })
       }
     }
@@ -367,6 +397,29 @@ export default function SectionOne({
     }
   }
 
+  const handleCreateTransactionTable = async (err: any, data: any) => {
+      if (err) {
+        setLoading(false);
+      } else {
+        const newTransaction = {
+          sellerWallet: data.to,
+          buyerWallet: data.from,
+          type: 'SNFT',
+          itemId: snftDetails?.snftId,
+          amount: snftDetails?.amount,
+          currencyType: snftDetails?.currencyType,
+          status: '1',
+          txId: '',
+          contractAddress: data.contractAddress,
+          tokenId: snftDetails?.tokenId,
+          wallet: 'metamask',
+        };
+        await handleNewTransaction(newTransaction);
+        await handleBuySnft(snftDetails?.snftId as string);
+        setLoading(false);
+      }
+  }
+
   //6 lazy mint connectivity function
   const lazyMintHandler = async (data: any) => {
 
@@ -392,11 +445,14 @@ export default function SectionOne({
     if (isNFTAvailable) {
       let val = data.tokenId.toString();
       console.log("NFT exists", val);
-      alert("You are buying from market");
-      _buyNftTokenFromMarket(transactionType, val, _amount);
+      // alert("You are buying from market");
+      console.log("You are buying from market");
+      setLoading(true);
+      _buyNftTokenFromMarket(transactionType, val, _amount, handleCreateTransactionTable);
     } else {
       console.log("NFT exists");
-      alert(`You are buying by Lazymint ${transactionType}`);
+      // alert(`You are buying by Lazymint ${transactionType}`);
+      console.log(`You are buying by Lazymint ${transactionType}`);
       try {
         setLoading(true);
         await LazyFunction(
@@ -407,28 +463,7 @@ export default function SectionOne({
           'https://bafybeiho2j43vulwhnjmfyvjafohl5prvcx24hr2sqvz7wliynnodmovru.ipfs.dweb.link/101.json',
           false,
           false,
-          async (err: any, data: any) => {
-            if (err) {
-              setLoading(false);
-            } else {
-              const newTransaction = {
-                sellerWallet: data.to,
-                buyerWallet: data.from,
-                type: 'SNFT',
-                itemId: snftDetails?.snftId,
-                amount: snftDetails?.amount,
-                currencyType: snftDetails?.currencyType,
-                status: '1',
-                txId: '',
-                contractAddress: data.contractAddress,
-                tokenId: snftDetails?.tokenId,
-                wallet: 'metamask',
-              };
-              await handleNewTransaction(newTransaction);
-              await handleBuySnft(snftDetails?.snftId as string);
-              setLoading(false);
-            }
-          }
+          handleCreateTransactionTable
         ).then(async (res: any) => {
           console.log("hang on lazyint is in progress...");
           console.log(await res.wait(), "lazymint response");
