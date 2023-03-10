@@ -320,14 +320,14 @@ export default function SellNFTPage({
       })
       .catch((e: any) => {
         // alert("Already in Marketplace");
-        toast.error(
-          CustomToastWithLink({
-            icon: ErrorIcon,
-            title: 'Error',
-            description: e.message,
-            time: 'Now',
-          })
-        );
+        // toast.error(
+        //   CustomToastWithLink({
+        //     icon: ErrorIcon,
+        //     title: 'Error',
+        //     description: e.message,
+        //     time: 'Now',
+        //   })
+        // );
         console.log(e, 'Error');
       });
     const commanNFTCtr = await commanNFTContract(signer, nftAddress);
