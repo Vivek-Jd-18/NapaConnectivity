@@ -98,7 +98,7 @@ export default function SectionOne({
       );
       return;
     }
-    // router.push('/marketplace');
+    router.push('/marketplace');
   };
 
   //connectivity functions starts here
@@ -398,26 +398,27 @@ export default function SectionOne({
   }
 
   const handleCreateTransactionTable = async (err: any, data: any) => {
-      if (err) {
-        setLoading(false);
-      } else {
+    console.log("error while buying listed item", err);
+      // if (err) {
+      //   setLoading(false);
+      // } else {
         const newTransaction = {
-          sellerWallet: data.to,
-          buyerWallet: data.from,
+          sellerWallet: data?.to ? data?.to : "",
+          buyerWallet: data?.from ? data?.from : "",
           type: 'SNFT',
           itemId: snftDetails?.snftId,
           amount: snftDetails?.amount,
           currencyType: snftDetails?.currencyType,
           status: '1',
           txId: '',
-          contractAddress: data.contractAddress,
+          contractAddress: data?.contractAddress ? data.contractAddress : "",
           tokenId: snftDetails?.tokenId,
           wallet: 'metamask',
         };
         await handleNewTransaction(newTransaction);
         await handleBuySnft(snftDetails?.snftId as string);
         setLoading(false);
-      }
+      // }
   }
 
   //6 lazy mint connectivity function
