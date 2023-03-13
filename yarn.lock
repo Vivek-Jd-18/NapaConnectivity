@@ -6041,7 +6041,7 @@
     "setimmediate" "^1.0.5"
 
 "ethereumjs-abi@git+https://github.com/ethereumjs/ethereumjs-abi.git":
-  "integrity" "sha512-OOi2GVnOQrwxItJo6AdjAPgHZcyQjYT6xMq5ofueVfKOl3ce8KHtlTiwd3xTXvDSmLKZEsBYQ2Bsp6daL+5kNg=="
+  "integrity" "sha512-qs8G5KwnIO/thOQjv1RvR/4oiTsy6IaCsN+ory5dbiqFXz8sd239aWJH0wmsVNPimL5X1KzQheUpi6xAo6FU4w=="
   "resolved" "git+ssh://git@github.com/ethereumjs/ethereumjs-abi.git"
   "version" "0.6.8"
   dependencies:
@@ -9222,15 +9222,7 @@
   dependencies:
     "varint" "^5.0.0"
 
-"multicodec@^1.0.0":
-  "integrity" "sha512-NDd7FeS3QamVtbgfvu5h7fd1IlbaC4EQ0/pgU4zqE2vdHCmBGsUa0TiM8/TdSeG6BMPC92OOCf8F1ocE/Wkrrg=="
-  "resolved" "https://registry.npmjs.org/multicodec/-/multicodec-1.0.4.tgz"
-  "version" "1.0.4"
-  dependencies:
-    "buffer" "^5.6.0"
-    "varint" "^5.0.0"
-
-"multicodec@^1.0.1":
+"multicodec@^1.0.0", "multicodec@^1.0.1":
   "integrity" "sha512-NDd7FeS3QamVtbgfvu5h7fd1IlbaC4EQ0/pgU4zqE2vdHCmBGsUa0TiM8/TdSeG6BMPC92OOCf8F1ocE/Wkrrg=="
   "resolved" "https://registry.npmjs.org/multicodec/-/multicodec-1.0.4.tgz"
   "version" "1.0.4"
