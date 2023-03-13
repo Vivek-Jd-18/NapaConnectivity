@@ -18,6 +18,12 @@ import axios from 'axios';
 import { nftAddress } from '@/connectivity/addressHelpers/addressHelper';
 import useProfile from '../../hooks/useProfile';
 import useWebThree from '@/hooks/useWebThree';
+import { toast } from 'react-toastify';
+import { CustomToastWithLink } from '../CustomToast/CustomToast';
+import { ErrorIcon } from '../assets';
+import { getMySnfts } from '@/services/MarketplaceApi';
+import { useRouter } from 'next/router';
+import { FadeLoader } from 'react-spinners';
 
 export default function MySFTs(props: any) {
   const { address, balance, chainId, signer } = useWebThree();
@@ -43,6 +49,10 @@ export default function MySFTs(props: any) {
     { value: 'vanilla', label: '4h 32 min' },
   ];
   const [active, setActive] = React.useState(false);
+  const [tokenIds, setTokenIds] = useState<string[]>([])
+  const [mySntsData, setMySnftsData] = useState<any[]>([])
+  const [loading, setLoading] = useState(false)
+  const {push} = useRouter()
 
   const [nfts, setNfts] = useState<any[]>([{
     tokenId: "loading..",
@@ -83,6 +93,7 @@ export default function MySFTs(props: any) {
 
   // fetch nfts starts here
   const loadNFTs: () => Promise<object[]> = async () => {
+    setLoading(true)
     let newItems: any = [];
     console.log("inside Lead")
     let dt: any = [];
@@ -145,8 +156,35 @@ export default function MySFTs(props: any) {
       console.log(e);
     }
     setNfts(newItems);
+    const tknIds = newItems.map((item:any)=>item.tokenId)
+    setTokenIds(tknIds)
     return dt;
   };
+
+  const handleGetMySnftsFromWeb2 = async () => {
+    const { data, error, message }: any = await getMySnfts(tokenIds);
+    if (error) {
+      setLoading(false);
+      toast.error(
+        CustomToastWithLink({
+          icon: ErrorIcon,
+          title: 'Error',
+          description: message,
+          time: 'Now',
+        })
+      );
+      return;
+    }
+    setMySnftsData(data?.data || []);
+    setLoading(false);
+  }
+
+  useEffect(()=>{
+   if(tokenIds.length)
+   {
+    handleGetMySnftsFromWeb2()
+   }
+  },[tokenIds])
 
   useEffect(() => {
     if (profileId) {
@@ -598,66 +636,79 @@ export default function MySFTs(props: any) {
         </div>
       </div> */}
       <div className={styles.scrollPernt}>
-        <div className={styles.CustomGridContainer}>
-          {nfts.map((data: any, index) => {
-            return (
-              <div key={index} className={styles.CustomGrid}>
-              <div
-                // onClick={() => push(`snft-details?id=${snft.snftId}`)}
-                className={styles.TipsTulsOverlay}
-                style={{overflow:'hidden'}}
-              >
-                <div className={styles.boxinnrcont}>
-                  {/* <Link href=""> */}
-                  <a href="" className={`${styles.apernt} hovereffect`}>
-                    <img
-                      src={`${data.image}`}
-                      height="372px"
-                      width="282px"
-                      alt=""
-                      className="evmtimg"
-                    />
-                    <div className={styles.upCont}>
-                      <img
-                        style={{ borderRadius: '50px' }}
-                        src={`${data.image}`}
-                        height="40px"
-                        width="40px"
-                        alt=""
-                        className=""
-                      />
-                      <p>@{data.name}</p>
-                    </div>
-                    <div className={styles.downCont}>
-                      <h3>{data.description}</h3>
-                      <div className={styles.flexPernt}>
-                        <div className={styles.currentBit}>
-                          <h5>Current Bid</h5>
-                          <div className={styles.txtimgFlex}>
-                            <Image
-                              src="/img/etherium_ic.svg"
-                              height="24px"
-                              width="24px"
-                              alt=""
-                              className=""
-                            />
-                            <p>{data.amount}</p>
+        {loading ? (
+          <div className={styles.loaderContainer}>
+            <FadeLoader color="#ffffff" />
+          </div>
+        ) : mySntsData?.length ? (
+          <div className={styles.CustomGridContainer}>
+            {mySntsData.map((snft, index) => {
+              return (
+                <div key={index} className={styles.CustomGrid}>
+                  <div
+                    onClick={() => push(`snft-details?id=${snft.snftId}`)}
+                    className={styles.TipsTulsOverlay}
+                  >
+                    <div className={styles.boxinnrcont}>
+                      {/* <Link href=""> */}
+                      <a href="" className={`${styles.apernt} hovereffect`}>
+                        <Image
+                          src={`${snft.thumbnail}`}
+                          height="372px"
+                          width="282px"
+                          alt=""
+                          className="evmtimg"
+                        />
+                        <div className={styles.upCont}>
+                          <Image
+                            style={{ borderRadius: '50px' }}
+                            src={`${
+                              snft.userImage
+                                ? snft.userImage
+                                : '/assets/images/img_avatar.png'
+                            }`}
+                            height="40px"
+                            width="40px"
+                            alt=""
+                            className=""
+                          />
+                          <p>@{snft.userName}</p>
+                        </div>
+                        <div className={styles.downCont}>
+                          <h3>{snft.SNFTTitle}</h3>
+                          <div className={styles.flexPernt}>
+                            <div className={styles.currentBit}>
+                              <h5>Current Bid</h5>
+                              <div className={styles.txtimgFlex}>
+                                <Image
+                                  src="/img/etherium_ic.svg"
+                                  height="24px"
+                                  width="24px"
+                                  alt=""
+                                  className=""
+                                />
+                                <p>{snft.amount}</p>
+                              </div>
+                            </div>
+                            <div className={styles.endingIn}>
+                              <p>Ending In</p>
+                              <h3>{snft.duration}</h3>
+                            </div>
                           </div>
                         </div>
-                        <div className={styles.endingIn}>
-                          <p>Ending In</p>
-                          <h3>1h 23min</h3>
-                        </div>
-                      </div>
+                      </a>
+                      {/* </Link> */}
                     </div>
-                  </a>
-                  {/* </Link> */}
+                  </div>
                 </div>
-              </div>
-            </div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
+        ) : (
+          <div className={styles.messageContainer}>
+            <h3>No Data Found</h3>
+          </div>
+        )}
       </div>
     </>
   );

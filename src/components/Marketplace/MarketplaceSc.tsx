@@ -36,7 +36,7 @@ export default function MarketplaceSc() {
           {/* <Tab eventKey="projects" title="Projects">
            <ProjectsMarketPlace />
           </Tab> */}
-          <Tab eventKey={`${query.redirect && query.redirect == 'SNFTs' && 'home' }`} title="Trade SNFTs">
+          <Tab eventKey={`${query.redirect ? query.redirect == 'SNFTs' && 'home' : 'SNFTs' }`} title="Trade SNFTs">
             <TradeSFTs />
           </Tab>
           {/* <Tab eventKey="profile" title="Valuator">
@@ -55,7 +55,7 @@ export default function MarketplaceSc() {
               <MyNFTs />
             {/* </div> */}
           </Tab>
-          <Tab eventKey="MySFTs" title="My SNFTs">
+          <Tab eventKey={`${query.redirect ? query.redirect == 'MySNFTs' && 'home' : 'MySNFTs' }`} title="My SNFTs">
             <MySFTs />
           </Tab>
           <Tab eventKey="MyFavorites" title="My Favorites">

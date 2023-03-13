@@ -66,6 +66,30 @@ export const getAllSnfts = async () => {
   }
 };
 
+export const getMySnfts = async (ids:any) => {
+  try {
+    const p = await axios.get<{}, AxiosResponse<GetSnftsResponse>>(
+      `${SOCIAL_ART_API_URL}/user/marketplace/mysnfts/list`,
+      {
+        params : {
+          ids: JSON.stringify(ids)
+        }
+      }
+    );
+    return {
+      data: p.data,
+      message: '',
+      error: false,
+    };
+  } catch (error) {
+    return {
+      data: null,
+      error: true,
+      message: error?.response?.data?.message,
+    };
+  }
+};
+
 export const getSnft = async (id: string) => {
   try {
     const p = await axios.get<{}, AxiosResponse<GetSnftsResponse>>(

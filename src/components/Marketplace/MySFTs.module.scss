@@ -273,6 +273,24 @@
 .scrollPernt {
   overflow-y: auto;
   height: 768px;
+  .loaderContainer {
+    width: 100%;
+    height: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .messageContainer {
+    width: 100%;
+    height: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    h3 {
+      @include font-md-neuropolitical-normal;
+      color: $gray;
+    }
+  }
 }
 
 @media screen and (max-width: 1200px) {

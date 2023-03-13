@@ -98,7 +98,10 @@ export default function SectionOne({
       );
       return;
     }
-    router.push('/marketplace');
+    router.push({
+      pathname: '/marketplace',
+      query: { redirect: "MySNFTs" }
+  }, '/marketplace')
   };
 
   //connectivity functions starts here
@@ -608,7 +611,7 @@ export default function SectionOne({
                   >
                     {snftDetails?.listed == '2'
                       ? 'Sold'
-                      : `Buy Now for ${snftDetails?.amount} NAPA`}
+                      : `Buy Now for ${snftDetails?.amount}  ${snftDetails?.currencyType == "0" ?"NAPA": snftDetails?.currencyType == "1" ?  "USDT" : "ETH"}`}
                   </a>
                 )}
                 <div className={`${styles.RowLabel} ${styles.RowSeven}`}>

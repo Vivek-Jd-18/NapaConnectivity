@@ -160,3 +160,24 @@
     }
   }
 }
+
+@media only screen and (max-width: 1440px) {
+  .CustomGridContainer {
+    grid-gap: 12px;
+    grid-template-columns: repeat(1, minmax(0px, 1fr));
+  }
+
+}
+@media only screen and (max-width: 768px) {
+  .ScOneLeftCont {
+    h1 {
+      font-size: 60px;
+    }
+  }
+  .thrBtnPrnt{
+    flex-direction: column;
+    .linkPernt{
+      margin: 10px;
+    }
+  }
+}
