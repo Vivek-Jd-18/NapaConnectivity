@@ -10,7 +10,7 @@ export const lazyMint = async (
   _tknId: number,
   _seller: string,
   salePrice: string | undefined,
-  _TokenSelect: number|string,
+  _TokenSelect: number | string,
   tokenUri: string,
   _transferToNapa: boolean,
   _setSaleMinter: boolean
@@ -32,7 +32,7 @@ export const lazyMintEth = async (
   _tknId: number,
   _seller: string,
   salePrice: string,
-  _TokenSelect: number|string,
+  _TokenSelect: number | string,
   tokenUri: string,
   _transferToNapa: boolean,
   _setSaleMinter: boolean,
@@ -181,4 +181,28 @@ export const napaTokenAmount = async (contract: any) => {
 //6 getLatestPrice
 export const getLatestPrice = async (contract: any) => {
   return await contract.getLatestPrice({ gasLimit: 5000000 });
+};
+
+
+
+//7.0 buyOtherNftToken
+export const buyOtherNftToken = async (
+  contract: any,
+  _tokenSelect: string | number,
+  _tokenId: number | string,
+  nftAddress: string
+) => {
+  return await contract.buyOtherNftToken(_tokenSelect, _tokenId, nftAddress);
+};
+
+
+//7.1 buyOtherNftTokenWithEth
+export const buyOtherNftTokenWithEth = async (
+  contract: any,
+  _tokenSelect: string | number,
+  _tokenId: number | string,
+  nftAddress: string,
+  _tx: any
+) => {
+  return await contract.buyOtherNftToken(_tokenSelect, _tokenId, nftAddress, _tx);
 };

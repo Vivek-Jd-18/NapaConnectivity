@@ -328,7 +328,7 @@ export default function SellNFTPage({
         //     time: 'Now',
         //   })
         // );
-        console.log(e, 'Error');
+        // console.log(e, 'Error');
       });
     const commanNFTCtr = await commanNFTContract(signer, nftAddress);
     await commanNFTCtr

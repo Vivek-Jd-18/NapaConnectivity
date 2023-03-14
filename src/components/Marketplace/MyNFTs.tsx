@@ -74,6 +74,7 @@ export default function MyNFTs(props: any) {
   // fetch nfts starts here
   const loadNFTs: () => Promise<object[]> = async () => {
     let dt: any = [];
+    let newItems: any = [];
     try {
       const config = {
         method: 'get',
@@ -84,7 +85,7 @@ export default function MyNFTs(props: any) {
         },
       };
       let res = await axios(config);
-      let newItems: any = [];
+      console.log(res, "otherNFTs");
       await Promise.all(
         res.data.result.map(async (data: any) => {
           let splitted =
@@ -102,7 +103,9 @@ export default function MyNFTs(props: any) {
             nftAddress.toUpperCase() == contractAddress.toUpperCase(),
             'onsold1'
           );
-          if (nftAddress.toUpperCase() !== contractAddress.toUpperCase()) {
+
+          console.log(nftAddress.toUpperCase() !== contractAddress.toUpperCase() && contractAddress.toUpperCase() != "0X20BF1A09C7C7211EAD72DE3D96BC129CD2BFE743", "checker")
+          if (nftAddress.toUpperCase() !== contractAddress.toUpperCase() && contractAddress.toUpperCase() != "0X20BF1A09C7C7211EAD72DE3D96BC129CD2BFE743") {
             console.log('inside if');
             let ff = await data.token_uri;
             let meta: any = await axios.get(ff);
@@ -121,10 +124,11 @@ export default function MyNFTs(props: any) {
           }
         })
       );
-      setNfts(newItems);
     } catch (e) {
       console.log(e);
     }
+    console.log(newItems, "filteredNFTs");
+    setNfts(newItems);
     return dt;
   };
 
@@ -526,104 +530,72 @@ export default function MyNFTs(props: any) {
         </div>
       </div>
 
+      {/* other */}
+
       <div className={styles.scrollPernt}>
         <div className={styles.CustomGridContainer}>
-          {nfts.map((data: any) => {
+          {nfts.map((snft, index) => {
             return (
-              <div className={styles.CustomGrid} key={data.id}>
-                <div className={styles.TipsTulsOverlay}>
+              <div key={index} className={styles.CustomGrid}>
+                <div
+                  className={styles.TipsTulsOverlay}
+                >
                   <div className={styles.boxinnrcont}>
-                    <Link href="#">
-                      <a href="#" className={`${styles.apernt} hovereffect`}>
+                    {/* <Link href=""> */}
+                    <a href="" className={`${styles.apernt} hovereffect`}>
+                      {/* <Image
+                        src={`${snft.image}`}
+                        height="372px"
+                        width="282px"
+                        alt=""
+                        className="evmtimg"
+                      /> */}
+                      <img src={`${snft.image}`} alt="" />
+                      <div className={styles.upCont}>
                         {/* <Image
-                            src={data.image}
-                            height="372px"
-                            width="282px"
-                            alt=""
-                            className="evmtimg"
-                          /> */}
-                        <img
-                          src={data.image}
-                          height="322px"
-                          width="242px"
+                          style={{ borderRadius: '50px' }}
+                          src={`${snft.image
+                            }`}
+                          height="40px"
+                          width="40px"
                           alt=""
-                          className="evmtimg"
-                        />
-                        {/* <div className={styles.upCont}>
-                                              <Image
-                                                  src="/img/feed_small_img06.png"
-                                                  height="40px"
-                                                  width="40px"
-                                                  alt=""
-                                                  className=""
-                                              />
-                                              <p>@CatherinePatton</p>
-                                          </div> */}
-                        <div className={styles.downCont}>
-                          <h3>{data.tokenId}</h3>
-                          <h3>{data.shortContractAddress}</h3>
-                          {data.onSold ? (
-                            <span
-                              style={{
-                                height: '25px',
-                                width: '25px',
-                                backgroundColor: 'green',
-                                borderRadius: '50%',
-                                display: 'inline-block',
-                              }}
-                            ></span>
-                          ) : (
-                            <span
-                              style={{
-                                height: '25px',
-                                width: '25px',
-                                backgroundColor: 'red',
-                                borderRadius: '50%',
-                                display: 'inline-block',
-                              }}
-                            ></span>
-                          )}
-                          <h3>{data.name}</h3>
-                          <div className={styles.flexPernt}>
-                            <button
-                              onClick={() =>
-                                allowMarketToSell(
-                                  data.tokenId,
-                                  data.contractAddress
-                                )
-                              }
-                              className="btn btn-primary"
-                            >
-                              List To Market
-                            </button>
-                            <div className={styles.currentBit}>
-                              <h5>Current Bid</h5>
-                              <div className={styles.txtimgFlex}>
-                                <Image
-                                  src="/img/etherium_ic.svg"
-                                  height="24px"
-                                  width="24px"
-                                  alt=""
-                                  className=""
-                                />
-                                <p>0.45 ETH</p>
-                              </div>
-                            </div>
-                            <div className={styles.endingIn}>
-                              <p>Ending In</p>
-                              <h3>1h 26 min</h3>
+                          className=""
+                        /> */}
+                        <p>@{snft.name}</p>
+                      </div>
+                      <div className={styles.downCont}>
+                        <h3>{snft.name}</h3>
+                        <div className={styles.flexPernt}>
+                          <div className={styles.currentBit}>
+                            <h5>Current Bid</h5>
+                            <div className={styles.txtimgFlex}>
+                              <Image
+                                src="/img/etherium_ic.svg"
+                                height="24px"
+                                width="24px"
+                                alt=""
+                                className=""
+                              />
+                              <p>{snft.description}</p>
                             </div>
                           </div>
+                          <div className={styles.endingIn}>
+                            <p>Ending In</p>
+                            <h3>{snft.description}</h3>
+                          </div>
                         </div>
-                      </a>
-                    </Link>
+                      </div>
+                    </a>
+                    {/* </Link> */}
                   </div>
                 </div>
               </div>
             );
           })}
         </div>
+
       </div>
+
     </>
   );
 }

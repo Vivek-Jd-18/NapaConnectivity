@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './SectionOne.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -23,7 +23,6 @@ import { marketPlaceContract, napaTokenContract, newNapaNftContract, usdtTokenCo
 import { marketPlace, nftAddress } from '@/connectivity/addressHelpers/addressHelper';
 import { approve, ethFee as ethFees, lazyMint, lazyMintEth, UsdtMintFee as _UsdtMintFee, NapaMintFee as _NapaMintFee, napaTokenAmount, nftInfo, getLatestPrice, buyNftToken, buyNftTokenWithEth } from '@/connectivity/callHelpers/callHelper1';
 // import { decimals } from '@/connectivity/callHelpers/napaTokenCallHandlers';
-import pinataSDK from '@pinata/sdk';
 
 type SectionOneProps = {
   snftDetails: SnftResponse | null;
@@ -36,6 +35,7 @@ export default function SectionOne({
 }: SectionOneProps) {
   const router = useRouter();
   const [loading, setLoading] = React.useState(false);
+  const [imageBase64, setImageBase64] = useState<string | ArrayBuffer | null>('');
 
   console.log(snftDetails, 'all data');
 
@@ -102,7 +102,7 @@ export default function SectionOne({
     router.push({
       pathname: '/marketplace',
       query: { redirect: "MySNFTs" }
-  }, '/marketplace')
+    }, '/marketplace')
   };
 
   //connectivity functions starts here
@@ -295,9 +295,9 @@ export default function SectionOne({
     if (Number(transactionType) == 0 && await isApprovedTkn) {
       console.log("buy from market in NAPA");
       await buyNftToken(marketCtr, 0, _tokenId).then(async (res: any) => {
-       const response = await res.wait();
-       console.log(await response , "buyNftToken res");
-       callback(undefined, response)
+        const response = await res.wait();
+        console.log(await response, "buyNftToken res");
+        callback(undefined, response)
       }).catch((e: any) => {
         callback(e)
         console.log(e)
@@ -313,7 +313,7 @@ export default function SectionOne({
     } else if (Number(transactionType) == 1 && await isApprovedTkn) {
       console.log("buy from market in USDT");
       await buyNftToken(marketCtr, Number(transactionType), _tokenId).then(async (res: any) => {
-       const response = await res.wait();
+        const response = await res.wait();
         console.log(await response, "buyNftToken res");
         callback(undefined, response)
       }).catch((e: any) => {
@@ -403,26 +403,26 @@ export default function SectionOne({
 
   const handleCreateTransactionTable = async (err: any, data: any) => {
     console.log("error while buying listed item", err);
-      // if (err) {
-      //   setLoading(false);
-      // } else {
-        const newTransaction = {
-          sellerWallet: data?.to ? data?.to : "",
-          buyerWallet: data?.from ? data?.from : "",
-          type: 'SNFT',
-          itemId: snftDetails?.snftId,
-          amount: snftDetails?.amount,
-          currencyType: snftDetails?.currencyType,
-          status: '1',
-          txId: '',
-          contractAddress: data?.contractAddress ? data.contractAddress : "",
-          tokenId: snftDetails?.tokenId,
-          wallet: 'metamask',
-        };
-        await handleNewTransaction(newTransaction);
-        await handleBuySnft(snftDetails?.snftId as string);
-        setLoading(false);
-      // }
+    // if (err) {
+    //   setLoading(false);
+    // } else {
+    const newTransaction = {
+      sellerWallet: data?.to ? data?.to : "",
+      buyerWallet: data?.from ? data?.from : "",
+      type: 'SNFT',
+      itemId: snftDetails?.snftId,
+      amount: snftDetails?.amount,
+      currencyType: snftDetails?.currencyType,
+      status: '1',
+      txId: '',
+      contractAddress: data?.contractAddress ? data.contractAddress : "",
+      tokenId: snftDetails?.tokenId,
+      wallet: 'metamask',
+    };
+    await handleNewTransaction(newTransaction);
+    await handleBuySnft(snftDetails?.snftId as string);
+    setLoading(false);
+    // }
   }
 
   //6 lazy mint connectivity function
@@ -434,16 +434,16 @@ export default function SectionOne({
 
     const _amount = (Number(data.amount) * (10 ** 18)).toString();
     console.log(_amount, "AMOUNTT");
-
+    
     console.log('changes appeared', signer, address, data);
     const NFTCtr = await newNapaNftContract(signer);
     // data.tokenId.toString()
     let isNFTAvailable;
+    
     try {
       isNFTAvailable = await NFTCtr.exists(tokenId);
-      console.log(isNFTAvailable, "NFAVA")
+      console.log(isNFTAvailable, "is nft Exists");
     } catch (e) {
-      isNFTAvailable = 0
       console.log(e, "NOW it will go to Lazymint")
     }
     console.log("NFT AVAILABILITY", isNFTAvailable);
@@ -481,72 +481,6 @@ export default function SectionOne({
     }
   };
 
-    //API Key: 60b6f40d19ff82e8547a
-  //API Secret: bf8632acaad65c73cce04654ed9db02138961f6c80655b4996fa753941751522
-  //7 Pinata IPFS setup
-  const pinData = async () => {
-    //TODO: Put keys in .env file
-    // pinata_api_key':
-    //       '9037d272e8c8f05e7dfd',
-    //     'pinata_secret_api_key': 'c59d64538b85a78c88344805aefb5414b748e8e078cdda980f0eae1b7939656b
-
-    const PINATA_API_KEY = '9037d272e8c8f05e7dfd';
-    const PINATA_SECRET_API_KEY =
-      'c59d64538b85a78c88344805aefb5414b748e8e078cdda980f0eae1b7939656b';
-
-    const pinata = new pinataSDK(PINATA_API_KEY, PINATA_SECRET_API_KEY);
-
-    const options: any = {
-      pinataMetadata: {
-        name: "MyCustomName",
-        keyvalues: {
-          customKey: 'customValue',
-          customKey2: 'customValue2'
-        }
-      },
-      pinataOptions: {
-        cidVersion: 0
-      }
-    };
-
-    // const dt = await fetch("https://firebasestorage.googleapis.com/v0/b/project-6169152193786004968.appspot.com/o/aurora1.jpg?alt=media&token=4ae75d8b-35c5-4aa9-b0bc-0c8ee9fda422").then((res: any) => { console.log("NEWW", res) }).catch((e) => { console.log("Error", e) })
-    // pinata.pinFileToIPFS(, options).then((result) => {
-    //   //handle results here
-    //   console.log(result, "Pinata1");
-    //   console.log(img1, "Pinata")
-    // }).catch((err) => {
-    //   //handle error here
-    //   console.log(err);
-    // });
-
-
-
-    // const res = {
-    //   name: "SNFT1",
-    //   description: "SNFT1 DESCRIPTION"
-
-    // }
-    // const artworkURI = "https://firebasestorage.googleapis.com/v0/b/project-6169152193786004968.appspot.com/o/pandaImage.jpg?alt=media&token=b469eb0d-6fa8-4573-bfc2-904d110438a0"
-
-    // const nftMetadata: any = {
-    //   name: res.name,
-    //   image: String(artworkURI),
-    //   description: res.description,
-    // };
-
-    // const ipfsOptions: any = {
-    //   pinataOptions: {
-    //     cidVersion: 0,
-    //   },
-    // };
-
-    // console.log('IPFS BODY', nftMetadata);
-    // const result = await pinata.pinJSONToIPFS(nftMetadata, ipfsOptions);
-    // console.log(result, "HOLA")
-    // const metadataHash = `https://gateway.pinata.cloud/ipfs/${result.IpfsHash}`;
-    // console.log('IPFS URL -->', metadataHash);
-
-  }
 
   // marketPlace setApprovalFunction to approve NFTs by owner('Should be called by NFT owner')
   // const approveNFTFromOwner = async () => {
@@ -679,7 +613,7 @@ export default function SectionOne({
                   >
                     {snftDetails?.listed == '2'
                       ? 'Sold'
-                      : `Buy Now for ${snftDetails?.amount}  ${snftDetails?.currencyType == "0" ?"NAPA": snftDetails?.currencyType == "1" ?  "USDT" : "ETH"}`}
+                      : `Buy Now for ${snftDetails?.amount}  ${snftDetails?.currencyType == "0" ? "NAPA" : snftDetails?.currencyType == "1" ? "USDT" : "ETH"}`}
                   </a>
                 )}
                 <div className={`${styles.RowLabel} ${styles.RowSeven}`}>

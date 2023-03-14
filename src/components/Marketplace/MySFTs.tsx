@@ -27,7 +27,6 @@ import { FadeLoader } from 'react-spinners';
 
 export default function MySFTs(props: any) {
   const { address, balance, chainId, signer } = useWebThree();
-  console.log(address, balance, chainId, signer, "All data");
   const options = [
     { value: 'chocolate', label: 'Chocolate' },
     { value: 'strawberry', label: 'Strawberry' },
@@ -128,7 +127,7 @@ export default function MySFTs(props: any) {
             console.log('inside if', data.token_uri);
             let ff = await data.token_uri;
             let meta: any = await axios.get(ff);
-            console.log(meta, "MMM");
+            // console.log(meta, "MMM");
             let item = {
               tokenId: await data.token_id,
               shortContractAddress: splitted,
@@ -140,7 +139,6 @@ export default function MySFTs(props: any) {
               image: await meta.data.image,
               onSold: isOnSold,
             };
-            console.log(item, "III", newItems)
             newItems.push(item);
             console.log(newItems, "AAA");
           } else {
@@ -195,7 +193,6 @@ export default function MySFTs(props: any) {
 
   const checkIfApprovedToMarket = async (tknId: number, nftAddress: string) => {
     let flag: boolean = false;
-    console.log(tknId, nftAddress, 'rel');
     const commanNFTCtr = await commanNFTContract(signer, nftAddress);
     await getApproved(commanNFTCtr, tknId)
       .then(async (res) => {
