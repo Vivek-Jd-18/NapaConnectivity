@@ -15,13 +15,33 @@ import { FadeLoader } from 'react-spinners';
 import {
   _setSaleFromWallet,
   _buyNftToken,
-  _nftInfo
+  _nftInfo,
 } from '../../../connectivity/mainFunctions/marketFunctions';
 import { createNewTransaction } from '../../../services/Transaction';
 import useWebThree from '@/hooks/useWebThree';
-import { marketPlaceContract, napaTokenContract, newNapaNftContract, usdtTokenContract } from '@/connectivity/contractObjects/contractObject1';
-import { marketPlace, nftAddress } from '@/connectivity/addressHelpers/addressHelper';
-import { approve, ethFee as ethFees, lazyMint, lazyMintEth, UsdtMintFee as _UsdtMintFee, NapaMintFee as _NapaMintFee, napaTokenAmount, nftInfo, getLatestPrice, buyNftToken, buyNftTokenWithEth } from '@/connectivity/callHelpers/callHelper1';
+import {
+  marketPlaceContract,
+  napaTokenContract,
+  newNapaNftContract,
+  usdtTokenContract,
+} from '@/connectivity/contractObjects/contractObject1';
+import {
+  marketPlace,
+  nftAddress,
+} from '@/connectivity/addressHelpers/addressHelper';
+import {
+  approve,
+  ethFee as ethFees,
+  lazyMint,
+  lazyMintEth,
+  UsdtMintFee as _UsdtMintFee,
+  NapaMintFee as _NapaMintFee,
+  napaTokenAmount,
+  nftInfo,
+  getLatestPrice,
+  buyNftToken,
+  buyNftTokenWithEth,
+} from '@/connectivity/callHelpers/callHelper1';
 // import { decimals } from '@/connectivity/callHelpers/napaTokenCallHandlers';
 
 type SectionOneProps = {
@@ -39,7 +59,7 @@ export default function SectionOne({
   console.log(snftDetails, 'all data');
 
   const { address, balance, chainId, signer } = useWebThree();
-  console.log(address, balance, chainId, signer)
+  console.log(address, balance, chainId, signer);
   const handleDeleteSnft = async () => {
     setLoading(true);
     //@ts-ignore
@@ -98,21 +118,27 @@ export default function SectionOne({
       );
       return;
     }
-    router.push({
-      pathname: '/marketplace',
-      query: { redirect: "MySNFTs" }
-    }, '/marketplace')
+    router.push(
+      {
+        pathname: '/marketplace',
+        query: { redirect: 'MySNFTs' },
+      },
+      '/marketplace'
+    );
   };
 
   //connectivity functions starts here
 
   //1 for approval of tokens
-  const doApproval: any = async (amt: string, transactionType: number | string) => {
+  const doApproval: any = async (
+    amt: string,
+    transactionType: number | string
+  ) => {
     if (transactionType == 0) {
       // Check if the transaction is for NPA tokens
       const npaTokenctr: any = await napaTokenContract(signer); // Get the NPA token contract
       console.log(npaTokenctr, 'npaTokenctr contract');
-      console.log("isInString", amt);
+      console.log('isInString', amt);
       try {
         const alw1 = await approve(npaTokenctr, nftAddress, amt.toString()); // Call the approve function of the NPA token contract to allow spending of tokens
         console.log(await alw1.wait(), 'allowance of napa is in progress');
@@ -146,8 +172,7 @@ export default function SectionOne({
     typeOfTransaction: number | string,
     _tokenUri: string,
     _transferToNapa: boolean,
-    _setSaleMinter: boolean,
-    callback: CallableFunction
+    _setSaleMinter: boolean
   ) => {
     // get NftCtr instance from newNapaNftContract function
     const NftCtr: any = await newNapaNftContract(signer);
@@ -162,10 +187,9 @@ export default function SectionOne({
         let convertedEthFee: any = _ethFee;
         console.log(_ethFee, '_ethFeeeeeeeeeeeee');
         // Calculate the total fee by adding the additional fee and eth fee
-        const hit =
-          Number(Number(_ethFee)) + Number(additional.toString());
+        const hit = Number(Number(_ethFee)) + Number(additional.toString());
         console.log(hit, 'new hit');
-        console.log("HIER", hit);
+        console.log('HIER', hit);
         // Check if total fee is greater than the provided eth fee
         if (hit > convertedEthFee) {
           // If yes, do token approval for Napa token and then mint NFT
@@ -185,14 +209,12 @@ export default function SectionOne({
                 );
                 const _lazyRes = await _lazy.wait();
                 console.log(await _lazyRes, '_lazy response');
-                callback(undefined, _lazyRes)
               } else {
                 console.log('waiting for confirmation');
                 checkApproval(res);
               }
             })
             .catch((e: any) => {
-              callback(e)
               console.log('Unknown error occured :', e);
               toast.error(
                 CustomToastWithLink({
@@ -212,8 +234,7 @@ export default function SectionOne({
         let convertedEthFee: any = _ethFee;
         console.log(_ethFee, '_eth Feeeeeeeeeeeee');
         // Calculate the total fee by adding the additional fee and eth fee
-        const hit =
-          Number(Number(_ethFee)) + Number(additional.toString());
+        const hit = Number(Number(_ethFee)) + Number(additional.toString());
         console.log(hit, 'new hit');
 
         // Check if total fee is greater than the provided eth fee
@@ -222,7 +243,7 @@ export default function SectionOne({
           await doApproval(hit.toString(), typeOfTransaction)
             .then(async function checkApproval(res: any) {
               const mainRes = await res.wait();
-              console.log(mainRes, "approval response")
+              console.log(mainRes, 'approval response');
               if (await mainRes) {
                 const _lazy = await lazyMint(
                   NftCtr,
@@ -236,14 +257,12 @@ export default function SectionOne({
                 );
                 const _lazyRes = await _lazy.wait();
                 console.log(await _lazyRes, '_lazy response');
-                callback(undefined, _lazyRes)
               } else {
                 console.log('waiting for confirmation');
                 checkApproval(res);
               }
             })
             .catch((e: any) => {
-              callback(e)
               console.log('Unknown error occured :', e);
               toast.error(
                 CustomToastWithLink({
@@ -258,9 +277,8 @@ export default function SectionOne({
       } else {
         // Calculate total fee for eth minting
         const etherFee = await ethFees(NftCtr);
-        let hit =
-          Number(Number(_ethFee)) + Number(etherFee.toString());
-        console.log(_ethFee, etherFee.toString(), hit.toFixed(9), "Problem");
+        let hit = Number(Number(_ethFee)) + Number(etherFee.toString());
+        console.log(_ethFee, etherFee.toString(), hit.toFixed(9), 'Problem');
         // Mint NFT with eth
         const _lazy = await lazyMintEth(
           NftCtr,
@@ -273,72 +291,35 @@ export default function SectionOne({
           false,
           { value: hit.toString() }
         );
-        console.log("Hang on Lazymint with ETH is in process...");
+        console.log('Hang on Lazymint with ETH is in process...');
         const _lazyRes = await _lazy.wait();
-        console.log(await _lazyRes, "Successful Lazymint with ETH ");
-        callback(undefined, _lazyRes)
+        console.log(await _lazyRes, 'Successful Lazymint with ETH ');
       }
     } catch (e: any) {
-      callback(e)
       console.log(e.code, e.message, 'caught');
     }
   };
 
   //3 buynft from market place
-  const _buyNftTokenFromMarket = async (transactionType: number | string, _tokenId: number | string, amount: string | number, callback: CallableFunction) => {
-    console.log("you are buying token :", _tokenId);
+  const _buyNftTokenFromMarket = async (
+    transactionType: number | string,
+    _tokenId: number | string,
+    amount: string | number
+  ) => {
+    console.log('you are buying token :', _tokenId);
     const isApprovedTkn = await doApprovalForToken(transactionType, _tokenId);
 
-    console.log("lvl2");
+    console.log('lvl2');
     const marketCtr: any = await marketPlaceContract(signer);
-    if (Number(transactionType) == 0 && await isApprovedTkn) {
-      console.log("buy from market in NAPA");
-      await buyNftToken(marketCtr, 0, _tokenId).then(async (res: any) => {
-        const response = await res.wait();
-        console.log(await response, "buyNftToken res");
-        callback(undefined, response)
-      }).catch((e: any) => {
-        callback(e)
-        console.log(e)
-        toast.error(
-          CustomToastWithLink({
-            icon: ErrorIcon,
-            title: 'Error',
-            description: e.error.message,
-            time: 'Now',
-          })
-        );
-      })
-    } else if (Number(transactionType) == 1 && await isApprovedTkn) {
-      console.log("buy from market in USDT");
-      await buyNftToken(marketCtr, Number(transactionType), _tokenId).then(async (res: any) => {
-        const response = await res.wait();
-        console.log(await response, "buyNftToken res");
-        callback(undefined, response)
-      }).catch((e: any) => {
-        callback(e)
-        console.log(e)
-        toast.error(
-          CustomToastWithLink({
-            icon: ErrorIcon,
-            title: 'Error',
-            description: e.error.message,
-            time: 'Now',
-          })
-        );
-      })
-    } else {
-      let valInEth = await calculateTokenAllowance(2, _tokenId);
-      console.log(valInEth, "valInEth");
-      if (isApprovedTkn) {
-        console.log("in to the ether put my stress right now");
-        await buyNftTokenWithEth(marketCtr, Number(transactionType), _tokenId, { value: amount.toString() }).then(async (res: any) => {
+    if (Number(transactionType) == 0 && (await isApprovedTkn)) {
+      console.log('buy from market in NAPA');
+      await buyNftToken(marketCtr, 0, _tokenId)
+        .then(async (res: any) => {
           const response = await res.wait();
-          console.log(response, "approve res");
-          callback(undefined, response)
-        }).catch((e: any) => {
-          callback(e)
-          console.log(e)
+          console.log(await response, 'buyNftToken res');
+        })
+        .catch((e: any) => {
+          console.log(e);
           toast.error(
             CustomToastWithLink({
               icon: ErrorIcon,
@@ -347,114 +328,171 @@ export default function SectionOne({
               time: 'Now',
             })
           );
+        });
+    } else if (Number(transactionType) == 1 && (await isApprovedTkn)) {
+      console.log('buy from market in USDT');
+      await buyNftToken(marketCtr, Number(transactionType), _tokenId)
+        .then(async (res: any) => {
+          const response = await res.wait();
+          console.log(await response, 'buyNftToken res');
         })
+        .catch((e: any) => {
+          console.log(e);
+          toast.error(
+            CustomToastWithLink({
+              icon: ErrorIcon,
+              title: 'Error',
+              description: e.error.message,
+              time: 'Now',
+            })
+          );
+        });
+    } else {
+      let valInEth = await calculateTokenAllowance(2, _tokenId);
+      console.log(valInEth, 'valInEth');
+      if (isApprovedTkn) {
+        console.log('in to the ether put my stress right now');
+        await buyNftTokenWithEth(marketCtr, Number(transactionType), _tokenId, {
+          value: amount.toString(),
+        })
+          .then(async (res: any) => {
+            const response = await res.wait();
+            console.log(response, 'approve res');
+          })
+          .catch((e: any) => {
+            console.log(e);
+            toast.error(
+              CustomToastWithLink({
+                icon: ErrorIcon,
+                title: 'Error',
+                description: e.error.message,
+                time: 'Now',
+              })
+            );
+          });
       }
     }
-  }
+  };
 
   //4 approve Napa Or Usdt Token
   // This function does the approval for a specific token contract
-  const doApprovalForToken: any = async (transactionType: number, tokenId: string | number) => {
-    console.log("gg", tokenId)
-    const amountToApprove: any = await calculateTokenAllowance(transactionType, tokenId);
-    console.log(((amountToApprove * 2).toString()), "token allowance");
-    if (transactionType == 0) { // Check if the transaction is for NPA tokens
+  const doApprovalForToken: any = async (
+    transactionType: number,
+    tokenId: string | number
+  ) => {
+    console.log('gg', tokenId);
+    const amountToApprove: any = await calculateTokenAllowance(
+      transactionType,
+      tokenId
+    );
+    console.log((amountToApprove * 2).toString(), 'token allowance');
+    if (transactionType == 0) {
+      // Check if the transaction is for NPA tokens
       const npaTokenctr: any = await napaTokenContract(signer); // Get the NPA token contract
-      console.log(npaTokenctr, "npaTokenctr contract");
-      const approveRes = await approve(npaTokenctr, marketPlace, ((amountToApprove * 2).toString())); // Call the approve function of the NPA token contract to allow spending of tokens
-      console.log(approveRes, "approve response of napa");
+      console.log(npaTokenctr, 'npaTokenctr contract');
+      const approveRes = await approve(
+        npaTokenctr,
+        marketPlace,
+        (amountToApprove * 2).toString()
+      ); // Call the approve function of the NPA token contract to allow spending of tokens
+      console.log(approveRes, 'approve response of napa');
       return await approveRes.wait();
-    } else if (transactionType == 1) { // Check if the transaction is for USDT tokens
+    } else if (transactionType == 1) {
+      // Check if the transaction is for USDT tokens
       const usdtTokenctr: any = await usdtTokenContract(signer); // Get the USDT token contract
-      console.log(usdtTokenctr, "usdtTokenctr contract");
-      const approveRes = await approve(usdtTokenctr, marketPlace, ((amountToApprove * 2).toString())); // Call the approve function of the USDT token contract to allow spending of tokens
-      console.log(approveRes, "approve response of usdt");
+      console.log(usdtTokenctr, 'usdtTokenctr contract');
+      const approveRes = await approve(
+        usdtTokenctr,
+        marketPlace,
+        (amountToApprove * 2).toString()
+      ); // Call the approve function of the USDT token contract to allow spending of tokens
+      console.log(approveRes, 'approve response of usdt');
       return await approveRes.wait();
-    } else { // If the transaction is not for tokens, return -1
+    } else {
+      // If the transaction is not for tokens, return -1
       console.log("don't need any approval check as you've opted for ether");
       return -1;
     }
-  }
+  };
 
   //5 calculates token allowance for each type
-  const calculateTokenAllowance = async (transactionType: number, toknId: string | number) => {
+  const calculateTokenAllowance = async (
+    transactionType: number,
+    toknId: string | number
+  ) => {
     // console.log(toknId),"gg";
     const decimals: number = 10 ** 18;
     const otherDecimals: number = 10 ** 10;
     const marketCtr: any = await marketPlaceContract(signer);
-    const { salePrice } = await nftInfo(marketCtr, (toknId).toString());
-    console.log(salePrice.toString(), "mysale", toknId);
+    const { salePrice } = await nftInfo(marketCtr, toknId.toString());
+    console.log(salePrice.toString(), 'mysale', toknId);
     if (transactionType == 0 || transactionType == 1) {
       const _napaTokenAmount = await napaTokenAmount(marketCtr);
-      const calculatedAmount = await salePrice / await _napaTokenAmount;
-      console.log(calculatedAmount * decimals, "total allowance need");
+      const calculatedAmount = (await salePrice) / (await _napaTokenAmount);
+      console.log(calculatedAmount * decimals, 'total allowance need');
       return calculatedAmount * decimals;
     } else {
-      console.log("into ethers part")
+      console.log('into ethers part');
       const _getLatestPrice: number = await getLatestPrice(marketCtr);
-      console.log(_getLatestPrice.toString(), "_getLatestPrice aa");
-      const calculatedAmount: number = await salePrice / (_getLatestPrice * otherDecimals);
-      console.log(salePrice.toString(), "salePrice");
-      console.log(calculatedAmount, "calculated");
-      return (calculatedAmount.toFixed(18));
+      console.log(_getLatestPrice.toString(), '_getLatestPrice aa');
+      const calculatedAmount: number =
+        (await salePrice) / (_getLatestPrice * otherDecimals);
+      console.log(salePrice.toString(), 'salePrice');
+      console.log(calculatedAmount, 'calculated');
+      return calculatedAmount.toFixed(18);
     }
-  }
+  };
 
-  const handleCreateTransactionTable = async (err: any, data: any) => {
-    console.log("error while buying listed item", err);
-    // if (err) {
-    //   setLoading(false);
-    // } else {
+  const handleCpmpleteTransactionTable = async (data: any) => {
+    console.log('web2');
     const newTransaction = {
-      sellerWallet: data?.to ? data?.to : "",
-      buyerWallet: data?.from ? data?.from : "",
+      sellerWallet: data?.to ? data?.to : '',
+      buyerWallet: data?.from ? data?.from : '',
       type: 'SNFT',
       itemId: snftDetails?.snftId,
       amount: snftDetails?.amount,
       currencyType: snftDetails?.currencyType,
       status: '1',
       txId: '',
-      contractAddress: data?.contractAddress ? data.contractAddress : "",
+      contractAddress: data?.contractAddress ? data.contractAddress : '',
       tokenId: snftDetails?.tokenId,
       wallet: 'metamask',
     };
     await handleNewTransaction(newTransaction);
     await handleBuySnft(snftDetails?.snftId as string);
     setLoading(false);
-    // }
-  }
+  };
 
   //6 lazy mint connectivity function
   const lazyMintHandler = async (data: any) => {
-
-    const tokenId = (data.tokenId).toString();
+    const tokenId = data.tokenId.toString();
     const transactionType = data.currencyType;
-    console.log((data.currencyType).toString(), "LLL")
+    console.log(data.currencyType.toString(), 'LLL');
 
-    const _amount = (Number(data.amount) * (10 ** 18)).toString();
-    console.log(_amount, "AMOUNTT");
-    
+    const _amount = (Number(data.amount) * 10 ** 18).toString();
+    console.log(_amount, 'AMOUNTT');
+
     console.log('changes appeared', signer, address, data);
     const NFTCtr = await newNapaNftContract(signer);
     // data.tokenId.toString()
     let isNFTAvailable;
-    
+
     try {
       isNFTAvailable = await NFTCtr.exists(tokenId);
-      console.log(isNFTAvailable, "is nft Exists");
+      console.log(isNFTAvailable, 'is nft Exists');
     } catch (e) {
-      console.log(e, "NOW it will go to Lazymint")
+      console.log(e, 'NOW it will go to Lazymint');
     }
-    console.log("NFT AVAILABILITY", isNFTAvailable);
+    console.log('NFT AVAILABILITY', isNFTAvailable);
     if (isNFTAvailable) {
       let val = data.tokenId.toString();
-      console.log("NFT exists", val);
+      console.log('NFT exists', val);
       // alert("You are buying from market");
-      console.log("You are buying from market");
+      console.log('You are buying from market');
       setLoading(true);
-      _buyNftTokenFromMarket(transactionType, val, _amount, handleCreateTransactionTable);
+      _buyNftTokenFromMarket(transactionType, val, _amount);
     } else {
-      console.log("NFT exists");
+      console.log('NFT exists');
       // alert(`You are buying by Lazymint ${transactionType}`);
       console.log(`You are buying by Lazymint ${transactionType}`);
       try {
@@ -466,20 +504,21 @@ export default function SectionOne({
           transactionType,
           'https://bafybeiho2j43vulwhnjmfyvjafohl5prvcx24hr2sqvz7wliynnodmovru.ipfs.dweb.link/101.json',
           false,
-          false,
-          handleCreateTransactionTable
-        ).then(async (res: any) => {
-          console.log("hang on lazyint is in progress...");
-          console.log(await res.wait(), "lazymint response");
-        }).catch((e: any) => {
-          console.log(e, "Error While Lazymint");
-        });
+          false
+        )
+          .then(async (res: any) => {
+            console.log('hang on lazyint is in progress...');
+            console.log(await res.wait(), 'lazymint response');
+            handleCpmpleteTransactionTable(res);
+          })
+          .catch((e: any) => {
+            console.log(e, 'Error While Lazymint');
+          });
       } catch (e) {
         console.log('error :', e);
       }
     }
   };
-
 
   // marketPlace setApprovalFunction to approve NFTs by owner('Should be called by NFT owner')
   // const approveNFTFromOwner = async () => {
@@ -538,10 +577,11 @@ export default function SectionOne({
             <p>{snftDetails?.SNFTDescription}</p>
             <div className={styles.imgAndperaFlex}>
               <Image
-                src={`${snftDetails?.userImage
-                  ? snftDetails?.userImage
-                  : '/assets/images/img_avatar.png'
-                  }`}
+                src={`${
+                  snftDetails?.userImage
+                    ? snftDetails?.userImage
+                    : '/assets/images/img_avatar.png'
+                }`}
                 alt=""
                 width={40}
                 height={40}
@@ -591,8 +631,9 @@ export default function SectionOne({
                 {profileId != snftDetails?.profileId && (
                   <Link href="/">
                     <a
-                      className={`${styles.linkPernt} ${snftDetails?.listed == '2' && styles.disabled
-                        }`}
+                      className={`${styles.linkPernt} ${
+                        snftDetails?.listed == '2' && styles.disabled
+                      }`}
                     >
                       Submit Offer
                     </a>
@@ -601,8 +642,9 @@ export default function SectionOne({
                 {profileId != snftDetails?.profileId && (
                   <a
                     href="javascript:void(0);"
-                    className={`${styles.linkPernt} ${snftDetails?.listed == '2' && styles.disabled
-                      }`}
+                    className={`${styles.linkPernt} ${
+                      snftDetails?.listed == '2' && styles.disabled
+                    }`}
                     onClick={() => {
                       if (snftDetails?.listed == '2') {
                         return;
@@ -612,7 +654,13 @@ export default function SectionOne({
                   >
                     {snftDetails?.listed == '2'
                       ? 'Sold'
-                      : `Buy Now for ${snftDetails?.amount}  ${snftDetails?.currencyType == "0" ? "NAPA" : snftDetails?.currencyType == "1" ? "USDT" : "ETH"}`}
+                      : `Buy Now for ${snftDetails?.amount}  ${
+                          snftDetails?.currencyType == '0'
+                            ? 'NAPA'
+                            : snftDetails?.currencyType == '1'
+                            ? 'USDT'
+                            : 'ETH'
+                        }`}
                   </a>
                 )}
                 <div className={`${styles.RowLabel} ${styles.RowSeven}`}>

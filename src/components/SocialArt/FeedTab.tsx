@@ -46,6 +46,7 @@ import {
 } from '../../services/CommentApi';
 import { createReport } from '../../services/ReportApi';
 import MyTimer from '../LiverTimer/Mytimer';
+import { nftAddress } from '@/connectivity/addressHelpers/addressHelper';
 
 type FeedTabProps = {
   socket: WebSocket;
@@ -604,7 +605,7 @@ export default function FeedTab({ socket }: FeedTabProps) {
     const mintedPost = {
       postId: post.postId,
       videoType: post.videoType,
-      accountId: post.accountId,
+      generatorId: post.accountId,
       profileId: post.profileId,
       title: mintDetails.title,
       network: '',
@@ -618,10 +619,9 @@ export default function FeedTab({ socket }: FeedTabProps) {
       tags: newTags.length ? newTags : '',
       live: '',
       payoutApproved: '',
-      SNFTAddress: '',
+      SNFTAddress: nftAddress,
       networkTxId: '',
-      owner: post.userName,
-      gasFees: '',
+      owner: post.accountId,
       thumbnail: thumbnailPreview,
     };
     setLoading(true);
