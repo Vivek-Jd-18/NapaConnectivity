@@ -318,7 +318,7 @@ export default function SellNFTPage({
         );
         console.log(await res.wait(), 'approve to market result');
       })
-      .catch((e: any) => {
+      .catch(() => {
         // alert("Already in Marketplace");
         // toast.error(
         //   CustomToastWithLink({

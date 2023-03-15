@@ -26,7 +26,7 @@ import { useRouter } from 'next/router';
 import { FadeLoader } from 'react-spinners';
 
 export default function MySFTs(props: any) {
-  const { address, balance, chainId, signer } = useWebThree();
+  const { address, signer } = useWebThree();
   const options = [
     { value: 'chocolate', label: 'Chocolate' },
     { value: 'strawberry', label: 'Strawberry' },
@@ -51,7 +51,7 @@ export default function MySFTs(props: any) {
   const [tokenIds, setTokenIds] = useState<string[]>([])
   const [mySntsData, setMySnftsData] = useState<any[]>([])
   const [loading, setLoading] = useState(false)
-  const {push} = useRouter()
+  const { push } = useRouter()
 
   const [nfts, setNfts] = useState<any[]>([{
     tokenId: "loading..",
@@ -154,7 +154,7 @@ export default function MySFTs(props: any) {
       console.log(e);
     }
     setNfts(newItems);
-    const tknIds = newItems.map((item:any)=>item.tokenId)
+    const tknIds = newItems.map((item: any) => item.tokenId)
     setTokenIds(tknIds)
     return dt;
   };
@@ -177,12 +177,11 @@ export default function MySFTs(props: any) {
     setLoading(false);
   }
 
-  useEffect(()=>{
-   if(tokenIds.length)
-   {
-    handleGetMySnftsFromWeb2()
-   }
-  },[tokenIds])
+  useEffect(() => {
+    if (tokenIds.length) {
+      handleGetMySnftsFromWeb2()
+    }
+  }, [tokenIds])
 
   useEffect(() => {
     if (profileId) {
@@ -659,11 +658,10 @@ export default function MySFTs(props: any) {
                         <div className={styles.upCont}>
                           <Image
                             style={{ borderRadius: '50px' }}
-                            src={`${
-                              snft.userImage
+                            src={`${snft.userImage
                                 ? snft.userImage
                                 : '/assets/images/img_avatar.png'
-                            }`}
+                              }`}
                             height="40px"
                             width="40px"
                             alt=""

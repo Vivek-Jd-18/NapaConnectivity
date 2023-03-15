@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styles from './SectionOne.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -35,7 +35,6 @@ export default function SectionOne({
 }: SectionOneProps) {
   const router = useRouter();
   const [loading, setLoading] = React.useState(false);
-  const [imageBase64, setImageBase64] = useState<string | ArrayBuffer | null>('');
 
   console.log(snftDetails, 'all data');
 
