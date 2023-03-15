@@ -145,3 +145,23 @@ export const buySnft = async (id: string) => {
     };
   }
 };
+
+export const pinToIPFS = async (data: any) => {
+  try {
+    const p = await axios.post<{}, AxiosResponse<any>>(
+      `${SOCIAL_ART_API_URL}/user/marketplace/pinToIPFS`,
+      data
+    );
+    return {
+      data: p.data,
+      message: '',
+      error: false,
+    };
+  } catch (error) {
+    return {
+      data: null,
+      error: true,
+      message: error?.response?.data?.message,
+    };
+  }
+};
