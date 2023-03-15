@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './SectionOne.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
 import { SnftResponse } from '../../../types/marketplace';
-import { buySnft, deleteSnft } from '../../../services/MarketplaceApi';
+import { buySnft, deleteSnft, pinToIPFS } from '../../../services/MarketplaceApi';
 import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
 import { CustomToastWithLink } from '../../../components/CustomToast/CustomToast';
@@ -22,6 +22,7 @@ import useWebThree from '@/hooks/useWebThree';
 import { marketPlaceContract, napaTokenContract, newNapaNftContract, usdtTokenContract } from '@/connectivity/contractObjects/contractObject1';
 import { marketPlace, nftAddress } from '@/connectivity/addressHelpers/addressHelper';
 import { approve, ethFee as ethFees, lazyMint, lazyMintEth, UsdtMintFee as _UsdtMintFee, NapaMintFee as _NapaMintFee, napaTokenAmount, nftInfo, getLatestPrice, buyNftToken, buyNftTokenWithEth } from '@/connectivity/callHelpers/callHelper1';
+import useProfile from '@/hooks/useProfile';
 // import { decimals } from '@/connectivity/callHelpers/napaTokenCallHandlers';
 
 type SectionOneProps = {
@@ -453,6 +454,7 @@ export default function SectionOne({
       _buyNftTokenFromMarket(transactionType, val, _amount, handleCreateTransactionTable);
     } else {
       console.log(`You are buying by Lazymint ${transactionType}`);
+      const metadataUrl = await generateIPFS();
       try {
         setLoading(true);
         await LazyFunction(
@@ -460,7 +462,7 @@ export default function SectionOne({
           data.accountId,
           _amount,
           transactionType,
-          'https://bafybeiho2j43vulwhnjmfyvjafohl5prvcx24hr2sqvz7wliynnodmovru.ipfs.dweb.link/101.json',
+          metadataUrl,
           false,
           true,
           handleCreateTransactionTable
@@ -475,6 +477,26 @@ export default function SectionOne({
       }
     }
   };
+
+
+  //7 IPFS url maker
+  const { profileDetails } = useProfile()
+  const generateIPFS = async () => {
+    console.log("generating IPFS ... ")
+    const data = {
+      thumbnail: snftDetails?.thumbnail,
+      videoURL: snftDetails?.videoURL,
+      id: snftDetails?.snftId,
+      userName: profileDetails?.profileName,
+      avatar: profileDetails?.avatar,
+      description: snftDetails?.SNFTDescription,
+      title: snftDetails?.SNFTTitle
+    }
+    const result = await pinToIPFS(data)
+    const mainUrl: any = await result.data.data.IpfsHashURL
+    console.log("pinToIPFS result", mainUrl);
+    return mainUrl
+  }
 
 
   // marketPlace setApprovalFunction to approve NFTs by owner('Should be called by NFT owner')
