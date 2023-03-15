@@ -1153,8 +1153,8 @@ export default function FeedTab({ socket }: FeedTabProps) {
       toast.error(
         CustomToastWithLink({
           icon: ErrorIcon,
-          title: 'Post Live Time has expired',
-          description: 'You can not give awards to expired posts',
+          title: 'SNFT Live Time Has Expired',
+          description: 'You cannot award an expired posts',
           time: 'Now',
         })
       );
