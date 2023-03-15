@@ -20,7 +20,7 @@ export default function SectionTow({ snftDetails }: SectionTowProps) {
               <p>0x9324...74dCa</p>
             </div>
             <div className={styles.flexPrntSc02}>
-              <h6>Etherscan Address</h6>
+              <h6>Collection</h6>
               <p>3a215a...09sfH</p>
             </div>
             <div className={styles.flexPrntSc02}>
@@ -28,11 +28,11 @@ export default function SectionTow({ snftDetails }: SectionTowProps) {
               <p>2193</p>
             </div>
             <div className={styles.flexPrntSc02}>
-              <h6>Token Standart</h6>
+              <h6>Token Standard</h6>
               <p>ERC-284</p>
             </div>
             <div className={styles.flexPrntSc02}>
-              <h6>Blockchain</h6>
+              <h6>Network</h6>
               <div className={styles.flexNapa}>
                 <Image
                   src="/img/napa_ic_aj.svg"

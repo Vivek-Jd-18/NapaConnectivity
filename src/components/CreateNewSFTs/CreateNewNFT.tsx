@@ -19,9 +19,9 @@ export default function CreateNewNFT() {
     };
 
     const optionsthree = [
-        { value: 'Bring Me the Open Space', label: 'Bring Me the Open Space' },
-        { value: 'Bring Me the Open Space', label: 'Bring Me the Open Space' },
-        { value: 'Bring Me the Open Space', label: 'Bring Me the Open Space' },
+        { value: 'New Collection', label: 'New Collection' },
+        // { value: 'Bring Me the Open Space', label: 'Bring Me the Open Space' },
+        // { value: 'Bring Me the Open Space', label: 'Bring Me the Open Space' },
       ];
       const optionsone = [
         { value: 'Napa NAPA', label: <div className='cstm_napa_slct'><Image src="/img/napa_ic.svg" alt="" width="24px" height="24px" />Ethereum</div> },
@@ -52,7 +52,7 @@ export default function CreateNewNFT() {
                             <Input
                                 value={name}
                                 type="text"
-                                placeholder="https://yoursite.io/item/"
+                                placeholder="https://"
                                 label="External link"
                                 onChange={(e) => setName(e.target.value)}
                             />

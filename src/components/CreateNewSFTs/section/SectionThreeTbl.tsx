@@ -7,7 +7,7 @@ export default function SectionThreeTbl() {
     <div className={styles.SectionThree}>
         <div className="col-lg-12 ">
             <div className={styles.MainTable}>
-                <h4>Listings</h4>
+                <h4>Previous Listings</h4>
             </div>
             <div className={styles.MainTableTable}>
                 <div className={styles.TableHead}>
