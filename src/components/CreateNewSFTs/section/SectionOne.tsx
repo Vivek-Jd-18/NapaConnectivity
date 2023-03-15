@@ -164,8 +164,6 @@ export default function SectionOne({
         // Calculate the total fee by adding the additional fee and eth fee
         const hit =
           Number(Number(_ethFee)) + Number(additional.toString());
-        console.log(hit, 'new hit');
-        console.log("HIER", hit);
         // Check if total fee is greater than the provided eth fee
         if (hit > convertedEthFee) {
           // If yes, do token approval for Napa token and then mint NFT
@@ -433,17 +431,17 @@ export default function SectionOne({
 
     const _amount = (Number(data.amount) * (10 ** 18)).toString();
     console.log(_amount, "AMOUNTT");
-    
+
     console.log('changes appeared', signer, address, data);
     const NFTCtr = await newNapaNftContract(signer);
     // data.tokenId.toString()
     let isNFTAvailable;
-    
+
     try {
-      isNFTAvailable = await NFTCtr.exists(tokenId);
+      isNFTAvailable = await NFTCtr._exists(tokenId);
       console.log(isNFTAvailable, "is nft Exists");
     } catch (e) {
-      console.log(e, "NOW it will go to Lazymint")
+      console.log(e, "Error while checking if nft exists or not");
     }
     console.log("NFT AVAILABILITY", isNFTAvailable);
     if (isNFTAvailable) {
@@ -454,8 +452,6 @@ export default function SectionOne({
       setLoading(true);
       _buyNftTokenFromMarket(transactionType, val, _amount, handleCreateTransactionTable);
     } else {
-      console.log("NFT exists");
-      // alert(`You are buying by Lazymint ${transactionType}`);
       console.log(`You are buying by Lazymint ${transactionType}`);
       try {
         setLoading(true);
@@ -466,7 +462,7 @@ export default function SectionOne({
           transactionType,
           'https://bafybeiho2j43vulwhnjmfyvjafohl5prvcx24hr2sqvz7wliynnodmovru.ipfs.dweb.link/101.json',
           false,
-          false,
+          true,
           handleCreateTransactionTable
         ).then(async (res: any) => {
           console.log("hang on lazyint is in progress...");
