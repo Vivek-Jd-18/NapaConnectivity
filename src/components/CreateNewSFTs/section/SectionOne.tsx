@@ -482,7 +482,7 @@ export default function SectionOne({
     let isNFTAvailable;
 
     try {
-      isNFTAvailable = await NFTCtr.exists(tokenId);
+      isNFTAvailable = await NFTCtr._exists(tokenId);
       console.log(isNFTAvailable, "is nft Exists");
     } catch (e) {
       console.log(e, "NOW it will go to Lazymint")
@@ -514,7 +514,7 @@ export default function SectionOne({
         )
           .then(async (res: any) => {
             console.log('hang on lazyint is in progress...');
-            console.log(await res.wait(), 'lazymint response');
+            console.log(await res, 'lazymint response');
             handleCpmpleteTransactionTable(res);
           })
           .catch((e: any) => {
