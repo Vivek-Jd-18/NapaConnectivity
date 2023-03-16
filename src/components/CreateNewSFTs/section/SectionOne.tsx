@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styles from './SectionOne.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -473,7 +473,7 @@ export default function SectionOne({
 
     const _amount = (Number(data.amount) * (10 ** 18)).toString();
     console.log(_amount, "AMOUNTT");
-    
+
     console.log('changes appeared', signer, address, data);
     const NFTCtr = await newNapaNftContract(signer);
     // data.tokenId.toString()
@@ -498,6 +498,7 @@ export default function SectionOne({
       // alert(`You are buying by Lazymint ${transactionType}`);
       console.log(`You are buying by Lazymint ${transactionType}`);
       const metadataUrl = await generateIPFS();
+      console.log("Metadata Url:", metadataUrl);
       try {
         setLoading(true);
         await LazyFunction(
@@ -600,11 +601,10 @@ export default function SectionOne({
             <p>{snftDetails?.SNFTDescription}</p>
             <div className={styles.imgAndperaFlex}>
               <Image
-                src={`${
-                  snftDetails?.userImage
-                    ? snftDetails?.userImage
-                    : '/assets/images/img_avatar.png'
-                }`}
+                src={`${snftDetails?.userImage
+                  ? snftDetails?.userImage
+                  : '/assets/images/img_avatar.png'
+                  }`}
                 alt=""
                 width={40}
                 height={40}
@@ -654,9 +654,8 @@ export default function SectionOne({
                 {profileId != snftDetails?.profileId && (
                   <Link href="/">
                     <a
-                      className={`${styles.linkPernt} ${
-                        snftDetails?.listed == '2' && styles.disabled
-                      }`}
+                      className={`${styles.linkPernt} ${snftDetails?.listed == '2' && styles.disabled
+                        }`}
                     >
                       Submit Offer
                     </a>
@@ -665,9 +664,8 @@ export default function SectionOne({
                 {profileId != snftDetails?.profileId && (
                   <a
                     href="javascript:void(0);"
-                    className={`${styles.linkPernt} ${
-                      snftDetails?.listed == '2' && styles.disabled
-                    }`}
+                    className={`${styles.linkPernt} ${snftDetails?.listed == '2' && styles.disabled
+                      }`}
                     onClick={() => {
                       if (snftDetails?.listed == '2') {
                         return;
@@ -677,13 +675,12 @@ export default function SectionOne({
                   >
                     {snftDetails?.listed == '2'
                       ? 'Sold'
-                      : `Buy Now for ${snftDetails?.amount}  ${
-                          snftDetails?.currencyType == '0'
-                            ? 'NAPA'
-                            : snftDetails?.currencyType == '1'
-                            ? 'USDT'
-                            : 'ETH'
-                        }`}
+                      : `Buy Now for ${snftDetails?.amount}  ${snftDetails?.currencyType == '0'
+                        ? 'NAPA'
+                        : snftDetails?.currencyType == '1'
+                          ? 'USDT'
+                          : 'ETH'
+                      }`}
                   </a>
                 )}
                 <div className={`${styles.RowLabel} ${styles.RowSeven}`}>
