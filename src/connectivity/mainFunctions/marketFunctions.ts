@@ -1,3 +1,7 @@
+// import { ethers } from 'ethers';
+// import Web3Modal from 'web3modal';
+// import providerOptions from '../providers/providerOptions';
+
 import {
     NapaMintFee as _NapaMintFee,
     UsdtMintFee as _UsdtMintFee,

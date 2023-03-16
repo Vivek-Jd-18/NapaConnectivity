@@ -455,10 +455,12 @@ export default function SectionOne({
       amount: snftDetails?.amount,
       currencyType: snftDetails?.currencyType,
       status: '1',
-      txId: '',
-      contractAddress: data?.contractAddress ? data.contractAddress : '',
+      txId: data?.transactionHash ? data?.transactionHash : '',
+      contractAddress: nftAddress,
       tokenId: snftDetails?.tokenId,
       wallet: 'metamask',
+      profileId: profileDetails?.profileId,
+      owner: data?.from ? data?.from : '',
     };
     await handleNewTransaction(newTransaction);
     await handleBuySnft(snftDetails?.snftId as string);
@@ -640,17 +642,39 @@ export default function SectionOne({
             ) : (
               <div className={styles.thrBtnPrnt}>
                 {profileId == snftDetails?.profileId && (
-                  <Link href={`/list-item?id=${router?.query?.id}`}>
-                    <a className={styles.linkPernt}>Edit</a>
-                  </Link>
-                )}
-                {profileId == snftDetails?.profileId && (
-                  <Link href="">
-                    <a onClick={handleDeleteSnft} className={styles.linkPernt}>
-                      Delist
+                  <Link href={`${snftDetails?.listed == '2' ? '' : `/list-item?id=${router?.query?.id}`}`}>
+                    <a
+                      className={`${styles.linkPernt} ${
+                        snftDetails?.listed == '2' && styles.disabled
+                      }`}
+                    >
+                      Edit
                     </a>
                   </Link>
                 )}
+                {profileId == snftDetails?.profileId &&
+                  snftDetails?.listed == '1' && (
+                    <Link href="">
+                      <a
+                        onClick={handleDeleteSnft}
+                        className={styles.linkPernt}
+                      >
+                        Delist
+                      </a>
+                    </Link>
+                  )}
+                {profileId == snftDetails?.profileId &&
+                  snftDetails?.listed == '0' && (
+                    <a
+                      href="javascript:void(0);"
+                      onClick={() =>
+                        router.push(`/list-item?id=${router?.query?.id}`)
+                      }
+                      className={styles.linkPernt}
+                    >
+                      Sell
+                    </a>
+                  )}
                 {profileId != snftDetails?.profileId && (
                   <Link href="/">
                     <a

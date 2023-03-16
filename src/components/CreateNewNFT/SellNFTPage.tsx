@@ -28,6 +28,7 @@ import // approve,
 import useWebThree from '@/hooks/useWebThree';
 import {
   marketPlaceContract, 
+  // newNapaNftContract,
   // napaTokenContract, usdtTokenContract
 } from '@/connectivity/contractObjects/contractObject1';
 import {

@@ -40,5 +40,7 @@ export type CreateNewTransactionResponse = {
     contractAddress: string;
     tokenId: number;
     wallet: string;
+    profileId: string;
+    owner: string
   };
   
