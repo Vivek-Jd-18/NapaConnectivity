@@ -27,7 +27,8 @@ import // approve,
   '@/connectivity/callHelpers/commanNFTCallHandlers';
 import useWebThree from '@/hooks/useWebThree';
 import {
-  marketPlaceContract, newNapaNftContract,
+  marketPlaceContract, 
+  // newNapaNftContract,
   // napaTokenContract, usdtTokenContract
 } from '@/connectivity/contractObjects/contractObject1';
 import {
