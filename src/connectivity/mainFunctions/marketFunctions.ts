@@ -32,36 +32,6 @@ const decimals: number = 10 ** 18;
 const otherDecimals: number = 10 ** 10;
 let CurrentWalletAddress: string = "";
 
-/**
-function to connect to wallet and get the address
-This is an asynchronous function called "call" that initializes a web3Modal object,
-connects to an Ethereum provider, sets the provider and signer, gets the current wallet address,
-and logs the chain ID and the address. It also sets the connection status and current wallet address
-using the "setConn" and "setCurrentWalletAddress" functions.
-*/
-
-export const call = async () => {
-    async function connect() {
-        const externalProvider = await web3Modal.connect();
-        return new ethers.providers.Web3Provider(externalProvider);
-    }
-    const web3Modal = new Web3Modal({
-        network: 'mainnet',
-        cacheProvider: true,
-        providerOptions,
-    });
-    const provider = await connect();
-    // const { chainId } = await provider.getNetwork()
-    await provider.getNetwork();
-
-    const signer = await provider.getSigner(0);
-    _signer = signer;
-    const address = await signer.getAddress();
-    console.log(address, ": current wallet address")
-    CurrentWalletAddress = address;
-    console.log(address, '-=-address-==-');
-    return signer;
-};
 
 //#1 buynft from market place
 export const _buyNftToken = async (transactionType: number, _tokenId: number | string) => {

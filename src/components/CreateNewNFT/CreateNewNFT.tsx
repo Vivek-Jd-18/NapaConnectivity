@@ -19,12 +19,14 @@ export default function CreateNewNFT() {
     };
 
     const optionsthree = [
-        { value: 'Bring Me the Open Spac', label: 'Bring Me the Open Space' }, // current collections 
-        // { value: 'Bring Me the Open Space', label: 'Bring Me the Open Space' },
-        // { value: 'Bring Me the Open Space', label: 'Bring Me the Open Space' },
+        { value: 'Bring Me the Open Space', label: 'Bring Me the Open Space' },
+        { value: 'Bring Me the Open Space', label: 'Bring Me the Open Space' },
+        { value: 'Bring Me the Open Space', label: 'Bring Me the Open Space' },
       ];
       const optionsone = [
-        { value: 'Napa NAPA', label: <div className='cstm_napa_slct'><Image src="/img/napa_ic.svg" alt="" width="24px" height="24px" />New Collection</div> },
+        { value: 'Napa NAPA', label: <div className='cstm_napa_slct'><Image src="/img/napa_ic.svg" alt="" width="24px" height="24px" />Napa NAPA</div> },
+        { value: 'Napa NAPA', label: <div className='cstm_napa_slct'><Image src="/img/napa_ic.svg" alt="" width="24px" height="24px" />Napa NAPA</div> },
+        { value: 'Napa NAPA', label: <div className='cstm_napa_slct'><Image src="/img/napa_ic.svg" alt="" width="24px" height="24px" />Napa NAPA</div> },
       ];
   return (
     <>
@@ -50,7 +52,7 @@ export default function CreateNewNFT() {
                             <Input
                                 value={name}
                                 type="text"
-                                placeholder="https://"
+                                placeholder="https://yoursite.io/item/ illusions-of-darkness"
                                 label="External link"
                                 onChange={(e) => setName(e.target.value)}
                             />

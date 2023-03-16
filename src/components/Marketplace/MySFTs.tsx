@@ -209,37 +209,6 @@ export default function MySFTs(props: any) {
     return flag;
   };
 
-  // user will allow his Other NFTs by approving to MarketPlace Contract (LISTING)
-  // const allowMarketToSell = async (tknId: number, nftAddress: string) => {
-  //   console.log('you are giving approval to token id:', tknId);
-  //   const commanNFTCtr = await commanNFTContract(signer, nftAddress);
-  //   await approve(commanNFTCtr, nftAddress, tknId)
-  //     .then(async (res) => {
-  //       console.log(
-  //         `You have approved your nft with id: ${tknId}, Wait for the Transaction 'Approval'... `
-  //       );
-  //       console.log(await res.wait());
-  //     })
-  //     .catch((e: any) => {
-  //       console.log(e, 'Error');
-  //     });
-  // };
-
-  // users NFTs will be sold by MarketPlace Contract only if allowed(NFT BUY FROM MarketPlace)
-  // const _transferFrom = async () => {
-  //   const nftAddress: string = "";
-  //   const receiver = "";
-  //   const newTokenID = 1;
-  //   const { signer }: any = await call()
-  //   const commanNFTCtr = await commanNFTContract("", signer);
-  //   await transferFrom(commanNFTCtr, nftAddress, receiver, newTokenID).then(async (res: any) => {
-  //     console.log("Wait for Transaction 'Approval'... ");
-  //     console.log(await res.wait());
-  //   }).catch((e: any) => {
-  //     console.log(e, "Error");
-  //   });
-  // }
-
   // fetch NFTs working ends
 
   return (

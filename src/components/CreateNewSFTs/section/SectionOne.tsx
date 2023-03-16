@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './SectionOne.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
 import { SnftResponse } from '../../../types/marketplace';
-import { buySnft, deleteSnft } from '../../../services/MarketplaceApi';
+import { buySnft, deleteSnft, pinToIPFS } from '../../../services/MarketplaceApi';
 import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
 import { CustomToastWithLink } from '../../../components/CustomToast/CustomToast';
@@ -189,9 +189,10 @@ export default function SectionOne({
         let convertedEthFee: any = _ethFee;
         console.log(_ethFee, '_ethFeeeeeeeeeeeee');
         // Calculate the total fee by adding the additional fee and eth fee
-        const hit = Number(Number(_ethFee)) + Number(additional.toString());
+        const hit =
+          Number(Number(_ethFee)) + Number(additional.toString());
         console.log(hit, 'new hit');
-        console.log('HIER', hit);
+        console.log("HIER", hit);
         // Check if total fee is greater than the provided eth fee
         if (hit > convertedEthFee) {
           // If yes, do token approval for Napa token and then mint NFT
@@ -473,9 +474,9 @@ export default function SectionOne({
     const transactionType = data.currencyType;
     console.log(data.currencyType.toString(), 'LLL');
 
-    const _amount = (Number(data.amount) * 10 ** 18).toString();
-    console.log(_amount, 'AMOUNTT');
-
+    const _amount = (Number(data.amount) * (10 ** 18)).toString();
+    console.log(_amount, "AMOUNTT");
+    
     console.log('changes appeared', signer, address, data);
     const NFTCtr = await newNapaNftContract(signer);
     // data.tokenId.toString()
@@ -483,9 +484,9 @@ export default function SectionOne({
 
     try {
       isNFTAvailable = await NFTCtr.exists(tokenId);
-      console.log(isNFTAvailable, 'is nft Exists');
+      console.log(isNFTAvailable, "is nft Exists");
     } catch (e) {
-      console.log(e, 'NOW it will go to Lazymint');
+      console.log(e, "NOW it will go to Lazymint")
     }
     console.log('NFT AVAILABILITY', isNFTAvailable);
     if (isNFTAvailable) {
@@ -496,9 +497,10 @@ export default function SectionOne({
       setLoading(true);
       _buyNftTokenFromMarket(transactionType, val, _amount);
     } else {
-      console.log('NFT exists');
+      console.log("NFT exists");
       // alert(`You are buying by Lazymint ${transactionType}`);
       console.log(`You are buying by Lazymint ${transactionType}`);
+      const metadataUrl = await generateIPFS();
       try {
         setLoading(true);
         await LazyFunction(
@@ -506,7 +508,7 @@ export default function SectionOne({
           data.accountId,
           _amount,
           transactionType,
-          'https://bafybeiho2j43vulwhnjmfyvjafohl5prvcx24hr2sqvz7wliynnodmovru.ipfs.dweb.link/101.json',
+          metadataUrl,
           false,
           false
         )
@@ -523,6 +525,26 @@ export default function SectionOne({
       }
     }
   };
+
+  //7 IPFS url maker
+  const { profileDetails } = useProfile()
+  const generateIPFS = async () => {
+    console.log("generating IPFS ... ")
+    const data = {
+      thumbnail: snftDetails?.thumbnail,
+      videoURL: snftDetails?.videoURL,
+      id: snftDetails?.snftId,
+      userName: profileDetails?.profileName,
+      avatar: profileDetails?.avatar,
+      description: snftDetails?.SNFTDescription,
+      title: snftDetails?.SNFTTitle
+    }
+    const result = await pinToIPFS(data)
+    const mainUrl: any = await result.data.data.IpfsHashURL
+    console.log("pinToIPFS result", mainUrl);
+    return mainUrl
+  }
+
 
   // marketPlace setApprovalFunction to approve NFTs by owner('Should be called by NFT owner')
   // const approveNFTFromOwner = async () => {
