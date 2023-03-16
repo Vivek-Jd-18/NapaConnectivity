@@ -515,7 +515,14 @@ export default function SectionOne({
           .then(async (res: any) => {
             console.log('hang on lazyint is in progress...');
             console.log(await res, 'lazymint response');
-            handleCpmpleteTransactionTable(res);
+            const isNFTAvailable = await NFTCtr._exists(tokenId);
+            console.log(isNFTAvailable, "isNFTAvailable")
+            if (await isNFTAvailable) {
+              handleCpmpleteTransactionTable(res);
+              console.log("NFT removed from MarketPlace");
+            } else {
+              console.log("NFT not minted!");
+            }
           })
           .catch((e: any) => {
             console.log(e, 'Error While Lazymint');
@@ -644,9 +651,8 @@ export default function SectionOne({
                 {profileId == snftDetails?.profileId && (
                   <Link href={`${snftDetails?.listed == '2' ? '' : `/list-item?id=${router?.query?.id}`}`}>
                     <a
-                      className={`${styles.linkPernt} ${
-                        snftDetails?.listed == '2' && styles.disabled
-                      }`}
+                      className={`${styles.linkPernt} ${snftDetails?.listed == '2' && styles.disabled
+                        }`}
                     >
                       Edit
                     </a>
