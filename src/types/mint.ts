@@ -39,7 +39,7 @@ export type MintPost = {
   postId: string;
   mintId: string;
   videoType: string;
-  accountId: string;
+  generatorId: string;
   profileId: string;
   network: string;
   status: string;
@@ -55,7 +55,6 @@ export type MintPost = {
   SNFTAddress: string;
   networkTxId: string;
   owner: string;
-  gasFees: string;
   timeMinted: string;
   videoURL?: string;
   createdAt: string;
@@ -71,7 +70,7 @@ export type MintPost = {
 export type NewMint = {
   postId: string;
   videoType: string;
-  accountId: string;
+  generatorId: string;
   profileId: string;
   network: string;
   status: string;
@@ -87,6 +86,5 @@ export type NewMint = {
   SNFTAddress: string;
   networkTxId: string;
   owner: string;
-  gasFees: string;
   thumbnail: string;
 };

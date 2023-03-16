@@ -41,7 +41,7 @@ export default function SellNFTPage() {
                                         options={optionsone}
                                         // menuIsOpen={true}
                                         className="select_pernt"
-                                        placeholder="Bring Me the Open Space "
+                                        placeholder=""
                                         classNamePrefix="cntrslct"
                                     />
                                 </div>
