@@ -21,8 +21,12 @@ export const nftAddress = "0x7bBBa86B912C40a92eca40369B5813cf87153251";
 export const NapaTokenAddress = "0x816A6295C4be3c76a4fd5102c9f9A7D407e43981";
 export const UsdtTokenAddress = "0xC5922bd1E9Eb02bE502a2B259b7beD5C7845DAef";
 
-export const originalNapatokenAddress = "0xE2D4E29BfAC30D91a5e5Dd9BF4492A4241AE2A1D"
-export const originalNapaStakingAddress = "0x94623B63dB0A47CcdD2021F117b9398DCc7FB7E5"
+export const originalNapatokenAddress = "0x245567d7CC4a7382FA5E69E73C647ce6a10bF8D4"
+export const originalNapaStakingAddress = "0x64e6eda4069B8C670F3dDf397C6Ff0b3E784b68d"
+
+//below addresses changed for staking features
+// export const originalNapatokenAddress = "0xE2D4E29BfAC30D91a5e5Dd9BF4492A4241AE2A1D"
+// export const originalNapaStakingAddress = "0x94623B63dB0A47CcdD2021F117b9398DCc7FB7E5"
 
 // let newNapa = "0x816A6295C4be3c76a4fd5102c9f9A7D407e43981"
 // let newUSDT = "0xC5922bd1E9Eb02bE502a2B259b7beD5C7845DAef"

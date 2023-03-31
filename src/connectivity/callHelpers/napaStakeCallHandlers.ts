@@ -5,13 +5,13 @@
 // READ FUNCTIONS
 
 //1 checkReward
-export const checkReward = async (contract: any) => {
-    return await contract.checkReward();
+export const checkReward = async (contract: any,_plan:number) => {
+    return await contract.checkReward(_plan);
 }
 
-//2 deposit
-export const deposit = async (contract: any, address: string) => {
-    return await contract.deposit(address);
+//2 UserPlanDetails
+export const UserPlanDetails = async (contract: any, address: string, _plan: number) => {
+    return await contract.UserPlanDetails(address, _plan);
 }
 
 //3 owner
@@ -29,17 +29,29 @@ export const totalStaked = async (contract: any) => {
     return await contract.totalStaked();
 }
 
+
 //6 treasuryWallet
 export const treasuryWallet = async (contract: any) => {
     return await contract.treasuryWallet();
 }
 
+//7 userStakeDetails
+export const userStakeDetails = async (contract: any, _plan: number) => {
+    return await contract.userStakeDetails(_plan);
+}
+
+//8 usersAllActivePlans
+export const usersAllActivePlans = async (contract: any, address: string, _plan: number) => {
+    return await contract.usersAllActivePlans(address, _plan);
+}
+
+
 
 // WRITE FUNCTIONS
 
 //1 _claim
-export const _claim = async (contract: any) => {
-    return await contract._claim();
+export const _claim = async (contract: any,_plan:number) => {
+    return await contract._claim(_plan);
 }
 
 //2 renounceOwnership
@@ -48,7 +60,7 @@ export const renounceOwnership = async (contract: any) => {
 }
 
 //3 stakeTokens
-export const stakeTokens = async (contract: any, _amount: number|string, _plan: number) => {
+export const stakeTokens = async (contract: any, _amount: number | string, _plan: number) => {
     return await contract.stakeTokens(_amount, _plan);
 }
 
@@ -58,8 +70,8 @@ export const transferOwnership = async (contract: any, newOwner: string) => {
 }
 
 //5 UnstakeTokens
-export const UnstakeTokens = async (contract: any) => {
-    return await contract.UnstakeTokens();
+export const UnstakeTokens = async (contract: any,_plan:number) => {
+    return await contract.UnstakeTokens(_plan);
 }
 
 //6 updateTreasuryWallet

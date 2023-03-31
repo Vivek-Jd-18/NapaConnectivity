@@ -15,31 +15,20 @@ import 'bootstrap/dist/css/bootstrap.css';
 // you will also need the css that comes with bootstrap-daterangepicker
 import 'bootstrap-daterangepicker/daterangepicker.css';
 
-import { ethers } from "ethers";
-import Web3Modal from "web3modal";
 import { originalNapaStakingContract, originalNapaTokenContract } from '@/connectivity/contractObjects/contractObject1';
-import { balanceOf, treasuryWallet, approve } from '@/connectivity/callHelpers/napaTokenCallHandlers';
-import { UnstakeTokens, checkReward, deposit, pendingRewards, stakeTokens } from '@/connectivity/callHelpers/napaStakeCallHandlers';
+import { balanceOf, approve } from '@/connectivity/callHelpers/napaTokenCallHandlers';
+import { UnstakeTokens, checkReward, UserPlanDetails, pendingRewards, stakeTokens } from '@/connectivity/callHelpers/napaStakeCallHandlers';
 import { originalNapaStakingAddress } from '@/connectivity/addressHelpers/addressHelper';
 import useWebThree from '@/hooks/useWebThree';
 
 export default function EarnPage() {
-  // const [lock, setLock] = useState<string>();
-  const [_provider, setProvider] = useState<any>();
   // const [_ethFee, setEthFee] = useState<string>("0")
   // const [ethBal, setEthBal] = useState<any>();
-  // const [conn, setConn] = useState<boolean>(false)
-  // const [napaBal, setNapaBal] = useState<number>(0);
-  const [_pendingMilk, setPendingMilk] = useState<number>(0);
-  const [_treasuryWallet, setTreasuryWallet] = useState<string>("");
-  // const [currentUserReward, setCurrentUserReward] = useState<number>(0);
-  const [CurrentWalletAddress, setCurrentWalletAddress] = useState<string>("");
   const [stakePlan, setStakePlan] = useState<number>(0);
   const [stakeAmt, setStakeAmt] = useState<number>(0);
-  // const [stakeBtnStyle, setStakeBtnStyle] = useState<string>("btn btn-outline-success disabled");
 
-  const { address, balance, chainId, signer } = useWebThree();
-  console.log(address, balance, chainId, signer, "acc details")
+  const { address, chainId, signer } = useWebThree();
+  console.log(address, chainId, "acc details")
   const decimals = 10 ** 18;
 
   // const onAmountChange = (e: any) => {
@@ -52,61 +41,6 @@ export default function EarnPage() {
 
 
   //staking/unstaking connectivity start
-
-  const call = async () => {
-    async function connect() {
-      const externalProvider = await web3Modal.connect();
-      return new ethers.providers.Web3Provider(externalProvider);
-    }
-    const web3Modal = new Web3Modal({
-      network: "mainnet",
-      cacheProvider: true,
-    });
-    const provider = await connect();
-    setProvider(provider)
-    // const { chainId } = await provider.getNetwork()
-    const signer = await provider.getSigner(0);
-    const address = await signer.getAddress();
-    console.log(address, "current address")
-    setCurrentWalletAddress(address);
-    const ehBalance = await provider.getBalance(address);
-    console.log(ehBalance.toString(), "balance of ETH")
-    // setEthBal(Number(ehBalance.toString()) / (10 ** 18))
-    if (address) {
-      // setConn(true)
-    }
-    setCurrentWalletAddress(address)
-    //process to get NAPA balance of current user
-    // setNapaBal((await balanceOf(await originalNapaTokenContract(signer), address)) / 10 ** 18);
-
-    const oriNapaStakeCtr = await originalNapaStakingContract(signer);
-    console.log(" callllllll")
-    //fetching pending milks or availabe treasure from treasury to Stake contract
-    const _treasuryWallet = await treasuryWallet(oriNapaStakeCtr);
-    console.log(_treasuryWallet.length, "loggger")
-    if (_treasuryWallet == address) {
-      setTreasuryWallet(_treasuryWallet);
-    }
-    const _pendingRewards = await pendingRewards(oriNapaStakeCtr);
-    setPendingMilk(Number(_pendingRewards) / decimals);
-
-    //check pending rewards of current user
-    try {
-      console.log((await checkReward(oriNapaStakeCtr)).toString(), "checkReward");
-      // setCurrentUserReward(Number((await checkReward(oriNapaStakeCtr)).toString()) / decimals);
-    } catch (e) {
-      console.log("Error :", e);
-    }
-
-
-    const userDeposit = await deposit(oriNapaStakeCtr, CurrentWalletAddress);
-    console.log(userDeposit[0].toString(), "-=-=plan-=-=");
-    console.log(userDeposit[1].toString(), "-=-=Amount-=-=");
-    console.log(userDeposit[2].toString(), "-=-=startTime-=-=");
-    console.log(userDeposit[3].toString(), "-=-=EndTime-=-=");
-    console.log(userDeposit[4].toString(), "-=-=LastClaimTime-=-=");
-  }
-
   const amtHandler = (e: any) => {
     setStakeAmt(e.target.value);
     if (stakeAmt > 0) {
@@ -127,39 +61,38 @@ export default function EarnPage() {
     }
   }
   const handleStake = async () => {
-    var timestamp = Date.now() / 1000;
-    console.log("---timestamp---", signer)
-    console.log(timestamp);//current timestamp  
-    var datetime = new Date(1677237288 * 1000);
-    console.log("---datetime---");
-    console.log(datetime.toLocaleString());
-
-    console.log("---toDateString---");
-    console.log(datetime.toDateString());
-
-    console.log("---toTimeString---");
-    console.log(datetime.toTimeString());
-
-    console.log("---toString---");
-    console.log(datetime.toString());
-
-    const amount = stakeAmt;
-    console.log("in stake", stakeAmt);
     const oriNapaTokenCtr = await originalNapaTokenContract(signer);
     const oriNapaStakeCtr = await originalNapaStakingContract(signer);
 
-    const userDeposit = await deposit(oriNapaStakeCtr, CurrentWalletAddress);
-    const stakedAmt = userDeposit[1].toString()
-    console.log(userDeposit[0].toString(), "-=-=plan-=-=");
-    console.log(userDeposit[1].toString(), "-=-=Amount-=-=");
-    console.log(userDeposit[2].toString(), "-=-=startTime-=-=");
-    console.log(userDeposit[3].toString(), "-=-=EndTime-=-=");
-    console.log(userDeposit[4].toString(), "-=-=LastClaimTime-=-=");
+    const amount = Number(stakeAmt);
+
+    let plan = 0;
+    if (stakePlan == 1) {
+      plan = 30;
+    } else if (stakePlan == 2) {
+      plan = 60;
+    } else if (stakePlan == 3) {
+      plan = 90;
+    } else if (stakePlan == 4) {
+      plan = 120;
+    } else {
+      alert("Invalid plan");
+      throw (() => {
+        console.log("Invalid Plan");
+      })
+    }
+
+    const userDeposit = await UserPlanDetails(oriNapaStakeCtr, address, plan);
+    const userStakedAmt = userDeposit[1].toString();
+    if (userStakedAmt > 0) { alert("Already staked for this plan") }
 
     const amtInWei = amount * decimals;
     //1. check if user have enough balance or not
-    const userBal: Promise<number> = await balanceOf(oriNapaTokenCtr, CurrentWalletAddress);
-    if ((await userBal / decimals) > amount && await userBal > 0 && stakedAmt <= 0) {
+    const userBal: Promise<number> = await balanceOf(oriNapaTokenCtr, address);
+    console.log(stakeAmt, "stakeAmt")
+
+
+    if ((await userBal / decimals) > amount && await userBal > 0 && userStakedAmt <= 0 && Number(stakeAmt) > 0) {
       //2. user gives allowance to staking 
       await approve(oriNapaTokenCtr, originalNapaStakingAddress, amtInWei.toString()).then(async (res) => {
         console.log("Hang on Transaction is in progress...");
@@ -205,8 +138,13 @@ export default function EarnPage() {
         console.log(e, "error in approval of stake contract");
       })
     } else {
-      if (stakedAmt > 0) {
-        console.log(`you already have ${stakedAmt / decimals} token stake`);
+      if (Number(stakeAmt) <= 0) {
+        alert('please enter some amount');
+        console.log(`please enter some amount`);
+        return
+      }
+      if (userStakedAmt > 0) {
+        console.log(`you already have ${userStakedAmt / decimals} token stake`);
       }
       if ((await userBal / decimals) < amount && await userBal <= 0) {
         console.log("you have less tokens to stake", (await userBal).toString());
@@ -216,99 +154,54 @@ export default function EarnPage() {
 
   const handleUnStake = async () => {
     const oriNapaStakeCtr = await originalNapaStakingContract(signer);
-    // const oriNapaTokenCtr = await originalNapaTokenContract(_signer);
 
-
-    const userDeposit = await deposit(oriNapaStakeCtr, CurrentWalletAddress);
-    console.log(userDeposit[0].toString(), "-=-=plan-=-=");
-    console.log(userDeposit[1].toString(), "-=-=Amount-=-=");
-    console.log(userDeposit[2].toString(), "-=-=startTime-=-=");
-    console.log(userDeposit[3].toString(), "-=-=EndTime-=-=");
-    console.log(userDeposit[4].toString(), "-=-=LastClaimTime-=-=");
-
-    var datetime1 = new Date(userDeposit[2].toString() * 1000);
-    console.log("datetime startTime");
-    console.log(datetime1, "start-");
-
-    // console.log("toDateString startTime");
-    // console.log(datetime1.toDateString(), "start-");
-
-    // console.log("toTimeString startTime");
-    // console.log(datetime1.toTimeString(), "start-");
-
-    // console.log("toString startTime");
-    // console.log(datetime1.toString(), "start-");
-
-    // console.log("toLocaleString startTime");
-    // console.log(datetime1.toLocaleString(), "start-");
-
-    // console.log("toLocaleDateString startTime");
-    // console.log(datetime1.toLocaleDateString(), "start-");
-
-    // console.log("toJSON startTime");
-    // console.log(datetime1.toJSON(), "start-");
-
-
-
-    // var datetime2 = new Date(userDeposit[2].toString() * 1000);
-    // console.log("datetime endtime");
-    // console.log(datetime2, "end-");
-
-    // console.log("toDateString endtime");
-    // console.log(datetime2.toDateString(), "end-");
-
-    // console.log("toTimeString endtime");
-    // console.log(datetime2.toTimeString(), "end-");
-
-    // console.log("toString endtime");
-    // console.log(datetime2.toString(), "end-");
-
-    // console.log("toLocaleString endtime");
-    // console.log(datetime2.toLocaleString(), "end-");
-
-    // console.log("toLocaleDateString endtime");
-    // console.log(datetime2.toLocaleDateString(), "end-");
-
-    // console.log("toJSON endtime");
-    // console.log(datetime2.toJSON(), "end-");
-
-
-    // var datetime3 = new Date(userDeposit[2].toString() * 1000);
-    // console.log("datetime lastTime");
-    // console.log(datetime3, "last-");
-
-    // console.log("toDateString lastTime");
-    // console.log(datetime3.toDateString(), "last-");
-
-    // console.log("toTimeString lastTime");
-    // console.log(datetime3.toTimeString(), "last-");
-
-    // console.log("toString lastTime");
-    // console.log(datetime3.toString(), "last-");
-
-    // console.log("toLocaleString lastTime");
-    // console.log(datetime3.toLocaleString(), "last-");
-
-    // console.log("toLocaleDateString lastTime");
-    // console.log(datetime3.toLocaleDateString(), "last-");
-
-    // console.log("toJSON lastTime");
-    // console.log(datetime3.toJSON(), "last-");
-
-    if (Number(userDeposit[1].toString()) <= 0) {
-      console.log("you don't have any tokens staked yet");
-    } else if (Number(userDeposit[3].toString()) <= 0) {
-      console.log("Tokens are locked, you can't unstake now");
+    let plan = 0;
+    if (stakePlan == 1) {
+      plan = 30;
+    } else if (stakePlan == 2) {
+      plan = 60;
+    } else if (stakePlan == 3) {
+      plan = 90;
+    } else if (stakePlan == 4) {
+      plan = 120;
     } else {
+      alert("Invalid plan");
+      throw (() => {
+        console.log("Invalid Plan");
+      })
+    }
+
+    const _userDeposit = await UserPlanDetails(oriNapaStakeCtr, address, plan);
+    const userStakedAmt = _userDeposit[1].toString();
+    console.log(_userDeposit[0].toString(), "userStakedAmt plan");
+    console.log(_userDeposit[1].toString(), "userStakedAmt amount");
+    console.log(_userDeposit[2].toString(), "userStakedAmt startime");
+    console.log(_userDeposit[3].toString(), "userStakedAmt endtime");
+    console.log(_userDeposit[4].toString(), "userStakedAmt last claimtime");
+    console.log((await checkReward(oriNapaStakeCtr, 30)).toString(), "Your Rewards");
+
+    const date = new Date(Number((_userDeposit[3].toString()) * 1000));
+    var currentUnix = Math.round(+new Date() / 1000);
+
+    if (Number(userStakedAmt.toString()) <= 0) {
+      alert("you don't have any tokens staked yet for this plan")
+      console.log("you don't have any tokens staked yet");
+      return;
+    } else if (Number(_userDeposit[3].toString()) > currentUnix) {
+      alert(`Tokens are locked, you can't unstake now, wait till ${date}`)
+      console.log("Tokens are locked, you can't unstake now");
+      return;
+    } else if (Number(_userDeposit[3].toString()) < Number(currentUnix)) {
       const treasuryToStakeCtrAllowance = await pendingRewards(oriNapaStakeCtr);
       if (treasuryToStakeCtrAllowance > 0) {
-        console.log((await checkReward(oriNapaStakeCtr)).toString(), "Check Rewards: res")
-        await UnstakeTokens(oriNapaStakeCtr).then(async (res: any) => {
+        await UnstakeTokens(oriNapaStakeCtr, 30).then(async (res: any) => {
           console.log("transaction for Unstake is in progress have patience...");
-          console.log(await res.wait(),"Unstaked");
-        }).catch();
+          console.log(await res.wait(), "Unstaked");
+        }).catch((e: any) => {
+          console.log(e, "Error While Unstaking");
+        });
       } else {
-        console.log("Boom");
+        console.log("Not Enough Pending Rewards: admin hasn't added reawrds yet");
       }
     }
   }
@@ -339,7 +232,7 @@ export default function EarnPage() {
                       // value={lock}
                       placeholder="0.00"
                       onChange={amtHandler}
-                      onClick={call}
+                    // onClick={call}
                     />
                     <span />
                     <p>NAPA</p>

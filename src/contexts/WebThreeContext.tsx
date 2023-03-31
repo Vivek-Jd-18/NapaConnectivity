@@ -191,7 +191,7 @@ export const WebThreeContextProvider = (props: {
 
   //adding web3 wallet connection using ethers start
 
-  const goerliChainHex = '0x5';
+  // const goerliChainHex = '0x5';
   // const sepoliaChainHex = '0xAA36A7';
 
   //need to call this function when user clicks on metamask option
@@ -206,7 +206,7 @@ export const WebThreeContextProvider = (props: {
     });
     const provider = await connect();
     const { chainId } = await provider.getNetwork();
-    validateNetwork(chainId);
+    // validateNetwork(chainId);
     await provider.getNetwork();
     const signer = provider.getSigner(0);
     const address = await signer.getAddress();
@@ -220,32 +220,32 @@ export const WebThreeContextProvider = (props: {
     return { address, balance, signer, chainId };
   };
 
-  async function validateNetwork(currentNetwork: any) {
-    if (window.ethereum) {
-      console.log(currentNetwork, 'currentNetwork');
-      if (currentNetwork !== goerliChainHex) {
-        window.ethereum
-          .request({
-            method: 'wallet_switchEthereumChain',
-            params: [{ chainId: goerliChainHex }], // chainId must be in hexadecimal numbers
-          })
-          .then(async function (result: any) {
-            const provider = new ethers.providers.Web3Provider(window.ethereum);
-            console.log(`provider is ${provider} and result is: ${result}`);
-            // alert('Connected to correct Network');
-          })
-          .catch(function (error: any) {
-            alert(`Problem occured while changing   : ${error.message} `);
-            console.log(
-              'Problem occured while changing Network: ',
-              error.message
-            );
-          });
-      } else {
-        console.log('Connected to correct Network');
-      }
-    }
-  }
+  // async function validateNetwork(currentNetwork: any) {
+  //   if (window.ethereum) {
+  //     console.log(currentNetwork, 'currentNetwork');
+  //     if (currentNetwork !== goerliChainHex) {
+  //       window.ethereum
+  //         .request({
+  //           method: 'wallet_switchEthereumChain',
+  //           params: [{ chainId: goerliChainHex }], // chainId must be in hexadecimal numbers
+  //         })
+  //         .then(async function (result: any) {
+  //           const provider = new ethers.providers.Web3Provider(window.ethereum);
+  //           console.log(`provider is ${provider} and result is: ${result}`);
+  //           // alert('Connected to correct Network');
+  //         })
+  //         .catch(function (error: any) {
+  //           alert(`Problem occured while changing   : ${error.message} `);
+  //           console.log(
+  //             'Problem occured while changing Network: ',
+  //             error.message
+  //           );
+  //         });
+  //     } else {
+  //       console.log('Connected to correct Network');
+  //     }
+  //   }
+  // }
 
   //adding web3 wallet connection using ethers ends
 
